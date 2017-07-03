@@ -17,7 +17,10 @@ library
   hs-source-dirs:      src
   exposed-modules:     Testrs
   build-depends:       base >= 4.7 && < 5
+                       , conduit
+                       , conduit-extra
   default-language:    Haskell2010
+
 
 executable test3-exe
   hs-source-dirs:      app

@@ -1,6 +1,6 @@
 module Main where
 
-import Lib
+import Testrs
 
 main :: IO ()
 main = someFunc
