@@ -4,9 +4,9 @@ module Main where
 
 import Control.Monad.IO.Class
 
-import   Data.ByteString
-import Data.Conduit
-import Data.Conduit.List
+import           Data.ByteString.Char8
+import           Data.Conduit
+import qualified Data.Conduit.List as CL
 
 import Database.Redis
 
@@ -25,12 +25,19 @@ condSet kv = awaitForever $ \ x -> do
                             liftRedis (do (uncurry set) (kv x); return ())
                             yield x
 
+prodKeys :: (MonadRedis m) => Producer m ByteString
+prodKeys = do 
+  v <- liftRedis $ do keys "*"
+  either ( \ l -> return ()) ( \ r -> CL.sourceList r) v
 
---kv :: ()
+
+kv :: Int -> (ByteString, ByteString)
+kv i = ((pack (show i)) , (pack (show (i + 100))))
 
 main :: IO ()
 main = do
   print "done"
   conn <- checkedConnect defaultConnectInfo
-  runRedisT (sourceList [1..10] .| condSet ( \ _ -> ( "test", "testval")) $$ sinkPrint) conn
+  runRedisT (CL.sourceList [1..10] .| condSet kv $$ sinkPrint) conn
+  runRedisT (prodKeys $$ sinkPrint) conn
 
