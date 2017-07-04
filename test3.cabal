@@ -16,9 +16,11 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      src
   exposed-modules:     Testrs
+  other-modules:       Database.Redis.RedisT
   build-depends:       base >= 4.7 && < 5
                        , conduit
                        , conduit-extra
+                       , hedis
   default-language:    Haskell2010
 
 
