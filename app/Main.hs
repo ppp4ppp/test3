@@ -40,6 +40,12 @@ condPublish chanell = do
                       yield $ fmap ( \ i -> (i, x)) r
 
 
+prodPubSub :: (MonadRedis m) => Producer m ByteString
+prodPubSub = do 
+  v <- liftRedis $ pubSub (subscribe ["news"]) $ \msg -> do
+                            putStrLn $ "Message from " ++ show (msgChannel msg)
+                            return mempty
+  CL.sourceList ["t2", "t3"]
 
 kv :: Int -> (ByteString, ByteString)
 kv i = ((pack (show i)) , (pack (show (i + 100))))
@@ -61,16 +67,11 @@ main = do
   conn <- checkedConnect $ defaultConnectInfo { connectHost           = "localhost"}
 --  runRedisT (CL.sourceList [1..10] .| condSet kv $$ sinkPrint) conn
 --  runRedisT (prodKeys $$ sinkPrint) conn
-  pubSubCtrl <- newPubSubController [("ch1", myhandler)] []
-  forkIO $ forever $
-      pubSubForever conn pubSubCtrl onInitialComplete
-        `catch` (\e-> do
-          putStrLn $ "Got error: " ++ show (e::NonTermination)
-          threadDelay $ 50*1000) -- TODO: use exponential backoff
---  mapM_ ( \ i -> do threadDelay i; pubit conn; print i) (replicate 100 1000000)
-  threadDelay $ 1000000 * 1
---  runRedisT (CL.sourceList (replicate 10000000 "t1") .| condPublish "ch1"  $$ sinkPrint) conn
-  threadDelay $ 1000000 * 10
+  --runRedisT (CL.sourceList (replicate 10000000 "t1") .| condPublish "ch1"  $$ sinkPrint) conn
+  runRedis conn $ pubSub (subscribe ["ch1"]) $ \msg -> do
+                            putStrLn $ "Message from " ++ show (msgChannel msg)
+                            return mempty
+  --threadDelay $ 1000000 * 10
   print "done"
 
 
