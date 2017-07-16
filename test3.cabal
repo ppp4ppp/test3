@@ -35,6 +35,8 @@ executable test3-exe
                      , conduit
                      , hedis
                      , bytestring
+                     , stm-conduit
+                     , stm
   default-language:    Haskell2010
 
 test-suite test3-test

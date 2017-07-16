@@ -1,8 +1,11 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RankNTypes #-}
 
 module Main where
 
 import Control.Concurrent (forkIO, threadDelay)
+import Control.Monad.STM (atomically)
+import Control.Concurrent.STM.TBQueue (newTBQueueIO,readTBQueue, writeTBQueue, TBQueue(..))
 import Control.Monad
 import Control.Monad.IO.Class
 import Control.Exception
@@ -39,13 +42,20 @@ condPublish chanell = do
                       r <- liftRedis $ publish chanell x
                       yield $ fmap ( \ i -> (i, x)) r
 
-
-prodPubSub :: (MonadRedis m) => Producer m ByteString
-prodPubSub = do 
-  v <- liftRedis $ pubSub (subscribe ["news"]) $ \msg -> do
-                            putStrLn $ "Message from " ++ show (msgChannel msg)
+prodPubSub :: (MonadIO m) => Connection -> ByteString -> Producer m ByteString
+prodPubSub conn chanell = do
+  tbqueue <- liftIO $ newTBQueueIO 10000
+  liftIO $ forkIO $ runRedis conn $ pubSub (subscribe [chanell]) $ \msg -> do
+                            putStrLn $ "Message from pubsub prod 22" ++ show (msgChannel msg)
+                            atomically $ do writeTBQueue tbqueue $ msgChannel msg
                             return mempty
-  CL.sourceList ["t2", "t3"]
+  lq tbqueue
+
+lq :: (MonadIO m) => TBQueue ByteString -> Producer m ByteString
+lq tbqueue = do
+  v <- liftIO $ atomically $ do rs <- readTBQueue tbqueue; return rs
+  yield v
+  lq tbqueue
 
 kv :: Int -> (ByteString, ByteString)
 kv i = ((pack (show i)) , (pack (show (i + 100))))
@@ -68,10 +78,9 @@ main = do
 --  runRedisT (CL.sourceList [1..10] .| condSet kv $$ sinkPrint) conn
 --  runRedisT (prodKeys $$ sinkPrint) conn
   --runRedisT (CL.sourceList (replicate 10000000 "t1") .| condPublish "ch1"  $$ sinkPrint) conn
-  runRedis conn $ pubSub (subscribe ["ch1"]) $ \msg -> do
-                            putStrLn $ "Message from " ++ show (msgChannel msg)
-                            return mempty
-  --threadDelay $ 1000000 * 10
+  prodPubSub conn "ch1" $$ sinkPrint 
+  --runRedisT (prodPubSub "ch1" $$ sinkPrint) conn
+  threadDelay $ 1000000 * 10
   print "done"
 
 
