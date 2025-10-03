@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+    <style>
+        .LayoutDescription > .List {
+            position: relative;
+            /* Container is always 70% of viewport width */
+            width: 45vw;
+            /* Height maintains 16:9 aspect ratio (1920:1080) */
+            height: calc(45vw * 9 / 16);
+            /* Prevent it from being too tall on very wide screens */
+            max-height: 80vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: 3px solid #363636;
+            border-radius: 8px;
+            margin: 2rem auto;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .main-container {
+            position: relative;
+            /* Container is always 70% of viewport width */
+            width: 70vw;
+            /* Height maintains 16:9 aspect ratio (1920:1080) */
+            height: calc(70vw * 9 / 16);
+            /* Prevent it from being too tall on very wide screens */
+            max-height: 80vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: 3px solid #363636;
+            border-radius: 8px;
+            margin: 2rem auto;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        /* If max-height constraint kicks in, adjust width to maintain aspect ratio */
+        @media (max-aspect-ratio: 16/9) {
+            .main-container {
+                width: 70vw;
+                height: calc(70vw * 9 / 16);
+            }
+        }
+
+        @media (min-aspect-ratio: 16/9) and (min-height: calc(70vw * 9 / 16 / 0.8)) {
+            .main-container {
+                height: 80vh;
+                width: calc(80vh * 16 / 9);
+            }
+        }
+
+        .main-label {
+            position: absolute;
+            top: 1%;
+            left: 1%;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0.5% 1%;
+            border-radius: 0.4%;
+            font-weight: bold;
+            color: #363636;
+            z-index: 100;
+            font-size: calc(0.8vw + 0.3rem);
+        }
+
+        /* Universal window styling - uses percentage positioning relative to container */
+        .Window {
+            position: absolute;
+            border: calc(0.1vw + 1px) solid #fff;
+            border-radius: calc(0.3vw + 2px);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 calc(0.2vw + 2px) calc(0.8vw + 4px) rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(calc(0.5vw + 2px));
+            
+            /* Convert pixel positions to percentages of 1920x1080 */
+            left: calc(var(--x) / var(--resw) * 100%);
+            top: calc(var(--y) / var(--resh) * 100%);
+            width: calc(var(--w) / var(--resw) * 100%);
+            height: calc(var(--h) / var(--resh) * 100%);
+        }
+
+        .Window:hover {
+            transform: scale(1.05);
+            box-shadow: 0 calc(0.4vw + 4px) calc(1.2vw + 8px) rgba(0, 0, 0, 0.4);
+            z-index: 10;
+            border-color: #3273dc;
+        }
+
+        .WindowSelected {
+            border: calc(0.15vw + 2px) solid #4a9eff;
+            box-shadow: 
+                0 calc(0.3vw + 3px) calc(1.2vw + 6px) rgba(74, 158, 255, 0.4),
+                0 0 0 calc(0.15vw + 1px) rgba(74, 158, 255, 0.3),
+                inset 0 0 calc(0.8vw + 4px) rgba(74, 158, 255, 0.1);
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.02);
+            z-index: 1000;
+        }
+
+        .WindowWaiting {
+    border-color: #ffdd57;
+    animation: waiting-pulse 1.5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.WindowWaiting::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(2vw + 20px);
+    height: calc(2vw + 20px);
+    margin: calc(-1vw - 10px) 0 0 calc(-1vw - 10px);
+    border: calc(0.15vw + 2px) solid #ffdd57;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: waiting-spinner 0.8s linear infinite;
+}
+
+@keyframes waiting-pulse {
+    0%, 100% {
+        box-shadow: 
+            0 calc(0.2vw + 2px) calc(0.8vw + 4px) rgba(0, 0, 0, 0.2),
+            0 0 0 0 rgba(255, 221, 87, 0.7);
+        opacity: 1;
+    }
+    50% {
+        box-shadow: 
+            0 calc(0.2vw + 2px) calc(0.8vw + 4px) rgba(0, 0, 0, 0.2),
+            0 0 0 calc(0.5vw + 5px) rgba(255, 221, 87, 0);
+        opacity: 0.85;
+    }
+}
+
+@keyframes waiting-spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+        /* Unique colors for each window */
+        .Window:nth-child(2) { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+        .Window:nth-child(3) { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .Window:nth-child(4) { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+        .Window:nth-child(5) { background: linear-gradient(135deg, #a8caba 0%, #5d4e75 100%); }
+        .Window:nth-child(6) { background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%); }
+        .Window:nth-child(7) { background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); }
+        .Window:nth-child(8) { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .Window:nth-child(9) { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .Window:nth-child(10) { background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%); }
+
+        .String {
+            font-weight: bold;
+            color: #363636;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+            font-size: calc(0.6vw + 0.4rem);
+            text-align: center;
+        }
+
+        .coordinates {
+            font-family: 'Courier New', monospace;
+            font-size: calc(0.4vw + 0.3rem);
+            color: #666;
+            margin-top: calc(0.2vw + 0.1rem);
+            text-align: center;
+        }
+
+        .info-panel {
+            max-width: 1000px;
+            margin: 0 auto 2rem;
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #3273dc;
+        }
+
+        .scale-info {
+            margin: 1rem 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            background: #e3f2fd;
+            padding: 0.5rem;
+            border-radius: 4px;
+            color: #1976d2;
+        }
+
+        .feature-highlight {
+            background: #e8f5e8;
+            padding: 1rem;
+            border-radius: 4px;
+            border-left: 4px solid #4caf50;
+            margin: 1rem 0;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+
+        /* Responsive scaling for different screen sizes */
+        @media (max-width: 768px) {
+            .main-container {
+                width: 90vw;
+                height: calc(90vw * 9 / 16);
+            }
+            
+            .main-label {
+                font-size: calc(1vw + 0.4rem);
+            }
+            
+            .String {
+                font-size: calc(0.8vw + 0.5rem);
+            }
+            
+            .coordinates {
+                font-size: calc(0.6vw + 0.4rem);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-container {
+                width: 95vw;
+                height: calc(95vw * 9 / 16);
+            }
+            
+            .main-label {
+                font-size: calc(1.2vw + 0.5rem);
+            }
+            
+            .String {
+                font-size: calc(1vw + 0.6rem);
+            }
+            
+            .coordinates {
+                font-size: calc(0.8vw + 0.5rem);
+            }
+        }
+    
+    .List {
+    display: flex;
+}
+ 
+
+.MultiviewPanelMultiviewnamesSignal {
+  display : none
+}
+/* .MultiviewPanelConfigmultiviewlayoutsSignal {
+  display : none
+} */
+.MultiviewPanelMultiviewlayoutSignal {
+  display : none
+}
+.MultiviewPanelAllmultiviewlayoutsSignal {
+  display : none
+}
+/* .MultiviewPanelMultiviewlayoutuiSignal {
+  display : none
+} */
+.MultiviewPanelActionpullSignal {
+  display : none
+}
+
+.MultiviewPanelDevicesrxSignal > .val_tag > .listx0 > .listx1 > .listx2 > :nth-child(4)  {
+    display:  none;
+}
+
+.MultiviewPanelConfigmultiviewlayoutsSignal > .val_tag > .List {
+    display : flex
+}
+
+/*.MultiviewPanelConfigmultiviewlayoutsSignal > .val_tag > .List > .LayoutDescription > :not(:nth-child(6)) {
+    display : none
+}*/
+
+
+.MultiviewPanelConfigmultiviewlayoutsSignal > .val_tag > .List > .LayoutDescription > .List {
+            position: relative;
+            /* Container is always 70% of viewport width */
+            width: 20vw;
+            /* Height maintains 16:9 aspect ratio (1920:1080) */
+            height: calc(20vw * 9 / 16);
+            /* Prevent it from being too tall on very wide screens */
+            max-height: 80vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: 3px solid #363636;
+            border-radius: 8px;
+            margin: 2rem;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+
+.LayoutDescription > :nth-child(5){
+    display: none;
+}
+
+.WindowTx{
+    max-height: 100px;
+    border: calc(0.1vw + 1px) solid #fff;
+    border-radius: calc(0.3vw + 2px);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 calc(0.2vw + 2px) calc(0.8vw + 4px) rgba(0, 0, 0, 0.2);
+}
+.WindowRx{
+    margin-top: 1rem;
+    position: relative;
+    width: 45vw;
+    height: calc(45vw * 9 / 16);
+}
+
+.WindowRx > canvas {
+    width: 100%;
+    height: 100%;
+}
+
+
+.MultiviewPanelConfigmultiviewlayoutsSignal {
+    position: absolute;
+    z-index: 100;
+    top: 16.5vw;
+    left: 25vw;
+    
+
+}
+
+.MultiviewPanelConfigmultiviewlayoutsSignal:not(:has(+ .MultiviewPanelMultiviewlayoutSignal + .MultiviewPanelAllmultiviewlayoutsSignal + .MultiviewPanelMultiviewlayoutuiSignal > .MultiviewUiDevicerxSignal > .val_tag > .showlayouts))  {
+    display:none;
+}
+
+.MultiviewUiDevicerxSignal:has( > .val_tag > .showlayouts){
+    opacity: 0.37;
+}
+
+.MultiviewPanelMultiviewlayoutuiSignal{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.MultiviewUiDevicerxSignal{
+    background-color: lightblue;
+    width: 100%;
+}
+
+.MultiviewUiDevicerxSignal > .val_tag {
+    position: relative;
+}
+
+.MultiviewUiDevicerxSignal > .val_tag {
+    position: relative;
+}
+
+.MultiviewUiDevicerxSignal > .val_tag > .multctrl {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+.MultiviewUiDevicerxSignal > .val_tag > .multctrl > .button {
+    margin: 0.5rem;
+    display: grid;
+}
+
+.MultiviewUiDevicestxSignal{
+    width: auto;
+}
+
+.MultiviewUiMultiviewuipullSignal{
+    display:none;
+}
+
+.Subscription {
+    display: none;
+}
+
+.MainMainPanelNewframeSignal{
+    display : grid;
+}
+
+.MultiviewPanelDevicesrxSignal{
+    order: -1;
+    margin-left: 20vw;
+    margin-bottom: 1rem;
+}
+
+.MultiviewPanelDevicesrxSignal > .val_tag > .listx0 > .listx1{
+    display : flex;
+}
+
+.MultiviewPanelDevicesrxSignal > .val_tag > .listx0 > .listx1 > .listx2 > .DeviceRX > .WindowRx{
+    
+    width:auto;
+}
+.MultiviewPanelDeviceactionpullSignal{
+    display:none;
+}
+
+.MainMainPanelPvconfigSignal{
+    display:none;
+}
+
+.MainMainPanelPreviewrxSignal{
+    display:none;
+}
+
+.MainMainPanelPreviewgatewaySignal{
+    display:none;
+}
+
+
+.MainMainPanelInitappSignal{
+    display:none;
+}
+
+
+.DeviceRX {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  margin-left: 2vw;
+}
+
+.DeviceRX:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  /* transform: translateY(-2px); */
+  transform: scale(1.05);
+}
+
+.DeviceRX.selected {
+  border: 2px solid #3273dc;
+  box-shadow: 0 4px 16px rgba(50, 115, 220, 0.3);
+  background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+}
+
+.DeviceRX canvas {
+  flex: 1;
+  border-radius: 4px;
+  background: #f5f5f5;
+  margin-top: 1.5rem;
+}
+
+.DeviceRX .String input {
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+  padding: 0.5rem;
+  font-family: monospace;
+  font-size: 0.875rem;
+  width: 100%;
+  background: #fafafa;
+}
+
+.DeviceRX.selected .String input {
+  border-color: #3273dc;
+  background: white;
+}
+
+.DeviceTX {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  margin: 1vw;
+}
+
+.DeviceTX:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  /* transform: translateY(-2px); */
+  transform: scale(1.05);
+}
+
+.DeviceTX.selected {
+  border: 2px solid #3273dc;
+  box-shadow: 0 4px 16px rgba(50, 115, 220, 0.3);
+  background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+}
+
+.DeviceTX canvas {
+  flex: 1;
+  border-radius: 4px;
+  background: #f5f5f5;
+  margin-top: 1.5rem;
+}
+
+.DeviceTX .String input {
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+  padding: 0.5rem;
+  font-family: monospace;
+  font-size: 0.875rem;
+  width: 100%;
+  background: #fafafa;
+}
+
+.DeviceTX.selected .String input {
+  border-color: #3273dc;
+  background: white;
+}
+
+.ref_tag {
+    display: none;
+}
+.autoplay-notice{
+    display: none;
+}
+
+.MultiviewUiDevicerxSignal > .val_tag > .WindowRx{
+    margin: auto;
+}
+
+.val_tag:has(.previewbox) {
+    display: none;
+}
+
+</style>
+</head>
+<body>
+
+<main id="main"></main>
+<script src="./bundle.js"></script>
+<div id="tagtag">  </div>
+
+<div id="autoplay-notice" class="autoplay-notice">
+    <p>Click the button below to start the video stream:</p>
+    <button id="start-button" class="start-button">Start Video Stream</button>
+</div>
+
+
+<div class="autoplay-notice">
+<button onclick="video.pause(); frames=0;">Pause</button>
+<button onclick="video.play(); frames=0;">Resume</button>
+
+
+<div style="position:relative;margin-top:40px;" id="main-container">
+    <div id="fps" style="position:fixed;left:20px;top:20px;width:400px;height:24px; overflow:hidden;font-family:courier;">FPS: 32</div>
+    <div class="canvas-container" id="canvas-container" style="position:absolute;left:0;top:0;">
+        <!-- Canvases will be dynamically created here -->
+    </div>
+    <!-- Hidden WebGL canvas -->
+    <canvas id="webGLCanvas" style="display:none;" width="125" height="125"></canvas>
+    <pre id="log" style="position:absolute;left:800px;top:0;width:380px;height:400px;margin:0;border:1px solid #CCCCCC;overflow:auto;">Log:<br><span>10:54:22.372 webrtc client starting</span><br><span>10:54:22.372 webrtc server: http://pi:8002 stream: reowhite</span><br><span>10:54:22.448 webrtc received streams: [object Object]</span><br><span>10:54:22.564 webrtc negotiation start: [object Object]</span><br><span>10:54:22.565 webrtc connection checking</span><br><span>10:54:22.567 webrtc received track: [object MediaStreamTrack] [object Object]</span><br><span>10:54:22.567 webrtc connection connected</span><br><span>10:54:22.591 webrtc channel open</span><br><span>10:54:25.147 webrtc resolution: 1920 1080</span></pre>
+</div>
+</div>
+<br>
+<br>
+
+<br>
+
+
+<script>
+let config;
+
+async function log(...msg) {
+    const dt = new Date();
+    const ts = `${dt.getHours().toString().padStart(2, '0')}:${dt.getMinutes().toString().padStart(2, '0')}:${dt.getSeconds().toString().padStart(2, '0')}.${dt.getMilliseconds().toString().padStart(3, '0')}`;
+    document.getElementById("log").innerHTML += "<br><span>"+ts+" webrtc "+msg.join(" ")+"</span>";
+    console.log(ts, 'webrtc', ...msg);
+}
+
+async function getConfig() {
+    const res = await fetch('/config.json');
+    const json = await res.json();
+    return json;
+}
+
+function checkLayoutConfig() {
+    const rs = document.querySelector('.MultiviewUiDevicerxSignal .val_tag .FrameBuffer .FrameBufferConfiguration .LayoutDescription');
+
+    if (!(rs == null))
+    {
+        const inputs = rs.querySelectorAll('input[type="text"]');
+        const layoutWidth = parseInt(inputs[2].value);
+        const layoutHeight = parseInt(inputs[3].value);
+        const windows = [];
+        const windowElements = rs.querySelectorAll('.Window');
+        
+        windowElements.forEach((windowEl, index) => {
+            const inputs = windowEl.querySelectorAll('input[type="text"]');
+            if (inputs.length >= 5) {
+                const window = {
+                    x: parseInt(inputs[0].value),
+                    y: parseInt(inputs[1].value),
+                    width: parseInt(inputs[2].value),
+                    height: parseInt(inputs[3].value),
+                    index: index,
+                    subid: (inputs[4].value)
+                };
+                windows.push(window);
+            }
+        });
+
+        console.log(`Layout: ${layoutWidth}x${layoutHeight}, Windows: ${windows.length}`);
+        windows.forEach(w => {
+            console.log(`Window ${w.index}: ${w.x},${w.y} ${w.width}x${w.height}`);
+        });
+
+        startPreview();
+    }
+    else
+    {
+        setTimeout(() => {
+                checkLayoutConfig();
+            }, 100);
+    }
+}
+
+// Function to parse layout configuration from HTML
+function parseLayoutConfig() {
+    const windows = [];
+    // Get layout dimensions
+    const rs = document.querySelector('.MultiviewUiDevicerxSignal .val_tag .FrameBuffer .FrameBufferConfiguration .LayoutDescription');
+    var multiplier = 1.0;
+    var layoutWidth = 3840;
+    var layoutHeight = 2160;
+
+    if (rs == null)
+    {
+        
+    }else 
+    {
+        const inputs = rs.querySelectorAll('input[type="text"]');
+        layoutWidth = parseInt(inputs[2].value);
+        layoutHeight = parseInt(inputs[3].value);
+        
+        const windowElements = rs.querySelectorAll('.Window');
+        multiplier = layoutHeight / 2160.0
+        
+        windowElements.forEach((windowEl, index) => {
+            const inputs = windowEl.querySelectorAll('input[type="text"]');
+            if (inputs.length >= 5) {
+                const window = {
+                    x: parseInt(inputs[0].value) * multiplier,
+                    y: parseInt(inputs[1].value) * multiplier,
+                    width: parseInt(inputs[2].value) * multiplier,
+                    height: parseInt(inputs[3].value) * multiplier,
+                    index: index,
+                    subid: (inputs[4].value),
+                    multpl: multiplier
+                };
+                windows.push(window);
+            }
+        });
+    }
+
+    const rssingle = document.querySelector('.MultiviewUiDevicerxSignal .val_tag ');
+    
+    const windowElementsrssingle = rssingle.querySelectorAll('.WindowRx');
+    
+    windowElementsrssingle.forEach((windowEl, index) => {
+        const inputs = windowEl.querySelectorAll('input[type="text"]');
+        if (inputs.length >= 5) {
+            const window = {
+                x: parseInt(inputs[0].value) * multiplier,
+                y: parseInt(inputs[1].value) * multiplier,
+                width: parseInt(inputs[2].value) * multiplier,
+                height: parseInt(inputs[3].value) * multiplier,
+                index: index,
+                subid: (inputs[4].value),
+                multpl: multiplier
+            };
+            windows.push(window);
+        }
+    });
+
+    
+
+    const rstx = document.querySelector('.MultiviewUiDevicestxSignal .val_tag');
+    
+    const windowElementstx = rstx.querySelectorAll('.WindowTx');
+    
+    windowElementstx.forEach((windowEl, index) => {
+        const inputs = windowEl.querySelectorAll('input[type="text"]');
+        if (inputs.length >= 5) {
+            const window = {
+                x: parseInt(inputs[0].value) * multiplier,
+                y: parseInt(inputs[1].value) * multiplier,
+                width: parseInt(inputs[2].value) * multiplier,
+                height: parseInt(inputs[3].value) * multiplier,
+                index: index,
+                subid: (inputs[4].value),
+                multpl: multiplier
+            };
+            windows.push(window);
+        }
+    });
+
+    const rsrx = document.querySelector('.MultiviewPanelDevicesrxSignal .val_tag');
+    
+    const windowElementsrx = rsrx.querySelectorAll('.WindowRx');
+    
+    windowElementsrx.forEach((windowEl, index) => {
+        const inputs = windowEl.querySelectorAll('input[type="text"]');
+        if (inputs.length >= 5) {
+            const window = {
+                x: parseInt(inputs[0].value) * multiplier,
+                y: parseInt(inputs[1].value) * multiplier,
+                width: parseInt(inputs[2].value) * multiplier,
+                height: parseInt(inputs[3].value) * multiplier,
+                index: index,
+                subid: (inputs[4].value),
+                multpl: multiplier
+            };
+            
+            windows.push(window);
+        }
+    });
+
+
+    console.log(`Layout: ${layoutWidth}x${layoutHeight}, Windows: ${windows.length}`);
+    windows.forEach(w => {
+        console.log(`Window ${w.index}: ${w.x},${w.y} ${w.width}x${w.height}`);
+    });
+    
+    return { layoutWidth, layoutHeight, windows };
+}
+
+// Create canvases based on layout configuration
+var display2DCanvases = [];
+var display2DContexts = [];
+var windowConfig = [];
+
+function createCanvases() {
+    const layout = parseLayoutConfig();
+    const container = document.getElementById('canvas-container');
+    
+    // Set the main container size based on layout
+    const mainContainer = document.getElementById('main-container');
+    const scaleFactor = 1.0; // 1.0;// 0.5; // Scale down for display
+    mainContainer.style.width = (layout.layoutWidth * scaleFactor) + 'px';
+    mainContainer.style.height = (layout.layoutHeight * scaleFactor) + 'px';
+    
+    // Clear existing canvases
+    container.innerHTML = '';
+    display2DCanvases = [];
+    display2DContexts = [];
+    windowConfig = [];
+    
+    // Create canvases for each window
+    layout.windows.forEach((window, index) => {
+        const previewcanvas = document.getElementById('preview' + window.subid);
+        if (previewcanvas == null)
+        {
+          const canvas = document.createElement('canvas');
+          const scaledWidth = window.width * scaleFactor;
+          const scaledHeight = window.height * scaleFactor;
+          const scaledX = window.x * scaleFactor;
+          const scaledY = window.y * scaleFactor;
+          
+          canvas.width = scaledWidth;
+          canvas.height = scaledHeight;
+          canvas.style.width = scaledWidth + 'px';
+          canvas.style.height = scaledHeight + 'px';
+          canvas.style.left = scaledX + 'px';
+          canvas.style.top = scaledY + 'px';
+          canvas.style.border = '1px solid #CCCCCC';
+          
+          container.appendChild(canvas);
+          display2DCanvases.push(canvas);
+          display2DContexts.push(canvas.getContext('2d'));
+          
+        }else 
+        {
+          const canvas = previewcanvas;
+        
+          // container.appendChild(canvas);
+          display2DCanvases.push(canvas);
+          display2DContexts.push(canvas.getContext('2d'));
+        }
+        
+        // Store window configuration for rendering
+        windowConfig.push({
+            x: window.x,
+            y: window.y,
+            width: window.width,
+            height: window.height,
+            normalizedX: window.x / layout.layoutWidth,
+            normalizedY: window.y / layout.layoutHeight,
+            normalizedWidth: window.width / layout.layoutWidth,
+            normalizedHeight: window.height / layout.layoutHeight,
+            multpl: window.multpl
+        });
+    });
+    
+    // Update WebGL canvas size to match the largest window
+    const maxWidth = Math.max(...layout.windows.map(w => w.width * scaleFactor));
+    const maxHeight = Math.max(...layout.windows.map(w => w.height * scaleFactor));
+    const webGLCanvas = document.getElementById("webGLCanvas");
+    webGLCanvas.width = maxWidth;
+    webGLCanvas.height = maxHeight;
+}
+
+// Setup WebGL context (hidden)
+var webGLCanvas = document.getElementById("webGLCanvas");
+var gl_contextAttributes = { antialias:false };
+var gl = null;
+for (var i=0; i<4; i++)
+{
+    gl = webGLCanvas.getContext(["webgl","experimental-webgl","moz-webgl","webkit-3d"][i], gl_contextAttributes)
+    if (gl)
+        break;
+}
+
+if (!gl)
+    log("No WebGL support!", "color:red;");
+
+// prepare WebGL shaders
+var vs = gl.createShader(gl.VERTEX_SHADER);
+gl.shaderSource(vs, "attribute vec2 vx;varying vec2 tx;void main(){gl_Position=vec4(vx.x*2.0-1.0,1.0-vx.y*2.0,0,1);tx=vx;}");
+gl.compileShader(vs);
+
+var ps = gl.createShader(gl.FRAGMENT_SHADER);
+gl.shaderSource(ps, "precision mediump float;uniform sampler2D sm;uniform float m[9];varying vec2 tx;uniform vec2 offset;uniform vec2 scale;void main(){vec2 scaledTx = tx * scale + offset;vec4 c=texture2D(sm,scaledTx);vec4 r;r.r=m[0]*c.r+m[1]*c.g+m[2]*c.b;r.g=m[3]*c.r+m[4]*c.g+m[5]*c.b;r.b=m[6]*c.r+m[7]*c.g+m[8]*c.b;r.a=1.0;gl_FragColor=r;}");
+gl.compileShader(ps);
+
+var shader  = gl.createProgram();
+gl.attachShader(shader, vs);
+gl.attachShader(shader, ps);
+gl.linkProgram(shader);
+gl.useProgram(shader);
+
+var mu = gl.getUniformLocation(shader, "m");
+var offsetUniform = gl.getUniformLocation(shader, "offset");
+var scaleUniform = gl.getUniformLocation(shader, "scale");
+gl.uniform1fv(mu, new Float32Array([1,0,0, 0,1,0, 0,0,1]));
+
+var vx_ptr = gl.getAttribLocation(shader, "vx");
+gl.enableVertexAttribArray(vx_ptr);
+gl.uniform1i(gl.getUniformLocation(shader, "sm"), 0);
+
+var vx = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, vx);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0,0, 1,0, 1,1, 0,1]), gl.STATIC_DRAW);
+
+var ix = gl.createBuffer();
+gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ix);
+gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array([0,1,2, 0,2,3]), gl.STATIC_DRAW);
+
+var tex = gl.createTexture();
+gl.bindTexture(gl.TEXTURE_2D, tex);
+gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T,     gl.CLAMP_TO_EDGE);
+gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S,     gl.CLAMP_TO_EDGE);
+gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+
+// Create video element for WebRTC stream
+var video = document.createElement("video");
+var videoready = false;
+video.muted = true;
+video.autoplay = true;
+video.playsInline = true; // iOS support
+
+var errcnt=0;
+
+async function webRTC(streamName = null, elementName = null) {
+    if (!config) config = await getConfig();
+    const suuid = streamName || config.client.defaultStream;
+    log('client starting');
+    log(`server: http://${location.hostname}${config.server.encoderPort} stream: ${suuid}`);
+    const stream = new MediaStream();
+    const connection = new RTCPeerConnection();
+    connection.oniceconnectionstatechange = () => log('connection', connection.iceConnectionState);
+    connection.onnegotiationneeded = async () => {
+        const offer = await connection.createOffer();
+        await connection.setLocalDescription(offer);
+        const res = await fetch(`http://${location.hostname}${config.server.encoderPort}/stream/receiver/${suuid}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+            body: new URLSearchParams({
+                suuid: `${suuid}`,
+                data: `${btoa(connection.localDescription?.sdp || '')}`,
+            }),
+        });
+        const data = (res && res.ok) ? await res.text() : '';
+        if (data.length === 0) {
+            log('cannot connect:', `http://${location.hostname}${config.server.encoderPort}`);
+        } else {
+            connection.setRemoteDescription(new RTCSessionDescription({
+                type: 'answer',
+                sdp: atob(data),
+            }));
+            log('negotiation start:', offer);
+        }
+    };
+    connection.ontrack = (event) => {
+        stream.addTrack(event.track);
+        video.srcObject = stream;
+        video.onloadeddata = async () => {
+            log('resolution:', video.videoWidth, video.videoHeight);
+            videoready = true;
+            video.play();
+        };
+        log('received track:', event.track, event.track.getSettings());
+    };
+
+    const res = await fetch(`http://${location.hostname}${config.server.encoderPort}/stream/codec/${suuid}`);
+    let streams = [];
+    try {
+        streams = res && res.ok ? await res.json() : [];
+    } catch { /**/ }
+    if (streams.length === 0) {
+        log('received no streams');
+        return;
+    }
+    log('received streams:', streams);
+    for (const s of streams) {
+        connection.addTransceiver(s.Type, { direction: 'sendrecv' });
+    }
+
+    const channel = connection.createDataChannel(suuid, { maxRetransmits: 10 });
+    channel.onmessage = (e) => log('channel message:', channel.label, 'payload', e.data);
+    channel.onerror = (e) => log('channel error:', channel.label, 'payload', e);
+    channel.onclose = () => log('channel close');
+    channel.onopen = () => {
+        log('channel open');
+        setInterval(() => channel.send('ping'), 1000);
+    };
+}
+
+var fpsdiv = document.getElementById("fps");
+
+var t1 = performance.now();
+var t2 = t1;
+var dt = 0;
+var curfps = 60;
+var avgfps = 0;
+var frames = 0;
+
+var lastupdate = 0;
+
+// requestAnimationFrame loop
+function frameloop()
+{
+    let val = document.getElementById("refreshmv").getAttribute("value");
+    let createCanvasesOK = true;
+
+    if(val != lastupdate)
+    {
+        try
+        {
+            createCanvases();
+            lastupdate = val;
+        }
+        catch(e)
+        {
+            createCanvasesOK = false;
+        }
+        
+    }
+
+    if(createCanvasesOK)
+    {
+        frames++;
+
+        gl.activeTexture(gl.TEXTURE0);
+        gl.bindTexture(gl.TEXTURE_2D, tex);
+
+        if (videoready && !video.paused)
+        {
+            try
+            {
+                // upload the video frame
+                gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, video);
+            }
+            catch(e)
+            {
+                // log only the first few errors
+                errcnt++;
+                if (errcnt < 10)
+                    log(e);
+                else if (errcnt == 10)
+                    log("...");
+            }
+        }
+        
+        // Render each window tile to WebGL canvas and copy to 2D canvas
+        windowConfig.forEach((window, index) => {
+            if (index < display2DCanvases.length && frames % 1 == 0 ) {
+                // Set WebGL canvas size to match the current window
+                const scaleFactor = 1.0 / window.multpl; //0.5;
+                const canvasWidth = window.width * scaleFactor;
+                const canvasHeight = window.height * scaleFactor;
+                
+                // if (webGLCanvas.width !== canvasWidth || webGLCanvas.height !== canvasHeight) {
+                webGLCanvas.width = canvasWidth;
+                webGLCanvas.height = canvasHeight;
+                gl.viewport(0, 0, canvasWidth, canvasHeight);
+                // }
+                
+                gl.clear(gl.COLOR_BUFFER_BIT);
+                // gl.uniform1fv(mu, new Float32Array(huerotate(frames/22.0 + index * 0.5)));
+                
+                // Set the offset and scale uniforms for the current window
+                gl.uniform2f(offsetUniform, window.normalizedX, window.normalizedY);
+                gl.uniform2f(scaleUniform, window.normalizedWidth, window.normalizedHeight);
+
+                gl.bindBuffer(gl.ARRAY_BUFFER, vx);
+                gl.vertexAttribPointer(vx_ptr, 2, gl.FLOAT, false, 0, 0);
+
+                gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ix);
+                gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
+                
+                // Copy the WebGL canvas to the corresponding 2D canvas
+                display2DContexts[index].drawImage(webGLCanvas, 0, 0);
+            }
+        });
+        
+        if (videoready)
+        {
+            if ((frames & 7) == 0)
+            {
+                t1 = t2;
+                t2 = performance.now();
+                dt = (t2-t1) / 8.0;
+        
+                curfps = dt > 0 ? (1000.0 / dt) : 60;
+                avgfps = frames < 10 ? curfps : 0.5*avgfps + 0.5*curfps;
+                
+                fpsdiv.innerHTML = "FPS: " + avgfps.toFixed(avgfps < 10 ? 1 : 0);
+            }
+        }
+    }
+
+    window.requestAnimationFrame(frameloop);
+}
+
+function startPreview()
+{
+    
+    frameloop();
+    webRTC('reowhite', video);
+};
+
+// Start the application
+window.onload = () => {
+    checkLayoutConfig();
+}
+</script>
+
+</body>
+</html>
