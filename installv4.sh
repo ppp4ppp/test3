@@ -1,4 +1,4 @@
-echo "installing v4 ..."
+echo "installing v4 ....."
 wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/vynetv4.html > /home/vynet/steam-rtsp/client/vynet.html
 wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/layoutv4.css > /home/vynet/steam-rtsp/client/layoutv4.css
 wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/videocontrolv4.css > /home/vynet/steam-rtsp/client/videocontrolv4.css
