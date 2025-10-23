@@ -9,5 +9,7 @@ wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/videocontrolv5.
 wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/navv5.css > /home/vynet/steam-rtsp/client/nav.css
 wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/configv5.json > /home/vynet/steam-rtsp/client/config.json
 wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/bundlev5.js > /home/vynet/steam-rtsp/client/bundle.js
+touch /home/vynet/steam-rtsp/client/init.json
+touch /home/vynet/steam-rtsp/client/reset.json
 echo "done"
 
