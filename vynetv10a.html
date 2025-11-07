@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Demo v.0.0.10</title>
+<link rel="stylesheet" href="bulma.min.css">
+<link rel="stylesheet" href="layout.css">
+<link rel="stylesheet" href="videocontrol.css">
+<link rel="stylesheet" href="nav.css">
+
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #f5f5f5;
+      margin: 0;
+      /* padding: 20px; */
+    }
+
+    .mainbg {
+      background-color: #0a0a0a;
+      padding: 20px;
+      height:100%;
+    }
+
+    .cntui{
+      height:100%;
+    }
+
+    .MainMainPanelNewframeSignal {
+      display: flex;
+      gap: 20px;
+      width:100%;
+      height: 100%;
+    }
+
+    /* TX Panel - Left Side */
+    .MultiviewPanelDevicestxSignal {
+      flex: 0 0 auto;
+      width: 20%;
+      margin-top: 10%;
+    }
+
+.MultiviewPanelDevicestxSignal .val_tag {
+  background: linear-gradient(145deg, #252525 0%, #1f1f1f 100%);
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+  height: 100%;
+}
+
+.MultiviewPanelDevicestxSignal .listx0 {
+  width: 100%;
+}
+
+.MultiviewPanelDevicestxSignal .listx1 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  width: 100%;
+}
+
+/* Ensure DeviceTX cards don't overflow */
+.MultiviewPanelDevicestxSignal .listx2 {
+  min-width: 0; /* Allows flex items to shrink below content size */
+}
+
+.MultiviewPanelDevicestxSignal .DeviceTX {
+  width: 100%;
+  max-width: 100%;
+}
+    /* RX Panel - Right Side */
+    .MultiviewPanelMultiviewlayoutuiSignal {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      background: linear-gradient(145deg, #252525 0%, #1f1f1f 100%);
+      border: 2px solid #333;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+      width:80%;
+    }
+
+    /* RX Devices Row */
+    .MultiviewUiDevicesrxSignal .listx1 {
+      display: flex;
+      gap: 12px;
+      margin-bottom: -2px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .MultiviewUiDevicesrxSignal .listx1 > div:first-child {
+      display: none;
+      
+    }
+
+    .MultiviewUiDevicesrxSignal .listx2 {
+      width: 50%;
+    }
+
+    /* Common Card Styles */
+    .DeviceTX, .DeviceRX {
+      background-color: #2a2a2a;
+      border: 2px solid #404040;
+      border-radius: 6px;
+      padding: 12px;
+      transition: all 0.3s ease;
+      aspect-ratio: 9 / 7;
+      display: flex;
+      flex-direction: column;
+      position:relative;
+    }
+
+    .DeviceTX.is-on:hover, .DeviceRX.is-on:hover {
+      border-color: #3273dc;
+      box-shadow: 0 0 15px rgba(50, 115, 220, 0.3);
+    }
+
+    .DeviceTX > div:first-child,
+    .DeviceRX > div:first-child {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #b5b5b5;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .DeviceTX.is-off > div:first-child,
+    .DeviceRX.is-off > div:first-child {
+      opacity: 0.3;
+    }
+
+
+    .DeviceTX > div:first-child::after,
+    .DeviceRX > div:first-child::after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+      opacity: 0.7;
+    }
+
+    .DeviceTX.is-selected > div:first-child::after,
+    .DeviceRX.is-selected> div:first-child::after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4a9eff;
+      box-shadow: 0 0 12px rgba(74, 158, 255, 0.8);
+      opacity: 1;
+    }
+
+    .DeviceTX.is-off > div:first-child::after,
+    .DeviceRX.is-off> div:first-child::after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+      opacity: 0.3;
+    }
+
+    .is-off > canvas{
+      opacity: 0.3;
+    }
+    .WindowTx, .WindowRx {
+      flex: 1;
+      background-color: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 4px;
+      width: 100%;
+    }
+
+    /* Selected RX State */
+    .DeviceTX.is-selected {
+      border-color: #3273dc;
+      background-color: #2a2a2a;
+      box-shadow: 0 0 20px rgba(50, 115, 220, 0.4);
+      position: relative;
+      z-index: 3;
+    }
+
+    .DeviceRX.is-selected {
+      border-color: #3273dc;
+      border-bottom-color: #0a0a0a;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      background-color: #2a2a2a;
+      box-shadow: 0 0 20px rgba(50, 115, 220, 0.4);
+      position: relative;
+      z-index: 3;
+    }
+
+
+    .DeviceRX.is-selected::after {
+      content: '';
+      position: absolute;
+      bottom: -14px;
+      left: -2px;
+      right: -2px;
+      height: 14px;
+      background: #2a2a2a;
+      border-left: 2px solid;
+      border-right: 2px  solid;
+      border-left-color: #3273dc;
+      border-right-color: #3273dc;
+    }
+
+    /* Preview Box Area */
+    .MultiviewUiDevicerxSignal {
+      border-radius: 6px;
+      border-top-left-radius: 0;
+      background-color: #2a2a2a;
+      min-height: 400px;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .MultiviewUiDevicerxSignal:has( > .val_tag > .preview-content) {
+      border:  2px solid #3273dc;;
+    }
+
+    .MultiviewUiDevicerxSignal:has( > .val_tag > .previewbox) {
+      border: none;
+    }
+    
+    .MultiviewUiDevicerxSignal .val_tag{
+      display: flex;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .ref_tag {
+      display: none;
+    }
+    .MultiviewPanelMultiviewnamesSignal{
+      display : none;
+      
+    }
+
+    .MultiviewPanelMultiviewnamesSignal .val_tag{
+      display : none;
+      
+    }
+
+    .MultiviewPanelMultiviewlayoutSignal{
+      display : none;
+    }
+    .MultiviewPanelAllmultiviewlayoutsSignal{
+      display : none;
+    }
+    .MultiviewPanelMultiviewlayoutuiSigna{
+      display : none;
+    }
+    .MultiviewUiMultiviewuipullSignal{
+      display : none;
+    }
+    .MultiviewPanelActionpullSignal{
+      display : none;
+    }
+    .MultiviewPanelDeviceactionpullSignal{
+      display : none;
+    }
+    .MainMainPanelPvconfigSignal{
+      display : none;
+    }
+    .MainMainPanelPreviewrxSignal{
+      display : none;
+    }
+    .MainMainPanelInitappSignal{
+      display : none;
+    }
+    .MainMainPanelPreviewgatewaySignal{
+      display : none;
+    }
+    .autoplay-notice{
+      display: none;
+    }
+    .MultiviewPanelConfigmultiviewlayoutsSignal{
+      position: absolute;
+      z-index: 1000;
+      translate: 109% 29%;
+      width: 21%;
+    } 
+
+    .MultiviewPanelConfigmultiviewlayoutsSignal .val_tag .List {
+      display: flex;
+      flex-wrap: wrap;
+    } 
+
+    .MultiviewPanelConfigmultiviewlayoutsSignal .val_tag .List .LayoutDescription{
+      flex: 1 0 25%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      box-sizing: border-box;
+      padding: 1rem;
+    } 
+
+    .MultiviewPanelConfigmultiviewlayoutsSignal::before {
+      content: "";
+      position: absolute;
+      top: -100vh;
+      left: -100vw;
+      width: 300vw;
+      height: 300vh;
+      background: #fff;
+      opacity: 0.71;
+      transition: opacity 5.4s ease; 
+    }
+
+    .is-modal {
+  position: relative;
+}
+
+.is-modal::before {
+  content: "";
+  position: absolute;
+  top: -100vh;
+  left: -100vw;
+  width: 300vw;
+  height: 300vh;
+  background: #fff;
+  opacity: 0.71;
+  transition: opacity 5.4s ease; 
+  z-index: 10000; /* background layer */
+}
+
+.is-modal input {
+  position: relative;
+  z-index: 20000; /* moves input above overlay */
+  width:100%;
+}
+
+    .MultiviewPanelConfigmultiviewlayoutsSignal:not(:has(+ .MultiviewPanelMultiviewlayoutSignal + .MultiviewPanelAllmultiviewlayoutsSignal + .MultiviewPanelMultiviewlayoutuiSignal > .MultiviewUiDevicerxSignal > .val_tag > .showlayouts))  {
+      display:none;
+    }
+    .mainpanel{
+      display:flex;
+      background-color: #0a0a0a;
+      /* flex:1; */
+      height:100%;
+    }
+
+    .divbody{
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    
+  </style>
+</head>
+<body>
+<div class="divbody">
+  <div>
+    <nav class="navbar">
+      <img src="imgs/fsn.png" alt="Logo" class="navbar-logo">
+      <span class="nav-highlight">Control Manager</span>
+      <!-- <img src="imgs/fsn.png" alt="Logo" class="navbar-logo"> -->
+       <div></div>
+    </nav>
+  </div>
+  <div class="mainpanel"> 
+    <nav class="vertical-nav">
+      <div class="nav-icon icon-dashboard is-active" data-nav="dashboard" title="Dashboard"></div>
+      <div class="nav-icon icon-video" data-nav="video" title="Video"></div>
+      <div class="nav-icon icon-control" data-nav="control" title="Control"></div>
+      <div class="nav-divider"></div>
+      <div class="nav-icon icon-signal" data-nav="signal" title="Signal"></div>
+      <div class="nav-icon icon-settings" data-nav="settings" title="Settings"></div>
+      <div class="nav-divider"></div>
+      <div class="nav-icon icon-info" data-nav="info" title="Info"></div>
+    </nav>
+    <main id="main"></main>
+    
+  </div>
+  <footer class="footer">
+      <div class="footer-content">
+        <button class="footer-button footer-button-logo is-active">
+          <img src="imgs/vynet3.png" alt="VyNet Logo" class="footer-logo">
+          <span>VyNet 3</span>
+        </button>
+        <button class="footer-button">IPS4000</button>
+        <button class="footer-button">IPS740</button>
+        <button class="footer-button">IPS720</button>
+        <button class="footer-button">IPS500</button>
+      </div>
+    </footer>
+</div>  
+<script src="./bundle.js"></script>
+<div id="tagtag">  </div>
+
+<div id="autoplay-notice" class="autoplay-notice">
+    <p>Click the button below to start the video stream:</p>
+    <button id="start-button" class="start-button">Start Video Stream</button>
+</div>
+
+
+<div class="autoplay-notice">
+<button onclick="video.pause(); frames=0;">Pause</button>
+<button onclick="video.play(); frames=0;">Resume</button>
+
+
+<div style="position:relative;margin-top:40px;" id="main-container">
+    <div id="fps" style="position:fixed;left:20px;top:20px;width:400px;height:24px; overflow:hidden;font-family:courier;">FPS: 32</div>
+    <div class="canvas-container" id="canvas-container" style="position:absolute;left:0;top:0;">
+        <!-- Canvases will be dynamically created here -->
+    </div>
+    <!-- Hidden WebGL canvas -->
+    <canvas id="webGLCanvas" style="display:none;" width="125" height="125"></canvas>
+    <pre id="log" style="position:absolute;left:800px;top:0;width:380px;height:400px;margin:0;border:1px solid #CCCCCC;overflow:auto;">Log:<br><span>10:54:22.372 webrtc client starting</span><br><span>10:54:22.372 webrtc server: http://pi:8002 stream: reowhite</span><br><span>10:54:22.448 webrtc received streams: [object Object]</span><br><span>10:54:22.564 webrtc negotiation start: [object Object]</span><br><span>10:54:22.565 webrtc connection checking</span><br><span>10:54:22.567 webrtc received track: [object MediaStreamTrack] [object Object]</span><br><span>10:54:22.567 webrtc connection connected</span><br><span>10:54:22.591 webrtc channel open</span><br><span>10:54:25.147 webrtc resolution: 1920 1080</span></pre>
+</div>
+</div>
+
+
+<script>
+let config;
+
+async function log(...msg) {
+    const dt = new Date();
+    const ts = `${dt.getHours().toString().padStart(2, '0')}:${dt.getMinutes().toString().padStart(2, '0')}:${dt.getSeconds().toString().padStart(2, '0')}.${dt.getMilliseconds().toString().padStart(3, '0')}`;
+    document.getElementById("log").innerHTML += "<br><span>"+ts+" webrtc "+msg.join(" ")+"</span>";
+    console.log(ts, 'webrtc', ...msg);
+}
+
+async function getConfig() {
+    const res = await fetch('/config.json');
+    const json = await res.json();
+    return json;
+}
+
+function checkLayoutConfig() {
+    const rs = document.querySelector('.MultiviewUiDevicerxSignal .val_tag .FrameBuffer .FrameBufferConfiguration .LayoutDescription');
+
+    if (!(rs == null))
+    {
+        const inputs = rs.querySelectorAll('input[type="text"]');
+        const layoutWidth = parseInt(inputs[2].value);
+        const layoutHeight = parseInt(inputs[3].value);
+        const windows = [];
+        const windowElements = rs.querySelectorAll('.Window');
+        
+        windowElements.forEach((windowEl, index) => {
+            const inputs = windowEl.querySelectorAll('input[type="text"]');
+            if (inputs.length >= 5) {
+                const window = {
+                    x: parseInt(inputs[0].value),
+                    y: parseInt(inputs[1].value),
+                    width: parseInt(inputs[2].value),
+                    height: parseInt(inputs[3].value),
+                    index: index,
+                    subid: (inputs[4].value)
+                };
+                windows.push(window);
+            }
+        });
+
+        console.log(`Layout: ${layoutWidth}x${layoutHeight}, Windows: ${windows.length}`);
+        windows.forEach(w => {
+            console.log(`Window ${w.index}: ${w.x},${w.y} ${w.width}x${w.height}`);
+        });
+
+        startPreview();
+    }
+    else
+    {
+        setTimeout(() => {
+                checkLayoutConfig();
+            }, 100);
+    }
+}
+
+// Function to parse layout configuration from HTML
+function parseLayoutConfig() {
+    const windows = [];
+    // Get layout dimensions
+    const rs = document.querySelector('.MultiviewUiDevicerxSignal .val_tag .FrameBuffer .FrameBufferConfiguration .LayoutDescription');
+    var multiplier = 1.0;
+    var layoutWidth = 3840;
+    var layoutHeight = 2160;
+
+    if (rs == null)
+    {
+        
+    }else 
+    {
+        const inputs = rs.querySelectorAll('input[type="text"]');
+        layoutWidth = parseInt(inputs[2].value);
+        layoutHeight = parseInt(inputs[3].value);
+        
+        const windowElements = rs.querySelectorAll('.Window');
+        multiplier = layoutHeight / 2160.0
+        
+        windowElements.forEach((windowEl, index) => {
+            const inputs = windowEl.querySelectorAll('input[type="text"]');
+            if (inputs.length >= 5) {
+                const window = {
+                    x: parseInt(inputs[0].value) * multiplier,
+                    y: parseInt(inputs[1].value) * multiplier,
+                    width: parseInt(inputs[2].value) * multiplier,
+                    height: parseInt(inputs[3].value) * multiplier,
+                    index: index,
+                    subid: (inputs[4].value),
+                    multpl: multiplier
+                };
+                windows.push(window);
+            }
+        });
+    }
+
+    const rssingle = document.querySelector('.MultiviewUiDevicerxSignal .val_tag ');
+    
+    const windowElementsrssingle = rssingle.querySelectorAll('.WindowRx');
+    
+    windowElementsrssingle.forEach((windowEl, index) => {
+        const inputs = windowEl.querySelectorAll('input[type="text"]');
+        if (inputs.length >= 5) {
+            const window = {
+                x: parseInt(inputs[0].value) * multiplier,
+                y: parseInt(inputs[1].value) * multiplier,
+                width: parseInt(inputs[2].value) * multiplier,
+                height: parseInt(inputs[3].value) * multiplier,
+                index: index,
+                subid: (inputs[4].value),
+                multpl: multiplier
+            };
+            windows.push(window);
+        }
+    });
+
+    
+
+    const rstx = document.querySelector('.MultiviewPanelDevicestxSignal .val_tag');
+    
+    const windowElementstx = rstx.querySelectorAll('.WindowTx');
+    
+    windowElementstx.forEach((windowEl, index) => {
+        const inputs = windowEl.querySelectorAll('input[type="text"]');
+        if (inputs.length >= 5) {
+            const window = {
+                x: parseInt(inputs[0].value) * multiplier,
+                y: parseInt(inputs[1].value) * multiplier,
+                width: parseInt(inputs[2].value) * multiplier,
+                height: parseInt(inputs[3].value) * multiplier,
+                index: index,
+                subid: (inputs[4].value),
+                multpl: multiplier
+            };
+            windows.push(window);
+        }
+    });
+
+    const rsrx = document.querySelector('.MultiviewUiDevicesrxSignal .val_tag');
+    
+    const windowElementsrx = rsrx.querySelectorAll('.WindowRx');
+    
+    windowElementsrx.forEach((windowEl, index) => {
+        const inputs = windowEl.querySelectorAll('input[type="text"]');
+        if (inputs.length >= 5) {
+            const window = {
+                x: parseInt(inputs[0].value) * multiplier,
+                y: parseInt(inputs[1].value) * multiplier,
+                width: parseInt(inputs[2].value) * multiplier,
+                height: parseInt(inputs[3].value) * multiplier,
+                index: index,
+                subid: (inputs[4].value),
+                multpl: multiplier
+            };
+            
+            windows.push(window);
+        }
+    });
+
+
+    console.log(`Layout: ${layoutWidth}x${layoutHeight}, Windows: ${windows.length}`);
+    windows.forEach(w => {
+        console.log(`Window ${w.index}: ${w.x},${w.y} ${w.width}x${w.height}`);
+    });
+    
+    return { layoutWidth, layoutHeight, windows };
+}
+
+// Create canvases based on layout configuration
+var display2DCanvases = [];
+var display2DContexts = [];
+var windowConfig = [];
+
+function createCanvases() {
+    const layout = parseLayoutConfig();
+    const container = document.getElementById('canvas-container');
+    
+    // Set the main container size based on layout
+    const mainContainer = document.getElementById('main-container');
+    const scaleFactor = 1.0; // 1.0;// 0.5; // Scale down for display
+    mainContainer.style.width = (layout.layoutWidth * scaleFactor) + 'px';
+    mainContainer.style.height = (layout.layoutHeight * scaleFactor) + 'px';
+    
+    // Clear existing canvases
+    container.innerHTML = '';
+    display2DCanvases = [];
+    display2DContexts = [];
+    windowConfig = [];
+    
+    // Create canvases for each window
+    layout.windows.forEach((window, index) => {
+        const previewcanvas = document.getElementById('preview' + window.subid);
+        if (previewcanvas == null)
+        {
+          const canvas = document.createElement('canvas');
+          const scaledWidth = window.width * scaleFactor;
+          const scaledHeight = window.height * scaleFactor;
+          const scaledX = window.x * scaleFactor;
+          const scaledY = window.y * scaleFactor;
+          
+          canvas.width = scaledWidth;
+          canvas.height = scaledHeight;
+          canvas.style.width = scaledWidth + 'px';
+          canvas.style.height = scaledHeight + 'px';
+          canvas.style.left = scaledX + 'px';
+          canvas.style.top = scaledY + 'px';
+          canvas.style.border = '1px solid #CCCCCC';
+          
+          container.appendChild(canvas);
+          display2DCanvases.push(canvas);
+          display2DContexts.push(canvas.getContext('2d'));
+          
+        }else 
+        {
+          const canvas = previewcanvas;
+        
+          // container.appendChild(canvas);
+          display2DCanvases.push(canvas);
+          display2DContexts.push(canvas.getContext('2d'));
+        }
+        
+        // Store window configuration for rendering
+        windowConfig.push({
+            x: window.x,
+            y: window.y,
+            width: window.width,
+            height: window.height,
+            normalizedX: window.x / layout.layoutWidth,
+            normalizedY: window.y / layout.layoutHeight,
+            normalizedWidth: window.width / layout.layoutWidth,
+            normalizedHeight: window.height / layout.layoutHeight,
+            multpl: window.multpl
+        });
+    });
+    
+    // Update WebGL canvas size to match the largest window
+    const maxWidth = Math.max(...layout.windows.map(w => w.width * scaleFactor));
+    const maxHeight = Math.max(...layout.windows.map(w => w.height * scaleFactor));
+    const webGLCanvas = document.getElementById("webGLCanvas");
+    webGLCanvas.width = maxWidth;
+    webGLCanvas.height = maxHeight;
+}
+
+// Setup WebGL context (hidden)
+var webGLCanvas = document.getElementById("webGLCanvas");
+var gl_contextAttributes = { antialias:false };
+var gl = null;
+for (var i=0; i<4; i++)
+{
+    gl = webGLCanvas.getContext(["webgl","experimental-webgl","moz-webgl","webkit-3d"][i], gl_contextAttributes)
+    if (gl)
+        break;
+}
+
+if (!gl)
+    log("No WebGL support!", "color:red;");
+
+// prepare WebGL shaders
+var vs = gl.createShader(gl.VERTEX_SHADER);
+gl.shaderSource(vs, "attribute vec2 vx;varying vec2 tx;void main(){gl_Position=vec4(vx.x*2.0-1.0,1.0-vx.y*2.0,0,1);tx=vx;}");
+gl.compileShader(vs);
+
+var ps = gl.createShader(gl.FRAGMENT_SHADER);
+gl.shaderSource(ps, "precision mediump float;uniform sampler2D sm;uniform float m[9];varying vec2 tx;uniform vec2 offset;uniform vec2 scale;void main(){vec2 scaledTx = tx * scale + offset;vec4 c=texture2D(sm,scaledTx);vec4 r;r.r=m[0]*c.r+m[1]*c.g+m[2]*c.b;r.g=m[3]*c.r+m[4]*c.g+m[5]*c.b;r.b=m[6]*c.r+m[7]*c.g+m[8]*c.b;r.a=1.0;gl_FragColor=r;}");
+gl.compileShader(ps);
+
+var shader  = gl.createProgram();
+gl.attachShader(shader, vs);
+gl.attachShader(shader, ps);
+gl.linkProgram(shader);
+gl.useProgram(shader);
+
+var mu = gl.getUniformLocation(shader, "m");
+var offsetUniform = gl.getUniformLocation(shader, "offset");
+var scaleUniform = gl.getUniformLocation(shader, "scale");
+gl.uniform1fv(mu, new Float32Array([1,0,0, 0,1,0, 0,0,1]));
+
+var vx_ptr = gl.getAttribLocation(shader, "vx");
+gl.enableVertexAttribArray(vx_ptr);
+gl.uniform1i(gl.getUniformLocation(shader, "sm"), 0);
+
+var vx = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, vx);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0,0, 1,0, 1,1, 0,1]), gl.STATIC_DRAW);
+
+var ix = gl.createBuffer();
+gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ix);
+gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array([0,1,2, 0,2,3]), gl.STATIC_DRAW);
+
+var tex = gl.createTexture();
+gl.bindTexture(gl.TEXTURE_2D, tex);
+gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T,     gl.CLAMP_TO_EDGE);
+gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S,     gl.CLAMP_TO_EDGE);
+gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+
+// Create video element for WebRTC stream
+var video = document.createElement("video");
+var videoready = false;
+video.muted = true;
+video.autoplay = true;
+video.playsInline = true; // iOS support
+
+var errcnt=0;
+
+async function webRTC(streamName = null, elementName = null) {
+    if (!config) config = await getConfig();
+    const suuid = streamName || config.client.defaultStream;
+    log('client starting');
+    log(`server: http://${location.hostname}${config.server.encoderPort} stream: ${suuid}`);
+    const stream = new MediaStream();
+    const connection = new RTCPeerConnection();
+    connection.oniceconnectionstatechange = () => log('connection', connection.iceConnectionState);
+    connection.onnegotiationneeded = async () => {
+        const offer = await connection.createOffer();
+        await connection.setLocalDescription(offer);
+        const res = await fetch(`http://${location.hostname}${config.server.encoderPort}/stream/receiver/${suuid}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+            body: new URLSearchParams({
+                suuid: `${suuid}`,
+                data: `${btoa(connection.localDescription?.sdp || '')}`,
+            }),
+        });
+        const data = (res && res.ok) ? await res.text() : '';
+        if (data.length === 0) {
+            log('cannot connect:', `http://${location.hostname}${config.server.encoderPort}`);
+        } else {
+            connection.setRemoteDescription(new RTCSessionDescription({
+                type: 'answer',
+                sdp: atob(data),
+            }));
+            log('negotiation start:', offer);
+        }
+    };
+    connection.ontrack = (event) => {
+        stream.addTrack(event.track);
+        video.srcObject = stream;
+        video.onloadeddata = async () => {
+            log('resolution:', video.videoWidth, video.videoHeight);
+            videoready = true;
+            video.play();
+        };
+        log('received track:', event.track, event.track.getSettings());
+    };
+
+    const res = await fetch(`http://${location.hostname}${config.server.encoderPort}/stream/codec/${suuid}`);
+    let streams = [];
+    try {
+        streams = res && res.ok ? await res.json() : [];
+    } catch { /**/ }
+    if (streams.length === 0) {
+        log('received no streams');
+        return;
+    }
+    log('received streams:', streams);
+    for (const s of streams) {
+        connection.addTransceiver(s.Type, { direction: 'sendrecv' });
+    }
+
+    const channel = connection.createDataChannel(suuid, { maxRetransmits: 10 });
+    channel.onmessage = (e) => log('channel message:', channel.label, 'payload', e.data);
+    channel.onerror = (e) => log('channel error:', channel.label, 'payload', e);
+    channel.onclose = () => log('channel close');
+    channel.onopen = () => {
+        log('channel open');
+        setInterval(() => channel.send('ping'), 1000);
+    };
+}
+
+var fpsdiv = document.getElementById("fps");
+
+var t1 = performance.now();
+var t2 = t1;
+var dt = 0;
+var curfps = 60;
+var avgfps = 0;
+var frames = 0;
+
+var lastupdate = 0;
+
+// requestAnimationFrame loop
+function frameloop()
+{
+    let val = document.getElementById("refreshmv").getAttribute("value");
+    let createCanvasesOK = true;
+
+    if(val != lastupdate)
+    {
+        try
+        {
+            createCanvases();
+            lastupdate = val;
+        }
+        catch(e)
+        {
+            createCanvasesOK = false;
+        }
+        
+    }
+
+    if(createCanvasesOK)
+    {
+        frames++;
+        
+        gl.activeTexture(gl.TEXTURE0);
+        gl.bindTexture(gl.TEXTURE_2D, tex);
+
+        if (videoready && !video.paused)
+        {
+            try
+            {
+                // upload the video frame
+                gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, video);
+            }
+            catch(e)
+            {
+                // log only the first few errors
+                errcnt++;
+                if (errcnt < 10)
+                    log(e);
+                else if (errcnt == 10)
+                    log("...");
+            }
+        }
+        
+        // Render each window tile to WebGL canvas and copy to 2D canvas
+        windowConfig.forEach((window, index) => {
+            if (index < display2DCanvases.length && frames % 1 == 0 ) {
+                // Set WebGL canvas size to match the current window
+                const scaleFactor = 1.0 / window.multpl; //0.5;
+                const canvasWidth = window.width * scaleFactor;
+                const canvasHeight = window.height * scaleFactor;
+                
+                // if (webGLCanvas.width !== canvasWidth || webGLCanvas.height !== canvasHeight) {
+                webGLCanvas.width = canvasWidth;
+                webGLCanvas.height = canvasHeight;
+                gl.viewport(0, 0, canvasWidth, canvasHeight);
+                // }
+                
+                gl.clear(gl.COLOR_BUFFER_BIT);
+                // gl.uniform1fv(mu, new Float32Array(huerotate(frames/22.0 + index * 0.5)));
+                
+                // Set the offset and scale uniforms for the current window
+                gl.uniform2f(offsetUniform, window.normalizedX, window.normalizedY);
+                gl.uniform2f(scaleUniform, window.normalizedWidth, window.normalizedHeight);
+
+                gl.bindBuffer(gl.ARRAY_BUFFER, vx);
+                gl.vertexAttribPointer(vx_ptr, 2, gl.FLOAT, false, 0, 0);
+
+                gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ix);
+                gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
+                
+                // Copy the WebGL canvas to the corresponding 2D canvas
+                display2DContexts[index].drawImage(webGLCanvas, 0, 0);
+            }
+        });
+        
+        if (videoready)
+        {
+            if ((frames & 7) == 0)
+            {
+                t1 = t2;
+                t2 = performance.now();
+                dt = (t2-t1) / 8.0;
+        
+                curfps = dt > 0 ? (1000.0 / dt) : 60;
+                avgfps = frames < 10 ? curfps : 0.5*avgfps + 0.5*curfps;
+                
+                fpsdiv.innerHTML = "FPS: " + avgfps.toFixed(avgfps < 10 ? 1 : 0);
+            }
+        }
+    }
+
+    window.requestAnimationFrame(frameloop);
+}
+
+function startPreview()
+{
+    
+    frameloop();
+    webRTC('reowhite', video);
+};
+
+// Start the application
+window.onload = () => {
+    checkLayoutConfig();
+}
+</script>
+
+</body>
+</html>
