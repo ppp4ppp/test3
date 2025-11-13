@@ -2,9 +2,9 @@ cp ../steam-rtsp/client/vynet.html vynet10.html
 cp ../steam-rtsp/client/imgs/fsn.png  fsn.png
 cp ../steam-rtsp/client/imgs/vynet3.png  vynet3.png
 cp ../steam-rtsp/client/bulma.min.css  bulma.min.css
-cp ../steam-rtsp/client/vynet.html  vynetv10a.html
-cp ../steam-rtsp/client/layout.css  layoutv10.css
-cp ../steam-rtsp/client/videocontrol.css videocontrolv10.css
-cp ../steam-rtsp/client/nav.css  navv10.css
-cp ../steam-rtsp/client/config.json  configv10.json
-cp ../steam-rtsp/client/bundle.js  bundlev10a.js
+cp ../steam-rtsp/client/vynet.html  vynetv11.html
+cp ../steam-rtsp/client/layout.css  layoutv11.css
+cp ../steam-rtsp/client/videocontrol.css videocontrolv11.css
+cp ../steam-rtsp/client/nav.css  navv11.css
+cp ../steam-rtsp/client/config.json  configv11.json
+cp ../steam-rtsp/client/bundle.js  bundlev11.js
