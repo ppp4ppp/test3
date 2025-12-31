@@ -9,6 +9,7 @@ wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/videocontrolv14
 wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/navv14.css > /home/vynet/steam-rtsp/client/nav.css
 wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/configv14.json > /home/vynet/steam-rtsp/client/config.json
 wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/bundlev14.js > /home/vynet/steam-rtsp/client/bundle.js
+wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/servev14.js > /home/vynet/steam-rtsp/server/serve.js
 touch /home/vynet/steam-rtsp/client/init.json
 touch /home/vynet/steam-rtsp/client/reset.json
 echo "done"
