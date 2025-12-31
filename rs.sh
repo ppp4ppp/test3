@@ -7,3 +7,4 @@ cp ../steam-rtsp/client/videocontrol.css videocontrolv14.css
 cp ../steam-rtsp/client/nav.css  navv14.css
 cp ../steam-rtsp/client/config.json  configv14.json
 cp ../steam-rtsp/client/bundle.js  bundlev14.js
+cp ../steam-rtsp/server/serve.js  servev14.js
