@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Demo v.0.0.14b</title>
+<title>Demo v.0.0.14c</title>
 <link rel="stylesheet" href="bulma.min.css">
 <link rel="stylesheet" href="layout.css">
 <link rel="stylesheet" href="videocontrol.css">
@@ -471,9 +471,9 @@ function checkLayoutConfig() {
             }
         });
 
-        console.log(`Layout: ${layoutWidth}x${layoutHeight}, Windows: ${windows.length}`);
+        // console.log(`Layout: ${layoutWidth}x${layoutHeight}, Windows: ${windows.length}`);
         windows.forEach(w => {
-            console.log(`Window ${w.index}: ${w.x},${w.y} ${w.width}x${w.height}`);
+            // console.log(`Window ${w.index}: ${w.x},${w.y} ${w.width}x${w.height}`);
         });
 
         startPreview();
@@ -501,27 +501,30 @@ function parseLayoutConfig() {
     }else 
     {
         const inputs = rs.querySelectorAll('input[type="text"]');
-        layoutWidth = parseInt(inputs[2].value);
-        layoutHeight = parseInt(inputs[3].value);
-        
-        const windowElements = rs.querySelectorAll('.Window');
-        multiplier = layoutHeight / 2160.0
-        
-        windowElements.forEach((windowEl, index) => {
-            const inputs = windowEl.querySelectorAll('input[type="text"]');
-            if (inputs.length >= 5) {
-                const window = {
-                    x: parseInt(inputs[0].value) * multiplier,
-                    y: parseInt(inputs[1].value) * multiplier,
-                    width: parseInt(inputs[2].value) * multiplier,
-                    height: parseInt(inputs[3].value) * multiplier,
-                    index: index,
-                    subid: (inputs[4].value),
-                    multpl: multiplier
-                };
-                windows.push(window);
-            }
-        });
+        if (inputs.length > 3)
+        {
+          layoutWidth = parseInt(inputs[2].value);
+          layoutHeight = parseInt(inputs[3].value);
+          
+          const windowElements = rs.querySelectorAll('.Window');
+          multiplier = layoutHeight / 2160.0
+          
+          windowElements.forEach((windowEl, index) => {
+              const inputs = windowEl.querySelectorAll('input[type="text"]');
+              if (inputs.length >= 5) {
+                  const window = {
+                      x: parseInt(inputs[0].value) * multiplier,
+                      y: parseInt(inputs[1].value) * multiplier,
+                      width: parseInt(inputs[2].value) * multiplier,
+                      height: parseInt(inputs[3].value) * multiplier,
+                      index: index,
+                      subid: (inputs[4].value),
+                      multpl: multiplier
+                  };
+                  windows.push(window);
+              }
+          });
+        }
     }
 
     const rssingle = document.querySelector('.MultiviewUiDevicerxSignal .val_tag ');
@@ -588,9 +591,9 @@ function parseLayoutConfig() {
     });
 
 
-    console.log(`Layout: ${layoutWidth}x${layoutHeight}, Windows: ${windows.length}`);
+    // console.log(`Layout: ${layoutWidth}x${layoutHeight}, Windows: ${windows.length}`);
     windows.forEach(w => {
-        console.log(`Window ${w.index}: ${w.x},${w.y} ${w.width}x${w.height}`);
+        // console.log(`Window ${w.index}: ${w.x},${w.y} ${w.width}x${w.height}`);
     });
     
     return { layoutWidth, layoutHeight, windows };
@@ -824,6 +827,7 @@ function frameloop()
         }
         catch(e)
         {
+            console.log(e);
             createCanvasesOK = false;
         }
         
@@ -856,6 +860,7 @@ function frameloop()
         
         // Render each window tile to WebGL canvas and copy to 2D canvas
         windowConfig.forEach((window, index) => {
+            
             if (index < display2DCanvases.length && frames % 1 == 0 ) {
                 // Set WebGL canvas size to match the current window
                 const scaleFactor = 1.0 / window.multpl; //0.5;
@@ -907,7 +912,6 @@ function frameloop()
 
 function startPreview()
 {
-    
     frameloop();
     webRTC('reowhite', video);
 };
