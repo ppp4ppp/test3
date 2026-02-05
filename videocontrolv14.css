@@ -13,7 +13,7 @@
       margin-top : 2rem;
     }
 
-    .previewbox + .toolbox-container {
+    .previewbox .dimable {
       opacity: 0.3;
     }
 
