@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Demo v.0.0.14i</title>
+<title>Demo v.0.0.14j</title>
 <link rel="stylesheet" href="bulma.min.css">
 <link rel="stylesheet" href="layout.css">
 <link rel="stylesheet" href="videocontrol.css">
@@ -179,7 +179,7 @@
     .is-off > canvas{
       opacity: 0.3;
     }
-    .WindowTx, .WindowRx {
+    .WindowTx, .WindowRx, .WindowSn, .WindowSnNoroute {
       flex: 1;
       background-color: #1a1a1a;
       border: 1px solid #333;
@@ -445,6 +445,17 @@ async function getConfig() {
     return json;
 }
 
+
+setInterval(function() {
+  const el = document.getElementById("ticker");
+  // Dispatch a real "click" — React's onClick fires!
+  if(el != null)
+  {
+    el.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+  }
+}, 5000);
+
+
 function checkLayoutConfig() {
     const rs = document.querySelector('.MultiviewUiDevicerxSignal .val_tag .FrameBuffer .FrameBufferConfiguration .LayoutDescription');
 
@@ -471,10 +482,7 @@ function checkLayoutConfig() {
             }
         });
 
-        // console.log(`Layout: ${layoutWidth}x${layoutHeight}, Windows: ${windows.length}`);
-        windows.forEach(w => {
-            // console.log(`Window ${w.index}: ${w.x},${w.y} ${w.width}x${w.height}`);
-        });
+        
 
         startPreview();
     }
@@ -489,6 +497,7 @@ function checkLayoutConfig() {
 // Function to parse layout configuration from HTML
 function parseLayoutConfig() {
     const windows = [];
+    const windowsNoupdate = [];
     // Get layout dimensions
     const rs = document.querySelector('.MultiviewUiDevicerxSignal .val_tag .FrameBuffer .FrameBufferConfiguration .LayoutDescription');
     var multiplier = 1.0;
@@ -506,8 +515,15 @@ function parseLayoutConfig() {
           layoutWidth = parseInt(inputs[2].value);
           layoutHeight = parseInt(inputs[3].value);
           
-          const windowElements = rs.querySelectorAll('.Window');
-          multiplier = layoutHeight / 2160.0
+          // const windowElements = rs.querySelectorAll('.Window');
+          const windowElements = rs.querySelectorAll('.WindowMV:not(.noupdate)');
+          const windowElementsnoupdate = rs.querySelectorAll('.WindowMV.noupdate');
+        
+          multiplier = layoutHeight / 2160.0;
+          if(multiplier == null || multiplier == 0 || multiplier == 0.0 )
+          {
+            multiplier = 1.0;
+          }
           
           windowElements.forEach((windowEl, index) => {
               const inputs = windowEl.querySelectorAll('input[type="text"]');
@@ -519,17 +535,44 @@ function parseLayoutConfig() {
                       height: parseInt(inputs[3].value) * multiplier,
                       index: index,
                       subid: (inputs[4].value),
-                      multpl: multiplier
+                      multpl: multiplier,
+                      noupdate:false,
+                      wtype : "WindowMV"
                   };
                   windows.push(window);
+              }
+          });
+
+          windowElementsnoupdate.forEach((windowEl, index) => {
+              const inputs = windowEl.querySelectorAll('input[type="text"]');
+              if (inputs.length >= 5) {
+                  const window = {
+                      x: parseInt(inputs[0].value) * multiplier,
+                      y: parseInt(inputs[1].value) * multiplier,
+                      width: parseInt(inputs[2].value) * multiplier,
+                      height: parseInt(inputs[3].value) * multiplier,
+                      index: index,
+                      subid: (inputs[4].value),
+                      multpl: multiplier,
+                      noupdate:true,
+                      wtype : "WindowMV"
+                  };
+                  windowsNoupdate.push(window);
               }
           });
         }
     }
 
+    if(multiplier == null || multiplier == 0 || multiplier == 0.0 )
+    {
+      multiplier = 1.0;
+    }
+    
+
     const rssingle = document.querySelector('.MultiviewUiDevicerxSignal .val_tag ');
     
-    const windowElementsrssingle = rssingle.querySelectorAll('.WindowRx');
+    const windowElementsrssingle = rssingle.querySelectorAll('.WindowSn:not(.noupdate)');
+    const windowElementsrssingleNoupdate = rssingle.querySelectorAll('.WindowSn.noupdate');
     
     windowElementsrssingle.forEach((windowEl, index) => {
         const inputs = windowEl.querySelectorAll('input[type="text"]');
@@ -541,9 +584,29 @@ function parseLayoutConfig() {
                 height: parseInt(inputs[3].value) * multiplier,
                 index: index,
                 subid: (inputs[4].value),
-                multpl: multiplier
+                multpl: multiplier,
+                noupdate: false,
+                wtype : "WindowSn"
             };
             windows.push(window);
+        }
+    });
+
+    windowElementsrssingleNoupdate.forEach((windowEl, index) => {
+        const inputs = windowEl.querySelectorAll('input[type="text"]');
+        if (inputs.length >= 5) {
+            const window = {
+                x: parseInt(inputs[0].value) * multiplier,
+                y: parseInt(inputs[1].value) * multiplier,
+                width: parseInt(inputs[2].value) * multiplier,
+                height: parseInt(inputs[3].value) * multiplier,
+                index: index,
+                subid: (inputs[4].value),
+                multpl: multiplier,
+                noupdate: true,
+                wtype : "WindowSn"
+            };
+            windowsNoupdate.push(window);
         }
     });
 
@@ -551,7 +614,9 @@ function parseLayoutConfig() {
 
     const rstx = document.querySelector('.MultiviewPanelDevicestxSignal .val_tag');
     
-    const windowElementstx = rstx.querySelectorAll('.WindowTx');
+    const windowElementstx = rstx.querySelectorAll('.WindowTx:not(.noupdate)');
+    const windowElementstxNoupdate = rstx.querySelectorAll('.WindowTx.noupdate');
+    
     
     windowElementstx.forEach((windowEl, index) => {
         const inputs = windowEl.querySelectorAll('input[type="text"]');
@@ -563,17 +628,15 @@ function parseLayoutConfig() {
                 height: parseInt(inputs[3].value) * multiplier,
                 index: index,
                 subid: (inputs[4].value),
-                multpl: multiplier
+                multpl: multiplier,
+                istx: true,
+                wtype : "WindowTx"
             };
             windows.push(window);
         }
     });
 
-    const rsrx = document.querySelector('.MultiviewUiDevicesrxSignal .val_tag');
-    
-    const windowElementsrx = rsrx.querySelectorAll('.WindowRx');
-    
-    windowElementsrx.forEach((windowEl, index) => {
+    windowElementstxNoupdate.forEach((windowEl, index) => {
         const inputs = windowEl.querySelectorAll('input[type="text"]');
         if (inputs.length >= 5) {
             const window = {
@@ -583,26 +646,78 @@ function parseLayoutConfig() {
                 height: parseInt(inputs[3].value) * multiplier,
                 index: index,
                 subid: (inputs[4].value),
-                multpl: multiplier
+                multpl: multiplier,
+                istx: true,
+                noupdate: true,
+                wtype : "WindowTx"
             };
+            windowsNoupdate.push(window);
+        }
+    });
+
+    const rsrx = document.querySelector('.MultiviewUiDevicesrxSignal .val_tag');
+    
+    const windowElementsrx = rsrx.querySelectorAll('.WindowRx:not(.noupdate)');
+    const windowElementsrxNoupdate = rsrx.querySelectorAll('.WindowRx.noupdate');
+    
+    
+    windowElementsrx.forEach((windowEl, index) => {
+        const inputs = windowEl.querySelectorAll('input[type="text"]');
+            if (inputs.length >= 5) {
+            const window = {
+                x: parseInt(inputs[0].value) * multiplier,
+                y: parseInt(inputs[1].value) * multiplier,
+                width: parseInt(inputs[2].value) * multiplier,
+                height: parseInt(inputs[3].value) * multiplier,
+                index: index,
+                subid: (inputs[4].value),
+                multpl: multiplier,
+                noupdate: false,
+                wtype : "WindowRx"
+            };
+
+            if (inputs.length >= 6) {
+              window.wextra = inputs[5].value;
+            }
             
             windows.push(window);
         }
     });
 
+    windowElementsrxNoupdate.forEach((windowEl, index) => {
+        const inputs = windowEl.querySelectorAll('input[type="text"]');
+        if (inputs.length >= 5) {
+            const window = {
+                x: parseInt(inputs[0].value) * multiplier,
+                y: parseInt(inputs[1].value) * multiplier,
+                width: parseInt(inputs[2].value) * multiplier,
+                height: parseInt(inputs[3].value) * multiplier,
+                index: index,
+                subid: (inputs[4].value),
+                multpl: multiplier,
+                noupdate: true,
+                wtype : "WindowRx"
+            };
 
-    // console.log(`Layout: ${layoutWidth}x${layoutHeight}, Windows: ${windows.length}`);
-    windows.forEach(w => {
-        // console.log(`Window ${w.index}: ${w.x},${w.y} ${w.width}x${w.height}`);
+            if (inputs.length >= 6) {
+              window.wextra = inputs[5].value;
+            }
+            
+            windowsNoupdate.push(window);
+        }
     });
+
     
-    return { layoutWidth, layoutHeight, windows };
+    return { layoutWidth, layoutHeight, windows, windowsNoupdate };
 }
 
 // Create canvases based on layout configuration
 var display2DCanvases = [];
 var display2DContexts = [];
 var windowConfig = [];
+//var txSubidToCanvas = new Map();
+
+var frameBitmapMap = new Map();
 
 function createCanvases() {
     const layout = parseLayoutConfig();
@@ -619,10 +734,20 @@ function createCanvases() {
     display2DCanvases = [];
     display2DContexts = [];
     windowConfig = [];
-    
+
+        
     // Create canvases for each window
     layout.windows.forEach((window, index) => {
-        const previewcanvas = document.getElementById('preview' + window.subid);
+        // const previewcanvas = document.getElementById('preview' + window.subid);
+        var qs = '#preview' + window.subid + ('.' + window.wtype);
+        
+        if(window.wextra != null)
+        {
+          qs = qs + '.' + window.wextra;
+        }
+
+        const previewcanvas = document.querySelector(qs);
+        
         if (previewcanvas == null)
         {
           const canvas = document.createElement('canvas');
@@ -646,7 +771,6 @@ function createCanvases() {
         }else 
         {
           const canvas = previewcanvas;
-        
           // container.appendChild(canvas);
           display2DCanvases.push(canvas);
           display2DContexts.push(canvas.getContext('2d'));
@@ -662,10 +786,72 @@ function createCanvases() {
             normalizedY: window.y / layout.layoutHeight,
             normalizedWidth: window.width / layout.layoutWidth,
             normalizedHeight: window.height / layout.layoutHeight,
-            multpl: window.multpl
+            multpl: window.multpl,
+            subid: window.subid,
+            istx: window.istx || false,
+            noupdate: false
         });
     });
-    
+
+    let wsize = layout.windows.length;    
+    layout.windowsNoupdate.forEach((window, indexiter) => {
+        let index = wsize + indexiter;
+        // const previewcanvas = document.getElementById('noupdatepreview' + window.subid);
+
+        var qs = '#noupdatepreview' + window.subid + ('.' + window.wtype);
+
+        if(window.wextra != null)
+        {
+          qs = qs + '.' + window.wextra;
+        }
+
+        const previewcanvas = document.querySelector(qs);
+        
+        if (previewcanvas == null)
+        {
+          const canvas = document.createElement('canvas');
+          const scaledWidth = window.width * scaleFactor;
+          const scaledHeight = window.height * scaleFactor;
+          const scaledX = window.x * scaleFactor;
+          const scaledY = window.y * scaleFactor;
+          
+          canvas.width = scaledWidth;
+          canvas.height = scaledHeight;
+          canvas.style.width = scaledWidth + 'px';
+          canvas.style.height = scaledHeight + 'px';
+          canvas.style.left = scaledX + 'px';
+          canvas.style.top = scaledY + 'px';
+          canvas.style.border = '1px solid #CCCCCC';
+          
+          container.appendChild(canvas);
+          display2DCanvases.push(canvas);
+          display2DContexts.push(canvas.getContext('2d'));
+          
+        }else 
+        {
+          const canvas = previewcanvas;
+          // container.appendChild(canvas);
+          display2DCanvases.push(canvas);
+          display2DContexts.push(canvas.getContext('2d'));
+        }
+        
+        // Store window configuration for rendering
+        windowConfig.push({
+            x: window.x,
+            y: window.y,
+            width: window.width,
+            height: window.height,
+            normalizedX: window.x / layout.layoutWidth,
+            normalizedY: window.y / layout.layoutHeight,
+            normalizedWidth: window.width / layout.layoutWidth,
+            normalizedHeight: window.height / layout.layoutHeight,
+            multpl: window.multpl,
+            subid: window.subid,
+            istx: window.istx || false,
+            noupdate: true
+        });
+    });
+
     // Update WebGL canvas size to match the largest window
     const maxWidth = Math.max(...layout.windows.map(w => w.width * scaleFactor));
     const maxHeight = Math.max(...layout.windows.map(w => w.height * scaleFactor));
@@ -901,13 +1087,25 @@ function frameloop()
         
         // Render each window tile to WebGL canvas and copy to 2D canvas
         windowConfig.forEach((window, index) => {
-            
+
             if (index < display2DCanvases.length && frames % 1 == 0 ) {
+                // For noupdate tx windows, draw buffered canvas from matching subid
+                if (window.noupdate) {
+                    //const srcCanvas = txSubidToCanvas.get(window.subid);
+                    const bitmap = frameBitmapMap.get(window.subid);
+
+                    if (bitmap) {
+                        const destCanvas = display2DCanvases[index];
+                        display2DContexts[index].drawImage(bitmap, 0, 0, destCanvas.width, destCanvas.height );
+                    }
+                    return;
+                }
+
                 // Set WebGL canvas size to match the current window
                 const scaleFactor = 1.0 / window.multpl; //0.5;
                 const canvasWidth = window.width * scaleFactor;
                 const canvasHeight = window.height * scaleFactor;
-                
+
                 // if (webGLCanvas.width !== canvasWidth || webGLCanvas.height !== canvasHeight) {
                 webGLCanvas.width = canvasWidth;
                 webGLCanvas.height = canvasHeight;
@@ -928,7 +1126,24 @@ function frameloop()
                 gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
                 
                 // Copy the WebGL canvas to the corresponding 2D canvas
-                display2DContexts[index].drawImage(webGLCanvas, 0, 0);
+                // Check if WebGL rendered a black image before copying
+                const centerPixel = new Uint8Array(4);
+                gl.readPixels(Math.floor(canvasWidth / 2), Math.floor(canvasHeight / 2), 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, centerPixel);
+                const isBlack = centerPixel[0] === 15 && centerPixel[1] === 15 && centerPixel[2] === 15;
+                if(!isBlack)
+                {
+                  try
+                  {
+                    display2DContexts[index].drawImage(webGLCanvas, 0, 0);
+                    if (frames % 5 == 0)
+                    {
+                      saveBitmap(window.subid, display2DCanvases[index]);
+                    }
+                  }catch(e)
+                  {
+                    // console.log(e);
+                  }
+                }
             }
         });
         
@@ -950,6 +1165,24 @@ function frameloop()
 
     window.requestAnimationFrame(frameloop);
 }
+
+async function saveBitmap(subid, canvas) {
+    try {
+        const bitmap = await createImageBitmap(canvas);
+
+        // free old bitmap if exists (VERY IMPORTANT)
+        const old = frameBitmapMap.get(subid);
+        if (old) {
+            old.close();
+        }
+
+        frameBitmapMap.set(subid, bitmap);
+    }
+    catch (e) {
+        console.error("Bitmap creation failed:", e);
+    }
+}
+
 
 function startPreview()
 {
