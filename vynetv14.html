@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Demo v.0.0.14j</title>
+<title>Demo v.0.0.15</title>
 <link rel="stylesheet" href="bulma.min.css">
 <link rel="stylesheet" href="layout.css">
 <link rel="stylesheet" href="videocontrol.css">
@@ -366,6 +366,15 @@
       flex-direction: column;
     }
     
+    .DeviceRX.is-off {
+      display: none;
+    }
+
+    .DeviceTX.is-off {
+      display: none;
+    }
+
+
     
   </style>
 </head>
@@ -454,6 +463,17 @@ setInterval(function() {
     el.dispatchEvent(new MouseEvent("click", { bubbles: true }));
   }
 }, 5000);
+
+// setTimeout(function() {
+//   setInterval(function() {
+//     const el = document.getElementById("ticker");
+//     // Dispatch a real "click" — React's onClick fires!
+//     if(el != null)
+//     {
+//       el.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+//     }
+//   }, 5000);
+// }, 10000);
 
 
 function checkLayoutConfig() {

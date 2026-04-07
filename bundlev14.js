@@ -89230,12 +89230,12 @@ var explore2upd3top = function (dictComonad) {
                                     var rsloop = function (ch) {
                                         return function (asyncid) {
                                             return Control_Bind.bind(Effect_Aff.bindAff)(Effect_Aff_AVar.take(v3))(function (v5) {
-                                                var $183 = v5.value0 === ch;
-                                                if ($183) {
+                                                var $184 = v5.value0 === ch;
+                                                if ($184) {
                                                     return rsloop("")(asyncid);
                                                 };
-                                                var $184 = v5.value0 === asyncid;
-                                                if ($184) {
+                                                var $185 = v5.value0 === asyncid;
+                                                if ($185) {
                                                     return Control_Applicative.pure(Effect_Aff.applicativeAff)(v5.value1);
                                                 };
                                                 return Control_Bind.discard(Control_Bind.discardUnit)(Effect_Aff.bindAff)(Effect_Aff_AVar.put(new Data_Tuple.Tuple(v5.value0, v5.value1))(v3))(function () {
@@ -89259,7 +89259,7 @@ var explore2upd3top = function (dictComonad) {
                                                 if (v7 instanceof Data_List_Types.Nil) {
                                                     return Control_Applicative.pure(Effect.applicativeEffect)(Data_Unit.unit);
                                                 };
-                                                throw new Error("Failed pattern match at Explore (line 409, column 9 - line 411, column 139): " + [ v5.constructor.name, v6.constructor.name, v7.constructor.name ]);
+                                                throw new Error("Failed pattern match at Explore (line 412, column 9 - line 414, column 139): " + [ v5.constructor.name, v6.constructor.name, v7.constructor.name ]);
                                             };
                                         };
                                     };
@@ -89320,8 +89320,8 @@ var explore2upd3top = function (dictComonad) {
                                                                 return {
                                                                     space: newst,
                                                                     uid: (function () {
-                                                                        var $215 = ShouldUpdate.shouldupdate(dictShouldUpdate)(v7.space)(newst);
-                                                                        if ($215) {
+                                                                        var $216 = ShouldUpdate.shouldupdate(dictShouldUpdate)(v7.space)(newst);
+                                                                        if ($216) {
                                                                             return 101;
                                                                         };
                                                                         return 1;
@@ -89437,6 +89437,19 @@ var explore2upd3top = function (dictComonad) {
                                                                             timeout: Affjax.defaultRequest.timeout
                                                                         });
                                                                     };
+                                                                    if (v7.value1.value0 instanceof ExploreSignal.GetDelay) {
+                                                                        return Affjax.request({
+                                                                            method: new Data_Either.Left(Data_HTTP_Method.GET.value),
+                                                                            url: v7.value1.value0.value0,
+                                                                            headers: mkheaders(Affjax.defaultRequest),
+                                                                            content: Affjax.defaultRequest.content,
+                                                                            username: Affjax.defaultRequest.username,
+                                                                            password: Affjax.defaultRequest.password,
+                                                                            withCredentials: Affjax.defaultRequest.withCredentials,
+                                                                            responseFormat: Affjax_ResponseFormat.json,
+                                                                            timeout: Affjax.defaultRequest.timeout
+                                                                        });
+                                                                    };
                                                                     if (v7.value1.value0 instanceof ExploreSignal.Delete) {
                                                                         return Affjax.request({
                                                                             method: new Data_Either.Left(Data_HTTP_Method.DELETE.value),
@@ -89508,7 +89521,7 @@ var explore2upd3top = function (dictComonad) {
                                                                             return Control_Applicative.pure(Effect_Aff.applicativeAff)(rs);
                                                                         });
                                                                     };
-                                                                    throw new Error("Failed pattern match at Explore (line 290, column 35 - line 378, column 42): " + [ v7.value1.value0.constructor.name ]);
+                                                                    throw new Error("Failed pattern match at Explore (line 290, column 35 - line 381, column 42): " + [ v7.value1.value0.constructor.name ]);
                                                                 })())(function (rs) {
                                                                     return Effect_Class.liftEffect(Effect_Aff.monadEffectAff)(loop($$this)(rs)(Data_List.reverse(v6.value0.value1)));
                                                                 })))(function (f$prime$prime) {
@@ -89609,8 +89622,8 @@ var explore2upd3 = function (dictComonad) {
                                                             return {
                                                                 space: newst,
                                                                 uid: (function () {
-                                                                    var $299 = ShouldUpdate.shouldupdate(dictShouldUpdate)(v6.space)(newst);
-                                                                    if ($299) {
+                                                                    var $302 = ShouldUpdate.shouldupdate(dictShouldUpdate)(v6.space)(newst);
+                                                                    if ($302) {
                                                                         return 101;
                                                                     };
                                                                     return 1;
@@ -90531,7 +90544,6 @@ module.exports = {
 };
 
 },{"../Control.Applicative/index.js":43,"../Control.Apply/index.js":45,"../Control.Bind/index.js":49,"../Control.Comonad.Store.Class/index.js":52,"../Control.Comonad/index.js":57,"../Control.Extend/index.js":59,"../Data.Function/index.js":130,"../Data.Functor.Day/index.js":137,"../Data.Functor/index.js":144,"../Data.Identity/index.js":152,"../Data.Lazy/index.js":156,"../Data.Maybe/index.js":194,"../Data.Newtype/index.js":204,"../Data.Unit/index.js":263,"../Effect.Console/index.js":273,"../Effect.Unsafe/index.js":283,"../Effect/index.js":285}],288:[function(require,module,exports){
-// Generated by purs version 0.14.4
 "use strict";
 var Data_Argonaut_Core = require("../Data.Argonaut.Core/index.js");
 var Data_Eq = require("../Data.Eq/index.js");
@@ -90608,6 +90620,18 @@ var Get = (function () {
         return new Get(value0);
     };
     return Get;
+})();
+var GetDelay = (function () {
+    function GetDelay(value0, value1) {
+        this.value0 = value0;
+        this.value1 = value1;
+    };
+    GetDelay.create = function (value0) {
+        return function (value1) {
+            return new GetDelay(value0, value1);
+        };
+    };
+    return GetDelay;
 })();
 var GetAsync = (function () {
     function GetAsync(value0) {
@@ -90686,13 +90710,16 @@ var showAffRequest = {
         if (v instanceof Get) {
             return "Get:" + v.value0;
         };
+        if (v instanceof GetDelay) {
+            return "GetDelay:" + (v.value0 + (":" + Data_Show.show(Data_Show.showNumber)(v.value1)));
+        };
         if (v instanceof GetAsync) {
             return "GetAsync:" + v.value0;
         };
         if (v instanceof Delete) {
             return "Delete:" + v.value0;
         };
-        throw new Error("Failed pattern match at ExploreSignal (line 41, column 1 - line 48, column 35): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at ExploreSignal (line 42, column 1 - line 50, column 35): " + [ v.constructor.name ]);
     }
 };
 var genericAffRequest_ = {
@@ -90713,12 +90740,15 @@ var genericAffRequest_ = {
             return new Get(x.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))) {
-            return new GetAsync(x.value0.value0.value0.value0.value0.value0);
+            return new GetDelay(x.value0.value0.value0.value0.value0.value0.value0, x.value0.value0.value0.value0.value0.value0.value1);
         };
-        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr))))) {
-            return new Delete(x.value0.value0.value0.value0.value0.value0);
+        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))) {
+            return new GetAsync(x.value0.value0.value0.value0.value0.value0.value0);
         };
-        throw new Error("Failed pattern match at ExploreSignal (line 32, column 1 - line 32, column 38): " + [ x.constructor.name ]);
+        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr)))))) {
+            return new Delete(x.value0.value0.value0.value0.value0.value0.value0);
+        };
+        throw new Error("Failed pattern match at ExploreSignal (line 33, column 1 - line 33, column 38): " + [ x.constructor.name ]);
     },
     from: function (x) {
         if (x instanceof PutJson) {
@@ -90736,13 +90766,16 @@ var genericAffRequest_ = {
         if (x instanceof Get) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))));
         };
+        if (x instanceof GetDelay) {
+            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0, x.value1)))))));
+        };
         if (x instanceof GetAsync) {
-            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))));
+            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))));
         };
         if (x instanceof Delete) {
-            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0))))));
+            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0)))))));
         };
-        throw new Error("Failed pattern match at ExploreSignal (line 32, column 1 - line 32, column 38): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at ExploreSignal (line 33, column 1 - line 33, column 38): " + [ x.constructor.name ]);
     }
 };
 var functorEvent = {
@@ -90760,15 +90793,15 @@ var functorEvent = {
             if (m instanceof EmptyNoUpdate) {
                 return EmptyNoUpdate.value;
             };
-            throw new Error("Failed pattern match at ExploreSignal (line 63, column 1 - line 63, column 30): " + [ m.constructor.name ]);
+            throw new Error("Failed pattern match at ExploreSignal (line 65, column 1 - line 65, column 30): " + [ m.constructor.name ]);
         };
     }
 };
 var eqAffRequest = {
-    eq: Data_Eq_Generic.genericEq(genericAffRequest_)(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqArgument(Data_Argonaut_Core.eqJson))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Argonaut_Core.eqJson))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqNumber)))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqArgument(Data_Argonaut_Core.eqJson))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqArgument(Data_Argonaut_Core.eqJson))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))))))))
+    eq: Data_Eq_Generic.genericEq(genericAffRequest_)(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqArgument(Data_Argonaut_Core.eqJson))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Argonaut_Core.eqJson))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqNumber)))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqArgument(Data_Argonaut_Core.eqJson))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqArgument(Data_Argonaut_Core.eqJson))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqNumber))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))))))))))
 };
 var ordAffRequest = {
-    compare: Data_Ord_Generic.genericCompare(genericAffRequest_)(Data_Ord_Generic.genericOrdSum(Data_Ord_Generic.genericOrdConstructor(Data_Ord_Generic.genericOrdProduct(Data_Ord_Generic.genericOrdArgument(Data_Ord.ordString))(Data_Ord_Generic.genericOrdArgument(Data_Argonaut_Core.ordJson))))(Data_Ord_Generic.genericOrdSum(Data_Ord_Generic.genericOrdConstructor(Data_Ord_Generic.genericOrdProduct(Data_Ord_Generic.genericOrdArgument(Data_Ord.ordString))(Data_Ord_Generic.genericOrdProduct(Data_Ord_Generic.genericOrdArgument(Data_Argonaut_Core.ordJson))(Data_Ord_Generic.genericOrdArgument(Data_Ord.ordNumber)))))(Data_Ord_Generic.genericOrdSum(Data_Ord_Generic.genericOrdConstructor(Data_Ord_Generic.genericOrdProduct(Data_Ord_Generic.genericOrdArgument(Data_Ord.ordString))(Data_Ord_Generic.genericOrdArgument(Data_Argonaut_Core.ordJson))))(Data_Ord_Generic.genericOrdSum(Data_Ord_Generic.genericOrdConstructor(Data_Ord_Generic.genericOrdProduct(Data_Ord_Generic.genericOrdArgument(Data_Ord.ordString))(Data_Ord_Generic.genericOrdArgument(Data_Argonaut_Core.ordJson))))(Data_Ord_Generic.genericOrdSum(Data_Ord_Generic.genericOrdConstructor(Data_Ord_Generic.genericOrdArgument(Data_Ord.ordString)))(Data_Ord_Generic.genericOrdSum(Data_Ord_Generic.genericOrdConstructor(Data_Ord_Generic.genericOrdArgument(Data_Ord.ordString)))(Data_Ord_Generic.genericOrdConstructor(Data_Ord_Generic.genericOrdArgument(Data_Ord.ordString))))))))),
+    compare: Data_Ord_Generic.genericCompare(genericAffRequest_)(Data_Ord_Generic.genericOrdSum(Data_Ord_Generic.genericOrdConstructor(Data_Ord_Generic.genericOrdProduct(Data_Ord_Generic.genericOrdArgument(Data_Ord.ordString))(Data_Ord_Generic.genericOrdArgument(Data_Argonaut_Core.ordJson))))(Data_Ord_Generic.genericOrdSum(Data_Ord_Generic.genericOrdConstructor(Data_Ord_Generic.genericOrdProduct(Data_Ord_Generic.genericOrdArgument(Data_Ord.ordString))(Data_Ord_Generic.genericOrdProduct(Data_Ord_Generic.genericOrdArgument(Data_Argonaut_Core.ordJson))(Data_Ord_Generic.genericOrdArgument(Data_Ord.ordNumber)))))(Data_Ord_Generic.genericOrdSum(Data_Ord_Generic.genericOrdConstructor(Data_Ord_Generic.genericOrdProduct(Data_Ord_Generic.genericOrdArgument(Data_Ord.ordString))(Data_Ord_Generic.genericOrdArgument(Data_Argonaut_Core.ordJson))))(Data_Ord_Generic.genericOrdSum(Data_Ord_Generic.genericOrdConstructor(Data_Ord_Generic.genericOrdProduct(Data_Ord_Generic.genericOrdArgument(Data_Ord.ordString))(Data_Ord_Generic.genericOrdArgument(Data_Argonaut_Core.ordJson))))(Data_Ord_Generic.genericOrdSum(Data_Ord_Generic.genericOrdConstructor(Data_Ord_Generic.genericOrdArgument(Data_Ord.ordString)))(Data_Ord_Generic.genericOrdSum(Data_Ord_Generic.genericOrdConstructor(Data_Ord_Generic.genericOrdProduct(Data_Ord_Generic.genericOrdArgument(Data_Ord.ordString))(Data_Ord_Generic.genericOrdArgument(Data_Ord.ordNumber))))(Data_Ord_Generic.genericOrdSum(Data_Ord_Generic.genericOrdConstructor(Data_Ord_Generic.genericOrdArgument(Data_Ord.ordString)))(Data_Ord_Generic.genericOrdConstructor(Data_Ord_Generic.genericOrdArgument(Data_Ord.ordString)))))))))),
     Eq0: function () {
         return eqAffRequest;
     }
@@ -90789,13 +90822,16 @@ var geturl = function (v) {
     if (v instanceof Get) {
         return v.value0;
     };
+    if (v instanceof GetDelay) {
+        return v.value0;
+    };
     if (v instanceof GetAsync) {
         return v.value0;
     };
     if (v instanceof Delete) {
         return v.value0;
     };
-    throw new Error("Failed pattern match at ExploreSignal (line 78, column 1 - line 78, column 31): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at ExploreSignal (line 80, column 1 - line 80, column 31): " + [ v.constructor.name ]);
 };
 var genericEvent = {
     to: function (x) {
@@ -90811,7 +90847,7 @@ var genericEvent = {
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr)) {
             return EmptyNoUpdate.value;
         };
-        throw new Error("Failed pattern match at ExploreSignal (line 61, column 1 - line 61, column 52): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at ExploreSignal (line 63, column 1 - line 63, column 52): " + [ x.constructor.name ]);
     },
     from: function (x) {
         if (x instanceof UpdateLeaf) {
@@ -90826,7 +90862,7 @@ var genericEvent = {
         if (x instanceof EmptyNoUpdate) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value)));
         };
-        throw new Error("Failed pattern match at ExploreSignal (line 61, column 1 - line 61, column 52): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at ExploreSignal (line 63, column 1 - line 63, column 52): " + [ x.constructor.name ]);
     }
 };
 var showEvent = function (dictShow) {
@@ -90935,6 +90971,7 @@ module.exports = {
     PostJson: PostJson,
     PostJsonAsync: PostJsonAsync,
     Get: Get,
+    GetDelay: GetDelay,
     GetAsync: GetAsync,
     Delete: Delete,
     UpdateLeaf: UpdateLeaf,
@@ -98618,6 +98655,7 @@ exports.showModalImpl = function (message) {
   return rs;
 }
 },{}],340:[function(require,module,exports){
+// Generated by purs version 0.14.4
 "use strict";
 var $foreign = require("./foreign.js");
 var Affjax = require("../Affjax/index.js");
@@ -98656,8 +98694,6 @@ var Data_Unfoldable = require("../Data.Unfoldable/index.js");
 var Data_Unit = require("../Data.Unit/index.js");
 var ExploreCore = require("../ExploreCore/index.js");
 var Foreign_Object = require("../Foreign.Object/index.js");
-
-// type ID a = Int
 var ID = function (x) {
     return x;
 };
@@ -98716,14 +98752,10 @@ var decodeJsonID = {
     }
 };
 var toJsonArray = Data_Argonaut_Core.toArray;
-
-//-----------------------------------------
 var tabvalues = new Data_List_Types.Cons("", new Data_List_Types.Cons("devices", new Data_List_Types.Cons("tasks", new Data_List_Types.Cons("comments", Data_List_Types.Nil.value))));
 var setDeviceName = function (newName) {
     return function (json) {
-        
-        // Helper function to extract string from Json
-var toString = Data_Argonaut_Core.caseJsonString(Data_Maybe.Nothing.value)(Data_Maybe.Just.create);
+        var toString = Data_Argonaut_Core.caseJsonString(Data_Maybe.Nothing.value)(Data_Maybe.Just.create);
         var v = Data_Argonaut_Core.toObject(json);
         if (v instanceof Data_Maybe.Nothing) {
             return json;
@@ -98732,15 +98764,10 @@ var toString = Data_Argonaut_Core.caseJsonString(Data_Maybe.Nothing.value)(Data_
             var deviceName = Data_Maybe.fromMaybe("")(Control_Bind.bind(Data_Maybe.bindMaybe)(Foreign_Object.lookup("device_name")(v.value0))(function (nameJson) {
                 return Control_Applicative.pure(Data_Maybe.applicativeMaybe)(Data_Maybe.fromMaybe("")(toString(nameJson)));
             }));
-            
-            // Extract device_id and device_name values
-var deviceId = Data_Maybe.fromMaybe("")(Control_Bind.bind(Data_Maybe.bindMaybe)(Foreign_Object.lookup("device_id")(v.value0))(function (idJson) {
+            var deviceId = Data_Maybe.fromMaybe("")(Control_Bind.bind(Data_Maybe.bindMaybe)(Foreign_Object.lookup("device_id")(v.value0))(function (idJson) {
                 return Control_Applicative.pure(Data_Maybe.applicativeMaybe)(Data_Maybe.fromMaybe("")(toString(idJson)));
             }));
-            
-            // Case-insensitive comparison: device_id == device_name
-            // or device_name is empty
-var shouldUpdate = Data_String_Common.toLower(deviceId) === Data_String_Common.toLower(deviceName) || deviceName === "";
+            var shouldUpdate = Data_String_Common.toLower(deviceId) === Data_String_Common.toLower(deviceName) || deviceName === "";
             var finalName = (function () {
                 if (shouldUpdate) {
                     return newName;
@@ -98775,8 +98802,6 @@ var renameField = function (oldKey$prime) {
         };
     };
 };
-
-// Define the JSON object
 var renameDevice = function (oldname) {
     return function (newname) {
         return Data_Argonaut_Encode_Combinators.extend(Data_Argonaut_Encode_Class.encodeJsonJson)(Data_Argonaut_Encode_Combinators.assoc(Data_Argonaut_Encode_Class.encodeJsonJString)("op")("set:property"))(Data_Argonaut_Encode_Combinators.extend(Data_Argonaut_Encode_Class.encodeJsonJson)(Data_Argonaut_Encode_Combinators.assoc(Data_Argonaut_Encode_Class.encodeJsonJString)("key")("configuration.device_name"))(Data_Argonaut_Encode_Combinators.extend(Data_Argonaut_Encode_Class.encodeJsonJson)(Data_Argonaut_Encode_Combinators.assoc(Data_Argonaut_Encode_Class.encodeJsonJString)("value")((function () {
@@ -98811,8 +98836,6 @@ var removePrefixToAllFieldsNames = function (prefix) {
         throw new Error("Failed pattern match at Unify.Types (line 202, column 3 - line 212, column 34): " + [ v.constructor.name ]);
     };
 };
-
-// Remove object with specific name from JSON
 var removeObjectByName = function (name) {
     return function (json) {
         var v = Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(json);
@@ -98887,8 +98910,6 @@ var placeholder13 = 1;
 var placeholder12 = 1;
 var placeholder11 = 1;
 var placeholder10 = 1;
-
-//----------------------------
 var placeholder1 = 1;
 var nt = function (v) {
     if (v instanceof Data_Maybe.Just) {
@@ -98901,8 +98922,6 @@ var modifyFirst = function (f) {
         return Data_Maybe.fromMaybe(arr)(Data_Array.modifyAt(0)(f)(arr));
     };
 };
-
-// Helper function to check if a property matches a value
 var matchesProperty = function (propName) {
     return function (propValue) {
         return function (json) {
@@ -98936,10 +98955,6 @@ var mapWithIndexModify = function (f) {
         return Data_Array.mapWithIndex(f)(arr);
     };
 };
-
-// -- Function to combine two Json values into an array of Json
-// combineToArray :: Json -> Json -> Array Json
-// combineToArray json1 json2 = [json1, json2]
 var mapArrayJson = function (f) {
     return function (j) {
         var v = Data_Argonaut_Core.toArray(j);
@@ -98949,8 +98964,6 @@ var mapArrayJson = function (f) {
         return j;
     };
 };
-
-// makenot :: forall a. a -> a
 var makenot = Data_HeytingAlgebra.not;
 var makeinc = function (dictSemiring) {
     return function (n) {
@@ -98982,8 +98995,6 @@ var makeJsonObjectExplicit2 = function (key1) {
         };
     };
 };
-
-//--------------------------------------------
 var makeJsonObjectExplicit = function (key) {
     return function (v) {
         if (v instanceof Data_Maybe.Just) {
@@ -99006,12 +99017,10 @@ var justlogiitag = function (tag) {
 var justlogii = function (dictShow) {
     return function (tag) {
         return function (a) {
-            return ExploreCore.logii(tag + (Data_Show.show(dictShow)(a) + "\x0a"))(a);
+            return ExploreCore.logii("\x0a\x0a\x0a\x0a\x0aAAAAAAAAAAAAAAA:" + (tag + ("\x0a\x0a\x0a\x0a\x0a" + (Data_Show.show(dictShow)(a) + "\x0a\x0a--------------\x0a\x0a"))))(a);
         };
     };
 };
-
-// | Check if a JSON value is an empty object
 var isEmptyObject = function (json) {
     var v = Data_Argonaut_Core.toObject(json);
     if (v instanceof Data_Maybe.Just) {
@@ -99022,8 +99031,6 @@ var isEmptyObject = function (json) {
     };
     throw new Error("Failed pattern match at Unify.Types (line 379, column 22 - line 381, column 19): " + [ v.constructor.name ]);
 };
-
-// | Remove empty objects from JSON recursively
 var removeEmptyObjects = function (json) {
     if (Data_Argonaut_Core.isObject(json)) {
         var v = Data_Argonaut_Core.toObject(json);
@@ -99074,8 +99081,6 @@ var getjson = function (key) {
         throw new Error("Failed pattern match at Unify.Types (line 385, column 3 - line 387, column 23): " + [ v.constructor.name ]);
     };
 };
-
-// | Extract a property value from a JSON object
 var getPropertyValue = function (propName) {
     return function (json) {
         return Control_Bind.bind(Data_Maybe.bindMaybe)(Data_Argonaut_Core.toObject(json))(function (obj) {
@@ -99153,10 +99158,6 @@ var extractWithNameName = function (nodesname) {
         };
     };
 };
-
-// | inputJson = Json { "aaa" : ..., "nodesnameAAA" : [ { "typetolookfor" : "TypeA", ... } , { "typetolookfor" : "TypeB", ... }] } 
-// | using extractWithName "nodesnameAAA" "TypeB" "newnameforTypeB" inputJson ==>> 
-// | Json { "aaa" : ..., "nodesnameAAA" : [ { "typetolookfor" : "TypeA", ... } , { "typetolookfor" : "TypeB", ... }] ,  "newnameforTypeB" : { typetolookfor : "TypeB", ... } }
 var extractWithName = function (nodesname) {
     return function (typetolookfor) {
         return function (newname) {
@@ -99234,12 +99235,6 @@ var doprism = function (dictBind) {
 var def = function (dict) {
     return dict.def;
 };
-
-// Example usage:
-// sortByObjValue "name" jsonArray
-// sortByObjValue "age" jsonArray
-// sortByObjValue "price" jsonArray
-//----------------------------
 var index = function (dictDef) {
     return function (xs) {
         return function (i) {
@@ -99264,8 +99259,6 @@ var createSingletonObject = function (key) {
         return Data_Argonaut_Core.fromObject(Foreign_Object.singleton(key)(value));
     };
 };
-
-// | Compare two JSON values (supports String, Number, Boolean)
 var compareJsonValues = function (val1) {
     return function (val2) {
         var v = Data_Argonaut_Core.toString(val2);
@@ -99276,18 +99269,6 @@ var compareJsonValues = function (val1) {
         return Data_Ordering.EQ.value;
     };
 };
-
-// sortAndModifyFirst :: String -> Json -> Json
-// sortAndModifyFirst propName json =
-//   case toArray json of
-//     Nothing -> json
-//     Just arr ->
-//       let
-//         sorted = sortBy (compareByProperty propName) arr
-//         modified = fromMaybe sorted $ modifyAt 0 (setDeviceName "PREVIEW BOX") sorted
-//       in
-//         fromArray modified
-// | Compare two JSON values by a specific property
 var compareByProperty = function (propName) {
     return function (json1) {
         return function (json2) {
@@ -99309,11 +99290,6 @@ var compareByProperty = function (propName) {
         };
     };
 };
-
-// | Sort a JSON array by a specific object property value
-// | The first argument is the property name to sort by
-// | The second argument is the JSON value (should be an array)
-// | Returns the sorted JSON array, or the original JSON if it's not an array
 var sortByObjValue = function (propName) {
     return function (json) {
         var v = Data_Argonaut_Core.toArray(json);
@@ -99338,14 +99314,6 @@ var sortByObjValueAndSetDeviceName = function (propName) {
         throw new Error("Failed pattern match at Unify.Types (line 521, column 3 - line 523, column 113): " + [ v.constructor.name ]);
     };
 };
-
-// applyToAllElementsOfJsonArray :: (Json -> Json) -> Json -> Json
-// applyToAllElementsOfJsonArray f inputjsonarray =
-//   case toArray inputjsonarray of
-//     Nothing -> logii "\n\n\n\nBBBBBBBBBBBBBBBBBBBBB\n\n\n\n" inputjsonarray  -- If it's not an array, return as-is
-//     Just arr ->
-//       let transformedArr = map f arr
-//       in fromArray (logii "\n\n\n\nBBBBBBBBBBBBBBBBBBBBB2\n\n\n\n" transformedArr  )
 var applyToAllElementsOfJsonArray = function (nameofobjectwitharray) {
     return function (f) {
         return function (inputjson) {
@@ -99381,8 +99349,6 @@ var addedArray = function (arr2) {
         return Data_Semigroup.append(Data_Semigroup.semigroupArray)(arr1)(Data_Array.drop(Data_Array.length(arr1))(arr2));
     };
 };
-
-// sort but set first element the element with propName : propValue
 var sortByObjValueAndSetRxDeviceNameZipExtra = function (propValue) {
     return function (extra) {
         return function (propName) {
@@ -99393,12 +99359,8 @@ var sortByObjValueAndSetRxDeviceNameZipExtra = function (propValue) {
                 };
                 if (v instanceof Data_Maybe.Just) {
                     var v1 = Data_Array.partition(matchesProperty(propName)(propValue))(v.value0);
-                    
-                    // Sort the remaining elements
-var sortedOthers = Data_Array.sortBy(compareByProperty(propName))(v1.no);
-                    
-                    // Combine: matching element(s) first, then sorted others
-var reordered = Data_Semigroup.append(Data_Semigroup.semigroupArray)(v1.yes)(sortedOthers);
+                    var sortedOthers = Data_Array.sortBy(compareByProperty(propName))(v1.no);
+                    var reordered = Data_Semigroup.append(Data_Semigroup.semigroupArray)(v1.yes)(sortedOthers);
                     return Data_Argonaut_Core.fromArray(addedArray(extra)(modifyFirst(setDeviceName("PREVIEW BOX"))(mapWithIndexModify(function (i) {
                         return function (j) {
                             return setDeviceName("Display #" + Data_Show.show(Data_Show.showInt)(i))(j);
@@ -99446,8 +99408,6 @@ var sortByObjValueAndSetTxDeviceNameZipExtra = function (extra) {
         };
     };
 };
-
-// | Add a suffix to all top-level keys in a JSON object
 var addSuffix = function (suffix) {
     return function (json) {
         var addSuffixToKey = function (v) {
@@ -99520,8 +99480,6 @@ var addFieldIfItMissing = function (fieldName) {
         throw new Error("Failed pattern match at Unify.Types (line 231, column 3 - line 238, column 35): " + [ v.constructor.name ]);
     };
 };
-
-// Function to add a new field to a Json object
 var addField = function (key) {
     return function (value) {
         return function (json) {
@@ -99536,9 +99494,6 @@ var addTag = function (value) {
         return addField("tag")(Data_Argonaut_Core.fromString(value))(json);
     };
 };
-
-//--------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------
 var _body = function (dictStrong) {
     return Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.body, function (a) {
@@ -99929,7 +99884,7 @@ var newtypeComponentActionSta = {
 var shouldUpdateComponentActi = {
     shouldupdate: function (a) {
         return function (b) {
-            return ShouldUpdate.shouldupdate(ShouldUpdate.shouldUpdateStore(Data_Eq.eqRec()(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowNil)()({
+            return ShouldUpdate.shouldupdate(ShouldUpdate.shouldUpdateStore(Data_Eq.eqRec()(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowNil)()({
                 reflectSymbol: function () {
                     return "thestack";
                 }
@@ -99937,7 +99892,11 @@ var shouldUpdateComponentActi = {
                 reflectSymbol: function () {
                     return "selectedtoprx";
                 }
-            })(Data_Maybe.eqMaybe(Data_Eq.eqString)))))(Data_Newtype.unwrap()(a))(Data_Newtype.unwrap()(b));
+            })(Data_Maybe.eqMaybe(Data_Eq.eqString)))()({
+                reflectSymbol: function () {
+                    return "isblocked";
+                }
+            })(Data_Eq.eqBoolean))))(Data_Newtype.unwrap()(a))(Data_Newtype.unwrap()(b));
         };
     }
 };
@@ -99985,7 +99944,8 @@ var def_ComponentActionStack = function (dictDef) {
     return function (dictDef1) {
         return {
             thestack: Unify_Types.def(dictDef),
-            selectedtoprx: Unify_Types.def(dictDef1)
+            selectedtoprx: Unify_Types.def(dictDef1),
+            isblocked: false
         };
     };
 };
@@ -100009,13 +99969,17 @@ var renderActionStack$prime = function (d) {
 var renderActionStack = renderActionStack$prime(def_ComponentActionStack(Unify_Types.defList)(Unify_Types.defMaybe));
 var fromJsoncompActionStackSi = {
     fromjsoncomp: function (j) {
-        return Widget_Unify_FromJsonrep.mkfromjsoncomp(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(VYNET_API_Device_Command_Data_DeviceAction.decodeJsonDeviceAction)))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
+        return Widget_Unify_FromJsonrep.mkfromjsoncomp(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(VYNET_API_Device_Command_Data_DeviceAction.decodeJsonDeviceAction)))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
             reflectSymbol: function () {
                 return "thestack";
             }
         })()())({
             reflectSymbol: function () {
                 return "selectedtoprx";
+            }
+        })()())({
+            reflectSymbol: function () {
+                return "isblocked";
             }
         })()())())(Data_Lens_Setter.over((function () {
             var $27 = Data_Lens_Prism_Either["_Right"](Data_Profunctor_Choice.choiceFn);
@@ -100029,6 +99993,11 @@ var fromJsoncompActionStackSi = {
 var _selectedtoprx = Data_Lens_Record.prop({
     reflectSymbol: function () {
         return "selectedtoprx";
+    }
+})()()(Data_Symbol.SProxy.value);
+var _isblocked = Data_Lens_Record.prop({
+    reflectSymbol: function () {
+        return "isblocked";
     }
 })()()(Data_Symbol.SProxy.value);
 var _CoActionStackB = function (fb) {
@@ -100045,13 +100014,17 @@ var _CoActionStack = function (v) {
 };
 var fromJsonrepComponentActio = {
     fromjsonrep: function (j) {
-        return _CoActionStack(Widget_Unify_FromJsonrep.fromjsonrep(Widget_Unify_FromJsonrep.fromJsonrepStore(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(VYNET_API_Device_Command_Data_DeviceAction.decodeJsonDeviceAction)))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
+        return _CoActionStack(Widget_Unify_FromJsonrep.fromjsonrep(Widget_Unify_FromJsonrep.fromJsonrepStore(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldMaybe(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(VYNET_API_Device_Command_Data_DeviceAction.decodeJsonDeviceAction)))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
             reflectSymbol: function () {
                 return "thestack";
             }
         })()())({
             reflectSymbol: function () {
                 return "selectedtoprx";
+            }
+        })()())({
+            reflectSymbol: function () {
+                return "isblocked";
             }
         })()())()))(Data_Lens_Setter.over((function () {
             var $30 = Data_Lens_Prism_Either["_Right"](Data_Profunctor_Choice.choiceFn);
@@ -100069,6 +100042,7 @@ module.exports = {
     "_CoActionStackB": _CoActionStackB,
     "_thestack": _thestack,
     "_selectedtoprx": _selectedtoprx,
+    "_isblocked": _isblocked,
     def_ComponentActionStack: def_ComponentActionStack,
     "renderActionStack'": renderActionStack$prime,
     display: display,
@@ -100092,26 +100066,16 @@ module.exports = {
 "use strict";
 var Control_Applicative = require("../Control.Applicative/index.js");
 var Control_Bind = require("../Control.Bind/index.js");
-var Control_Comonad_Store_Class = require("../Control.Comonad.Store.Class/index.js");
-var Control_Comonad_Store_Trans = require("../Control.Comonad.Store.Trans/index.js");
-var Control_Monad_State_Class = require("../Control.Monad.State.Class/index.js");
 var Data_Eq_Generic = require("../Data.Eq.Generic/index.js");
 var Data_Functor = require("../Data.Functor/index.js");
 var Data_Functor_Day = require("../Data.Functor.Day/index.js");
 var Data_Generic_Rep = require("../Data.Generic.Rep/index.js");
-var Data_Identity = require("../Data.Identity/index.js");
-var Data_Lens_Getter = require("../Data.Lens.Getter/index.js");
-var Data_Lens_Internal_Forget = require("../Data.Lens.Internal.Forget/index.js");
-var Data_Lens_Setter = require("../Data.Lens.Setter/index.js");
-var Data_List_Types = require("../Data.List.Types/index.js");
 var Data_Maybe = require("../Data.Maybe/index.js");
 var Data_Newtype = require("../Data.Newtype/index.js");
-var Data_Profunctor_Strong = require("../Data.Profunctor.Strong/index.js");
 var Data_Show_Generic = require("../Data.Show.Generic/index.js");
 var Data_Tuple = require("../Data.Tuple/index.js");
 var Data_Unit = require("../Data.Unit/index.js");
 var ExploreCore = require("../ExploreCore/index.js");
-var ExploreSignal = require("../ExploreSignal/index.js");
 var Extra = require("../Extra/index.js");
 var Safe_Coerce = require("../Safe.Coerce/index.js");
 var ShouldUpdate = require("../ShouldUpdate/index.js");
@@ -100170,7 +100134,7 @@ var genericDeviceActionsSigna = {
         if (x instanceof Data_Generic_Rep.Inr) {
             return new DeviceActionsActionexecSignal(x.value0);
         };
-        throw new Error("Failed pattern match at VYNET.API.Control.DeviceActions (line 61, column 1 - line 61, column 46): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at VYNET.API.Control.DeviceActions (line 59, column 1 - line 59, column 46): " + [ x.constructor.name ]);
     },
     from: function (x) {
         if (x instanceof DeviceActionsActiveactionsSignal) {
@@ -100179,7 +100143,7 @@ var genericDeviceActionsSigna = {
         if (x instanceof DeviceActionsActionexecSignal) {
             return new Data_Generic_Rep.Inr(x.value0);
         };
-        throw new Error("Failed pattern match at VYNET.API.Control.DeviceActions (line 61, column 1 - line 61, column 46): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at VYNET.API.Control.DeviceActions (line 59, column 1 - line 59, column 46): " + [ x.constructor.name ]);
     }
 };
 var showDeviceActionsSignal = {
@@ -100223,19 +100187,37 @@ var marshal1 = function (v) {
         return v1;
     };
 };
+var marshal = function (e) {
+    return marshal1(e);
+};
+var marshalComponentDeviceActions = marshal;
+var fromJsoncompDeviceActions = {
+    fromjsoncomp: function (j) {
+        return Control_Bind.bind(Data_Maybe.bindMaybe)(Widget_Unify_FromJsonrep.fromjsoncomp(VYNET_API_Control_ActionStack.fromJsoncompActionStackSi)(Unify_Types.jsonindex(0)(j)))(function (v) {
+            return Control_Bind.bind(Data_Maybe.bindMaybe)(Widget_Unify_FromJsonrep.fromjsoncomp(Third_Reference.fromJsoncompReferenceSign(VYNET_API_Device_Command_GeneralDeviceCommand.showGeneralDeviceCommand)(VYNET_API_Device_Command_GeneralDeviceCommand.hasAffectGeneralDeviceCom)(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)(VYNET_API_Device_Command_GeneralDeviceCommand.decodeJsonGeneralDeviceCo1)(VYNET_API_Control_ActionResult.comonadComponentActionRes)(VYNET_API_Control_ActionResult.shouldUpdateComponentActi)(VYNET_API_Control_ActionResult.fromJsoncompActionResultS))(Unify_Types.jsonindex(1)(j)))(function (v1) {
+                return Control_Applicative.pure(Data_Maybe.applicativeMaybe)(Extra.ns(extendComponentDeviceActi)(comonadComponentDeviceAct)(Safe_Coerce.coerce()(Widget_Unify_UnifyComp.combineproduct2t(VYNET_API_Control_ActionStack.comonadComponentActionSta)(VYNET_API_Control_ActionStack.shouldUpdateComponentActi)(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)("DeviceActionsActiveactionsSignal")(DeviceActionsActiveactionsSignal.create)(v)("DeviceActionsActionexecSignal")(DeviceActionsActionexecSignal.create)(v1)))(function (v2) {
+                    return marshalComponentDeviceActions(v2.value0.value0)(v2);
+                }));
+            });
+        });
+    }
+};
 var datarenderDeviceActions = Safe_Coerce.coerce()(Widget_Unify_UnifyComp.combineproduct2t(VYNET_API_Control_ActionStack.comonadComponentActionSta)(VYNET_API_Control_ActionStack.shouldUpdateComponentActi)(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)("DeviceActionsActiveactionsSignal")(DeviceActionsActiveactionsSignal.create)(VYNET_API_Control_ActionStack.renderActionStack)("DeviceActionsActionexecSignal")(DeviceActionsActionexecSignal.create)(Third_Reference.reference(VYNET_API_Control_ActionResult.shouldUpdateComponentActi)(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)(VYNET_API_Device_Command_GeneralDeviceCommand.showGeneralDeviceCommand)(VYNET_API_Device_Command_GeneralDeviceCommand.hasAffectGeneralDeviceCom)(VYNET_API_Control_ActionResult.comonadComponentActionRes)(VYNET_API_Control_ActionResult.fromJsonrepComponentActio)("renderActionResult")(Unify_Types.def(Third_RefState.defRefState))(VYNET_API_Control_ActionResult.renderActionResult)));
+var renderDeviceActions = Extra.ns(extendComponentDeviceActi)(comonadComponentDeviceAct)(datarenderDeviceActions)(function (v) {
+    return marshal(v.value0.value0)(v);
+});
 var _activeactions = (function () {
-    var $57 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $58 = Widget_Unify_UnifyCompItem["_compitem"](VYNET_API_Control_ActionStack.comonadComponentActionSta)(VYNET_API_Control_ActionStack.shouldUpdateComponentActi);
-    return function ($59) {
-        return $57($58($59));
+    var $47 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $48 = Widget_Unify_UnifyCompItem["_compitem"](VYNET_API_Control_ActionStack.comonadComponentActionSta)(VYNET_API_Control_ActionStack.shouldUpdateComponentActi);
+    return function ($49) {
+        return $47($48($49));
     };
 })();
 var _actionexec = (function () {
-    var $60 = ExploreCore.liftRight(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $61 = Widget_Unify_UnifyCompItem["_compitem"](Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference);
-    return function ($62) {
-        return $60($61($62));
+    var $50 = ExploreCore.liftRight(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $51 = Widget_Unify_UnifyCompItem["_compitem"](Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference);
+    return function ($52) {
+        return $50($51($52));
     };
 })();
 var verifyDeviceActions = Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(Data_Functor_Day.extendDay(Widget_Unify_UnifyCompItem.extendStoreComponent2)(Widget_Unify_UnifyCompItem.extendStoreComponent2)))(_activeactions(Control_Applicative.pure(ExploreCore.applicativeCo(VYNET_API_Control_ActionStack.comonadComponentActionSta))(Data_Unit.unit)))(function () {
@@ -100253,64 +100235,17 @@ var _CoDeviceActions = function (v) {
         return v(Data_Newtype.unwrap()(w));
     };
 };
-var marshal0 = function (v) {
-    return function (v1) {
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof DeviceActionsActionexecSignal && v.value0.value0 instanceof Third_Reference.ReferSignal)) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentDeviceActi))(Control_Bind.bind(ExploreCore.bindCo(extendComponentDeviceActi))(_CoDeviceActions(_activeactions(VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))(function (stack) {
-                return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentDeviceActi))((function () {
-                    var v3 = Data_Lens_Getter.viewOn(stack)(VYNET_API_Control_ActionStack["_thestack"](Data_Lens_Internal_Forget.strongForget));
-                    if (v3 instanceof Data_List_Types.Cons) {
-                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentDeviceActi))(_CoDeviceActions(_activeactions(VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(v3.value1))))))(function () {
-                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentDeviceActi))(_CoDeviceActions(_actionexec(Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
-                                gencmd: new VYNET_API_Device_Command_GeneralDeviceCommand.DeviceCommand(v3.value0)
-                            }))))))))(function () {
-                                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentDeviceAct))(Data_Unit.unit);
-                            });
-                        });
-                    };
-                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentDeviceAct))(Data_Unit.unit);
-                })())(function () {
-                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentDeviceAct))(Data_Unit.unit);
-                });
-            }))(v1);
-        };
-        return v1;
-    };
-};
-var marshal = function (e) {
-    var $63 = marshal0(e);
-    var $64 = marshal1(e);
-    return function ($65) {
-        return $63($64($65));
-    };
-};
-var marshalComponentDeviceActions = marshal;
-var fromJsoncompDeviceActions = {
-    fromjsoncomp: function (j) {
-        return Control_Bind.bind(Data_Maybe.bindMaybe)(Widget_Unify_FromJsonrep.fromjsoncomp(VYNET_API_Control_ActionStack.fromJsoncompActionStackSi)(Unify_Types.jsonindex(0)(j)))(function (v) {
-            return Control_Bind.bind(Data_Maybe.bindMaybe)(Widget_Unify_FromJsonrep.fromjsoncomp(Third_Reference.fromJsoncompReferenceSign(VYNET_API_Device_Command_GeneralDeviceCommand.showGeneralDeviceCommand)(VYNET_API_Device_Command_GeneralDeviceCommand.hasAffectGeneralDeviceCom)(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)(VYNET_API_Device_Command_GeneralDeviceCommand.decodeJsonGeneralDeviceCo1)(VYNET_API_Control_ActionResult.comonadComponentActionRes)(VYNET_API_Control_ActionResult.shouldUpdateComponentActi)(VYNET_API_Control_ActionResult.fromJsoncompActionResultS))(Unify_Types.jsonindex(1)(j)))(function (v1) {
-                return Control_Applicative.pure(Data_Maybe.applicativeMaybe)(Extra.ns(extendComponentDeviceActi)(comonadComponentDeviceAct)(Safe_Coerce.coerce()(Widget_Unify_UnifyComp.combineproduct2t(VYNET_API_Control_ActionStack.comonadComponentActionSta)(VYNET_API_Control_ActionStack.shouldUpdateComponentActi)(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)("DeviceActionsActiveactionsSignal")(DeviceActionsActiveactionsSignal.create)(v)("DeviceActionsActionexecSignal")(DeviceActionsActionexecSignal.create)(v1)))(function (v2) {
-                    return marshalComponentDeviceActions(v2.value0.value0)(v2);
-                }));
-            });
-        });
-    }
-};
-var renderDeviceActions = Extra.ns(extendComponentDeviceActi)(comonadComponentDeviceAct)(datarenderDeviceActions)(function (v) {
-    return marshal(v.value0.value0)(v);
-});
 var fromJsonrepComponentDevic = {
     fromjsonrep: (function () {
-        var $66 = Widget_Unify_FromJsonrep.fromjsonrep(Widget_Unify_FromJsonrep.fromJsonrepDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(VYNET_API_Control_ActionStack.comonadComponentActionSta)(VYNET_API_Control_ActionStack.shouldUpdateComponentActi)(VYNET_API_Control_ActionStack.fromJsonrepComponentActio))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)(Third_Reference.fromJsonrepReference(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)(VYNET_API_Device_Command_GeneralDeviceCommand.decodeJsonGeneralDeviceCo1)(VYNET_API_Control_ActionResult.comonadComponentActionRes)(VYNET_API_Control_ActionResult.fromJsonrepComponentActio)(VYNET_API_Control_ActionResult.shouldUpdateComponentActi))));
-        return function ($67) {
-            return _CoDeviceActions($66($67));
+        var $53 = Widget_Unify_FromJsonrep.fromjsonrep(Widget_Unify_FromJsonrep.fromJsonrepDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(VYNET_API_Control_ActionStack.comonadComponentActionSta)(VYNET_API_Control_ActionStack.shouldUpdateComponentActi)(VYNET_API_Control_ActionStack.fromJsonrepComponentActio))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)(Third_Reference.fromJsonrepReference(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)(VYNET_API_Device_Command_GeneralDeviceCommand.decodeJsonGeneralDeviceCo1)(VYNET_API_Control_ActionResult.comonadComponentActionRes)(VYNET_API_Control_ActionResult.fromJsonrepComponentActio)(VYNET_API_Control_ActionResult.shouldUpdateComponentActi))));
+        return function ($54) {
+            return _CoDeviceActions($53($54));
         };
     })()
 };
 module.exports = {
     renderDeviceActions: renderDeviceActions,
     marshal: marshal,
-    marshal0: marshal0,
     marshal1: marshal1,
     DeviceActionsActiveactionsSignal: DeviceActionsActiveactionsSignal,
     DeviceActionsActionexecSignal: DeviceActionsActionexecSignal,
@@ -100336,7 +100271,7 @@ module.exports = {
     fromJsoncompDeviceActions: fromJsoncompDeviceActions
 };
 
-},{"../Control.Applicative/index.js":43,"../Control.Bind/index.js":49,"../Control.Comonad.Store.Class/index.js":52,"../Control.Comonad.Store.Trans/index.js":53,"../Control.Monad.State.Class/index.js":72,"../Data.Eq.Generic/index.js":118,"../Data.Functor.Day/index.js":137,"../Data.Functor/index.js":144,"../Data.Generic.Rep/index.js":147,"../Data.Identity/index.js":152,"../Data.Lens.Getter/index.js":160,"../Data.Lens.Internal.Forget/index.js":165,"../Data.Lens.Setter/index.js":182,"../Data.List.Types/index.js":189,"../Data.Maybe/index.js":194,"../Data.Newtype/index.js":204,"../Data.Profunctor.Strong/index.js":220,"../Data.Show.Generic/index.js":232,"../Data.Tuple/index.js":255,"../Data.Unit/index.js":263,"../ExploreCore/index.js":287,"../ExploreSignal/index.js":288,"../Extra/index.js":289,"../Safe.Coerce/index.js":320,"../ShouldUpdate/index.js":321,"../Third.RefState/index.js":331,"../Third.Reference/index.js":332,"../Unify.Types/index.js":340,"../VYNET.API.Control.ActionResult/index.js":343,"../VYNET.API.Control.ActionStack/index.js":344,"../VYNET.API.Device.Command.GeneralDeviceCommand/index.js":349,"../Widget.Unify.FromJsonrep/index.js":556,"../Widget.Unify.UnifyComp/index.js":557,"../Widget.Unify.UnifyCompItem/index.js":558}],346:[function(require,module,exports){
+},{"../Control.Applicative/index.js":43,"../Control.Bind/index.js":49,"../Data.Eq.Generic/index.js":118,"../Data.Functor.Day/index.js":137,"../Data.Functor/index.js":144,"../Data.Generic.Rep/index.js":147,"../Data.Maybe/index.js":194,"../Data.Newtype/index.js":204,"../Data.Show.Generic/index.js":232,"../Data.Tuple/index.js":255,"../Data.Unit/index.js":263,"../ExploreCore/index.js":287,"../Extra/index.js":289,"../Safe.Coerce/index.js":320,"../ShouldUpdate/index.js":321,"../Third.RefState/index.js":331,"../Third.Reference/index.js":332,"../Unify.Types/index.js":340,"../VYNET.API.Control.ActionResult/index.js":343,"../VYNET.API.Control.ActionStack/index.js":344,"../VYNET.API.Device.Command.GeneralDeviceCommand/index.js":349,"../Widget.Unify.FromJsonrep/index.js":556,"../Widget.Unify.UnifyComp/index.js":557,"../Widget.Unify.UnifyCompItem/index.js":558}],346:[function(require,module,exports){
 // Generated by purs version 0.14.4
 "use strict";
 var Control_Comonad_Store = require("../Control.Comonad.Store/index.js");
@@ -100392,11 +100327,15 @@ var newtypeComponentMultiview = {
 var shouldUpdateComponentMult = {
     shouldupdate: function (a) {
         return function (b) {
-            return ShouldUpdate.shouldupdate(ShouldUpdate.shouldUpdateStore(Data_Eq.eqRec()(Data_Eq.eqRowCons(Data_Eq.eqRowNil)()({
+            return ShouldUpdate.shouldupdate(ShouldUpdate.shouldUpdateStore(Data_Eq.eqRec()(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowNil)()({
                 reflectSymbol: function () {
                     return "mvthestack";
                 }
-            })(Data_List_Types.eqList(VYNET_API_Multiview_Data_MultiviewAction.eqMultiviewAction)))))(Data_Newtype.unwrap()(a))(Data_Newtype.unwrap()(b));
+            })(Data_List_Types.eqList(VYNET_API_Multiview_Data_MultiviewAction.eqMultiviewAction)))()({
+                reflectSymbol: function () {
+                    return "mvisblocked";
+                }
+            })(Data_Eq.eqBoolean))))(Data_Newtype.unwrap()(a))(Data_Newtype.unwrap()(b));
         };
     }
 };
@@ -100442,7 +100381,8 @@ var comonadComponentMultiview = {
 };
 var def_ComponentMultiviewActionStack = function (dictDef) {
     return {
-        mvthestack: Unify_Types.def(dictDef)
+        mvthestack: Unify_Types.def(dictDef),
+        mvisblocked: false
     };
 };
 var _mvthestack = Data_Lens_Record.prop({
@@ -100465,9 +100405,13 @@ var renderMultiviewActionStack$prime = function (d) {
 var renderMultiviewActionStack = renderMultiviewActionStack$prime(def_ComponentMultiviewActionStack(Unify_Types.defList));
 var fromJsoncompMultiviewActi = {
     fromjsoncomp: function (j) {
-        return Widget_Unify_FromJsonrep.mkfromjsoncomp(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(VYNET_API_Multiview_Data_MultiviewAction.decodeJsonMultiviewAction)))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
+        return Widget_Unify_FromJsonrep.mkfromjsoncomp(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(VYNET_API_Multiview_Data_MultiviewAction.decodeJsonMultiviewAction)))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
             reflectSymbol: function () {
                 return "mvthestack";
+            }
+        })()())({
+            reflectSymbol: function () {
+                return "mvisblocked";
             }
         })()())())(Data_Lens_Setter.over((function () {
             var $26 = Data_Lens_Prism_Either["_Right"](Data_Profunctor_Choice.choiceFn);
@@ -100478,6 +100422,11 @@ var fromJsoncompMultiviewActi = {
         })())(Widget_Unify_UnifyExplore.id)(j))(renderMultiviewActionStack$prime);
     }
 };
+var _mvisblocked = Data_Lens_Record.prop({
+    reflectSymbol: function () {
+        return "mvisblocked";
+    }
+})()()(Data_Symbol.SProxy.value);
 var _CoMultiviewActionStackB = function (fb) {
     return function (b) {
         return function (w) {
@@ -100492,9 +100441,13 @@ var _CoMultiviewActionStack = function (v) {
 };
 var fromJsonrepComponentMulti = {
     fromjsonrep: function (j) {
-        return _CoMultiviewActionStack(Widget_Unify_FromJsonrep.fromjsonrep(Widget_Unify_FromJsonrep.fromJsonrepStore(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(VYNET_API_Multiview_Data_MultiviewAction.decodeJsonMultiviewAction)))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
+        return _CoMultiviewActionStack(Widget_Unify_FromJsonrep.fromjsonrep(Widget_Unify_FromJsonrep.fromJsonrepStore(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(VYNET_API_Multiview_Data_MultiviewAction.decodeJsonMultiviewAction)))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
             reflectSymbol: function () {
                 return "mvthestack";
+            }
+        })()())({
+            reflectSymbol: function () {
+                return "mvisblocked";
             }
         })()())()))(Data_Lens_Setter.over((function () {
             var $29 = Data_Lens_Prism_Either["_Right"](Data_Profunctor_Choice.choiceFn);
@@ -100511,6 +100464,7 @@ module.exports = {
     "_CoMultiviewActionStack": _CoMultiviewActionStack,
     "_CoMultiviewActionStackB": _CoMultiviewActionStackB,
     "_mvthestack": _mvthestack,
+    "_mvisblocked": _mvisblocked,
     def_ComponentMultiviewActionStack: def_ComponentMultiviewActionStack,
     "renderMultiviewActionStack'": renderMultiviewActionStack$prime,
     display: display,
@@ -100665,7 +100619,25 @@ var marshal1 = function (v) {
         return v1;
     };
 };
+var marshal = function (e) {
+    return marshal1(e);
+};
+var marshalComponentMultiviewActions = marshal;
+var fromJsoncompMultiviewActi = {
+    fromjsoncomp: function (j) {
+        return Control_Bind.bind(Data_Maybe.bindMaybe)(Widget_Unify_FromJsonrep.fromjsoncomp(VYNET_API_Control_MultiviewActionStack.fromJsoncompMultiviewActi)(Unify_Types.jsonindex(0)(j)))(function (v) {
+            return Control_Bind.bind(Data_Maybe.bindMaybe)(Widget_Unify_FromJsonrep.fromjsoncomp(Third_Reference.fromJsoncompReferenceSign(VYNET_API_Device_Command_GeneralMultiviewCommand.showGeneralMultiviewComma1)(VYNET_API_Device_Command_GeneralMultiviewCommand.hasAffectGeneralMultiview)(VYNET_API_Device_Command_GeneralMultiviewCommand.eqGeneralMultiviewCommand1)(VYNET_API_Device_Command_GeneralMultiviewCommand.decodeJsonGeneralMultivie1)(VYNET_API_Control_ActionResult.comonadComponentActionRes)(VYNET_API_Control_ActionResult.shouldUpdateComponentActi)(VYNET_API_Control_ActionResult.fromJsoncompActionResultS))(Unify_Types.jsonindex(1)(j)))(function (v1) {
+                return Control_Applicative.pure(Data_Maybe.applicativeMaybe)(Extra.ns(extendComponentMultiviewA)(comonadComponentMultiview)(Safe_Coerce.coerce()(Widget_Unify_UnifyComp.combineproduct2t(VYNET_API_Control_MultiviewActionStack.comonadComponentMultiview)(VYNET_API_Control_MultiviewActionStack.shouldUpdateComponentMult)(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)("MultiviewActionsMvactiveactionsSignal")(MultiviewActionsMvactiveactionsSignal.create)(v)("MultiviewActionsMvactionexecSignal")(MultiviewActionsMvactionexecSignal.create)(v1)))(function (v2) {
+                    return marshalComponentMultiviewActions(v2.value0.value0)(v2);
+                }));
+            });
+        });
+    }
+};
 var datarenderMultiviewActions = Safe_Coerce.coerce()(Widget_Unify_UnifyComp.combineproduct2t(VYNET_API_Control_MultiviewActionStack.comonadComponentMultiview)(VYNET_API_Control_MultiviewActionStack.shouldUpdateComponentMult)(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)("MultiviewActionsMvactiveactionsSignal")(MultiviewActionsMvactiveactionsSignal.create)(VYNET_API_Control_MultiviewActionStack.renderMultiviewActionStack)("MultiviewActionsMvactionexecSignal")(MultiviewActionsMvactionexecSignal.create)(Third_Reference.reference(VYNET_API_Control_ActionResult.shouldUpdateComponentActi)(VYNET_API_Device_Command_GeneralMultiviewCommand.eqGeneralMultiviewCommand1)(VYNET_API_Device_Command_GeneralMultiviewCommand.showGeneralMultiviewComma1)(VYNET_API_Device_Command_GeneralMultiviewCommand.hasAffectGeneralMultiview)(VYNET_API_Control_ActionResult.comonadComponentActionRes)(VYNET_API_Control_ActionResult.fromJsonrepComponentActio)("renderActionResult")(Unify_Types.def(Third_RefState.defRefState))(VYNET_API_Control_ActionResult.renderActionResult)));
+var renderMultiviewActions = Extra.ns(extendComponentMultiviewA)(comonadComponentMultiview)(datarenderMultiviewActions)(function (v) {
+    return marshal(v.value0.value0)(v);
+});
 var _mvactiveactions = (function () {
     var $60 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
     var $61 = Widget_Unify_UnifyCompItem["_compitem"](VYNET_API_Control_MultiviewActionStack.comonadComponentMultiview)(VYNET_API_Control_MultiviewActionStack.shouldUpdateComponentMult);
@@ -100729,33 +100701,11 @@ var marshal0 = function (v) {
         return v1;
     };
 };
-var marshal = function (e) {
-    var $66 = marshal0(e);
-    var $67 = marshal1(e);
-    return function ($68) {
-        return $66($67($68));
-    };
-};
-var marshalComponentMultiviewActions = marshal;
-var fromJsoncompMultiviewActi = {
-    fromjsoncomp: function (j) {
-        return Control_Bind.bind(Data_Maybe.bindMaybe)(Widget_Unify_FromJsonrep.fromjsoncomp(VYNET_API_Control_MultiviewActionStack.fromJsoncompMultiviewActi)(Unify_Types.jsonindex(0)(j)))(function (v) {
-            return Control_Bind.bind(Data_Maybe.bindMaybe)(Widget_Unify_FromJsonrep.fromjsoncomp(Third_Reference.fromJsoncompReferenceSign(VYNET_API_Device_Command_GeneralMultiviewCommand.showGeneralMultiviewComma1)(VYNET_API_Device_Command_GeneralMultiviewCommand.hasAffectGeneralMultiview)(VYNET_API_Device_Command_GeneralMultiviewCommand.eqGeneralMultiviewCommand1)(VYNET_API_Device_Command_GeneralMultiviewCommand.decodeJsonGeneralMultivie1)(VYNET_API_Control_ActionResult.comonadComponentActionRes)(VYNET_API_Control_ActionResult.shouldUpdateComponentActi)(VYNET_API_Control_ActionResult.fromJsoncompActionResultS))(Unify_Types.jsonindex(1)(j)))(function (v1) {
-                return Control_Applicative.pure(Data_Maybe.applicativeMaybe)(Extra.ns(extendComponentMultiviewA)(comonadComponentMultiview)(Safe_Coerce.coerce()(Widget_Unify_UnifyComp.combineproduct2t(VYNET_API_Control_MultiviewActionStack.comonadComponentMultiview)(VYNET_API_Control_MultiviewActionStack.shouldUpdateComponentMult)(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)("MultiviewActionsMvactiveactionsSignal")(MultiviewActionsMvactiveactionsSignal.create)(v)("MultiviewActionsMvactionexecSignal")(MultiviewActionsMvactionexecSignal.create)(v1)))(function (v2) {
-                    return marshalComponentMultiviewActions(v2.value0.value0)(v2);
-                }));
-            });
-        });
-    }
-};
-var renderMultiviewActions = Extra.ns(extendComponentMultiviewA)(comonadComponentMultiview)(datarenderMultiviewActions)(function (v) {
-    return marshal(v.value0.value0)(v);
-});
 var fromJsonrepComponentMulti = {
     fromjsonrep: (function () {
-        var $69 = Widget_Unify_FromJsonrep.fromjsonrep(Widget_Unify_FromJsonrep.fromJsonrepDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(VYNET_API_Control_MultiviewActionStack.comonadComponentMultiview)(VYNET_API_Control_MultiviewActionStack.shouldUpdateComponentMult)(VYNET_API_Control_MultiviewActionStack.fromJsonrepComponentMulti))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)(Third_Reference.fromJsonrepReference(VYNET_API_Device_Command_GeneralMultiviewCommand.eqGeneralMultiviewCommand1)(VYNET_API_Device_Command_GeneralMultiviewCommand.decodeJsonGeneralMultivie1)(VYNET_API_Control_ActionResult.comonadComponentActionRes)(VYNET_API_Control_ActionResult.fromJsonrepComponentActio)(VYNET_API_Control_ActionResult.shouldUpdateComponentActi))));
-        return function ($70) {
-            return _CoMultiviewActions($69($70));
+        var $66 = Widget_Unify_FromJsonrep.fromjsonrep(Widget_Unify_FromJsonrep.fromJsonrepDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(VYNET_API_Control_MultiviewActionStack.comonadComponentMultiview)(VYNET_API_Control_MultiviewActionStack.shouldUpdateComponentMult)(VYNET_API_Control_MultiviewActionStack.fromJsonrepComponentMulti))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)(Third_Reference.fromJsonrepReference(VYNET_API_Device_Command_GeneralMultiviewCommand.eqGeneralMultiviewCommand1)(VYNET_API_Device_Command_GeneralMultiviewCommand.decodeJsonGeneralMultivie1)(VYNET_API_Control_ActionResult.comonadComponentActionRes)(VYNET_API_Control_ActionResult.fromJsonrepComponentActio)(VYNET_API_Control_ActionResult.shouldUpdateComponentActi))));
+        return function ($67) {
+            return _CoMultiviewActions($66($67));
         };
     })()
 };
@@ -101080,6 +101030,15 @@ var SetCompressorVersion = (function () {
     };
     return SetCompressorVersion;
 })();
+var UseDelay = (function () {
+    function UseDelay(value0) {
+        this.value0 = value0;
+    };
+    UseDelay.create = function (value0) {
+        return new UseDelay(value0);
+    };
+    return UseDelay;
+})();
 var showRouteDeviceAction = {
     showr: function (v) {
         return "genericShowr";
@@ -101155,10 +101114,13 @@ var genericDeviceAction_ = {
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))))))))))))))))) {
             return new SetFrameRateConverterScaler(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0, x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1);
         };
-        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr)))))))))))))))))))) {
-            return new SetCompressorVersion(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0, x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1);
+        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))))))))))))))))) {
+            return new SetCompressorVersion(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0, x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value1);
         };
-        throw new Error("Failed pattern match at VYNET.API.Device.Command.Data.DeviceAction (line 40, column 1 - line 40, column 39): " + [ x.constructor.name ]);
+        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr))))))))))))))))))))) {
+            return new UseDelay(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+        };
+        throw new Error("Failed pattern match at VYNET.API.Device.Command.Data.DeviceAction (line 41, column 1 - line 41, column 39): " + [ x.constructor.name ]);
     },
     from: function (x) {
         if (x instanceof EnableStreamCommand) {
@@ -101225,9 +101187,12 @@ var genericDeviceAction_ = {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0, x.value1))))))))))))))))))))));
         };
         if (x instanceof SetCompressorVersion) {
-            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Product(x.value0, x.value1))))))))))))))))))))));
+            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0, x.value1)))))))))))))))))))))));
         };
-        throw new Error("Failed pattern match at VYNET.API.Device.Command.Data.DeviceAction (line 40, column 1 - line 40, column 39): " + [ x.constructor.name ]);
+        if (x instanceof UseDelay) {
+            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0))))))))))))))))))))));
+        };
+        throw new Error("Failed pattern match at VYNET.API.Device.Command.Data.DeviceAction (line 41, column 1 - line 41, column 39): " + [ x.constructor.name ]);
     }
 };
 var showDeviceAction = {
@@ -101315,11 +101280,15 @@ var showDeviceAction = {
         reflectSymbol: function () {
             return "SetFrameRateConverterScaler";
         }
-    }))(Data_Show_Generic.genericShowConstructor(Data_Show_Generic.genericShowArgsProduct(Data_Show_Generic.genericShowArgsArgument(Data_Show.showString))(Data_Show_Generic.genericShowArgsArgument(Data_Show.showInt)))({
+    }))(Data_Show_Generic.genericShowSum(Data_Show_Generic.genericShowConstructor(Data_Show_Generic.genericShowArgsProduct(Data_Show_Generic.genericShowArgsArgument(Data_Show.showString))(Data_Show_Generic.genericShowArgsArgument(Data_Show.showInt)))({
         reflectSymbol: function () {
             return "SetCompressorVersion";
         }
-    })))))))))))))))))))))))
+    }))(Data_Show_Generic.genericShowConstructor(Data_Show_Generic.genericShowArgsArgument(Data_Show.showString))({
+        reflectSymbol: function () {
+            return "UseDelay";
+        }
+    }))))))))))))))))))))))))
 };
 var eqDeviceActionSignal = {
     eq: function (v) {
@@ -101329,7 +101298,7 @@ var eqDeviceActionSignal = {
     }
 };
 var eqDeviceAction = {
-    eq: Data_Eq_Generic.genericEq(genericDeviceAction_)(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt)))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))(Data_Eq_Generic.genericEqArgument(VYNET_API_Multiview_Data_Window.eqWindow)))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(VYNET_API_Device_Data_Video.eqVideo))(Data_Eq_Generic.genericEqArgument(Data_List_Types.eqList(VYNET_API_Device_Data_LayoutSubscription.eqLayoutSubscription)))))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqNoArguments))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqNoArguments))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))))(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt)))))))))))))))))))))))))
+    eq: Data_Eq_Generic.genericEq(genericDeviceAction_)(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt)))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))(Data_Eq_Generic.genericEqArgument(VYNET_API_Multiview_Data_Window.eqWindow)))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(VYNET_API_Device_Data_Video.eqVideo))(Data_Eq_Generic.genericEqArgument(Data_List_Types.eqList(VYNET_API_Device_Data_LayoutSubscription.eqLayoutSubscription)))))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqNoArguments))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqNoArguments))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString))(Data_Eq_Generic.genericEqArgument(Data_Eq.eqInt))))(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))))))))))))))))))))))))
 };
 var encodeJsonDeviceAction = {
     encodeJson: Data_Functor.map(Data_Functor.functorFn)(Unify_Types.removeField("tag"))(Data_Argonaut_Encode_Generic.genericEncodeJson(genericDeviceAction_)(Data_Argonaut_Encode_Generic.encodeRepSum(Data_Argonaut_Encode_Generic.encodeRepConstructor({
@@ -101416,11 +101385,15 @@ var encodeJsonDeviceAction = {
         reflectSymbol: function () {
             return "SetFrameRateConverterScaler";
         }
-    })(Data_Argonaut_Encode_Generic.encodeRepArgsProduct(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(Data_Argonaut_Encode_Class.encodeJsonJString))(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(Data_Argonaut_Encode_Class.encodeJsonInt))))(Data_Argonaut_Encode_Generic.encodeRepConstructor({
+    })(Data_Argonaut_Encode_Generic.encodeRepArgsProduct(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(Data_Argonaut_Encode_Class.encodeJsonJString))(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(Data_Argonaut_Encode_Class.encodeJsonInt))))(Data_Argonaut_Encode_Generic.encodeRepSum(Data_Argonaut_Encode_Generic.encodeRepConstructor({
         reflectSymbol: function () {
             return "SetCompressorVersion";
         }
-    })(Data_Argonaut_Encode_Generic.encodeRepArgsProduct(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(Data_Argonaut_Encode_Class.encodeJsonJString))(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(Data_Argonaut_Encode_Class.encodeJsonInt))))))))))))))))))))))))))
+    })(Data_Argonaut_Encode_Generic.encodeRepArgsProduct(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(Data_Argonaut_Encode_Class.encodeJsonJString))(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(Data_Argonaut_Encode_Class.encodeJsonInt))))(Data_Argonaut_Encode_Generic.encodeRepConstructor({
+        reflectSymbol: function () {
+            return "UseDelay";
+        }
+    })(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(Data_Argonaut_Encode_Class.encodeJsonJString))))))))))))))))))))))))))
 };
 var defDeviceAction = {
     def: new EnableStreamCommand("def", 0)
@@ -101510,11 +101483,15 @@ var decodeJsonDeviceAction = {
         reflectSymbol: function () {
             return "SetFrameRateConverterScaler";
         }
-    })(Data_Argonaut_Decode_Generic.decodeRepArgsProduct(Data_Argonaut_Decode_Generic.decodeRepArgsArgument(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Generic.decodeRepArgsArgument(Data_Argonaut_Decode_Class.decodeJsonInt))))(Data_Argonaut_Decode_Generic.decodeRepConstructor({
+    })(Data_Argonaut_Decode_Generic.decodeRepArgsProduct(Data_Argonaut_Decode_Generic.decodeRepArgsArgument(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Generic.decodeRepArgsArgument(Data_Argonaut_Decode_Class.decodeJsonInt))))(Data_Argonaut_Decode_Generic.decodeRepSum(Data_Argonaut_Decode_Generic.decodeRepConstructor({
         reflectSymbol: function () {
             return "SetCompressorVersion";
         }
-    })(Data_Argonaut_Decode_Generic.decodeRepArgsProduct(Data_Argonaut_Decode_Generic.decodeRepArgsArgument(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Generic.decodeRepArgsArgument(Data_Argonaut_Decode_Class.decodeJsonInt)))))))))))))))))))))))))
+    })(Data_Argonaut_Decode_Generic.decodeRepArgsProduct(Data_Argonaut_Decode_Generic.decodeRepArgsArgument(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Generic.decodeRepArgsArgument(Data_Argonaut_Decode_Class.decodeJsonInt))))(Data_Argonaut_Decode_Generic.decodeRepConstructorArg({
+        reflectSymbol: function () {
+            return "UseDelay";
+        }
+    })(Data_Argonaut_Decode_Class.decodeJsonString))))))))))))))))))))))))
 };
 var renderDeviceAction = function (mkvalue) {
     return function (mksignal) {
@@ -101551,6 +101528,7 @@ module.exports = {
     SetFrameRateConverterNative: SetFrameRateConverterNative,
     SetFrameRateConverterScaler: SetFrameRateConverterScaler,
     SetCompressorVersion: SetCompressorVersion,
+    UseDelay: UseDelay,
     renderDeviceAction: renderDeviceAction,
     DeviceActionSignal: DeviceActionSignal,
     defaultedid: defaultedid,
@@ -101568,6 +101546,7 @@ module.exports = {
 },{"../Data.Argonaut.Decode.Class/index.js":85,"../Data.Argonaut.Decode.Generic/index.js":89,"../Data.Argonaut.Encode.Class/index.js":91,"../Data.Argonaut.Encode.Generic/index.js":94,"../Data.Eq.Generic/index.js":118,"../Data.Eq/index.js":120,"../Data.Functor/index.js":144,"../Data.Generic.Rep/index.js":147,"../Data.Lens.Getter/index.js":160,"../Data.Lens.Internal.Forget/index.js":165,"../Data.List.Types/index.js":189,"../Data.Show.Generic/index.js":232,"../Data.Show/index.js":234,"../React.DOM.Props/index.js":309,"../React.DOM/index.js":310,"../Unify.Types/index.js":340,"../VYNET.API.Device.Data.LayoutSubscription/index.js":376,"../VYNET.API.Device.Data.Video/index.js":389,"../VYNET.API.Multiview.Data.Window/index.js":406}],349:[function(require,module,exports){
 // Generated by purs version 0.14.4
 "use strict";
+var Control_Applicative = require("../Control.Applicative/index.js");
 var Data_Argonaut_Decode_Class = require("../Data.Argonaut.Decode.Class/index.js");
 var Data_Argonaut_Decode_Generic = require("../Data.Argonaut.Decode.Generic/index.js");
 var Data_Argonaut_Encode_Class = require("../Data.Argonaut.Encode.Class/index.js");
@@ -101576,8 +101555,11 @@ var Data_Eq = require("../Data.Eq/index.js");
 var Data_Eq_Generic = require("../Data.Eq.Generic/index.js");
 var Data_Functor = require("../Data.Functor/index.js");
 var Data_Generic_Rep = require("../Data.Generic.Rep/index.js");
+var Data_Maybe = require("../Data.Maybe/index.js");
+var Data_Number = require("../Data.Number/index.js");
 var Data_Show = require("../Data.Show/index.js");
 var Data_Show_Generic = require("../Data.Show.Generic/index.js");
+var Data_Unit = require("../Data.Unit/index.js");
 var ExploreSignal = require("../ExploreSignal/index.js");
 var Unify_Types = require("../Unify.Types/index.js");
 var VYNET_API_Device_Command_Data_DeviceAction = require("../VYNET.API.Device.Command.Data.DeviceAction/index.js");
@@ -101631,6 +101613,9 @@ var hasAffectGeneralDeviceCom = {
     getaffect: function (v) {
         if (v.value0.gencmd instanceof Reset) {
             return new ExploreSignal.Get("/client/reset.json");
+        };
+        if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.UseDelay) {
+            return new ExploreSignal.GetDelay("/client/reset.json?delay", Data_Maybe.fromMaybe(Data_Number.nan)(Data_Number.fromString(v.value0.gencmd.value0.value0)));
         };
         if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.CompletedAction) {
             return new ExploreSignal.Get("/client/reset.json?completed");
@@ -101782,7 +101767,7 @@ var hasAffectGeneralDeviceCom = {
                 })
             })));
         };
-        throw new Error("Failed pattern match at VYNET.API.Device.Command.GeneralDeviceCommand (line 31, column 1 - line 86, column 19): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at VYNET.API.Device.Command.GeneralDeviceCommand (line 32, column 1 - line 88, column 19): " + [ v.constructor.name ]);
     },
     jsonjson: function (v) {
         return function (j) {
@@ -101806,7 +101791,7 @@ var genericGeneralDeviceComma1 = {
         if (x instanceof Data_Generic_Rep.Inr) {
             return new DeviceCommand(x.value0);
         };
-        throw new Error("Failed pattern match at VYNET.API.Device.Command.GeneralDeviceCommand (line 87, column 1 - line 87, column 51): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at VYNET.API.Device.Command.GeneralDeviceCommand (line 89, column 1 - line 89, column 51): " + [ x.constructor.name ]);
     },
     from: function (x) {
         if (x instanceof Reset) {
@@ -101815,7 +101800,7 @@ var genericGeneralDeviceComma1 = {
         if (x instanceof DeviceCommand) {
             return new Data_Generic_Rep.Inr(x.value0);
         };
-        throw new Error("Failed pattern match at VYNET.API.Device.Command.GeneralDeviceCommand (line 87, column 1 - line 87, column 51): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at VYNET.API.Device.Command.GeneralDeviceCommand (line 89, column 1 - line 89, column 51): " + [ x.constructor.name ]);
     }
 };
 var showGeneralDeviceCommandE = {
@@ -101883,10 +101868,128 @@ var decodeJsonGeneralDeviceCo1 = {
         }
     })()())()))
 };
+var transferid = function (v) {
+    if (v === "0016c05262ea") {
+        return "|* Source #2 v3 *|";
+    };
+    if (v === "0016c04dc2ea") {
+        return "|* Source #1 v3 *|";
+    };
+    if (v === "0016c0546dca") {
+        return "|* 1080p60a *|";
+    };
+    if (v === "0016c05acc2a") {
+        return "|* pc input *|";
+    };
+    if (v === "0016c050fdca") {
+        return "|* Sample_03 *|";
+    };
+    if (v === "d88039ecb5d9") {
+        return "|* New device *|";
+    };
+    if (v === "0016c056b42a") {
+        return "|* Source #11 *|";
+    };
+    if (v === "0016c0526dca") {
+        return "|* preview box *|";
+    };
+    return v;
+};
+var showcommand = function (v) {
+    if (v.value0.gencmd instanceof Reset) {
+        return "Reset";
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.UseDelay) {
+        return "ResetDealy";
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.CompletedAction) {
+        return "CompletedAction";
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.CompletedPreviewAction) {
+        return "CompletedPreviewAction";
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.ScaleStreamCommand) {
+        return "Scale: " + (transferid(v.value0.gencmd.value0.value0) + (" " + (Data_Show.show(Data_Show.showInt)(v.value0.gencmd.value0.value2) + ("x" + Data_Show.show(Data_Show.showInt)(v.value0.gencmd.value0.value3)))));
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.EnableStreamCommand) {
+        return "Enable: " + (transferid(v.value0.gencmd.value0.value0) + (":" + Data_Show.show(Data_Show.showInt)(v.value0.gencmd.value0.value1)));
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.StopStreamCommand) {
+        return "Stop: " + (transferid(v.value0.gencmd.value0.value0) + (":" + Data_Show.show(Data_Show.showInt)(v.value0.gencmd.value0.value1)));
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.JoinRxTxStreamCommand) {
+        return "Join: " + (transferid(v.value0.gencmd.value0.value0) + ("<-" + (transferid(v.value0.gencmd.value0.value1) + (":" + (Data_Show.show(Data_Show.showInt)(v.value0.gencmd.value0.value2) + ("/" + Data_Show.show(Data_Show.showInt)(v.value0.gencmd.value0.value3)))))));
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.LeaveStreamCommand) {
+        return "Leave: " + (transferid(v.value0.gencmd.value0.value0) + (":" + Data_Show.show(Data_Show.showInt)(v.value0.gencmd.value0.value1)));
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.MultiviewCreateLayout) {
+        return "MvCreate: " + (v.value0.gencmd.value0.value0 + (" " + (Data_Show.show(Data_Show.showInt)(v.value0.gencmd.value0.value1) + ("x" + Data_Show.show(Data_Show.showInt)(v.value0.gencmd.value0.value2)))));
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.MultiviewDeleteLayout) {
+        return "MvDelete: " + v.value0.gencmd.value0.value0;
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.MultiviewCreateWindow) {
+        return "MvWindow: " + (v.value0.gencmd.value0.value0 + (":" + Data_Show.show(Data_Show.showInt)(v.value0.gencmd.value0.value1)));
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.MultiviewSetLayout) {
+        return "MvSetLayout: " + (transferid(v.value0.gencmd.value0.value0) + (" " + v.value0.gencmd.value0.value1));
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.SetFastSwitch) {
+        return "SetFastSwitch: " + transferid(v.value0.gencmd.value0.value0);
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.SetFrameRateConverterNative) {
+        return "SetFRCNative: " + (transferid(v.value0.gencmd.value0.value0) + (":" + Data_Show.show(Data_Show.showInt)(v.value0.gencmd.value0.value1)));
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.SetCompressorVersion) {
+        return "SetCompressorVersion: " + (transferid(v.value0.gencmd.value0.value0) + (":" + Data_Show.show(Data_Show.showInt)(v.value0.gencmd.value0.value1)));
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.SetFrameRateConverterScaler) {
+        return "SetFRCScaler: " + (transferid(v.value0.gencmd.value0.value0) + (":" + Data_Show.show(Data_Show.showInt)(v.value0.gencmd.value0.value1)));
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.SetHdcpOff) {
+        return "SetHdcpOff: " + transferid(v.value0.gencmd.value0.value0);
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.SetHdcpOn) {
+        return "SetHdcpOn: " + transferid(v.value0.gencmd.value0.value0);
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.SetHdcp22Off) {
+        return "SetHdcp22Off: " + transferid(v.value0.gencmd.value0.value0);
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.SetHdcp22On) {
+        return "SetHdcp22On: " + transferid(v.value0.gencmd.value0.value0);
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.SetEdid) {
+        return "SetEdid: " + transferid(v.value0.gencmd.value0.value0);
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.SetGenlock) {
+        return "SetGenlock: " + transferid(v.value0.gencmd.value0.value0);
+    };
+    if (v.value0.gencmd instanceof DeviceCommand && v.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.SetGenlockScaled) {
+        return "SetGenlockScaled: " + (transferid(v.value0.gencmd.value0.value0) + (" " + (Data_Show.show(Data_Show.showInt)(v.value0.gencmd.value0.value1) + ("x" + (Data_Show.show(Data_Show.showInt)(v.value0.gencmd.value0.value2) + ("@" + Data_Show.show(Data_Show.showInt)(v.value0.gencmd.value0.value3)))))));
+    };
+    throw new Error("Failed pattern match at VYNET.API.Device.Command.GeneralDeviceCommand (line 132, column 1 - line 132, column 46): " + [ v.constructor.name ]);
+};
+var logiicmd = function (tag) {
+    return function (a) {
+        return Data_Unit.unit;
+    };
+};
+var justlogiipure = function (dictMonad) {
+    return function (tag) {
+        return function (a) {
+            return Control_Applicative.pure(dictMonad.Applicative0())(Data_Unit.unit);
+        };
+    };
+};
 module.exports = {
     Reset: Reset,
     DeviceCommand: DeviceCommand,
     GeneralDeviceCommand: GeneralDeviceCommand,
+    transferid: transferid,
+    showcommand: showcommand,
+    justlogiipure: justlogiipure,
+    logiicmd: logiicmd,
     hasAffectGeneralDeviceCom: hasAffectGeneralDeviceCom,
     genericGeneralDeviceComma1: genericGeneralDeviceComma1,
     eqGeneralDeviceCommandEnu: eqGeneralDeviceCommandEnu,
@@ -101900,7 +102003,7 @@ module.exports = {
     decodeJsonGeneralDeviceCo1: decodeJsonGeneralDeviceCo1
 };
 
-},{"../Data.Argonaut.Decode.Class/index.js":85,"../Data.Argonaut.Decode.Generic/index.js":89,"../Data.Argonaut.Encode.Class/index.js":91,"../Data.Argonaut.Encode.Generic/index.js":94,"../Data.Eq.Generic/index.js":118,"../Data.Eq/index.js":120,"../Data.Functor/index.js":144,"../Data.Generic.Rep/index.js":147,"../Data.Show.Generic/index.js":232,"../Data.Show/index.js":234,"../ExploreSignal/index.js":288,"../Unify.Types/index.js":340,"../VYNET.API.Device.Command.Data.DeviceAction/index.js":348,"../VYNET.API.Device.Command.Request.EnableRequest/index.js":351,"../VYNET.API.Device.Command.Request.JoinRequest/index.js":353,"../VYNET.API.Device.Command.Request.LeaveRequest/index.js":354,"../VYNET.API.Device.Command.Request.OpBooleanKeyRequest/index.js":355,"../VYNET.API.Device.Command.Request.OpDataHexRequest/index.js":356,"../VYNET.API.Device.Command.Request.OpKeyValueRequest/index.js":357,"../VYNET.API.Device.Command.Request.ScaleRequest/index.js":358,"../VYNET.API.Device.Command.Request.SetFastSwitchRequest/index.js":359,"../VYNET.API.Device.Command.Request.SetGenlockRequest/index.js":360,"../VYNET.API.Device.Command.Request.SetGenlockScaledRequest/index.js":361,"../VYNET.API.Device.Command.Request.SetLayoutRequest/index.js":362,"../VYNET.API.Device.Command.Request.StopRequest/index.js":363,"../VYNET.API.Device.Data.Video/index.js":389,"../VYNET.API.Multiview.Command.Request.MultiviewLayoutRequest/index.js":397,"../VYNET.API.Multiview.Command.Request.MultiviewRequest/index.js":398,"../VYNET.API.Multiview.Data.Window/index.js":406}],350:[function(require,module,exports){
+},{"../Control.Applicative/index.js":43,"../Data.Argonaut.Decode.Class/index.js":85,"../Data.Argonaut.Decode.Generic/index.js":89,"../Data.Argonaut.Encode.Class/index.js":91,"../Data.Argonaut.Encode.Generic/index.js":94,"../Data.Eq.Generic/index.js":118,"../Data.Eq/index.js":120,"../Data.Functor/index.js":144,"../Data.Generic.Rep/index.js":147,"../Data.Maybe/index.js":194,"../Data.Number/index.js":209,"../Data.Show.Generic/index.js":232,"../Data.Show/index.js":234,"../Data.Unit/index.js":263,"../ExploreSignal/index.js":288,"../Unify.Types/index.js":340,"../VYNET.API.Device.Command.Data.DeviceAction/index.js":348,"../VYNET.API.Device.Command.Request.EnableRequest/index.js":351,"../VYNET.API.Device.Command.Request.JoinRequest/index.js":353,"../VYNET.API.Device.Command.Request.LeaveRequest/index.js":354,"../VYNET.API.Device.Command.Request.OpBooleanKeyRequest/index.js":355,"../VYNET.API.Device.Command.Request.OpDataHexRequest/index.js":356,"../VYNET.API.Device.Command.Request.OpKeyValueRequest/index.js":357,"../VYNET.API.Device.Command.Request.ScaleRequest/index.js":358,"../VYNET.API.Device.Command.Request.SetFastSwitchRequest/index.js":359,"../VYNET.API.Device.Command.Request.SetGenlockRequest/index.js":360,"../VYNET.API.Device.Command.Request.SetGenlockScaledRequest/index.js":361,"../VYNET.API.Device.Command.Request.SetLayoutRequest/index.js":362,"../VYNET.API.Device.Command.Request.StopRequest/index.js":363,"../VYNET.API.Device.Data.Video/index.js":389,"../VYNET.API.Multiview.Command.Request.MultiviewLayoutRequest/index.js":397,"../VYNET.API.Multiview.Command.Request.MultiviewRequest/index.js":398,"../VYNET.API.Multiview.Data.Window/index.js":406}],350:[function(require,module,exports){
 // Generated by purs version 0.14.4
 "use strict";
 var Data_Argonaut_Decode_Class = require("../Data.Argonaut.Decode.Class/index.js");
@@ -119636,6 +119739,7 @@ module.exports = {
 };
 
 },{"../Control.Comonad.Store.Class/index.js":52,"../Control.Monad.State.Class/index.js":72,"../Data.Argonaut.Decode.Class/index.js":85,"../Data.Argonaut.Decode.Generic/index.js":89,"../Data.Argonaut.Encode.Class/index.js":91,"../Data.Argonaut.Encode.Generic/index.js":94,"../Data.Eq.Generic/index.js":118,"../Data.Eq/index.js":120,"../Data.Functor/index.js":144,"../Data.Generic.Rep/index.js":147,"../Data.Identity/index.js":152,"../Data.Lens.Fold/index.js":159,"../Data.Lens.Getter/index.js":160,"../Data.Lens.Internal.Forget/index.js":165,"../Data.Lens.Lens.Tuple/index.js":176,"../Data.Lens.Lens/index.js":177,"../Data.Lens.Prism.Maybe/index.js":179,"../Data.Lens.Record/index.js":181,"../Data.Lens.Setter/index.js":182,"../Data.Maybe.First/index.js":192,"../Data.Maybe/index.js":194,"../Data.Profunctor.Strong/index.js":220,"../Data.Show.Generic/index.js":232,"../Data.Show/index.js":234,"../Data.Symbol/index.js":248,"../Data.Tuple/index.js":255,"../ExploreCore/index.js":287,"../Extra/index.js":289,"../React.DOM.Props/index.js":309,"../React.DOM/index.js":310,"../Unify.Types/index.js":340,"../VYNET.API.Multiview.Data.PreviewWindow/index.js":404}],407:[function(require,module,exports){
+// Generated by purs version 0.14.4
 "use strict";
 var Control_Applicative = require("../Control.Applicative/index.js");
 var Control_Bind = require("../Control.Bind/index.js");
@@ -119701,8 +119805,6 @@ var VYNET_API_Multiview_Data_LayoutDescription = require("../VYNET.API.Multiview
 var VYNET_API_Multiview_Data_PreviewWindow = require("../VYNET.API.Multiview.Data.PreviewWindow/index.js");
 var VYNET_API_Multiview_Data_Window = require("../VYNET.API.Multiview.Data.Window/index.js");
 var Widget_Unify_FromJsonrep = require("../Widget.Unify.FromJsonrep/index.js");
-
-//  | for List ... use (Tuple Int ... )
 var MultiviewDeviceRxMrdeviceIdSignal = (function () {
     function MultiviewDeviceRxMrdeviceIdSignal(value0) {
         this.value0 = value0;
@@ -119712,8 +119814,6 @@ var MultiviewDeviceRxMrdeviceIdSignal = (function () {
     };
     return MultiviewDeviceRxMrdeviceIdSignal;
 })();
-
-//  | for List ... use (Tuple Int ... )
 var MultiviewDeviceRxMrdeviceNameSignal = (function () {
     function MultiviewDeviceRxMrdeviceNameSignal(value0) {
         this.value0 = value0;
@@ -119723,8 +119823,6 @@ var MultiviewDeviceRxMrdeviceNameSignal = (function () {
     };
     return MultiviewDeviceRxMrdeviceNameSignal;
 })();
-
-//  | for List ... use (Tuple Int ... )
 var MultiviewDeviceRxMrsubscriptionsSignal = (function () {
     function MultiviewDeviceRxMrsubscriptionsSignal(value0) {
         this.value0 = value0;
@@ -119734,8 +119832,6 @@ var MultiviewDeviceRxMrsubscriptionsSignal = (function () {
     };
     return MultiviewDeviceRxMrsubscriptionsSignal;
 })();
-
-//  | for List ... use (Tuple Int ... )
 var MultiviewDeviceRxMrframeBufferSignal = (function () {
     function MultiviewDeviceRxMrframeBufferSignal(value0) {
         this.value0 = value0;
@@ -119745,8 +119841,6 @@ var MultiviewDeviceRxMrframeBufferSignal = (function () {
     };
     return MultiviewDeviceRxMrframeBufferSignal;
 })();
-
-//  | for List ... use (Tuple Int ... )
 var MultiviewDeviceRxMrhdmiMonitorSignal = (function () {
     function MultiviewDeviceRxMrhdmiMonitorSignal(value0) {
         this.value0 = value0;
@@ -119756,8 +119850,6 @@ var MultiviewDeviceRxMrhdmiMonitorSignal = (function () {
     };
     return MultiviewDeviceRxMrhdmiMonitorSignal;
 })();
-
-//  | for List ... use (Tuple Int ... )
 var MultiviewDeviceRxMrSingleselected = (function () {
     function MultiviewDeviceRxMrSingleselected(value0) {
         this.value0 = value0;
@@ -119767,8 +119859,6 @@ var MultiviewDeviceRxMrSingleselected = (function () {
     };
     return MultiviewDeviceRxMrSingleselected;
 })();
-
-//  | for List ... use (Tuple Int ... )
 var MultiviewDeviceRxMrHdcp = (function () {
     function MultiviewDeviceRxMrHdcp(value0) {
         this.value0 = value0;
@@ -119778,8 +119868,6 @@ var MultiviewDeviceRxMrHdcp = (function () {
     };
     return MultiviewDeviceRxMrHdcp;
 })();
-
-//  | for List ... use (Tuple Int ... )
 var MultiviewDeviceRxMrEdid = (function () {
     function MultiviewDeviceRxMrEdid(value0) {
         this.value0 = value0;
@@ -119789,8 +119877,6 @@ var MultiviewDeviceRxMrEdid = (function () {
     };
     return MultiviewDeviceRxMrEdid;
 })();
-
-//  | for List ... use (Tuple Int ... )
 var MultiviewDeviceRxMrGenlockscaledDropdown = (function () {
     function MultiviewDeviceRxMrGenlockscaledDropdown(value0) {
         this.value0 = value0;
@@ -119800,8 +119886,6 @@ var MultiviewDeviceRxMrGenlockscaledDropdown = (function () {
     };
     return MultiviewDeviceRxMrGenlockscaledDropdown;
 })();
-
-//  | for List ... use (Tuple Int ... )
 var MultiviewDeviceRxMrGenlockscaledSelect = (function () {
     function MultiviewDeviceRxMrGenlockscaledSelect(value0) {
         this.value0 = value0;
@@ -119811,8 +119895,6 @@ var MultiviewDeviceRxMrGenlockscaledSelect = (function () {
     };
     return MultiviewDeviceRxMrGenlockscaledSelect;
 })();
-
-//  | for List ... use (Tuple Int ... )
 var MultiviewDeviceRx5Sec = (function () {
     function MultiviewDeviceRx5Sec(value0) {
         this.value0 = value0;
@@ -120120,8 +120202,6 @@ var toolButton2off = function (icon) {
         };
     };
 };
-
-// toolButton2 :: String -> String -> Boolean -> _ -> R.ReactElement
 var toolButton2 = function (ison) {
     return function (icon) {
         return function (label) {
@@ -120143,13 +120223,9 @@ var toolButton2 = function (ison) {
         };
     };
 };
-
-// placeholder for the JS function (implement in PS or FFI)
 var toggleTool = function (name) {
     return ExploreCore.logii("Toggled: " + name)(Control_Applicative.pure(Effect.applicativeEffect))(Data_Unit.unit);
 };
-
-// helper for normal tool buttons
 var toolButton = function (icon) {
     return function (label) {
         return React_DOM.button([ React_DOM_Props.className("tool-button"), React_DOM_Props.onClick(function (v) {
@@ -120157,8 +120233,6 @@ var toolButton = function (icon) {
         }) ])([ React_DOM.div([ React_DOM_Props.className("icon-mask " + icon) ])([  ]), React_DOM.span([ React_DOM_Props.className("tool-label") ])([ React_DOM.text(label) ]) ]);
     };
 };
-
-// helper for active tool buttons
 var toolButtonActive = function (icon) {
     return function (label) {
         return React_DOM.button([ React_DOM_Props.className("tool-button is-active"), React_DOM_Props.onClick(function (v) {
@@ -120793,9 +120867,6 @@ var genlockscaledButtonOff = function (ison) {
         };
     };
 };
-
-//--------------------------------------------------
-// s@({ mrframe_buffer : (FrameBuffer { fbconfiguration : FrameBufferConfiguration { fbcmultiview_layout : Nothing } }) })
 var toolbox = function (ison) {
     return function (s) {
         return function (send) {
@@ -121816,6 +121887,7 @@ module.exports = {
 };
 
 },{"../Control.Comonad.Store.Trans/index.js":53,"../Control.Comonad.Store/index.js":54,"../Data.Argonaut.Decode.Class/index.js":85,"../Data.Eq.Generic/index.js":118,"../Data.Eq/index.js":120,"../Data.Functor/index.js":144,"../Data.Identity/index.js":152,"../Data.Lens.Prism.Either/index.js":178,"../Data.Lens.Record/index.js":181,"../Data.Lens.Setter/index.js":182,"../Data.List.Types/index.js":189,"../Data.Maybe/index.js":194,"../Data.Newtype/index.js":204,"../Data.Profunctor.Choice/index.js":216,"../Data.Profunctor.Strong/index.js":220,"../Data.Show.Generic/index.js":232,"../Data.Show/index.js":234,"../Data.Symbol/index.js":248,"../Data.Tuple/index.js":255,"../ExploreCore/index.js":287,"../Extra/index.js":289,"../Safe.Coerce/index.js":320,"../ShouldUpdate/index.js":321,"../Third.Widget/index.js":336,"../Unify.Types/index.js":340,"../VYNET.API.Multiview.Data.MvName/index.js":403,"../Widget.Unify.FromJsonrep/index.js":556}],410:[function(require,module,exports){
+// Generated by purs version 0.14.4
 "use strict";
 var Control_Applicative = require("../Control.Applicative/index.js");
 var Control_Bind = require("../Control.Bind/index.js");
@@ -122345,8 +122417,6 @@ var _rxsmultiview = (function () {
         return $606($607($608($609($610($611($612($613($614($615)))))))));
     };
 })();
-
-//   | Product 0 First 
 var _multiviewnames = (function () {
     var $616 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
     var $617 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
@@ -122361,8 +122431,6 @@ var _multiviewnames = (function () {
         return $616($617($618($619($620($621($622($623($624($625)))))))));
     };
 })();
-
-//   | Product 4
 var _multiviewlayoutui = (function () {
     var $626 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
     var $627 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
@@ -122374,8 +122442,6 @@ var _multiviewlayoutui = (function () {
         return $626($627($628($629($630($631($632))))));
     };
 })();
-
-//   | Product 2
 var _multiviewlayout = (function () {
     var $633 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
     var $634 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
@@ -122385,8 +122451,6 @@ var _multiviewlayout = (function () {
         return $633($634($635($636($637))));
     };
 })();
-
-//   | Product 7 Last
 var _devicestx2 = (function () {
     var $638 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2))))))));
     var $639 = Widget_Unify_UnifyCompItem["_compitem"](Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference);
@@ -122394,8 +122458,6 @@ var _devicestx2 = (function () {
         return $638($639($640));
     };
 })();
-
-//   | Product 6
 var _deviceactionpull = (function () {
     var $641 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
     var $642 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
@@ -122409,8 +122471,6 @@ var _deviceactionpull = (function () {
         return $641($642($643($644($645($646($647($648($649))))))));
     };
 })();
-
-//   | Product 1
 var _configmultiviewlayouts = (function () {
     var $650 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
     var $651 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)))))));
@@ -122419,8 +122479,6 @@ var _configmultiviewlayouts = (function () {
         return $650($651($652($653)));
     };
 })();
-
-//   | Product 3
 var _allmultiviewlayouts = (function () {
     var $654 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
     var $655 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
@@ -122431,8 +122489,6 @@ var _allmultiviewlayouts = (function () {
         return $654($655($656($657($658($659)))));
     };
 })();
-
-//   | Product 5
 var _actionpull = (function () {
     var $660 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
     var $661 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
@@ -123022,9 +123078,7 @@ var marshal2 = function (v) {
                                                         })(Data_Lens_Getter.viewOn(x)(VYNET_API_Multiview_Data_LayoutDescription["_ldwindows"](Data_Lens_Internal_Forget.strongForget))))(acc);
                                                     };
                                                 })(Data_Monoid.mempty(Data_List_Types.monoidList))(Data_Lens_Getter.viewOn(conf)(VYNET_API_Multiview_ConfigMultiviews["_configstoredmultiviews"](Data_Lens_Internal_Forget.strongForget)));
-                                                
-                                                // pipsrufaceactions = foldl (\acc x -> ((mapWithIndex (\i w -> (MvMultiviewCreateSurace (x ^. _ldname) i ((_sfop .~ "create") w))) (x ^. _ldsurfaces)) <> acc)) mempty (conf ^. _configstoredpips)
-var pipwindowactions = Data_Foldable.foldl(Data_List_Types.foldableList)(function (acc) {
+                                                var pipwindowactions = Data_Foldable.foldl(Data_List_Types.foldableList)(function (acc) {
                                                     return function (x) {
                                                         return Data_Semigroup.append(Data_List_Types.semigroupList)(Data_List.mapWithIndex(function (i) {
                                                             return function (w) {
@@ -123110,8 +123164,6 @@ var marshal3 = function (v) {
         return v1;
     };
 };
-
-//-------------------------------------------
 var routemultiviewfastswitchcommands2 = function (v) {
     return function (v1) {
         return function (v2) {
@@ -123302,20 +123354,16 @@ var routemultiviewfastswitchcommands2 = function (v) {
                                     return $932($933($934));
                                 };
                             })());
-                            var route0small2 = Data_List.concat(Data_Functor.map(Data_List_Types.functorList)(function (v4) {
-                                return new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.EnableStreamCommand(x, 0), new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetFastSwitch(v4.value0.value0), new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.JoinRxTxStreamCommand(v4.value0.value0, x, 0, 0), Data_List_Types.Nil.value)));
-                            })(txstreamingsubs1nomulti));
-                            var route0small = Data_List.concat(Data_Functor.map(Data_List_Types.functorList)(function (v4) {
-                                return new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.EnableStreamCommand(x, 0), new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetFastSwitch(v4.value0), new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.JoinRxTxStreamCommand(v4.value0, x, 0, 0), Data_List_Types.Nil.value)));
-                            })(txstreamingsubs0));
-                            var route0big = Data_List.concat(Data_Functor.map(Data_List_Types.functorList)(function (v4) {
-                                return new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.StopStreamCommand(x, 0), new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetFastSwitch(v4.value0), new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.JoinRxTxStreamCommand(v4.value0, x, 1, 0), Data_List_Types.Nil.value)));
-                            })(txstreamingsubs0));
-                            
-                            // route 
-                            // (Tuple (Tuple (x:_) _) true) ->                    ((StopStreamCommand x 0):(SetFastSwitch (r ^. _rdevice_id) ):(JoinRxTxStreamCommand (r ^. _rdevice_id) (tx ^. _tdevice_id) 1 0):Nil)
-                            //             (Tuple (Tuple (x:_) _) false) ->                   ((EnableStreamCommand (tx ^. _tdevice_id) 0):(SetFastSwitch (r ^. _rdevice_id) ):(JoinRxTxStreamCommand (r ^. _rdevice_id) (tx ^. _tdevice_id) 0 0):Nil) 
-var leavenopreview = Data_Functor.map(Data_List_Types.functorList)(function (x1) {
+                            var route0small2 = new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.EnableStreamCommand(x, 0), Data_List.concat(Data_Functor.map(Data_List_Types.functorList)(function (v4) {
+                                return new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetFastSwitch(v4.value0.value0), new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.JoinRxTxStreamCommand(v4.value0.value0, x, 0, 0), Data_List_Types.Nil.value));
+                            })(txstreamingsubs1nomulti)));
+                            var route0small = new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.EnableStreamCommand(x, 0), Data_List.concat(Data_Functor.map(Data_List_Types.functorList)(function (v4) {
+                                return new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetFastSwitch(v4.value0), new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.JoinRxTxStreamCommand(v4.value0, x, 0, 0), Data_List_Types.Nil.value));
+                            })(txstreamingsubs0)));
+                            var route0big = new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.StopStreamCommand(x, 0), Data_List.concat(Data_Functor.map(Data_List_Types.functorList)(function (v4) {
+                                return new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetFastSwitch(v4.value0), new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.JoinRxTxStreamCommand(v4.value0, x, 1, 0), Data_List_Types.Nil.value));
+                            })(txstreamingsubs0)));
+                            var leavenopreview = Data_Functor.map(Data_List_Types.functorList)(function (x1) {
                                 return Data_Lens_Getter.viewOn(x1)((function () {
                                     var $935 = Data_Lens_Lens_Tuple["_1"](Data_Lens_Internal_Forget.strongForget);
                                     var $936 = Data_Lens_Lens_Tuple["_2"](Data_Lens_Internal_Forget.strongForget);
@@ -123472,12 +123520,8 @@ var marshal5 = function (v) {
                                                                     return Data_Ord.compare(Data_Ord.ordInt)(Data_Lens_Getter.viewOn(a)(VYNET_API_Device_Data_LayoutSubscription["_lssubscription_index"](Data_Lens_Internal_Forget.strongForget)))(Data_Lens_Getter.viewOn(b)(VYNET_API_Device_Data_LayoutSubscription["_lssubscription_index"](Data_Lens_Internal_Forget.strongForget)));
                                                                 };
                                                             })(sxs));
-                                                            
-                                                            // gtfcmds = (SetFrameRateConverterNative (tx ^. _tdevice_id) 1):(concat (map (routemultiviewfastswitchcommands (take 1 rxs) w tx did) (filter ( \ r -> r ^. _rdevice_id /= "wwwwwwwwwwww") rxs)))
-var gtfcmds = new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetFrameRateConverterNative(Data_Lens_Getter.viewOn(v4.value1.value0)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)), 1), result.value0);
-                                                            
-                                                            // leavecommands = map ( \ v -> Tuple (v ^. _rdevice_id) (v ^.. _rsubscriptions <<< traversed ) ) otherrxs --  ^.. traversed <<< _rsubscriptions
-var enablecommands = Data_Foldable.foldl(Data_List_Types.foldableList)(function (acc) {
+                                                            var gtfcmds = new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetFrameRateConverterNative(Data_Lens_Getter.viewOn(v4.value1.value0)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)), 1), result.value0);
+                                                            var enablecommands = Data_Foldable.foldl(Data_List_Types.foldableList)(function (acc) {
                                                                 return function (w1) {
                                                                     return new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.EnableStreamCommand(Data_Maybe.fromMaybe("NA")(Data_Lens_Fold.previewOn(w1)((function () {
                                                                         var $960 = VYNET_API_Multiview_Data_Window["_wnsubid"](Data_Lens_Internal_Forget.strongForget);
@@ -125708,7 +125752,7 @@ var newtypeComponentPreviewCo = {
 var shouldUpdateComponentPrev = {
     shouldupdate: function (a) {
         return function (b) {
-            return ShouldUpdate.shouldupdate(ShouldUpdate.shouldUpdateStore(Data_Eq.eqRec()(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowNil)()({
+            return ShouldUpdate.shouldupdate(ShouldUpdate.shouldUpdateStore(Data_Eq.eqRec()(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowNil)()({
                 reflectSymbol: function () {
                     return "windowsrr";
                 }
@@ -125724,7 +125768,11 @@ var shouldUpdateComponentPrev = {
                 reflectSymbol: function () {
                     return "pcconfig";
                 }
-            })(VYNET_API_PreviewMultiview_Data_PreviewConfigValues.eqPreviewConfigValues))))(Data_Newtype.unwrap()(a))(Data_Newtype.unwrap()(b));
+            })(VYNET_API_PreviewMultiview_Data_PreviewConfigValues.eqPreviewConfigValues))()({
+                reflectSymbol: function () {
+                    return "hdrtxs";
+                }
+            })(Data_List_Types.eqList(Data_Eq.eqString)))))(Data_Newtype.unwrap()(a))(Data_Newtype.unwrap()(b));
         };
     }
 };
@@ -125736,7 +125784,7 @@ var genericPreviewConfigSigna = {
         if (x instanceof Data_Generic_Rep.Inr) {
             return new PreviewConfig5SecSignal(x.value0);
         };
-        throw new Error("Failed pattern match at VYNET.API.PreviewMultiview.PreviewConfig (line 29, column 1 - line 29, column 46): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at VYNET.API.PreviewMultiview.PreviewConfig (line 30, column 1 - line 30, column 46): " + [ x.constructor.name ]);
     },
     from: function (x) {
         if (x instanceof PreviewConfigPcconfigSignal) {
@@ -125745,7 +125793,7 @@ var genericPreviewConfigSigna = {
         if (x instanceof PreviewConfig5SecSignal) {
             return new Data_Generic_Rep.Inr(x.value0);
         };
-        throw new Error("Failed pattern match at VYNET.API.PreviewMultiview.PreviewConfig (line 29, column 1 - line 29, column 46): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at VYNET.API.PreviewMultiview.PreviewConfig (line 30, column 1 - line 30, column 46): " + [ x.constructor.name ]);
     }
 };
 var showPreviewConfigSignal = {
@@ -125788,11 +125836,14 @@ var def_ComponentPreviewConfig = function (dictDef) {
     return function (dictDef1) {
         return function (dictDef2) {
             return function (dictDef3) {
-                return {
-                    pcconfig: Unify_Types.def(dictDef),
-                    windowsin: Unify_Types.def(dictDef1),
-                    windowsout: Unify_Types.def(dictDef2),
-                    windowsrr: Unify_Types.def(dictDef3)
+                return function (dictDef4) {
+                    return {
+                        pcconfig: Unify_Types.def(dictDef),
+                        windowsin: Unify_Types.def(dictDef1),
+                        windowsout: Unify_Types.def(dictDef2),
+                        windowsrr: Unify_Types.def(dictDef3),
+                        hdrtxs: Unify_Types.def(dictDef4)
+                    };
                 };
             };
         };
@@ -125832,10 +125883,10 @@ var display = function (s) {
 var renderPreviewConfig$prime = function (d) {
     return Safe_Coerce.coerce()(Control_Comonad_Store.store(display)(d));
 };
-var renderPreviewConfig = renderPreviewConfig$prime(def_ComponentPreviewConfig(VYNET_API_PreviewMultiview_Data_PreviewConfigValues.defPreviewConfigValues)(Unify_Types.defList)(Unify_Types.defList)(Unify_Types.defList));
+var renderPreviewConfig = renderPreviewConfig$prime(def_ComponentPreviewConfig(VYNET_API_PreviewMultiview_Data_PreviewConfigValues.defPreviewConfigValues)(Unify_Types.defList)(Unify_Types.defList)(Unify_Types.defList)(Unify_Types.defList));
 var fromJsoncompPreviewConfig = {
     fromjsoncomp: function (j) {
-        return Widget_Unify_FromJsonrep.mkfromjsoncomp(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(VYNET_API_PreviewMultiview_Data_PreviewConfigValues.decodeJsonPreviewConfigVa))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
+        return Widget_Unify_FromJsonrep.mkfromjsoncomp(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(VYNET_API_PreviewMultiview_Data_PreviewConfigValues.decodeJsonPreviewConfigVa))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
             reflectSymbol: function () {
                 return "windowsrr";
             }
@@ -125851,15 +125902,24 @@ var fromJsoncompPreviewConfig = {
             reflectSymbol: function () {
                 return "pcconfig";
             }
+        })()())({
+            reflectSymbol: function () {
+                return "hdrtxs";
+            }
         })()())())(Data_Lens_Setter.over((function () {
-            var $34 = Data_Lens_Prism_Either["_Right"](Data_Profunctor_Choice.choiceFn);
-            var $35 = Unify_Types["_body"](Data_Profunctor_Strong.strongFn);
-            return function ($36) {
-                return $34($35($36));
+            var $35 = Data_Lens_Prism_Either["_Right"](Data_Profunctor_Choice.choiceFn);
+            var $36 = Unify_Types["_body"](Data_Profunctor_Strong.strongFn);
+            return function ($37) {
+                return $35($36($37));
             };
         })())(Unify_Types.addPrefixToAllFieldsNames("pc"))(j))(renderPreviewConfig$prime);
     }
 };
+var _hdrtxs = Data_Lens_Record.prop({
+    reflectSymbol: function () {
+        return "hdrtxs";
+    }
+})()()(Data_Symbol.SProxy.value);
 var _CoPreviewConfigB = function (fb) {
     return function (b) {
         return function (w) {
@@ -125874,7 +125934,7 @@ var _CoPreviewConfig = function (v) {
 };
 var fromJsonrepComponentPrevi = {
     fromjsonrep: function (j) {
-        return _CoPreviewConfig(Widget_Unify_FromJsonrep.fromjsonrep(Widget_Unify_FromJsonrep.fromJsonrepStore(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(VYNET_API_PreviewMultiview_Data_PreviewConfigValues.decodeJsonPreviewConfigVa))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
+        return _CoPreviewConfig(Widget_Unify_FromJsonrep.fromjsonrep(Widget_Unify_FromJsonrep.fromJsonrepStore(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(VYNET_API_PreviewMultiview_Data_PreviewConfigValues.decodeJsonPreviewConfigVa))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
             reflectSymbol: function () {
                 return "windowsrr";
             }
@@ -125890,11 +125950,15 @@ var fromJsonrepComponentPrevi = {
             reflectSymbol: function () {
                 return "pcconfig";
             }
+        })()())({
+            reflectSymbol: function () {
+                return "hdrtxs";
+            }
         })()())()))(Data_Lens_Setter.over((function () {
-            var $37 = Data_Lens_Prism_Either["_Right"](Data_Profunctor_Choice.choiceFn);
-            var $38 = Unify_Types["_body"](Data_Profunctor_Strong.strongFn);
-            return function ($39) {
-                return $37($38($39));
+            var $38 = Data_Lens_Prism_Either["_Right"](Data_Profunctor_Choice.choiceFn);
+            var $39 = Unify_Types["_body"](Data_Profunctor_Strong.strongFn);
+            return function ($40) {
+                return $38($39($40));
             };
         })())(Unify_Types.addPrefixToAllFieldsNames("pc"))(j)));
     }
@@ -125909,6 +125973,7 @@ module.exports = {
     "_windowsin": _windowsin,
     "_windowsout": _windowsout,
     "_windowsrr": _windowsrr,
+    "_hdrtxs": _hdrtxs,
     def_ComponentPreviewConfig: def_ComponentPreviewConfig,
     "renderPreviewConfig'": renderPreviewConfig$prime,
     display: display,
@@ -125956,11 +126021,9 @@ var Data_Lens_Prism_Maybe = require("../Data.Lens.Prism.Maybe/index.js");
 var Data_Lens_Setter = require("../Data.Lens.Setter/index.js");
 var Data_Lens_Traversal = require("../Data.Lens.Traversal/index.js");
 var Data_List = require("../Data.List/index.js");
-var Data_List_NonEmpty = require("../Data.List.NonEmpty/index.js");
 var Data_List_Types = require("../Data.List.Types/index.js");
 var Data_Maybe = require("../Data.Maybe/index.js");
 var Data_Maybe_First = require("../Data.Maybe.First/index.js");
-var Data_Monoid = require("../Data.Monoid/index.js");
 var Data_Monoid_Endo = require("../Data.Monoid.Endo/index.js");
 var Data_Newtype = require("../Data.Newtype/index.js");
 var Data_Ord = require("../Data.Ord/index.js");
@@ -125981,25 +126044,15 @@ var ShouldUpdate = require("../ShouldUpdate/index.js");
 var Third_ComponentList = require("../Third.ComponentList/index.js");
 var Third_RefState = require("../Third.RefState/index.js");
 var Third_Reference = require("../Third.Reference/index.js");
-var Third_TransList_Uselist = require("../Third.TransList.Uselist/index.js");
 var Unify_Types = require("../Unify.Types/index.js");
-var VYNET_API_Control_ActionStack = require("../VYNET.API.Control.ActionStack/index.js");
 var VYNET_API_Control_DeviceActions = require("../VYNET.API.Control.DeviceActions/index.js");
-var VYNET_API_Device_Command_Data_DeviceAction = require("../VYNET.API.Device.Command.Data.DeviceAction/index.js");
-var VYNET_API_Device_Command_GeneralDeviceCommand = require("../VYNET.API.Device.Command.GeneralDeviceCommand/index.js");
 var VYNET_API_Device_Command_Request_GetRequest = require("../VYNET.API.Device.Command.Request.GetRequest/index.js");
 var VYNET_API_Device_Command_RequestDevicesCommand = require("../VYNET.API.Device.Command.RequestDevicesCommand/index.js");
-var VYNET_API_Device_Data_FrameBuffer = require("../VYNET.API.Device.Data.FrameBuffer/index.js");
-var VYNET_API_Device_Data_FrameBufferConfiguration = require("../VYNET.API.Device.Data.FrameBufferConfiguration/index.js");
-var VYNET_API_Device_Data_LayoutSubscription = require("../VYNET.API.Device.Data.LayoutSubscription/index.js");
 var VYNET_API_Device_Data_Scaler = require("../VYNET.API.Device.Data.Scaler/index.js");
 var VYNET_API_Device_Data_ScalerConfiguration = require("../VYNET.API.Device.Data.ScalerConfiguration/index.js");
-var VYNET_API_Device_Data_Stream = require("../VYNET.API.Device.Data.Stream/index.js");
 var VYNET_API_Device_Data_Subscription = require("../VYNET.API.Device.Data.Subscription/index.js");
 var VYNET_API_Device_Data_SubscriptionSource = require("../VYNET.API.Device.Data.SubscriptionSource/index.js");
 var VYNET_API_Device_Data_SubscriptionStatus = require("../VYNET.API.Device.Data.SubscriptionStatus/index.js");
-var VYNET_API_Device_Data_TheStreamConfiguration = require("../VYNET.API.Device.Data.TheStreamConfiguration/index.js");
-var VYNET_API_Device_Data_Video = require("../VYNET.API.Device.Data.Video/index.js");
 var VYNET_API_Device_DeviceRx = require("../VYNET.API.Device.DeviceRx/index.js");
 var VYNET_API_Device_DeviceTx = require("../VYNET.API.Device.DeviceTx/index.js");
 var VYNET_API_Multiview_Data_Window = require("../VYNET.API.Multiview.Data.Window/index.js");
@@ -126246,6 +126299,21 @@ var mktxscaler = function (d) {
     };
     return mktxscaler2(d.tscaler);
 };
+var marshal3 = function (v) {
+    return function (v1) {
+        return v1;
+    };
+};
+var marshal2 = function (v) {
+    return function (v1) {
+        return v1;
+    };
+};
+var marshal1 = function (v) {
+    return function (v1) {
+        return v1;
+    };
+};
 var makepreviewlayout22 = function (v) {
     return function (scalers) {
         var go = function ($copy_v1) {
@@ -126364,30 +126432,20 @@ var makeline = function (win) {
         };
     };
 };
-var makefair = function (wrr) {
-    return function (wout) {
-        var notinwrr = Data_List.filter(function (x) {
-            return !Data_Foldable.elem(Data_List_Types.foldableList)(Data_Eq.eqString)(x)(wrr);
-        })(wout);
-        return Data_Semigroup.append(Data_List_Types.semigroupList)(notinwrr)(Data_List.reverse(Data_List.filter(function (x) {
-            return Data_Foldable.elem(Data_List_Types.foldableList)(Data_Eq.eqString)(x)(wout);
-        })(wrr)));
-    };
-};
 var makeEven = function (n) {
-    var $123 = Data_EuclideanRing.mod(Data_EuclideanRing.euclideanRingInt)(n)(2) === 0;
-    if ($123) {
+    var $112 = Data_EuclideanRing.mod(Data_EuclideanRing.euclideanRingInt)(n)(2) === 0;
+    if ($112) {
         return n;
     };
     return n - 1 | 0;
 };
 var mapMakeEven = function (v) {
     return new Data_Tuple.Tuple(Data_Functor.map(Data_List_Types.functorList)(Data_Lens_Setter.over((function () {
-        var $249 = Data_Lens_Lens_Tuple["_2"](Data_Profunctor_Strong.strongFn);
-        var $250 = VYNET_API_Device_Data_Scaler["_sclconfiguration"](Data_Profunctor_Strong.strongFn);
-        var $251 = VYNET_API_Device_Data_ScalerConfiguration["_sclcwidth"](Data_Profunctor_Strong.strongFn);
-        return function ($252) {
-            return $249($250($251($252)));
+        var $163 = Data_Lens_Lens_Tuple["_2"](Data_Profunctor_Strong.strongFn);
+        var $164 = VYNET_API_Device_Data_Scaler["_sclconfiguration"](Data_Profunctor_Strong.strongFn);
+        var $165 = VYNET_API_Device_Data_ScalerConfiguration["_sclcwidth"](Data_Profunctor_Strong.strongFn);
+        return function ($166) {
+            return $163($164($165($166)));
         };
     })())(makeEven))(v.value0), Data_Functor.map(Data_List_Types.functorList)(function (w) {
         var hp = Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnhorizontal_position"](Data_Lens_Internal_Forget.strongForget));
@@ -126397,8 +126455,8 @@ var mapMakeEven = function (v) {
         };
         if (!v1) {
             return Data_Lens_Setter.over(VYNET_API_Multiview_Data_Window["_wnwidth"](Data_Profunctor_Strong.strongFn))(function (x) {
-                var $126 = x === 0;
-                if ($126) {
+                var $115 = x === 0;
+                if ($115) {
                     return 0;
                 };
                 return makeEven(x - 1 | 0);
@@ -126418,19 +126476,19 @@ var getprevrxsubs = function (v) {
     if (v instanceof Data_List_Types.Cons) {
         return Data_List.sort(Data_Maybe.ordMaybe(Data_Ord.ordString))(Data_Functor.map(Data_List_Types.functorList)(function (x) {
             return Data_Lens_Fold.previewOn(x)((function () {
-                var $253 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                var $254 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                var $255 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                var $256 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
-                return function ($257) {
-                    return $253($254($255($256($257))));
+                var $167 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                var $168 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                var $169 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                var $170 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
+                return function ($171) {
+                    return $167($168($169($170($171))));
                 };
             })());
         })(Data_Lens_Fold.toListOfOn(v.value0)((function () {
-            var $258 = VYNET_API_Device_DeviceRx["_rsubscriptions"](Data_Lens_Internal_Forget.strongForget);
-            var $259 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
-            return function ($260) {
-                return $258($259($260));
+            var $172 = VYNET_API_Device_DeviceRx["_rsubscriptions"](Data_Lens_Internal_Forget.strongForget);
+            var $173 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
+            return function ($174) {
+                return $172($173($174));
             };
         })())));
     };
@@ -126462,8 +126520,8 @@ var flipwindow1 = function (xs) {
         return xs;
     };
     if (v instanceof Data_Maybe.Just) {
-        var $136 = Data_Lens_Getter.viewOn(v.value0)(VYNET_API_Multiview_Data_Window["_wnindex"](Data_Lens_Internal_Forget.strongForget)) === 0;
-        if ($136) {
+        var $125 = Data_Lens_Getter.viewOn(v.value0)(VYNET_API_Multiview_Data_Window["_wnindex"](Data_Lens_Internal_Forget.strongForget)) === 0;
+        if ($125) {
             return xs;
         };
         var v1 = Data_Foldable.find(Data_List_Types.foldableList)(function (w) {
@@ -126478,12 +126536,12 @@ var flipwindow1 = function (xs) {
             var bigSurf = Data_Lens_Getter.viewOn(v.value0)(VYNET_API_Multiview_Data_Window["_wntarget_surface"](Data_Lens_Internal_Forget.strongForget));
             var bigIdx = Data_Lens_Getter.viewOn(v.value0)(VYNET_API_Multiview_Data_Window["_wnindex"](Data_Lens_Internal_Forget.strongForget));
             return Data_Functor.map(Data_List_Types.functorList)(function (w) {
-                var $138 = Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnindex"](Data_Lens_Internal_Forget.strongForget)) === bigIdx;
-                if ($138) {
+                var $127 = Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnindex"](Data_Lens_Internal_Forget.strongForget)) === bigIdx;
+                if ($127) {
                     return Data_Lens_Setter.set(VYNET_API_Multiview_Data_Window["_wnindex"](Data_Profunctor_Strong.strongFn))(zeroIdx)(Data_Lens_Setter.set(VYNET_API_Multiview_Data_Window["_wntarget_surface"](Data_Profunctor_Strong.strongFn))(zeroSurf)(w));
                 };
-                var $139 = Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnindex"](Data_Lens_Internal_Forget.strongForget)) === 0;
-                if ($139) {
+                var $128 = Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnindex"](Data_Lens_Internal_Forget.strongForget)) === 0;
+                if ($128) {
                     return Data_Lens_Setter.set(VYNET_API_Multiview_Data_Window["_wnindex"](Data_Profunctor_Strong.strongFn))(bigIdx)(Data_Lens_Setter.set(VYNET_API_Multiview_Data_Window["_wntarget_surface"](Data_Profunctor_Strong.strongFn))(bigSurf)(w));
                 };
                 return w;
@@ -126494,11 +126552,11 @@ var flipwindow1 = function (xs) {
     throw new Error("Failed pattern match at VYNET.API.PreviewMultiview.PreviewMultiviewPanel (line 558, column 3 - line 577, column 19): " + [ v.constructor.name ]);
 };
 var makepreviewlayout2 = function (a) {
-    var $261 = makepreviewlayout22(a);
-    return function ($262) {
+    var $175 = makepreviewlayout22(a);
+    return function ($176) {
         return (function (v) {
             return new Data_Tuple.Tuple(flipwindow1(v.value0), v.value1);
-        })($261($262));
+        })($175($176));
     };
 };
 var findNonOverlappingPosition = function (resWidth) {
@@ -126530,8 +126588,8 @@ var findNonOverlappingPosition = function (resWidth) {
                                         width: width,
                                         height: height
                                     };
-                                    var $147 = Data_Foldable.any(Data_List_Types.foldableList)(Data_HeytingAlgebra.heytingAlgebraBoolean)(intersects(rect))(occupiedRects);
-                                    if ($147) {
+                                    var $136 = Data_Foldable.any(Data_List_Types.foldableList)(Data_HeytingAlgebra.heytingAlgebraBoolean)(intersects(rect))(occupiedRects);
+                                    if ($136) {
                                         $tco_var_x = x;
                                         $copy_y = y + 10 | 0;
                                         return;
@@ -126547,8 +126605,8 @@ var findNonOverlappingPosition = function (resWidth) {
                             return $tco_result;
                         };
                     };
-                    var $148 = maxX < 0 || maxY < 0;
-                    if ($148) {
+                    var $137 = maxX < 0 || maxY < 0;
+                    if ($137) {
                         return Data_Maybe.Nothing.value;
                     };
                     return tryPosition(0)(0);
@@ -126558,55 +126616,48 @@ var findNonOverlappingPosition = function (resWidth) {
     };
 };
 var datarenderPreviewMultiviewPanel = Safe_Coerce.coerce()(Widget_Unify_UnifyComp.combineproduct5t(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)(VYNET_API_Control_DeviceActions.comonadComponentDeviceAct)(VYNET_API_Control_DeviceActions.shouldUpdateComponentDevi)("PreviewMultiviewRxSignal")(PreviewMultiviewRxSignal.create)(Third_Reference.reference(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_PreviewMultiview_Command_PreviewRxCommand.eqPreviewRxCommand)(VYNET_API_PreviewMultiview_Command_PreviewRxCommand.showPreviewRxCommand)(VYNET_API_PreviewMultiview_Command_PreviewRxCommand.hasAffectPreviewRxCommand)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx.fromJsonrepComponentDevic)("renderDeviceRx")(Unify_Types.def(Third_RefState.defRefState))(VYNET_API_Device_DeviceRx.renderDeviceRx))("PreviewRxDevicesSignal")(PreviewRxDevicesSignal.create)(Third_Reference.reference(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))(VYNET_API_Device_Command_RequestDevicesCommand.eqRequestDevicesCommand)(VYNET_API_Device_Command_RequestDevicesCommand.showRequestDevicesCommand)(VYNET_API_Device_Command_RequestDevicesCommand.hasAffectRequestDevicesCo)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Widget_Unify_UnifyCompList.comonadStoreComponentsLis)(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent1(VYNET_API_Device_DeviceRx.fromJsoncompDeviceRxSigna)(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)))("listx renderDeviceRx")(Unify_Types.def(Third_RefState.defRefState))(Third_ComponentList.listx(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.renderDeviceRx)))("PreviewTxDevicesSignal")(PreviewTxDevicesSignal.create)(Third_Reference.reference(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))(VYNET_API_Device_Command_RequestDevicesCommand.eqRequestDevicesCommand)(VYNET_API_Device_Command_RequestDevicesCommand.showRequestDevicesCommand)(VYNET_API_Device_Command_RequestDevicesCommand.hasAffectRequestDevicesCo)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Widget_Unify_UnifyCompList.comonadStoreComponentsLis)(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent1(VYNET_API_Device_DeviceTx.fromJsoncompDeviceTxSigna)(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)))("listx renderDeviceTx")(Unify_Types.def(Third_RefState.defRefState))(Third_ComponentList.listx(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.renderDeviceTx)))("PreviewConfigSignal")(PreviewConfigSignal.create)(Third_Reference.reference(VYNET_API_PreviewMultiview_PreviewConfig.shouldUpdateComponentPrev)(VYNET_API_PreviewMultiview_Command_PreviewConfigCommand.eqPreviewConfigCommand)(VYNET_API_PreviewMultiview_Command_PreviewConfigCommand.showPreviewConfigCommand)(VYNET_API_PreviewMultiview_Command_PreviewConfigCommand.hasAffectPreviewConfigCom)(VYNET_API_PreviewMultiview_PreviewConfig.comonadComponentPreviewCo)(VYNET_API_PreviewMultiview_PreviewConfig.fromJsonrepComponentPrevi)("renderPreviewConfig")(Unify_Types.def(Third_RefState.defRefState))(VYNET_API_PreviewMultiview_PreviewConfig.renderPreviewConfig))("PreviewPullSignal")(PreviewPullSignal.create)(VYNET_API_Control_DeviceActions.renderDeviceActions));
-var appendin = function (ws) {
-    return function (xs) {
-        return Data_Semigroup.append(Data_List_Types.semigroupList)(ws)(Data_List.filter(function (x) {
-            return !Data_Foldable.elem(Data_List_Types.foldableList)(Data_Eq.eqString)(x)(ws);
-        })(xs));
-    };
-};
 var _previewtxdevices = (function () {
-    var $263 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $264 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $265 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2));
-    var $266 = Widget_Unify_UnifyCompItem["_compitem"](Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference);
-    return function ($267) {
-        return $263($264($265($266($267))));
+    var $177 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $178 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $179 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2));
+    var $180 = Widget_Unify_UnifyCompItem["_compitem"](Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference);
+    return function ($181) {
+        return $177($178($179($180($181))));
     };
 })();
 var _previewrxdevices = (function () {
-    var $268 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $269 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)));
-    var $270 = Widget_Unify_UnifyCompItem["_compitem"](Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference);
-    return function ($271) {
-        return $268($269($270($271)));
+    var $182 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $183 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)));
+    var $184 = Widget_Unify_UnifyCompItem["_compitem"](Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference);
+    return function ($185) {
+        return $182($183($184($185)));
     };
 })();
 var _previewpull = (function () {
-    var $272 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $273 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $274 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $275 = ExploreCore.liftRight(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $276 = Widget_Unify_UnifyCompItem["_compitem"](VYNET_API_Control_DeviceActions.comonadComponentDeviceAct)(VYNET_API_Control_DeviceActions.shouldUpdateComponentDevi);
-    return function ($277) {
-        return $272($273($274($275($276($277)))));
+    var $186 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $187 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $188 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $189 = ExploreCore.liftRight(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $190 = Widget_Unify_UnifyCompItem["_compitem"](VYNET_API_Control_DeviceActions.comonadComponentDeviceAct)(VYNET_API_Control_DeviceActions.shouldUpdateComponentDevi);
+    return function ($191) {
+        return $186($187($188($189($190($191)))));
     };
 })();
 var _previewmultiviewrx = (function () {
-    var $278 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2))));
-    var $279 = Widget_Unify_UnifyCompItem["_compitem"](Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference);
-    return function ($280) {
-        return $278($279($280));
+    var $192 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2))));
+    var $193 = Widget_Unify_UnifyCompItem["_compitem"](Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference);
+    return function ($194) {
+        return $192($193($194));
     };
 })();
 var _previewconfig = (function () {
-    var $281 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $282 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $283 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $284 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $285 = Widget_Unify_UnifyCompItem["_compitem"](Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference);
-    return function ($286) {
-        return $281($282($283($284($285($286)))));
+    var $195 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $196 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $197 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $198 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $199 = Widget_Unify_UnifyCompItem["_compitem"](Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference);
+    return function ($200) {
+        return $195($196($197($198($199($200)))));
     };
 })();
 var verifyPreviewMultiviewPanel = Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(Data_Functor_Day.extendDay(Widget_Unify_UnifyCompItem.extendStoreComponent2)(Data_Functor_Day.extendDay(Widget_Unify_UnifyCompItem.extendStoreComponent2)(Data_Functor_Day.extendDay(Widget_Unify_UnifyCompItem.extendStoreComponent2)(Data_Functor_Day.extendDay(Widget_Unify_UnifyCompItem.extendStoreComponent2)(Widget_Unify_UnifyCompItem.extendStoreComponent2))))))(_previewmultiviewrx(Control_Applicative.pure(ExploreCore.applicativeCo(Third_Reference.comonadReference))(Data_Unit.unit)))(function () {
@@ -126650,490 +126701,8 @@ var marshal0 = function (v) {
         return v1;
     };
 };
-var runpreviewupdate = function (v) {
-    if (v) {
-        return Control_Bind.bind(ExploreCore.bindCo(extendComponentPreviewMul))(_CoPreviewMultiviewPanel(_previewtxdevices(Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_RequestDevicesCommand.eqRequestDevicesCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_RequestDevicesCommand.RequestDevicesCommand({
-            rdrcmd: VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesTx2PreviewRRTrue.value,
-            idcmd: Unify_Types.def(VYNET_API_Device_Command_Request_GetRequest.defGetRequest)
-        }))))))))(function () {
-            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-        });
-    };
-    if (!v) {
-        return Control_Bind.bind(ExploreCore.bindCo(extendComponentPreviewMul))(_CoPreviewMultiviewPanel(_previewtxdevices(Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_RequestDevicesCommand.eqRequestDevicesCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_RequestDevicesCommand.RequestDevicesCommand({
-            rdrcmd: VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesTx2PreviewRRFalse.value,
-            idcmd: Unify_Types.def(VYNET_API_Device_Command_Request_GetRequest.defGetRequest)
-        }))))))))(function () {
-            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-        });
-    };
-    throw new Error("Failed pattern match at VYNET.API.PreviewMultiview.PreviewMultiviewPanel (line 180, column 1 - line 180, column 72): " + [ v.constructor.name ]);
-};
-var marshal3 = function (v) {
-    return function (v1) {
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof PreviewMultiviewRxSignal && v.value0.value0 instanceof Third_Reference.ReferSignal)) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentPreviewMul))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentPreviewMul))((function () {
-                if (v.value0.value0.value0 instanceof Third_RefState.RefPreAck && v.value0.value0.value0.value0.value0.prxcmd instanceof VYNET_API_PreviewMultiview_Command_PreviewRxCommand.GetPreviewRx) {
-                    return runpreviewupdate(false);
-                };
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-            })())(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-            }))(v1);
-        };
-        return v1;
-    };
-};
-var runpreviewupdate1 = function (v) {
-    if (v) {
-        return Control_Bind.bind(ExploreCore.bindCo(extendComponentPreviewMul))(_CoPreviewMultiviewPanel(_previewrxdevices(Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_RequestDevicesCommand.eqRequestDevicesCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_RequestDevicesCommand.RequestDevicesCommand({
-            rdrcmd: VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesRx2PreviewRRTrue.value,
-            idcmd: Unify_Types.def(VYNET_API_Device_Command_Request_GetRequest.defGetRequest)
-        }))))))))(function () {
-            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-        });
-    };
-    if (!v) {
-        return Control_Bind.bind(ExploreCore.bindCo(extendComponentPreviewMul))(_CoPreviewMultiviewPanel(_previewrxdevices(Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_RequestDevicesCommand.eqRequestDevicesCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_RequestDevicesCommand.RequestDevicesCommand({
-            rdrcmd: VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesRx2PreviewRRFalse.value,
-            idcmd: Unify_Types.def(VYNET_API_Device_Command_Request_GetRequest.defGetRequest)
-        }))))))))(function () {
-            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-        });
-    };
-    throw new Error("Failed pattern match at VYNET.API.PreviewMultiview.PreviewMultiviewPanel (line 188, column 1 - line 188, column 73): " + [ v.constructor.name ]);
-};
-var marshal2 = function (v) {
-    return function (v1) {
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof PreviewTxDevicesSignal && v.value0.value0 instanceof Third_Reference.ReferSignal)) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentPreviewMul))(Control_Bind.bind(ExploreCore.bindCo(extendComponentPreviewMul))((function () {
-                if (v.value0.value0.value0 instanceof Third_RefState.RefPreAck && v.value0.value0.value0.value0.value0.rdrcmd instanceof VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesTx2) {
-                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentPreviewMul))(_CoPreviewMultiviewPanel(_previewrxdevices(Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))(Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Bind.bind(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (d) {
-                        return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Getter.viewOn(d)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget)));
-                    }))))))))(function (rxs) {
-                        return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentPreviewMul))((function () {
-                            var v3 = Data_List.take(1)(rxs);
-                            if (v3 instanceof Data_List_Types.Cons && v3.value1 instanceof Data_List_Types.Nil) {
-                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentPreviewMul))(_CoPreviewMultiviewPanel(_previewmultiviewrx(Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_PreviewMultiview_Command_PreviewRxCommand.eqPreviewRxCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_PreviewMultiview_Command_PreviewRxCommand.PreviewRxCommand({
-                                    prxcmd: VYNET_API_PreviewMultiview_Command_PreviewRxCommand.GetPreviewRx.value,
-                                    prxdid: v3.value0,
-                                    prxsub: Data_Monoid.mempty(Data_List_Types.monoidList)
-                                }))))))))(function () {
-                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-                                });
-                            };
-                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-                        })())(function () {
-                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-                        });
-                    });
-                };
-                if (v.value0.value0.value0 instanceof Third_RefState.RefPreAck && v.value0.value0.value0.value0.value0.rdrcmd instanceof VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesTx2PreviewRRFalse) {
-                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentPreviewMul))(runpreviewupdate1(false))(function () {
-                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-                    });
-                };
-                if (v.value0.value0.value0 instanceof Third_RefState.RefPreAck && v.value0.value0.value0.value0.value0.rdrcmd instanceof VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesTx2PreviewRRTrue) {
-                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentPreviewMul))(runpreviewupdate1(true))(function () {
-                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-                    });
-                };
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-            })())(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-            }))(v1);
-        };
-        return v1;
-    };
-};
-var runpreviewupdate2 = function (roundrobin) {
-    return Control_Bind.bind(ExploreCore.bindCo(extendComponentPreviewMul))(_CoPreviewMultiviewPanel(_previewmultiviewrx(Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(Control_Applicative.pure(ExploreCore.applicativeCo(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx))(Data_Unit.unit))))))(function () {
-        return Control_Bind.bind(ExploreCore.bindCo(extendComponentPreviewMul))(_CoPreviewMultiviewPanel(_previewrxdevices(Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))(Third_ComponentList["_CoList"](Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (rxs) {
-            return Control_Bind.bind(ExploreCore.bindCo(extendComponentPreviewMul))(_CoPreviewMultiviewPanel(_previewtxdevices(Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))(Third_ComponentList["_CoList"](Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (txs$prime) {
-                return Control_Bind.bind(ExploreCore.bindCo(extendComponentPreviewMul))(_CoPreviewMultiviewPanel(_previewmultiviewrx(Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))(function (rx) {
-                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentPreviewMul))(_CoPreviewMultiviewPanel(_previewconfig(Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_PreviewMultiview_PreviewConfig.comonadComponentPreviewCo)(VYNET_API_PreviewMultiview_PreviewConfig.shouldUpdateComponentPrev)(Control_Bind.bind(ExploreCore.bindCo(VYNET_API_PreviewMultiview_PreviewConfig.extendComponentPreviewCon))(VYNET_API_PreviewMultiview_PreviewConfig["_CoPreviewConfig"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))(function (x) {
-                        return Control_Applicative.pure(ExploreCore.applicativeCo(VYNET_API_PreviewMultiview_PreviewConfig.comonadComponentPreviewCo))(new Data_Tuple.Tuple(new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(x)(VYNET_API_PreviewMultiview_PreviewConfig["_windowsin"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(x)(VYNET_API_PreviewMultiview_PreviewConfig["_windowsout"](Data_Lens_Internal_Forget.strongForget))), Data_Lens_Getter.viewOn(x)(VYNET_API_PreviewMultiview_PreviewConfig["_windowsrr"](Data_Lens_Internal_Forget.strongForget))));
-                    }))))))(function (v) {
-                        var wfair = makefair(v.value1)(v.value0.value1);
-                        var txs = Data_List.filter(function (x) {
-                            return Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) !== "wwwwwwwwwwww";
-                        })(txs$prime);
-                        var multiviewstreams = Data_Lens_Fold.toListOfOn(Data_List.drop(1)(rxs))((function () {
-                            var $287 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
-                            var $288 = Data_Lens_Getter.to(function (x) {
-                                return new Data_Tuple.Tuple(new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(x)((function () {
-                                    var $291 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
-                                    var $292 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                                    var $293 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
-                                    return function ($294) {
-                                        return $291($292($293($294)));
-                                    };
-                                })())), Data_Lens_Fold.toListOfOn(x)((function () {
-                                    var $295 = VYNET_API_Device_DeviceRx["_rsubscriptions"](Data_Lens_Internal_Forget.strongForget);
-                                    var $296 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
-                                    var $297 = Data_Lens_Fold.filtered(Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)))(function (s) {
-                                        return Data_Lens_Getter.viewOn(s)(VYNET_API_Device_Data_Subscription["_sbtype"](Data_Lens_Internal_Forget.strongForget)) === "HDMI" && (Data_Lens_Getter.viewOn(s)((function () {
-                                            var $303 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                            var $304 = VYNET_API_Device_Data_SubscriptionStatus["_state"](Data_Lens_Internal_Forget.strongForget);
-                                            return function ($305) {
-                                                return $303($304($305));
-                                            };
-                                        })()) === "STREAMING" && Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqInt))(Data_Lens_Fold.previewOn(s)((function () {
-                                            var $306 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                            var $307 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                                            var $308 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                            var $309 = VYNET_API_Device_Data_SubscriptionSource["_ssstream_index"](Data_Lens_Internal_Forget.strongForget);
-                                            return function ($310) {
-                                                return $306($307($308($309($310))));
-                                            };
-                                        })()))(new Data_Maybe.Just(1)));
-                                    });
-                                    var $298 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                    var $299 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                                    var $300 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
-                                    var $301 = Data_Lens_Getter.to(function (x1) {
-                                        return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(x1)(VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(x1)(VYNET_API_Device_Data_SubscriptionSource["_ssdevice_name"](Data_Lens_Internal_Forget.strongForget)));
-                                    });
-                                    return function ($302) {
-                                        return $295($296($297($298($299($300($301($302)))))));
-                                    };
-                                })()));
-                            });
-                            var $289 = Data_Lens_Fold.filtered(Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)))(function (v1) {
-                                return Data_Eq.notEq(Data_List_Types.eqList(Data_Tuple.eqTuple(Data_Eq.eqString)(Data_Eq.eqString)))(v1.value1)(Data_List_Types.Nil.value) && v1.value0.value1 === "MULTIVIEW";
-                            });
-                            return function ($290) {
-                                return $287($288($289($290)));
-                            };
-                        })());
-                        var justtxmulti = Data_Functor.map(Data_List_Types.functorList)(Data_List_NonEmpty.head)(Data_List.group(Data_Tuple.eqTuple(Data_Eq.eqString)(Data_Eq.eqString))(Data_List.sort(Data_Tuple.ordTuple(Data_Ord.ordString)(Data_Ord.ordString))(Data_List.concat(Data_Functor.map(Data_List_Types.functorList)(Data_Tuple.snd)(multiviewstreams)))));
-                        var txjustmulti = Data_Lens_Fold.toListOfOn(txs)((function () {
-                            var $311 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
-                            var $312 = Data_Lens_Fold.filtered(Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)))(function (x) {
-                                return Data_Foldable.elem(Data_List_Types.foldableList)(Data_Eq.eqString)(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)))(Data_Functor.map(Data_List_Types.functorList)(Data_Tuple.fst)(justtxmulti));
-                            });
-                            return function ($313) {
-                                return $311($312($313));
-                            };
-                        })());
-                        var txjustmultisorted = (function () {
-                            if (roundrobin) {
-                                return makeline(wfair)(v.value0.value0)(txjustmulti);
-                            };
-                            return makeline(v.value0.value0)(v.value0.value1)(txjustmulti);
-                        })();
-                        var txjustnomulti = Data_Lens_Fold.toListOfOn(txs)((function () {
-                            var $314 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
-                            var $315 = Data_Lens_Fold.filtered(Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)))(function (x) {
-                                return !Data_Foldable.elem(Data_List_Types.foldableList)(Data_Eq.eqString)(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)))(Data_Functor.map(Data_List_Types.functorList)(function (x1) {
-                                    return Data_Lens_Getter.viewOn(x1)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget));
-                                })(txjustmulti));
-                            });
-                            return function ($316) {
-                                return $314($315($316));
-                            };
-                        })());
-                        var txjustnomultifixed = Data_Functor.map(Data_List_Types.functorList)(function (x) {
-                            return Data_Lens_Setter.over((function () {
-                                var $317 = VYNET_API_Device_DeviceTx["_tscaler"](Data_Profunctor_Strong.strongFn);
-                                var $318 = VYNET_API_Device_Data_Scaler["_sclconfiguration"](Data_Profunctor_Strong.strongFn);
-                                return function ($319) {
-                                    return $317($318($319));
-                                };
-                            })())(function (v1) {
-                                return new VYNET_API_Device_Data_ScalerConfiguration.ScalerConfiguration({
-                                    sclcwidth: 640,
-                                    sclcheight: 360
-                                });
-                            })(x);
-                        })(txjustnomulti);
-                        var txscalers = Data_Functor.map(Data_List_Types.functorList)(mktxscaler)(Data_Semigroup.append(Data_List_Types.semigroupList)(txjustnomultifixed)(txjustmultisorted));
-                        var txrescalecmds = Data_Lens_Fold.toListOfOn(txjustnomulti)((function () {
-                            var $320 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
-                            var $321 = Data_Lens_Fold.filtered(Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)))(function (x) {
-                                return Data_Lens_Getter.viewOn(x)((function () {
-                                    var $323 = VYNET_API_Device_DeviceTx["_tscaler"](Data_Lens_Internal_Forget.strongForget);
-                                    var $324 = VYNET_API_Device_Data_Scaler["_sclconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                                    var $325 = VYNET_API_Device_Data_ScalerConfiguration["_sclcwidth"](Data_Lens_Internal_Forget.strongForget);
-                                    return function ($326) {
-                                        return $323($324($325($326)));
-                                    };
-                                })()) !== 640 || Data_Lens_Getter.viewOn(x)((function () {
-                                    var $327 = VYNET_API_Device_DeviceTx["_tscaler"](Data_Lens_Internal_Forget.strongForget);
-                                    var $328 = VYNET_API_Device_Data_Scaler["_sclconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                                    var $329 = VYNET_API_Device_Data_ScalerConfiguration["_sclcwidth"](Data_Lens_Internal_Forget.strongForget);
-                                    return function ($330) {
-                                        return $327($328($329($330)));
-                                    };
-                                })()) !== 360;
-                            });
-                            return function ($322) {
-                                return $320($321($322));
-                            };
-                        })());
-                        var v1 = makepreviewlayout2(new Data_Tuple.Tuple(3840, 2160))(txscalers);
-                        var windowsoutid = Data_Functor.map(Data_List_Types.functorList)(function (v2) {
-                            return v2.value0.txid;
-                        })(v1.value1);
-                        var windowsinid = Data_List.filter(function (x) {
-                            return !Data_Foldable.elem(Data_List_Types.foldableList)(Data_Eq.eqString)(x)(windowsoutid);
-                        })(Data_Functor.map(Data_List_Types.functorList)(function (v2) {
-                            return v2.value0.txid;
-                        })(txscalers));
-                        var windowcmds2 = Data_Functor.map(Data_List_Types.functorList)(function (w) {
-                            return new VYNET_API_Device_Command_Data_DeviceAction.MultiviewCreateWindow("vynetpreviewlayout", Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnindex"](Data_Lens_Internal_Forget.strongForget)), w);
-                        })(v1.value0);
-                        var txstreams2enable = Data_List.filter((function () {
-                            var $331 = Data_HeytingAlgebra.not(Data_HeytingAlgebra.heytingAlgebraBoolean);
-                            return function ($332) {
-                                return $331(Data_Maybe.isJust(Data_Tuple.snd($332)));
-                            };
-                        })())(Data_Functor.map(Data_List_Types.functorList)(function (tx) {
-                            return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(tx)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)), Data_Foldable.find(Data_List_Types.foldableList)(function (s) {
-                                return Data_Lens_Getter.viewOn(s)(VYNET_API_Device_Data_Stream["_sindex"](Data_Lens_Internal_Forget.strongForget)) === 1 && Data_Lens_Getter.viewOn(s)((function () {
-                                    var $333 = VYNET_API_Device_Data_Stream["_sconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                                    var $334 = VYNET_API_Device_Data_TheStreamConfiguration["_enable"](Data_Lens_Internal_Forget.strongForget);
-                                    return function ($335) {
-                                        return $333($334($335));
-                                    };
-                                })());
-                            })(Data_Lens_Getter.viewOn(tx)(VYNET_API_Device_DeviceTx["_tstreams"](Data_Lens_Internal_Forget.strongForget))));
-                        })(Data_List.filter(function (x) {
-                            return Data_Eq.notEq(Data_List_Types.eqList(VYNET_API_Device_Data_Stream.eqStream))(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tstreams"](Data_Lens_Internal_Forget.strongForget)))(Data_List_Types.Nil.value);
-                        })(txs)));
-                        var txstreams = Data_Functor.map(Data_List_Types.functorList)(function (tx) {
-                            return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(tx)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(tx)(VYNET_API_Device_DeviceTx["_tscaler"](Data_Lens_Internal_Forget.strongForget)));
-                        })(Data_List.filter(function (x) {
-                            return Data_Eq.notEq(Data_List_Types.eqList(VYNET_API_Device_Data_Stream.eqStream))(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tstreams"](Data_Lens_Internal_Forget.strongForget)))(Data_List_Types.Nil.value);
-                        })(txs));
-                        var subs2 = Data_Functor.map(Data_List_Types.functorList)(function (w) {
-                            return new VYNET_API_Device_Data_LayoutSubscription.LayoutSubscription({
-                                lssource_device: Data_Maybe.fromMaybe("NA")(Data_Lens_Fold.previewOn(w)((function () {
-                                    var $336 = VYNET_API_Multiview_Data_Window["_wnsubid"](Data_Lens_Internal_Forget.strongForget);
-                                    var $337 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                    var $338 = Data_Lens_Lens_Tuple["_1"](Data_Lens_Internal_Forget.strongForget);
-                                    return function ($339) {
-                                        return $336($337($338($339)));
-                                    };
-                                })())),
-                                lsstream_index: 1,
-                                lssubscription_index: Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnindex"](Data_Lens_Internal_Forget.strongForget))
-                            });
-                        })(v1.value0);
-                        var setlayout = new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.MultiviewSetLayout(Data_Lens_Getter.viewOn(rx)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget)), "vynetpreviewlayout", new VYNET_API_Device_Data_Video.Video({
-                            vheight: 2160,
-                            vwidth: 3840,
-                            vfps: 30,
-                            vquantization_range: "LIMITED"
-                        }), subs2), Data_Monoid.mempty(Data_List_Types.monoidList));
-                        var rxsubs = Data_Functor.map(Data_List_Types.functorList)(function (s) {
-                            return Data_Lens_Fold.previewOn(s)((function () {
-                                var $340 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                var $341 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                                var $342 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                var $343 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
-                                return function ($344) {
-                                    return $340($341($342($343($344))));
-                                };
-                            })());
-                        })(Data_Functor.map(Data_List_Types.functorList)(Data_List_NonEmpty.head)(Data_List.groupBy(function (a) {
-                            return function (b) {
-                                return Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Lens_Fold.previewOn(a)((function () {
-                                    var $345 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                    var $346 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                                    var $347 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                    var $348 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
-                                    return function ($349) {
-                                        return $345($346($347($348($349))));
-                                    };
-                                })()))(Data_Lens_Fold.previewOn(b)((function () {
-                                    var $350 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                    var $351 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                                    var $352 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                    var $353 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
-                                    return function ($354) {
-                                        return $350($351($352($353($354))));
-                                    };
-                                })()));
-                            };
-                        })(Data_List.sortBy(function (a) {
-                            return function (b) {
-                                return Data_Ord.compare(Data_Maybe.ordMaybe(Data_Ord.ordString))(Data_Lens_Fold.previewOn(a)((function () {
-                                    var $355 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                    var $356 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                                    var $357 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                    var $358 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
-                                    return function ($359) {
-                                        return $355($356($357($358($359))));
-                                    };
-                                })()))(Data_Lens_Fold.previewOn(b)((function () {
-                                    var $360 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                    var $361 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                                    var $362 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                    var $363 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
-                                    return function ($364) {
-                                        return $360($361($362($363($364))));
-                                    };
-                                })()));
-                            };
-                        })(Data_List.concatMap(function (x) {
-                            return Data_List.filter(function (s) {
-                                return Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqInt))(Data_Lens_Fold.previewOn(s)((function () {
-                                    var $365 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                    var $366 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                                    var $367 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                    var $368 = VYNET_API_Device_Data_SubscriptionSource["_ssstream_index"](Data_Lens_Internal_Forget.strongForget);
-                                    return function ($369) {
-                                        return $365($366($367($368($369))));
-                                    };
-                                })()))(new Data_Maybe.Just(1)) && Data_Lens_Getter.viewOn(s)((function () {
-                                    var $370 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                    var $371 = VYNET_API_Device_Data_SubscriptionStatus["_state"](Data_Lens_Internal_Forget.strongForget);
-                                    return function ($372) {
-                                        return $370($371($372));
-                                    };
-                                })()) === "STREAMING";
-                            })(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceRx["_rsubscriptions"](Data_Lens_Internal_Forget.strongForget)));
-                        })(Data_List.filter(function (x) {
-                            return Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget)) !== Data_Lens_Getter.viewOn(rx)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget));
-                        })(rxs))))));
-                        var routedtxstreams1 = Data_List.filter(function (v2) {
-                            return Data_Foldable.elem(Data_List_Types.foldableList)(Data_Maybe.eqMaybe(Data_Eq.eqString))(new Data_Maybe.Just(v2.value0))(rxsubs);
-                        })(txstreams);
-                        var rescalecmds2 = Data_Functor.map(Data_List_Types.functorList)(function (tx) {
-                            return new VYNET_API_Device_Command_Data_DeviceAction.ScaleStreamCommand(Data_Lens_Getter.viewOn(tx)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)), 1, 640, 360);
-                        })(txrescalecmds);
-                        var recreatelayout = new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.MultiviewDeleteLayout("vynetpreviewlayout"), new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.MultiviewCreateLayout("vynetpreviewlayout", 3840, 2160), Data_Monoid.mempty(Data_List_Types.monoidList)));
-                        var notroutedtxstreams1 = Data_List.filter(function (v2) {
-                            return !Data_Foldable.elem(Data_List_Types.foldableList)(Data_Maybe.eqMaybe(Data_Eq.eqString))(new Data_Maybe.Just(v2.value0))(rxsubs);
-                        })(txstreams);
-                        var issame = Data_Eq.eq(Data_List_Types.eqList(Data_Maybe.eqMaybe(Data_Eq.eqString)))(getprevrxsubs(rxs))(Data_List.sort(Data_Maybe.ordMaybe(Data_Ord.ordString))(Data_Lens_Fold.toListOfOn(v1.value0)((function () {
-                            var $373 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
-                            var $374 = Data_Lens_Getter.to(function (x) {
-                                return Data_Lens_Fold.previewOn(x)((function () {
-                                    var $376 = VYNET_API_Multiview_Data_Window["_wnsubid"](Data_Lens_Internal_Forget.strongForget);
-                                    var $377 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                    var $378 = Data_Lens_Lens_Tuple["_1"](Data_Lens_Internal_Forget.strongForget);
-                                    return function ($379) {
-                                        return $376($377($378($379)));
-                                    };
-                                })());
-                            });
-                            return function ($375) {
-                                return $373($374($375));
-                            };
-                        })())));
-                        var isrecreatelayout = Data_Lens_Getter.viewOn(rx)((function () {
-                            var $380 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
-                            var $381 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                            var $382 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
-                            return function ($383) {
-                                return $380($381($382($383)));
-                            };
-                        })()) === "MULTIVIEW" && (Data_Lens_Getter.viewOn(rx)((function () {
-                            var $384 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
-                            var $385 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                            var $386 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcwidth"](Data_Lens_Internal_Forget.strongForget);
-                            return function ($387) {
-                                return $384($385($386($387)));
-                            };
-                        })()) === 3840 && (Data_Lens_Getter.viewOn(rx)((function () {
-                            var $388 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
-                            var $389 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                            var $390 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcheight"](Data_Lens_Internal_Forget.strongForget);
-                            return function ($391) {
-                                return $388($389($390($391)));
-                            };
-                        })()) === 2160 && Data_Lens_Getter.viewOn(rx)((function () {
-                            var $392 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
-                            var $393 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                            var $394 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcframes_per_second"](Data_Lens_Internal_Forget.strongForget);
-                            return function ($395) {
-                                return $392($393($394($395)));
-                            };
-                        })()) === 30));
-                        var enablecmds = Data_Functor.map(Data_List_Types.functorList)(function (v2) {
-                            return new VYNET_API_Device_Command_Data_DeviceAction.EnableStreamCommand(v2.value0, 1);
-                        })(txstreams2enable);
-                        return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentPreviewMul))(_CoPreviewMultiviewPanel(_previewconfig(Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_PreviewMultiview_PreviewConfig.comonadComponentPreviewCo)(VYNET_API_PreviewMultiview_PreviewConfig.shouldUpdateComponentPrev)(VYNET_API_PreviewMultiview_PreviewConfig["_CoPreviewConfig"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_PreviewMultiview_PreviewConfig["_windowsrr"](Data_Profunctor_Strong.strongFn))(appendin(windowsinid)))))))))(function () {
-                            var $211 = Data_Eq.notEq(Data_List_Types.eqList(Data_Eq.eqString))(Data_List.sort(Data_Ord.ordString)(v.value0.value0))(Data_List.sort(Data_Ord.ordString)(windowsinid)) || (Data_Eq.notEq(Data_List_Types.eqList(Data_Eq.eqString))(Data_List.sort(Data_Ord.ordString)(v.value0.value1))(Data_List.sort(Data_Ord.ordString)(windowsoutid)) || !issame);
-                            if ($211) {
-                                return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentPreviewMul))(_CoPreviewMultiviewPanel(_previewconfig(Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_PreviewMultiview_PreviewConfig.comonadComponentPreviewCo)(VYNET_API_PreviewMultiview_PreviewConfig.shouldUpdateComponentPrev)(VYNET_API_PreviewMultiview_PreviewConfig["_CoPreviewConfig"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))((function () {
-                                    var $396 = Data_Lens_Setter.set(VYNET_API_PreviewMultiview_PreviewConfig["_windowsin"](Data_Profunctor_Strong.strongFn))(Data_List.sort(Data_Ord.ordString)(windowsinid));
-                                    var $397 = Data_Lens_Setter.set(VYNET_API_PreviewMultiview_PreviewConfig["_windowsout"](Data_Profunctor_Strong.strongFn))(Data_List.sort(Data_Ord.ordString)(windowsoutid));
-                                    return function ($398) {
-                                        return $396($397($398));
-                                    };
-                                })())))))))(function () {
-                                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentPreviewMul))((function () {
-                                        var $212 = Data_List.length(enablecmds) === 0;
-                                        if ($212) {
-                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentPreviewMul))(_CoPreviewMultiviewPanel(_previewpull(VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
-                                                return Data_Semigroup.append(Data_List_Types.semigroupList)(recreatelayout)(Data_Semigroup.append(Data_List_Types.semigroupList)(windowcmds2)(Data_Semigroup.append(Data_List_Types.semigroupList)(rescalecmds2)(Data_Semigroup.append(Data_List_Types.semigroupList)(setlayout)(new Data_List_Types.Cons(VYNET_API_Device_Command_Data_DeviceAction.CompletedPreviewAction.value, Data_Monoid.mempty(Data_List_Types.monoidList))))));
-                                            }))))))))(function () {
-                                                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-                                            });
-                                        };
-                                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentPreviewMul))(_CoPreviewMultiviewPanel(_previewpull(VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
-                                            return Data_Semigroup.append(Data_List_Types.semigroupList)(recreatelayout)(Data_Semigroup.append(Data_List_Types.semigroupList)(windowcmds2)(Data_Semigroup.append(Data_List_Types.semigroupList)(enablecmds)(Data_Semigroup.append(Data_List_Types.semigroupList)(rescalecmds2)(Data_Semigroup.append(Data_List_Types.semigroupList)(setlayout)(new Data_List_Types.Cons(VYNET_API_Device_Command_Data_DeviceAction.CompletedPreviewAction.value, Data_Monoid.mempty(Data_List_Types.monoidList)))))));
-                                        }))))))))(function () {
-                                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-                                        });
-                                    })())(function () {
-                                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentPreviewMul))(_CoPreviewMultiviewPanel(_previewpull(VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
-                                            gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
-                                        }))))))))))(function () {
-                                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-                                        });
-                                    });
-                                });
-                            };
-                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-                        });
-                    });
-                });
-            });
-        });
-    });
-};
-var marshal1 = function (v) {
-    return function (v1) {
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof PreviewRxDevicesSignal && v.value0.value0 instanceof Third_Reference.ReferSignal)) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentPreviewMul))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentPreviewMul))((function () {
-                if (v.value0.value0.value0 instanceof Third_RefState.RefPreAck && v.value0.value0.value0.value0.value0.rdrcmd instanceof VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesRx2) {
-                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentPreviewMul))(_CoPreviewMultiviewPanel(_previewtxdevices(Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_RequestDevicesCommand.eqRequestDevicesCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_RequestDevicesCommand.RequestDevicesCommand({
-                        rdrcmd: VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesTx2.value,
-                        idcmd: Unify_Types.def(VYNET_API_Device_Command_Request_GetRequest.defGetRequest)
-                    }))))))))(function () {
-                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-                    });
-                };
-                if (v.value0.value0.value0 instanceof Third_RefState.RefPreAck && v.value0.value0.value0.value0.value0.rdrcmd instanceof VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesRx2PreviewRRFalse) {
-                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentPreviewMul))(runpreviewupdate2(false))(function () {
-                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-                    });
-                };
-                if (v.value0.value0.value0 instanceof Third_RefState.RefPreAck && v.value0.value0.value0.value0.value0.rdrcmd instanceof VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesRx2PreviewRRTrue) {
-                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentPreviewMul))(runpreviewupdate2(true))(function () {
-                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-                    });
-                };
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-            })())(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentPreviewMu))(Data_Unit.unit);
-            }))(v1);
-        };
-        return v1;
-    };
-};
 var marshal = function (e) {
-    var $399 = marshal0(e);
-    var $400 = marshal1(e);
-    var $401 = marshal2(e);
-    var $402 = marshal3(e);
-    return function ($403) {
-        return $399($400($401($402($403))));
-    };
+    return marshal0(e);
 };
 var marshalComponentPreviewMultiviewPanel = marshal;
 var fromJsoncompPreviewMultiv = {
@@ -127158,9 +126727,9 @@ var renderPreviewMultiviewPanel = Extra.ns(extendComponentPreviewMul)(comonadCom
 });
 var fromJsonrepComponentPrevi = {
     fromjsonrep: (function () {
-        var $404 = Widget_Unify_FromJsonrep.fromjsonrep(Widget_Unify_FromJsonrep.fromJsonrepDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2))))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)(Third_Reference.fromJsonrepReference(VYNET_API_PreviewMultiview_Command_PreviewRxCommand.eqPreviewRxCommand)(VYNET_API_PreviewMultiview_Command_PreviewRxCommand.decodeJsonPreviewRxComman1)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx.fromJsonrepComponentDevic)(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))(Widget_Unify_FromJsonrep.fromJsonrepDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)(Third_Reference.fromJsonrepReference(VYNET_API_Device_Command_RequestDevicesCommand.eqRequestDevicesCommand)(VYNET_API_Device_Command_RequestDevicesCommand.decodeJsonRequestDevicesC)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Widget_Unify_UnifyCompList.comonadStoreComponentsLis)(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent1(VYNET_API_Device_DeviceRx.fromJsoncompDeviceRxSigna)(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)))(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))))(Widget_Unify_FromJsonrep.fromJsonrepDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)(Third_Reference.fromJsonrepReference(VYNET_API_Device_Command_RequestDevicesCommand.eqRequestDevicesCommand)(VYNET_API_Device_Command_RequestDevicesCommand.decodeJsonRequestDevicesC)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Widget_Unify_UnifyCompList.comonadStoreComponentsLis)(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent1(VYNET_API_Device_DeviceTx.fromJsoncompDeviceTxSigna)(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)))(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))))(Widget_Unify_FromJsonrep.fromJsonrepDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)(Third_Reference.fromJsonrepReference(VYNET_API_PreviewMultiview_Command_PreviewConfigCommand.eqPreviewConfigCommand)(VYNET_API_PreviewMultiview_Command_PreviewConfigCommand.decodeJsonPreviewConfigCo1)(VYNET_API_PreviewMultiview_PreviewConfig.comonadComponentPreviewCo)(VYNET_API_PreviewMultiview_PreviewConfig.fromJsonrepComponentPrevi)(VYNET_API_PreviewMultiview_PreviewConfig.shouldUpdateComponentPrev)))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(VYNET_API_Control_DeviceActions.comonadComponentDeviceAct)(VYNET_API_Control_DeviceActions.shouldUpdateComponentDevi)(VYNET_API_Control_DeviceActions.fromJsonrepComponentDevic))))));
-        return function ($405) {
-            return _CoPreviewMultiviewPanel($404($405));
+        var $201 = Widget_Unify_FromJsonrep.fromjsonrep(Widget_Unify_FromJsonrep.fromJsonrepDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2))))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)(Third_Reference.fromJsonrepReference(VYNET_API_PreviewMultiview_Command_PreviewRxCommand.eqPreviewRxCommand)(VYNET_API_PreviewMultiview_Command_PreviewRxCommand.decodeJsonPreviewRxComman1)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx.fromJsonrepComponentDevic)(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))(Widget_Unify_FromJsonrep.fromJsonrepDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)(Third_Reference.fromJsonrepReference(VYNET_API_Device_Command_RequestDevicesCommand.eqRequestDevicesCommand)(VYNET_API_Device_Command_RequestDevicesCommand.decodeJsonRequestDevicesC)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Widget_Unify_UnifyCompList.comonadStoreComponentsLis)(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent1(VYNET_API_Device_DeviceRx.fromJsoncompDeviceRxSigna)(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)))(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))))(Widget_Unify_FromJsonrep.fromJsonrepDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)(Third_Reference.fromJsonrepReference(VYNET_API_Device_Command_RequestDevicesCommand.eqRequestDevicesCommand)(VYNET_API_Device_Command_RequestDevicesCommand.decodeJsonRequestDevicesC)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Widget_Unify_UnifyCompList.comonadStoreComponentsLis)(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent1(VYNET_API_Device_DeviceTx.fromJsoncompDeviceTxSigna)(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)))(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))))(Widget_Unify_FromJsonrep.fromJsonrepDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)(Third_Reference.fromJsonrepReference(VYNET_API_PreviewMultiview_Command_PreviewConfigCommand.eqPreviewConfigCommand)(VYNET_API_PreviewMultiview_Command_PreviewConfigCommand.decodeJsonPreviewConfigCo1)(VYNET_API_PreviewMultiview_PreviewConfig.comonadComponentPreviewCo)(VYNET_API_PreviewMultiview_PreviewConfig.fromJsonrepComponentPrevi)(VYNET_API_PreviewMultiview_PreviewConfig.shouldUpdateComponentPrev)))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(VYNET_API_Control_DeviceActions.comonadComponentDeviceAct)(VYNET_API_Control_DeviceActions.shouldUpdateComponentDevi)(VYNET_API_Control_DeviceActions.fromJsonrepComponentDevic))))));
+        return function ($202) {
+            return _CoPreviewMultiviewPanel($201($202));
         };
     })()
 };
@@ -127173,11 +126742,6 @@ module.exports = {
     marshal3: marshal3,
     makeline: makeline,
     getprevrxsubs: getprevrxsubs,
-    runpreviewupdate: runpreviewupdate,
-    runpreviewupdate1: runpreviewupdate1,
-    runpreviewupdate2: runpreviewupdate2,
-    appendin: appendin,
-    makefair: makefair,
     generateSubsequences: generateSubsequences,
     PreviewMultiviewRxSignal: PreviewMultiviewRxSignal,
     PreviewRxDevicesSignal: PreviewRxDevicesSignal,
@@ -127223,7 +126787,7 @@ module.exports = {
     fromJsoncompPreviewMultiv: fromJsoncompPreviewMultiv
 };
 
-},{"../Control.Applicative/index.js":43,"../Control.Bind/index.js":49,"../Control.Category/index.js":50,"../Control.Comonad.Store.Class/index.js":52,"../Control.Comonad.Store.Trans/index.js":53,"../Control.Monad.State.Class/index.js":72,"../Data.Array/index.js":105,"../Data.Boolean/index.js":109,"../Data.Eq.Generic/index.js":118,"../Data.Eq/index.js":120,"../Data.EuclideanRing/index.js":122,"../Data.Foldable/index.js":125,"../Data.Functor.Day/index.js":137,"../Data.Functor/index.js":144,"../Data.Generic.Rep/index.js":147,"../Data.HeytingAlgebra/index.js":151,"../Data.Identity/index.js":152,"../Data.Int/index.js":154,"../Data.Lens.Fold/index.js":159,"../Data.Lens.Getter/index.js":160,"../Data.Lens.Internal.Forget/index.js":165,"../Data.Lens.Lens.Tuple/index.js":176,"../Data.Lens.Prism.Maybe/index.js":179,"../Data.Lens.Setter/index.js":182,"../Data.Lens.Traversal/index.js":183,"../Data.List.NonEmpty/index.js":188,"../Data.List.Types/index.js":189,"../Data.List/index.js":190,"../Data.Maybe.First/index.js":192,"../Data.Maybe/index.js":194,"../Data.Monoid.Endo/index.js":201,"../Data.Monoid/index.js":203,"../Data.Newtype/index.js":204,"../Data.Ord/index.js":214,"../Data.Profunctor.Strong/index.js":220,"../Data.Semigroup/index.js":227,"../Data.Show.Generic/index.js":232,"../Data.Tuple/index.js":255,"../Data.Unfoldable/index.js":259,"../Data.Unit/index.js":263,"../Effect.Random/index.js":277,"../Effect.Unsafe/index.js":283,"../Effect/index.js":285,"../ExploreCore/index.js":287,"../ExploreSignal/index.js":288,"../Extra/index.js":289,"../Safe.Coerce/index.js":320,"../ShouldUpdate/index.js":321,"../Third.ComponentList/index.js":322,"../Third.RefState/index.js":331,"../Third.Reference/index.js":332,"../Third.TransList.Uselist/index.js":334,"../Unify.Types/index.js":340,"../VYNET.API.Control.ActionStack/index.js":344,"../VYNET.API.Control.DeviceActions/index.js":345,"../VYNET.API.Device.Command.Data.DeviceAction/index.js":348,"../VYNET.API.Device.Command.GeneralDeviceCommand/index.js":349,"../VYNET.API.Device.Command.Request.GetRequest/index.js":352,"../VYNET.API.Device.Command.RequestDevicesCommand/index.js":364,"../VYNET.API.Device.Data.FrameBuffer/index.js":366,"../VYNET.API.Device.Data.FrameBufferConfiguration/index.js":367,"../VYNET.API.Device.Data.LayoutSubscription/index.js":376,"../VYNET.API.Device.Data.Scaler/index.js":379,"../VYNET.API.Device.Data.ScalerConfiguration/index.js":380,"../VYNET.API.Device.Data.Stream/index.js":383,"../VYNET.API.Device.Data.Subscription/index.js":384,"../VYNET.API.Device.Data.SubscriptionSource/index.js":386,"../VYNET.API.Device.Data.SubscriptionStatus/index.js":387,"../VYNET.API.Device.Data.TheStreamConfiguration/index.js":388,"../VYNET.API.Device.Data.Video/index.js":389,"../VYNET.API.Device.DeviceRx/index.js":393,"../VYNET.API.Device.DeviceTx/index.js":394,"../VYNET.API.Multiview.Data.Window/index.js":406,"../VYNET.API.PreviewMultiview.Command.PreviewConfigCommand/index.js":413,"../VYNET.API.PreviewMultiview.Command.PreviewRxCommand/index.js":414,"../VYNET.API.PreviewMultiview.PreviewConfig/index.js":416,"../Widget.Unify.FromJsonrep/index.js":556,"../Widget.Unify.UnifyComp/index.js":557,"../Widget.Unify.UnifyCompItem/index.js":558,"../Widget.Unify.UnifyCompList/index.js":559}],418:[function(require,module,exports){
+},{"../Control.Applicative/index.js":43,"../Control.Bind/index.js":49,"../Control.Category/index.js":50,"../Control.Comonad.Store.Class/index.js":52,"../Control.Comonad.Store.Trans/index.js":53,"../Control.Monad.State.Class/index.js":72,"../Data.Array/index.js":105,"../Data.Boolean/index.js":109,"../Data.Eq.Generic/index.js":118,"../Data.Eq/index.js":120,"../Data.EuclideanRing/index.js":122,"../Data.Foldable/index.js":125,"../Data.Functor.Day/index.js":137,"../Data.Functor/index.js":144,"../Data.Generic.Rep/index.js":147,"../Data.HeytingAlgebra/index.js":151,"../Data.Identity/index.js":152,"../Data.Int/index.js":154,"../Data.Lens.Fold/index.js":159,"../Data.Lens.Getter/index.js":160,"../Data.Lens.Internal.Forget/index.js":165,"../Data.Lens.Lens.Tuple/index.js":176,"../Data.Lens.Prism.Maybe/index.js":179,"../Data.Lens.Setter/index.js":182,"../Data.Lens.Traversal/index.js":183,"../Data.List.Types/index.js":189,"../Data.List/index.js":190,"../Data.Maybe.First/index.js":192,"../Data.Maybe/index.js":194,"../Data.Monoid.Endo/index.js":201,"../Data.Newtype/index.js":204,"../Data.Ord/index.js":214,"../Data.Profunctor.Strong/index.js":220,"../Data.Semigroup/index.js":227,"../Data.Show.Generic/index.js":232,"../Data.Tuple/index.js":255,"../Data.Unfoldable/index.js":259,"../Data.Unit/index.js":263,"../Effect.Random/index.js":277,"../Effect.Unsafe/index.js":283,"../Effect/index.js":285,"../ExploreCore/index.js":287,"../ExploreSignal/index.js":288,"../Extra/index.js":289,"../Safe.Coerce/index.js":320,"../ShouldUpdate/index.js":321,"../Third.ComponentList/index.js":322,"../Third.RefState/index.js":331,"../Third.Reference/index.js":332,"../Unify.Types/index.js":340,"../VYNET.API.Control.DeviceActions/index.js":345,"../VYNET.API.Device.Command.Request.GetRequest/index.js":352,"../VYNET.API.Device.Command.RequestDevicesCommand/index.js":364,"../VYNET.API.Device.Data.Scaler/index.js":379,"../VYNET.API.Device.Data.ScalerConfiguration/index.js":380,"../VYNET.API.Device.Data.Subscription/index.js":384,"../VYNET.API.Device.Data.SubscriptionSource/index.js":386,"../VYNET.API.Device.Data.SubscriptionStatus/index.js":387,"../VYNET.API.Device.DeviceRx/index.js":393,"../VYNET.API.Device.DeviceTx/index.js":394,"../VYNET.API.Multiview.Data.Window/index.js":406,"../VYNET.API.PreviewMultiview.Command.PreviewConfigCommand/index.js":413,"../VYNET.API.PreviewMultiview.Command.PreviewRxCommand/index.js":414,"../VYNET.API.PreviewMultiview.PreviewConfig/index.js":416,"../Widget.Unify.FromJsonrep/index.js":556,"../Widget.Unify.UnifyComp/index.js":557,"../Widget.Unify.UnifyCompItem/index.js":558,"../Widget.Unify.UnifyCompList/index.js":559}],418:[function(require,module,exports){
 // Generated by purs version 0.14.4
 "use strict";
 var Control_Applicative = require("../Control.Applicative/index.js");
@@ -127238,6 +126802,7 @@ var Data_Foldable = require("../Data.Foldable/index.js");
 var Data_Functor = require("../Data.Functor/index.js");
 var Data_Functor_Day = require("../Data.Functor.Day/index.js");
 var Data_Generic_Rep = require("../Data.Generic.Rep/index.js");
+var Data_HeytingAlgebra = require("../Data.HeytingAlgebra/index.js");
 var Data_Identity = require("../Data.Identity/index.js");
 var Data_Lens_Fold = require("../Data.Lens.Fold/index.js");
 var Data_Lens_Getter = require("../Data.Lens.Getter/index.js");
@@ -127248,15 +126813,18 @@ var Data_Lens_Prism_Maybe = require("../Data.Lens.Prism.Maybe/index.js");
 var Data_Lens_Setter = require("../Data.Lens.Setter/index.js");
 var Data_Lens_Traversal = require("../Data.Lens.Traversal/index.js");
 var Data_List = require("../Data.List/index.js");
+var Data_List_NonEmpty = require("../Data.List.NonEmpty/index.js");
 var Data_List_Types = require("../Data.List.Types/index.js");
 var Data_Maybe = require("../Data.Maybe/index.js");
 var Data_Maybe_First = require("../Data.Maybe.First/index.js");
 var Data_Monoid = require("../Data.Monoid/index.js");
 var Data_Monoid_Endo = require("../Data.Monoid.Endo/index.js");
 var Data_Newtype = require("../Data.Newtype/index.js");
+var Data_Ord = require("../Data.Ord/index.js");
 var Data_Profunctor_Choice = require("../Data.Profunctor.Choice/index.js");
 var Data_Profunctor_Strong = require("../Data.Profunctor.Strong/index.js");
 var Data_Semigroup = require("../Data.Semigroup/index.js");
+var Data_Show = require("../Data.Show/index.js");
 var Data_Show_Generic = require("../Data.Show.Generic/index.js");
 var Data_String_CodePoints = require("../Data.String.CodePoints/index.js");
 var Data_Tuple = require("../Data.Tuple/index.js");
@@ -127280,8 +126848,11 @@ var Third_TransList_Uselist = require("../Third.TransList.Uselist/index.js");
 var Unify_Types = require("../Unify.Types/index.js");
 var VYNET_API_Control_ActionStack = require("../VYNET.API.Control.ActionStack/index.js");
 var VYNET_API_Control_DeviceActions = require("../VYNET.API.Control.DeviceActions/index.js");
+var VYNET_API_Control_MultiviewActionStack = require("../VYNET.API.Control.MultiviewActionStack/index.js");
+var VYNET_API_Control_MultiviewActions = require("../VYNET.API.Control.MultiviewActions/index.js");
 var VYNET_API_Device_Command_Data_DeviceAction = require("../VYNET.API.Device.Command.Data.DeviceAction/index.js");
 var VYNET_API_Device_Command_GeneralDeviceCommand = require("../VYNET.API.Device.Command.GeneralDeviceCommand/index.js");
+var VYNET_API_Device_Command_GeneralMultiviewCommand = require("../VYNET.API.Device.Command.GeneralMultiviewCommand/index.js");
 var VYNET_API_Device_Command_Request_GetRequest = require("../VYNET.API.Device.Command.Request.GetRequest/index.js");
 var VYNET_API_Device_Command_RequestDevicesCommand = require("../VYNET.API.Device.Command.RequestDevicesCommand/index.js");
 var VYNET_API_Device_Data_ConfigurationSource = require("../VYNET.API.Device.Data.ConfigurationSource/index.js");
@@ -127293,12 +126864,17 @@ var VYNET_API_Device_Data_HdmiMonitor = require("../VYNET.API.Device.Data.HdmiMo
 var VYNET_API_Device_Data_HdmiMonitorStatus = require("../VYNET.API.Device.Data.HdmiMonitorStatus/index.js");
 var VYNET_API_Device_Data_HdmiStream = require("../VYNET.API.Device.Data.HdmiStream/index.js");
 var VYNET_API_Device_Data_HdmiStreamConfiguraion = require("../VYNET.API.Device.Data.HdmiStreamConfiguraion/index.js");
+var VYNET_API_Device_Data_LayoutSubscription = require("../VYNET.API.Device.Data.LayoutSubscription/index.js");
 var VYNET_API_Device_Data_Scaler = require("../VYNET.API.Device.Data.Scaler/index.js");
+var VYNET_API_Device_Data_ScalerConfiguration = require("../VYNET.API.Device.Data.ScalerConfiguration/index.js");
 var VYNET_API_Device_Data_ScalerInputs = require("../VYNET.API.Device.Data.ScalerInputs/index.js");
 var VYNET_API_Device_Data_ScalerInputsConfiguration = require("../VYNET.API.Device.Data.ScalerInputsConfiguration/index.js");
+var VYNET_API_Device_Data_Stream = require("../VYNET.API.Device.Data.Stream/index.js");
 var VYNET_API_Device_Data_Subscription = require("../VYNET.API.Device.Data.Subscription/index.js");
 var VYNET_API_Device_Data_SubscriptionSource = require("../VYNET.API.Device.Data.SubscriptionSource/index.js");
 var VYNET_API_Device_Data_SubscriptionStatus = require("../VYNET.API.Device.Data.SubscriptionStatus/index.js");
+var VYNET_API_Device_Data_TheStreamConfiguration = require("../VYNET.API.Device.Data.TheStreamConfiguration/index.js");
+var VYNET_API_Device_Data_Video = require("../VYNET.API.Device.Data.Video/index.js");
 var VYNET_API_Device_Data_VideoCompressor = require("../VYNET.API.Device.Data.VideoCompressor/index.js");
 var VYNET_API_Device_Data_VideoCompressorConfiguration = require("../VYNET.API.Device.Data.VideoCompressorConfiguration/index.js");
 var VYNET_API_Device_DeviceRx = require("../VYNET.API.Device.DeviceRx/index.js");
@@ -127313,6 +126889,7 @@ var VYNET_API_Multiview_MultiviewDeviceRx = require("../VYNET.API.Multiview.Mult
 var VYNET_API_Multiview_MultiviewPanel = require("../VYNET.API.Multiview.MultiviewPanel/index.js");
 var VYNET_API_Multiview_MultiviewUi = require("../VYNET.API.Multiview.MultiviewUi/index.js");
 var VYNET_API_PreviewMultiview_Command_PreviewConfigCommand = require("../VYNET.API.PreviewMultiview.Command.PreviewConfigCommand/index.js");
+var VYNET_API_PreviewMultiview_Command_PreviewRxCommand = require("../VYNET.API.PreviewMultiview.Command.PreviewRxCommand/index.js");
 var VYNET_API_PreviewMultiview_PreviewConfig = require("../VYNET.API.PreviewMultiview.PreviewConfig/index.js");
 var VYNET_API_PreviewMultiview_PreviewMultiviewPanel = require("../VYNET.API.PreviewMultiview.PreviewMultiviewPanel/index.js");
 var Widget_Unify_FromJsonrep = require("../Widget.Unify.FromJsonrep/index.js");
@@ -127401,7 +126978,7 @@ var genericMainMainPanelSigna = {
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr))) {
             return new MainMainPanelPreviewgatewaySignal(x.value0.value0.value0.value0);
         };
-        throw new Error("Failed pattern match at VYNET.MainMainPanel (line 818, column 1 - line 818, column 46): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at VYNET.MainMainPanel (line 722, column 1 - line 722, column 46): " + [ x.constructor.name ]);
     },
     from: function (x) {
         if (x instanceof MainMainPanelNewframeSignal) {
@@ -127419,7 +126996,7 @@ var genericMainMainPanelSigna = {
         if (x instanceof MainMainPanelPreviewgatewaySignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0))));
         };
-        throw new Error("Failed pattern match at VYNET.MainMainPanel (line 818, column 1 - line 818, column 46): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at VYNET.MainMainPanel (line 722, column 1 - line 722, column 46): " + [ x.constructor.name ]);
     }
 };
 var showMainMainPanelSignal = {
@@ -127471,6 +127048,17 @@ var comonadComponentMainMainP = {
     }
 };
 var orangepiedid = "00ffffffffffff004970";
+var mktxscaler = function (d) {
+    var mktxscaler2 = function (v) {
+        return new VYNET_API_PreviewMultiview_PreviewMultiviewPanel.TxScaler({
+            txname: Data_Lens_Getter.viewOn(d)(VYNET_API_Device_DeviceTx["_tdevice_name"](Data_Lens_Internal_Forget.strongForget)),
+            txid: Data_Lens_Getter.viewOn(d)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)),
+            txwidth: v.value0.sclconfiguration.value0.sclcwidth,
+            txheight: v.value0.sclconfiguration.value0.sclcheight
+        });
+    };
+    return mktxscaler2(d.tscaler);
+};
 var mkmdevicerx = function (rx) {
     return {
         mrdevice_id: Data_Lens_Getter.viewOn(rx)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget)),
@@ -127491,22 +127079,49 @@ var marshal4 = function (v) {
         return v1;
     };
 };
+var makeline = function (win) {
+    return function (wout) {
+        return function (xs) {
+            var inNeither = Data_List.filter(function (x) {
+                return !Data_Foldable.elem(Data_List_Types.foldableList)(Data_Eq.eqString)(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)))(win) && !Data_Foldable.elem(Data_List_Types.foldableList)(Data_Eq.eqString)(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)))(wout);
+            })(xs);
+            var byId = function (i) {
+                return Data_List.filter(function (x) {
+                    return Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === i;
+                })(xs);
+            };
+            var inWin = Data_List.concatMap(byId)(win);
+            var inWout = Data_List.concatMap(byId)(wout);
+            return Data_Semigroup.append(Data_List_Types.semigroupList)(inWin)(Data_Semigroup.append(Data_List_Types.semigroupList)(inWout)(inNeither));
+        };
+    };
+};
 var makeglobal = function (v) {
     if (v instanceof Data_Maybe.Just) {
         return Unify_Types.setGlobalString(v.value0);
     };
     return Data_Unit.unit;
 };
+var makefair = function (wrr) {
+    return function (wout) {
+        var notinwrr = Data_List.filter(function (x) {
+            return !Data_Foldable.elem(Data_List_Types.foldableList)(Data_Eq.eqString)(x)(wrr);
+        })(wout);
+        return Data_Semigroup.append(Data_List_Types.semigroupList)(notinwrr)(Data_List.reverse(Data_List.filter(function (x) {
+            return Data_Foldable.elem(Data_List_Types.foldableList)(Data_Eq.eqString)(x)(wout);
+        })(wrr)));
+    };
+};
 var islinked = function (rx) {
     return function (deviceId) {
         return Data_Maybe.isJust(Data_Foldable.find(Data_List_Types.foldableList)(function (sub) {
             return Data_Lens_Getter.viewOn(sub)((function () {
-                var $339 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                var $340 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                var $341 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Monoid.monoidString));
-                var $342 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
-                return function ($343) {
-                    return $339($340($341($342($343))));
+                var $526 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                var $527 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                var $528 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Monoid.monoidString));
+                var $529 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
+                return function ($530) {
+                    return $526($527($528($529($530))));
                 };
             })()) === deviceId;
         })(Data_Lens_Getter.viewOn(rx)(VYNET_API_Device_DeviceRx["_rsubscriptions"](Data_Lens_Internal_Forget.strongForget))));
@@ -127514,21 +127129,21 @@ var islinked = function (rx) {
 };
 var setfastiflinked = function (txid) {
     return function (rx) {
-        var $68 = Data_Lens_Getter.viewOn(rx)((function () {
-            var $344 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
-            var $345 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
-            var $346 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
-            return function ($347) {
-                return $344($345($346($347)));
+        var $97 = Data_Lens_Getter.viewOn(rx)((function () {
+            var $531 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
+            var $532 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
+            var $533 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
+            return function ($534) {
+                return $531($532($533($534)));
             };
         })()) === "GENLOCKED" && islinked(rx)(txid);
-        if ($68) {
+        if ($97) {
             return Data_Lens_Setter.set((function () {
-                var $348 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Profunctor_Strong.strongFn);
-                var $349 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Profunctor_Strong.strongFn);
-                var $350 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Profunctor_Strong.strongFn);
-                return function ($351) {
-                    return $348($349($350($351)));
+                var $535 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Profunctor_Strong.strongFn);
+                var $536 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Profunctor_Strong.strongFn);
+                var $537 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Profunctor_Strong.strongFn);
+                return function ($538) {
+                    return $535($536($537($538)));
                 };
             })())("FAST_SWITCHED")(rx);
         };
@@ -127537,28 +127152,28 @@ var setfastiflinked = function (txid) {
 };
 var setgenlockiflinked = function (txid) {
     return function (rx) {
-        var $69 = (Data_Lens_Getter.viewOn(rx)((function () {
-            var $352 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
-            var $353 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
-            var $354 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
-            return function ($355) {
-                return $352($353($354($355)));
+        var $98 = (Data_Lens_Getter.viewOn(rx)((function () {
+            var $539 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
+            var $540 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
+            var $541 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
+            return function ($542) {
+                return $539($540($541($542)));
             };
         })()) === "FAST_SWITCHED" || Data_Lens_Getter.viewOn(rx)((function () {
-            var $356 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
-            var $357 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
-            var $358 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
-            return function ($359) {
-                return $356($357($358($359)));
+            var $543 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
+            var $544 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
+            var $545 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
+            return function ($546) {
+                return $543($544($545($546)));
             };
         })()) === "GENLOCK_SCALING") && islinked(rx)(txid);
-        if ($69) {
+        if ($98) {
             return Data_Lens_Setter.set((function () {
-                var $360 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Profunctor_Strong.strongFn);
-                var $361 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Profunctor_Strong.strongFn);
-                var $362 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Profunctor_Strong.strongFn);
-                return function ($363) {
-                    return $360($361($362($363)));
+                var $547 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Profunctor_Strong.strongFn);
+                var $548 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Profunctor_Strong.strongFn);
+                var $549 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Profunctor_Strong.strongFn);
+                return function ($550) {
+                    return $547($548($549($550)));
                 };
             })())("GENLOCKED")(rx);
         };
@@ -127567,38 +127182,38 @@ var setgenlockiflinked = function (txid) {
 };
 var getsingletx = function (v) {
     if (v instanceof Data_Maybe.Just) {
-        var $71 = (Data_Lens_Getter.viewOn(v.value0)((function () {
-            var $364 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
-            var $365 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
-            var $366 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
-            return function ($367) {
-                return $364($365($366($367)));
+        var $100 = (Data_Lens_Getter.viewOn(v.value0)((function () {
+            var $551 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
+            var $552 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
+            var $553 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
+            return function ($554) {
+                return $551($552($553($554)));
             };
         })()) === "FAST_SWITCHED" || (Data_Lens_Getter.viewOn(v.value0)((function () {
-            var $368 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
-            var $369 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
-            var $370 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
-            return function ($371) {
-                return $368($369($370($371)));
+            var $555 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
+            var $556 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
+            var $557 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
+            return function ($558) {
+                return $555($556($557($558)));
             };
         })()) === "GENLOCK_SCALING" || Data_Lens_Getter.viewOn(v.value0)((function () {
-            var $372 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
-            var $373 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
-            var $374 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
-            return function ($375) {
-                return $372($373($374($375)));
+            var $559 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
+            var $560 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
+            var $561 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
+            return function ($562) {
+                return $559($560($561($562)));
             };
         })()) === "GENLOCKED")) && Data_Lens_Getter.viewOn(v.value0)(VYNET_API_Device_DeviceRx["_rdevice_name"](Data_Lens_Internal_Forget.strongForget)) !== "PREVIEW BOX";
-        if ($71) {
+        if ($100) {
             return Data_Lens_Fold.previewOn(v.value0)((function () {
-                var $376 = VYNET_API_Device_DeviceRx["_rsubscriptions"](Data_Lens_Internal_Forget.strongForget);
-                var $377 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Maybe_First.monoidFirst));
-                var $378 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                var $379 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                var $380 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                var $381 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
-                return function ($382) {
-                    return $376($377($378($379($380($381($382))))));
+                var $563 = VYNET_API_Device_DeviceRx["_rsubscriptions"](Data_Lens_Internal_Forget.strongForget);
+                var $564 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Maybe_First.monoidFirst));
+                var $565 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                var $566 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                var $567 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                var $568 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
+                return function ($569) {
+                    return $563($564($565($566($567($568($569))))));
                 };
             })());
         };
@@ -127610,18 +127225,18 @@ var getnotgenlockeddev = function (txid) {
     return function (a) {
         return Data_List.filter(function (rx) {
             return (Data_Lens_Getter.viewOn(rx)((function () {
-                var $383 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
-                var $384 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                var $385 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
-                return function ($386) {
-                    return $383($384($385($386)));
+                var $570 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
+                var $571 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                var $572 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
+                return function ($573) {
+                    return $570($571($572($573)));
                 };
             })()) === "FAST_SWITCHED" || Data_Lens_Getter.viewOn(rx)((function () {
-                var $387 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
-                var $388 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                var $389 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
-                return function ($390) {
-                    return $387($388($389($390)));
+                var $574 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
+                var $575 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                var $576 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
+                return function ($577) {
+                    return $574($575($576($577)));
                 };
             })()) === "GENLOCK_SCALING") && islinked(rx)(txid);
         })(a);
@@ -127631,11 +127246,11 @@ var getgenlockeddev = function (txid) {
     return function (a) {
         return Data_List.filter(function (rx) {
             return Data_Lens_Getter.viewOn(rx)((function () {
-                var $391 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
-                var $392 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                var $393 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
-                return function ($394) {
-                    return $391($392($393($394)));
+                var $578 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
+                var $579 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                var $580 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
+                return function ($581) {
+                    return $578($579($580($581)));
                 };
             })()) === "GENLOCKED" && islinked(rx)(txid);
         })(a);
@@ -127645,11 +127260,11 @@ var getallsinglelined = function (txid) {
     return function (a) {
         return Data_List.filter(function (rx) {
             return Data_Lens_Getter.viewOn(rx)((function () {
-                var $395 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
-                var $396 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                var $397 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
-                return function ($398) {
-                    return $395($396($397($398)));
+                var $582 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
+                var $583 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                var $584 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
+                return function ($585) {
+                    return $582($583($584($585)));
                 };
             })()) !== "MULTIVIEW" && islinked(rx)(txid);
         })(a);
@@ -127661,6 +127276,13 @@ var checkifpreview = function (v) {
         return Data_String_CodePoints.take(20)(v.value0) === orangepiedid;
     };
     return false;
+};
+var appendin = function (ws) {
+    return function (xs) {
+        return Data_Semigroup.append(Data_List_Types.semigroupList)(ws)(Data_List.filter(function (x) {
+            return !Data_Foldable.elem(Data_List_Types.foldableList)(Data_Eq.eqString)(x)(ws);
+        })(xs));
+    };
 };
 var alignbyindex = function (wxs) {
     return function (msubid) {
@@ -127675,7 +127297,7 @@ var alignbyindex = function (wxs) {
                 if (v instanceof Data_Maybe.Nothing) {
                     return acc;
                 };
-                throw new Error("Failed pattern match at VYNET.MainMainPanel (line 626, column 5 - line 628, column 21): " + [ v.constructor.name ]);
+                throw new Error("Failed pattern match at VYNET.MainMainPanel (line 694, column 5 - line 696, column 21): " + [ v.constructor.name ]);
             };
         })(Data_Monoid.mempty(Data_List_Types.monoidList))(wxs);
     };
@@ -127691,47 +127313,47 @@ var makewp = function (wxs) {
     };
 };
 var _pvconfig = (function () {
-    var $399 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $400 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)));
-    var $401 = Widget_Unify_UnifyCompItem["_compitem"](Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference);
-    return function ($402) {
-        return $399($400($401($402)));
+    var $586 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $587 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)));
+    var $588 = Widget_Unify_UnifyCompItem["_compitem"](Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference);
+    return function ($589) {
+        return $586($587($588($589)));
     };
 })();
 var _previewrx = (function () {
-    var $403 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $404 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $405 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2));
-    var $406 = Widget_Unify_UnifyCompItem["_compitem"](Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference);
-    return function ($407) {
-        return $403($404($405($406($407))));
+    var $590 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $591 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $592 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2));
+    var $593 = Widget_Unify_UnifyCompItem["_compitem"](Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference);
+    return function ($594) {
+        return $590($591($592($593($594))));
     };
 })();
 var _previewgateway = (function () {
-    var $408 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $409 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $410 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $411 = ExploreCore.liftRight(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $412 = Widget_Unify_UnifyCompItem["_compitem"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel.comonadComponentPreviewMu)(VYNET_API_PreviewMultiview_PreviewMultiviewPanel.shouldUpdateComponentPrev);
-    return function ($413) {
-        return $408($409($410($411($412($413)))));
+    var $595 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $596 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $597 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $598 = ExploreCore.liftRight(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $599 = Widget_Unify_UnifyCompItem["_compitem"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel.comonadComponentPreviewMu)(VYNET_API_PreviewMultiview_PreviewMultiviewPanel.shouldUpdateComponentPrev);
+    return function ($600) {
+        return $595($596($597($598($599($600)))));
     };
 })();
 var _newframe = (function () {
-    var $414 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2))));
-    var $415 = Widget_Unify_UnifyCompItem["_compitem"](VYNET_API_Multiview_MultiviewPanel.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewPanel.shouldUpdateComponentMult);
-    return function ($416) {
-        return $414($415($416));
+    var $601 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2))));
+    var $602 = Widget_Unify_UnifyCompItem["_compitem"](VYNET_API_Multiview_MultiviewPanel.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewPanel.shouldUpdateComponentMult);
+    return function ($603) {
+        return $601($602($603));
     };
 })();
 var _initapp = (function () {
-    var $417 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $418 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $419 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $420 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $421 = Widget_Unify_UnifyCompItem["_compitem"](Third_Init_InitAppData.comonadComponentInitApp)(Third_Init_InitAppData.shouldUpdateComponentInit);
-    return function ($422) {
-        return $417($418($419($420($421($422)))));
+    var $604 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $605 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $606 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $607 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $608 = Widget_Unify_UnifyCompItem["_compitem"](Third_Init_InitAppData.comonadComponentInitApp)(Third_Init_InitAppData.shouldUpdateComponentInit);
+    return function ($609) {
+        return $604($605($606($607($608($609)))));
     };
 })();
 var verifyMainMainPanel = Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(Data_Functor_Day.extendDay(Widget_Unify_UnifyCompItem.extendStoreComponent2)(Data_Functor_Day.extendDay(Widget_Unify_UnifyCompItem.extendStoreComponent2)(Data_Functor_Day.extendDay(Widget_Unify_UnifyCompItem.extendStoreComponent2)(Data_Functor_Day.extendDay(Widget_Unify_UnifyCompItem.extendStoreComponent2)(Widget_Unify_UnifyCompItem.extendStoreComponent2))))))(_newframe(Control_Applicative.pure(ExploreCore.applicativeCo(VYNET_API_Multiview_MultiviewPanel.comonadComponentMultiview))(Data_Unit.unit)))(function () {
@@ -127805,58 +127427,58 @@ var marshal0 = function (v) {
                     return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_initapp(Third_Init_InitAppData["_CoInitApp"](Third_Init_InitAppData["_initapptxs"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Third_Init_InitAppTxs.comonadComponentInitAppTx)(Third_Init_InitAppTxs.shouldUpdateComponentInit)(Third_Init_InitAppTxs["_CoInitAppTxs"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (txs) {
                         return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_initapp(Third_Init_InitAppData["_CoInitApp"](Third_Init_InitAppData["_initapprxs"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Third_Init_InitAppRxs.comonadComponentInitAppRx)(Third_Init_InitAppRxs.shouldUpdateComponentInit)(Third_Init_InitAppRxs["_CoInitAppRxs"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (rxs) {
                             var previewboxid = makeglobal(Data_Lens_Fold.previewOn(rxs)((function () {
-                                var $423 = Third_Init_InitAppRxs["_iarxdevices"](Data_Lens_Internal_Forget.strongForget);
-                                var $424 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Maybe_First.monoidFirst));
-                                var $425 = Data_Lens_Fold.filtered(Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst))(function (r) {
+                                var $610 = Third_Init_InitAppRxs["_iarxdevices"](Data_Lens_Internal_Forget.strongForget);
+                                var $611 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Maybe_First.monoidFirst));
+                                var $612 = Data_Lens_Fold.filtered(Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst))(function (r) {
                                     return checkifpreview(Data_Lens_Fold.previewOn(r)((function () {
-                                        var $428 = VYNET_API_Device_DeviceRx["_rhdmi_monitor"](Data_Lens_Internal_Forget.strongForget);
-                                        var $429 = VYNET_API_Device_Data_HdmiMonitor["_hmstatus"](Data_Lens_Internal_Forget.strongForget);
-                                        var $430 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                        var $431 = VYNET_API_Device_Data_HdmiMonitorStatus["_edid"](Data_Lens_Internal_Forget.strongForget);
-                                        var $432 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                        return function ($433) {
-                                            return $428($429($430($431($432($433)))));
+                                        var $615 = VYNET_API_Device_DeviceRx["_rhdmi_monitor"](Data_Lens_Internal_Forget.strongForget);
+                                        var $616 = VYNET_API_Device_Data_HdmiMonitor["_hmstatus"](Data_Lens_Internal_Forget.strongForget);
+                                        var $617 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                        var $618 = VYNET_API_Device_Data_HdmiMonitorStatus["_edid"](Data_Lens_Internal_Forget.strongForget);
+                                        var $619 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                        return function ($620) {
+                                            return $615($616($617($618($619($620)))));
                                         };
                                     })()));
                                 });
-                                var $426 = VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget);
-                                return function ($427) {
-                                    return $423($424($425($426($427))));
+                                var $613 = VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget);
+                                return function ($614) {
+                                    return $610($611($612($613($614))));
                                 };
                             })()));
                             var isversion2 = Data_List.filter(function (x) {
                                 return Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqInt))(Data_Lens_Fold.previewOn(x)((function () {
-                                    var $434 = VYNET_API_Device_DeviceTx["_tvideo_compressor"](Data_Lens_Internal_Forget.strongForget);
-                                    var $435 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                    var $436 = VYNET_API_Device_Data_VideoCompressor["_vcconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                                    var $437 = VYNET_API_Device_Data_VideoCompressorConfiguration["_vccversion"](Data_Lens_Internal_Forget.strongForget);
-                                    return function ($438) {
-                                        return $434($435($436($437($438))));
+                                    var $621 = VYNET_API_Device_DeviceTx["_tvideo_compressor"](Data_Lens_Internal_Forget.strongForget);
+                                    var $622 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                    var $623 = VYNET_API_Device_Data_VideoCompressor["_vcconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                                    var $624 = VYNET_API_Device_Data_VideoCompressorConfiguration["_vccversion"](Data_Lens_Internal_Forget.strongForget);
+                                    return function ($625) {
+                                        return $621($622($623($624($625))));
                                     };
                                 })()))(new Data_Maybe.Just(2));
                             })(Data_Lens_Getter.viewOn(txs)(Third_Init_InitAppTxs["_iatxdevices"](Data_Lens_Internal_Forget.strongForget)));
                             var frdsoff = Data_List.filter(function (x) {
                                 return Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqInt))(Data_Lens_Fold.previewOn(x)((function () {
-                                    var $439 = VYNET_API_Device_DeviceTx["_tscaler"](Data_Lens_Internal_Forget.strongForget);
-                                    var $440 = VYNET_API_Device_Data_Scaler["_sclinputs"](Data_Lens_Internal_Forget.strongForget);
-                                    var $441 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                    var $442 = VYNET_API_Device_Data_ScalerInputs["_siconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                                    var $443 = VYNET_API_Device_Data_ScalerInputsConfiguration["_sicsource"](Data_Lens_Internal_Forget.strongForget);
-                                    var $444 = VYNET_API_Device_Data_ConfigurationSource["_csvalue"](Data_Lens_Internal_Forget.strongForget);
-                                    return function ($445) {
-                                        return $439($440($441($442($443($444($445))))));
+                                    var $626 = VYNET_API_Device_DeviceTx["_tscaler"](Data_Lens_Internal_Forget.strongForget);
+                                    var $627 = VYNET_API_Device_Data_Scaler["_sclinputs"](Data_Lens_Internal_Forget.strongForget);
+                                    var $628 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                    var $629 = VYNET_API_Device_Data_ScalerInputs["_siconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                                    var $630 = VYNET_API_Device_Data_ScalerInputsConfiguration["_sicsource"](Data_Lens_Internal_Forget.strongForget);
+                                    var $631 = VYNET_API_Device_Data_ConfigurationSource["_csvalue"](Data_Lens_Internal_Forget.strongForget);
+                                    return function ($632) {
+                                        return $626($627($628($629($630($631($632))))));
                                     };
                                 })()))(new Data_Maybe.Just(0));
                             })(Data_Lens_Getter.viewOn(txs)(Third_Init_InitAppTxs["_iatxdevices"](Data_Lens_Internal_Forget.strongForget)));
                             var frdnoff = Data_List.filter(function (x) {
                                 return Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqInt))(Data_Lens_Fold.previewOn(x)((function () {
-                                    var $446 = VYNET_API_Device_DeviceTx["_thdmistream"](Data_Lens_Internal_Forget.strongForget);
-                                    var $447 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                    var $448 = VYNET_API_Device_Data_HdmiStream["_hdsconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                                    var $449 = VYNET_API_Device_Data_HdmiStreamConfiguraion["_hdscsource"](Data_Lens_Internal_Forget.strongForget);
-                                    var $450 = VYNET_API_Device_Data_ConfigurationSource["_csvalue"](Data_Lens_Internal_Forget.strongForget);
-                                    return function ($451) {
-                                        return $446($447($448($449($450($451)))));
+                                    var $633 = VYNET_API_Device_DeviceTx["_thdmistream"](Data_Lens_Internal_Forget.strongForget);
+                                    var $634 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                    var $635 = VYNET_API_Device_Data_HdmiStream["_hdsconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                                    var $636 = VYNET_API_Device_Data_HdmiStreamConfiguraion["_hdscsource"](Data_Lens_Internal_Forget.strongForget);
+                                    var $637 = VYNET_API_Device_Data_ConfigurationSource["_csvalue"](Data_Lens_Internal_Forget.strongForget);
+                                    return function ($638) {
+                                        return $633($634($635($636($637($638)))));
                                     };
                                 })()))(new Data_Maybe.Just(1));
                             })(Data_Lens_Getter.viewOn(txs)(Third_Init_InitAppTxs["_iatxdevices"](Data_Lens_Internal_Forget.strongForget)));
@@ -127913,659 +127535,6 @@ var marshal0 = function (v) {
         return v1;
     };
 };
-var marshal1 = function (v) {
-    return function (v1) {
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelPreviewgatewaySignal && (v.value0.value0 instanceof VYNET_API_PreviewMultiview_PreviewMultiviewPanel.PreviewRxDevicesSignal && v.value0.value0.value0 instanceof Third_Reference.ReferSignal))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
-                if (v.value0.value0.value0.value0 instanceof Third_RefState.RefPreAck && v.value0.value0.value0.value0.value0.value0.rdrcmd instanceof VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesRx2) {
-                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (strx) {
-                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicesrx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))(Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (v3) {
-                            var $115 = Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(new Data_Maybe.Just(Data_Lens_Getter.viewOn(v3)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget))))(Data_Lens_Getter.viewOn(strx)(VYNET_API_Control_ActionStack["_selectedtoprx"](Data_Lens_Internal_Forget.strongForget)));
-                            if ($115) {
-                                return Data_Lens_Setter.set(VYNET_API_Device_DeviceRx["_rselected"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(true))(v3);
-                            };
-                            return v3;
-                        }))))))))))))(function () {
-                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicesrx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))(Third_TransList_Findlist["_findlist"](VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Bind.bind(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (v3) {
-                                return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(new Data_Maybe.Just(Data_Lens_Getter.viewOn(v3)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget))))(Data_Lens_Getter.viewOn(strx)(VYNET_API_Control_ActionStack["_selectedtoprx"](Data_Lens_Internal_Forget.strongForget))));
-                            })))(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))))))))))))(function (rx) {
-                                var seltx = getsingletx(rx);
-                                return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
-                                    if (seltx instanceof Data_Maybe.Just) {
-                                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_devicestx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))(Third_TransList_Findlist["_findlist"](VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Bind.bind(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (x) {
-                                            return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === seltx.value0);
-                                        })))(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))))))))))(function (selectedtx) {
-                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_devicestx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))(Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (x) {
-                                                var $117 = Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === seltx.value0;
-                                                if ($117) {
-                                                    return Data_Lens_Setter.set(VYNET_API_Device_DeviceTx["_tselected"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(true))(x);
-                                                };
-                                                return x;
-                                            }))))))))))(function () {
-                                                return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
-                                                    if (selectedtx instanceof Data_Maybe.Just) {
-                                                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_initapp(Third_Init_InitAppData["_CoInitApp"](Third_Init_InitAppData["_initapprxs"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Third_Init_InitAppRxs.comonadComponentInitAppRx)(Third_Init_InitAppRxs.shouldUpdateComponentInit)(Third_Init_InitAppRxs["_CoInitAppRxs"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (rxs) {
-                                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_initapp(Third_Init_InitAppData["_CoInitApp"](Third_Init_InitAppData["_initapptxs"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Third_Init_InitAppTxs.comonadComponentInitAppTx)(Third_Init_InitAppTxs.shouldUpdateComponentInit)(Third_Init_InitAppTxs["_CoInitAppTxs"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (alltxs) {
-                                                                var txall = Data_Foldable.find(Data_List_Types.foldableList)(function (x) {
-                                                                    return Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === Data_Lens_Getter.viewOn(selectedtx.value0)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget));
-                                                                })(Data_Lens_Getter.viewOn(alltxs)(Third_Init_InitAppTxs["_iatxdevices"](Data_Lens_Internal_Forget.strongForget)));
-                                                                var txedid = Data_Maybe.fromMaybe("")(Data_Lens_Fold.previewOn(txall)((function () {
-                                                                    var $452 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                                    var $453 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Lens_Internal_Forget.strongForget);
-                                                                    var $454 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                                                                    var $455 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdcedid"](Data_Lens_Internal_Forget.strongForget);
-                                                                    var $456 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                                    return function ($457) {
-                                                                        return $452($453($454($455($456($457)))));
-                                                                    };
-                                                                })()));
-                                                                return _CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))((function () {
-                                                                    var $458 = Data_Lens_Setter.set(VYNET_API_Multiview_MultiviewDeviceRx["_mrhdc"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(new Data_Tuple.Tuple(new Data_Tuple.Tuple(false, Data_Lens_Getter.viewOn(selectedtx.value0)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget))), new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(selectedtx.value0)((function () {
-                                                                        var $461 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Lens_Internal_Forget.strongForget);
-                                                                        var $462 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                                                                        return function ($463) {
-                                                                            return $461($462($463));
-                                                                        };
-                                                                    })()), Data_Lens_Getter.viewOn(selectedtx.value0)((function () {
-                                                                        var $464 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Lens_Internal_Forget.strongForget);
-                                                                        var $465 = VYNET_API_Device_Data_HdmiDecoder["_hdstatus"](Data_Lens_Internal_Forget.strongForget);
-                                                                        return function ($466) {
-                                                                            return $464($465($466));
-                                                                        };
-                                                                    })())))));
-                                                                    var $459 = Data_Lens_Setter.set(VYNET_API_Multiview_MultiviewDeviceRx["_mrrxs"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(new Data_Tuple.Tuple(new Data_Tuple.Tuple(false, Data_Lens_Getter.viewOn(selectedtx.value0)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget))), new Data_Tuple.Tuple(txedid, Data_Lens_Getter.viewOn(rxs)(Third_Init_InitAppRxs["_iarxdevices"](Data_Lens_Internal_Forget.strongForget))))));
-                                                                    return function ($460) {
-                                                                        return $458($459($460));
-                                                                    };
-                                                                })()))))))))));
-                                                            });
-                                                        });
-                                                    };
-                                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                                                })())(function () {
-                                                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit))(function () {
-                                                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                                                    });
-                                                });
-                                            });
-                                        });
-                                    };
-                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                                })())(function () {
-                                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewrxdevices"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))(Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Bind.bind(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (d) {
-                                        return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Getter.viewOn(d)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget)));
-                                    }))))))))))(function (rxs) {
-                                        return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
-                                            var v3 = Data_List.take(1)(rxs);
-                                            if (v3 instanceof Data_List_Types.Cons && v3.value1 instanceof Data_List_Types.Nil) {
-                                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewrx(Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Multiview_Command_MultiviewUiCommand.eqMultiviewUiCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Multiview_Command_MultiviewUiCommand.MultiviewUiCommand({
-                                                    mvcmd: new VYNET_API_Multiview_Command_MultiviewUiCommand.GetMultiviewDeviceRx(v3.value0)
-                                                }))))))))(function () {
-                                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                                                });
-                                            };
-                                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                                        })())(function () {
-                                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                                        });
-                                    });
-                                });
-                            });
-                        });
-                    });
-                };
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-            })())(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-            }))(v1);
-        };
-        return v1;
-    };
-};
-var marshal2 = function (v) {
-    return function (v1) {
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRx5Sec))))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel.runpreviewupdate(true))))(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelPreviewrxSignal && v.value0.value0 instanceof Third_Reference.ReferSignal)) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
-                if (v.value0.value0.value0 instanceof Third_RefState.RefPreAck && v.value0.value0.value0.value0.value0.mvcmd instanceof VYNET_API_Multiview_Command_MultiviewUiCommand.GetMultiviewDeviceRx) {
-                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewrx(Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Data_Functor.mapFlipped(ExploreCore.functorCo(Control_Comonad_Store_Trans.functorStoreT(Data_Identity.functorIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (x) {
-                        return Data_Lens_Getter.viewOn(x)(VYNET_API_Multiview_MultiviewDeviceRx["_mrsubscriptions"](Data_Lens_Internal_Forget.strongForget));
-                    })))))))(function (previewsubs) {
-                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicesrx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))(Third_ComponentList["_CoList"](Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (x) {
-                            var $140 = Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget)) === v.value0.value0.value0.value0.value0.mvcmd.value0;
-                            if ($140) {
-                                return Data_Lens_Setter.set(VYNET_API_Device_DeviceRx["_rsubscriptions"](Data_Profunctor_Strong.strongFn))(previewsubs)(x);
-                            };
-                            return x;
-                        })))))))))))))(function () {
-                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewrx(Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Data_Functor.mapFlipped(ExploreCore.functorCo(Control_Comonad_Store_Trans.functorStoreT(Data_Identity.functorIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (x) {
-                                return Data_Lens_Getter.viewOn(x)((function () {
-                                    var $467 = VYNET_API_Multiview_MultiviewDeviceRx["_mrframe_buffer"](Data_Lens_Internal_Forget.strongForget);
-                                    var $468 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                                    return function ($469) {
-                                        return $467($468($469));
-                                    };
-                                })());
-                            })))))))(function (previewrx) {
-                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewrx(Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Data_Functor.mapFlipped(ExploreCore.functorCo(Control_Comonad_Store_Trans.functorStoreT(Data_Identity.functorIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (x) {
-                                    return Data_Lens_Getter.viewOn(x)(VYNET_API_Multiview_MultiviewDeviceRx["_mrsubscriptions"](Data_Lens_Internal_Forget.strongForget));
-                                })))))))(function (previewsxs) {
-                                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewrx(Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Data_Functor.mapFlipped(ExploreCore.functorCo(Control_Comonad_Store_Trans.functorStoreT(Data_Identity.functorIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (x) {
-                                        return Data_Lens_Getter.viewOn(x)(VYNET_API_Multiview_MultiviewDeviceRx["_mrdevice_id"](Data_Lens_Internal_Forget.strongForget));
-                                    })))))))(function (previewrxid) {
-                                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Data_Functor.mapFlipped(ExploreCore.functorCo(Control_Comonad_Store_Trans.functorStoreT(Data_Identity.functorIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (x) {
-                                            return Data_Lens_Getter.viewOn(x)((function () {
-                                                var $470 = VYNET_API_Multiview_MultiviewDeviceRx["_mrframe_buffer"](Data_Lens_Internal_Forget.strongForget);
-                                                var $471 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                                                return function ($472) {
-                                                    return $470($471($472));
-                                                };
-                                            })());
-                                        })))))))))))(function (uirx) {
-                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Data_Functor.mapFlipped(ExploreCore.functorCo(Control_Comonad_Store_Trans.functorStoreT(Data_Identity.functorIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (x) {
-                                                return Data_Lens_Getter.viewOn(x)(VYNET_API_Multiview_MultiviewDeviceRx["_mrsubscriptions"](Data_Lens_Internal_Forget.strongForget));
-                                            })))))))))))(function (sxs) {
-                                                var wxs = Data_Lens_Fold.toListOfOn(previewrx)((function () {
-                                                    var $473 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcmultiview_layout"](Data_Lens_Internal_Forget.strongForget);
-                                                    var $474 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
-                                                    var $475 = VYNET_API_Multiview_Data_LayoutDescription["_ldwindows"](Data_Lens_Internal_Forget.strongForget);
-                                                    var $476 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
-                                                    return function ($477) {
-                                                        return $473($474($475($476($477))));
-                                                    };
-                                                })());
-                                                var msubid = Data_Functor.map(Data_List_Types.functorList)(function (x) {
-                                                    return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_Data_Subscription["_sbindex"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Fold.previewOn(x)((function () {
-                                                        var $478 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                                        var $479 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                                                        var $480 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                        var $481 = Data_Lens_Getter.to(function (v3) {
-                                                            return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(v3)(VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(v3)(VYNET_API_Device_Data_SubscriptionSource["_ssdevice_name"](Data_Lens_Internal_Forget.strongForget)));
-                                                        });
-                                                        return function ($482) {
-                                                            return $478($479($480($481($482))));
-                                                        };
-                                                    })()));
-                                                })(Data_Lens_Fold.toListOfOn(previewsxs)(Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)))));
-                                                var subwxs = makewp(wxs)(msubid);
-                                                var pws = Data_Functor.map(Data_List_Types.functorList)(function (w) {
-                                                    return new VYNET_API_Multiview_Data_PreviewWindow.PreviewWindow({
-                                                        pwnindex: Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnindex"](Data_Lens_Internal_Forget.strongForget)),
-                                                        pwnhorizontal_position: Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnhorizontal_position"](Data_Lens_Internal_Forget.strongForget)),
-                                                        pwnvertical_position: Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnvertical_position"](Data_Lens_Internal_Forget.strongForget)),
-                                                        pwnwidth: Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnwidth"](Data_Lens_Internal_Forget.strongForget)),
-                                                        pwnheight: Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnheight"](Data_Lens_Internal_Forget.strongForget)),
-                                                        pwnhorizontal_offset: Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnhorizontal_offset"](Data_Lens_Internal_Forget.strongForget)),
-                                                        pwnvertical_offset: Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnvertical_offset"](Data_Lens_Internal_Forget.strongForget)),
-                                                        pwntarget_surface: Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wntarget_surface"](Data_Lens_Internal_Forget.strongForget)),
-                                                        pwnsubid: Data_Lens_Fold.previewOn(w)((function () {
-                                                            var $483 = VYNET_API_Multiview_Data_Window["_wnsubid"](Data_Lens_Internal_Forget.strongForget);
-                                                            var $484 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                            var $485 = Data_Lens_Lens_Tuple["_1"](Data_Lens_Internal_Forget.strongForget);
-                                                            return function ($486) {
-                                                                return $483($484($485($486)));
-                                                            };
-                                                        })())
-                                                    });
-                                                })(subwxs);
-                                                var uirxtxsub = Data_Foldable.find(Data_List_Types.foldableList)(function (v3) {
-                                                    return Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Lens_Getter.viewOn(v3)(VYNET_API_Multiview_Data_PreviewWindow["_pwnsubid"](Data_Lens_Internal_Forget.strongForget)))(Data_Lens_Fold.previewOn(Data_List.index(sxs)(0))((function () {
-                                                        var $487 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                        var $488 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                                        var $489 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                                                        var $490 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                        var $491 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
-                                                        return function ($492) {
-                                                            return $487($488($489($490($491($492)))));
-                                                        };
-                                                    })()));
-                                                })(pws);
-                                                var uiws = Data_Functor.map(Data_List_Types.functorList)(function (w) {
-                                                    return Data_Lens_Setter.set(VYNET_API_Multiview_Data_Window["_wnpreview"](Data_Profunctor_Strong.strongFn))(Data_Foldable.find(Data_List_Types.foldableList)(function (v3) {
-                                                        return Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Lens_Getter.viewOn(v3)(VYNET_API_Multiview_Data_PreviewWindow["_pwnsubid"](Data_Lens_Internal_Forget.strongForget)))(Data_Lens_Fold.previewOn(w)((function () {
-                                                            var $493 = VYNET_API_Multiview_Data_Window["_wnsubid"](Data_Lens_Internal_Forget.strongForget);
-                                                            var $494 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                            var $495 = Data_Lens_Lens_Tuple["_1"](Data_Lens_Internal_Forget.strongForget);
-                                                            return function ($496) {
-                                                                return $493($494($495($496)));
-                                                            };
-                                                        })())) && Data_Eq.notEq(Data_Maybe.eqMaybe(Data_Tuple.eqTuple(Data_Eq.eqString)(Data_Eq.eqString)))(Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnsubid"](Data_Lens_Internal_Forget.strongForget)))(Data_Maybe.Nothing.value);
-                                                    })(pws))(w);
-                                                })(Data_Lens_Fold.toListOfOn(uirx)((function () {
-                                                    var $497 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcmultiview_layout"](Data_Lens_Internal_Forget.strongForget);
-                                                    var $498 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
-                                                    var $499 = VYNET_API_Multiview_Data_LayoutDescription["_ldwindows"](Data_Lens_Internal_Forget.strongForget);
-                                                    var $500 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
-                                                    return function ($501) {
-                                                        return $497($498($499($500($501))));
-                                                    };
-                                                })()));
-                                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))((function () {
-                                                    var $502 = Data_Lens_Setter.set((function () {
-                                                        var $505 = VYNET_API_Multiview_MultiviewDeviceRx["_mrframe_buffer"](Data_Profunctor_Strong.strongFn);
-                                                        var $506 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Profunctor_Strong.strongFn);
-                                                        var $507 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcmultiview_layout"](Data_Profunctor_Strong.strongFn);
-                                                        var $508 = Data_Lens_Prism_Maybe["_Just"](Data_Profunctor_Choice.choiceFn);
-                                                        var $509 = VYNET_API_Multiview_Data_LayoutDescription["_ldwindows"](Data_Profunctor_Strong.strongFn);
-                                                        return function ($510) {
-                                                            return $505($506($507($508($509($510)))));
-                                                        };
-                                                    })())(uiws);
-                                                    var $503 = Data_Lens_Setter.set(VYNET_API_Multiview_MultiviewDeviceRx["_mrpreviewwindow"](Data_Profunctor_Strong.strongFn))(uirxtxsub);
-                                                    return function ($504) {
-                                                        return $502($503($504));
-                                                    };
-                                                })())))))))))))(function () {
-                                                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_devicestx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))(Third_ComponentList["_CoList"](Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (x) {
-                                                        return Data_Lens_Setter.set(VYNET_API_Device_DeviceTx["_twindow"](Data_Profunctor_Strong.strongFn))(Data_Functor.map(Data_Maybe.functorMaybe)(Data_Lens_Setter.over((function () {
-                                                            var $511 = VYNET_API_Multiview_Data_PreviewWindow["_pwnsubid"](Data_Profunctor_Strong.strongFn);
-                                                            var $512 = Data_Lens_Prism_Maybe["_Just"](Data_Profunctor_Choice.choiceFn);
-                                                            return function ($513) {
-                                                                return $511($512($513));
-                                                            };
-                                                        })())(function (y) {
-                                                            return y + "";
-                                                        }))(Data_Foldable.find(Data_List_Types.foldableList)(function (v3) {
-                                                            return Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Lens_Getter.viewOn(v3)(VYNET_API_Multiview_Data_PreviewWindow["_pwnsubid"](Data_Lens_Internal_Forget.strongForget)))(new Data_Maybe.Just(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget))));
-                                                        })(pws)))(x);
-                                                    })))))))))))(function () {
-                                                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicesrx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))(Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (x) {
-                                                            var sxs2 = Data_Foldable.find(Data_List_Types.foldableList)(function (v11) {
-                                                                return Data_Maybe.isJust(Data_Lens_Getter.viewOn(v11)((function () {
-                                                                    var $514 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                                                    var $515 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                                                                    return function ($516) {
-                                                                        return $514($515($516));
-                                                                    };
-                                                                })()));
-                                                            })(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceRx["_rsubscriptions"](Data_Lens_Internal_Forget.strongForget)));
-                                                            var uirxtxsub2 = Data_Foldable.find(Data_List_Types.foldableList)(function (v11) {
-                                                                return Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Lens_Getter.viewOn(v11)(VYNET_API_Multiview_Data_PreviewWindow["_pwnsubid"](Data_Lens_Internal_Forget.strongForget)))(Data_Lens_Fold.previewOn(sxs2)((function () {
-                                                                    var $517 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                                    var $518 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                                                    var $519 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                                                                    var $520 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                                    var $521 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
-                                                                    return function ($522) {
-                                                                        return $517($518($519($520($521($522)))));
-                                                                    };
-                                                                })()));
-                                                            })(pws);
-                                                            var uitxrouted = Data_Lens_Fold.previewOn(sxs2)((function () {
-                                                                var $523 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                                var $524 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                                                var $525 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                                                                var $526 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                                var $527 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
-                                                                return function ($528) {
-                                                                    return $523($524($525($526($527($528)))));
-                                                                };
-                                                            })());
-                                                            return Data_Lens_Setter.set(VYNET_API_Device_DeviceRx["_rwindow"](Data_Profunctor_Strong.strongFn))(uirxtxsub2)(Data_Lens_Setter.set(VYNET_API_Device_DeviceRx["_rroutedtx"](Data_Profunctor_Strong.strongFn))(uitxrouted)(x));
-                                                        }))))))))))))(function () {
-                                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_initapp(Third_Init_InitAppData["_CoInitApp"](Third_Init_InitAppData["_initappstatusref"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Third_Init_InitAppStatus.comonadComponentInitAppSt)(Third_Init_InitAppStatus.shouldUpdateComponentInit)(Third_Init_InitApp.placeholder2)))))))(function () {
-                                                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_initapp(Third_Init_InitAppData["_CoInitApp"](Third_Init_InitAppData["_initappstatusref"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Third_Init_InitAppStatus.comonadComponentInitAppSt)(Third_Init_InitAppStatus.shouldUpdateComponentInit)(Third_Init_InitAppStatus["_CoInitAppStatus"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (initstate) {
-                                                                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
-                                                                        var $141 = Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqBoolean))(Data_Lens_Getter.viewOn(initstate)(Third_Init_InitAppStatus["_firstrun"](Data_Lens_Internal_Forget.strongForget)))(new Data_Maybe.Just(false));
-                                                                        if ($141) {
-                                                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Multiview_Command_MultiviewUiCommand.eqMultiviewUiCommand)))(Data_Functor.map(ExploreCore.functorCo(Control_Comonad_Store_Trans.functorStoreT(Data_Identity.functorIdentity)))(Data_Maybe.Just.create)(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Multiview_Command_MultiviewUiCommand.MultiviewUiCommand({
-                                                                                mvcmd: new VYNET_API_Multiview_Command_MultiviewUiCommand.GetMultiviewDeviceRx(previewrxid)
-                                                                            })))))))))))))(function () {
-                                                                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_initapp(Third_Init_InitAppData["_CoInitApp"](Third_Init_InitAppData["_initappstatusref"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Third_Init_InitAppStatus.comonadComponentInitAppSt)(Third_Init_InitAppStatus.shouldUpdateComponentInit)(Third_Init_InitAppStatus["_CoInitAppStatus"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(Third_Init_InitAppStatus["_firstrun"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(true)))))))))))(function () {
-                                                                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                                                                                });
-                                                                            });
-                                                                        };
-                                                                        var $142 = Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqBoolean))(Data_Lens_Getter.viewOn(initstate)(Third_Init_InitAppStatus["_firstrun"](Data_Lens_Internal_Forget.strongForget)))(Data_Maybe.Nothing.value);
-                                                                        if ($142) {
-                                                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_initapp(Third_Init_InitAppData["_CoInitApp"](Third_Init_InitAppData["_initappstatusref"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Third_Init_InitAppStatus.comonadComponentInitAppSt)(Third_Init_InitAppStatus.shouldUpdateComponentInit)(Third_Init_InitAppStatus["_CoInitAppStatus"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(Third_Init_InitAppStatus["_firstrun"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(false)))))))))))(function () {
-                                                                                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                                                                            });
-                                                                        };
-                                                                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                                                                    })())(function () {
-                                                                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                                                                    });
-                                                                });
-                                                            });
-                                                        });
-                                                    });
-                                                });
-                                            });
-                                        });
-                                    });
-                                });
-                            });
-                        });
-                    });
-                };
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-            })())(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && (v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRxMrdeviceIdSignal && v.value0.value0.value0.value0.value0.value0 === "pip")))))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_configmultiviewlayouts"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_ConfigMultiviews.comonadComponentConfigMul)(VYNET_API_Multiview_ConfigMultiviews.shouldUpdateComponentConf)(VYNET_API_Multiview_ConfigMultiviews["_CoConfigMultiviews"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Multiview_ConfigMultiviews["_ispip"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(true)))))))))))(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && (v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRxMrdeviceIdSignal && v.value0.value0.value0.value0.value0.value0 === "single")))))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))(function (selectedrx) {
-                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel.singlecommands(selectedrx))))(function (singlecmds) {
-                    var leaveallsubscmd = VYNET_API_Multiview_MultiviewPanel.leaveallsubs(selectedrx);
-                    var ispreviewbox = Data_Lens_Getter.viewOn(selectedrx)(VYNET_API_Multiview_MultiviewDeviceRx["_mrdevice_name"](Data_Lens_Internal_Forget.strongForget)) === "PREVIEW BOX";
-                    var currentmode = Data_Lens_Getter.viewOn(selectedrx)((function () {
-                        var $529 = VYNET_API_Multiview_MultiviewDeviceRx["_mrframe_buffer"](Data_Lens_Internal_Forget.strongForget);
-                        var $530 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                        var $531 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
-                        return function ($532) {
-                            return $529($530($531($532)));
-                        };
-                    })());
-                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
-                        if (currentmode === "MULTIVIEW") {
-                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
-                                return Data_Semigroup.append(Data_List_Types.semigroupList)(leaveallsubscmd)(Data_Semigroup.append(Data_List_Types.semigroupList)(singlecmds)(Data_Semigroup.append(Data_List_Types.semigroupList)((function () {
-                                    if (ispreviewbox) {
-                                        return Data_List_Types.Nil.value;
-                                    };
-                                    return new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetFastSwitch(Data_Lens_Getter.viewOn(selectedrx)(VYNET_API_Multiview_MultiviewDeviceRx["_mrdevice_id"](Data_Lens_Internal_Forget.strongForget))), Data_List_Types.Nil.value);
-                                })())(Data_Semigroup.append(Data_List_Types.semigroupList)(xs)(new Data_List_Types.Cons(VYNET_API_Device_Command_Data_DeviceAction.CompletedAction.value, Data_List_Types.Nil.value)))));
-                            }))))))))))(function () {
-                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
-                                    gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
-                                }))))))))))))(function () {
-                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                                });
-                            });
-                        };
-                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                    })())(function () {
-                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                    });
-                });
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && (v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRxMrdeviceIdSignal && v.value0.value0.value0.value0.value0.value0 === "mv")))))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_configmultiviewlayouts"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_ConfigMultiviews.comonadComponentConfigMul)(VYNET_API_Multiview_ConfigMultiviews.shouldUpdateComponentConf)(VYNET_API_Multiview_ConfigMultiviews["_CoConfigMultiviews"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Multiview_ConfigMultiviews["_ispip"](Data_Profunctor_Strong.strongFn))(Data_Maybe.Nothing.value))))))))))(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && (v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRxMrdeviceIdSignal && v.value0.value0.value0.value0.value0.value0 === "genlocked")))))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))(function (selectedrx) {
-                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel.genlockcommands(selectedrx)(Data_Maybe.Nothing.value))))(function (genlockconf) {
-                    var ispreviewbox = Data_Lens_Getter.viewOn(selectedrx)(VYNET_API_Multiview_MultiviewDeviceRx["_mrdevice_name"](Data_Lens_Internal_Forget.strongForget)) === "PREVIEW BOX";
-                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
-                        if (ispreviewbox) {
-                            return Data_List_Types.Nil.value;
-                        };
-                        return Data_Semigroup.append(Data_List_Types.semigroupList)(xs)(Data_Semigroup.append(Data_List_Types.semigroupList)(genlockconf)(new Data_List_Types.Cons(VYNET_API_Device_Command_Data_DeviceAction.CompletedAction.value, Data_List_Types.Nil.value)));
-                    }))))))))))(function () {
-                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
-                            gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
-                        }))))))))))))(function () {
-                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                        });
-                    });
-                });
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRxMrGenlockscaledSelect))))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))(function (selectedrx) {
-                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel.genlockscaledcommands(v.value0.value0.value0.value0.value0.value0.wressignal)(v.value0.value0.value0.value0.value0.value0.hressignal)(v.value0.value0.value0.value0.value0.value0.fpssignal)(selectedrx)(Data_Maybe.Nothing.value))))(function (genlockconf) {
-                    var ispreviewbox = Data_Lens_Getter.viewOn(selectedrx)(VYNET_API_Multiview_MultiviewDeviceRx["_mrdevice_name"](Data_Lens_Internal_Forget.strongForget)) === "PREVIEW BOX";
-                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
-                        if (ispreviewbox) {
-                            return Data_List_Types.Nil.value;
-                        };
-                        return Data_Semigroup.append(Data_List_Types.semigroupList)(xs)(Data_Semigroup.append(Data_List_Types.semigroupList)(genlockconf)(new Data_List_Types.Cons(VYNET_API_Device_Command_Data_DeviceAction.CompletedAction.value, Data_List_Types.Nil.value)));
-                    }))))))))))(function () {
-                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
-                            gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
-                        }))))))))))))(function () {
-                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                        });
-                    });
-                });
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && (v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRxMrdeviceIdSignal && v.value0.value0.value0.value0.value0.value0 === "fast_switched")))))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))(function (selectedrx) {
-                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel.fastswitchcommands(selectedrx)(Data_Maybe.Nothing.value))))(function (fastcmds) {
-                    var ispreviewbox = Data_Lens_Getter.viewOn(selectedrx)(VYNET_API_Multiview_MultiviewDeviceRx["_mrdevice_name"](Data_Lens_Internal_Forget.strongForget)) === "PREVIEW BOX";
-                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
-                        if (ispreviewbox) {
-                            return Data_List_Types.Nil.value;
-                        };
-                        return Data_Semigroup.append(Data_List_Types.semigroupList)(xs)(Data_Semigroup.append(Data_List_Types.semigroupList)(fastcmds)(new Data_List_Types.Cons(VYNET_API_Device_Command_Data_DeviceAction.CompletedAction.value, Data_List_Types.Nil.value)));
-                    }))))))))))(function () {
-                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
-                            gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
-                        }))))))))))))(function () {
-                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                        });
-                    });
-                });
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && (v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRxMrHdcp && (v.value0.value0.value0.value0.value0.value0 instanceof Data_Maybe.Just && v.value0.value0.value0.value0.value0.value0.value0.value1 === "hdcpoff"))))))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))(function (selectedrx) {
-                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_devicestx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))(Third_ComponentList["_CoList"](Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (x) {
-                    var $194 = Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === v.value0.value0.value0.value0.value0.value0.value0.value0;
-                    if ($194) {
-                        return Data_Lens_Setter.set((function () {
-                            var $533 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Profunctor_Strong.strongFn);
-                            var $534 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Profunctor_Strong.strongFn);
-                            var $535 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdchdcp_support_enable"](Data_Profunctor_Strong.strongFn);
-                            return function ($536) {
-                                return $533($534($535($536)));
-                            };
-                        })())(false)(Data_Lens_Setter.set((function () {
-                            var $537 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Profunctor_Strong.strongFn);
-                            var $538 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Profunctor_Strong.strongFn);
-                            var $539 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdchdcp_22_support_disable"](Data_Profunctor_Strong.strongFn);
-                            return function ($540) {
-                                return $537($538($539($540)));
-                            };
-                        })())(true)(x));
-                    };
-                    return x;
-                })))))))))))(function () {
-                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
-                        return new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetHdcpOff(v.value0.value0.value0.value0.value0.value0.value0.value0), new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetHdcp22Off(v.value0.value0.value0.value0.value0.value0.value0.value0), xs));
-                    }))))))))))(function () {
-                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
-                            gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
-                        }))))))))))))(function () {
-                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                        });
-                    });
-                });
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && (v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRxMrHdcp && (v.value0.value0.value0.value0.value0.value0 instanceof Data_Maybe.Just && v.value0.value0.value0.value0.value0.value0.value0.value1 === "hdcp14"))))))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))(function (selectedrx) {
-                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_devicestx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))(Third_ComponentList["_CoList"](Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (x) {
-                    var $204 = Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === v.value0.value0.value0.value0.value0.value0.value0.value0;
-                    if ($204) {
-                        return Data_Lens_Setter.set((function () {
-                            var $541 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Profunctor_Strong.strongFn);
-                            var $542 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Profunctor_Strong.strongFn);
-                            var $543 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdchdcp_support_enable"](Data_Profunctor_Strong.strongFn);
-                            return function ($544) {
-                                return $541($542($543($544)));
-                            };
-                        })())(true)(Data_Lens_Setter.set((function () {
-                            var $545 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Profunctor_Strong.strongFn);
-                            var $546 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Profunctor_Strong.strongFn);
-                            var $547 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdchdcp_22_support_disable"](Data_Profunctor_Strong.strongFn);
-                            return function ($548) {
-                                return $545($546($547($548)));
-                            };
-                        })())(true)(x));
-                    };
-                    return x;
-                })))))))))))(function () {
-                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
-                        return new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetHdcpOn(v.value0.value0.value0.value0.value0.value0.value0.value0), new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetHdcp22Off(v.value0.value0.value0.value0.value0.value0.value0.value0), xs));
-                    }))))))))))(function () {
-                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
-                            gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
-                        }))))))))))))(function () {
-                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                        });
-                    });
-                });
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && (v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRxMrHdcp && (v.value0.value0.value0.value0.value0.value0 instanceof Data_Maybe.Just && v.value0.value0.value0.value0.value0.value0.value0.value1 === "hdcp22"))))))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))(function (selectedrx) {
-                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_devicestx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))(Third_ComponentList["_CoList"](Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (x) {
-                    var $214 = Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === v.value0.value0.value0.value0.value0.value0.value0.value0;
-                    if ($214) {
-                        return Data_Lens_Setter.set((function () {
-                            var $549 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Profunctor_Strong.strongFn);
-                            var $550 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Profunctor_Strong.strongFn);
-                            var $551 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdchdcp_support_enable"](Data_Profunctor_Strong.strongFn);
-                            return function ($552) {
-                                return $549($550($551($552)));
-                            };
-                        })())(true)(Data_Lens_Setter.set((function () {
-                            var $553 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Profunctor_Strong.strongFn);
-                            var $554 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Profunctor_Strong.strongFn);
-                            var $555 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdchdcp_22_support_disable"](Data_Profunctor_Strong.strongFn);
-                            return function ($556) {
-                                return $553($554($555($556)));
-                            };
-                        })())(false)(x));
-                    };
-                    return x;
-                })))))))))))(function () {
-                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
-                        return new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetHdcpOn(v.value0.value0.value0.value0.value0.value0.value0.value0), new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetHdcp22On(v.value0.value0.value0.value0.value0.value0.value0.value0), xs));
-                    }))))))))))(function () {
-                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
-                            gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
-                        }))))))))))))(function () {
-                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                        });
-                    });
-                });
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && (v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRxMrEdid && v.value0.value0.value0.value0.value0.value0 instanceof Data_Maybe.Just)))))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicesrx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))(Third_ComponentList["_CoList"](Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))))(function (rxs) {
-                var mselectedrx = Data_Lens_Fold.previewOn(rxs)((function () {
-                    var $557 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Maybe_First.monoidFirst));
-                    var $558 = Data_Lens_Getter.to(function (x) {
-                        return new Data_Tuple.Tuple(x, Data_Lens_Fold.toListOfOn(x)((function () {
-                            var $561 = VYNET_API_Device_DeviceRx["_rsubscriptions"](Data_Lens_Internal_Forget.strongForget);
-                            var $562 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
-                            var $563 = Data_Lens_Fold.filtered(Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)))(function (s) {
-                                return Data_Lens_Getter.viewOn(s)(VYNET_API_Device_Data_Subscription["_sbtype"](Data_Lens_Internal_Forget.strongForget)) === "HDMI" && (Data_Lens_Getter.viewOn(s)((function () {
-                                    var $565 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                    var $566 = VYNET_API_Device_Data_SubscriptionStatus["_state"](Data_Lens_Internal_Forget.strongForget);
-                                    return function ($567) {
-                                        return $565($566($567));
-                                    };
-                                })()) === "STREAMING" && Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Lens_Fold.previewOn(s)((function () {
-                                    var $568 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                    var $569 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                                    var $570 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                    var $571 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
-                                    return function ($572) {
-                                        return $568($569($570($571($572))));
-                                    };
-                                })()))(new Data_Maybe.Just(v.value0.value0.value0.value0.value0.value0.value0.value0)));
-                            });
-                            return function ($564) {
-                                return $561($562($563($564)));
-                            };
-                        })()));
-                    });
-                    var $559 = Data_Lens_Fold.filtered(Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst))(function (v3) {
-                        return Data_Eq.notEq(Data_List_Types.eqList(VYNET_API_Device_Data_Subscription.eqSubscription))(v3.value1)(Data_List_Types.Nil.value);
-                    });
-                    return function ($560) {
-                        return $557($558($559($560)));
-                    };
-                })());
-                if (mselectedrx instanceof Data_Maybe.Just) {
-                    var selectedrx = mkmdevicerx(mselectedrx.value0.value0);
-                    var ispreviewbox = Data_Lens_Getter.viewOn(mselectedrx.value0.value0)(VYNET_API_Device_DeviceRx["_rdevice_name"](Data_Lens_Internal_Forget.strongForget)) === "PREVIEW BOX";
-                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_initapp(Third_Init_InitAppData["_CoInitApp"](Third_Init_InitAppData["_initapptxs"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Third_Init_InitAppTxs.comonadComponentInitAppTx)(Third_Init_InitAppTxs.shouldUpdateComponentInit)(Third_Init_InitAppTxs["_CoInitAppTxs"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over((function () {
-                        var $573 = Third_Init_InitAppTxs["_iatxdevices"](Data_Profunctor_Strong.strongFn);
-                        var $574 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
-                        return function ($575) {
-                            return $573($574($575));
-                        };
-                    })())(function (tx) {
-                        var $228 = Data_Lens_Getter.viewOn(tx)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === v.value0.value0.value0.value0.value0.value0.value0.value0;
-                        if ($228) {
-                            return Data_Lens_Setter.set((function () {
-                                var $576 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Profunctor_Strong.strongFn);
-                                var $577 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Profunctor_Strong.strongFn);
-                                var $578 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdcedid"](Data_Profunctor_Strong.strongFn);
-                                return function ($579) {
-                                    return $576($577($578($579)));
-                                };
-                            })())(new Data_Maybe.Just(v.value0.value0.value0.value0.value0.value0.value0.value1))(tx);
-                        };
-                        return tx;
-                    }))))))))))(function () {
-                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_devicestx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))(Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (x) {
-                            return Data_Lens_Setter.set(VYNET_API_Device_DeviceTx["_tselected"](Data_Profunctor_Strong.strongFn))(Data_Maybe.Nothing.value)(x);
-                        }))))))))))(function () {
-                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_devicestx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))(Third_TransList_Findlist["_findlist"](VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Bind.bind(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (x) {
-                                return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === v.value0.value0.value0.value0.value0.value0.value0.value0);
-                            })))(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))))))))))(function (tx) {
-                                return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
-                                    var $229 = v.value0.value0.value0.value0.value0.value0.value0.value1 === VYNET_API_Device_Data_HdmiDecoderConfiguraion.refedid;
-                                    if ($229) {
-                                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel.genlockcommands(selectedrx)(tx))))(function (genlockconf) {
-                                            var ispreviewbox1 = Data_Lens_Getter.viewOn(selectedrx)(VYNET_API_Multiview_MultiviewDeviceRx["_mrdevice_name"](Data_Lens_Internal_Forget.strongForget)) === "PREVIEW BOX";
-                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
-                                                if (ispreviewbox1) {
-                                                    return Data_List_Types.Nil.value;
-                                                };
-                                                return Data_Semigroup.append(Data_List_Types.semigroupList)(xs)(Data_Semigroup.append(Data_List_Types.semigroupList)(new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetEdid(v.value0.value0.value0.value0.value0.value0.value0.value0, v.value0.value0.value0.value0.value0.value0.value0.value1), genlockconf))(new Data_List_Types.Cons(VYNET_API_Device_Command_Data_DeviceAction.CompletedAction.value, Data_List_Types.Nil.value)));
-                                            }))))))))))(function () {
-                                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
-                                                    gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
-                                                }))))))))))))(function () {
-                                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                                                });
-                                            });
-                                        });
-                                    };
-                                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel.fastswitchcommands(selectedrx)(tx))))(function (rscommnads) {
-                                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
-                                            return Data_Semigroup.append(Data_List_Types.semigroupList)(new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetEdid(v.value0.value0.value0.value0.value0.value0.value0.value0, v.value0.value0.value0.value0.value0.value0.value0.value1), rscommnads))(Data_Semigroup.append(Data_List_Types.semigroupList)(new Data_List_Types.Cons(VYNET_API_Device_Command_Data_DeviceAction.CompletedAction.value, Data_List_Types.Nil.value))(xs));
-                                        }))))))))))(function () {
-                                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                                        });
-                                    });
-                                })())(function () {
-                                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
-                                        gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
-                                    }))))))))))))(function () {
-                                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-                                    });
-                                });
-                            });
-                        });
-                    });
-                };
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
-            }))(v1);
-        };
-        return v1;
-    };
-};
 var marshal3 = function (v) {
     return function (v1) {
         if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && v.value0.value0.value0.value0 instanceof Third_Reference.ReferSignal)))) {
@@ -128573,10 +127542,10 @@ var marshal3 = function (v) {
                 if (v.value0.value0.value0.value0.value0 instanceof Third_RefState.RefPreAck && v.value0.value0.value0.value0.value0.value0.value0.mvcmd instanceof VYNET_API_Multiview_Command_MultiviewUiCommand.GetMultiviewDeviceRx) {
                     return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewrx(Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Data_Functor.mapFlipped(ExploreCore.functorCo(Control_Comonad_Store_Trans.functorStoreT(Data_Identity.functorIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (x) {
                         return Data_Lens_Getter.viewOn(x)((function () {
-                            var $580 = VYNET_API_Multiview_MultiviewDeviceRx["_mrframe_buffer"](Data_Lens_Internal_Forget.strongForget);
-                            var $581 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                            return function ($582) {
-                                return $580($581($582));
+                            var $639 = VYNET_API_Multiview_MultiviewDeviceRx["_mrframe_buffer"](Data_Lens_Internal_Forget.strongForget);
+                            var $640 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                            return function ($641) {
+                                return $639($640($641));
                             };
                         })());
                     })))))))(function (previewrx) {
@@ -128588,8 +127557,8 @@ var marshal3 = function (v) {
                             })))))))(function (previewsxs) {
                                 return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))(function (rx1) {
                                     return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
-                                        var $246 = Data_Lens_Getter.viewOn(rx1)(VYNET_API_Multiview_MultiviewDeviceRx["_mrdevice_id"](Data_Lens_Internal_Forget.strongForget)) === previewrxid;
-                                        if ($246) {
+                                        var $144 = Data_Lens_Getter.viewOn(rx1)(VYNET_API_Multiview_MultiviewDeviceRx["_mrdevice_id"](Data_Lens_Internal_Forget.strongForget)) === previewrxid;
+                                        if ($144) {
                                             return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Multiview_MultiviewDeviceRx["_mrdevice_name"](Data_Profunctor_Strong.strongFn))("PREVIEW BOX"))))))))))))(function () {
                                                 return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
                                             });
@@ -128597,32 +127566,32 @@ var marshal3 = function (v) {
                                         return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
                                     })())(function () {
                                         var wxs = Data_Lens_Fold.toListOfOn(previewrx)((function () {
-                                            var $583 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcmultiview_layout"](Data_Lens_Internal_Forget.strongForget);
-                                            var $584 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
-                                            var $585 = VYNET_API_Multiview_Data_LayoutDescription["_ldwindows"](Data_Lens_Internal_Forget.strongForget);
-                                            var $586 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
-                                            return function ($587) {
-                                                return $583($584($585($586($587))));
+                                            var $642 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcmultiview_layout"](Data_Lens_Internal_Forget.strongForget);
+                                            var $643 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
+                                            var $644 = VYNET_API_Multiview_Data_LayoutDescription["_ldwindows"](Data_Lens_Internal_Forget.strongForget);
+                                            var $645 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
+                                            return function ($646) {
+                                                return $642($643($644($645($646))));
                                             };
                                         })());
                                         var uirx = Data_Lens_Getter.viewOn(rx1)((function () {
-                                            var $588 = VYNET_API_Multiview_MultiviewDeviceRx["_mrframe_buffer"](Data_Lens_Internal_Forget.strongForget);
-                                            var $589 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                                            return function ($590) {
-                                                return $588($589($590));
+                                            var $647 = VYNET_API_Multiview_MultiviewDeviceRx["_mrframe_buffer"](Data_Lens_Internal_Forget.strongForget);
+                                            var $648 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                                            return function ($649) {
+                                                return $647($648($649));
                                             };
                                         })());
                                         var sxs = Data_Lens_Getter.viewOn(rx1)(VYNET_API_Multiview_MultiviewDeviceRx["_mrsubscriptions"](Data_Lens_Internal_Forget.strongForget));
                                         var msubid = Data_Functor.map(Data_List_Types.functorList)(function (x) {
                                             return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_Data_Subscription["_sbindex"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Fold.previewOn(x)((function () {
-                                                var $591 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                                var $592 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                                                var $593 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                var $594 = Data_Lens_Getter.to(function (v3) {
+                                                var $650 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                                var $651 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                                                var $652 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                var $653 = Data_Lens_Getter.to(function (v3) {
                                                     return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(v3)(VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(v3)(VYNET_API_Device_Data_SubscriptionSource["_ssdevice_name"](Data_Lens_Internal_Forget.strongForget)));
                                                 });
-                                                return function ($595) {
-                                                    return $591($592($593($594($595))));
+                                                return function ($654) {
+                                                    return $650($651($652($653($654))));
                                                 };
                                             })()));
                                         })(Data_Lens_Fold.toListOfOn(previewsxs)(Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)))));
@@ -128638,101 +127607,101 @@ var marshal3 = function (v) {
                                                 pwnvertical_offset: Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnvertical_offset"](Data_Lens_Internal_Forget.strongForget)),
                                                 pwntarget_surface: Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wntarget_surface"](Data_Lens_Internal_Forget.strongForget)),
                                                 pwnsubid: Data_Lens_Fold.previewOn(w)((function () {
-                                                    var $596 = VYNET_API_Multiview_Data_Window["_wnsubid"](Data_Lens_Internal_Forget.strongForget);
-                                                    var $597 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                    var $598 = Data_Lens_Lens_Tuple["_1"](Data_Lens_Internal_Forget.strongForget);
-                                                    return function ($599) {
-                                                        return $596($597($598($599)));
+                                                    var $655 = VYNET_API_Multiview_Data_Window["_wnsubid"](Data_Lens_Internal_Forget.strongForget);
+                                                    var $656 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                    var $657 = Data_Lens_Lens_Tuple["_1"](Data_Lens_Internal_Forget.strongForget);
+                                                    return function ($658) {
+                                                        return $655($656($657($658)));
                                                     };
                                                 })())
                                             });
                                         })(subwxs);
                                         var uirxtxsub = Data_Foldable.find(Data_List_Types.foldableList)(function (v3) {
                                             return Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Lens_Getter.viewOn(v3)(VYNET_API_Multiview_Data_PreviewWindow["_pwnsubid"](Data_Lens_Internal_Forget.strongForget)))(Data_Lens_Fold.previewOn(Data_List.index(sxs)(0))((function () {
-                                                var $600 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                var $601 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                                var $602 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                                                var $603 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                var $604 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
-                                                return function ($605) {
-                                                    return $600($601($602($603($604($605)))));
+                                                var $659 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                var $660 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                                var $661 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                                                var $662 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                var $663 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
+                                                return function ($664) {
+                                                    return $659($660($661($662($663($664)))));
                                                 };
                                             })()));
                                         })(pws);
                                         var uiws = Data_Functor.map(Data_List_Types.functorList)(function (w) {
                                             return Data_Lens_Setter.set(VYNET_API_Multiview_Data_Window["_wnpreview"](Data_Profunctor_Strong.strongFn))(Data_Foldable.find(Data_List_Types.foldableList)(function (v3) {
                                                 return Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Lens_Getter.viewOn(v3)(VYNET_API_Multiview_Data_PreviewWindow["_pwnsubid"](Data_Lens_Internal_Forget.strongForget)))(Data_Lens_Fold.previewOn(w)((function () {
-                                                    var $606 = VYNET_API_Multiview_Data_Window["_wnsubid"](Data_Lens_Internal_Forget.strongForget);
-                                                    var $607 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                    var $608 = Data_Lens_Lens_Tuple["_1"](Data_Lens_Internal_Forget.strongForget);
-                                                    return function ($609) {
-                                                        return $606($607($608($609)));
+                                                    var $665 = VYNET_API_Multiview_Data_Window["_wnsubid"](Data_Lens_Internal_Forget.strongForget);
+                                                    var $666 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                    var $667 = Data_Lens_Lens_Tuple["_1"](Data_Lens_Internal_Forget.strongForget);
+                                                    return function ($668) {
+                                                        return $665($666($667($668)));
                                                     };
                                                 })())) && Data_Eq.notEq(Data_Maybe.eqMaybe(Data_Tuple.eqTuple(Data_Eq.eqString)(Data_Eq.eqString)))(Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnsubid"](Data_Lens_Internal_Forget.strongForget)))(Data_Maybe.Nothing.value);
                                             })(pws))(w);
                                         })(Data_Lens_Fold.toListOfOn(uirx)((function () {
-                                            var $610 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcmultiview_layout"](Data_Lens_Internal_Forget.strongForget);
-                                            var $611 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
-                                            var $612 = VYNET_API_Multiview_Data_LayoutDescription["_ldwindows"](Data_Lens_Internal_Forget.strongForget);
-                                            var $613 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
-                                            return function ($614) {
-                                                return $610($611($612($613($614))));
+                                            var $669 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcmultiview_layout"](Data_Lens_Internal_Forget.strongForget);
+                                            var $670 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
+                                            var $671 = VYNET_API_Multiview_Data_LayoutDescription["_ldwindows"](Data_Lens_Internal_Forget.strongForget);
+                                            var $672 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
+                                            return function ($673) {
+                                                return $669($670($671($672($673))));
                                             };
                                         })()));
                                         return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))((function () {
-                                            var $615 = Data_Lens_Setter.set((function () {
-                                                var $618 = VYNET_API_Multiview_MultiviewDeviceRx["_mrframe_buffer"](Data_Profunctor_Strong.strongFn);
-                                                var $619 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Profunctor_Strong.strongFn);
-                                                var $620 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcmultiview_layout"](Data_Profunctor_Strong.strongFn);
-                                                var $621 = Data_Lens_Prism_Maybe["_Just"](Data_Profunctor_Choice.choiceFn);
-                                                var $622 = VYNET_API_Multiview_Data_LayoutDescription["_ldwindows"](Data_Profunctor_Strong.strongFn);
-                                                return function ($623) {
-                                                    return $618($619($620($621($622($623)))));
+                                            var $674 = Data_Lens_Setter.set((function () {
+                                                var $677 = VYNET_API_Multiview_MultiviewDeviceRx["_mrframe_buffer"](Data_Profunctor_Strong.strongFn);
+                                                var $678 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Profunctor_Strong.strongFn);
+                                                var $679 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcmultiview_layout"](Data_Profunctor_Strong.strongFn);
+                                                var $680 = Data_Lens_Prism_Maybe["_Just"](Data_Profunctor_Choice.choiceFn);
+                                                var $681 = VYNET_API_Multiview_Data_LayoutDescription["_ldwindows"](Data_Profunctor_Strong.strongFn);
+                                                return function ($682) {
+                                                    return $677($678($679($680($681($682)))));
                                                 };
                                             })())(uiws);
-                                            var $616 = Data_Lens_Setter.set(VYNET_API_Multiview_MultiviewDeviceRx["_mrpreviewwindow"](Data_Profunctor_Strong.strongFn))(uirxtxsub);
-                                            return function ($617) {
-                                                return $615($616($617));
+                                            var $675 = Data_Lens_Setter.set(VYNET_API_Multiview_MultiviewDeviceRx["_mrpreviewwindow"](Data_Profunctor_Strong.strongFn))(uirxtxsub);
+                                            return function ($676) {
+                                                return $674($675($676));
                                             };
                                         })())))))))))))(function () {
                                             return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicesrx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))(Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (x) {
                                                 var sxs2 = Data_Foldable.find(Data_List_Types.foldableList)(function (v11) {
                                                     return Data_Maybe.isJust(Data_Lens_Getter.viewOn(v11)((function () {
-                                                        var $624 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                                        var $625 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                                                        return function ($626) {
-                                                            return $624($625($626));
+                                                        var $683 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                                        var $684 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                                                        return function ($685) {
+                                                            return $683($684($685));
                                                         };
                                                     })()));
                                                 })(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceRx["_rsubscriptions"](Data_Lens_Internal_Forget.strongForget)));
                                                 var uirxtxsub2 = Data_Foldable.find(Data_List_Types.foldableList)(function (v11) {
                                                     return Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Lens_Getter.viewOn(v11)(VYNET_API_Multiview_Data_PreviewWindow["_pwnsubid"](Data_Lens_Internal_Forget.strongForget)))(Data_Lens_Fold.previewOn(sxs2)((function () {
-                                                        var $627 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                        var $628 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                                        var $629 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                                                        var $630 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                        var $631 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
-                                                        return function ($632) {
-                                                            return $627($628($629($630($631($632)))));
+                                                        var $686 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                        var $687 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                                        var $688 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                                                        var $689 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                        var $690 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
+                                                        return function ($691) {
+                                                            return $686($687($688($689($690($691)))));
                                                         };
                                                     })()));
                                                 })(pws);
                                                 var uitxrouted = Data_Lens_Fold.previewOn(sxs2)((function () {
-                                                    var $633 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                    var $634 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
-                                                    var $635 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
-                                                    var $636 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                    var $637 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
-                                                    return function ($638) {
-                                                        return $633($634($635($636($637($638)))));
+                                                    var $692 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                    var $693 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                                    var $694 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                                                    var $695 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                    var $696 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
+                                                    return function ($697) {
+                                                        return $692($693($694($695($696($697)))));
                                                     };
                                                 })());
                                                 return Data_Lens_Setter.set(VYNET_API_Device_DeviceRx["_rwindow"](Data_Profunctor_Strong.strongFn))(uirxtxsub2)(Data_Lens_Setter.set(VYNET_API_Device_DeviceRx["_rroutedtx"](Data_Profunctor_Strong.strongFn))(uitxrouted)(x));
                                             }))))))))))))(function () {
                                                 return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_initapp(Third_Init_InitAppData["_CoInitApp"](Third_Init_InitAppData["_initappstatusref"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Third_Init_InitAppStatus.comonadComponentInitAppSt)(Third_Init_InitAppStatus.shouldUpdateComponentInit)(Third_Init_InitApp.placeholder2)))))))(function () {
                                                     return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit))(function () {
-                                                        var $247 = Data_Lens_Getter.viewOn(rx1)(VYNET_API_Multiview_MultiviewDeviceRx["_mrdevice_id"](Data_Lens_Internal_Forget.strongForget)) === previewrxid;
-                                                        if ($247) {
+                                                        var $145 = Data_Lens_Getter.viewOn(rx1)(VYNET_API_Multiview_MultiviewDeviceRx["_mrdevice_id"](Data_Lens_Internal_Forget.strongForget)) === previewrxid;
+                                                        if ($145) {
                                                             return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
                                                         };
                                                         return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicesrx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))(Third_TransList_Findlist["_findlist"](VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Bind.bind(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (v3) {
@@ -128744,8 +127713,8 @@ var marshal3 = function (v) {
                                                                     return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === seltx.value0);
                                                                 })))(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))))))))))(function (selectedtx) {
                                                                     return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_devicestx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))(Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (x) {
-                                                                        var $249 = Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === seltx.value0;
-                                                                        if ($249) {
+                                                                        var $147 = Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === seltx.value0;
+                                                                        if ($147) {
                                                                             return Data_Lens_Setter.set(VYNET_API_Device_DeviceTx["_tselected"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(true))(x);
                                                                         };
                                                                         return x;
@@ -128758,32 +127727,32 @@ var marshal3 = function (v) {
                                                                                             return Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === Data_Lens_Getter.viewOn(selectedtx.value0)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget));
                                                                                         })(Data_Lens_Getter.viewOn(alltxs)(Third_Init_InitAppTxs["_iatxdevices"](Data_Lens_Internal_Forget.strongForget)));
                                                                                         var txedid = Data_Maybe.fromMaybe("")(Data_Lens_Fold.previewOn(txall)((function () {
-                                                                                            var $639 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                                                            var $640 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Lens_Internal_Forget.strongForget);
-                                                                                            var $641 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                                                                                            var $642 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdcedid"](Data_Lens_Internal_Forget.strongForget);
-                                                                                            var $643 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                                                                            return function ($644) {
-                                                                                                return $639($640($641($642($643($644)))));
+                                                                                            var $698 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                                                            var $699 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Lens_Internal_Forget.strongForget);
+                                                                                            var $700 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                                                                                            var $701 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdcedid"](Data_Lens_Internal_Forget.strongForget);
+                                                                                            var $702 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                                                            return function ($703) {
+                                                                                                return $698($699($700($701($702($703)))));
                                                                                             };
                                                                                         })()));
                                                                                         return _CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))((function () {
-                                                                                            var $645 = Data_Lens_Setter.set(VYNET_API_Multiview_MultiviewDeviceRx["_mrhdc"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(new Data_Tuple.Tuple(new Data_Tuple.Tuple(false, Data_Lens_Getter.viewOn(selectedtx.value0)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget))), new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(selectedtx.value0)((function () {
-                                                                                                var $648 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Lens_Internal_Forget.strongForget);
-                                                                                                var $649 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                                                                                                return function ($650) {
-                                                                                                    return $648($649($650));
+                                                                                            var $704 = Data_Lens_Setter.set(VYNET_API_Multiview_MultiviewDeviceRx["_mrhdc"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(new Data_Tuple.Tuple(new Data_Tuple.Tuple(false, Data_Lens_Getter.viewOn(selectedtx.value0)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget))), new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(selectedtx.value0)((function () {
+                                                                                                var $707 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Lens_Internal_Forget.strongForget);
+                                                                                                var $708 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                                                                                                return function ($709) {
+                                                                                                    return $707($708($709));
                                                                                                 };
                                                                                             })()), Data_Lens_Getter.viewOn(selectedtx.value0)((function () {
-                                                                                                var $651 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Lens_Internal_Forget.strongForget);
-                                                                                                var $652 = VYNET_API_Device_Data_HdmiDecoder["_hdstatus"](Data_Lens_Internal_Forget.strongForget);
-                                                                                                return function ($653) {
-                                                                                                    return $651($652($653));
+                                                                                                var $710 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Lens_Internal_Forget.strongForget);
+                                                                                                var $711 = VYNET_API_Device_Data_HdmiDecoder["_hdstatus"](Data_Lens_Internal_Forget.strongForget);
+                                                                                                return function ($712) {
+                                                                                                    return $710($711($712));
                                                                                                 };
                                                                                             })())))));
-                                                                                            var $646 = Data_Lens_Setter.set(VYNET_API_Multiview_MultiviewDeviceRx["_mrrxs"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(new Data_Tuple.Tuple(new Data_Tuple.Tuple(false, Data_Lens_Getter.viewOn(selectedtx.value0)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget))), new Data_Tuple.Tuple(txedid, Data_Lens_Getter.viewOn(rxs)(Third_Init_InitAppRxs["_iarxdevices"](Data_Lens_Internal_Forget.strongForget))))));
-                                                                                            return function ($647) {
-                                                                                                return $645($646($647));
+                                                                                            var $705 = Data_Lens_Setter.set(VYNET_API_Multiview_MultiviewDeviceRx["_mrrxs"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(new Data_Tuple.Tuple(new Data_Tuple.Tuple(false, Data_Lens_Getter.viewOn(selectedtx.value0)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget))), new Data_Tuple.Tuple(txedid, Data_Lens_Getter.viewOn(rxs)(Third_Init_InitAppRxs["_iarxdevices"](Data_Lens_Internal_Forget.strongForget))))));
+                                                                                            return function ($706) {
+                                                                                                return $704($705($706));
                                                                                             };
                                                                                         })()))))))))));
                                                                                     });
@@ -128902,32 +127871,32 @@ var marshal3 = function (v) {
                                     return Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === Data_Lens_Getter.viewOn(selectedtx.value0)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget));
                                 })(Data_Lens_Getter.viewOn(alltxs)(Third_Init_InitAppTxs["_iatxdevices"](Data_Lens_Internal_Forget.strongForget)));
                                 var txedid = Data_Maybe.fromMaybe("")(Data_Lens_Fold.previewOn(txall)((function () {
-                                    var $654 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                    var $655 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Lens_Internal_Forget.strongForget);
-                                    var $656 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                                    var $657 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdcedid"](Data_Lens_Internal_Forget.strongForget);
-                                    var $658 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
-                                    return function ($659) {
-                                        return $654($655($656($657($658($659)))));
+                                    var $713 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                    var $714 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Lens_Internal_Forget.strongForget);
+                                    var $715 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                                    var $716 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdcedid"](Data_Lens_Internal_Forget.strongForget);
+                                    var $717 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                    return function ($718) {
+                                        return $713($714($715($716($717($718)))));
                                     };
                                 })()));
                                 return _CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))((function () {
-                                    var $660 = Data_Lens_Setter.set(VYNET_API_Multiview_MultiviewDeviceRx["_mrhdc"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(new Data_Tuple.Tuple(new Data_Tuple.Tuple(false, Data_Lens_Getter.viewOn(selectedtx.value0)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget))), new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(selectedtx.value0)((function () {
-                                        var $663 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Lens_Internal_Forget.strongForget);
-                                        var $664 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Lens_Internal_Forget.strongForget);
-                                        return function ($665) {
-                                            return $663($664($665));
+                                    var $719 = Data_Lens_Setter.set(VYNET_API_Multiview_MultiviewDeviceRx["_mrhdc"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(new Data_Tuple.Tuple(new Data_Tuple.Tuple(false, Data_Lens_Getter.viewOn(selectedtx.value0)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget))), new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(selectedtx.value0)((function () {
+                                        var $722 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Lens_Internal_Forget.strongForget);
+                                        var $723 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                                        return function ($724) {
+                                            return $722($723($724));
                                         };
                                     })()), Data_Lens_Getter.viewOn(selectedtx.value0)((function () {
-                                        var $666 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Lens_Internal_Forget.strongForget);
-                                        var $667 = VYNET_API_Device_Data_HdmiDecoder["_hdstatus"](Data_Lens_Internal_Forget.strongForget);
-                                        return function ($668) {
-                                            return $666($667($668));
+                                        var $725 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Lens_Internal_Forget.strongForget);
+                                        var $726 = VYNET_API_Device_Data_HdmiDecoder["_hdstatus"](Data_Lens_Internal_Forget.strongForget);
+                                        return function ($727) {
+                                            return $725($726($727));
                                         };
                                     })())))));
-                                    var $661 = Data_Lens_Setter.set(VYNET_API_Multiview_MultiviewDeviceRx["_mrrxs"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(new Data_Tuple.Tuple(new Data_Tuple.Tuple(false, Data_Lens_Getter.viewOn(selectedtx.value0)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget))), new Data_Tuple.Tuple(txedid, Data_Lens_Getter.viewOn(rxs)(Third_Init_InitAppRxs["_iarxdevices"](Data_Lens_Internal_Forget.strongForget))))));
-                                    return function ($662) {
-                                        return $660($661($662));
+                                    var $720 = Data_Lens_Setter.set(VYNET_API_Multiview_MultiviewDeviceRx["_mrrxs"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(new Data_Tuple.Tuple(new Data_Tuple.Tuple(false, Data_Lens_Getter.viewOn(selectedtx.value0)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget))), new Data_Tuple.Tuple(txedid, Data_Lens_Getter.viewOn(rxs)(Third_Init_InitAppRxs["_iarxdevices"](Data_Lens_Internal_Forget.strongForget))))));
+                                    return function ($721) {
+                                        return $719($720($721));
                                     };
                                 })()))))))))));
                             });
@@ -128944,20 +127913,20 @@ var marshal3 = function (v) {
         };
         if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiMultiviewuipullSignal && (v.value0.value0.value0.value0 instanceof VYNET_API_Control_DeviceActions.DeviceActionsActionexecSignal && (v.value0.value0.value0.value0.value0 instanceof Third_Reference.ReferSignal && (v.value0.value0.value0.value0.value0.value0 instanceof Third_RefState.RefResolved && (v.value0.value0.value0.value0.value0.value0.value0.value0.gencmd instanceof VYNET_API_Device_Command_GeneralDeviceCommand.DeviceCommand && v.value0.value0.value0.value0.value0.value0.value0.value0.gencmd.value0 instanceof VYNET_API_Device_Command_Data_DeviceAction.SetEdid)))))))) {
             return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_initapp(Third_Init_InitAppData["_CoInitApp"](Third_Init_InitAppData["_initapptxs"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Third_Init_InitAppTxs.comonadComponentInitAppTx)(Third_Init_InitAppTxs.shouldUpdateComponentInit)(Third_Init_InitAppTxs["_CoInitAppTxs"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over((function () {
-                var $669 = Third_Init_InitAppTxs["_iatxdevices"](Data_Profunctor_Strong.strongFn);
-                var $670 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
-                return function ($671) {
-                    return $669($670($671));
+                var $728 = Third_Init_InitAppTxs["_iatxdevices"](Data_Profunctor_Strong.strongFn);
+                var $729 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
+                return function ($730) {
+                    return $728($729($730));
                 };
             })())(function (tx) {
-                var $311 = Data_Lens_Getter.viewOn(tx)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === v.value0.value0.value0.value0.value0.value0.value0.value0.gencmd.value0.value0;
-                if ($311) {
+                var $209 = Data_Lens_Getter.viewOn(tx)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === v.value0.value0.value0.value0.value0.value0.value0.value0.gencmd.value0.value0;
+                if ($209) {
                     return Data_Lens_Setter.set((function () {
-                        var $672 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Profunctor_Strong.strongFn);
-                        var $673 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Profunctor_Strong.strongFn);
-                        var $674 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdcedid"](Data_Profunctor_Strong.strongFn);
-                        return function ($675) {
-                            return $672($673($674($675)));
+                        var $731 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Profunctor_Strong.strongFn);
+                        var $732 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Profunctor_Strong.strongFn);
+                        var $733 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdcedid"](Data_Profunctor_Strong.strongFn);
+                        return function ($734) {
+                            return $731($732($733($734)));
                         };
                     })())(new Data_Maybe.Just(v.value0.value0.value0.value0.value0.value0.value0.value0.gencmd.value0.value1))(tx);
                 };
@@ -128966,17 +127935,1386 @@ var marshal3 = function (v) {
                 return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
             }))(v1);
         };
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelDeviceactionpullSignal && (v.value0.value0.value0 instanceof VYNET_API_Control_DeviceActions.DeviceActionsActionexecSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ReferSignal && v.value0.value0.value0.value0.value0 instanceof Third_RefState.RefPreAck))))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (stackDevice) {
+                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_multiviewuipull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))(function (stackMultiview) {
+                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (stackPreview) {
+                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_actionpull"](VYNET_API_Control_MultiviewActions["_CoMultiviewActions"](VYNET_API_Control_MultiviewActions["_mvactiveactions"](VYNET_API_Control_MultiviewActionStack["_CoMultiviewActionStack"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (stackActionpull) {
+                            return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(VYNET_API_Device_Command_GeneralDeviceCommand.justlogiipure(ExploreCore.monadCo(comonadComponentMainMainP))("device " + (" d:" + (Data_Show.show(Data_Show.showInt)(Data_List.length(Data_Lens_Getter.viewOn(stackDevice)(VYNET_API_Control_ActionStack["_thestack"](Data_Lens_Internal_Forget.strongForget)))) + (" m:" + (Data_Show.show(Data_Show.showInt)(Data_List.length(Data_Lens_Getter.viewOn(stackMultiview)(VYNET_API_Control_ActionStack["_thestack"](Data_Lens_Internal_Forget.strongForget)))) + (" p:" + (Data_Show.show(Data_Show.showInt)(Data_List.length(Data_Lens_Getter.viewOn(stackPreview)(VYNET_API_Control_ActionStack["_thestack"](Data_Lens_Internal_Forget.strongForget)))) + (" a:" + (Data_Show.show(Data_Show.showInt)(Data_List.length(Data_Lens_Getter.viewOn(stackActionpull)(VYNET_API_Control_MultiviewActionStack["_mvthestack"](Data_Lens_Internal_Forget.strongForget)))) + (" :d " + (Data_Show.show(Data_Show.showBoolean)(Data_Lens_Getter.viewOn(stackDevice)(VYNET_API_Control_ActionStack["_isblocked"](Data_Lens_Internal_Forget.strongForget))) + (" :m " + (Data_Show.show(Data_Show.showBoolean)(Data_Lens_Getter.viewOn(stackMultiview)(VYNET_API_Control_ActionStack["_isblocked"](Data_Lens_Internal_Forget.strongForget))) + (" :p " + (Data_Show.show(Data_Show.showBoolean)(Data_Lens_Getter.viewOn(stackPreview)(VYNET_API_Control_ActionStack["_isblocked"](Data_Lens_Internal_Forget.strongForget))) + (" :a " + Data_Show.show(Data_Show.showBoolean)(Data_Lens_Getter.viewOn(stackActionpull)(VYNET_API_Control_MultiviewActionStack["_mvisblocked"](Data_Lens_Internal_Forget.strongForget)))))))))))))))))))(v.value0.value0.value0.value0.value0.value0))(function () {
+                                return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(Control_Applicative.when(ExploreCore.applicativeCo(comonadComponentMainMainP))(!Data_Lens_Getter.viewOn(stackDevice)(VYNET_API_Control_ActionStack["_isblocked"](Data_Lens_Internal_Forget.strongForget)))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_multiviewuipull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_isblocked"](Data_Profunctor_Strong.strongFn))(true))))))))))))(function () {
+                                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_isblocked"](Data_Profunctor_Strong.strongFn))(true))))))))))(function () {
+                                        return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_actionpull"](VYNET_API_Control_MultiviewActions["_CoMultiviewActions"](VYNET_API_Control_MultiviewActions["_mvactiveactions"](VYNET_API_Control_MultiviewActionStack["_CoMultiviewActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_MultiviewActionStack["_mvisblocked"](Data_Profunctor_Strong.strongFn))(true))))))))))(function () {
+                                            var v3 = Data_Lens_Getter.viewOn(stackDevice)(VYNET_API_Control_ActionStack["_thestack"](Data_Lens_Internal_Forget.strongForget));
+                                            if (v3 instanceof Data_List_Types.Cons) {
+                                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(v3.value1))))))))))(function () {
+                                                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                                                        gencmd: new VYNET_API_Device_Command_GeneralDeviceCommand.DeviceCommand(v3.value0)
+                                                    }))))))))))))(function () {
+                                                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                    });
+                                                });
+                                            };
+                                            return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_multiviewuipull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_isblocked"](Data_Profunctor_Strong.strongFn))(false))))))))))))(function () {
+                                                return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_isblocked"](Data_Profunctor_Strong.strongFn))(false))))))))))(function () {
+                                                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_actionpull"](VYNET_API_Control_MultiviewActions["_CoMultiviewActions"](VYNET_API_Control_MultiviewActions["_mvactiveactions"](VYNET_API_Control_MultiviewActionStack["_CoMultiviewActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_MultiviewActionStack["_mvisblocked"](Data_Profunctor_Strong.strongFn))(false))))))))))(function () {
+                                                        return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
+                                                            var v4 = new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(stackPreview)(VYNET_API_Control_ActionStack["_thestack"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(stackMultiview)(VYNET_API_Control_ActionStack["_thestack"](Data_Lens_Internal_Forget.strongForget)));
+                                                            if (v4.value0 instanceof Data_List_Types.Nil && v4.value1 instanceof Data_List_Types.Nil) {
+                                                                var v5 = Data_Lens_Getter.viewOn(stackActionpull)(VYNET_API_Control_MultiviewActionStack["_mvthestack"](Data_Lens_Internal_Forget.strongForget));
+                                                                if (v5 instanceof Data_List_Types.Nil) {
+                                                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                                };
+                                                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_actionpull"](VYNET_API_Control_MultiviewActions["_CoMultiviewActions"](VYNET_API_Control_MultiviewActions["_mvactionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralMultiviewCommand.eqGeneralMultiviewCommand1)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralMultiviewCommand.GeneralMultiviewCommand({
+                                                                    gmvcmd: VYNET_API_Device_Command_GeneralMultiviewCommand.MvReset.value
+                                                                }))))))))))))(function () {
+                                                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                                });
+                                                            };
+                                                            if (v4.value1 instanceof Data_List_Types.Cons) {
+                                                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_multiviewuipull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                                                                    gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
+                                                                }))))))))))))))(function () {
+                                                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                                });
+                                                            };
+                                                            if (v4.value0 instanceof Data_List_Types.Cons) {
+                                                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                                                                    gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
+                                                                }))))))))))))(function () {
+                                                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                                });
+                                                            };
+                                                            throw new Error("Failed pattern match at VYNET.MainMainPanel (line 1162, column 13 - line 1174, column 26): " + [ v4.constructor.name ]);
+                                                        })())(function () {
+                                                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                        });
+                                                    });
+                                                });
+                                            });
+                                        });
+                                    });
+                                })))(function () {
+                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                });
+                            });
+                        });
+                    });
+                });
+            }))(v1);
+        };
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiMultiviewuipullSignal && (v.value0.value0.value0.value0 instanceof VYNET_API_Control_DeviceActions.DeviceActionsActionexecSignal && (v.value0.value0.value0.value0.value0 instanceof Third_Reference.ReferSignal && v.value0.value0.value0.value0.value0.value0 instanceof Third_RefState.RefPreAck)))))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (stackDevice) {
+                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_multiviewuipull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))(function (stackMultiview) {
+                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (stackPreview) {
+                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_actionpull"](VYNET_API_Control_MultiviewActions["_CoMultiviewActions"](VYNET_API_Control_MultiviewActions["_mvactiveactions"](VYNET_API_Control_MultiviewActionStack["_CoMultiviewActionStack"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (stackActionpull) {
+                            return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(VYNET_API_Device_Command_GeneralDeviceCommand.justlogiipure(ExploreCore.monadCo(comonadComponentMainMainP))("multiview " + (" d:" + (Data_Show.show(Data_Show.showInt)(Data_List.length(Data_Lens_Getter.viewOn(stackDevice)(VYNET_API_Control_ActionStack["_thestack"](Data_Lens_Internal_Forget.strongForget)))) + (" m:" + (Data_Show.show(Data_Show.showInt)(Data_List.length(Data_Lens_Getter.viewOn(stackMultiview)(VYNET_API_Control_ActionStack["_thestack"](Data_Lens_Internal_Forget.strongForget)))) + (" p:" + (Data_Show.show(Data_Show.showInt)(Data_List.length(Data_Lens_Getter.viewOn(stackPreview)(VYNET_API_Control_ActionStack["_thestack"](Data_Lens_Internal_Forget.strongForget)))) + (" a:" + (Data_Show.show(Data_Show.showInt)(Data_List.length(Data_Lens_Getter.viewOn(stackActionpull)(VYNET_API_Control_MultiviewActionStack["_mvthestack"](Data_Lens_Internal_Forget.strongForget)))) + (" :d " + (Data_Show.show(Data_Show.showBoolean)(Data_Lens_Getter.viewOn(stackDevice)(VYNET_API_Control_ActionStack["_isblocked"](Data_Lens_Internal_Forget.strongForget))) + (" :m " + (Data_Show.show(Data_Show.showBoolean)(Data_Lens_Getter.viewOn(stackMultiview)(VYNET_API_Control_ActionStack["_isblocked"](Data_Lens_Internal_Forget.strongForget))) + (" :p " + (Data_Show.show(Data_Show.showBoolean)(Data_Lens_Getter.viewOn(stackPreview)(VYNET_API_Control_ActionStack["_isblocked"](Data_Lens_Internal_Forget.strongForget))) + (" :a " + Data_Show.show(Data_Show.showBoolean)(Data_Lens_Getter.viewOn(stackActionpull)(VYNET_API_Control_MultiviewActionStack["_mvisblocked"](Data_Lens_Internal_Forget.strongForget)))))))))))))))))))(v.value0.value0.value0.value0.value0.value0.value0))(function () {
+                                return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(Control_Applicative.when(ExploreCore.applicativeCo(comonadComponentMainMainP))(!Data_Lens_Getter.viewOn(stackMultiview)(VYNET_API_Control_ActionStack["_isblocked"](Data_Lens_Internal_Forget.strongForget)))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_isblocked"](Data_Profunctor_Strong.strongFn))(true))))))))))(function () {
+                                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_isblocked"](Data_Profunctor_Strong.strongFn))(true))))))))))(function () {
+                                        return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_actionpull"](VYNET_API_Control_MultiviewActions["_CoMultiviewActions"](VYNET_API_Control_MultiviewActions["_mvactiveactions"](VYNET_API_Control_MultiviewActionStack["_CoMultiviewActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_MultiviewActionStack["_mvisblocked"](Data_Profunctor_Strong.strongFn))(true))))))))))(function () {
+                                            var v3 = Data_Lens_Getter.viewOn(stackMultiview)(VYNET_API_Control_ActionStack["_thestack"](Data_Lens_Internal_Forget.strongForget));
+                                            if (v3 instanceof Data_List_Types.Cons) {
+                                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_multiviewuipull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(v3.value1))))))))))))(function () {
+                                                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_multiviewuipull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                                                        gencmd: new VYNET_API_Device_Command_GeneralDeviceCommand.DeviceCommand(v3.value0)
+                                                    }))))))))))))))(function () {
+                                                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                    });
+                                                });
+                                            };
+                                            return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_isblocked"](Data_Profunctor_Strong.strongFn))(false))))))))))(function () {
+                                                return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_isblocked"](Data_Profunctor_Strong.strongFn))(false))))))))))(function () {
+                                                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_actionpull"](VYNET_API_Control_MultiviewActions["_CoMultiviewActions"](VYNET_API_Control_MultiviewActions["_mvactiveactions"](VYNET_API_Control_MultiviewActionStack["_CoMultiviewActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_MultiviewActionStack["_mvisblocked"](Data_Profunctor_Strong.strongFn))(false))))))))))(function () {
+                                                        return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
+                                                            var v4 = new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(stackPreview)(VYNET_API_Control_ActionStack["_thestack"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(stackDevice)(VYNET_API_Control_ActionStack["_thestack"](Data_Lens_Internal_Forget.strongForget)));
+                                                            if (v4.value0 instanceof Data_List_Types.Nil && v4.value1 instanceof Data_List_Types.Nil) {
+                                                                var v5 = Data_Lens_Getter.viewOn(stackActionpull)(VYNET_API_Control_MultiviewActionStack["_mvthestack"](Data_Lens_Internal_Forget.strongForget));
+                                                                if (v5 instanceof Data_List_Types.Nil) {
+                                                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                                };
+                                                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_actionpull"](VYNET_API_Control_MultiviewActions["_CoMultiviewActions"](VYNET_API_Control_MultiviewActions["_mvactionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralMultiviewCommand.eqGeneralMultiviewCommand1)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralMultiviewCommand.GeneralMultiviewCommand({
+                                                                    gmvcmd: VYNET_API_Device_Command_GeneralMultiviewCommand.MvReset.value
+                                                                }))))))))))))(function () {
+                                                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                                });
+                                                            };
+                                                            if (v4.value1 instanceof Data_List_Types.Cons) {
+                                                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                                                                    gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
+                                                                }))))))))))))(function () {
+                                                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                                });
+                                                            };
+                                                            if (v4.value0 instanceof Data_List_Types.Cons) {
+                                                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                                                                    gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
+                                                                }))))))))))))(function () {
+                                                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                                });
+                                                            };
+                                                            throw new Error("Failed pattern match at VYNET.MainMainPanel (line 1200, column 13 - line 1212, column 26): " + [ v4.constructor.name ]);
+                                                        })())(function () {
+                                                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                        });
+                                                    });
+                                                });
+                                            });
+                                        });
+                                    });
+                                })))(function () {
+                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                });
+                            });
+                        });
+                    });
+                });
+            }))(v1);
+        };
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelPreviewgatewaySignal && (v.value0.value0 instanceof VYNET_API_PreviewMultiview_PreviewMultiviewPanel.PreviewPullSignal && (v.value0.value0.value0 instanceof VYNET_API_Control_DeviceActions.DeviceActionsActionexecSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ReferSignal && v.value0.value0.value0.value0.value0 instanceof Third_RefState.RefPreAck))))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (stackDevice) {
+                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_multiviewuipull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))(function (stackMultiview) {
+                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (stackPreview) {
+                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_actionpull"](VYNET_API_Control_MultiviewActions["_CoMultiviewActions"](VYNET_API_Control_MultiviewActions["_mvactiveactions"](VYNET_API_Control_MultiviewActionStack["_CoMultiviewActionStack"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (stackActionpull) {
+                            return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(Control_Applicative.when(ExploreCore.applicativeCo(comonadComponentMainMainP))(!Data_Lens_Getter.viewOn(stackPreview)(VYNET_API_Control_ActionStack["_isblocked"](Data_Lens_Internal_Forget.strongForget)))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_isblocked"](Data_Profunctor_Strong.strongFn))(true))))))))))(function () {
+                                return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_multiviewuipull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_isblocked"](Data_Profunctor_Strong.strongFn))(true))))))))))))(function () {
+                                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_actionpull"](VYNET_API_Control_MultiviewActions["_CoMultiviewActions"](VYNET_API_Control_MultiviewActions["_mvactiveactions"](VYNET_API_Control_MultiviewActionStack["_CoMultiviewActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_MultiviewActionStack["_mvisblocked"](Data_Profunctor_Strong.strongFn))(true))))))))))(function () {
+                                        var v3 = Data_Lens_Getter.viewOn(stackPreview)(VYNET_API_Control_ActionStack["_thestack"](Data_Lens_Internal_Forget.strongForget));
+                                        if (v3 instanceof Data_List_Types.Cons) {
+                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(v3.value1))))))))))(function () {
+                                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                                                    gencmd: new VYNET_API_Device_Command_GeneralDeviceCommand.DeviceCommand(v3.value0)
+                                                }))))))))))))(function () {
+                                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                });
+                                            });
+                                        };
+                                        return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_isblocked"](Data_Profunctor_Strong.strongFn))(false))))))))))(function () {
+                                            return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_multiviewuipull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_isblocked"](Data_Profunctor_Strong.strongFn))(false))))))))))))(function () {
+                                                return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_actionpull"](VYNET_API_Control_MultiviewActions["_CoMultiviewActions"](VYNET_API_Control_MultiviewActions["_mvactiveactions"](VYNET_API_Control_MultiviewActionStack["_CoMultiviewActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_MultiviewActionStack["_mvisblocked"](Data_Profunctor_Strong.strongFn))(false))))))))))(function () {
+                                                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
+                                                        var v4 = new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(stackMultiview)(VYNET_API_Control_ActionStack["_thestack"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(stackDevice)(VYNET_API_Control_ActionStack["_thestack"](Data_Lens_Internal_Forget.strongForget)));
+                                                        if (v4.value0 instanceof Data_List_Types.Nil && v4.value1 instanceof Data_List_Types.Nil) {
+                                                            var v5 = Data_Lens_Getter.viewOn(stackActionpull)(VYNET_API_Control_MultiviewActionStack["_mvthestack"](Data_Lens_Internal_Forget.strongForget));
+                                                            if (v5 instanceof Data_List_Types.Nil) {
+                                                                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                            };
+                                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_actionpull"](VYNET_API_Control_MultiviewActions["_CoMultiviewActions"](VYNET_API_Control_MultiviewActions["_mvactionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralMultiviewCommand.eqGeneralMultiviewCommand1)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralMultiviewCommand.GeneralMultiviewCommand({
+                                                                gmvcmd: VYNET_API_Device_Command_GeneralMultiviewCommand.MvReset.value
+                                                            }))))))))))))(function () {
+                                                                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                            });
+                                                        };
+                                                        if (v4.value1 instanceof Data_List_Types.Cons) {
+                                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                                                                gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
+                                                            }))))))))))))(function () {
+                                                                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                            });
+                                                        };
+                                                        if (v4.value0 instanceof Data_List_Types.Cons) {
+                                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_multiviewuipull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                                                                gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
+                                                            }))))))))))))))(function () {
+                                                                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                            });
+                                                        };
+                                                        throw new Error("Failed pattern match at VYNET.MainMainPanel (line 1237, column 13 - line 1249, column 26): " + [ v4.constructor.name ]);
+                                                    })())(function () {
+                                                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                    });
+                                                });
+                                            });
+                                        });
+                                    });
+                                });
+                            })))(function () {
+                                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                            });
+                        });
+                    });
+                });
+            }))(v1);
+        };
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelActionpullSignal && (v.value0.value0.value0 instanceof VYNET_API_Control_MultiviewActions.MultiviewActionsMvactionexecSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ReferSignal && v.value0.value0.value0.value0.value0 instanceof Third_RefState.RefPreAck))))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_actionpull"](VYNET_API_Control_MultiviewActions["_CoMultiviewActions"](VYNET_API_Control_MultiviewActions["_mvactiveactions"](VYNET_API_Control_MultiviewActionStack["_CoMultiviewActionStack"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (stackActionpull) {
+                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (stackDevice) {
+                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_multiviewuipull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))(function (stackMultiview) {
+                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (stackPreview) {
+                            return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(Control_Applicative.when(ExploreCore.applicativeCo(comonadComponentMainMainP))(!Data_Lens_Getter.viewOn(stackActionpull)(VYNET_API_Control_MultiviewActionStack["_mvisblocked"](Data_Lens_Internal_Forget.strongForget)))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_isblocked"](Data_Profunctor_Strong.strongFn))(true))))))))))(function () {
+                                return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_multiviewuipull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_isblocked"](Data_Profunctor_Strong.strongFn))(true))))))))))))(function () {
+                                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_isblocked"](Data_Profunctor_Strong.strongFn))(true))))))))))(function () {
+                                        var v3 = Data_Lens_Getter.viewOn(stackActionpull)(VYNET_API_Control_MultiviewActionStack["_mvthestack"](Data_Lens_Internal_Forget.strongForget));
+                                        if (v3 instanceof Data_List_Types.Cons) {
+                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_actionpull"](VYNET_API_Control_MultiviewActions["_CoMultiviewActions"](VYNET_API_Control_MultiviewActions["_mvactiveactions"](VYNET_API_Control_MultiviewActionStack["_CoMultiviewActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_MultiviewActionStack["_mvthestack"](Data_Profunctor_Strong.strongFn))(v3.value1))))))))))(function () {
+                                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_actionpull"](VYNET_API_Control_MultiviewActions["_CoMultiviewActions"](VYNET_API_Control_MultiviewActions["_mvactionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralMultiviewCommand.eqGeneralMultiviewCommand1)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralMultiviewCommand.GeneralMultiviewCommand({
+                                                    gmvcmd: new VYNET_API_Device_Command_GeneralMultiviewCommand.MvGeneralCommand(v3.value0)
+                                                }))))))))))))(function () {
+                                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                });
+                                            });
+                                        };
+                                        return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_isblocked"](Data_Profunctor_Strong.strongFn))(false))))))))))(function () {
+                                            return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_multiviewuipull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_isblocked"](Data_Profunctor_Strong.strongFn))(false))))))))))))(function () {
+                                                return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Control_ActionStack["_isblocked"](Data_Profunctor_Strong.strongFn))(false))))))))))(function () {
+                                                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
+                                                        var v4 = new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(stackPreview)(VYNET_API_Control_ActionStack["_thestack"](Data_Lens_Internal_Forget.strongForget)), new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(stackMultiview)(VYNET_API_Control_ActionStack["_thestack"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(stackDevice)(VYNET_API_Control_ActionStack["_thestack"](Data_Lens_Internal_Forget.strongForget))));
+                                                        if (v4.value0 instanceof Data_List_Types.Nil && (v4.value1.value0 instanceof Data_List_Types.Nil && v4.value1.value1 instanceof Data_List_Types.Nil)) {
+                                                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                        };
+                                                        if (v4.value1.value1 instanceof Data_List_Types.Cons) {
+                                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                                                                gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
+                                                            }))))))))))))(function () {
+                                                                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                            });
+                                                        };
+                                                        if (v4.value1.value0 instanceof Data_List_Types.Cons) {
+                                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_multiviewuipull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                                                                gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
+                                                            }))))))))))))))(function () {
+                                                                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                            });
+                                                        };
+                                                        if (v4.value0 instanceof Data_List_Types.Cons) {
+                                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                                                                gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
+                                                            }))))))))))))(function () {
+                                                                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                            });
+                                                        };
+                                                        throw new Error("Failed pattern match at VYNET.MainMainPanel (line 1275, column 13 - line 1286, column 26): " + [ v4.constructor.name ]);
+                                                    })())(function () {
+                                                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                    });
+                                                });
+                                            });
+                                        });
+                                    });
+                                });
+                            })))(function () {
+                                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                            });
+                        });
+                    });
+                });
+            }))(v1);
+        };
+        return v1;
+    };
+};
+var runpreviewupdate = function (v) {
+    if (v) {
+        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewtxdevices"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_RequestDevicesCommand.eqRequestDevicesCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_RequestDevicesCommand.RequestDevicesCommand({
+            rdrcmd: VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesTx2PreviewRRTrue.value,
+            idcmd: Unify_Types.def(VYNET_API_Device_Command_Request_GetRequest.defGetRequest)
+        }))))))))))(function () {
+            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+        });
+    };
+    if (!v) {
+        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewtxdevices"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_RequestDevicesCommand.eqRequestDevicesCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_RequestDevicesCommand.RequestDevicesCommand({
+            rdrcmd: VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesTx2PreviewRRFalse.value,
+            idcmd: Unify_Types.def(VYNET_API_Device_Command_Request_GetRequest.defGetRequest)
+        }))))))))))(function () {
+            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+        });
+    };
+    throw new Error("Failed pattern match at VYNET.MainMainPanel (line 816, column 1 - line 816, column 64): " + [ v.constructor.name ]);
+};
+var marshal2 = function (v) {
+    return function (v1) {
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRx5Sec))))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(runpreviewupdate(true))(function () {
+                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+            }))(v1);
+        };
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelPreviewrxSignal && v.value0.value0 instanceof Third_Reference.ReferSignal)) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
+                if (v.value0.value0.value0 instanceof Third_RefState.RefPreAck && v.value0.value0.value0.value0.value0.mvcmd instanceof VYNET_API_Multiview_Command_MultiviewUiCommand.GetMultiviewDeviceRx) {
+                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewrx(Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Data_Functor.mapFlipped(ExploreCore.functorCo(Control_Comonad_Store_Trans.functorStoreT(Data_Identity.functorIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (x) {
+                        return Data_Lens_Getter.viewOn(x)(VYNET_API_Multiview_MultiviewDeviceRx["_mrsubscriptions"](Data_Lens_Internal_Forget.strongForget));
+                    })))))))(function (previewsubs) {
+                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicesrx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))(Third_ComponentList["_CoList"](Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (x) {
+                            var $326 = Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget)) === v.value0.value0.value0.value0.value0.mvcmd.value0;
+                            if ($326) {
+                                return Data_Lens_Setter.set(VYNET_API_Device_DeviceRx["_rsubscriptions"](Data_Profunctor_Strong.strongFn))(previewsubs)(x);
+                            };
+                            return x;
+                        })))))))))))))(function () {
+                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewrx(Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Data_Functor.mapFlipped(ExploreCore.functorCo(Control_Comonad_Store_Trans.functorStoreT(Data_Identity.functorIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (x) {
+                                return Data_Lens_Getter.viewOn(x)((function () {
+                                    var $735 = VYNET_API_Multiview_MultiviewDeviceRx["_mrframe_buffer"](Data_Lens_Internal_Forget.strongForget);
+                                    var $736 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                                    return function ($737) {
+                                        return $735($736($737));
+                                    };
+                                })());
+                            })))))))(function (previewrx) {
+                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewrx(Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Data_Functor.mapFlipped(ExploreCore.functorCo(Control_Comonad_Store_Trans.functorStoreT(Data_Identity.functorIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (x) {
+                                    return Data_Lens_Getter.viewOn(x)(VYNET_API_Multiview_MultiviewDeviceRx["_mrsubscriptions"](Data_Lens_Internal_Forget.strongForget));
+                                })))))))(function (previewsxs) {
+                                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewrx(Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Data_Functor.mapFlipped(ExploreCore.functorCo(Control_Comonad_Store_Trans.functorStoreT(Data_Identity.functorIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (x) {
+                                        return Data_Lens_Getter.viewOn(x)(VYNET_API_Multiview_MultiviewDeviceRx["_mrdevice_id"](Data_Lens_Internal_Forget.strongForget));
+                                    })))))))(function (previewrxid) {
+                                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Data_Functor.mapFlipped(ExploreCore.functorCo(Control_Comonad_Store_Trans.functorStoreT(Data_Identity.functorIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (x) {
+                                            return Data_Lens_Getter.viewOn(x)((function () {
+                                                var $738 = VYNET_API_Multiview_MultiviewDeviceRx["_mrframe_buffer"](Data_Lens_Internal_Forget.strongForget);
+                                                var $739 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                                                return function ($740) {
+                                                    return $738($739($740));
+                                                };
+                                            })());
+                                        })))))))))))(function (uirx) {
+                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Data_Functor.mapFlipped(ExploreCore.functorCo(Control_Comonad_Store_Trans.functorStoreT(Data_Identity.functorIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (x) {
+                                                return Data_Lens_Getter.viewOn(x)(VYNET_API_Multiview_MultiviewDeviceRx["_mrsubscriptions"](Data_Lens_Internal_Forget.strongForget));
+                                            })))))))))))(function (sxs) {
+                                                var wxs = Data_Lens_Fold.toListOfOn(previewrx)((function () {
+                                                    var $741 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcmultiview_layout"](Data_Lens_Internal_Forget.strongForget);
+                                                    var $742 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
+                                                    var $743 = VYNET_API_Multiview_Data_LayoutDescription["_ldwindows"](Data_Lens_Internal_Forget.strongForget);
+                                                    var $744 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
+                                                    return function ($745) {
+                                                        return $741($742($743($744($745))));
+                                                    };
+                                                })());
+                                                var msubid = Data_Functor.map(Data_List_Types.functorList)(function (x) {
+                                                    return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_Data_Subscription["_sbindex"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Fold.previewOn(x)((function () {
+                                                        var $746 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                                        var $747 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                                                        var $748 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                        var $749 = Data_Lens_Getter.to(function (v3) {
+                                                            return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(v3)(VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(v3)(VYNET_API_Device_Data_SubscriptionSource["_ssdevice_name"](Data_Lens_Internal_Forget.strongForget)));
+                                                        });
+                                                        return function ($750) {
+                                                            return $746($747($748($749($750))));
+                                                        };
+                                                    })()));
+                                                })(Data_Lens_Fold.toListOfOn(previewsxs)(Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)))));
+                                                var subwxs = makewp(wxs)(msubid);
+                                                var pws = Data_Functor.map(Data_List_Types.functorList)(function (w) {
+                                                    return new VYNET_API_Multiview_Data_PreviewWindow.PreviewWindow({
+                                                        pwnindex: Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnindex"](Data_Lens_Internal_Forget.strongForget)),
+                                                        pwnhorizontal_position: Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnhorizontal_position"](Data_Lens_Internal_Forget.strongForget)),
+                                                        pwnvertical_position: Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnvertical_position"](Data_Lens_Internal_Forget.strongForget)),
+                                                        pwnwidth: Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnwidth"](Data_Lens_Internal_Forget.strongForget)),
+                                                        pwnheight: Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnheight"](Data_Lens_Internal_Forget.strongForget)),
+                                                        pwnhorizontal_offset: Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnhorizontal_offset"](Data_Lens_Internal_Forget.strongForget)),
+                                                        pwnvertical_offset: Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnvertical_offset"](Data_Lens_Internal_Forget.strongForget)),
+                                                        pwntarget_surface: Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wntarget_surface"](Data_Lens_Internal_Forget.strongForget)),
+                                                        pwnsubid: Data_Lens_Fold.previewOn(w)((function () {
+                                                            var $751 = VYNET_API_Multiview_Data_Window["_wnsubid"](Data_Lens_Internal_Forget.strongForget);
+                                                            var $752 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                            var $753 = Data_Lens_Lens_Tuple["_1"](Data_Lens_Internal_Forget.strongForget);
+                                                            return function ($754) {
+                                                                return $751($752($753($754)));
+                                                            };
+                                                        })())
+                                                    });
+                                                })(subwxs);
+                                                var uirxtxsub = Data_Foldable.find(Data_List_Types.foldableList)(function (v3) {
+                                                    return Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Lens_Getter.viewOn(v3)(VYNET_API_Multiview_Data_PreviewWindow["_pwnsubid"](Data_Lens_Internal_Forget.strongForget)))(Data_Lens_Fold.previewOn(Data_List.index(sxs)(0))((function () {
+                                                        var $755 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                        var $756 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                                        var $757 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                                                        var $758 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                        var $759 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
+                                                        return function ($760) {
+                                                            return $755($756($757($758($759($760)))));
+                                                        };
+                                                    })()));
+                                                })(pws);
+                                                var uiws = Data_Functor.map(Data_List_Types.functorList)(function (w) {
+                                                    return Data_Lens_Setter.set(VYNET_API_Multiview_Data_Window["_wnpreview"](Data_Profunctor_Strong.strongFn))(Data_Foldable.find(Data_List_Types.foldableList)(function (v3) {
+                                                        return Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Lens_Getter.viewOn(v3)(VYNET_API_Multiview_Data_PreviewWindow["_pwnsubid"](Data_Lens_Internal_Forget.strongForget)))(Data_Lens_Fold.previewOn(w)((function () {
+                                                            var $761 = VYNET_API_Multiview_Data_Window["_wnsubid"](Data_Lens_Internal_Forget.strongForget);
+                                                            var $762 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                            var $763 = Data_Lens_Lens_Tuple["_1"](Data_Lens_Internal_Forget.strongForget);
+                                                            return function ($764) {
+                                                                return $761($762($763($764)));
+                                                            };
+                                                        })())) && Data_Eq.notEq(Data_Maybe.eqMaybe(Data_Tuple.eqTuple(Data_Eq.eqString)(Data_Eq.eqString)))(Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnsubid"](Data_Lens_Internal_Forget.strongForget)))(Data_Maybe.Nothing.value);
+                                                    })(pws))(w);
+                                                })(Data_Lens_Fold.toListOfOn(uirx)((function () {
+                                                    var $765 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcmultiview_layout"](Data_Lens_Internal_Forget.strongForget);
+                                                    var $766 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
+                                                    var $767 = VYNET_API_Multiview_Data_LayoutDescription["_ldwindows"](Data_Lens_Internal_Forget.strongForget);
+                                                    var $768 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
+                                                    return function ($769) {
+                                                        return $765($766($767($768($769))));
+                                                    };
+                                                })()));
+                                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))((function () {
+                                                    var $770 = Data_Lens_Setter.set((function () {
+                                                        var $773 = VYNET_API_Multiview_MultiviewDeviceRx["_mrframe_buffer"](Data_Profunctor_Strong.strongFn);
+                                                        var $774 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Profunctor_Strong.strongFn);
+                                                        var $775 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcmultiview_layout"](Data_Profunctor_Strong.strongFn);
+                                                        var $776 = Data_Lens_Prism_Maybe["_Just"](Data_Profunctor_Choice.choiceFn);
+                                                        var $777 = VYNET_API_Multiview_Data_LayoutDescription["_ldwindows"](Data_Profunctor_Strong.strongFn);
+                                                        return function ($778) {
+                                                            return $773($774($775($776($777($778)))));
+                                                        };
+                                                    })())(uiws);
+                                                    var $771 = Data_Lens_Setter.set(VYNET_API_Multiview_MultiviewDeviceRx["_mrpreviewwindow"](Data_Profunctor_Strong.strongFn))(uirxtxsub);
+                                                    return function ($772) {
+                                                        return $770($771($772));
+                                                    };
+                                                })())))))))))))(function () {
+                                                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_devicestx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))(Third_ComponentList["_CoList"](Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (x) {
+                                                        return Data_Lens_Setter.set(VYNET_API_Device_DeviceTx["_twindow"](Data_Profunctor_Strong.strongFn))(Data_Functor.map(Data_Maybe.functorMaybe)(Data_Lens_Setter.over((function () {
+                                                            var $779 = VYNET_API_Multiview_Data_PreviewWindow["_pwnsubid"](Data_Profunctor_Strong.strongFn);
+                                                            var $780 = Data_Lens_Prism_Maybe["_Just"](Data_Profunctor_Choice.choiceFn);
+                                                            return function ($781) {
+                                                                return $779($780($781));
+                                                            };
+                                                        })())(function (y) {
+                                                            return y + "";
+                                                        }))(Data_Foldable.find(Data_List_Types.foldableList)(function (v3) {
+                                                            return Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Lens_Getter.viewOn(v3)(VYNET_API_Multiview_Data_PreviewWindow["_pwnsubid"](Data_Lens_Internal_Forget.strongForget)))(new Data_Maybe.Just(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget))));
+                                                        })(pws)))(x);
+                                                    })))))))))))(function () {
+                                                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicesrx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))(Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (x) {
+                                                            var sxs2 = Data_Foldable.find(Data_List_Types.foldableList)(function (v11) {
+                                                                return Data_Maybe.isJust(Data_Lens_Getter.viewOn(v11)((function () {
+                                                                    var $782 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                                                    var $783 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                                                                    return function ($784) {
+                                                                        return $782($783($784));
+                                                                    };
+                                                                })()));
+                                                            })(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceRx["_rsubscriptions"](Data_Lens_Internal_Forget.strongForget)));
+                                                            var uirxtxsub2 = Data_Foldable.find(Data_List_Types.foldableList)(function (v11) {
+                                                                return Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Lens_Getter.viewOn(v11)(VYNET_API_Multiview_Data_PreviewWindow["_pwnsubid"](Data_Lens_Internal_Forget.strongForget)))(Data_Lens_Fold.previewOn(sxs2)((function () {
+                                                                    var $785 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                                    var $786 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                                                    var $787 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                                                                    var $788 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                                    var $789 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
+                                                                    return function ($790) {
+                                                                        return $785($786($787($788($789($790)))));
+                                                                    };
+                                                                })()));
+                                                            })(pws);
+                                                            var uitxrouted = Data_Lens_Fold.previewOn(sxs2)((function () {
+                                                                var $791 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                                var $792 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                                                var $793 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                                                                var $794 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                                var $795 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
+                                                                return function ($796) {
+                                                                    return $791($792($793($794($795($796)))));
+                                                                };
+                                                            })());
+                                                            return Data_Lens_Setter.set(VYNET_API_Device_DeviceRx["_rwindow"](Data_Profunctor_Strong.strongFn))(uirxtxsub2)(Data_Lens_Setter.set(VYNET_API_Device_DeviceRx["_rroutedtx"](Data_Profunctor_Strong.strongFn))(uitxrouted)(x));
+                                                        }))))))))))))(function () {
+                                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_initapp(Third_Init_InitAppData["_CoInitApp"](Third_Init_InitAppData["_initappstatusref"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Third_Init_InitAppStatus.comonadComponentInitAppSt)(Third_Init_InitAppStatus.shouldUpdateComponentInit)(Third_Init_InitApp.placeholder2)))))))(function () {
+                                                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_initapp(Third_Init_InitAppData["_CoInitApp"](Third_Init_InitAppData["_initappstatusref"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Third_Init_InitAppStatus.comonadComponentInitAppSt)(Third_Init_InitAppStatus.shouldUpdateComponentInit)(Third_Init_InitAppStatus["_CoInitAppStatus"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (initstate) {
+                                                                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
+                                                                        var $327 = Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqBoolean))(Data_Lens_Getter.viewOn(initstate)(Third_Init_InitAppStatus["_firstrun"](Data_Lens_Internal_Forget.strongForget)))(new Data_Maybe.Just(false));
+                                                                        if ($327) {
+                                                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Multiview_Command_MultiviewUiCommand.eqMultiviewUiCommand)))(Data_Functor.map(ExploreCore.functorCo(Control_Comonad_Store_Trans.functorStoreT(Data_Identity.functorIdentity)))(Data_Maybe.Just.create)(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Multiview_Command_MultiviewUiCommand.MultiviewUiCommand({
+                                                                                mvcmd: new VYNET_API_Multiview_Command_MultiviewUiCommand.GetMultiviewDeviceRx(previewrxid)
+                                                                            })))))))))))))(function () {
+                                                                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_initapp(Third_Init_InitAppData["_CoInitApp"](Third_Init_InitAppData["_initappstatusref"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Third_Init_InitAppStatus.comonadComponentInitAppSt)(Third_Init_InitAppStatus.shouldUpdateComponentInit)(Third_Init_InitAppStatus["_CoInitAppStatus"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(Third_Init_InitAppStatus["_firstrun"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(true)))))))))))(function () {
+                                                                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                                                });
+                                                                            });
+                                                                        };
+                                                                        var $328 = Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqBoolean))(Data_Lens_Getter.viewOn(initstate)(Third_Init_InitAppStatus["_firstrun"](Data_Lens_Internal_Forget.strongForget)))(Data_Maybe.Nothing.value);
+                                                                        if ($328) {
+                                                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_initapp(Third_Init_InitAppData["_CoInitApp"](Third_Init_InitAppData["_initappstatusref"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Third_Init_InitAppStatus.comonadComponentInitAppSt)(Third_Init_InitAppStatus.shouldUpdateComponentInit)(Third_Init_InitAppStatus["_CoInitAppStatus"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(Third_Init_InitAppStatus["_firstrun"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(false)))))))))))(function () {
+                                                                                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                                            });
+                                                                        };
+                                                                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                                    })())(function () {
+                                                                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                                    });
+                                                                });
+                                                            });
+                                                        });
+                                                    });
+                                                });
+                                            });
+                                        });
+                                    });
+                                });
+                            });
+                        });
+                    });
+                };
+                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+            })())(function () {
+                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+            }))(v1);
+        };
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && (v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRxMrdeviceIdSignal && v.value0.value0.value0.value0.value0.value0 === "pip")))))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_configmultiviewlayouts"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_ConfigMultiviews.comonadComponentConfigMul)(VYNET_API_Multiview_ConfigMultiviews.shouldUpdateComponentConf)(VYNET_API_Multiview_ConfigMultiviews["_CoConfigMultiviews"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Multiview_ConfigMultiviews["_ispip"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(true)))))))))))(function () {
+                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+            }))(v1);
+        };
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && (v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRxMrdeviceIdSignal && v.value0.value0.value0.value0.value0.value0 === "single")))))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))(function (selectedrx) {
+                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel.singlecommands(selectedrx))))(function (singlecmds) {
+                    var leaveallsubscmd = VYNET_API_Multiview_MultiviewPanel.leaveallsubs(selectedrx);
+                    var ispreviewbox = Data_Lens_Getter.viewOn(selectedrx)(VYNET_API_Multiview_MultiviewDeviceRx["_mrdevice_name"](Data_Lens_Internal_Forget.strongForget)) === "PREVIEW BOX";
+                    var currentmode = Data_Lens_Getter.viewOn(selectedrx)((function () {
+                        var $797 = VYNET_API_Multiview_MultiviewDeviceRx["_mrframe_buffer"](Data_Lens_Internal_Forget.strongForget);
+                        var $798 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                        var $799 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
+                        return function ($800) {
+                            return $797($798($799($800)));
+                        };
+                    })());
+                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
+                        if (currentmode === "MULTIVIEW") {
+                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
+                                return Data_Semigroup.append(Data_List_Types.semigroupList)(leaveallsubscmd)(Data_Semigroup.append(Data_List_Types.semigroupList)(singlecmds)(Data_Semigroup.append(Data_List_Types.semigroupList)((function () {
+                                    if (ispreviewbox) {
+                                        return Data_List_Types.Nil.value;
+                                    };
+                                    return new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetFastSwitch(Data_Lens_Getter.viewOn(selectedrx)(VYNET_API_Multiview_MultiviewDeviceRx["_mrdevice_id"](Data_Lens_Internal_Forget.strongForget))), Data_List_Types.Nil.value);
+                                })())(Data_Semigroup.append(Data_List_Types.semigroupList)(xs)(new Data_List_Types.Cons(VYNET_API_Device_Command_Data_DeviceAction.CompletedAction.value, Data_List_Types.Nil.value)))));
+                            }))))))))))(function () {
+                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                                    gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
+                                }))))))))))))(function () {
+                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                });
+                            });
+                        };
+                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                    })())(function () {
+                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                    });
+                });
+            }))(v1);
+        };
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && (v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRxMrdeviceIdSignal && v.value0.value0.value0.value0.value0.value0 === "mv")))))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_configmultiviewlayouts"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_ConfigMultiviews.comonadComponentConfigMul)(VYNET_API_Multiview_ConfigMultiviews.shouldUpdateComponentConf)(VYNET_API_Multiview_ConfigMultiviews["_CoConfigMultiviews"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(VYNET_API_Multiview_ConfigMultiviews["_ispip"](Data_Profunctor_Strong.strongFn))(Data_Maybe.Nothing.value))))))))))(function () {
+                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+            }))(v1);
+        };
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && (v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRxMrdeviceIdSignal && v.value0.value0.value0.value0.value0.value0 === "genlocked")))))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))(function (selectedrx) {
+                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel.genlockcommands(selectedrx)(Data_Maybe.Nothing.value))))(function (genlockconf) {
+                    var ispreviewbox = Data_Lens_Getter.viewOn(selectedrx)(VYNET_API_Multiview_MultiviewDeviceRx["_mrdevice_name"](Data_Lens_Internal_Forget.strongForget)) === "PREVIEW BOX";
+                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
+                        if (ispreviewbox) {
+                            return Data_List_Types.Nil.value;
+                        };
+                        return Data_Semigroup.append(Data_List_Types.semigroupList)(xs)(Data_Semigroup.append(Data_List_Types.semigroupList)(genlockconf)(new Data_List_Types.Cons(VYNET_API_Device_Command_Data_DeviceAction.CompletedAction.value, Data_List_Types.Nil.value)));
+                    }))))))))))(function () {
+                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                            gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
+                        }))))))))))))(function () {
+                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                        });
+                    });
+                });
+            }))(v1);
+        };
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRxMrGenlockscaledSelect))))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))(function (selectedrx) {
+                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel.genlockscaledcommands(v.value0.value0.value0.value0.value0.value0.wressignal)(v.value0.value0.value0.value0.value0.value0.hressignal)(v.value0.value0.value0.value0.value0.value0.fpssignal)(selectedrx)(Data_Maybe.Nothing.value))))(function (genlockconf) {
+                    var ispreviewbox = Data_Lens_Getter.viewOn(selectedrx)(VYNET_API_Multiview_MultiviewDeviceRx["_mrdevice_name"](Data_Lens_Internal_Forget.strongForget)) === "PREVIEW BOX";
+                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
+                        if (ispreviewbox) {
+                            return Data_List_Types.Nil.value;
+                        };
+                        return Data_Semigroup.append(Data_List_Types.semigroupList)(xs)(Data_Semigroup.append(Data_List_Types.semigroupList)(genlockconf)(new Data_List_Types.Cons(VYNET_API_Device_Command_Data_DeviceAction.CompletedAction.value, Data_List_Types.Nil.value)));
+                    }))))))))))(function () {
+                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                            gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
+                        }))))))))))))(function () {
+                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                        });
+                    });
+                });
+            }))(v1);
+        };
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && (v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRxMrdeviceIdSignal && v.value0.value0.value0.value0.value0.value0 === "fast_switched")))))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))(function (selectedrx) {
+                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel.fastswitchcommands(selectedrx)(Data_Maybe.Nothing.value))))(function (fastcmds) {
+                    var ispreviewbox = Data_Lens_Getter.viewOn(selectedrx)(VYNET_API_Multiview_MultiviewDeviceRx["_mrdevice_name"](Data_Lens_Internal_Forget.strongForget)) === "PREVIEW BOX";
+                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
+                        if (ispreviewbox) {
+                            return Data_List_Types.Nil.value;
+                        };
+                        return Data_Semigroup.append(Data_List_Types.semigroupList)(xs)(Data_Semigroup.append(Data_List_Types.semigroupList)(fastcmds)(new Data_List_Types.Cons(VYNET_API_Device_Command_Data_DeviceAction.CompletedAction.value, Data_List_Types.Nil.value)));
+                    }))))))))))(function () {
+                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                            gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
+                        }))))))))))))(function () {
+                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                        });
+                    });
+                });
+            }))(v1);
+        };
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && (v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRxMrHdcp && (v.value0.value0.value0.value0.value0.value0 instanceof Data_Maybe.Just && v.value0.value0.value0.value0.value0.value0.value0.value1 === "hdcpoff"))))))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))(function (selectedrx) {
+                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_devicestx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))(Third_ComponentList["_CoList"](Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (x) {
+                    var $380 = Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === v.value0.value0.value0.value0.value0.value0.value0.value0;
+                    if ($380) {
+                        return Data_Lens_Setter.set((function () {
+                            var $801 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Profunctor_Strong.strongFn);
+                            var $802 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Profunctor_Strong.strongFn);
+                            var $803 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdchdcp_support_enable"](Data_Profunctor_Strong.strongFn);
+                            return function ($804) {
+                                return $801($802($803($804)));
+                            };
+                        })())(false)(Data_Lens_Setter.set((function () {
+                            var $805 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Profunctor_Strong.strongFn);
+                            var $806 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Profunctor_Strong.strongFn);
+                            var $807 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdchdcp_22_support_disable"](Data_Profunctor_Strong.strongFn);
+                            return function ($808) {
+                                return $805($806($807($808)));
+                            };
+                        })())(true)(x));
+                    };
+                    return x;
+                })))))))))))(function () {
+                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
+                        return new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetHdcpOff(v.value0.value0.value0.value0.value0.value0.value0.value0), new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetHdcp22Off(v.value0.value0.value0.value0.value0.value0.value0.value0), xs));
+                    }))))))))))(function () {
+                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                            gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
+                        }))))))))))))(function () {
+                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                        });
+                    });
+                });
+            }))(v1);
+        };
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && (v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRxMrHdcp && (v.value0.value0.value0.value0.value0.value0 instanceof Data_Maybe.Just && v.value0.value0.value0.value0.value0.value0.value0.value1 === "hdcp14"))))))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))(function (selectedrx) {
+                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_devicestx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))(Third_ComponentList["_CoList"](Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (x) {
+                    var $390 = Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === v.value0.value0.value0.value0.value0.value0.value0.value0;
+                    if ($390) {
+                        return Data_Lens_Setter.set((function () {
+                            var $809 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Profunctor_Strong.strongFn);
+                            var $810 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Profunctor_Strong.strongFn);
+                            var $811 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdchdcp_support_enable"](Data_Profunctor_Strong.strongFn);
+                            return function ($812) {
+                                return $809($810($811($812)));
+                            };
+                        })())(true)(Data_Lens_Setter.set((function () {
+                            var $813 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Profunctor_Strong.strongFn);
+                            var $814 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Profunctor_Strong.strongFn);
+                            var $815 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdchdcp_22_support_disable"](Data_Profunctor_Strong.strongFn);
+                            return function ($816) {
+                                return $813($814($815($816)));
+                            };
+                        })())(true)(x));
+                    };
+                    return x;
+                })))))))))))(function () {
+                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
+                        return new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetHdcpOn(v.value0.value0.value0.value0.value0.value0.value0.value0), new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetHdcp22Off(v.value0.value0.value0.value0.value0.value0.value0.value0), xs));
+                    }))))))))))(function () {
+                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                            gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
+                        }))))))))))))(function () {
+                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                        });
+                    });
+                });
+            }))(v1);
+        };
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && (v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRxMrHdcp && (v.value0.value0.value0.value0.value0.value0 instanceof Data_Maybe.Just && v.value0.value0.value0.value0.value0.value0.value0.value1 === "hdcp22"))))))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))(function (selectedrx) {
+                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_devicestx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))(Third_ComponentList["_CoList"](Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (x) {
+                    var $400 = Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === v.value0.value0.value0.value0.value0.value0.value0.value0;
+                    if ($400) {
+                        return Data_Lens_Setter.set((function () {
+                            var $817 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Profunctor_Strong.strongFn);
+                            var $818 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Profunctor_Strong.strongFn);
+                            var $819 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdchdcp_support_enable"](Data_Profunctor_Strong.strongFn);
+                            return function ($820) {
+                                return $817($818($819($820)));
+                            };
+                        })())(true)(Data_Lens_Setter.set((function () {
+                            var $821 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Profunctor_Strong.strongFn);
+                            var $822 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Profunctor_Strong.strongFn);
+                            var $823 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdchdcp_22_support_disable"](Data_Profunctor_Strong.strongFn);
+                            return function ($824) {
+                                return $821($822($823($824)));
+                            };
+                        })())(false)(x));
+                    };
+                    return x;
+                })))))))))))(function () {
+                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
+                        return new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetHdcpOn(v.value0.value0.value0.value0.value0.value0.value0.value0), new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetHdcp22On(v.value0.value0.value0.value0.value0.value0.value0.value0), xs));
+                    }))))))))))(function () {
+                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                            gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
+                        }))))))))))))(function () {
+                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                        });
+                    });
+                });
+            }))(v1);
+        };
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelNewframeSignal && (v.value0.value0 instanceof VYNET_API_Multiview_MultiviewPanel.MultiviewPanelMultiviewlayoutuiSignal && (v.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewUi.MultiviewUiDevicerxSignal && (v.value0.value0.value0.value0 instanceof Third_Reference.ValueSignal && (v.value0.value0.value0.value0.value0 instanceof VYNET_API_Multiview_MultiviewDeviceRx.MultiviewDeviceRxMrEdid && v.value0.value0.value0.value0.value0.value0 instanceof Data_Maybe.Just)))))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicesrx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))(Third_ComponentList["_CoList"](Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))))(function (rxs) {
+                var mselectedrx = Data_Lens_Fold.previewOn(rxs)((function () {
+                    var $825 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Maybe_First.monoidFirst));
+                    var $826 = Data_Lens_Getter.to(function (x) {
+                        return new Data_Tuple.Tuple(x, Data_Lens_Fold.toListOfOn(x)((function () {
+                            var $829 = VYNET_API_Device_DeviceRx["_rsubscriptions"](Data_Lens_Internal_Forget.strongForget);
+                            var $830 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
+                            var $831 = Data_Lens_Fold.filtered(Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)))(function (s) {
+                                return Data_Lens_Getter.viewOn(s)(VYNET_API_Device_Data_Subscription["_sbtype"](Data_Lens_Internal_Forget.strongForget)) === "HDMI" && (Data_Lens_Getter.viewOn(s)((function () {
+                                    var $833 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                    var $834 = VYNET_API_Device_Data_SubscriptionStatus["_state"](Data_Lens_Internal_Forget.strongForget);
+                                    return function ($835) {
+                                        return $833($834($835));
+                                    };
+                                })()) === "STREAMING" && Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Lens_Fold.previewOn(s)((function () {
+                                    var $836 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                    var $837 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                                    var $838 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                    var $839 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
+                                    return function ($840) {
+                                        return $836($837($838($839($840))));
+                                    };
+                                })()))(new Data_Maybe.Just(v.value0.value0.value0.value0.value0.value0.value0.value0)));
+                            });
+                            return function ($832) {
+                                return $829($830($831($832)));
+                            };
+                        })()));
+                    });
+                    var $827 = Data_Lens_Fold.filtered(Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst))(function (v3) {
+                        return Data_Eq.notEq(Data_List_Types.eqList(VYNET_API_Device_Data_Subscription.eqSubscription))(v3.value1)(Data_List_Types.Nil.value);
+                    });
+                    return function ($828) {
+                        return $825($826($827($828)));
+                    };
+                })());
+                if (mselectedrx instanceof Data_Maybe.Just) {
+                    var selectedrx = mkmdevicerx(mselectedrx.value0.value0);
+                    var ispreviewbox = Data_Lens_Getter.viewOn(mselectedrx.value0.value0)(VYNET_API_Device_DeviceRx["_rdevice_name"](Data_Lens_Internal_Forget.strongForget)) === "PREVIEW BOX";
+                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_initapp(Third_Init_InitAppData["_CoInitApp"](Third_Init_InitAppData["_initapptxs"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Third_Init_InitAppTxs.comonadComponentInitAppTx)(Third_Init_InitAppTxs.shouldUpdateComponentInit)(Third_Init_InitAppTxs["_CoInitAppTxs"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over((function () {
+                        var $841 = Third_Init_InitAppTxs["_iatxdevices"](Data_Profunctor_Strong.strongFn);
+                        var $842 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
+                        return function ($843) {
+                            return $841($842($843));
+                        };
+                    })())(function (tx) {
+                        var $414 = Data_Lens_Getter.viewOn(tx)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === v.value0.value0.value0.value0.value0.value0.value0.value0;
+                        if ($414) {
+                            return Data_Lens_Setter.set((function () {
+                                var $844 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Profunctor_Strong.strongFn);
+                                var $845 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Profunctor_Strong.strongFn);
+                                var $846 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdcedid"](Data_Profunctor_Strong.strongFn);
+                                return function ($847) {
+                                    return $844($845($846($847)));
+                                };
+                            })())(new Data_Maybe.Just(v.value0.value0.value0.value0.value0.value0.value0.value1))(tx);
+                        };
+                        return tx;
+                    }))))))))))(function () {
+                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_devicestx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))(Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (x) {
+                            return Data_Lens_Setter.set(VYNET_API_Device_DeviceTx["_tselected"](Data_Profunctor_Strong.strongFn))(Data_Maybe.Nothing.value)(x);
+                        }))))))))))(function () {
+                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_devicestx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))(Third_TransList_Findlist["_findlist"](VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Bind.bind(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (x) {
+                                return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === v.value0.value0.value0.value0.value0.value0.value0.value0);
+                            })))(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))))))))))(function (tx) {
+                                return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
+                                    var $415 = v.value0.value0.value0.value0.value0.value0.value0.value1 === VYNET_API_Device_Data_HdmiDecoderConfiguraion.refedid;
+                                    if ($415) {
+                                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel.genlockcommands(selectedrx)(tx))))(function (genlockconf) {
+                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewmultiviewrx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (previewrx) {
+                                                var ispreviewbox1 = Data_Lens_Getter.viewOn(selectedrx)(VYNET_API_Multiview_MultiviewDeviceRx["_mrdevice_name"](Data_Lens_Internal_Forget.strongForget)) === "PREVIEW BOX";
+                                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
+                                                    if (ispreviewbox1) {
+                                                        return Data_List_Types.Nil.value;
+                                                    };
+                                                    return Data_Semigroup.append(Data_List_Types.semigroupList)(new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetFastSwitch(Data_Lens_Getter.viewOn(previewrx)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget))), new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.LeaveStreamCommand(Data_Lens_Getter.viewOn(previewrx)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget)), 1), new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.LeaveStreamCommand(Data_Lens_Getter.viewOn(previewrx)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget)), 0), new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.UseDelay("1000"), Data_List_Types.Nil.value)))))(Data_Semigroup.append(Data_List_Types.semigroupList)(xs)(Data_Semigroup.append(Data_List_Types.semigroupList)(new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetEdid(v.value0.value0.value0.value0.value0.value0.value0.value0, v.value0.value0.value0.value0.value0.value0.value0.value1), genlockconf))(Data_Semigroup.append(Data_List_Types.semigroupList)(new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetFastSwitch(Data_Lens_Getter.viewOn(previewrx)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget))), Data_List_Types.Nil.value))(new Data_List_Types.Cons(VYNET_API_Device_Command_Data_DeviceAction.CompletedAction.value, Data_List_Types.Nil.value)))));
+                                                }))))))))))(function () {
+                                                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                                                        gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
+                                                    }))))))))))))(function () {
+                                                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                    });
+                                                });
+                                            });
+                                        });
+                                    };
+                                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel.fastswitchcommands(selectedrx)(tx))))(function (rscommnads) {
+                                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
+                                            return Data_Semigroup.append(Data_List_Types.semigroupList)(new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.SetEdid(v.value0.value0.value0.value0.value0.value0.value0.value0, v.value0.value0.value0.value0.value0.value0.value0.value1), rscommnads))(Data_Semigroup.append(Data_List_Types.semigroupList)(new Data_List_Types.Cons(VYNET_API_Device_Command_Data_DeviceAction.CompletedAction.value, Data_List_Types.Nil.value))(xs));
+                                        }))))))))))(function () {
+                                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                        });
+                                    });
+                                })())(function () {
+                                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                                        gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
+                                    }))))))))))))(function () {
+                                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                    });
+                                });
+                            });
+                        });
+                    });
+                };
+                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+            }))(v1);
+        };
+        return v1;
+    };
+};
+var runpreviewupdate1 = function (v) {
+    if (v) {
+        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewrxdevices"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_RequestDevicesCommand.eqRequestDevicesCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_RequestDevicesCommand.RequestDevicesCommand({
+            rdrcmd: VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesRx2PreviewRRTrue.value,
+            idcmd: Unify_Types.def(VYNET_API_Device_Command_Request_GetRequest.defGetRequest)
+        }))))))))))(function () {
+            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+        });
+    };
+    if (!v) {
+        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewrxdevices"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_RequestDevicesCommand.eqRequestDevicesCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_RequestDevicesCommand.RequestDevicesCommand({
+            rdrcmd: VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesRx2PreviewRRFalse.value,
+            idcmd: Unify_Types.def(VYNET_API_Device_Command_Request_GetRequest.defGetRequest)
+        }))))))))))(function () {
+            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+        });
+    };
+    throw new Error("Failed pattern match at VYNET.MainMainPanel (line 825, column 1 - line 825, column 65): " + [ v.constructor.name ]);
+};
+var runpreviewupdate2 = function (roundrobin) {
+    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewmultiviewrx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(Control_Applicative.pure(ExploreCore.applicativeCo(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx))(Data_Unit.unit))))))))(function () {
+        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewrxdevices"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))(Third_ComponentList["_CoList"](Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))(function (rxs) {
+            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewtxdevices"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))(Third_ComponentList["_CoList"](Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))))(function (txs$prime) {
+                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewmultiviewrx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (rx) {
+                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewconfig"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_PreviewMultiview_PreviewConfig.comonadComponentPreviewCo)(VYNET_API_PreviewMultiview_PreviewConfig.shouldUpdateComponentPrev)(Control_Bind.bind(ExploreCore.bindCo(VYNET_API_PreviewMultiview_PreviewConfig.extendComponentPreviewCon))(VYNET_API_PreviewMultiview_PreviewConfig["_CoPreviewConfig"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))(function (x) {
+                        return Control_Applicative.pure(ExploreCore.applicativeCo(VYNET_API_PreviewMultiview_PreviewConfig.comonadComponentPreviewCo))(new Data_Tuple.Tuple(new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(x)(VYNET_API_PreviewMultiview_PreviewConfig["_windowsin"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(x)(VYNET_API_PreviewMultiview_PreviewConfig["_windowsout"](Data_Lens_Internal_Forget.strongForget))), Data_Lens_Getter.viewOn(x)(VYNET_API_PreviewMultiview_PreviewConfig["_windowsrr"](Data_Lens_Internal_Forget.strongForget))));
+                    }))))))))(function (v) {
+                        var wfair = makefair(v.value1)(v.value0.value1);
+                        var txs = Data_List.filter(function (x) {
+                            return Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) !== "wwwwwwwwwwww";
+                        })(txs$prime);
+                        var multiviewstreams = Data_Lens_Fold.toListOfOn(Data_List.drop(1)(rxs))((function () {
+                            var $848 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
+                            var $849 = Data_Lens_Getter.to(function (x) {
+                                return new Data_Tuple.Tuple(new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(x)((function () {
+                                    var $852 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
+                                    var $853 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                                    var $854 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
+                                    return function ($855) {
+                                        return $852($853($854($855)));
+                                    };
+                                })())), Data_Lens_Fold.toListOfOn(x)((function () {
+                                    var $856 = VYNET_API_Device_DeviceRx["_rsubscriptions"](Data_Lens_Internal_Forget.strongForget);
+                                    var $857 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
+                                    var $858 = Data_Lens_Fold.filtered(Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)))(function (s) {
+                                        return Data_Lens_Getter.viewOn(s)(VYNET_API_Device_Data_Subscription["_sbtype"](Data_Lens_Internal_Forget.strongForget)) === "HDMI" && (Data_Lens_Getter.viewOn(s)((function () {
+                                            var $864 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                            var $865 = VYNET_API_Device_Data_SubscriptionStatus["_state"](Data_Lens_Internal_Forget.strongForget);
+                                            return function ($866) {
+                                                return $864($865($866));
+                                            };
+                                        })()) === "STREAMING" && Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqInt))(Data_Lens_Fold.previewOn(s)((function () {
+                                            var $867 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                            var $868 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                                            var $869 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                            var $870 = VYNET_API_Device_Data_SubscriptionSource["_ssstream_index"](Data_Lens_Internal_Forget.strongForget);
+                                            return function ($871) {
+                                                return $867($868($869($870($871))));
+                                            };
+                                        })()))(new Data_Maybe.Just(1)));
+                                    });
+                                    var $859 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                    var $860 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                                    var $861 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
+                                    var $862 = Data_Lens_Getter.to(function (x1) {
+                                        return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(x1)(VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(x1)(VYNET_API_Device_Data_SubscriptionSource["_ssdevice_name"](Data_Lens_Internal_Forget.strongForget)));
+                                    });
+                                    return function ($863) {
+                                        return $856($857($858($859($860($861($862($863)))))));
+                                    };
+                                })()));
+                            });
+                            var $850 = Data_Lens_Fold.filtered(Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)))(function (v1) {
+                                return Data_Eq.notEq(Data_List_Types.eqList(Data_Tuple.eqTuple(Data_Eq.eqString)(Data_Eq.eqString)))(v1.value1)(Data_List_Types.Nil.value) && v1.value0.value1 === "MULTIVIEW";
+                            });
+                            return function ($851) {
+                                return $848($849($850($851)));
+                            };
+                        })());
+                        var justtxmulti = Data_Functor.map(Data_List_Types.functorList)(Data_List_NonEmpty.head)(Data_List.group(Data_Tuple.eqTuple(Data_Eq.eqString)(Data_Eq.eqString))(Data_List.sort(Data_Tuple.ordTuple(Data_Ord.ordString)(Data_Ord.ordString))(Data_List.concat(Data_Functor.map(Data_List_Types.functorList)(Data_Tuple.snd)(multiviewstreams)))));
+                        var txjustmulti = Data_Lens_Fold.toListOfOn(txs)((function () {
+                            var $872 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
+                            var $873 = Data_Lens_Fold.filtered(Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)))(function (x) {
+                                return Data_Foldable.elem(Data_List_Types.foldableList)(Data_Eq.eqString)(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)))(Data_Functor.map(Data_List_Types.functorList)(Data_Tuple.fst)(justtxmulti));
+                            });
+                            return function ($874) {
+                                return $872($873($874));
+                            };
+                        })());
+                        var txjustmultisorted = (function () {
+                            if (roundrobin) {
+                                return makeline(wfair)(v.value0.value0)(txjustmulti);
+                            };
+                            return makeline(v.value0.value0)(v.value0.value1)(txjustmulti);
+                        })();
+                        var txjustnomulti = Data_Lens_Fold.toListOfOn(txs)((function () {
+                            var $875 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
+                            var $876 = Data_Lens_Fold.filtered(Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)))(function (x) {
+                                return !Data_Foldable.elem(Data_List_Types.foldableList)(Data_Eq.eqString)(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)))(Data_Functor.map(Data_List_Types.functorList)(function (x1) {
+                                    return Data_Lens_Getter.viewOn(x1)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget));
+                                })(txjustmulti));
+                            });
+                            return function ($877) {
+                                return $875($876($877));
+                            };
+                        })());
+                        var txjustnomultifixed = Data_Functor.map(Data_List_Types.functorList)(function (x) {
+                            return Data_Lens_Setter.over((function () {
+                                var $878 = VYNET_API_Device_DeviceTx["_tscaler"](Data_Profunctor_Strong.strongFn);
+                                var $879 = VYNET_API_Device_Data_Scaler["_sclconfiguration"](Data_Profunctor_Strong.strongFn);
+                                return function ($880) {
+                                    return $878($879($880));
+                                };
+                            })())(function (v1) {
+                                return new VYNET_API_Device_Data_ScalerConfiguration.ScalerConfiguration({
+                                    sclcwidth: 640,
+                                    sclcheight: 360
+                                });
+                            })(x);
+                        })(txjustnomulti);
+                        var txscalers = Data_Functor.map(Data_List_Types.functorList)(mktxscaler)(Data_Semigroup.append(Data_List_Types.semigroupList)(txjustnomultifixed)(txjustmultisorted));
+                        var txrescalecmds = Data_Lens_Fold.toListOfOn(txjustnomulti)((function () {
+                            var $881 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
+                            var $882 = Data_Lens_Fold.filtered(Data_Lens_Internal_Forget.choiceForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)))(function (x) {
+                                return Data_Lens_Getter.viewOn(x)((function () {
+                                    var $884 = VYNET_API_Device_DeviceTx["_tscaler"](Data_Lens_Internal_Forget.strongForget);
+                                    var $885 = VYNET_API_Device_Data_Scaler["_sclconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                                    var $886 = VYNET_API_Device_Data_ScalerConfiguration["_sclcwidth"](Data_Lens_Internal_Forget.strongForget);
+                                    return function ($887) {
+                                        return $884($885($886($887)));
+                                    };
+                                })()) !== 640 || Data_Lens_Getter.viewOn(x)((function () {
+                                    var $888 = VYNET_API_Device_DeviceTx["_tscaler"](Data_Lens_Internal_Forget.strongForget);
+                                    var $889 = VYNET_API_Device_Data_Scaler["_sclconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                                    var $890 = VYNET_API_Device_Data_ScalerConfiguration["_sclcwidth"](Data_Lens_Internal_Forget.strongForget);
+                                    return function ($891) {
+                                        return $888($889($890($891)));
+                                    };
+                                })()) !== 360;
+                            });
+                            return function ($883) {
+                                return $881($882($883));
+                            };
+                        })());
+                        var v1 = VYNET_API_PreviewMultiview_PreviewMultiviewPanel.makepreviewlayout2(new Data_Tuple.Tuple(3840, 2160))(txscalers);
+                        var windowsoutid = Data_Functor.map(Data_List_Types.functorList)(function (v2) {
+                            return v2.value0.txid;
+                        })(v1.value1);
+                        var windowsinid = Data_List.filter(function (x) {
+                            return !Data_Foldable.elem(Data_List_Types.foldableList)(Data_Eq.eqString)(x)(windowsoutid);
+                        })(Data_Functor.map(Data_List_Types.functorList)(function (v2) {
+                            return v2.value0.txid;
+                        })(txscalers));
+                        var windowcmds2 = Data_Functor.map(Data_List_Types.functorList)(function (w) {
+                            return new VYNET_API_Device_Command_Data_DeviceAction.MultiviewCreateWindow("vynetpreviewlayout", Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnindex"](Data_Lens_Internal_Forget.strongForget)), w);
+                        })(v1.value0);
+                        var txstreams2enable = Data_List.filter((function () {
+                            var $892 = Data_HeytingAlgebra.not(Data_HeytingAlgebra.heytingAlgebraBoolean);
+                            return function ($893) {
+                                return $892(Data_Maybe.isJust(Data_Tuple.snd($893)));
+                            };
+                        })())(Data_Functor.map(Data_List_Types.functorList)(function (tx) {
+                            return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(tx)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)), Data_Foldable.find(Data_List_Types.foldableList)(function (s) {
+                                return Data_Lens_Getter.viewOn(s)(VYNET_API_Device_Data_Stream["_sindex"](Data_Lens_Internal_Forget.strongForget)) === 1 && Data_Lens_Getter.viewOn(s)((function () {
+                                    var $894 = VYNET_API_Device_Data_Stream["_sconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                                    var $895 = VYNET_API_Device_Data_TheStreamConfiguration["_enable"](Data_Lens_Internal_Forget.strongForget);
+                                    return function ($896) {
+                                        return $894($895($896));
+                                    };
+                                })());
+                            })(Data_Lens_Getter.viewOn(tx)(VYNET_API_Device_DeviceTx["_tstreams"](Data_Lens_Internal_Forget.strongForget))));
+                        })(Data_List.filter(function (x) {
+                            return Data_Eq.notEq(Data_List_Types.eqList(VYNET_API_Device_Data_Stream.eqStream))(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tstreams"](Data_Lens_Internal_Forget.strongForget)))(Data_List_Types.Nil.value);
+                        })(txs)));
+                        var txstreams = Data_Functor.map(Data_List_Types.functorList)(function (tx) {
+                            return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(tx)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(tx)(VYNET_API_Device_DeviceTx["_tscaler"](Data_Lens_Internal_Forget.strongForget)));
+                        })(Data_List.filter(function (x) {
+                            return Data_Eq.notEq(Data_List_Types.eqList(VYNET_API_Device_Data_Stream.eqStream))(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tstreams"](Data_Lens_Internal_Forget.strongForget)))(Data_List_Types.Nil.value);
+                        })(txs));
+                        var subs2 = Data_Functor.map(Data_List_Types.functorList)(function (w) {
+                            return new VYNET_API_Device_Data_LayoutSubscription.LayoutSubscription({
+                                lssource_device: Data_Maybe.fromMaybe("NA")(Data_Lens_Fold.previewOn(w)((function () {
+                                    var $897 = VYNET_API_Multiview_Data_Window["_wnsubid"](Data_Lens_Internal_Forget.strongForget);
+                                    var $898 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                    var $899 = Data_Lens_Lens_Tuple["_1"](Data_Lens_Internal_Forget.strongForget);
+                                    return function ($900) {
+                                        return $897($898($899($900)));
+                                    };
+                                })())),
+                                lsstream_index: 1,
+                                lssubscription_index: Data_Lens_Getter.viewOn(w)(VYNET_API_Multiview_Data_Window["_wnindex"](Data_Lens_Internal_Forget.strongForget))
+                            });
+                        })(v1.value0);
+                        var setlayout = new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.MultiviewSetLayout(Data_Lens_Getter.viewOn(rx)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget)), "vynetpreviewlayout", new VYNET_API_Device_Data_Video.Video({
+                            vheight: 2160,
+                            vwidth: 3840,
+                            vfps: 30,
+                            vquantization_range: "LIMITED"
+                        }), subs2), Data_Monoid.mempty(Data_List_Types.monoidList));
+                        var rxsubs = Data_Functor.map(Data_List_Types.functorList)(function (s) {
+                            return Data_Lens_Fold.previewOn(s)((function () {
+                                var $901 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                var $902 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                                var $903 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                var $904 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
+                                return function ($905) {
+                                    return $901($902($903($904($905))));
+                                };
+                            })());
+                        })(Data_Functor.map(Data_List_Types.functorList)(Data_List_NonEmpty.head)(Data_List.groupBy(function (a) {
+                            return function (b) {
+                                return Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Lens_Fold.previewOn(a)((function () {
+                                    var $906 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                    var $907 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                                    var $908 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                    var $909 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
+                                    return function ($910) {
+                                        return $906($907($908($909($910))));
+                                    };
+                                })()))(Data_Lens_Fold.previewOn(b)((function () {
+                                    var $911 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                    var $912 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                                    var $913 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                    var $914 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
+                                    return function ($915) {
+                                        return $911($912($913($914($915))));
+                                    };
+                                })()));
+                            };
+                        })(Data_List.sortBy(function (a) {
+                            return function (b) {
+                                return Data_Ord.compare(Data_Maybe.ordMaybe(Data_Ord.ordString))(Data_Lens_Fold.previewOn(a)((function () {
+                                    var $916 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                    var $917 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                                    var $918 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                    var $919 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
+                                    return function ($920) {
+                                        return $916($917($918($919($920))));
+                                    };
+                                })()))(Data_Lens_Fold.previewOn(b)((function () {
+                                    var $921 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                    var $922 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                                    var $923 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                    var $924 = VYNET_API_Device_Data_SubscriptionSource["_ssdevice_id"](Data_Lens_Internal_Forget.strongForget);
+                                    return function ($925) {
+                                        return $921($922($923($924($925))));
+                                    };
+                                })()));
+                            };
+                        })(Data_List.concatMap(function (x) {
+                            return Data_List.filter(function (s) {
+                                return Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqInt))(Data_Lens_Fold.previewOn(s)((function () {
+                                    var $926 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                    var $927 = VYNET_API_Device_Data_SubscriptionStatus["_source"](Data_Lens_Internal_Forget.strongForget);
+                                    var $928 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                    var $929 = VYNET_API_Device_Data_SubscriptionSource["_ssstream_index"](Data_Lens_Internal_Forget.strongForget);
+                                    return function ($930) {
+                                        return $926($927($928($929($930))));
+                                    };
+                                })()))(new Data_Maybe.Just(1)) && Data_Lens_Getter.viewOn(s)((function () {
+                                    var $931 = VYNET_API_Device_Data_Subscription["_sbstatus"](Data_Lens_Internal_Forget.strongForget);
+                                    var $932 = VYNET_API_Device_Data_SubscriptionStatus["_state"](Data_Lens_Internal_Forget.strongForget);
+                                    return function ($933) {
+                                        return $931($932($933));
+                                    };
+                                })()) === "STREAMING";
+                            })(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceRx["_rsubscriptions"](Data_Lens_Internal_Forget.strongForget)));
+                        })(Data_List.filter(function (x) {
+                            return Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget)) !== Data_Lens_Getter.viewOn(rx)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget));
+                        })(rxs))))));
+                        var routedtxstreams1 = Data_List.filter(function (v2) {
+                            return Data_Foldable.elem(Data_List_Types.foldableList)(Data_Maybe.eqMaybe(Data_Eq.eqString))(new Data_Maybe.Just(v2.value0))(rxsubs);
+                        })(txstreams);
+                        var rescalecmds2 = Data_Functor.map(Data_List_Types.functorList)(function (tx) {
+                            return new VYNET_API_Device_Command_Data_DeviceAction.ScaleStreamCommand(Data_Lens_Getter.viewOn(tx)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)), 1, 640, 360);
+                        })(txrescalecmds);
+                        var recreatelayout = new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.MultiviewDeleteLayout("vynetpreviewlayout"), new Data_List_Types.Cons(new VYNET_API_Device_Command_Data_DeviceAction.MultiviewCreateLayout("vynetpreviewlayout", 3840, 2160), Data_Monoid.mempty(Data_List_Types.monoidList)));
+                        var notroutedtxstreams1 = Data_List.filter(function (v2) {
+                            return !Data_Foldable.elem(Data_List_Types.foldableList)(Data_Maybe.eqMaybe(Data_Eq.eqString))(new Data_Maybe.Just(v2.value0))(rxsubs);
+                        })(txstreams);
+                        var issame = Data_Eq.eq(Data_List_Types.eqList(Data_Maybe.eqMaybe(Data_Eq.eqString)))(VYNET_API_PreviewMultiview_PreviewMultiviewPanel.getprevrxsubs(rxs))(Data_List.sort(Data_Maybe.ordMaybe(Data_Ord.ordString))(Data_Lens_Fold.toListOfOn(v1.value0)((function () {
+                            var $934 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Forget.wanderForget(Data_Monoid_Endo.monoidEndo(Control_Category.categoryFn)));
+                            var $935 = Data_Lens_Getter.to(function (x) {
+                                return Data_Lens_Fold.previewOn(x)((function () {
+                                    var $937 = VYNET_API_Multiview_Data_Window["_wnsubid"](Data_Lens_Internal_Forget.strongForget);
+                                    var $938 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                    var $939 = Data_Lens_Lens_Tuple["_1"](Data_Lens_Internal_Forget.strongForget);
+                                    return function ($940) {
+                                        return $937($938($939($940)));
+                                    };
+                                })());
+                            });
+                            return function ($936) {
+                                return $934($935($936));
+                            };
+                        })())));
+                        var isrecreatelayout = Data_Lens_Getter.viewOn(rx)((function () {
+                            var $941 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
+                            var $942 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                            var $943 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcdisplay_mode"](Data_Lens_Internal_Forget.strongForget);
+                            return function ($944) {
+                                return $941($942($943($944)));
+                            };
+                        })()) === "MULTIVIEW" && (Data_Lens_Getter.viewOn(rx)((function () {
+                            var $945 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
+                            var $946 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                            var $947 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcwidth"](Data_Lens_Internal_Forget.strongForget);
+                            return function ($948) {
+                                return $945($946($947($948)));
+                            };
+                        })()) === 3840 && (Data_Lens_Getter.viewOn(rx)((function () {
+                            var $949 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
+                            var $950 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                            var $951 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcheight"](Data_Lens_Internal_Forget.strongForget);
+                            return function ($952) {
+                                return $949($950($951($952)));
+                            };
+                        })()) === 2160 && Data_Lens_Getter.viewOn(rx)((function () {
+                            var $953 = VYNET_API_Device_DeviceRx["_rframe_buffer"](Data_Lens_Internal_Forget.strongForget);
+                            var $954 = VYNET_API_Device_Data_FrameBuffer["_fbconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                            var $955 = VYNET_API_Device_Data_FrameBufferConfiguration["_fbcframes_per_second"](Data_Lens_Internal_Forget.strongForget);
+                            return function ($956) {
+                                return $953($954($955($956)));
+                            };
+                        })()) === 30));
+                        var enablecmds = Data_Functor.map(Data_List_Types.functorList)(function (v2) {
+                            return new VYNET_API_Device_Command_Data_DeviceAction.EnableStreamCommand(v2.value0, 1);
+                        })(txstreams2enable);
+                        return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewconfig"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_PreviewMultiview_PreviewConfig.comonadComponentPreviewCo)(VYNET_API_PreviewMultiview_PreviewConfig.shouldUpdateComponentPrev)(VYNET_API_PreviewMultiview_PreviewConfig["_CoPreviewConfig"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_PreviewMultiview_PreviewConfig["_windowsrr"](Data_Profunctor_Strong.strongFn))(appendin(windowsinid)))))))))))(function () {
+                            var $453 = Data_Eq.notEq(Data_List_Types.eqList(Data_Eq.eqString))(Data_List.sort(Data_Ord.ordString)(v.value0.value0))(Data_List.sort(Data_Ord.ordString)(windowsinid)) || (Data_Eq.notEq(Data_List_Types.eqList(Data_Eq.eqString))(Data_List.sort(Data_Ord.ordString)(v.value0.value1))(Data_List.sort(Data_Ord.ordString)(windowsoutid)) || !issame);
+                            if ($453) {
+                                return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewconfig"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_PreviewMultiview_PreviewConfig.comonadComponentPreviewCo)(VYNET_API_PreviewMultiview_PreviewConfig.shouldUpdateComponentPrev)(VYNET_API_PreviewMultiview_PreviewConfig["_CoPreviewConfig"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))((function () {
+                                    var $957 = Data_Lens_Setter.set(VYNET_API_PreviewMultiview_PreviewConfig["_windowsin"](Data_Profunctor_Strong.strongFn))(Data_List.sort(Data_Ord.ordString)(windowsinid));
+                                    var $958 = Data_Lens_Setter.set(VYNET_API_PreviewMultiview_PreviewConfig["_windowsout"](Data_Profunctor_Strong.strongFn))(Data_List.sort(Data_Ord.ordString)(windowsoutid));
+                                    return function ($959) {
+                                        return $957($958($959));
+                                    };
+                                })())))))))))(function () {
+                                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
+                                        var $454 = Data_List.length(enablecmds) === 0;
+                                        if ($454) {
+                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
+                                                return Data_Semigroup.append(Data_List_Types.semigroupList)(recreatelayout)(Data_Semigroup.append(Data_List_Types.semigroupList)(windowcmds2)(Data_Semigroup.append(Data_List_Types.semigroupList)(rescalecmds2)(Data_Semigroup.append(Data_List_Types.semigroupList)(setlayout)(new Data_List_Types.Cons(VYNET_API_Device_Command_Data_DeviceAction.CompletedPreviewAction.value, Data_Monoid.mempty(Data_List_Types.monoidList))))));
+                                            }))))))))))(function () {
+                                                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                            });
+                                        };
+                                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.over(VYNET_API_Control_ActionStack["_thestack"](Data_Profunctor_Strong.strongFn))(function (xs) {
+                                            return Data_Semigroup.append(Data_List_Types.semigroupList)(recreatelayout)(Data_Semigroup.append(Data_List_Types.semigroupList)(windowcmds2)(Data_Semigroup.append(Data_List_Types.semigroupList)(enablecmds)(Data_Semigroup.append(Data_List_Types.semigroupList)(rescalecmds2)(Data_Semigroup.append(Data_List_Types.semigroupList)(setlayout)(new Data_List_Types.Cons(VYNET_API_Device_Command_Data_DeviceAction.CompletedPreviewAction.value, Data_Monoid.mempty(Data_List_Types.monoidList)))))));
+                                        }))))))))))(function () {
+                                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                        });
+                                    })())(function () {
+                                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_actionexec"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_GeneralDeviceCommand.eqGeneralDeviceCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_GeneralDeviceCommand.GeneralDeviceCommand({
+                                            gencmd: VYNET_API_Device_Command_GeneralDeviceCommand.Reset.value
+                                        }))))))))))))(function () {
+                                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                        });
+                                    });
+                                });
+                            };
+                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                        });
+                    });
+                });
+            });
+        });
+    });
+};
+var marshal1 = function (v) {
+    return function (v1) {
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelPreviewgatewaySignal && (v.value0.value0 instanceof VYNET_API_PreviewMultiview_PreviewMultiviewPanel.PreviewMultiviewRxSignal && v.value0.value0.value0 instanceof Third_Reference.ReferSignal))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
+                if (v.value0.value0.value0.value0 instanceof Third_RefState.RefPreAck && v.value0.value0.value0.value0.value0.value0.prxcmd instanceof VYNET_API_PreviewMultiview_Command_PreviewRxCommand.GetPreviewRx) {
+                    return runpreviewupdate(false);
+                };
+                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+            })())(function () {
+                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+            }))(v1);
+        };
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelPreviewgatewaySignal && (v.value0.value0 instanceof VYNET_API_PreviewMultiview_PreviewMultiviewPanel.PreviewTxDevicesSignal && v.value0.value0.value0 instanceof Third_Reference.ReferSignal))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
+                if (v.value0.value0.value0.value0 instanceof Third_RefState.RefPreAck && v.value0.value0.value0.value0.value0.value0.rdrcmd instanceof VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesTx2) {
+                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewrxdevices"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))(Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Bind.bind(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (d) {
+                        return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Getter.viewOn(d)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget)));
+                    }))))))))))(function (rxs) {
+                        return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
+                            var v3 = Data_List.take(1)(rxs);
+                            if (v3 instanceof Data_List_Types.Cons && v3.value1 instanceof Data_List_Types.Nil) {
+                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewmultiviewrx"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_PreviewMultiview_Command_PreviewRxCommand.eqPreviewRxCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_PreviewMultiview_Command_PreviewRxCommand.PreviewRxCommand({
+                                    prxcmd: VYNET_API_PreviewMultiview_Command_PreviewRxCommand.GetPreviewRx.value,
+                                    prxdid: v3.value0,
+                                    prxsub: Data_Monoid.mempty(Data_List_Types.monoidList)
+                                }))))))))))(function () {
+                                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                });
+                            };
+                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                        })())(function () {
+                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                        });
+                    });
+                };
+                if (v.value0.value0.value0.value0 instanceof Third_RefState.RefPreAck && v.value0.value0.value0.value0.value0.value0.rdrcmd instanceof VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesTx2PreviewRRFalse) {
+                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(runpreviewupdate1(false))(function () {
+                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                    });
+                };
+                if (v.value0.value0.value0.value0 instanceof Third_RefState.RefPreAck && v.value0.value0.value0.value0.value0.value0.rdrcmd instanceof VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesTx2PreviewRRTrue) {
+                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(runpreviewupdate1(true))(function () {
+                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                    });
+                };
+                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+            })())(function () {
+                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+            }))(v1);
+        };
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof MainMainPanelPreviewgatewaySignal && (v.value0.value0 instanceof VYNET_API_PreviewMultiview_PreviewMultiviewPanel.PreviewRxDevicesSignal && v.value0.value0.value0 instanceof Third_Reference.ReferSignal))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainMainPa))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
+                if (v.value0.value0.value0.value0 instanceof Third_RefState.RefPreAck && v.value0.value0.value0.value0.value0.value0.rdrcmd instanceof VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesRx2) {
+                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewtxdevices"](Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Device_Command_RequestDevicesCommand.eqRequestDevicesCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Device_Command_RequestDevicesCommand.RequestDevicesCommand({
+                        rdrcmd: VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesTx2.value,
+                        idcmd: Unify_Types.def(VYNET_API_Device_Command_Request_GetRequest.defGetRequest)
+                    }))))))))))(function () {
+                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_deviceactionpull"](VYNET_API_Control_DeviceActions["_CoDeviceActions"](VYNET_API_Control_DeviceActions["_activeactions"](VYNET_API_Control_ActionStack["_CoActionStack"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (strx) {
+                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicesrx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))(Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (v3) {
+                                var $489 = Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(new Data_Maybe.Just(Data_Lens_Getter.viewOn(v3)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget))))(Data_Lens_Getter.viewOn(strx)(VYNET_API_Control_ActionStack["_selectedtoprx"](Data_Lens_Internal_Forget.strongForget)));
+                                if ($489) {
+                                    return Data_Lens_Setter.set(VYNET_API_Device_DeviceRx["_rselected"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(true))(v3);
+                                };
+                                return v3;
+                            }))))))))))))(function () {
+                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicesrx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))(Third_TransList_Findlist["_findlist"](VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Bind.bind(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (v3) {
+                                    return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(new Data_Maybe.Just(Data_Lens_Getter.viewOn(v3)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget))))(Data_Lens_Getter.viewOn(strx)(VYNET_API_Control_ActionStack["_selectedtoprx"](Data_Lens_Internal_Forget.strongForget))));
+                                })))(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))))))))))))(function (rx) {
+                                    var seltx = getsingletx(rx);
+                                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
+                                        if (seltx instanceof Data_Maybe.Just) {
+                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_devicestx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))(Third_TransList_Findlist["_findlist"](VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Bind.bind(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (x) {
+                                                return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === seltx.value0);
+                                            })))(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))))))))))(function (selectedtx) {
+                                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_devicestx2"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)))(Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceTx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceTx.comonadComponentDeviceTx)(VYNET_API_Device_DeviceTx["_CoDeviceTx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (x) {
+                                                    var $491 = Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === seltx.value0;
+                                                    if ($491) {
+                                                        return Data_Lens_Setter.set(VYNET_API_Device_DeviceTx["_tselected"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(true))(x);
+                                                    };
+                                                    return x;
+                                                }))))))))))(function () {
+                                                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
+                                                        if (selectedtx instanceof Data_Maybe.Just) {
+                                                            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_initapp(Third_Init_InitAppData["_CoInitApp"](Third_Init_InitAppData["_initapprxs"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Third_Init_InitAppRxs.comonadComponentInitAppRx)(Third_Init_InitAppRxs.shouldUpdateComponentInit)(Third_Init_InitAppRxs["_CoInitAppRxs"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (rxs) {
+                                                                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_initapp(Third_Init_InitAppData["_CoInitApp"](Third_Init_InitAppData["_initapptxs"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Third_Init_InitAppTxs.comonadComponentInitAppTx)(Third_Init_InitAppTxs.shouldUpdateComponentInit)(Third_Init_InitAppTxs["_CoInitAppTxs"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))))(function (alltxs) {
+                                                                    var txall = Data_Foldable.find(Data_List_Types.foldableList)(function (x) {
+                                                                        return Data_Lens_Getter.viewOn(x)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget)) === Data_Lens_Getter.viewOn(selectedtx.value0)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget));
+                                                                    })(Data_Lens_Getter.viewOn(alltxs)(Third_Init_InitAppTxs["_iatxdevices"](Data_Lens_Internal_Forget.strongForget)));
+                                                                    var txedid = Data_Maybe.fromMaybe("")(Data_Lens_Fold.previewOn(txall)((function () {
+                                                                        var $960 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                                        var $961 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Lens_Internal_Forget.strongForget);
+                                                                        var $962 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                                                                        var $963 = VYNET_API_Device_Data_HdmiDecoderConfiguraion["_hdcedid"](Data_Lens_Internal_Forget.strongForget);
+                                                                        var $964 = Data_Lens_Prism_Maybe["_Just"](Data_Lens_Internal_Forget.choiceForget(Data_Maybe_First.monoidFirst));
+                                                                        return function ($965) {
+                                                                            return $960($961($962($963($964($965)))));
+                                                                        };
+                                                                    })()));
+                                                                    return _CoMainMainPanel(_newframe(VYNET_API_Multiview_MultiviewPanel["_CoMultiviewPanel"](VYNET_API_Multiview_MultiviewPanel["_multiviewlayoutui"](VYNET_API_Multiview_MultiviewUi["_CoMultiviewUi"](VYNET_API_Multiview_MultiviewUi["_devicerx"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewDeviceRx["_CoMultiviewDeviceRx"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))((function () {
+                                                                        var $966 = Data_Lens_Setter.set(VYNET_API_Multiview_MultiviewDeviceRx["_mrhdc"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(new Data_Tuple.Tuple(new Data_Tuple.Tuple(false, Data_Lens_Getter.viewOn(selectedtx.value0)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget))), new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(selectedtx.value0)((function () {
+                                                                            var $969 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Lens_Internal_Forget.strongForget);
+                                                                            var $970 = VYNET_API_Device_Data_HdmiDecoder["_hdconfiguration"](Data_Lens_Internal_Forget.strongForget);
+                                                                            return function ($971) {
+                                                                                return $969($970($971));
+                                                                            };
+                                                                        })()), Data_Lens_Getter.viewOn(selectedtx.value0)((function () {
+                                                                            var $972 = VYNET_API_Device_DeviceTx["_thdmi_decoder"](Data_Lens_Internal_Forget.strongForget);
+                                                                            var $973 = VYNET_API_Device_Data_HdmiDecoder["_hdstatus"](Data_Lens_Internal_Forget.strongForget);
+                                                                            return function ($974) {
+                                                                                return $972($973($974));
+                                                                            };
+                                                                        })())))));
+                                                                        var $967 = Data_Lens_Setter.set(VYNET_API_Multiview_MultiviewDeviceRx["_mrrxs"](Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(new Data_Tuple.Tuple(new Data_Tuple.Tuple(false, Data_Lens_Getter.viewOn(selectedtx.value0)(VYNET_API_Device_DeviceTx["_tdevice_id"](Data_Lens_Internal_Forget.strongForget))), new Data_Tuple.Tuple(txedid, Data_Lens_Getter.viewOn(rxs)(Third_Init_InitAppRxs["_iarxdevices"](Data_Lens_Internal_Forget.strongForget))))));
+                                                                        return function ($968) {
+                                                                            return $966($967($968));
+                                                                        };
+                                                                    })()))))))))));
+                                                                });
+                                                            });
+                                                        };
+                                                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                    })())(function () {
+                                                        return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit))(function () {
+                                                            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                        });
+                                                    });
+                                                });
+                                            });
+                                        };
+                                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                    })())(function () {
+                                        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewgateway(VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_CoPreviewMultiviewPanel"](VYNET_API_PreviewMultiview_PreviewMultiviewPanel["_previewrxdevices"](Third_Reference["_CoReference"](Third_Reference["_refervalue"](Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.shouldUpdateStoreComponen(Widget_Unify_UnifyCompList.shouldUpdateStoreComponen(VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)))(Third_TransList_Uselist["_uselist"](VYNET_API_Device_DeviceRx.shouldUpdateComponentDevi)(VYNET_API_Device_DeviceRx.comonadComponentDeviceRx)(VYNET_API_Device_DeviceRx["_CoDeviceRx"](Control_Bind.bind(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (d) {
+                                            return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Getter.viewOn(d)(VYNET_API_Device_DeviceRx["_rdevice_id"](Data_Lens_Internal_Forget.strongForget)));
+                                        }))))))))))(function (rxs) {
+                                            return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))((function () {
+                                                var v3 = Data_List.take(1)(rxs);
+                                                if (v3 instanceof Data_List_Types.Cons && v3.value1 instanceof Data_List_Types.Nil) {
+                                                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainMainPa))(_CoMainMainPanel(_previewrx(Third_Reference["_CoReference"](Third_Reference["_refer"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(ShouldUpdate.shouldUpdateStore(Third_RefState.eqRefState(VYNET_API_Multiview_Command_MultiviewUiCommand.eqMultiviewUiCommand)))(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new Third_RefState.RefSet(new VYNET_API_Multiview_Command_MultiviewUiCommand.MultiviewUiCommand({
+                                                        mvcmd: new VYNET_API_Multiview_Command_MultiviewUiCommand.GetMultiviewDeviceRx(v3.value0)
+                                                    }))))))))(function () {
+                                                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                                    });
+                                                };
+                                                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                            })())(function () {
+                                                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                                            });
+                                        });
+                                    });
+                                });
+                            });
+                        });
+                    });
+                };
+                if (v.value0.value0.value0.value0 instanceof Third_RefState.RefPreAck && v.value0.value0.value0.value0.value0.value0.rdrcmd instanceof VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesRx2PreviewRRFalse) {
+                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(runpreviewupdate2(false))(function () {
+                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                    });
+                };
+                if (v.value0.value0.value0.value0 instanceof Third_RefState.RefPreAck && v.value0.value0.value0.value0.value0.value0.rdrcmd instanceof VYNET_API_Device_Command_RequestDevicesCommand.GetDevicesRx2PreviewRRTrue) {
+                    return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainMainPa))(runpreviewupdate2(true))(function () {
+                        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+                    });
+                };
+                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+            })())(function () {
+                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainMainP))(Data_Unit.unit);
+            }))(v1);
+        };
         return v1;
     };
 };
 var marshal = function (e) {
-    var $676 = marshal0(e);
-    var $677 = marshal1(e);
-    var $678 = marshal2(e);
-    var $679 = marshal3(e);
-    var $680 = marshal4(e);
-    return function ($681) {
-        return $676($677($678($679($680($681)))));
+    var $975 = marshal0(e);
+    var $976 = marshal1(e);
+    var $977 = marshal2(e);
+    var $978 = marshal3(e);
+    var $979 = marshal4(e);
+    return function ($980) {
+        return $975($976($977($978($979($980)))));
     };
 };
 var marshalComponentMainMainPanel = marshal;
@@ -129002,9 +129340,9 @@ var renderMainMainPanel = Extra.ns(extendComponentMainMainPa)(comonadComponentMa
 });
 var fromJsonrepComponentMainM = {
     fromjsonrep: (function () {
-        var $682 = Widget_Unify_FromJsonrep.fromjsonrep(Widget_Unify_FromJsonrep.fromJsonrepDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2))))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(VYNET_API_Multiview_MultiviewPanel.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewPanel.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewPanel.fromJsonrepComponentMulti))(Widget_Unify_FromJsonrep.fromJsonrepDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)(Third_Reference.fromJsonrepReference(VYNET_API_PreviewMultiview_Command_PreviewConfigCommand.eqPreviewConfigCommand)(VYNET_API_PreviewMultiview_Command_PreviewConfigCommand.decodeJsonPreviewConfigCo1)(VYNET_API_PreviewMultiview_PreviewConfig.comonadComponentPreviewCo)(VYNET_API_PreviewMultiview_PreviewConfig.fromJsonrepComponentPrevi)(VYNET_API_PreviewMultiview_PreviewConfig.shouldUpdateComponentPrev)))(Widget_Unify_FromJsonrep.fromJsonrepDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)(Third_Reference.fromJsonrepReference(VYNET_API_Multiview_Command_MultiviewUiCommand.eqMultiviewUiCommand)(VYNET_API_Multiview_Command_MultiviewUiCommand.decodeJsonMultiviewUiComm1)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.fromJsonrepComponentMulti)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)))(Widget_Unify_FromJsonrep.fromJsonrepDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Third_Init_InitAppData.comonadComponentInitApp)(Third_Init_InitAppData.shouldUpdateComponentInit)(Third_Init_InitAppData.fromJsonrepComponentInitA))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(VYNET_API_PreviewMultiview_PreviewMultiviewPanel.comonadComponentPreviewMu)(VYNET_API_PreviewMultiview_PreviewMultiviewPanel.shouldUpdateComponentPrev)(VYNET_API_PreviewMultiview_PreviewMultiviewPanel.fromJsonrepComponentPrevi))))));
-        return function ($683) {
-            return _CoMainMainPanel($682($683));
+        var $981 = Widget_Unify_FromJsonrep.fromjsonrep(Widget_Unify_FromJsonrep.fromJsonrepDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2))))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(VYNET_API_Multiview_MultiviewPanel.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewPanel.shouldUpdateComponentMult)(VYNET_API_Multiview_MultiviewPanel.fromJsonrepComponentMulti))(Widget_Unify_FromJsonrep.fromJsonrepDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)(Third_Reference.fromJsonrepReference(VYNET_API_PreviewMultiview_Command_PreviewConfigCommand.eqPreviewConfigCommand)(VYNET_API_PreviewMultiview_Command_PreviewConfigCommand.decodeJsonPreviewConfigCo1)(VYNET_API_PreviewMultiview_PreviewConfig.comonadComponentPreviewCo)(VYNET_API_PreviewMultiview_PreviewConfig.fromJsonrepComponentPrevi)(VYNET_API_PreviewMultiview_PreviewConfig.shouldUpdateComponentPrev)))(Widget_Unify_FromJsonrep.fromJsonrepDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Third_Reference.comonadReference)(Third_Reference.shouldUpdateReference)(Third_Reference.fromJsonrepReference(VYNET_API_Multiview_Command_MultiviewUiCommand.eqMultiviewUiCommand)(VYNET_API_Multiview_Command_MultiviewUiCommand.decodeJsonMultiviewUiComm1)(VYNET_API_Multiview_MultiviewDeviceRx.comonadComponentMultiview)(VYNET_API_Multiview_MultiviewDeviceRx.fromJsonrepComponentMulti)(VYNET_API_Multiview_MultiviewDeviceRx.shouldUpdateComponentMult)))(Widget_Unify_FromJsonrep.fromJsonrepDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(Third_Init_InitAppData.comonadComponentInitApp)(Third_Init_InitAppData.shouldUpdateComponentInit)(Third_Init_InitAppData.fromJsonrepComponentInitA))(Widget_Unify_FromJsonrep.fromJsonrepStoreComponent(VYNET_API_PreviewMultiview_PreviewMultiviewPanel.comonadComponentPreviewMu)(VYNET_API_PreviewMultiview_PreviewMultiviewPanel.shouldUpdateComponentPrev)(VYNET_API_PreviewMultiview_PreviewMultiviewPanel.fromJsonrepComponentPrevi))))));
+        return function ($982) {
+            return _CoMainMainPanel($981($982));
         };
     })()
 };
@@ -129026,7 +129364,6 @@ module.exports = {
     islinked: islinked,
     makewp: makewp,
     alignbyindex: alignbyindex,
-    marshal3: marshal3,
     marshal4: marshal4,
     MainMainPanelNewframeSignal: MainMainPanelNewframeSignal,
     MainMainPanelPvconfigSignal: MainMainPanelPvconfigSignal,
@@ -129045,6 +129382,14 @@ module.exports = {
     datarenderMainMainPanel: datarenderMainMainPanel,
     marshalComponentMainMainPanel: marshalComponentMainMainPanel,
     orangepiedid: orangepiedid,
+    runpreviewupdate: runpreviewupdate,
+    runpreviewupdate1: runpreviewupdate1,
+    runpreviewupdate2: runpreviewupdate2,
+    appendin: appendin,
+    makefair: makefair,
+    makeline: makeline,
+    mktxscaler: mktxscaler,
+    marshal3: marshal3,
     genericMainMainPanelSigna: genericMainMainPanelSigna,
     eqMainMainPanelSignal: eqMainMainPanelSignal,
     showMainMainPanelSignal: showMainMainPanelSignal,
@@ -129059,7 +129404,7 @@ module.exports = {
     fromJsoncompMainMainPanel: fromJsoncompMainMainPanel
 };
 
-},{"../Control.Applicative/index.js":43,"../Control.Bind/index.js":49,"../Control.Category/index.js":50,"../Control.Comonad.Store.Class/index.js":52,"../Control.Comonad.Store.Trans/index.js":53,"../Control.Monad.State.Class/index.js":72,"../Data.Eq.Generic/index.js":118,"../Data.Eq/index.js":120,"../Data.Foldable/index.js":125,"../Data.Functor.Day/index.js":137,"../Data.Functor/index.js":144,"../Data.Generic.Rep/index.js":147,"../Data.Identity/index.js":152,"../Data.Lens.Fold/index.js":159,"../Data.Lens.Getter/index.js":160,"../Data.Lens.Internal.Forget/index.js":165,"../Data.Lens.Internal.Wander/index.js":173,"../Data.Lens.Lens.Tuple/index.js":176,"../Data.Lens.Prism.Maybe/index.js":179,"../Data.Lens.Setter/index.js":182,"../Data.Lens.Traversal/index.js":183,"../Data.List.Types/index.js":189,"../Data.List/index.js":190,"../Data.Maybe.First/index.js":192,"../Data.Maybe/index.js":194,"../Data.Monoid.Endo/index.js":201,"../Data.Monoid/index.js":203,"../Data.Newtype/index.js":204,"../Data.Profunctor.Choice/index.js":216,"../Data.Profunctor.Strong/index.js":220,"../Data.Semigroup/index.js":227,"../Data.Show.Generic/index.js":232,"../Data.String.CodePoints/index.js":239,"../Data.Tuple/index.js":255,"../Data.Unit/index.js":263,"../ExploreCore/index.js":287,"../ExploreSignal/index.js":288,"../Extra/index.js":289,"../Safe.Coerce/index.js":320,"../ShouldUpdate/index.js":321,"../Third.ComponentList/index.js":322,"../Third.Init.InitApp/index.js":323,"../Third.Init.InitAppCommand/index.js":325,"../Third.Init.InitAppData/index.js":326,"../Third.Init.InitAppRxs/index.js":327,"../Third.Init.InitAppStatus/index.js":328,"../Third.Init.InitAppTxs/index.js":329,"../Third.RefState/index.js":331,"../Third.Reference/index.js":332,"../Third.TransList.Findlist/index.js":333,"../Third.TransList.Uselist/index.js":334,"../Unify.Types/index.js":340,"../VYNET.API.Control.ActionStack/index.js":344,"../VYNET.API.Control.DeviceActions/index.js":345,"../VYNET.API.Device.Command.Data.DeviceAction/index.js":348,"../VYNET.API.Device.Command.GeneralDeviceCommand/index.js":349,"../VYNET.API.Device.Command.Request.GetRequest/index.js":352,"../VYNET.API.Device.Command.RequestDevicesCommand/index.js":364,"../VYNET.API.Device.Data.ConfigurationSource/index.js":365,"../VYNET.API.Device.Data.FrameBuffer/index.js":366,"../VYNET.API.Device.Data.FrameBufferConfiguration/index.js":367,"../VYNET.API.Device.Data.HdmiDecoder/index.js":368,"../VYNET.API.Device.Data.HdmiDecoderConfiguraion/index.js":369,"../VYNET.API.Device.Data.HdmiMonitor/index.js":371,"../VYNET.API.Device.Data.HdmiMonitorStatus/index.js":372,"../VYNET.API.Device.Data.HdmiStream/index.js":373,"../VYNET.API.Device.Data.HdmiStreamConfiguraion/index.js":374,"../VYNET.API.Device.Data.Scaler/index.js":379,"../VYNET.API.Device.Data.ScalerInputs/index.js":381,"../VYNET.API.Device.Data.ScalerInputsConfiguration/index.js":382,"../VYNET.API.Device.Data.Subscription/index.js":384,"../VYNET.API.Device.Data.SubscriptionSource/index.js":386,"../VYNET.API.Device.Data.SubscriptionStatus/index.js":387,"../VYNET.API.Device.Data.VideoCompressor/index.js":390,"../VYNET.API.Device.Data.VideoCompressorConfiguration/index.js":391,"../VYNET.API.Device.DeviceRx/index.js":393,"../VYNET.API.Device.DeviceTx/index.js":394,"../VYNET.API.Multiview.Command.MultiviewUiCommand/index.js":396,"../VYNET.API.Multiview.Command.RequestMultiviewsCommand/index.js":399,"../VYNET.API.Multiview.ConfigMultiviews/index.js":400,"../VYNET.API.Multiview.Data.LayoutDescription/index.js":401,"../VYNET.API.Multiview.Data.PreviewWindow/index.js":404,"../VYNET.API.Multiview.Data.Window/index.js":406,"../VYNET.API.Multiview.MultiviewDeviceRx/index.js":407,"../VYNET.API.Multiview.MultiviewPanel/index.js":410,"../VYNET.API.Multiview.MultiviewUi/index.js":411,"../VYNET.API.PreviewMultiview.Command.PreviewConfigCommand/index.js":413,"../VYNET.API.PreviewMultiview.PreviewConfig/index.js":416,"../VYNET.API.PreviewMultiview.PreviewMultiviewPanel/index.js":417,"../Widget.Unify.FromJsonrep/index.js":556,"../Widget.Unify.UnifyComp/index.js":557,"../Widget.Unify.UnifyCompItem/index.js":558,"../Widget.Unify.UnifyCompList/index.js":559}],419:[function(require,module,exports){
+},{"../Control.Applicative/index.js":43,"../Control.Bind/index.js":49,"../Control.Category/index.js":50,"../Control.Comonad.Store.Class/index.js":52,"../Control.Comonad.Store.Trans/index.js":53,"../Control.Monad.State.Class/index.js":72,"../Data.Eq.Generic/index.js":118,"../Data.Eq/index.js":120,"../Data.Foldable/index.js":125,"../Data.Functor.Day/index.js":137,"../Data.Functor/index.js":144,"../Data.Generic.Rep/index.js":147,"../Data.HeytingAlgebra/index.js":151,"../Data.Identity/index.js":152,"../Data.Lens.Fold/index.js":159,"../Data.Lens.Getter/index.js":160,"../Data.Lens.Internal.Forget/index.js":165,"../Data.Lens.Internal.Wander/index.js":173,"../Data.Lens.Lens.Tuple/index.js":176,"../Data.Lens.Prism.Maybe/index.js":179,"../Data.Lens.Setter/index.js":182,"../Data.Lens.Traversal/index.js":183,"../Data.List.NonEmpty/index.js":188,"../Data.List.Types/index.js":189,"../Data.List/index.js":190,"../Data.Maybe.First/index.js":192,"../Data.Maybe/index.js":194,"../Data.Monoid.Endo/index.js":201,"../Data.Monoid/index.js":203,"../Data.Newtype/index.js":204,"../Data.Ord/index.js":214,"../Data.Profunctor.Choice/index.js":216,"../Data.Profunctor.Strong/index.js":220,"../Data.Semigroup/index.js":227,"../Data.Show.Generic/index.js":232,"../Data.Show/index.js":234,"../Data.String.CodePoints/index.js":239,"../Data.Tuple/index.js":255,"../Data.Unit/index.js":263,"../ExploreCore/index.js":287,"../ExploreSignal/index.js":288,"../Extra/index.js":289,"../Safe.Coerce/index.js":320,"../ShouldUpdate/index.js":321,"../Third.ComponentList/index.js":322,"../Third.Init.InitApp/index.js":323,"../Third.Init.InitAppCommand/index.js":325,"../Third.Init.InitAppData/index.js":326,"../Third.Init.InitAppRxs/index.js":327,"../Third.Init.InitAppStatus/index.js":328,"../Third.Init.InitAppTxs/index.js":329,"../Third.RefState/index.js":331,"../Third.Reference/index.js":332,"../Third.TransList.Findlist/index.js":333,"../Third.TransList.Uselist/index.js":334,"../Unify.Types/index.js":340,"../VYNET.API.Control.ActionStack/index.js":344,"../VYNET.API.Control.DeviceActions/index.js":345,"../VYNET.API.Control.MultiviewActionStack/index.js":346,"../VYNET.API.Control.MultiviewActions/index.js":347,"../VYNET.API.Device.Command.Data.DeviceAction/index.js":348,"../VYNET.API.Device.Command.GeneralDeviceCommand/index.js":349,"../VYNET.API.Device.Command.GeneralMultiviewCommand/index.js":350,"../VYNET.API.Device.Command.Request.GetRequest/index.js":352,"../VYNET.API.Device.Command.RequestDevicesCommand/index.js":364,"../VYNET.API.Device.Data.ConfigurationSource/index.js":365,"../VYNET.API.Device.Data.FrameBuffer/index.js":366,"../VYNET.API.Device.Data.FrameBufferConfiguration/index.js":367,"../VYNET.API.Device.Data.HdmiDecoder/index.js":368,"../VYNET.API.Device.Data.HdmiDecoderConfiguraion/index.js":369,"../VYNET.API.Device.Data.HdmiMonitor/index.js":371,"../VYNET.API.Device.Data.HdmiMonitorStatus/index.js":372,"../VYNET.API.Device.Data.HdmiStream/index.js":373,"../VYNET.API.Device.Data.HdmiStreamConfiguraion/index.js":374,"../VYNET.API.Device.Data.LayoutSubscription/index.js":376,"../VYNET.API.Device.Data.Scaler/index.js":379,"../VYNET.API.Device.Data.ScalerConfiguration/index.js":380,"../VYNET.API.Device.Data.ScalerInputs/index.js":381,"../VYNET.API.Device.Data.ScalerInputsConfiguration/index.js":382,"../VYNET.API.Device.Data.Stream/index.js":383,"../VYNET.API.Device.Data.Subscription/index.js":384,"../VYNET.API.Device.Data.SubscriptionSource/index.js":386,"../VYNET.API.Device.Data.SubscriptionStatus/index.js":387,"../VYNET.API.Device.Data.TheStreamConfiguration/index.js":388,"../VYNET.API.Device.Data.Video/index.js":389,"../VYNET.API.Device.Data.VideoCompressor/index.js":390,"../VYNET.API.Device.Data.VideoCompressorConfiguration/index.js":391,"../VYNET.API.Device.DeviceRx/index.js":393,"../VYNET.API.Device.DeviceTx/index.js":394,"../VYNET.API.Multiview.Command.MultiviewUiCommand/index.js":396,"../VYNET.API.Multiview.Command.RequestMultiviewsCommand/index.js":399,"../VYNET.API.Multiview.ConfigMultiviews/index.js":400,"../VYNET.API.Multiview.Data.LayoutDescription/index.js":401,"../VYNET.API.Multiview.Data.PreviewWindow/index.js":404,"../VYNET.API.Multiview.Data.Window/index.js":406,"../VYNET.API.Multiview.MultiviewDeviceRx/index.js":407,"../VYNET.API.Multiview.MultiviewPanel/index.js":410,"../VYNET.API.Multiview.MultiviewUi/index.js":411,"../VYNET.API.PreviewMultiview.Command.PreviewConfigCommand/index.js":413,"../VYNET.API.PreviewMultiview.Command.PreviewRxCommand/index.js":414,"../VYNET.API.PreviewMultiview.PreviewConfig/index.js":416,"../VYNET.API.PreviewMultiview.PreviewMultiviewPanel/index.js":417,"../Widget.Unify.FromJsonrep/index.js":556,"../Widget.Unify.UnifyComp/index.js":557,"../Widget.Unify.UnifyCompItem/index.js":558,"../Widget.Unify.UnifyCompList/index.js":559}],419:[function(require,module,exports){
 "use strict";
 
 exports._getElementById = function (id) {
@@ -142608,7 +142953,6 @@ module.exports = {
 };
 
 },{"../Control.Applicative/index.js":43,"../Control.Bind/index.js":49,"../Control.Comonad.Store.Class/index.js":52,"../Control.Comonad.Store.Trans/index.js":53,"../Control.Comonad.Store/index.js":54,"../Control.Comonad/index.js":57,"../Control.Extend/index.js":59,"../Control.Monad.State.Class/index.js":72,"../Data.Array/index.js":105,"../Data.Function/index.js":130,"../Data.Functor/index.js":144,"../Data.Identity/index.js":152,"../Data.Lens.Index/index.js":161,"../Data.Lens.Setter/index.js":182,"../Data.List.Types/index.js":189,"../Data.Maybe/index.js":194,"../Data.Profunctor.Choice/index.js":216,"../Data.Profunctor.Strong/index.js":220,"../Data.Show/index.js":234,"../Data.Tuple/index.js":255,"../Data.Unit/index.js":263,"../Effect.Unsafe/index.js":283,"../Effect/index.js":285,"../ExploreCore/index.js":287,"../ExploreSignal/index.js":288,"../React.DOM.Props/index.js":309,"../React.DOM/index.js":310,"../React/index.js":312,"../Safe.Coerce/index.js":320,"../ShouldUpdate/index.js":321}],560:[function(require,module,exports){
-// Generated by purs version 0.14.4
 "use strict";
 var Affjax = require("../Affjax/index.js");
 var Affjax_RequestBody = require("../Affjax.RequestBody/index.js");
@@ -142685,6 +143029,9 @@ var wrap21 = function (dictComonad) {
         };
     };
 };
+
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 var wrapid = function (dictComonad) {
     return function (dictComonad1) {
         return function (m1) {
@@ -142712,6 +143059,9 @@ var mkheadersAsync2 = function (v) {
         };
     };
 };
+
+//-----------------------------
+//-----------------------------
 var join = function (dictMonoid) {
     return function (v) {
         return function (v1) {
@@ -142719,6 +143069,9 @@ var join = function (dictMonoid) {
         };
     };
 };
+
+//-------------------------
+//-------------------------
 var id = function (a) {
     return a;
 };
@@ -142739,14 +143092,14 @@ var explore2upd3top = function (dictComonad) {
                                                         if (v5.value0 instanceof Data_Either.Right) {
                                                             return Control_Bind.discard(Control_Bind.discardUnit)(Effect_Aff.bindAff)(ExploreCore.logiiunify("dbg1 " + (asyncid + (" ?== " + v5.value1.value0)))(Control_Applicative.pure(Effect_Aff.applicativeAff))(Data_Unit.unit))(function () {
                                                                 return Control_Bind.discard(Control_Bind.discardUnit)(Effect_Aff.bindAff)(ExploreCore.logiiunify("dbg1 cmdid == ch " + (v5.value0.value0 + (" == " + ch)))(Control_Applicative.pure(Effect_Aff.applicativeAff))(Data_Unit.unit))(function () {
-                                                                    var $203 = v5.value0.value0 === ch;
-                                                                    if ($203) {
+                                                                    var $204 = v5.value0.value0 === ch;
+                                                                    if ($204) {
                                                                         return Control_Bind.discard(Control_Bind.discardUnit)(Effect_Aff.bindAff)(ExploreCore.logiiunify("dbg1 >>>>>>>>>>>> EXIT loop : cmdid == ch")(Control_Applicative.pure(Effect_Aff.applicativeAff))(Data_Unit.unit))(function () {
                                                                             return rsloop(ch)(asyncid);
                                                                         });
                                                                     };
-                                                                    var $204 = v5.value1.value0 === asyncid;
-                                                                    if ($204) {
+                                                                    var $205 = v5.value1.value0 === asyncid;
+                                                                    if ($205) {
                                                                         return Control_Bind.discard(Control_Bind.discardUnit)(Effect_Aff.bindAff)(ExploreCore.logiiunify("dbg1 >>>>>>>>>>>> EMPPTY loop : rs , x == asyncid ")(Control_Applicative.pure(Effect_Aff.applicativeAff))(Data_Unit.unit))(function () {
                                                                             return Control_Applicative.pure(Effect_Aff.applicativeAff)(v5.value1.value1);
                                                                         });
@@ -142760,15 +143113,15 @@ var explore2upd3top = function (dictComonad) {
                                                         if (v5.value0 instanceof Data_Either.Left) {
                                                             return Control_Bind.discard(Control_Bind.discardUnit)(Effect_Aff.bindAff)(ExploreCore.logiiunify("dbg2 " + (asyncid + (" ?== " + (v5.value1.value0 + (" : " + Data_Show.show(Data_Show.showBoolean)(asyncid === v5.value1.value0))))))(Control_Applicative.pure(Effect_Aff.applicativeAff))(Data_Unit.unit))(function () {
                                                                 return Control_Bind.discard(Control_Bind.discardUnit)(Effect_Aff.bindAff)(Effect_Aff_AVar.put(new Data_Tuple.Tuple(v5.value0, new Data_Tuple.Tuple(v5.value1.value0, v5.value1.value1)))(v3))(function () {
-                                                                    var $206 = v5.value1.value0 === asyncid;
-                                                                    if ($206) {
+                                                                    var $207 = v5.value1.value0 === asyncid;
+                                                                    if ($207) {
                                                                         return Control_Applicative.pure(Effect_Aff.applicativeAff)(new Data_Either.Left(new Affjax.RequestContentError("VET")));
                                                                     };
                                                                     return rsloop(ch)(asyncid);
                                                                 });
                                                             });
                                                         };
-                                                        throw new Error("Failed pattern match at Widget.Unify.UnifyExplore (line 471, column 11 - line 495, column 34): " + [ v5.value0.constructor.name ]);
+                                                        throw new Error("Failed pattern match at Widget.Unify.UnifyExplore (line 476, column 11 - line 500, column 34): " + [ v5.value0.constructor.name ]);
                                                     });
                                                 });
                                             };
@@ -142788,7 +143141,7 @@ var explore2upd3top = function (dictComonad) {
                                                     if (v7 instanceof Data_List_Types.Nil) {
                                                         return Control_Applicative.pure(Effect.applicativeEffect)(Data_Unit.unit);
                                                     };
-                                                    throw new Error("Failed pattern match at Widget.Unify.UnifyExplore (line 460, column 9 - line 462, column 139): " + [ v5.constructor.name, v6.constructor.name, v7.constructor.name ]);
+                                                    throw new Error("Failed pattern match at Widget.Unify.UnifyExplore (line 465, column 9 - line 467, column 139): " + [ v5.constructor.name, v6.constructor.name, v7.constructor.name ]);
                                                 };
                                             };
                                         };
@@ -142847,8 +143200,8 @@ var explore2upd3top = function (dictComonad) {
                                                                     return {
                                                                         space: newst,
                                                                         uid: (function () {
-                                                                            var $240 = ShouldUpdate.shouldupdate(dictShouldUpdate)(v7.space)(newst);
-                                                                            if ($240) {
+                                                                            var $241 = ShouldUpdate.shouldupdate(dictShouldUpdate)(v7.space)(newst);
+                                                                            if ($241) {
                                                                                 return 101;
                                                                             };
                                                                             return 1;
@@ -142857,9 +143210,9 @@ var explore2upd3top = function (dictComonad) {
                                                                     };
                                                                 })();
                                                                 var cmdid = Control_Bind.bind(Effect.bindEffect)(Data_UUID.genUUID)((function () {
-                                                                    var $498 = Control_Applicative.pure(Effect.applicativeEffect);
-                                                                    return function ($499) {
-                                                                        return $498(Data_UUID.toString($499));
+                                                                    var $501 = Control_Applicative.pure(Effect.applicativeEffect);
+                                                                    return function ($502) {
+                                                                        return $501(Data_UUID.toString($502));
                                                                     };
                                                                 })())();
                                                                 var v7 = new Data_Tuple.Tuple(v, v6.value0.value0);
@@ -142978,6 +143331,23 @@ var explore2upd3top = function (dictComonad) {
                                                                                 timeout: Affjax.defaultRequest.timeout
                                                                             });
                                                                         };
+                                                                        if (v7.value1.value0 instanceof ExploreSignal.GetDelay) {
+                                                                            return Control_Bind.bind(Effect_Aff.bindAff)(Affjax.request({
+                                                                                method: new Data_Either.Left(Data_HTTP_Method.GET.value),
+                                                                                url: v7.value1.value0.value0,
+                                                                                headers: Explore.mkheaders(Affjax.defaultRequest),
+                                                                                content: Affjax.defaultRequest.content,
+                                                                                username: Affjax.defaultRequest.username,
+                                                                                password: Affjax.defaultRequest.password,
+                                                                                withCredentials: Affjax.defaultRequest.withCredentials,
+                                                                                responseFormat: Affjax_ResponseFormat.json,
+                                                                                timeout: Affjax.defaultRequest.timeout
+                                                                            }))(function (rs) {
+                                                                                return Control_Bind.discard(Control_Bind.discardUnit)(Effect_Aff.bindAff)(Effect_Aff.delay(v7.value1.value0.value1))(function () {
+                                                                                    return Control_Applicative.pure(Effect_Aff.applicativeAff)(rs);
+                                                                                });
+                                                                            });
+                                                                        };
                                                                         if (v7.value1.value0 instanceof ExploreSignal.Delete) {
                                                                             return Affjax.request({
                                                                                 method: new Data_Either.Left(Data_HTTP_Method.DELETE.value),
@@ -143043,7 +143413,7 @@ var explore2upd3top = function (dictComonad) {
                                                                                 return Control_Applicative.pure(Effect_Aff.applicativeAff)(rs);
                                                                             });
                                                                         };
-                                                                        throw new Error("Failed pattern match at Widget.Unify.UnifyExplore (line 330, column 38 - line 429, column 42): " + [ v7.value1.value0.constructor.name ]);
+                                                                        throw new Error("Failed pattern match at Widget.Unify.UnifyExplore (line 330, column 38 - line 434, column 42): " + [ v7.value1.value0.constructor.name ]);
                                                                     })())(function (rsurl) {
                                                                         return Effect_Class.liftEffect(Effect_Aff.monadEffectAff)((function () {
                                                                             if (rsurl instanceof Data_Either.Left && (rsurl.value0 instanceof Affjax.RequestContentError && rsurl.value0.value0 === "VET")) {
@@ -143138,8 +143508,8 @@ var explore2upd31 = function (dictComonad) {
                                             return {
                                                 space: newst,
                                                 uid: (function () {
-                                                    var $324 = ShouldUpdate.shouldupdate(dictShouldUpdate)(v4.space)(newst);
-                                                    if ($324) {
+                                                    var $327 = ShouldUpdate.shouldupdate(dictShouldUpdate)(v4.space)(newst);
+                                                    if ($327) {
                                                         return 101;
                                                     };
                                                     return 1;
@@ -143168,6 +143538,9 @@ var explore2upd31 = function (dictComonad) {
         };
     };
 };
+
+//---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
 var explore2upd3 = function (dictComonad) {
     return function (dictShouldUpdate) {
         return function (v) {
@@ -143233,8 +143606,8 @@ var explore2upd3 = function (dictComonad) {
                                                     return {
                                                         space: newst,
                                                         uid: (function () {
-                                                            var $367 = ShouldUpdate.shouldupdate(dictShouldUpdate)(v6.space)(newst);
-                                                            if ($367) {
+                                                            var $370 = ShouldUpdate.shouldupdate(dictShouldUpdate)(v6.space)(newst);
+                                                            if ($370) {
                                                                 return 101;
                                                             };
                                                             return 1;
@@ -143478,6 +143851,28 @@ var combineid21 = function (dictComonad) {
     };
 };
 var aaaa = 1;
+
+//--------------------------------------------------------------------
+//--------------------------------------------------------------------
+// compitem = comp2upd32
+// singleitem = comp2upd32'
+// _singleitem = _compitem
+// comp2upd32' :: forall s s1 w 
+//             .  Comonad w
+//             => ShouldUpdate w
+//             -- => Eq s
+//             -- => Show s
+//             => String 
+//             -- -> Boolean
+//             -> ( s -> s1)
+//             -> Component (Event s) (JSONREP Error) w
+//             -> Component (Event s1) (JSONREP Error) (StoreComponent2 (Event s1) w  )
+// comp2upd32' t' ff c' = comp2upd32 t' (map (uuu1' ff) c' )
+//   where            
+//     -- uuu1' :: forall s s1 i w. (Functor w) => (s -> s1) -> UI (Event s) i w -> UI (Event s1) i w
+//     uuu1' f u = map ff2 ( \ a -> u ( \ (Tuple (Tuple a1 a1') a2) -> a ((Tuple (Tuple (map f a1) a1') a2))) )
+//       where ff2 (Tuple b1 b2) =  (Tuple (map (ff1) b1) b2)
+//             ff1 a = ff1 a
 var aaa = function (a) {
     return 1;
 };
