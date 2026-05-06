@@ -1,4 +1,4 @@
-echo "installing v15 ....."
+echo "installing v15a ....."
 mkdir -p /home/vynet/steam-rtsp/client/imgs && \
 wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/fsn.png > /home/vynet/steam-rtsp/client/imgs/fsn.png
 wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/vynet3.png > /home/vynet/steam-rtsp/client/imgs/vynet3.png
