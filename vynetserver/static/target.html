@@ -1,0 +1,2171 @@
+<!doctype html>
+<!--html lang="en" data-framework="purescript" style="overflow: hidden;"-->
+<html lang="en" data-framework="purescript">
+
+<style>
+
+/* ============================================================================
+   FSN Control Manager - skin for the generated control UI
+   Drop-in stylesheet. Load standalone, or after bulma.min.css.
+
+   The markup names what it draws, so the rules read classes rather than field
+   positions:
+     source card : .cardhead (input.cardname .dot) .thumb (.feed .cap) .cardformat
+                   .mark .hit
+     output card : the same card, .thumb one size larger
+     parameters  : .screenmeta - the caption written across the preview
+     controls    : .controlshead . .grouplabel . .modes (.mode) . .row
+                   (.rowlabel + .seg / .switch / .picker) . .rec . .meterrow
+                   . .hdcp
+     multiview   : .LayoutDescription --resw/--resh, .Window --x/--y/--w/--h/--z
+
+   Window close tags ("X") use the wrapper shape:
+     <div class="Window" style="--x..--z">
+       <canvas class="WindowMV"></canvas>
+       <div class="WindowTag">X</div>
+       ...data wrappers...
+     </div>
+   The tag is hidden until the window is hovered (or the tag is focused).
+   ========================================================================== */
+
+:root{
+  --bg:#000000;
+  --shell:#080b0d;
+  --panel:#0a0e10;
+  --panel-2:#0d1215;
+  --card:#10171b;
+  --line:#1a2429;
+  --line-soft:#141d22;
+  --blue:#2f80ff;
+  --blue-dim:#1d5fd0;
+  --green:#00d986;
+  --amber:#ffb547;
+  --grey-dot:#3a464c;
+  --txt:#e6edf1;
+  --txt-dim:#8b9aa3;
+  --txt-faint:#5c6b73;
+  --mono:"SFMono-Regular",Menlo,Consolas,"Roboto Mono","DejaVu Sans Mono",monospace;
+  --sans:"Inter",-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --bar:82px;
+  --rail:80px;                      /* icon rail: the .control strip, fixed left */
+  --brand:116px;                    /* left inset of the title: logo + its gaps  */
+  --sources:430px;                  /* the left column                           */
+  /* the console sits off the stage's bottom-right corner by a tenth of it */
+  --console-gap:calc((100vw - var(--rail) - var(--sources) - 48px) * .1);
+
+  /* window tags - see "window tags" section below */
+  --tag-size:48px;                  /* box size of the X control             */
+  --tag-inset:4px;                  /* gap from the window's top-right corner */
+}
+
+/* ---------- shell ---------------------------------------------------------- */
+
+html,body{background:var(--bg);height:100%;}
+html{overflow-y:scroll;}               /* the page keeps its scrollbar gutter */
+body{
+  margin:0;
+  font-family:var(--sans);
+  line-height:1.5;
+  color:var(--txt);
+  -webkit-font-smoothing:antialiased;
+  overflow:hidden;                     /* the panes scroll, the page does not */
+}
+
+#main{
+  display:block;
+  position:relative;
+  height:100vh;
+  box-sizing:border-box;
+  padding-top:var(--bar);
+  padding-left:var(--rail);
+  overflow:hidden;
+  background:var(--shell);
+}
+
+/* top bar (injected - there is no header element in the markup) */
+#main::before{
+  content:"Control Manager";
+  position:fixed;
+  top:0;left:0;right:0;
+  height:var(--bar);
+  display:flex;
+  align-items:center;
+  padding:0 22px 0 var(--brand);
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:-.2px;
+  color:var(--txt);
+  background:var(--panel);
+  border-bottom:1px solid var(--line);
+  z-index:20;
+}
+/* the status, in two halves: the build it is running, and how it is doing */
+#main::after{
+  content:"\00A0\00B7\00A0v1.0.6\00A0\00B7\00A0";
+  position:fixed;
+  top:0;right:calc(22px + 118px);
+  height:var(--bar);
+  display:flex;
+  align-items:center;
+  font-family:var(--mono);
+  font-size:14.5px;
+  letter-spacing:.06em;
+  color:var(--txt-dim);
+  z-index:21;
+}
+.cntui::after{
+  content:"\25CF\00A0SYSTEM OK";
+  position:fixed;
+  top:0;right:22px;
+  height:var(--bar);
+  display:flex;
+  align-items:center;
+  font-family:var(--mono);
+  font-size:14.5px;
+  letter-spacing:.06em;
+  color:var(--green);
+  z-index:21;
+}
+
+/* brand mark, drawn beside the title: the wordmark and the line under it */
+.mainbg::before{
+  content:"FSN";
+  position:fixed;
+  top:16px;left:22px;
+  font:800 33px/1 var(--sans);
+  letter-spacing:-.5px;
+  color:#16b5a4;
+  background-image:linear-gradient(to bottom right,#e0323c 0 46%,transparent 46%);
+  background-size:12px 12px;
+  background-repeat:no-repeat;
+  background-position:-3px -1px;
+  z-index:22;
+}
+.mainbg::after{
+  content:"Medical Technologies";
+  position:fixed;
+  top:52px;left:23px;
+  font:500 7.5px/1 var(--sans);
+  letter-spacing:.01em;
+  color:#dfe7ea;
+  z-index:22;
+}
+
+.mainbg{background:var(--shell);height:100%;}
+/* the brand mark reloads the page: the mark is drawn by the frame's root, so
+   a link to this page (#brand_reload, beside <main>) is laid over it        */
+#brand_reload{
+  position:fixed;
+  top:12px;left:18px;
+  width:86px;height:54px;
+  z-index:23;
+  cursor:pointer;
+}
+
+/* ---------- page grid ------------------------------------------------------ */
+
+/* The stage (outputs + console) is the two right columns; the sources column
+   keeps the shell background and the rail (.control) and the req strip
+   (.request) are taken out of the flow, so the grid is three areas wide.      */
+/* The frame is the navigation bar over the page it shows: the bar is the rail
+   down the left edge (its seats, below, under "actions"), its two leaves (the
+   page it is on, the one selected) hidden, and the page fills the frame.     */
+.cntui{
+  display:flex;
+  flex-direction:column;
+  height:calc(100vh - var(--bar));
+  min-height:0;
+  overflow:hidden;
+  box-sizing:border-box;
+  background:var(--panel-2);
+}
+.cntui > .navbar > .activepage,
+.cntui > .navbar > .selected{display:none;}
+.cntui > .page{flex:1 1 auto;min-height:0;display:flex;}
+.cntui > .page > label{display:none;}
+/* the main panel, laid out as the reference's shell */
+.panel{
+  flex:1 1 auto;
+  display:grid;
+  /* the controls column carries the console's inset, so the panel itself is
+     the 370px the mock gives it                                             */
+  grid-template-columns:
+    var(--sources) minmax(0,1fr) calc(370px + var(--console-gap) + 24px);
+  grid-template-rows:auto minmax(0,1fr);
+  grid-template-areas:
+    "sources outputs  outputs"
+    "sources preview  controls";
+  gap:0;
+  min-height:0;
+  min-width:0;
+  overflow:hidden;
+  box-sizing:border-box;
+}
+
+.cntui .listx0,
+.cntui .listx1{min-width:0;}
+
+/* ---------- shared typography --------------------------------------------- */
+
+/* kill the raw "--- fieldName ---" text; captions come from ::before */
+.cntui label{
+  font-size:0;
+  letter-spacing:0;
+  line-height:1;
+}
+.cntui label::before{
+  font-family:var(--mono);
+  font-size:12.5px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--txt-faint);
+  white-space:nowrap;
+}
+
+.cntui input[type="text"]{
+  width:100%;
+  min-width:0;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:var(--txt);
+  font-family:var(--mono);
+  font-size:13.5px;
+  letter-spacing:.02em;
+  border-radius:4px;
+}
+.cntui input[type="text"]:focus{
+  background:rgba(47,128,255,.14);
+  box-shadow:0 0 0 1px rgba(47,128,255,.45);
+}
+.cntui input[type="text"]::selection{background:rgba(47,128,255,.4);}
+
+/* ---------- input sources (left column) ------------------------------------ */
+
+.panel > .sources{
+  grid-area:sources;
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+  padding:15vh 24px 26px;
+  background:var(--shell);
+  border-right:1px solid var(--line);
+  overflow:auto;
+}
+.panel > .sources > .sources{display:block;min-height:0;}
+
+/* the "count" block becomes the eyebrow above the grid */
+.panel > .sources > .count{
+  order:-1;
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  margin:0 0 18px;
+}
+.panel > .sources > .count > label::before{
+  content:"Input sources \00B7";
+  font-size:14px;
+  color:var(--txt-dim);
+}
+.panel > .sources > .count > div{
+  font-family:var(--mono);
+  font-size:14px;
+  letter-spacing:.16em;
+  color:var(--txt-dim);
+}
+
+.panel > .sources .listx1{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+
+.panel > .sources .listx2{height:auto;}
+.panel > .sources .thumb{height:86px;}
+
+/* ---------- the card, shared by a source tile and a display place ---------- */
+/* Both render: .cardhead (.cardname + .dot) . .thumb (.feed + .cap) .
+   .cardformat . .mark . .hit                                                  */
+
+.cntui .listx2{
+  position:relative;
+  cursor:pointer;
+  padding:12px 12px 14px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:8px;
+  transition:border-color .15s,background .15s;
+}
+.cntui .listx2:hover{border-color:#26343b;}
+.cntui .listx2 > label{display:none;}
+
+.cntui .cardhead{
+  position:relative;                   /* over the card-wide click target */
+  z-index:3;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+.cntui .cardname{
+  min-width:0;
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:0;
+}
+.cntui .listx2:has(.dot.grey) .cardname{color:var(--txt-faint);font-weight:500;}
+
+/* The name is the field it is typed into (`editable` in Transform.hs gives
+   the card's name leaf an <input>), and the storage of the single panel is
+   another: an input carries a browser's own frame, ground and text, so each
+   is stripped back to the text it replaces and takes the row's free width —
+   the dot and the meter's label keep their places. It marks itself only while
+   it has the caret.                                                          */
+.cntui input.cardname,
+.cntui input.meterval{
+  flex:1 1 0;
+  width:100%;                          /* an input's own intrinsic width would
+                                          widen the card it sits in */
+  min-width:0;
+  appearance:none;
+  background:transparent;
+  border:0;
+  border-radius:3px;
+  padding:0;
+  margin:0;
+  font-family:inherit;                 /* an input's own is the browser's */
+  line-height:inherit;
+  color:inherit;
+}
+.cntui input.cardname:focus,
+.cntui input.meterval:focus{
+  outline:0;
+  background:#0d1d24;
+  box-shadow:0 0 0 1px var(--line);
+}
+
+/* the card carries the input format and the device it is drawn from, which
+   the skin's card does not show */
+.cntui .cardformat,
+.cntui .cardsource,
+.cntui .metadevice,
+.cntui .setlayout,
+.cntui .systemdata{display:none;}
+
+/* the system panel has no place on the stage; the header's status is its face */
+.panel > .system{display:none;}
+
+/* status dot (hasSignal / isActive), and blue where the card is the marked one */
+.cntui .dot{
+  flex:0 0 auto;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  font-size:0;
+  line-height:0;
+  overflow:hidden;
+}
+.cntui .dot.green{background:var(--green);}
+.cntui .dot.blue{background:var(--blue);}
+.cntui .dot.grey{background:var(--grey-dot);}
+
+/* ---------- the preview tile of a card ------------------------------------ */
+
+.cntui .thumb{
+  position:relative;
+  overflow:hidden;
+  display:block;
+  border-radius:5px;
+  background-color:#05080a;
+}
+.cntui .feed{
+  display:block;
+  width:100%;
+  height:100%;
+  box-sizing:border-box;
+  border:1px solid var(--line);
+  border-radius:inherit;
+  background:
+    radial-gradient(120% 120% at 30% 0%,#14202a 0%,#05080a 72%),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.022) 0 1px,transparent 1px 3px);
+  box-shadow:inset 0 0 0 1px rgba(47,128,255,.10);
+}
+.cntui .thumb > .cap{
+  position:absolute;
+  left:6px;bottom:5px;
+  padding:1px 6px;
+  border-radius:3px;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(2px);
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.04em;
+  color:#e9f1f5;
+}
+/* a tile nothing is written across carries an empty name and shows no chip */
+.cntui .thumb > .cap:empty{display:none;}
+.cntui .thumb.is-empty{
+  box-sizing:border-box;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background-color:#0b1013;
+  border:1px dashed #232f35;
+  font-family:var(--mono);
+  font-size:13px;
+  color:#4b5860;
+}
+
+/* ---------- displays (top of stage) ---------------------------------------- */
+
+.panel > .outputs{
+  grid-area:outputs;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  min-width:0;
+  margin:24px 24px 0;                  /* the stage's own padding */
+}
+.panel > .outputs > .outputs{display:block;}
+.panel > .outputs .listx1{
+  display:flex;
+  gap:16px;                            /* one row: the places share the width */
+}
+.panel > .outputs .listx2{width:225px;padding:12px;}
+.panel > .outputs .thumb{height:118px;}
+/* the preview box is the console's own screen, not a place to route to: its
+   card stays in the row (the readings are taken off its .cardsource, marked
+   .is-previewbox where vynetserver flags the receiver preview_box) but is
+   not drawn */
+.panel > .outputs .listx2:has(> .cardsource.is-previewbox){display:none;}
+
+/* ============================================================================
+   SELECTION - .mark carries the flag, .hit is the card-wide click target
+   ========================================================================== */
+
+.cntui .listx2 .mark{
+  position:absolute;
+  inset:0;
+  z-index:4;
+  border-radius:7px;
+  font-size:0;
+  line-height:0;
+  overflow:hidden;
+  pointer-events:none;
+}
+/* the flag is carried, not drawn: the card is what the mark shows on */
+.cntui .listx2:has(.mark.is-selected){
+  border-color:var(--blue);
+  box-shadow:0 0 0 1px rgba(47,128,255,.35);
+  background:#0f1a24;
+}
+
+.cntui .listx2 .hit{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  font-size:0;
+  line-height:0;
+  overflow:hidden;
+  color:transparent;
+  cursor:pointer;
+}
+
+/* ---------- console: preview + controls share one blue frame --------------- */
+
+.panel > .preview{
+  grid-area:preview;
+  min-width:0;
+  min-height:0;
+  margin:20px 0 calc(var(--console-gap) + 24px) 24px;
+  padding:18px;
+  box-sizing:border-box;
+  background:var(--panel);
+  border:1px solid var(--blue);
+  border-right:0;
+  border-radius:10px 0 0 10px;
+  /* one cell: the picture, with the caption laid over its bottom-left corner */
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  grid-template-rows:auto;
+  align-content:center;
+  overflow:hidden;
+}
+
+/* placeholder screen - suppressed once a real layout is rendered */
+.panel > .preview::before{
+  content:"";
+  grid-area:1 / 1;
+  min-height:200px;
+  border-radius:5px;
+  background:
+    radial-gradient(140% 110% at 50% 0%,#0f1a23 0%,#05080a 70%),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0 1px,transparent 1px 3px);
+  box-shadow:inset 0 0 0 1px rgba(47,128,255,.18);
+}
+.panel > .preview:has(.LayoutDescription)::before{content:none;}
+
+/* ---------- the caption written across the picture ------------------------- */
+/* .screenmeta : .metaoutput . .metasource . .metaformat . .metawindow */
+
+.panel > .preview > .parameters{
+  grid-area:1 / 1;
+  align-self:end;
+  justify-self:start;
+  z-index:100;                         /* over the windows, which stack to 95 */
+  min-width:0;
+  margin:0 0 14px 16px;
+}
+/* the picker's wall stands in for the composition the caption describes */
+.panel > .preview:has(.List > .LayoutDescription) > .parameters{display:none;}
+.cntui .screenmeta{
+  display:flex;
+  align-items:baseline;
+  white-space:nowrap;                  /* the caption is one line */
+  padding:3px 10px;
+  border-radius:4px;
+  background:rgba(0,0,0,.5);
+  font-family:var(--mono);
+  font-size:13.5px;
+  letter-spacing:.04em;
+  color:#dfe9ee;
+}
+.cntui .screenmeta > div + div::before{
+  content:"\00B7";
+  padding:0 8px;
+  color:#7f9099;
+}
+.cntui .metaoutput{text-transform:uppercase;}
+/* a part of the caption nothing answers for writes nothing, separator and
+   all - the window no preview picks, the source of an unrouted output; a
+   preview showing no output yet writes no caption at all */
+.cntui .screenmeta > div:empty{display:none;}
+.cntui .screenmeta:has(> .metaoutput:empty){display:none;}
+.cntui .metawindow{color:var(--txt-dim);}
+
+/* ============================================================================
+   MULTIVIEW - .LayoutDescription
+   ========================================================================== */
+
+.panel > .preview > .composition{
+  grid-area:1 / 1;
+  position:relative;
+  min-width:0;
+}
+.panel > .preview > .composition > .composition{
+  display:block;
+  min-width:0;
+}
+
+.panel > .preview > .composition > .composition > label,
+.panel > .preview > .composition > .composition > .String,
+.panel > .preview > .composition > .composition > .Int,
+.panel > .preview > .composition > .composition > .Boolean{
+  position:absolute;
+  width:1px;height:1px;
+  overflow:hidden;
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+
+.cntui .LayoutDescription{
+  position:relative;
+  width:100%;
+  aspect-ratio:var(--resw,3840) / var(--resh,2160);
+  box-sizing:border-box;
+  background:
+    radial-gradient(140% 110% at 50% 0%,#0f1a23 0%,#05080a 70%),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0 1px,transparent 1px 3px);
+  border-radius:5px;
+  box-shadow:inset 0 0 0 1px rgba(47,128,255,.18);
+  overflow:hidden;
+}
+
+/* a composition's screen is 4K unless it says otherwise: the multiview and the
+   single view set their own (the layout's, HD or 4K), as does the picker. */
+.cntui .LayoutDescription{--resw:3840;--resh:2160;}
+
+.cntui .LayoutDescription > .List{
+  position:absolute;
+  inset:0;
+}
+
+/* the generated field wrappers are data, not UI - but never hide the tag, nor
+   the source name the window draws (see "window source" below) */
+.cntui .LayoutDescription .is-hidden,
+.cntui .LayoutDescription > .List > .Window > div:not(.WindowTag):not(.WindowSource),
+.cntui .LayoutDescription label{display:none;}
+
+.cntui .LayoutDescription .Window{
+  position:absolute;
+  display:block;
+  box-sizing:border-box;
+
+  left:calc(var(--x) / var(--resw) * 100%);
+  top:calc(var(--y) / var(--resh) * 100%);
+  width:calc(var(--w) / var(--resw) * 100%);
+  height:calc(var(--h) / var(--resh) * 100%);
+
+  /* A layout is written smallest window first and every one carries the same
+     --z, so a screen-sized window written last is painted over the small one in
+     front of it: the four pip layouts read as one empty plate, and in a
+     composition the small window cannot even be pressed. The stack is taken off
+     the writing order and put on the window's own size — the less of the screen
+     a window takes, the further forward it is drawn. --w and --h are the
+     window's own numbers, so this is the layout saying it, not the skin
+     guessing. */
+  z-index:calc(var(--z,1) + 90 - (var(--w) * var(--h) / 100000));
+
+  border:1px solid #33444d;
+  border-radius:3px;
+  background:
+    radial-gradient(120% 130% at 50% 0%,#16222c 0%,#080d11 78%),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 3px);
+  box-shadow:
+    inset 0 0 0 1px rgba(47,128,255,.08),
+    inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+/* wrapper form: the canvas fills its .Window parent instead of being it — the
+   tile of a composition and the one window of a single view alike */
+.cntui .LayoutDescription .Window > canvas.WindowMV,
+.cntui .LayoutDescription .Window > canvas.WindowSV{
+  position:absolute;
+  inset:0;
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:none;
+  max-height:none;
+  border-radius:inherit;
+}
+
+.cntui .LayoutDescription .Window:hover{
+  border-color:#4a616d;
+  box-shadow:
+    inset 0 0 0 1px rgba(47,128,255,.14),
+    inset 0 1px 0 rgba(255,255,255,.07);
+}
+
+/* if the renderer can mark the active window, this takes over on its own */
+.cntui .LayoutDescription .Window.selected{
+  border-color:var(--blue);
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,.5),
+    inset 0 0 26px rgba(47,128,255,.20);
+}
+
+/* centre crosshair between the quadrants */
+.cntui .LayoutDescription > .List::after{
+  content:"";
+  position:absolute;
+  top:50%;left:50%;
+  width:7px;height:7px;
+  margin:-3.5px 0 0 -3.5px;
+  transform:rotate(45deg);
+  background:#5c6b73;
+  z-index:50;
+  pointer-events:none;
+}
+
+/* ============================================================================
+   THE LAYOUT PICKER - every layout the service holds, a wall of screens
+
+   The picker draws one .LayoutDescription per layout where a composition draws
+   a single one. Here a layout is a card and the whole card is the control: the
+   screen it would compose (.LayoutScreen, which keeps that screen's aspect
+   ratio) with the name it is picked by (.LayoutTag) written under the picture
+   rather than across it. Over the wall sits the picker's own row - what it is
+   asking for on the left, the close on the right - which stays put while the
+   cards scroll under it.
+
+   Which .List is which is read off what it holds: a list whose own children are
+   layouts is the picker, a list inside a layout is that layout's windows. So
+   :has(> .LayoutDescription) is the whole of the scoping and none of this
+   reaches a composition being drawn.
+   ========================================================================== */
+
+/* the picker scrolls inside the preview rather than growing it */
+.panel > .preview:has(.List > .LayoutDescription){position:relative;}
+.panel > .preview > .composition:has(.List > .LayoutDescription){
+  align-self:stretch;
+  min-height:0;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  scrollbar-width:thin;
+  scrollbar-color:#223039 transparent;
+}
+.panel > .preview > .composition:has(.List > .LayoutDescription)::-webkit-scrollbar{width:9px;}
+.panel > .preview > .composition:has(.List > .LayoutDescription)::-webkit-scrollbar-thumb{
+  background:#223039;
+  border-radius:9px;
+  border:2px solid transparent;
+  background-clip:padding-box;
+}
+
+/* the wall runs on under the bottom edge, so it is faded out there: the cut
+   row reads as more to scroll to and not as a row drawn wrong */
+.panel > .preview:has(.List > .LayoutDescription)::after{
+  content:"";
+  position:absolute;
+  left:1px;right:1px;bottom:1px;
+  height:38px;
+  border-radius:0 0 0 9px;
+  background:linear-gradient(to top,var(--panel) 30%,rgba(10,14,16,0));
+  pointer-events:none;
+  z-index:70;
+}
+
+/* the picker's own row over the wall: the head to the left, the close to the
+   right, both sticking to the top of the scroll they sit in */
+.panel > .preview > .composition:has(.List > .LayoutDescription) > .composition{
+  min-height:0;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;
+  column-gap:10px;
+}
+.cntui .LayoutsHead,
+.cntui .LayoutClose{
+  position:sticky;
+  top:0;
+  z-index:80;
+  background:var(--panel);
+  padding:2px 0 10px;
+}
+.cntui .LayoutsHead{
+  grid-column:1;
+  font:600 10.5px/1 var(--sans);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--txt-faint);
+}
+/* as many cards to a row as the preview is wide enough to read: the track is a
+   share of the wall, never wider than a thumbnail needs nor narrower than one
+   can be read at. The preview is a narrow column on a small screen and half the
+   stage on a large one, so this is measured against the wall and not the window
+   - a width media query here would count the wrong thing. */
+.cntui .List:has(> .LayoutDescription){
+  grid-column:1 / -1;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(clamp(158px,18.5%,280px),1fr));
+  gap:14px;
+  align-content:start;
+  padding:0 0 30px;
+}
+
+/* the caption is what the output is showing, which the picker is not - it would
+   read across the bottom row of the grid */
+.panel > .preview:has(.List > .LayoutDescription) > .parameters{display:none;}
+
+/* the picker's own close, which leaves it for the composition the output is
+   drawing. It is the picker's and not a layout's, so it sits above the wall at
+   the right - and sticks there, since the cards under it scroll. */
+.cntui .LayoutClose{
+  grid-column:2;
+  width:22px;
+  height:22px;
+  box-sizing:content-box;
+  display:grid;
+  place-items:center;
+
+  font:600 11px/1 var(--sans);
+  color:var(--txt-dim);
+  cursor:pointer;
+  transition:color .12s ease;
+}
+.cntui .LayoutClose::before{
+  content:"";
+  position:absolute;
+  inset:2px 0 12px;
+  border:1px solid var(--line);
+  border-radius:5px;
+  background:var(--panel-2);
+  z-index:-1;
+  transition:border-color .12s ease,background .12s ease;
+}
+.cntui .LayoutClose:hover{color:var(--txt);}
+.cntui .LayoutClose:hover::before{
+  border-color:var(--blue);
+  background:var(--card);
+}
+
+/* every layout is one control: the screen it composes and the name under it,
+   both answering the same press. Nothing inside takes a press of its own - a
+   window here is a picture of a window, not one to route into - so the pointer
+   passes through them to the card. */
+.cntui .List:has(> .LayoutDescription) > .LayoutDescription{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+
+  aspect-ratio:auto;              /* the screen keeps the ratio, the card does not */
+  box-sizing:border-box;
+  padding:7px 7px 6px;
+  background:var(--panel-2);
+  border:1px solid #1f2a31;
+  border-radius:8px;
+  box-shadow:none;
+  overflow:visible;
+
+  cursor:pointer;
+  transition:border-color .12s ease,background .12s ease,box-shadow .12s ease,transform .12s ease;
+}
+.cntui .List:has(> .LayoutDescription) > .LayoutDescription:hover{
+  background:var(--card);
+  border-color:var(--blue-dim);
+  box-shadow:0 8px 20px rgba(0,0,0,.45);
+  transform:translateY(-2px);
+}
+.cntui .List:has(> .LayoutDescription) > .LayoutDescription:active{
+  transform:translateY(0);
+  border-color:var(--blue);
+}
+.cntui .List:has(> .LayoutDescription) .Window{pointer-events:none;}
+
+/* the data wrappers the UI layer writes beside the two: they are readings, not
+   parts of the card */
+.cntui .List:has(> .LayoutDescription) > .LayoutDescription
+  > div:not(.LayoutScreen):not(.LayoutTag){display:none;}
+
+/* the screen the layout composes: the picture of the card, which carries the
+   ground the preview's own empty screen carries */
+.cntui .LayoutScreen{
+  position:relative;
+  width:100%;
+  aspect-ratio:var(--resw,3840) / var(--resh,2160);
+  border-radius:4px;
+  overflow:hidden;
+  background:
+    radial-gradient(140% 110% at 50% 0%,#0f1a23 0%,#05080a 70%),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0 1px,transparent 1px 3px);
+  box-shadow:inset 0 0 0 1px rgba(47,128,255,.18);
+}
+
+/* a window of a layout on the wall is a plate, read at a glance and from across
+   the room: lighter than the screen under it and edged against its neighbours.
+   The stack it is drawn in is the one every window is drawn in, by its size. */
+.cntui .List:has(> .LayoutDescription) .Window{
+  border-color:#3d525e;
+  border-radius:2px;
+  background:linear-gradient(180deg,#1a2833 0%,#0c1319 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 2px 7px rgba(0,0,0,.55);
+}
+.cntui .List:has(> .LayoutDescription) > .LayoutDescription:hover .Window{
+  border-color:#4e6b7b;
+  background:linear-gradient(180deg,#1f3240 0%,#0e1720 100%);
+}
+
+/* the layout's name, read under its picture. A name longer than the card wraps
+   rather than being cut: there is room for it there, which is the point of
+   writing it below the screen and not over it. */
+.cntui .List:has(> .LayoutDescription) .LayoutTag{
+  position:static;
+  z-index:auto;
+  padding:0 2px 1px;
+  font:600 11px/1.35 var(--sans);
+  letter-spacing:.01em;
+  text-align:center;
+  color:var(--txt-dim);
+  background:none;
+  border:0;
+  border-radius:0;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  overflow:visible;
+  text-overflow:clip;
+  transition:color .12s ease;
+}
+.cntui .List:has(> .LayoutDescription) > .LayoutDescription:hover .LayoutTag{color:var(--txt);}
+
+@media (max-width:1200px){
+  .cntui .List:has(> .LayoutDescription){gap:10px;}
+}
+
+/* ============================================================================
+   WINDOW SOURCE - what each window of a composition is drawing
+
+   The name sits in the window's own top-left corner, opposite the X control, and
+   is display only: it is never a target, so a click anywhere on it reaches the
+   canvas underneath and picks the tile the way the rest of the window does.
+   A window nothing is routed into carries an empty name and shows no label.
+   ========================================================================== */
+
+.cntui .LayoutDescription .WindowSource{
+  position:absolute;
+  top:var(--tag-inset);
+  left:var(--tag-inset);
+  z-index:40;
+  padding:2px 6px;
+  box-sizing:border-box;
+
+  /* the chip is as wide as the name and no wider than the window it names, so a
+     tile the size of half a screen carries a label and not a bar across it */
+  width:max-content;
+  max-width:calc(100% - var(--tag-inset) * 2);
+
+  font:600 9px/1.3 var(--mono);
+  letter-spacing:.02em;
+  color:var(--txt);
+  background:rgba(0,0,0,.55);
+  border:1px solid var(--line);
+  border-radius:3px;
+
+  /* a tile of a five-window layout is about 60px wide and most source names are
+     longer than that, so the name wraps rather than being cut to one letter and
+     an ellipsis. Two lines is what a tile that short has room for, and the clamp
+     ends on a whole line - a plain max-height would slice the second one through
+     the middle of its letters. The max-height under it is the guard for a window
+     shorter still, which is the one case a name is cut rather than clamped. */
+  word-break:break-word;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  max-height:calc(100% - var(--tag-inset) * 2);
+  overflow:hidden;
+  pointer-events:none;
+}
+.cntui .LayoutDescription .WindowSource:empty{display:none;}
+
+/* hovering a tile reads its source in full - one line as long as the name needs,
+   which on a narrow tile runs out over its neighbours for as long as the pointer
+   is there. It stays in the corner it was in: the X control the same hover
+   brings up at the top-right is drawn over it (see "corner placement"). */
+.cntui .LayoutDescription .Window:hover > .WindowSource{
+  width:max-content;
+  max-width:none;
+  max-height:none;
+  -webkit-line-clamp:unset;
+  white-space:nowrap;
+  z-index:70;
+  color:var(--txt);
+  background:rgba(0,0,0,.88);
+  border-color:var(--blue-dim);
+}
+
+/* the selected tile names its source in the panel's own blue */
+.cntui .LayoutDescription .Window.selected > .WindowSource{
+  color:var(--blue);
+  border-color:var(--blue-dim);
+}
+
+/* ============================================================================
+   WINDOW TAGS - the "X" control in each window's top-right corner
+
+   The tag must be a child of a .Window WRAPPER DIV, never of the canvas:
+   canvas children are fallback content and are never rendered.
+   Shared knobs: --tag-size / --tag-inset at the top of the file.
+   ========================================================================== */
+
+.cntui .LayoutDescription .WindowTag{
+  display:grid;
+  place-items:center;
+  box-sizing:border-box;
+  width:var(--tag-size);
+  height:var(--tag-size);
+
+  /* the glyph and the corners are drawn to the box, so the one knob sizes it */
+  font:600 calc(var(--tag-size) * .625)/1 var(--sans);
+  color:var(--txt-dim);
+  background:rgba(0,0,0,.55);
+  border:1px solid var(--line);
+  border-radius:calc(var(--tag-size) * .1875);
+  cursor:pointer;
+  user-select:none;
+}
+
+.cntui .LayoutDescription .WindowTag:hover{
+  color:#fff;
+  border-color:var(--blue);
+  background:rgba(47,128,255,.25);
+}
+.cntui .LayoutDescription .WindowTag:active{
+  background:rgba(47,128,255,.4);
+}
+
+/* corner placement + hover reveal. The wrapper is the positioned ancestor,
+   so the corner is just top/right. Hovering the tag keeps the parent in
+   :hover, so it cannot flicker. It is drawn over the source name, which a
+   hover runs out along the top edge to its full length.                     */
+.cntui .LayoutDescription .Window > .WindowTag{
+  position:absolute;
+  top:var(--tag-inset);
+  right:var(--tag-inset);
+  z-index:80;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .12s ease,color .15s,border-color .15s,background .15s;
+}
+.cntui .LayoutDescription .Window:hover > .WindowTag,
+.cntui .LayoutDescription .Window > .WindowTag:focus-visible{
+  opacity:1;
+  pointer-events:auto;
+}
+/* a window nothing is routed into has no route to take down: no tag, hover
+   or not                                                                     */
+.cntui .LayoutDescription .WindowTag.is-hidden{display:none;}
+
+/* ============================================================================
+   ROUTING - a window, or an output card, a route is going into
+
+   From the moment a route goes out until it answers, the split renderer stands
+   the source routed in where it is going (its picture, or its name written
+   across) and marks the window and the output's card data-routing="<source>".
+   The window's frame runs blue and breathes, a light runs along its foot, and
+   a chip at the middle of its top edge - clear of a pip window, which sits in
+   a corner - names what is coming in; the name of what was there goes. The
+   card's dot pings and the same light runs along its thumb's foot.
+   ========================================================================== */
+
+.cntui .LayoutDescription .Window[data-routing]{
+  border-color:var(--blue);
+  animation:routebreathe 1.6s ease-in-out infinite;
+}
+.cntui .LayoutDescription .Window[data-routing] > .WindowSource{display:none;}
+.cntui .LayoutDescription .Window[data-routing]::before{
+  content:"ROUTING \00B7  " attr(data-routing);
+  position:absolute;
+  top:var(--tag-inset);
+  left:50%;
+  transform:translateX(-50%);
+  z-index:60;
+  box-sizing:border-box;
+  max-width:calc(100% - var(--tag-inset) * 2);
+  padding:2px 7px 2px 15px;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  font:600 9px/1.3 var(--mono);
+  letter-spacing:.04em;
+  color:#dceaff;
+  background:
+    radial-gradient(circle at 7px 50%,var(--blue) 0 2.5px,transparent 3px) no-repeat,
+    rgba(10,24,44,.88);
+  border:1px solid var(--blue-dim);
+  border-radius:3px;
+  pointer-events:none;
+}
+.cntui .LayoutDescription .Window[data-routing]::after,
+.cntui .listx2[data-routing] .thumb::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:2px;
+  z-index:60;
+  background:linear-gradient(90deg,transparent,var(--blue) 25%,#9cc6ff 50%,var(--blue) 75%,transparent) no-repeat;
+  background-size:35% 100%;
+  box-shadow:0 0 8px rgba(47,128,255,.5);
+  animation:routerun 1.1s cubic-bezier(.45,0,.55,1) infinite;
+  pointer-events:none;
+}
+.cntui .listx2[data-routing] .cardhead > .dot{
+  background:var(--blue);
+  animation:routeping 1.2s ease-out infinite;
+}
+@keyframes routebreathe{
+  0%,100%{box-shadow:inset 0 0 0 1px rgba(47,128,255,.35),0 0 0 0 rgba(47,128,255,0);}
+  50%{box-shadow:inset 0 0 0 1px rgba(47,128,255,.75),0 0 16px 1px rgba(47,128,255,.45);}
+}
+@keyframes routerun{from{background-position:-60% 0;}to{background-position:160% 0;}}
+@keyframes routeping{
+  from{box-shadow:0 0 0 0 rgba(47,128,255,.7);}
+  to{box-shadow:0 0 0 7px rgba(47,128,255,0);}
+}
+
+/* ---------- video controls -------------------------------------------------- */
+
+.panel > .controls{
+  grid-area:controls;
+  min-height:0;
+  margin:20px calc(var(--console-gap) + 24px) calc(var(--console-gap) + 24px) 0;
+  padding:18px 20px 20px;
+  box-sizing:border-box;
+  background:var(--panel);
+  border:1px solid var(--blue);
+  border-left:0;
+  border-radius:0 10px 10px 0;
+  display:block;
+  overflow:auto;
+}
+/* the panel is a column of groups: the head, a caption per group, the row of
+   mode buttons, one row per setting, the recording control and the strip of
+   signal info under it                                                       */
+.panel > .controls > .controls{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  min-width:0;
+}
+
+.cntui .controlshead{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+}
+.cntui .controlstitle{
+  font-family:var(--mono);
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--txt);
+}
+.cntui .controlstarget{
+  font-family:var(--mono);
+  font-size:13px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--blue);
+}
+
+.cntui .grouplabel{
+  margin-top:6px;
+  font-family:var(--mono);
+  font-size:12.5px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--txt-faint);
+}
+
+/* ---------- the mode buttons ---------------------------------------------- */
+
+.cntui .modes{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.cntui .mode{
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  padding:10px 0 8px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:7px;
+  cursor:pointer;
+  color:var(--txt-dim);
+  font-family:var(--mono);
+  font-size:11.5px;
+  letter-spacing:.1em;
+  transition:border-color .15s,color .15s;
+}
+.cntui .mode:hover{border-color:#26343b;color:var(--txt);}
+.cntui .mode.is-active{border-color:var(--blue);color:#fff;background:#0f1a24;}
+/* the glyph over the caption, drawn from the button's own background */
+.cntui .mode::before{
+  content:"";
+  display:block;
+  width:22px;
+  height:16px;
+  background-color:currentColor;
+}
+.cntui .mode.glyph-single::before{
+  -webkit-mask:linear-gradient(#000 0 0) 1px 1px/20px 14px no-repeat;
+          mask:linear-gradient(#000 0 0) 1px 1px/20px 14px no-repeat;
+  border-radius:2px;
+}
+.cntui .mode.glyph-multi::before{
+  -webkit-mask:
+    linear-gradient(#000 0 0) 1px 0/9px 7px no-repeat,
+    linear-gradient(#000 0 0) 12px 0/9px 7px no-repeat,
+    linear-gradient(#000 0 0) 1px 9px/9px 7px no-repeat,
+    linear-gradient(#000 0 0) 12px 9px/9px 7px no-repeat;
+          mask:
+    linear-gradient(#000 0 0) 1px 0/9px 7px no-repeat,
+    linear-gradient(#000 0 0) 12px 0/9px 7px no-repeat,
+    linear-gradient(#000 0 0) 1px 9px/9px 7px no-repeat,
+    linear-gradient(#000 0 0) 12px 9px/9px 7px no-repeat;
+}
+/* picture in picture: the frame, and a small window in its corner */
+.cntui .mode.glyph-pip::before{
+  -webkit-mask:
+    linear-gradient(#000 0 0) 1px 1px/20px 2px no-repeat,
+    linear-gradient(#000 0 0) 1px 13px/20px 2px no-repeat,
+    linear-gradient(#000 0 0) 1px 1px/2px 14px no-repeat,
+    linear-gradient(#000 0 0) 19px 1px/2px 14px no-repeat,
+    linear-gradient(#000 0 0) 11px 7px/8px 6px no-repeat;
+          mask:
+    linear-gradient(#000 0 0) 1px 1px/20px 2px no-repeat,
+    linear-gradient(#000 0 0) 1px 13px/20px 2px no-repeat,
+    linear-gradient(#000 0 0) 1px 1px/2px 14px no-repeat,
+    linear-gradient(#000 0 0) 19px 1px/2px 14px no-repeat,
+    linear-gradient(#000 0 0) 11px 7px/8px 6px no-repeat;
+}
+/* side by side: two halves */
+.cntui .mode.glyph-sbs::before{
+  -webkit-mask:
+    linear-gradient(#000 0 0) 1px 2px/9px 12px no-repeat,
+    linear-gradient(#000 0 0) 12px 2px/9px 12px no-repeat;
+          mask:
+    linear-gradient(#000 0 0) 1px 2px/9px 12px no-repeat,
+    linear-gradient(#000 0 0) 12px 2px/9px 12px no-repeat;
+}
+
+/* ---------- one setting per row ------------------------------------------- */
+
+.cntui .row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  min-height:47px;
+  box-sizing:border-box;
+  padding:11px 14px;
+  background:var(--card);
+  border:1px solid var(--line-soft);
+  border-radius:7px;
+  font-size:15px;
+  color:#c8d4da;
+}
+.cntui .rowlabel{min-width:0;}
+.cntui .rowvalue,
+.cntui .picker{
+  font-family:var(--mono);
+  font-size:13.5px;
+  letter-spacing:.05em;
+  color:#fff;
+  text-align:right;
+}
+.cntui .picker{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  cursor:pointer;
+}
+.cntui .picker::after{
+  content:"\25BC";
+  font-size:9px;
+  color:var(--txt-dim);
+}
+
+/* a reading that reads as the lit segment of a switchable pair, the other
+   mode dim beside it; no reading yet, no segment */
+.cntui .seg{display:flex;gap:4px;}
+.cntui .segon,
+.cntui .segoff{
+  padding:5px 11px;
+  border-radius:5px;
+  font-family:var(--mono);
+  font-size:12.5px;
+  line-height:1.2;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.cntui .segoff{color:var(--txt-dim);}
+.cntui .segon:empty,
+.cntui .segoff:empty{display:none;}
+.cntui .segon{
+  background:var(--blue);
+  color:#fff;
+}
+
+/* a flag reads as a switch: the text it carries is the flag itself */
+.cntui .switch{
+  position:relative;
+  flex:0 0 auto;
+  width:44px;
+  height:23px;
+  border-radius:99px;
+  background:#28343a;
+  font-size:0;
+  line-height:0;
+  overflow:hidden;
+  color:transparent;
+  transition:background .18s;
+}
+.cntui .switch::after{
+  content:"";
+  position:absolute;
+  top:3px;left:3px;
+  width:17px;height:17px;
+  border-radius:50%;
+  background:#9aa8b0;
+  transition:transform .18s,background .18s;
+}
+.cntui .switch.is-on{background:var(--blue);}
+.cntui .switch.is-on::after{transform:translateX(21px);background:#fff;}
+
+/* a switch that is a control rather than a reading - the genlock of TASK_3_15_UI,
+   which the scaler beside it is not */
+.cntui .switch.is-control{
+  cursor:pointer;
+  box-shadow:inset 0 0 0 1px transparent;
+  transition:background .18s,box-shadow .15s;
+}
+.cntui .switch.is-control:hover{box-shadow:inset 0 0 0 1px var(--blue);}
+
+/* ---------- recording ------------------------------------------------------ */
+
+.cntui .rec{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  box-sizing:border-box;
+  padding:13px 14px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:7px;
+  cursor:pointer;
+  color:#dbe4e9;
+  font-size:15px;
+  transition:border-color .15s,background .15s;
+}
+.cntui .rec:hover{border-color:#2b3b44;}
+.cntui .recdot{
+  flex:0 0 auto;
+  width:11px;height:11px;
+  border-radius:50%;
+  background:#c1444a;
+}
+.cntui .reclabel{flex:1 1 auto;line-height:1.15;}
+.cntui .rec.is-rec{
+  border-color:#c33b41;
+  background:#1a0f11;
+  color:#ffdcdc;
+}
+.cntui .rec.is-rec .recdot{background:#ff4d55;}
+
+.cntui .meterrow{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:4px 2px 2px;
+  font-size:15px;
+  color:#c8d4da;
+}
+.cntui .meterval{
+  font-family:var(--mono);
+  font-size:14px;
+  color:var(--txt-dim);
+  text-align:right;
+}
+.cntui input.meterval{font-family:var(--mono);font-size:14px;color:var(--txt-dim);text-align:right;}
+
+/* ---------- the signal info strip ------------------------------------------ */
+
+.cntui .hdcp{
+  display:flex;
+  align-items:center;
+  margin-top:12px;
+  padding:10px 14px;
+  background:#08170f;
+  border:1px solid #123d2c;
+  border-radius:7px;
+  font-family:var(--mono);
+  font-size:13.5px;
+  letter-spacing:.04em;
+  color:var(--green);
+}
+.cntui .hdcpchroma::before{
+  content:"\00B7";
+  padding:0 7px;
+  color:#2f6b53;
+}
+.cntui .hdcpdepth::before{content:"\00A0";}
+
+.cntui .hdcpcolorimetry::before{content:"\00A0";}
+
+/* ---------- the console held ------------------------------------------------ */
+/* While a change made from the controls is out (a view mode, a layout, a
+   resolution, a video mode, a format), the main panel's req strip draws the
+   veil on (.veil.is-on > .veilcaption), and the strip is laid over the
+   console's frame: the veil frosts it, runs a light across it and along the
+   frame's top edge, and its caption names what the console waits on. Lifted,
+   it fades the frost off the answer. It is a look only: clicks pass through
+   it to the console. Only the main panel's strip draws a veil; the other
+   pages' strips stay hidden.                                                  */
+.panel > .request:has(> .reqpanel > .veil){
+  display:block;
+  grid-row:preview;
+  grid-column:preview-start / controls-end;
+  position:relative;
+  z-index:150;                         /* over the preview's caption (100) */
+  margin:20px calc(var(--console-gap) + 24px) calc(var(--console-gap) + 24px) 24px;
+  font-size:0;                         /* the strip's own readout */
+  color:transparent;
+  pointer-events:none;
+}
+.panel > .request > .reqpanel:has(> .veil){position:absolute;inset:0;}
+.cntui .veil{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  border-radius:10px;
+  box-shadow:inset 0 0 0 1px var(--blue);   /* the frame stays drawn over the frost */
+  background:rgba(4,8,11,.42);
+  -webkit-backdrop-filter:blur(3px) saturate(.55);
+          backdrop-filter:blur(3px) saturate(.55);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .32s ease,visibility 0s linear .32s;
+}
+/* the frost a breath after the change goes out, so an answer that is quick
+   does not flash it                                                           */
+.cntui .veil.is-on{
+  visibility:visible;
+  opacity:1;
+  transition:opacity .22s ease .08s,visibility 0s;
+}
+/* the light across the console */
+.cntui .veil::before{
+  content:"";
+  position:absolute;
+  top:0;bottom:0;left:-40%;
+  width:40%;
+  background:linear-gradient(100deg,
+    transparent 0%,
+    rgba(47,128,255,.07) 35%,
+    rgba(150,195,255,.15) 50%,
+    rgba(47,128,255,.07) 65%,
+    transparent 100%);
+  animation:veilsweep 1.9s cubic-bezier(.45,0,.55,1) infinite;
+}
+/* the light along the frame's top edge */
+.cntui .veil::after{
+  content:"";
+  position:absolute;
+  top:0;left:0;
+  width:30%;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--blue) 30%,#9cc6ff 50%,var(--blue) 70%,transparent);
+  box-shadow:0 0 12px rgba(47,128,255,.7);
+  animation:veilrun 1.3s cubic-bezier(.45,0,.55,1) infinite;
+}
+.cntui .veil:not(.is-on)::before,
+.cntui .veil:not(.is-on)::after{animation:none;}
+@keyframes veilsweep{to{transform:translateX(350%);}}
+@keyframes veilrun{from{transform:translateX(-100%);}to{transform:translateX(334%);}}
+
+/* the caption, a pill in the middle of the picture: the controls are the
+   frame's right 370px                                                         */
+.cntui .veilcaption{
+  position:absolute;
+  top:50%;
+  left:calc((100% - 370px) / 2);
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:11px 20px 11px 16px;
+  border-radius:99px;
+  background:rgba(8,13,17,.86);
+  border:1px solid rgba(47,128,255,.45);
+  box-shadow:0 10px 30px rgba(0,0,0,.5),0 0 0 5px rgba(47,128,255,.07);
+  font-family:var(--mono);
+  font-size:12.5px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  white-space:nowrap;
+  color:#dfe9ee;
+  transform:translate(-50%,-50%) scale(.94);
+  transition:transform .3s cubic-bezier(.2,.8,.2,1);
+}
+.cntui .veil.is-on > .veilcaption{transform:translate(-50%,-50%);}
+/* lifted, the veil has nothing to name: its caption goes at once */
+.cntui .veil:not(.is-on) > .veilcaption{visibility:hidden;}
+.cntui .veilcaption::before{
+  content:"";
+  flex:0 0 auto;
+  width:13px;height:13px;
+  box-sizing:border-box;
+  border-radius:50%;
+  border:2px solid rgba(47,128,255,.25);
+  border-top-color:var(--blue);
+  animation:veilspin .75s linear infinite;
+}
+@keyframes veilspin{to{transform:rotate(360deg);}}
+
+
+/* ---------- actions: the icon rail ----------------------------------------- */
+/* The navigation bar is the rail down the left edge: one 46px seat per page
+   (main panel, matrix routing, settings), the page the frame is on lit, and
+   the system info drawn after them. The rail is taken out of the grid, so
+   #main's padding-left is what keeps the columns clear of it.                */
+
+.cntui > .navbar{
+  position:fixed;
+  top:var(--bar);left:0;bottom:0;
+  width:var(--rail);
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+  padding:22px 0;
+  background:var(--panel);
+  border-right:1px solid var(--line);
+  z-index:19;
+}
+.cntui > .navbar > .seats{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+}
+.cntui > .navbar .seat,
+.cntui > .navbar::after,
+.panel > .control > div{
+  width:46px;height:46px;
+  box-sizing:border-box;
+  display:grid;
+  place-items:center;
+  border-radius:8px;
+  border:1px solid transparent;
+  background:var(--card);
+  color:var(--txt-dim);
+  font-size:0;
+  cursor:pointer;
+  transition:background .15s,color .15s;
+}
+.cntui > .navbar .seat:hover,
+.panel > .control > div:hover{background:#161f25;color:var(--txt);}
+/* the page the frame is on */
+.cntui > .navbar .seat.is-active{
+  background-color:var(--blue);
+  border-color:var(--blue);
+  color:#fff;
+}
+.cntui > .navbar .seat.is-active:hover{background-color:var(--blue);}
+/* main panel: four squares */
+.cntui > .navbar #nav_main{
+  background-image:
+    linear-gradient(currentColor 0 0),linear-gradient(currentColor 0 0),
+    linear-gradient(currentColor 0 0),linear-gradient(currentColor 0 0);
+  background-size:8px 8px;
+  background-position:12px 12px,26px 12px,12px 26px,26px 26px;
+  background-repeat:no-repeat;
+}
+/* matrix routing: a grid of lines with two crossings */
+.cntui > .navbar #nav_matrix{
+  background-image:
+    linear-gradient(currentColor 0 0),linear-gradient(currentColor 0 0),
+    linear-gradient(currentColor 0 0),linear-gradient(currentColor 0 0),
+    radial-gradient(circle,currentColor 0 2.2px,transparent 2.6px),
+    radial-gradient(circle,currentColor 0 2.2px,transparent 2.6px);
+  background-size:20px 1.5px,20px 1.5px,1.5px 20px,1.5px 20px,8px 8px,8px 8px;
+  background-position:12px 18px,12px 26px,18px 12px,26px 12px,14.5px 14.5px,22.5px 22.5px;
+  background-repeat:no-repeat;
+}
+/* settings: the gear */
+.cntui > .navbar #nav_settings::before{
+  content:"\2699";
+  font:23px/1 var(--sans);
+}
+/* reload: no page, a link to this one, under the page seats */
+.cntui > .navbar #nav_refresh{text-decoration:none;}
+.cntui > .navbar #nav_refresh::before{
+  content:"\21BB";
+  font:25px/1 var(--sans);
+}
+/* the settings page's close, at the page's top right corner: a press of
+   #nav_main. The bar draws it, shown only while the settings page is on.     */
+.cntui > .navbar > .pageclose{
+  position:fixed;
+  top:calc(var(--bar) + 18px);right:24px;
+  width:56px;height:56px;
+  box-sizing:border-box;
+  display:grid;
+  place-items:center;
+  border-radius:10px;
+  border:1px solid var(--line);
+  background:var(--card);
+  color:var(--txt-dim);
+  font-size:0;
+  cursor:pointer;
+  transition:background .15s,color .15s,border-color .15s;
+}
+.cntui > .navbar > .pageclose::before{
+  content:"\2715";
+  font:400 28px/1 var(--sans);
+}
+.cntui > .navbar > .pageclose:hover{background:#161f25;border-color:var(--txt-faint);color:var(--txt);}
+.cntui > .navbar > .pageclose.is-hidden{display:none;}
+/* the system info, drawn */
+.cntui > .navbar::after{
+  content:"i";
+  font:italic 19px/1 Georgia,serif;
+  cursor:default;
+}
+
+/* the main panel's two list controls (list sources, list outputs) sit at the
+   foot of the rail, small and dim: they re-read the lists, not navigate */
+.panel > .control{
+  position:fixed;
+  left:0;bottom:0;
+  width:var(--rail);
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  padding:0 0 18px;
+  z-index:20;
+}
+.panel > .control > label{display:none;}
+.panel > .control > div{
+  width:32px;height:32px;
+  border-radius:6px;
+}
+.panel > .control > div::before{
+  font:600 10px/1 var(--mono);
+  letter-spacing:.06em;
+}
+.panel > .control > .listsources::before{content:"SRC";}
+.panel > .control > .listoutputs::before{content:"OUT";}
+
+/* the req strip and the route refusal are the panel's own readouts and have
+   no place in the skin; of the fields, the unroute warning alone is drawn,
+   and only while a route waits behind it                                    */
+.panel > .request,
+.panel > .fields{display:none;}
+.panel > .fields:has(> .unroutewarning.is-on){display:contents;}
+.panel > .fields > :not(.unroutewarning){display:none;}
+
+/* ---------- the unroute warning -------------------------------------------- */
+/* A route that would unroute its source from other outputs waits behind this
+   warning (.unroutewarning.is-on): the page is dimmed under it and takes no
+   clicks, and the dialog in the middle of it names the outputs the source
+   would come off (.unrouted > li: .unroutedoutput, then why). Cancel drops
+   the route with the source and the window marked for it; Route anyway sends
+   it.                                                                        */
+.cntui .unroutewarning{
+  position:fixed;
+  inset:0;
+  z-index:400;                         /* over the rail, the bar and the veil */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+  background:rgba(0,0,0,.58);
+  -webkit-backdrop-filter:blur(3px) saturate(.6);
+          backdrop-filter:blur(3px) saturate(.6);
+  animation:unroutefade .18s ease;
+}
+.cntui .unroutewarning:not(.is-on){display:none;}
+.cntui .unroutedialog{
+  width:min(540px,100%);
+  box-sizing:border-box;
+  padding:24px 26px 22px;
+  background:var(--panel-2);
+  border:1px solid var(--line);
+  border-top:2px solid var(--amber);
+  border-radius:10px;
+  box-shadow:0 24px 60px rgba(0,0,0,.6);
+  animation:unroutein .24s cubic-bezier(.2,.8,.2,1);
+}
+.cntui .unrouteeyebrow{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:14px;
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--amber);
+}
+.cntui .unrouteeyebrow::before{
+  content:"!";
+  display:grid;
+  place-items:center;
+  width:20px;height:20px;
+  box-sizing:border-box;
+  border-radius:50%;
+  border:1px solid rgba(255,181,71,.55);
+  background:rgba(255,181,71,.12);
+  font:700 12px/1 var(--mono);
+  letter-spacing:0;
+}
+.cntui .unroutetitle{
+  margin-bottom:16px;
+  font-size:19px;
+  font-weight:600;
+  line-height:1.35;
+  color:var(--txt);
+}
+.cntui .unrouted{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin:0 0 22px;
+  padding:0;
+  list-style:none;
+}
+.cntui .unrouted > li{
+  padding:11px 14px;
+  background:var(--card);
+  border:1px solid var(--line-soft);
+  border-left:2px solid rgba(255,181,71,.6);
+  border-radius:8px;
+  font-size:13.5px;
+  line-height:1.5;
+  color:var(--txt-dim);
+}
+.cntui .unroutedoutput{font-weight:600;color:var(--txt);}
+.cntui .unrouteactions{
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+}
+.cntui .unrouteactions > button{
+  padding:11px 18px;
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:transparent;
+  font:600 12px/1 var(--mono);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--txt-dim);
+  cursor:pointer;
+  transition:background .15s ease,border-color .15s ease,color .15s ease;
+}
+.cntui .unrouteactions > button:hover{color:var(--txt);border-color:#2a3a42;}
+.cntui .unrouteactions > .unrouteconfirm{
+  background:var(--blue);
+  border-color:var(--blue);
+  color:#fff;
+}
+.cntui .unrouteactions > .unrouteconfirm:hover{background:#4a91ff;border-color:#4a91ff;}
+.cntui .unrouteactions > button:focus-visible{outline:2px solid #9cc6ff;outline-offset:2px;}
+@keyframes unroutefade{from{opacity:0;}}
+@keyframes unroutein{from{opacity:0;transform:translateY(8px) scale(.98);}}
+
+/* ---------- routing matrix ------------------------------------------------- */
+/* The matrix frame lands in the same .panel slot as the main panel; it is a
+   page of its own: an eyebrow, the table, and nothing of the grid above.
+   Its head (.mx-corner + .mx-outs) is the matrix's fields slot, drawn after
+   the rows, so it is lifted above them; a row is its source head (.mx-src:
+   .dot .mx-src-name .mx-res) beside its cells (.mx-cells), each a .cell
+   carrying a .node, is-on where the source feeds the output.                */
+.panel:has(> .mx){
+  display:block;
+  padding:15vh 34px 34px;
+  overflow:auto;
+  background:var(--panel-2);
+}
+/* the header, its leaves drawn by the top bar already, is the page's eyebrow;
+   the page's own copy of the rail is the frame's navigation bar             */
+.panel > .header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:24px;margin-bottom:6px;
+  font-family:var(--mono);
+  font-size:14px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--txt-dim);
+  line-height:21px;
+  margin-bottom:24px;
+}
+.panel > .header::before{content:"Routing matrix";}
+.panel > .header > div,
+.panel > .nav{display:none;}
+
+.panel > .mx{
+  display:flex;
+  flex-direction:column;
+  width:100%;max-width:1080px;
+  background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  overflow:hidden;
+  box-sizing:border-box;
+}
+.mx .listx2{
+  cursor:default;
+  padding:0;
+  background:transparent;
+  border:0;
+  border-radius:0;
+}
+.mx .listx2:hover{border-color:transparent;}
+
+/* the head row */
+.mx > .mx-head{
+  order:-1;
+  display:flex;
+  background:#0c1114;
+  border-bottom:1px solid var(--line-soft);
+}
+.mx .mx-corner{
+  flex:0 0 30%;
+  box-sizing:border-box;
+  text-align:left;padding:16px 20px;
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--txt-faint);font-weight:400;
+}
+.mx .mx-outs{flex:1 1 auto;min-width:0;display:flex;}
+.mx .mx-out{
+  flex:1 1 0;min-width:0;
+  box-sizing:border-box;
+  padding:16px 10px;
+  font-size:14.5px;font-weight:600;color:#dbe4e9;
+  text-align:center;
+  border-left:1px solid var(--line-soft);
+}
+.mx .mx-receivers{display:none;}
+
+/* the rows: the source head beside the cells */
+.mx > .mx-body > .listx0 > .listx1 > .listx2{
+  display:flex;
+  border-bottom:1px solid var(--line-soft);
+}
+.mx > .mx-body > .listx0 > .listx1 > .listx2:last-child{border-bottom:0;}
+.mx > .mx-body > .listx0 > .listx1 > .listx2:hover .mx-cells{background:rgba(47,128,255,.045);}
+.mx .mx-src{
+  order:-1;
+  flex:0 0 30%;
+  box-sizing:border-box;
+  text-align:left;padding:15px 20px;font-weight:500;
+  display:flex;align-items:baseline;gap:10px;
+}
+.mx .mx-src > .dot{align-self:center;}
+.mx .mx-src-name{font-size:15px;color:var(--txt);}
+.mx .mx-res{font-family:var(--mono);font-size:12px;color:var(--txt-faint);}
+.mx .listx2:has(> .mx-src > .dot.grey) .mx-src-name{color:var(--txt-faint);}
+.mx .mx-cells{flex:1 1 auto;min-width:0;}
+.mx .mx-cells .listx1{display:flex;}
+.mx .mx-cells .listx2{
+  flex:1 1 0;min-width:0;
+  border-left:1px solid var(--line-soft);
+  text-align:center;
+}
+
+/* the crosspoints */
+.mx .cell{
+  width:100%;height:56px;background:transparent;border:0;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-sizing:border-box;
+}
+.mx .cell .node{
+  width:20px;height:20px;border-radius:50%;
+  border:1.5px solid #2b3a42;background:transparent;
+  box-sizing:border-box;
+  transition:background .15s,border-color .15s,box-shadow .15s,transform .12s;
+}
+.mx .cell:hover .node{border-color:var(--blue);transform:scale(1.12);}
+.mx .cell.is-on .node{
+  background:var(--blue);border-color:var(--blue);
+  box-shadow:0 0 0 5px rgba(47,128,255,.16);
+}
+/* a dead source's cells: no route to press for */
+.mx .listx2:has(> .mx-src > .dot.grey) .cell{cursor:not-allowed;}
+.mx .listx2:has(> .mx-src > .dot.grey) .cell .node{border-style:dashed;border-color:#232f35;}
+.mx .listx2:has(> .mx-src > .dot.grey) .cell:hover .node{transform:none;border-color:#232f35;}
+/* the cell carries the two device ids and the flag, which the skin does not show */
+.mx .cellsource,
+.mx .celloutput,
+.mx .cellrouted{display:none;}
+
+/* ---------- settings -------------------------------------------------------- */
+/* The settings frame lands in the same .panel slot: the device list
+   (.devices: .sourceentries then .outputentries, each a list of row cards
+   .dot .devname .devid .mark .hit) down the left, the panel of the device
+   configured (.config, the console's blue frame and rows) beside it, and the
+   req strip (.request) hidden by the rule above.                            */
+.panel:has(> .devices){
+  grid-template-columns:var(--sources) minmax(0,1fr);
+  grid-template-rows:minmax(0,1fr);
+  grid-template-areas:"devices config";
+}
+.panel > .devices{
+  grid-area:devices;
+  min-height:0;
+  overflow:auto;
+  padding:20px 22px 24px 24px;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+}
+.devices > .sourceentries::before,
+.devices > .outputentries::before{
+  display:block;
+  margin-bottom:12px;
+  font-family:var(--mono);
+  font-size:12.5px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--txt-faint);
+}
+.devices > .sourceentries::before{content:"Sources";}
+.devices > .outputentries::before{content:"Outputs";}
+.devices .listx1{display:flex;flex-direction:column;gap:8px;}
+.devices .listx2{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:13px 16px;
+}
+.devices .devname{
+  flex:1 1 auto;
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size:15px;
+  font-weight:500;
+  color:var(--txt);
+}
+.devices .devid{
+  flex:0 0 auto;
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.04em;
+  color:var(--txt-faint);
+}
+/* the output that is the preview box carries a green tag (.previewtag) under
+   its name */
+.devices > .outputentries .listx2{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  grid-template-areas:"dot name id";
+  gap:0 12px;
+}
+.devices > .outputentries .listx2:has(> .previewtag:not(.is-hidden)){
+  grid-template-areas:"dot name id" "dot tag id";
+}
+.devices > .outputentries .listx2 > .dot{grid-area:dot;}
+.devices > .outputentries .devname{grid-area:name;}
+.devices > .outputentries .devid{grid-area:id;}
+.devices .previewtag{
+  grid-area:tag;
+  justify-self:start;
+  margin-top:5px;
+  padding:1px 7px;
+  border:1px solid rgba(0,217,134,.45);
+  border-radius:4px;
+  background:rgba(0,217,134,.12);
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  white-space:nowrap;
+  color:var(--green);
+}
+.devices .previewtag.is-hidden{display:none;}
+/* a device flashing its LEDs blinks its dot */
+.cntui .dot.is-locating{animation:locate 1s steps(2,jump-none) infinite;}
+@keyframes locate{to{opacity:.25;}}
+
+.panel > .config{
+  grid-area:config;
+  min-height:0;
+  overflow:auto;
+  padding:20px calc(var(--console-gap) + 24px) calc(var(--console-gap) + 24px) 0;
+  box-sizing:border-box;
+}
+.config > .deviceconfiguration{
+  max-width:560px;
+  box-sizing:border-box;
+  padding:18px 20px 20px;
+  background:var(--panel);
+  border:1px solid var(--blue);
+  border-radius:10px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.config > .deviceconfiguration > .controlshead{margin-bottom:2px;}
+/* no device selected: the frame says what to do instead of an empty box */
+.config > .deviceconfiguration:not(:has(.controlshead)){
+  border:1px dashed var(--line);
+  padding:42px 20px;
+  text-align:center;
+}
+.config > .deviceconfiguration:not(:has(.controlshead))::before{
+  content:"Select a source or an output to configure it";
+  font-family:var(--mono);
+  font-size:12.5px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--txt-faint);
+}
+.config .controlstarget{
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+/* the name: typed into, then applied */
+.config .namerow{gap:12px;}
+.config input.nameedit{
+  flex:1 1 auto;
+  width:auto;
+  min-width:0;
+  padding:6px 9px;
+  background:#0a1013;
+  border:1px solid var(--line);
+  border-radius:5px;
+  font-family:var(--mono);
+  font-size:13.5px;
+  color:var(--txt);
+  outline:0;
+}
+.config input.nameedit:focus{border-color:var(--blue);box-shadow:none;}
+.config .apply{
+  flex:0 0 auto;
+  padding:6px 14px;
+  border-radius:5px;
+  background:var(--blue);
+  color:#fff;
+  font-family:var(--mono);
+  font-size:12.5px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:background .15s;
+}
+.config .apply:hover{background:var(--blue-dim);}
+/* what the service refused, under the name; nothing refused, nothing drawn */
+.config .refusal{
+  padding:8px 12px;
+  border-radius:6px;
+  background:rgba(255,92,92,.1);
+  border:1px solid rgba(255,92,92,.35);
+  color:#ff8a8a;
+  font-family:var(--mono);
+  font-size:12.5px;
+}
+.config .refusal:empty{display:none;}
+/* a pick drawn as a segment row: every segment presses */
+.cntui .seg.is-control .segon,
+.cntui .seg.is-control .segoff{cursor:pointer;}
+.cntui .seg.is-control .segoff:hover{color:var(--txt);box-shadow:inset 0 0 0 1px var(--blue);}
+/* a segment the panel carries but does not show - the composing tabs' close */
+.cntui .seg.is-hidden{display:none;}
+/* the rows a switch opens: laid out as the panel's own rows, gone while it is off */
+.cntui .scaling{display:contents;}
+.cntui .scaling.is-hidden{display:none;}
+/* the HDR row in SYNC: Support in a blue border where the routed source takes
+   it, otherwise nothing beside the label */
+.cntui .row.is-support{border-color:var(--blue);}
+/* the panel under its head: laid out as the panel's own rows, gone while no
+   output is selected */
+.cntui .controlsbody{display:contents;}
+.cntui .controlsbody.is-hidden{display:none;}
+/* a list pick */
+.cntui select.dropdown{
+  font-family:var(--mono);
+  font-size:13.5px;
+  letter-spacing:.05em;
+  color:#fff;
+  background:#0f1a24;
+  border:1px solid var(--line-soft);
+  border-radius:5px;
+  padding:5px 8px;
+  cursor:pointer;
+}
+.cntui select.dropdown:hover,
+.cntui select.dropdown:focus{border-color:var(--blue);outline:none;}
+.config .rowvalue{color:var(--txt-dim);}
+/* the output's radio that picks it as the preview box (.previewpick, .is-on
+   where it is the one picked), written Pick or Picked beside its circle */
+.config .previewpick{
+  flex:0 0 auto;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--mono);
+  font-size:12.5px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--txt-dim);
+  cursor:pointer;
+}
+.config .previewpick::before{
+  content:"";
+  width:16px;
+  height:16px;
+  box-sizing:border-box;
+  border:1.5px solid var(--txt-faint);
+  border-radius:50%;
+}
+.config .previewpick:hover::before{border-color:var(--blue);}
+.config .previewpick.is-on{color:var(--green);}
+.config .previewpick.is-on::before{
+  border-color:var(--green);
+  background:radial-gradient(circle,var(--green) 0 4px,transparent 4.5px);
+}
+/* a switch or pick the output cannot be moved by reads as a reading */
+.cntui .switch.is-locked,
+.cntui .seg.is-locked{opacity:.4;cursor:not-allowed;}
+
+/* ---------- accessibility + responsive ------------------------------------- */
+
+.cntui :focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+
+@media (max-width:1400px){
+  :root{--sources:340px;}
+  .cntui{
+    grid-template-columns:
+      var(--sources) minmax(0,1fr) calc(320px + var(--console-gap) + 24px);
+  }
+}
+
+@media (max-width:1080px){
+  .cntui{
+    grid-template-columns:minmax(0,1fr);
+    grid-template-rows:auto;
+    grid-template-areas:
+      "sources"
+      "outputs"
+      "preview"
+      "controls";
+    height:auto;
+    overflow:auto;
+  }
+  .panel > .sources{border-right:0;border-bottom:1px solid var(--line);padding:0 0 20px;}
+  .panel > .preview{
+    margin-right:0;
+    border-right:1px solid var(--blue);
+    border-radius:10px 10px 0 0;
+  }
+  .panel > .controls{
+    border-left:1px solid var(--blue);
+    border-top:0;
+    border-radius:0 0 10px 10px;
+  }
+  .panel > .request{justify-content:flex-start;}
+  .cntui .LayoutDescription{aspect-ratio:16 / 9;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .cntui *{transition:none !important;}
+  .cntui .unroutewarning,
+  .cntui .unroutedialog{animation:none;}
+  .cntui .veil::before,
+  .cntui .veil::after{display:none;}
+  .cntui .veilcaption::before{animation-duration:2.4s;}
+  .cntui .LayoutDescription .Window[data-routing],
+  .cntui .listx2[data-routing] .cardhead > .dot{animation:none;}
+  .cntui .LayoutDescription .Window[data-routing]::after,
+  .cntui .listx2[data-routing] .thumb::after{animation:none;background-size:100% 100%;}
+}
+
+</style>  
+<!-- <img id="previewimg" class="previewimg" src=""> -->
+<!-- <div id="previewframe"></div> -->
+
+
+<main id="main"></main>
+<a id="brand_reload" href="" aria-label="Reload"></a>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+  
+  
+</head>
+
+<body>
+  <script src="./bundle.js"></script>
+  <div id="tagtag">  </div>
+</body>
+</html> 

@@ -1,16 +1,11 @@
 echo "installing v6 ....."
-mkdir -p /home/vynet/steam-rtsp/client/imgs && \
-wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/fsn.png > /home/vynet/steam-rtsp/client/imgs/fsn.png
-wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/vynet3.png > /home/vynet/steam-rtsp/client/imgs/vynet3.png
-wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/bulma.min.css > /home/vynet/steam-rtsp/client/bulma.min.css
-wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/vynetv14.html > /home/vynet/steam-rtsp/client/vynet.html
-wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/layoutv14.css > /home/vynet/steam-rtsp/client/layout.css
-wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/videocontrolv14.css > /home/vynet/steam-rtsp/client/videocontrol.css
-wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/navv14.css > /home/vynet/steam-rtsp/client/nav.css
-wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/configv14.json > /home/vynet/steam-rtsp/client/config.json
-wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/bundlev14.js > /home/vynet/steam-rtsp/client/bundle.js
-wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/master/servev14.js > /home/vynet/steam-rtsp/server/serve.js
-touch /home/vynet/steam-rtsp/client/init.json
-touch /home/vynet/steam-rtsp/client/reset.json
+mkdir -p /home/vynet/vynetserver/ && mkdir -p /home/vynet/vynetserver/bin  && mkdir -p /home/vynet/vynetserver/config  && mkdir -p /home/vynet/vynetserver/static
+wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/release6/vynetserver/bin/vynetserver > /home/vynet/vynetserver/vynetserver
+wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/release6/vynetserver/bin/rtspgpu > /home/vynet/vynetserver/bin/rtspgpu
+wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/release6/vynetserver/config/layoutsconfig.json > /home/vynet/vynetserver/config/layoutsconfig.json
+wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/release6/vynetserver/static/bundle.js > /home/vynet/vynetserver/static/bundle.js
+wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/release6/vynetserver/static/target.html > /home/vynet/vynetserver/static/target.html
+chmod +x /home/vynet/vynetserver/bin/vynetserver
+chmod +x /home/vynet/vynetserver/bin/rtspgpu
 echo "done"
 
