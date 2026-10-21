@@ -49,7 +49,8 @@
   --bar:82px;
   --rail:80px;                      /* icon rail: the .control strip, fixed left */
   --brand:116px;                    /* left inset of the title: logo + its gaps  */
-  --sources:430px;                  /* the left column                           */
+  --sources:567px;                  /* the left column: two cards the outputs'
+                                       size (2 x 251 + 16 gap + 48 pad + 1 rule) */
   /* the console sits off the stage's bottom-right corner by a tenth of it */
   --console-gap:calc((100vw - var(--rail) - var(--sources) - 48px) * .1);
 
@@ -283,8 +284,8 @@ body{
   gap:16px;
 }
 
-.panel > .sources .listx2{height:auto;}
-.panel > .sources .thumb{height:86px;}
+.panel > .sources .listx2{height:auto;padding:12px;}
+.panel > .sources .thumb{aspect-ratio:225 / 118;}   /* an output's thumb */
 
 /* ---------- the card, shared by a source tile and a display place ---------- */
 /* Both render: .cardhead (.cardname + .dot) . .thumb (.feed + .cap) .
@@ -2101,7 +2102,9 @@ body{
 .cntui :focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
 
 @media (max-width:1400px){
-  :root{--sources:340px;}
+  /* one card a row, still the outputs' size: 251 + 48 pad + 1 rule */
+  :root{--sources:300px;}
+  .panel > .sources .listx1{grid-template-columns:minmax(0,1fr);}
   .cntui{
     grid-template-columns:
       var(--sources) minmax(0,1fr) calc(320px + var(--console-gap) + 24px);
