@@ -92341,7 +92341,7 @@ var holdingPreview = function (j) {
             if (Data_Boolean.otherwise) {
                 return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Exhibit_VideoControl_VideoRtcAPI.unfreezingSourcesBut(Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_updateWaiting"](Data_Lens_Internal_Forget.strongForget)))(a));
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 705, column 5 - line 707, column 72): " + [  ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 708, column 5 - line 710, column 72): " + [  ]);
         })();
         return guarded$prime;
     };
@@ -92364,33 +92364,33 @@ var answerMainPanel = function (req) {
     };
 };
 var _unrouteWarning = function (dictStrong) {
-    var $708 = Data_Lens_Lens["lens'"](function (v) {
+    var $715 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $709 = Data_Lens_Record.prop({
+    var $716 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "unrouteWarning";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($710) {
-        return $708($709($710));
+    return function ($717) {
+        return $715($716($717));
     };
 };
 var _systemPanel = function (dictStrong) {
-    var $711 = Data_Lens_Lens["lens'"](function (v) {
+    var $718 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $712 = Data_Lens_Record.prop({
+    var $719 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "systemPanel";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($713) {
-        return $711($712($713));
+    return function ($720) {
+        return $718($719($720));
     };
 };
 var catalogueLayouts = function (a) {
@@ -92426,28 +92426,28 @@ var layLayoutNames = function (j) {
     };
 };
 var _sourceGrid = function (dictStrong) {
-    var $714 = Data_Lens_Lens["lens'"](function (v) {
+    var $721 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $715 = Data_Lens_Record.prop({
+    var $722 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "sourceGrid";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($716) {
-        return $714($715($716));
+    return function ($723) {
+        return $721($722($723));
     };
 };
 var gridSources = function (a) {
     return Data_Functor.map(Data_List_Types.functorList)(function (c) {
         return Data_Lens_Getter.viewOn(c)(Exhibit_VideoControl_ComponentInputSource["_source"](Data_Lens_Internal_Forget.strongForget));
     })(Data_Lens_Getter.viewOn(a)((function () {
-        var $717 = _sourceGrid(Data_Lens_Internal_Forget.strongForget);
-        var $718 = Exhibit_VideoControl_ComponentInputSources["_sources"](Data_Lens_Internal_Forget.strongForget);
-        return function ($719) {
-            return $717($718($719));
+        var $724 = _sourceGrid(Data_Lens_Internal_Forget.strongForget);
+        var $725 = Exhibit_VideoControl_ComponentInputSources["_sources"](Data_Lens_Internal_Forget.strongForget);
+        return function ($726) {
+            return $724($725($726));
         };
     })()));
 };
@@ -92460,61 +92460,61 @@ var shownSource = function (a) {
     return Exhibit_VideoControl_ComponentInputSources.selectedSource(Data_Lens_Getter.viewOn(a)(_sourceGrid(Data_Lens_Internal_Forget.strongForget)));
 };
 var _routeRefusal = function (dictStrong) {
-    var $720 = Data_Lens_Lens["lens'"](function (v) {
+    var $727 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $721 = Data_Lens_Record.prop({
+    var $728 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "routeRefusal";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($722) {
-        return $720($721($722));
+    return function ($729) {
+        return $727($728($729));
     };
 };
 var _reqPanel = function (dictStrong) {
-    var $723 = Data_Lens_Lens["lens'"](function (v) {
+    var $730 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $724 = Data_Lens_Record.prop({
+    var $731 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "reqPanel";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($725) {
-        return $723($724($725));
+    return function ($732) {
+        return $730($731($732));
     };
 };
 var previewUpdateQueued = function (a) {
     return Data_Foldable.any(Data_List_Types.foldableList)(Data_HeytingAlgebra.heytingAlgebraBoolean)(function (r) {
         return r.value0.value0 === "VerifyPreview";
     })(Data_Lens_Getter.viewOn(a)((function () {
-        var $726 = _reqPanel(Data_Lens_Internal_Forget.strongForget);
-        var $727 = Unify_ReqPanel2["_affrequest"](Data_Lens_Internal_Forget.strongForget);
-        return function ($728) {
-            return $726($727($728));
+        var $733 = _reqPanel(Data_Lens_Internal_Forget.strongForget);
+        var $734 = Unify_ReqPanel2["_affrequest"](Data_Lens_Internal_Forget.strongForget);
+        return function ($735) {
+            return $733($734($735));
         };
     })()));
 };
 var queueDraining = function (a) {
     return !Data_List["null"](Data_Lens_Getter.viewOn(a)((function () {
-        var $729 = _reqPanel(Data_Lens_Internal_Forget.strongForget);
-        var $730 = Unify_ReqPanel2["_affrequest"](Data_Lens_Internal_Forget.strongForget);
-        return function ($731) {
-            return $729($730($731));
+        var $736 = _reqPanel(Data_Lens_Internal_Forget.strongForget);
+        var $737 = Unify_ReqPanel2["_affrequest"](Data_Lens_Internal_Forget.strongForget);
+        return function ($738) {
+            return $736($737($738));
         };
     })()));
 };
 var queuedMainPanel = function (a) {
     var v = Data_Lens_Getter.viewOn(a)((function () {
-        var $732 = _reqPanel(Data_Lens_Internal_Forget.strongForget);
-        var $733 = Unify_ReqPanel2["_affrequest"](Data_Lens_Internal_Forget.strongForget);
-        return function ($734) {
-            return $732($733($734));
+        var $739 = _reqPanel(Data_Lens_Internal_Forget.strongForget);
+        var $740 = Unify_ReqPanel2["_affrequest"](Data_Lens_Internal_Forget.strongForget);
+        return function ($741) {
+            return $739($740($741));
         };
     })());
     if (v instanceof Data_List_Types.Nil) {
@@ -92563,10 +92563,10 @@ var requestOutputs = function (a) {
 var abortPlan = function (why) {
     return function (a) {
         return requestOutputs(Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(why)))(Data_Lens_Setter.set((function () {
-            var $735 = _reqPanel(Data_Profunctor_Strong.strongFn);
-            var $736 = Unify_ReqPanel2["_affrequest"](Data_Profunctor_Strong.strongFn);
-            return function ($737) {
-                return $735($736($737));
+            var $742 = _reqPanel(Data_Profunctor_Strong.strongFn);
+            var $743 = Unify_ReqPanel2["_affrequest"](Data_Profunctor_Strong.strongFn);
+            return function ($744) {
+                return $742($743($744));
             };
         })())(Data_List_Types.Nil.value)));
     };
@@ -92598,10 +92598,10 @@ var settleCatalogue = function (a) {
 var withdrawMainPanel = function (req) {
     return function (a) {
         return Unify_Types.flipuse(a)(Data_Lens_Setter.over((function () {
-            var $738 = _reqPanel(Data_Profunctor_Strong.strongFn);
-            var $739 = Unify_ReqPanel2["_affrequest"](Data_Profunctor_Strong.strongFn);
-            return function ($740) {
-                return $738($739($740));
+            var $745 = _reqPanel(Data_Profunctor_Strong.strongFn);
+            var $746 = Unify_ReqPanel2["_affrequest"](Data_Profunctor_Strong.strongFn);
+            return function ($747) {
+                return $745($746($747));
             };
         })())(function (q) {
             if (q instanceof Data_List_Types.Cons && Data_Eq.eq(ExploreSignal.eqAffRequest)(q.value0)(req)) {
@@ -92612,81 +92612,81 @@ var withdrawMainPanel = function (req) {
     };
 };
 var _previewStale = function (dictStrong) {
-    var $741 = Data_Lens_Lens["lens'"](function (v) {
+    var $748 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $742 = Data_Lens_Record.prop({
+    var $749 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewStale";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($743) {
-        return $741($742($743));
+    return function ($750) {
+        return $748($749($750));
     };
 };
 var movingRig = function (a) {
     return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_previewStale(Data_Profunctor_Strong.strongFn))(true)));
 };
 var _previewSkipped = function (dictStrong) {
-    var $744 = Data_Lens_Lens["lens'"](function (v) {
+    var $751 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $745 = Data_Lens_Record.prop({
+    var $752 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewSkipped";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($746) {
-        return $744($745($746));
+    return function ($753) {
+        return $751($752($753));
     };
 };
 var _previewPlanned = function (dictStrong) {
-    var $747 = Data_Lens_Lens["lens'"](function (v) {
+    var $754 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $748 = Data_Lens_Record.prop({
+    var $755 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewPlanned";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($749) {
-        return $747($748($749));
+    return function ($756) {
+        return $754($755($756));
     };
 };
 var _previewPending = function (dictStrong) {
-    var $750 = Data_Lens_Lens["lens'"](function (v) {
+    var $757 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $751 = Data_Lens_Record.prop({
+    var $758 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewPending";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($752) {
-        return $750($751($752));
+    return function ($759) {
+        return $757($758($759));
     };
 };
 var _previewPanel = function (dictStrong) {
-    var $753 = Data_Lens_Lens["lens'"](function (v) {
+    var $760 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $754 = Data_Lens_Record.prop({
+    var $761 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewPanel";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($755) {
-        return $753($754($755));
+    return function ($762) {
+        return $760($761($762));
     };
 };
 var clearShownWindow = function (a) {
@@ -92696,12 +92696,12 @@ var clearShownWindow = function (a) {
 };
 var clearRouteMarks = function (a) {
     return Control_Bind.bind(Control_Monad_Writer_Trans.bindWriterT(Data_Maybe_First.semigroupFirst)(Data_Identity.bindIdentity))(Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.set((function () {
-        var $756 = _sourceGrid(Data_Profunctor_Strong.strongFn);
-        var $757 = Exhibit_VideoControl_ComponentInputSources["_sources"](Data_Profunctor_Strong.strongFn);
-        var $758 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
-        var $759 = Exhibit_VideoControl_ComponentInputSource["_selected"](Data_Profunctor_Strong.strongFn);
-        return function ($760) {
-            return $756($757($758($759($760))));
+        var $763 = _sourceGrid(Data_Profunctor_Strong.strongFn);
+        var $764 = Exhibit_VideoControl_ComponentInputSources["_sources"](Data_Profunctor_Strong.strongFn);
+        var $765 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
+        var $766 = Exhibit_VideoControl_ComponentInputSource["_selected"](Data_Profunctor_Strong.strongFn);
+        return function ($767) {
+            return $763($764($765($766($767))));
         };
     })())(false))))(function (b) {
         return clearShownWindow(b);
@@ -92742,18 +92742,18 @@ var standingIn = function (d) {
     };
 };
 var _previewCut = function (dictStrong) {
-    var $761 = Data_Lens_Lens["lens'"](function (v) {
+    var $768 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $762 = Data_Lens_Record.prop({
+    var $769 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewCut";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($763) {
-        return $761($762($763));
+    return function ($770) {
+        return $768($769($770));
     };
 };
 var layPreviewUpdate = function (j) {
@@ -92765,28 +92765,28 @@ var layPreviewUpdate = function (j) {
     };
 };
 var _outputRow = function (dictStrong) {
-    var $764 = Data_Lens_Lens["lens'"](function (v) {
+    var $771 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $765 = Data_Lens_Record.prop({
+    var $772 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "outputRow";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($766) {
-        return $764($765($766));
+    return function ($773) {
+        return $771($772($773));
     };
 };
 var rowOutputs = function (a) {
     return Data_Functor.map(Data_List_Types.functorList)(function (c) {
         return Data_Lens_Getter.viewOn(c)(Exhibit_VideoControl_ComponentOutput["_output"](Data_Lens_Internal_Forget.strongForget));
     })(Data_Lens_Getter.viewOn(a)((function () {
-        var $767 = _outputRow(Data_Lens_Internal_Forget.strongForget);
-        var $768 = Exhibit_VideoControl_ComponentOutputs["_outputs"](Data_Lens_Internal_Forget.strongForget);
-        return function ($769) {
-            return $767($768($769));
+        var $774 = _outputRow(Data_Lens_Internal_Forget.strongForget);
+        var $775 = Exhibit_VideoControl_ComponentOutputs["_outputs"](Data_Lens_Internal_Forget.strongForget);
+        return function ($776) {
+            return $774($775($776));
         };
     })()));
 };
@@ -92806,9 +92806,9 @@ var layPreviewLayout = function (j) {
                     return Exhibit_VideoControl_ComponentOutputs.carryingNamedLayout(Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))(v1.value0)(c);
                 })));
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 848, column 7 - line 850, column 93): " + [ v1.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 852, column 7 - line 854, column 93): " + [ v1.constructor.name ]);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 845, column 3 - line 850, column 93): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 849, column 3 - line 854, column 93): " + [ v.constructor.name ]);
     };
 };
 var layAnsweredBoxLayout = function (j) {
@@ -92820,7 +92820,7 @@ var layAnsweredBoxLayout = function (j) {
         if (v instanceof Data_Maybe.Just) {
             return layPreviewLayout(Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_answeredBoxLayout"](Data_Lens_Internal_Forget.strongForget)))(a);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 711, column 3 - line 713, column 59): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 714, column 3 - line 716, column 59): " + [ v.constructor.name ]);
     };
 };
 var previewComposition = function (a) {
@@ -92852,29 +92852,35 @@ var requestPreviewUpdate = function (force) {
     };
 };
 var fillingPreview = function (a) {
-    if (!Data_Lens_Getter.viewOn(a)(_previewPending(Data_Lens_Internal_Forget.strongForget)) || Data_List["null"](rowOutputs(a))) {
+    if (!Data_Lens_Getter.viewOn(a)(_previewPending(Data_Lens_Internal_Forget.strongForget)) || (!Data_Lens_Getter.viewOn(a)((function () {
+        var $777 = _reqPanel(Data_Lens_Internal_Forget.strongForget);
+        var $778 = Unify_ReqPanel2["_affponged"](Data_Lens_Internal_Forget.strongForget);
+        return function ($779) {
+            return $777($778($779));
+        };
+    })()) || Data_Maybe.isNothing(Exhibit_VideoControl_Interactions.previewBoxOf(rowOutputs(a))))) {
         return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
     };
     if (Data_Boolean.otherwise) {
         return requestPreviewUpdate(true)(Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_previewPending(Data_Profunctor_Strong.strongFn))(false)))(Data_Lens_Setter.set(_previewStale(Data_Profunctor_Strong.strongFn))(false)));
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 660, column 1 - line 660, column 99): " + [ a.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 662, column 1 - line 662, column 99): " + [ a.constructor.name ]);
 };
 var refillingPreview = function (a) {
-    if (!Data_Lens_Getter.viewOn(a)(_previewStale(Data_Lens_Internal_Forget.strongForget)) || (queueDraining(a) || Data_List["null"](rowOutputs(a)))) {
+    if (!Data_Lens_Getter.viewOn(a)(_previewStale(Data_Lens_Internal_Forget.strongForget)) || (queueDraining(a) || (Data_List["null"](rowOutputs(a)) || Data_Lens_Getter.viewOn(a)(_previewPending(Data_Lens_Internal_Forget.strongForget))))) {
         return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
     };
     if (Data_Boolean.otherwise) {
         return requestPreviewUpdate(false)(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_previewStale(Data_Profunctor_Strong.strongFn))(false)));
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 715, column 1 - line 715, column 101): " + [ a.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 719, column 1 - line 719, column 101): " + [ a.constructor.name ]);
 };
 var rowPlaces = function (a) {
     return Data_Lens_Getter.viewOn(a)((function () {
-        var $770 = _outputRow(Data_Lens_Internal_Forget.strongForget);
-        var $771 = Exhibit_VideoControl_ComponentOutputs["_outputs"](Data_Lens_Internal_Forget.strongForget);
-        return function ($772) {
-            return $770($771($772));
+        var $780 = _outputRow(Data_Lens_Internal_Forget.strongForget);
+        var $781 = Exhibit_VideoControl_ComponentOutputs["_outputs"](Data_Lens_Internal_Forget.strongForget);
+        return function ($782) {
+            return $780($781($782));
         };
     })());
 };
@@ -92882,10 +92888,10 @@ var shownFormat = function (a) {
     return Control_Bind.bind(Data_Maybe.bindMaybe)(Data_Foldable.find(Data_List_Types.foldableList)(function (c) {
         return Data_Lens_Getter.viewOn(c)(Exhibit_VideoControl_ComponentOutput["_selected"](Data_Lens_Internal_Forget.strongForget));
     })(Data_Lens_Getter.viewOn(a)((function () {
-        var $773 = _outputRow(Data_Lens_Internal_Forget.strongForget);
-        var $774 = Exhibit_VideoControl_ComponentOutputs["_outputs"](Data_Lens_Internal_Forget.strongForget);
-        return function ($775) {
-            return $773($774($775));
+        var $783 = _outputRow(Data_Lens_Internal_Forget.strongForget);
+        var $784 = Exhibit_VideoControl_ComponentOutputs["_outputs"](Data_Lens_Internal_Forget.strongForget);
+        return function ($785) {
+            return $783($784($785));
         };
     })())))(function (c) {
         return Exhibit_VideoControl_ComponentOutput.knownFormatOf(c);
@@ -92899,7 +92905,7 @@ var fastFormat = function (d) {
         if (Data_Boolean.otherwise) {
             return shownFormat(a);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 747, column 1 - line 747, column 81): " + [ d.constructor.name, a.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 751, column 1 - line 751, column 81): " + [ d.constructor.name, a.constructor.name ]);
     };
 };
 var shownOutput = function (a) {
@@ -92921,9 +92927,9 @@ var layShownLayout = function (j) {
                     return Exhibit_VideoControl_ComponentOutputs.carryingLayout(v1.value0)(c);
                 })));
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 839, column 7 - line 841, column 69): " + [ v1.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 843, column 7 - line 845, column 69): " + [ v1.constructor.name ]);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 836, column 3 - line 841, column 69): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 840, column 3 - line 845, column 69): " + [ v.constructor.name ]);
     };
 };
 var layAnsweredComposition = function (j) {
@@ -93039,18 +93045,18 @@ var requestViewMode = function (a) {
     return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
 };
 var _dividersPending = function (dictStrong) {
-    var $776 = Data_Lens_Lens["lens'"](function (v) {
+    var $786 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $777 = Data_Lens_Record.prop({
+    var $787 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "dividersPending";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($778) {
-        return $776($777($778));
+    return function ($788) {
+        return $786($787($788));
     };
 };
 var clearDividers = function (a) {
@@ -93071,18 +93077,18 @@ var settleStart = function (a) {
     return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
 };
 var _controlsPanel = function (dictStrong) {
-    var $779 = Data_Lens_Lens["lens'"](function (v) {
+    var $789 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $780 = Data_Lens_Record.prop({
+    var $790 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "controlsPanel";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($781) {
-        return $779($780($781));
+    return function ($791) {
+        return $789($790($791));
     };
 };
 var namingSwitched = function (u) {
@@ -93188,14 +93194,14 @@ var layAnsweredPreview = function (j) {
                     });
                 });
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 680, column 7 - line 686, column 26): " + [ v.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 683, column 7 - line 689, column 26): " + [ v.constructor.name ]);
         };
         if (Data_Boolean.otherwise) {
             return Control_Bind.bind(Control_Monad_Writer_Trans.bindWriterT(Data_Maybe_First.semigroupFirst)(Data_Identity.bindIdentity))(layAnsweredBoxLayout(j)(a))(function (b) {
                 return requestPreviewLayout(b);
             });
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 674, column 1 - line 674, column 111): " + [ j.constructor.name, a.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 677, column 1 - line 677, column 111): " + [ j.constructor.name, a.constructor.name ]);
     };
 };
 var layAnsweredRig = function (j) {
@@ -93335,7 +93341,7 @@ var layComposition = function (j) {
             if (Data_Boolean.otherwise) {
                 return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_compositionReason"](Data_Lens_Internal_Forget.strongForget)))));
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 816, column 5 - line 826, column 74): " + [  ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 820, column 5 - line 830, column 74): " + [  ]);
         })();
         return guarded$prime;
     };
@@ -93415,7 +93421,7 @@ var layLatency = function (j) {
             if (Data_Boolean.otherwise) {
                 return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_latencyReason"](Data_Lens_Internal_Forget.strongForget)))));
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 756, column 5 - line 764, column 70): " + [  ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 760, column 5 - line 768, column 70): " + [  ]);
         })();
         return guarded$prime;
     };
@@ -93470,7 +93476,7 @@ var layScaling = function (j) {
             if (Data_Boolean.otherwise) {
                 return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_scalingReason"](Data_Lens_Internal_Forget.strongForget)))));
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 792, column 5 - line 800, column 70): " + [  ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 796, column 5 - line 804, column 70): " + [  ]);
         })();
         return guarded$prime;
     };
@@ -93519,7 +93525,7 @@ var scalePick = function (d) {
         if (v instanceof Data_Maybe.Nothing) {
             return fastFormat(d)(a);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 784, column 3 - line 786, column 30): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 788, column 3 - line 790, column 30): " + [ v.constructor.name ]);
     };
 };
 var scalingFormat = function (d) {
@@ -93537,9 +93543,9 @@ var scalingFormat = function (d) {
                 if (v1 instanceof Data_Maybe.Nothing) {
                     return shownFormat(a);
                 };
-                throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 772, column 11 - line 774, column 37): " + [ v1.constructor.name ]);
+                throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 776, column 11 - line 778, column 37): " + [ v1.constructor.name ]);
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 769, column 7 - line 774, column 37): " + [ v.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 773, column 7 - line 778, column 37): " + [ v.constructor.name ]);
         })());
     };
 };
@@ -93650,7 +93656,7 @@ var requestSetLayoutNamed = function (n) {
             if (v1 instanceof Data_Maybe.Nothing) {
                 return requestMainPanel(Exhibit_VideoControl_Interactions.describeLayout(n))(a);
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 731, column 7 - line 733, column 57): " + [ v1.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 735, column 7 - line 737, column 57): " + [ v1.constructor.name ]);
         };
         return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
     };
@@ -93824,6 +93830,9 @@ var marshalComponentMainPanel = function (v) {
                 return startRtc(b);
             });
         };
+        if (v instanceof ComponentMainPanelReqPanelSignal && (v.value0 instanceof Unify_ReqPanel2.ReplSignal && v.value0.value0.value0.value0.value0 === "Ponged")) {
+            return fillingPreview(a);
+        };
         var v1 = function (v2) {
             if (v instanceof ComponentMainPanelReqPanelSignal && v.value0 instanceof Unify_ReqPanel2.ReplSignal) {
                 if (Data_Eq.eq(ExploreSignal.eqAffRequest)(v.value0.value0.value0)(Exhibit_VideoControl_Interactions.readTransmitters)) {
@@ -93929,12 +93938,12 @@ var marshalComponentMainPanel = function (v) {
             return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
         };
         if (v instanceof ComponentMainPanelReqPanelSignal && v.value0 instanceof Unify_ReqPanel2.ReplSignal) {
-            var $699 = Exhibit_VideoControl_Interactions.planRung(v.value0.value0.value0);
-            if ($699) {
-                var $700 = Exhibit_VideoControl_Interactions.commandRefusal(v.value0.value0.value1);
-                if ($700 instanceof Data_Maybe.Just) {
+            var $706 = Exhibit_VideoControl_Interactions.planRung(v.value0.value0.value0);
+            if ($706) {
+                var $707 = Exhibit_VideoControl_Interactions.commandRefusal(v.value0.value0.value1);
+                if ($707 instanceof Data_Maybe.Just) {
                     return Control_Bind.bind(Control_Monad_Writer_Trans.bindWriterT(Data_Maybe_First.semigroupFirst)(Data_Identity.bindIdentity))(movingRig(a))(function (b) {
-                        return abortPlan($700.value0)(b);
+                        return abortPlan($707.value0)(b);
                     });
                 };
                 return v1(true);
@@ -93945,18 +93954,18 @@ var marshalComponentMainPanel = function (v) {
     };
 };
 var _controlPanel = function (dictStrong) {
-    var $782 = Data_Lens_Lens["lens'"](function (v) {
+    var $792 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $783 = Data_Lens_Record.prop({
+    var $793 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "controlPanel";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($784) {
-        return $782($783($784));
+    return function ($794) {
+        return $792($793($794));
     };
 };
 module.exports = {
@@ -124070,7 +124079,7 @@ var holdingPreview = function (j) {
                 return ExploreCore.runCo(Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit))(Exhibit_VideoControl_VideoRtcAPI.freezingMoved(v1.value0)(r_1));
             };
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1127, column 5 - line 1129, column 72): " + [ v1.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1137, column 5 - line 1139, column 72): " + [ v1.constructor.name ]);
     };
     return v(true);
 };
@@ -124158,137 +124167,113 @@ var answerMainPanel = function (req) {
     };
 };
 var _unrouteWarning = function (dictStrong) {
-    var $992 = Data_Lens_Lens["lens'"](function (v) {
+    var $1000 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new MainPanelFields(s);
         });
     })(dictStrong);
-    var $993 = Data_Lens_Record.prop({
+    var $1001 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "unrouteWarning";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($994) {
-        return $992($993($994));
+    return function ($1002) {
+        return $1000($1001($1002));
     };
 };
 var _systemPanel = (function () {
-    var $995 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $996 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $997 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $998 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $999 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1000 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2));
-    var $1001 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentSystemConfiguration.comonadComponentSystemCon)(Exhibit_VideoControl_UI_ComponentSystemConfiguration.shouldUpdateComponentSyst);
-    return function ($1002) {
-        return $995($996($997($998($999($1000($1001($1002)))))));
+    var $1003 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1004 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1005 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1006 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1007 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1008 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2));
+    var $1009 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentSystemConfiguration.comonadComponentSystemCon)(Exhibit_VideoControl_UI_ComponentSystemConfiguration.shouldUpdateComponentSyst);
+    return function ($1010) {
+        return $1003($1004($1005($1006($1007($1008($1009($1010)))))));
     };
 })();
 var _sourceGrid = (function () {
-    var $1003 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)))))));
-    var $1004 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentInputSources.comonadComponentInputSour)(Exhibit_VideoControl_UI_ComponentInputSources.shouldUpdateComponentInpu);
-    return function ($1005) {
-        return $1003($1004($1005));
+    var $1011 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)))))));
+    var $1012 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentInputSources.comonadComponentInputSour)(Exhibit_VideoControl_UI_ComponentInputSources.shouldUpdateComponentInpu);
+    return function ($1013) {
+        return $1011($1012($1013));
     };
 })();
 var _routeRefusal = function (dictStrong) {
-    var $1006 = Data_Lens_Lens["lens'"](function (v) {
+    var $1014 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new MainPanelFields(s);
         });
     })(dictStrong);
-    var $1007 = Data_Lens_Record.prop({
+    var $1015 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "routeRefusal";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1008) {
-        return $1006($1007($1008));
+    return function ($1016) {
+        return $1014($1015($1016));
     };
 };
 var _reqPanel = (function () {
-    var $1009 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1010 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1011 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1012 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1013 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1014 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1015 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1016 = Widget_Unify_UnifyCompItem["_compitem"](Unify_ReqPanel2.comonadComponentReqPanel)(Unify_ReqPanel2.shouldUpdateComponentReqP);
-    return function ($1017) {
-        return $1009($1010($1011($1012($1013($1014($1015($1016($1017))))))));
+    var $1017 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1018 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1019 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1020 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1021 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1022 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1023 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1024 = Widget_Unify_UnifyCompItem["_compitem"](Unify_ReqPanel2.comonadComponentReqPanel)(Unify_ReqPanel2.shouldUpdateComponentReqP);
+    return function ($1025) {
+        return $1017($1018($1019($1020($1021($1022($1023($1024($1025))))))));
     };
 })();
 var _previewStale = function (dictStrong) {
-    var $1018 = Data_Lens_Lens["lens'"](function (v) {
+    var $1026 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new MainPanelFields(s);
         });
     })(dictStrong);
-    var $1019 = Data_Lens_Record.prop({
+    var $1027 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewStale";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1020) {
-        return $1018($1019($1020));
+    return function ($1028) {
+        return $1026($1027($1028));
     };
 };
 var _previewSkipped = function (dictStrong) {
-    var $1021 = Data_Lens_Lens["lens'"](function (v) {
+    var $1029 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new MainPanelFields(s);
         });
     })(dictStrong);
-    var $1022 = Data_Lens_Record.prop({
+    var $1030 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewSkipped";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1023) {
-        return $1021($1022($1023));
+    return function ($1031) {
+        return $1029($1030($1031));
     };
 };
 var _previewPlanned = function (dictStrong) {
-    var $1024 = Data_Lens_Lens["lens'"](function (v) {
+    var $1032 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new MainPanelFields(s);
         });
     })(dictStrong);
-    var $1025 = Data_Lens_Record.prop({
+    var $1033 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewPlanned";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1026) {
-        return $1024($1025($1026));
+    return function ($1034) {
+        return $1032($1033($1034));
     };
 };
 var _previewPending = function (dictStrong) {
-    var $1027 = Data_Lens_Lens["lens'"](function (v) {
-        return new Data_Tuple.Tuple(v.value0, function (s) {
-            return new MainPanelFields(s);
-        });
-    })(dictStrong);
-    var $1028 = Data_Lens_Record.prop({
-        reflectSymbol: function () {
-            return "previewPending";
-        }
-    })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1029) {
-        return $1027($1028($1029));
-    };
-};
-var _previewPanel = (function () {
-    var $1030 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1031 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1032 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)))));
-    var $1033 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentPreview.comonadComponentPreview)(Exhibit_VideoControl_UI_ComponentPreview.shouldUpdateComponentPrev);
-    return function ($1034) {
-        return $1030($1031($1032($1033($1034))));
-    };
-})();
-var _previewCut = function (dictStrong) {
     var $1035 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new MainPanelFields(s);
@@ -124296,47 +124281,71 @@ var _previewCut = function (dictStrong) {
     })(dictStrong);
     var $1036 = Data_Lens_Record.prop({
         reflectSymbol: function () {
-            return "previewCut";
+            return "previewPending";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
     return function ($1037) {
         return $1035($1036($1037));
     };
 };
-var _outputRow = (function () {
+var _previewPanel = (function () {
     var $1038 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1039 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2))))));
-    var $1040 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentOutputs.comonadComponentOutputs)(Exhibit_VideoControl_UI_ComponentOutputs.shouldUpdateComponentOutp);
-    return function ($1041) {
-        return $1038($1039($1040($1041)));
+    var $1039 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1040 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)))));
+    var $1041 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentPreview.comonadComponentPreview)(Exhibit_VideoControl_UI_ComponentPreview.shouldUpdateComponentPrev);
+    return function ($1042) {
+        return $1038($1039($1040($1041($1042))));
     };
 })();
-var _fields = (function () {
-    var $1042 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1043 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1044 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1045 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1046 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1047 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1048 = ExploreCore.liftRight(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1049 = Widget_Unify_UnifyCompItem["_compitem"](comonadComponentMainPanel1)(shouldUpdateComponentMain);
-    return function ($1050) {
-        return $1042($1043($1044($1045($1046($1047($1048($1049($1050))))))));
-    };
-})();
-var _dividersPending = function (dictStrong) {
-    var $1051 = Data_Lens_Lens["lens'"](function (v) {
+var _previewCut = function (dictStrong) {
+    var $1043 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new MainPanelFields(s);
         });
     })(dictStrong);
-    var $1052 = Data_Lens_Record.prop({
+    var $1044 = Data_Lens_Record.prop({
+        reflectSymbol: function () {
+            return "previewCut";
+        }
+    })()()(Data_Symbol.SProxy.value)(dictStrong);
+    return function ($1045) {
+        return $1043($1044($1045));
+    };
+};
+var _outputRow = (function () {
+    var $1046 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1047 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2))))));
+    var $1048 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentOutputs.comonadComponentOutputs)(Exhibit_VideoControl_UI_ComponentOutputs.shouldUpdateComponentOutp);
+    return function ($1049) {
+        return $1046($1047($1048($1049)));
+    };
+})();
+var _fields = (function () {
+    var $1050 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1051 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1052 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1053 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1054 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1055 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1056 = ExploreCore.liftRight(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1057 = Widget_Unify_UnifyCompItem["_compitem"](comonadComponentMainPanel1)(shouldUpdateComponentMain);
+    return function ($1058) {
+        return $1050($1051($1052($1053($1054($1055($1056($1057($1058))))))));
+    };
+})();
+var _dividersPending = function (dictStrong) {
+    var $1059 = Data_Lens_Lens["lens'"](function (v) {
+        return new Data_Tuple.Tuple(v.value0, function (s) {
+            return new MainPanelFields(s);
+        });
+    })(dictStrong);
+    var $1060 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "dividersPending";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1053) {
-        return $1051($1052($1053));
+    return function ($1061) {
+        return $1059($1060($1061));
     };
 };
 var displayMainPanelFields = function (s) {
@@ -124362,24 +124371,24 @@ var datarenderMainPanel$prime = function (panel) {
 };
 var datarenderMainPanel = datarenderMainPanel$prime(Unify_ReqPanel2.renderReqPanel);
 var _controlsPanel = (function () {
-    var $1054 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1055 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1056 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1057 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2))));
-    var $1058 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentVideoControls.comonadComponentVideoCont)(Exhibit_VideoControl_UI_ComponentVideoControls.shouldUpdateComponentVide);
-    return function ($1059) {
-        return $1054($1055($1056($1057($1058($1059)))));
+    var $1062 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1063 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1064 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1065 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2))));
+    var $1066 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentVideoControls.comonadComponentVideoCont)(Exhibit_VideoControl_UI_ComponentVideoControls.shouldUpdateComponentVide);
+    return function ($1067) {
+        return $1062($1063($1064($1065($1066($1067)))));
     };
 })();
 var _controlPanel = (function () {
-    var $1060 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1061 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1062 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1063 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1064 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)));
-    var $1065 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentControlPanel.comonadComponentControlPa)(Exhibit_VideoControl_UI_ComponentControlPanel.shouldUpdateComponentCont);
-    return function ($1066) {
-        return $1060($1061($1062($1063($1064($1065($1066))))));
+    var $1068 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1069 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1070 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1071 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1072 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)));
+    var $1073 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentControlPanel.comonadComponentControlPa)(Exhibit_VideoControl_UI_ComponentControlPanel.shouldUpdateComponentCont);
+    return function ($1074) {
+        return $1068($1069($1070($1071($1072($1073($1074))))));
     };
 })();
 var _CoMainPanelFields = function (v) {
@@ -124462,6 +124471,9 @@ var namingSwitched = function (u) {
     return _CoMainPanel(_controlsPanel(Exhibit_VideoControl_UI_ComponentVideoControls.namingLayout(Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_compositionLayout"](Data_Lens_Internal_Forget.strongForget)))));
 };
 var pickedLayout = _CoMainPanel(_previewPanel(Exhibit_VideoControl_UI_ComponentPreview.pickedLayout));
+var pongAnswered = Data_Functor.map(ExploreCore.functorCo(functorComponentMainPanel1))(function (s) {
+    return Data_Lens_Getter.viewOn(s)(Unify_ReqPanel2["_affponged"](Data_Lens_Internal_Forget.strongForget));
+})(_CoMainPanel(_reqPanel(Unify_ReqPanel2["_CoReqPanel"](Widget_Unify_UnifyCompItem["_compitem"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(ShouldUpdate.shouldUpdateStore(Unify_ReqPanel2.eqReqPanel))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))))));
 var previewUpdateQueued = Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(Data_Functor.map(ExploreCore.functorCo(functorComponentMainPanel1))(function (s) {
     return Data_Lens_Getter.viewOn(s)(Unify_ReqPanel2["_affrequest"](Data_Lens_Internal_Forget.strongForget));
 })(_CoMainPanel(_reqPanel(Unify_ReqPanel2["_CoReqPanel"](Widget_Unify_UnifyCompItem["_compitem"](Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(ShouldUpdate.shouldUpdateStore(Unify_ReqPanel2.eqReqPanel))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))))(function (r_1) {
@@ -124508,7 +124520,7 @@ var requestLayoutDescription = Control_Bind.bind(ExploreCore.bindCo(extendCompon
     if (r_1 instanceof Data_Maybe.Just) {
         return requestMainPanel(Exhibit_VideoControl_Interactions.describeLayout(r_1.value0));
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 844, column 8 - line 846, column 57): " + [ r_1.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 850, column 8 - line 852, column 57): " + [ r_1.constructor.name ]);
 });
 var requestOutputs = requestMainPanel(Exhibit_VideoControl_Interactions.readReceivers);
 var abortPlan = function (why) {
@@ -124536,7 +124548,7 @@ var clearDividers = Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPane
                 return requestMainPanel(Exhibit_VideoControl_Interactions.placingDividers);
             });
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 487, column 8 - line 493, column 52): " + [ r_1.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 493, column 8 - line 499, column 52): " + [ r_1.constructor.name ]);
     });
 });
 var refreshOutputs = Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(queueDraining)(function (r_1) {
@@ -124574,9 +124586,9 @@ var layPreviewLayout = function (j) {
             if (v1 instanceof Data_Maybe.Just) {
                 return _CoMainPanel(_outputRow(Exhibit_VideoControl_UI_ComponentOutputs.carryingNamedLayout(Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))(v1.value0)));
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1370, column 22 - line 1374, column 80): " + [ v1.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1384, column 22 - line 1388, column 80): " + [ v1.constructor.name ]);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1368, column 8 - line 1374, column 80): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1382, column 8 - line 1388, column 80): " + [ v.constructor.name ]);
     });
 };
 var layAnsweredBoxLayout = function (j) {
@@ -124587,7 +124599,7 @@ var layAnsweredBoxLayout = function (j) {
     if (v instanceof Data_Maybe.Just) {
         return layPreviewLayout(Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_answeredBoxLayout"](Data_Lens_Internal_Forget.strongForget)));
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1135, column 5 - line 1137, column 61): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1145, column 5 - line 1147, column 61): " + [ v.constructor.name ]);
 };
 var previewComposition = Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(rowOutputs)(function (r_1) {
     return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Control_Bind.bind(Data_Maybe.bindMaybe)(Exhibit_VideoControl_Interactions.previewBoxOf(r_1))(function (d) {
@@ -124609,7 +124621,7 @@ var renderRtc = Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(
             };
         });
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 450, column 8 - line 454, column 152): " + [ r_1.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 456, column 8 - line 460, column 152): " + [ r_1.constructor.name ]);
 });
 var requestPreviewUpdate = function (force) {
     return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(rowOutputs)(function (r_1) {
@@ -124624,17 +124636,19 @@ var fillingPreview = Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPan
     return Data_Lens_Getter.viewOn(s)(_previewPending(Data_Lens_Internal_Forget.strongForget));
 })(_CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))))))(function (r_1) {
     return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(rowOutputs)(function (r_2) {
-        var $430 = !r_1 || Data_List["null"](r_2);
-        if ($430) {
-            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
-        };
-        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(_CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
-            return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_previewPending(Data_Profunctor_Strong.strongFn))(false));
-        })))))(function () {
+        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(pongAnswered)(function (r_3) {
+            var $430 = !r_1 || (!r_3 || Data_Maybe.isNothing(Exhibit_VideoControl_Interactions.previewBoxOf(r_2)));
+            if ($430) {
+                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
+            };
             return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(_CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
-                return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_previewStale(Data_Profunctor_Strong.strongFn))(false));
+                return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_previewPending(Data_Profunctor_Strong.strongFn))(false));
             })))))(function () {
-                return requestPreviewUpdate(true);
+                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(_CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
+                    return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_previewStale(Data_Profunctor_Strong.strongFn))(false));
+                })))))(function () {
+                    return requestPreviewUpdate(true);
+                });
             });
         });
     });
@@ -124644,14 +124658,18 @@ var refillingPreview = Control_Bind.bind(ExploreCore.bindCo(extendComponentMainP
 })(_CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))))))(function (r_1) {
     return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(queueDraining)(function (r_2) {
         return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(rowOutputs)(function (r_3) {
-            var $431 = !r_1 || (r_2 || Data_List["null"](r_3));
-            if ($431) {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
-            };
-            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(_CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
-                return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_previewStale(Data_Profunctor_Strong.strongFn))(false));
-            })))))(function () {
-                return requestPreviewUpdate(false);
+            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(Data_Functor.map(ExploreCore.functorCo(functorComponentMainPanel1))(function (s) {
+                return Data_Lens_Getter.viewOn(s)(_previewPending(Data_Lens_Internal_Forget.strongForget));
+            })(_CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))))))(function (r_4) {
+                var $431 = !r_1 || (r_2 || (Data_List["null"](r_3) || r_4));
+                if ($431) {
+                    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
+                };
+                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(_CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
+                    return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_previewStale(Data_Profunctor_Strong.strongFn))(false));
+                })))))(function () {
+                    return requestPreviewUpdate(false);
+                });
             });
         });
     });
@@ -124677,7 +124695,7 @@ var fastFormat = function (d) {
     if (Data_Boolean.otherwise) {
         return shownFormat;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1200, column 1 - line 1202, column 64): " + [ d.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1214, column 1 - line 1216, column 64): " + [ d.constructor.name ]);
 };
 var shownOutput = _CoMainPanel(_outputRow(Exhibit_VideoControl_UI_ComponentOutputs.selectedOutput));
 var layShownLayout = function (j) {
@@ -124693,9 +124711,9 @@ var layShownLayout = function (j) {
             if (v instanceof Data_Maybe.Just) {
                 return _CoMainPanel(_outputRow(Exhibit_VideoControl_UI_ComponentOutputs.carryingLayout(v.value0)));
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1359, column 22 - line 1362, column 84): " + [ v.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1373, column 22 - line 1376, column 84): " + [ v.constructor.name ]);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1357, column 8 - line 1362, column 84): " + [ r_1.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1371, column 8 - line 1376, column 84): " + [ r_1.constructor.name ]);
     });
 };
 var layAnsweredComposition = function (j) {
@@ -124708,7 +124726,7 @@ var layAnsweredComposition = function (j) {
     if (v instanceof Data_Maybe.Just) {
         return layShownLayout(v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 680, column 5 - line 683, column 35): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 686, column 5 - line 689, column 35): " + [ v.constructor.name ]);
 };
 var requestCompose = function (l) {
     return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(shownOutput)(function (r_1) {
@@ -124718,7 +124736,7 @@ var requestCompose = function (l) {
         if (r_1 instanceof Data_Maybe.Just) {
             return requestMainPanel(Exhibit_VideoControl_Interactions.composingLayout(r_1.value0)(Data_Lens_Getter.viewOn(l)(Exhibit_VideoControl_Types["_layoutName"](Data_Lens_Internal_Forget.strongForget))));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1004, column 8 - line 1007, column 62): " + [ r_1.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1010, column 8 - line 1013, column 62): " + [ r_1.constructor.name ]);
     });
 };
 var requestDisconnect = function (mi) {
@@ -124831,7 +124849,7 @@ var settleShownOutput = Control_Bind.bind(ExploreCore.bindCo(extendComponentMain
             });
         });
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 758, column 8 - line 763, column 85): " + [ r_1.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 764, column 8 - line 769, column 85): " + [ r_1.constructor.name ]);
 });
 var closeLayouts = settleShownOutput;
 var settleOutputs = Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(settleShownOutput)(function () {
@@ -124865,7 +124883,7 @@ var scalePick = function (d) {
                 if (r_1 instanceof Data_Maybe.Nothing) {
                     return r_2;
                 };
-                throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1272, column 11 - line 1274, column 29): " + [ r_1.constructor.name ]);
+                throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1286, column 11 - line 1288, column 29): " + [ r_1.constructor.name ]);
             })());
         });
     });
@@ -124886,9 +124904,9 @@ var requestScaling = function (on) {
                         if (v instanceof Data_Maybe.Nothing) {
                             return r_3;
                         };
-                        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1254, column 47 - line 1256, column 65): " + [ v.constructor.name ]);
+                        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1268, column 47 - line 1270, column 65): " + [ v.constructor.name ]);
                     };
-                    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1252, column 32 - line 1256, column 65): " + [ r_2.constructor.name ]);
+                    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1266, column 32 - line 1270, column 65): " + [ r_2.constructor.name ]);
                 })()))(r_1.value0)))) {
                     return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(scalePick(r_1.value0))(function (r_4) {
                         return requestMainPanel(Exhibit_VideoControl_Interactions.scalingAt(r_1.value0)(true)(r_4));
@@ -124914,9 +124932,9 @@ var scalingFormat = function (d) {
                     if (v instanceof Data_Maybe.Nothing) {
                         return r_2;
                     };
-                    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1237, column 29 - line 1239, column 47): " + [ v.constructor.name ]);
+                    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1251, column 29 - line 1253, column 47): " + [ v.constructor.name ]);
                 };
-                throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1235, column 14 - line 1239, column 47): " + [ r_1.constructor.name ]);
+                throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1249, column 14 - line 1253, column 47): " + [ r_1.constructor.name ]);
             })()));
         });
     });
@@ -124993,7 +125011,7 @@ var tabLayouts = function (rs) {
             if (r_1 instanceof Data_Maybe.Nothing) {
                 return rs;
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 872, column 11 - line 874, column 28): " + [ r_1.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 878, column 11 - line 880, column 28): " + [ r_1.constructor.name ]);
         })());
     });
 };
@@ -125013,7 +125031,7 @@ var shownLayouts = Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel
                 });
             });
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 853, column 15 - line 861, column 43): " + [ r_1.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 859, column 15 - line 867, column 43): " + [ r_1.constructor.name ]);
     })())(function (r_6) {
         return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(r_6);
     });
@@ -125045,7 +125063,7 @@ var tabTakes = function (n) {
             if (r_1 instanceof Data_Maybe.Nothing) {
                 return true;
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 882, column 11 - line 884, column 30): " + [ r_1.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 888, column 11 - line 890, column 30): " + [ r_1.constructor.name ]);
         })());
     });
 };
@@ -125061,7 +125079,7 @@ var requestSetLayoutNamed = function (n) {
                     if (v instanceof Data_Maybe.Nothing) {
                         return requestMainPanel(Exhibit_VideoControl_Interactions.describeLayout(n));
                     };
-                    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1175, column 24 - line 1177, column 74): " + [ v.constructor.name ]);
+                    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1189, column 24 - line 1191, column 74): " + [ v.constructor.name ]);
                 });
             };
             return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
@@ -125119,14 +125137,14 @@ var layAnsweredPreview = function (j) {
                 });
             });
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1105, column 5 - line 1111, column 35): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1115, column 5 - line 1121, column 35): " + [ v.constructor.name ]);
     };
     if (Data_Boolean.otherwise) {
         return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(layAnsweredBoxLayout(j))(function () {
             return requestPreviewLayout;
         });
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1100, column 1 - line 1100, column 57): " + [ j.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1110, column 1 - line 1110, column 57): " + [ j.constructor.name ]);
 };
 var layAnsweredRig = function (j) {
     var v = Exhibit_VideoControl_Interactions.answeredRig(j);
@@ -125142,7 +125160,7 @@ var layAnsweredRig = function (j) {
             });
         });
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 670, column 5 - line 676, column 35): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 676, column 5 - line 682, column 35): " + [ v.constructor.name ]);
 };
 var layRoute = function (j) {
     var v = function (v1) {
@@ -125193,7 +125211,7 @@ var layDividers = function (j) {
         if (v1 instanceof Data_Maybe.Just) {
             return foldSources(Data_Lens_Getter.viewOn(v1.value0)(Exhibit_VideoControl_Types["_answeredSourcesTransmitters"](Data_Lens_Internal_Forget.strongForget)));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 499, column 5 - line 501, column 66): " + [ v1.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 505, column 5 - line 507, column 66): " + [ v1.constructor.name ]);
     };
     return v(true);
 };
@@ -125212,7 +125230,7 @@ var layAnsweredOutputsElse = function (unanswered) {
                 if (v1 instanceof Data_Maybe.Just) {
                     return laySources(Data_Lens_Getter.viewOn(v1.value0)(Exhibit_VideoControl_Types["_answeredSourcesTransmitters"](Data_Lens_Internal_Forget.strongForget)));
                 };
-                throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1041, column 27 - line 1043, column 82): " + [ v1.constructor.name ]);
+                throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1047, column 27 - line 1049, column 82): " + [ v1.constructor.name ]);
             })())(function () {
                 return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(layOutputs(Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_answeredOutputsReceivers"](Data_Lens_Internal_Forget.strongForget))))(function () {
                     return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(layAnsweredComposition(j))(function () {
@@ -125221,7 +125239,7 @@ var layAnsweredOutputsElse = function (unanswered) {
                 });
             });
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1038, column 5 - line 1046, column 35): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1044, column 5 - line 1052, column 35): " + [ v.constructor.name ]);
     };
 };
 var layAnsweredOutputs = function (j) {
@@ -125744,6 +125762,11 @@ var marshalMainPanel = function (v) {
                 return startRtc;
             }))(v1);
         };
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentMainPanelReqPanelSignal && (v.value0.value0 instanceof Unify_ReqPanel2.ReplSignal && v.value0.value0.value0.value0.value0.value0 === "Ponged"))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainPanel))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainPanel))(fillingPreview)(function () {
+                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
+            }))(v1);
+        };
         var v2 = function (v3) {
             if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentMainPanelReqPanelSignal && v.value0.value0 instanceof Unify_ReqPanel2.ReplSignal)) {
                 if (Data_Eq.eq(ExploreSignal.eqAffRequest)(v.value0.value0.value0.value0)(Exhibit_VideoControl_Interactions.readTransmitters)) {
@@ -125835,8 +125858,8 @@ var marshalMainPanel = function (v) {
             };
             if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentMainPanelReqPanelSignal && (v.value0.value0 instanceof Unify_ReqPanel2.ReplSignal && v.value0.value0.value0.value0.value0.value0 === "UpdatePreview"))) {
                 return Extra["_coe"](ExploreCore.bindCo(extendComponentMainPanel))((function () {
-                    var $903 = Exhibit_VideoControl_Interactions.previewLeaving(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.previewUpdateReading(v.value0.value0.value0.value1)));
-                    if ($903) {
+                    var $911 = Exhibit_VideoControl_Interactions.previewLeaving(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.previewUpdateReading(v.value0.value0.value0.value1)));
+                    if ($911) {
                         return freezeLeaving(v.value0.value0.value0.value1);
                     };
                     return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainPanel))(layPreviewUpdate(v.value0.value0.value0.value1))(function () {
@@ -125878,12 +125901,12 @@ var marshalMainPanel = function (v) {
             return v1;
         };
         if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentMainPanelReqPanelSignal && v.value0.value0 instanceof Unify_ReqPanel2.ReplSignal)) {
-            var $949 = Exhibit_VideoControl_Interactions.planRung(v.value0.value0.value0.value0);
-            if ($949) {
-                var $950 = Exhibit_VideoControl_Interactions.commandRefusal(v.value0.value0.value0.value1);
-                if ($950 instanceof Data_Maybe.Just) {
+            var $957 = Exhibit_VideoControl_Interactions.planRung(v.value0.value0.value0.value0);
+            if ($957) {
+                var $958 = Exhibit_VideoControl_Interactions.commandRefusal(v.value0.value0.value0.value1);
+                if ($958 instanceof Data_Maybe.Just) {
                     return Extra["_coe"](ExploreCore.bindCo(extendComponentMainPanel))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainPanel))(movingRig)(function () {
-                        return abortPlan($950.value0);
+                        return abortPlan($958.value0);
                     }))(v1);
                 };
                 return v2(true);
@@ -125944,12 +125967,12 @@ var raiseMainPanel = function (s) {
         if (s instanceof ComponentMainPanelPreviewSkippedSignal) {
             return _CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.set((function () {
-                    var $1067 = _previewSkipped(Data_Profunctor_Strong.strongFn);
-                    var $1068 = Data_Lens_Traversal.element(Data_Lens_Internal_Wander.wanderFunction)(s.value0.value0)(function (dictWander) {
+                    var $1075 = _previewSkipped(Data_Profunctor_Strong.strongFn);
+                    var $1076 = Data_Lens_Traversal.element(Data_Lens_Internal_Wander.wanderFunction)(s.value0.value0)(function (dictWander) {
                         return Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(dictWander);
                     });
-                    return function ($1069) {
-                        return $1067($1068($1069));
+                    return function ($1077) {
+                        return $1075($1076($1077));
                     };
                 })())(s.value0.value1));
             }))));
@@ -125962,12 +125985,12 @@ var raiseMainPanel = function (s) {
         if (s instanceof ComponentMainPanelPreviewPlannedSignal) {
             return _CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.set((function () {
-                    var $1070 = _previewPlanned(Data_Profunctor_Strong.strongFn);
-                    var $1071 = Data_Lens_Traversal.element(Data_Lens_Internal_Wander.wanderFunction)(s.value0.value0)(function (dictWander) {
+                    var $1078 = _previewPlanned(Data_Profunctor_Strong.strongFn);
+                    var $1079 = Data_Lens_Traversal.element(Data_Lens_Internal_Wander.wanderFunction)(s.value0.value0)(function (dictWander) {
                         return Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(dictWander);
                     });
-                    return function ($1072) {
-                        return $1070($1071($1072));
+                    return function ($1080) {
+                        return $1078($1079($1080));
                     };
                 })())(s.value0.value1));
             }))));
@@ -126010,7 +126033,8 @@ var writeMainPanel = function (v) {
                                 affsent: Data_Lens_Getter.viewOn(Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentMainPanel["_reqPanel"](Data_Lens_Internal_Forget.strongForget)))(Unify_ReqPanel2["_affsent"](Data_Lens_Internal_Forget.strongForget)),
                                 affrepl: Data_Lens_Getter.viewOn(Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentMainPanel["_reqPanel"](Data_Lens_Internal_Forget.strongForget)))(Unify_ReqPanel2["_affrepl"](Data_Lens_Internal_Forget.strongForget)),
                                 affpinged: Data_Lens_Getter.viewOn(Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentMainPanel["_reqPanel"](Data_Lens_Internal_Forget.strongForget)))(Unify_ReqPanel2["_affpinged"](Data_Lens_Internal_Forget.strongForget)),
-                                affpongfailed: Data_Lens_Getter.viewOn(Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentMainPanel["_reqPanel"](Data_Lens_Internal_Forget.strongForget)))(Unify_ReqPanel2["_affpongfailed"](Data_Lens_Internal_Forget.strongForget))
+                                affpongfailed: Data_Lens_Getter.viewOn(Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentMainPanel["_reqPanel"](Data_Lens_Internal_Forget.strongForget)))(Unify_ReqPanel2["_affpongfailed"](Data_Lens_Internal_Forget.strongForget)),
+                                affponged: Data_Lens_Getter.viewOn(Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentMainPanel["_reqPanel"](Data_Lens_Internal_Forget.strongForget)))(Unify_ReqPanel2["_affponged"](Data_Lens_Internal_Forget.strongForget))
                             })))))))(function () {
                                 return _CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new MainPanelFields({
                                     routeRefusal: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentMainPanel["_routeRefusal"](Data_Lens_Internal_Forget.strongForget)),
@@ -126083,6 +126107,7 @@ module.exports = {
     requestRouted: requestRouted,
     requestPlan: requestPlan,
     queueDraining: queueDraining,
+    pongAnswered: pongAnswered,
     consoleChange: consoleChange,
     refreshOutputs: refreshOutputs,
     abortPlan: abortPlan,
@@ -128022,7 +128047,8 @@ var writeMatrixFrame = function (v) {
                     affsent: Data_Lens_Getter.viewOn(Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentMatrixFrame["_reqPanel"](Data_Lens_Internal_Forget.strongForget)))(Unify_ReqPanel2["_affsent"](Data_Lens_Internal_Forget.strongForget)),
                     affrepl: Data_Lens_Getter.viewOn(Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentMatrixFrame["_reqPanel"](Data_Lens_Internal_Forget.strongForget)))(Unify_ReqPanel2["_affrepl"](Data_Lens_Internal_Forget.strongForget)),
                     affpinged: Data_Lens_Getter.viewOn(Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentMatrixFrame["_reqPanel"](Data_Lens_Internal_Forget.strongForget)))(Unify_ReqPanel2["_affpinged"](Data_Lens_Internal_Forget.strongForget)),
-                    affpongfailed: Data_Lens_Getter.viewOn(Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentMatrixFrame["_reqPanel"](Data_Lens_Internal_Forget.strongForget)))(Unify_ReqPanel2["_affpongfailed"](Data_Lens_Internal_Forget.strongForget))
+                    affpongfailed: Data_Lens_Getter.viewOn(Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentMatrixFrame["_reqPanel"](Data_Lens_Internal_Forget.strongForget)))(Unify_ReqPanel2["_affpongfailed"](Data_Lens_Internal_Forget.strongForget)),
+                    affponged: Data_Lens_Getter.viewOn(Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentMatrixFrame["_reqPanel"](Data_Lens_Internal_Forget.strongForget)))(Unify_ReqPanel2["_affponged"](Data_Lens_Internal_Forget.strongForget))
                 })))))))(function () {
                     return _CoMatrixFrame(_fields(_CoMatrixFrameFields(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new MatrixFrameFields({
                         routeRefusal: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentMatrixFrame["_routeRefusal"](Data_Lens_Internal_Forget.strongForget))
@@ -137526,7 +137552,8 @@ var writeSettings = function (v) {
                 affsent: Data_Lens_Getter.viewOn(Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentSettings["_reqPanel"](Data_Lens_Internal_Forget.strongForget)))(Unify_ReqPanel2["_affsent"](Data_Lens_Internal_Forget.strongForget)),
                 affrepl: Data_Lens_Getter.viewOn(Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentSettings["_reqPanel"](Data_Lens_Internal_Forget.strongForget)))(Unify_ReqPanel2["_affrepl"](Data_Lens_Internal_Forget.strongForget)),
                 affpinged: Data_Lens_Getter.viewOn(Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentSettings["_reqPanel"](Data_Lens_Internal_Forget.strongForget)))(Unify_ReqPanel2["_affpinged"](Data_Lens_Internal_Forget.strongForget)),
-                affpongfailed: Data_Lens_Getter.viewOn(Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentSettings["_reqPanel"](Data_Lens_Internal_Forget.strongForget)))(Unify_ReqPanel2["_affpongfailed"](Data_Lens_Internal_Forget.strongForget))
+                affpongfailed: Data_Lens_Getter.viewOn(Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentSettings["_reqPanel"](Data_Lens_Internal_Forget.strongForget)))(Unify_ReqPanel2["_affpongfailed"](Data_Lens_Internal_Forget.strongForget)),
+                affponged: Data_Lens_Getter.viewOn(Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentSettings["_reqPanel"](Data_Lens_Internal_Forget.strongForget)))(Unify_ReqPanel2["_affponged"](Data_Lens_Internal_Forget.strongForget))
             }))))));
         });
     });
@@ -146593,8 +146620,8 @@ module.exports = {
 "use strict";
 
 // The WebRTC client and the split renderer, kept off the PureScript side because
-// neither RTCPeerConnection nor the canvas 2d context is in any package this
-// project pins. The client negotiates the way webrtcserver's own viewer does,
+// neither RTCPeerConnection nor the canvas contexts — WebGL to split the frame,
+// 2d to draw the pieces and the names — are in any package this project pins. The client negotiates the way webrtcserver's own viewer does,
 // with the /config.json read dropped: the config served beside this page is the
 // control app's and carries no client block, so the fetch only ever failed and
 // took the negotiation down with it.
@@ -146899,6 +146926,177 @@ function drawSlice(frame, canvas, placement, scaleX, scaleY) {
   }
   canvas.getContext('2d').drawImage(frame, x, y, width, height, 0, 0, width, height);
   fadeLabel(canvas);
+}
+
+// | The hidden WebGL canvas the frame is split on, and what draws on it. Every
+// frame goes up into its texture once, each window of the cut is drawn out of
+// that into a piece of the canvas of its own, and the canvas is copied once into
+// the sheet the windows and the cards are cut from: a WebGL canvas is copied out
+// whole every time it is drawn from, so it is drawn from once a frame. Null
+// until the first frame is split; false where the page has no WebGL, which
+// leaves the split to the 2d context.
+var gpu = null;
+
+// | An id of its own: a page carrying a WebGL canvas of its own under some
+// other name would hand over that canvas's context, and the two would draw
+// with each other's programs.
+function ensureGpuCanvas() {
+  var canvas = document.getElementById('rtcSplitCanvas');
+  if (canvas) return canvas;
+
+  canvas = document.createElement('canvas');
+  canvas.id = 'rtcSplitCanvas';
+  canvas.style.display = 'none';
+  // a context lost leaves the split to the 2d context until it is given back,
+  // and what was set up on it is set up again on the one given back
+  canvas.addEventListener('webglcontextlost', function (e) {
+    e.preventDefault();
+    log('webgl context lost, splitting on the 2d context');
+  });
+  canvas.addEventListener('webglcontextrestored', function () {
+    gpu = null;
+  });
+  document.body.appendChild(canvas);
+  return canvas;
+}
+
+// | Set up the split on the canvas: a quad over the viewport, textured with the
+// piece of the frame the offset and scale take out of it, through a colour
+// matrix — the identity, for now. Null where it cannot be set up.
+function setupGpu(canvas) {
+  var gl = null;
+  var names = ['webgl', 'experimental-webgl', 'moz-webgl', 'webkit-3d'];
+  for (var i = 0; i < names.length && !gl; i++) {
+    gl = canvas.getContext(names[i], { antialias: false });
+  }
+  if (!gl) return null;
+
+  var vs = gl.createShader(gl.VERTEX_SHADER);
+  gl.shaderSource(vs, 'attribute vec2 vx;varying vec2 tx;void main(){gl_Position=vec4(vx.x*2.0-1.0,1.0-vx.y*2.0,0,1);tx=vx;}');
+  gl.compileShader(vs);
+
+  var ps = gl.createShader(gl.FRAGMENT_SHADER);
+  gl.shaderSource(ps, 'precision mediump float;uniform sampler2D sm;uniform float m[9];varying vec2 tx;uniform vec2 offset;uniform vec2 scale;void main(){vec2 scaledTx = tx * scale + offset;vec4 c=texture2D(sm,scaledTx);vec4 r;r.r=m[0]*c.r+m[1]*c.g+m[2]*c.b;r.g=m[3]*c.r+m[4]*c.g+m[5]*c.b;r.b=m[6]*c.r+m[7]*c.g+m[8]*c.b;r.a=1.0;gl_FragColor=r;}');
+  gl.compileShader(ps);
+
+  var shader = gl.createProgram();
+  gl.attachShader(shader, vs);
+  gl.attachShader(shader, ps);
+  gl.linkProgram(shader);
+  if (!gl.getProgramParameter(shader, gl.LINK_STATUS)) {
+    console.error('webrtc: webgl split shader:', gl.getProgramInfoLog(shader) || gl.getShaderInfoLog(ps) || gl.getShaderInfoLog(vs));
+    return null;
+  }
+  gl.useProgram(shader);
+
+  gl.uniform1fv(gl.getUniformLocation(shader, 'm'), new Float32Array([1,0,0, 0,1,0, 0,0,1]));
+  gl.uniform1i(gl.getUniformLocation(shader, 'sm'), 0);
+
+  var vx_ptr = gl.getAttribLocation(shader, 'vx');
+  gl.enableVertexAttribArray(vx_ptr);
+  var vx = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, vx);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0,0, 1,0, 1,1, 0,1]), gl.STATIC_DRAW);
+  gl.vertexAttribPointer(vx_ptr, 2, gl.FLOAT, false, 0, 0);
+
+  var ix = gl.createBuffer();
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ix);
+  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array([0,1,2, 0,2,3]), gl.STATIC_DRAW);
+
+  var tex = gl.createTexture();
+  gl.bindTexture(gl.TEXTURE_2D, tex);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T,     gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S,     gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+
+  return {
+    canvas: canvas,
+    gl: gl,
+    offset: gl.getUniformLocation(shader, 'offset'),
+    scale: gl.getUniformLocation(shader, 'scale'),
+    sheet: document.createElement('canvas')
+  };
+}
+
+function gpuOf() {
+  if (gpu === null) {
+    gpu = setupGpu(ensureGpuCanvas()) || false;
+    log(gpu ? 'splitting on webgl' : 'no webgl, splitting on the 2d context');
+  }
+  return gpu || null;
+}
+
+// | Where each window of the cut is drawn on the split canvas: side by side, in
+// rows no wider than the frame, each piece the size it has in the frame so the
+// slice keeps the pixels the stream carries. Each piece says what it is cut
+// from (from) in frame pixels — rounded the way drawSlice rounds it — and where
+// it lies on the canvas; null for a window with no size.
+function packPieces(placements, scaleX, scaleY, rowWidth) {
+  var x = 0, y = 0, row = 0, width = 0;
+  var pieces = placements.windows.map(function (w) {
+    var from = {
+      x: Math.round(w.x * scaleX),
+      y: Math.round(w.y * scaleY),
+      width: Math.round(w.width * scaleX),
+      height: Math.round(w.height * scaleY)
+    };
+    if (from.width <= 0 || from.height <= 0) return null;
+    if (x > 0 && x + from.width > rowWidth) {
+      x = 0;
+      y += row;
+      row = 0;
+    }
+    var piece = { from: from, x: x, y: y, width: from.width, height: from.height };
+    x += from.width;
+    row = Math.max(row, from.height);
+    width = Math.max(width, x);
+    return piece;
+  });
+  return { pieces: pieces, width: width, height: y + row };
+}
+
+// | Split the frame by the cut, on WebGL: what drawPiece draws each window from.
+// Where it cannot — no WebGL, its context lost, no cut, or a video with no
+// frame to show yet — the windows are cut out of the frame itself, as the 2d
+// context cuts them.
+function splitFrame(frame, frameWidth, frameHeight, placements, scaleX, scaleY) {
+  var cut = { source: frame, scaleX: scaleX, scaleY: scaleY, pieces: null };
+  if (placements.windows.length === 0 || !frameWidth || !frameHeight) return cut;
+  if (frame.readyState !== undefined && frame.readyState < 2) return cut;
+
+  var g = gpuOf();
+  if (!g || g.gl.isContextLost()) return cut;
+  var gl = g.gl;
+
+  var packed = packPieces(placements, scaleX, scaleY, frameWidth);
+  if (!packed.width || !packed.height) return cut;
+  if (g.canvas.width !== packed.width || g.canvas.height !== packed.height) {
+    g.canvas.width = g.sheet.width = packed.width;
+    g.canvas.height = g.sheet.height = packed.height;
+  }
+
+  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, frame);
+  var pieces = new Map();
+  packed.pieces.forEach(function (piece, i) {
+    if (!piece) return;
+    // the viewport counts up from the foot of the canvas, the sheet down from
+    // its head
+    gl.viewport(piece.x, packed.height - piece.y - piece.height, piece.width, piece.height);
+    gl.uniform2f(g.offset, piece.from.x / frameWidth, piece.from.y / frameHeight);
+    gl.uniform2f(g.scale, piece.from.width / frameWidth, piece.from.height / frameHeight);
+    gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
+    pieces.set(placements.windows[i], piece);
+  });
+  g.sheet.getContext('2d').drawImage(g.canvas, 0, 0);
+
+  return { source: g.sheet, scaleX: 1, scaleY: 1, pieces: pieces };
+}
+
+// | Draw a window of the cut into a canvas, out of the frame as splitFrame split it.
+function drawPiece(cut, canvas, placement) {
+  var piece = cut.pieces ? cut.pieces.get(placement) : placement;
+  if (piece) drawSlice(cut.source, canvas, piece, cut.scaleX, cut.scaleY);
 }
 
 // | What the stream is cut into: the layout of the output it carries, handed over
@@ -147281,6 +147479,7 @@ function renderSplit(videoName) {
   try {
     var scaleX = frameWidth / (placements.width || frameWidth);
     var scaleY = frameHeight / (placements.height || frameHeight);
+    var cut = splitFrame(frame, frameWidth, frameHeight, placements, scaleX, scaleY);
 
     // The composition drawn is the stream's own picture when it is the one this
     // stream carries: window for window, in the layout's own order. Any other
@@ -147304,7 +147503,7 @@ function renderSplit(videoName) {
       var window_ = composing && routed === undefined ? placements.windows[i] : placements.byName[name];
       var still = pictures[window_ ? window_.name : name];
       if (still) drawStill(still, windows[i].canvas);
-      else if (window_) drawSlice(frame, windows[i].canvas, window_, scaleX, scaleY);
+      else if (window_) drawPiece(cut, windows[i].canvas, window_);
       else if (name) drawLabel(windows[i].canvas, name, false, routed !== undefined);
       else clearSlice(windows[i].canvas);
       markRouting(windows[i].element, routed);
@@ -147316,7 +147515,7 @@ function renderSplit(videoName) {
     for (var j = 0; j < targets.length; j++) {
       var placement = placements.byName[targets[j].name];
       if (pictures[targets[j].name]) drawStill(pictures[targets[j].name], targets[j].canvas);
-      else if (placement) drawSlice(frame, targets[j].canvas, placement, scaleX, scaleY);
+      else if (placement) drawPiece(cut, targets[j].canvas, placement);
       else if (targets[j].name) drawLabel(targets[j].canvas, targets[j].name, false, targets[j].standing);
       else drawLabel(targets[j].canvas, targets[j].output ? 'No Signal' : 'No Source', true);
       markRouting(targets[j].card, targets[j].routing);
@@ -154855,7 +155054,7 @@ var genericReqPanelSignal_ = {
         if (x instanceof Data_Generic_Rep.Inr) {
             return new ReplSignal(x.value0);
         };
-        throw new Error("Failed pattern match at Unify.ReqPanel2 (line 97, column 1 - line 97, column 41): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at Unify.ReqPanel2 (line 100, column 1 - line 100, column 41): " + [ x.constructor.name ]);
     },
     from: function (x) {
         if (x instanceof ReqSignal) {
@@ -154864,7 +155063,7 @@ var genericReqPanelSignal_ = {
         if (x instanceof ReplSignal) {
             return new Data_Generic_Rep.Inr(x.value0);
         };
-        throw new Error("Failed pattern match at Unify.ReqPanel2 (line 97, column 1 - line 97, column 41): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at Unify.ReqPanel2 (line 100, column 1 - line 100, column 41): " + [ x.constructor.name ]);
     }
 };
 var genericComponentReqPanel_ = {
@@ -154892,7 +155091,7 @@ var eqReqPanelSignal = {
     eq: Data_Eq_Generic.genericEq(genericReqPanelSignal_)(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(ExploreSignal.eqAffRequest)))(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Tuple.eqTuple(ExploreSignal.eqAffRequest)(Data_Argonaut_Core.eqJson)))))
 };
 var eqReqPanel = {
-    eq: Data_Eq_Generic.genericEq(genericReqPanel_)(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqRec()(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowNil)()({
+    eq: Data_Eq_Generic.genericEq(genericReqPanel_)(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqRec()(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowNil)()({
         reflectSymbol: function () {
             return "affsent";
         }
@@ -154907,6 +155106,10 @@ var eqReqPanel = {
     })(Data_Maybe.eqMaybe(Data_Tuple.eqTuple(ExploreSignal.eqAffRequest)(Data_Argonaut_Core.eqJson))))()({
         reflectSymbol: function () {
             return "affpongfailed";
+        }
+    })(Data_Eq.eqBoolean))()({
+        reflectSymbol: function () {
+            return "affponged";
         }
     })(Data_Eq.eqBoolean))()({
         reflectSymbol: function () {
@@ -154930,7 +155133,8 @@ var defReqPanel = {
         affsent: Data_Maybe.Nothing.value,
         affrepl: Data_Maybe.Nothing.value,
         affpinged: false,
-        affpongfailed: false
+        affpongfailed: false,
+        affponged: false
     })
 };
 var decodeJsonReqPanel = {
@@ -154953,13 +155157,14 @@ var reqresult = function (json) {
     if (v instanceof Data_Either.Left) {
         return Data_Maybe.Nothing.value;
     };
-    throw new Error("Failed pattern match at Unify.ReqPanel2 (line 195, column 3 - line 197, column 22): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Unify.ReqPanel2 (line 203, column 3 - line 205, column 22): " + [ v.constructor.name ]);
 };
 var reqrequest = function (v) {
     return function (c) {
         return new ExploreSignal.AffRequest(v.value0, c);
     };
 };
+var pongedAnswer = new Data_Tuple.Tuple(new ExploreSignal.AffRequest(new ExploreSignal.AffRequestTag("Ponged"), new ExploreSignal.Get("pong")), Data_Argonaut_Core.jsonNull);
 var pongRetryRequest = new ExploreSignal.AffRequest(new ExploreSignal.AffRequestTag("Pong"), new ExploreSignal.GetDelay("pong?page=" + Unify_PageId.pageId, 1000.0));
 var pongRequest = new ExploreSignal.AffRequest(new ExploreSignal.AffRequestTag("Pong"), new ExploreSignal.Get("pong?page=" + Unify_PageId.pageId));
 var pongReply = function (json) {
@@ -154994,12 +155199,12 @@ var makeType = function (json) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left(v.value0);
     };
-    throw new Error("Failed pattern match at Unify.ReqPanel2 (line 184, column 3 - line 189, column 21): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Unify.ReqPanel2 (line 192, column 3 - line 197, column 21): " + [ v.constructor.name ]);
 };
 var heldBy = function (hold) {
     return function (v) {
-        return Data_Foldable.findMap(Data_List_Types.foldableList)(hold)(Data_Semigroup.append(Data_List_Types.semigroupList)(Data_Maybe.maybe(Data_List_Types.Nil.value)(Data_List.singleton)(v.value0.affsent))(Data_Semigroup.append(Data_List_Types.semigroupList)(Data_Maybe.maybe(Data_List_Types.Nil.value)(function ($149) {
-            return Data_List.singleton(Data_Tuple.fst($149));
+        return Data_Foldable.findMap(Data_List_Types.foldableList)(hold)(Data_Semigroup.append(Data_List_Types.semigroupList)(Data_Maybe.maybe(Data_List_Types.Nil.value)(Data_List.singleton)(v.value0.affsent))(Data_Semigroup.append(Data_List_Types.semigroupList)(Data_Maybe.maybe(Data_List_Types.Nil.value)(function ($154) {
+            return Data_List.singleton(Data_Tuple.fst($154));
         })(v.value0.affrepl))(v.value0.affrequest)));
     };
 };
@@ -155021,78 +155226,93 @@ var displayveil = function (held) {
 };
 var def_ComponentReqPanel = Unify_Types.def(defReqPanel);
 var _affsent = function (dictStrong) {
-    var $150 = Data_Lens_Lens["lens'"](function (v) {
+    var $155 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ReqPanel(s);
         });
     })(dictStrong);
-    var $151 = Data_Lens_Record.prop({
+    var $156 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "affsent";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($152) {
-        return $150($151($152));
+    return function ($157) {
+        return $155($156($157));
     };
 };
 var _affrequest = function (dictStrong) {
-    var $153 = Data_Lens_Lens["lens'"](function (v) {
+    var $158 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ReqPanel(s);
         });
     })(dictStrong);
-    var $154 = Data_Lens_Record.prop({
+    var $159 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "affrequest";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($155) {
-        return $153($154($155));
+    return function ($160) {
+        return $158($159($160));
     };
 };
 var _affrepl = function (dictStrong) {
-    var $156 = Data_Lens_Lens["lens'"](function (v) {
+    var $161 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ReqPanel(s);
         });
     })(dictStrong);
-    var $157 = Data_Lens_Record.prop({
+    var $162 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "affrepl";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($158) {
-        return $156($157($158));
+    return function ($163) {
+        return $161($162($163));
     };
 };
 var _affpongfailed = function (dictStrong) {
-    var $159 = Data_Lens_Lens["lens'"](function (v) {
+    var $164 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ReqPanel(s);
         });
     })(dictStrong);
-    var $160 = Data_Lens_Record.prop({
+    var $165 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "affpongfailed";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($161) {
-        return $159($160($161));
+    return function ($166) {
+        return $164($165($166));
     };
 };
-var _affpinged = function (dictStrong) {
-    var $162 = Data_Lens_Lens["lens'"](function (v) {
+var _affponged = function (dictStrong) {
+    var $167 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ReqPanel(s);
         });
     })(dictStrong);
-    var $163 = Data_Lens_Record.prop({
+    var $168 = Data_Lens_Record.prop({
+        reflectSymbol: function () {
+            return "affponged";
+        }
+    })()()(Data_Symbol.SProxy.value)(dictStrong);
+    return function ($169) {
+        return $167($168($169));
+    };
+};
+var _affpinged = function (dictStrong) {
+    var $170 = Data_Lens_Lens["lens'"](function (v) {
+        return new Data_Tuple.Tuple(v.value0, function (s) {
+            return new ReqPanel(s);
+        });
+    })(dictStrong);
+    var $171 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "affpinged";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($164) {
-        return $162($163($164));
+    return function ($172) {
+        return $170($171($172));
     };
 };
 var displayreq = function (v) {
@@ -155100,7 +155320,7 @@ var displayreq = function (v) {
         if (v.value0.affrepl instanceof Data_Maybe.Just) {
             return new Data_Tuple.Tuple(new Data_Maybe.Just(new Data_Tuple.Tuple(new Data_Tuple.Tuple(new ExploreSignal.UpdateLeaf(new ReplSignal(v.value0.affrepl.value0)), Data_Monoid.mempty(Data_List_Types.monoidList)), Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(_affrepl(Data_Profunctor_Strong.strongFn))(Data_Maybe.Nothing.value)))), [ Third_Widget.renderText(""), Third_Widget.renderText(Data_Argonaut_Core.stringify(Data_Tuple.snd(v.value0.affrepl.value0))) ]);
         };
-        if (v.value0.affrequest instanceof Data_List_Types.Cons && (v.value0.affsent instanceof Data_Maybe.Just && (v.value0.affsent.value0.value0.value0 === "Pong" && (v.value0.affrepl instanceof Data_Maybe.Nothing && !v.value0.affpinged)))) {
+        if (v.value0.affsent instanceof Data_Maybe.Just && (v.value0.affsent.value0.value0.value0 === "Pong" && (v.value0.affrepl instanceof Data_Maybe.Nothing && (!v.value0.affpinged && (!Data_List["null"](v.value0.affrequest) || !v.value0.affponged))))) {
             return new Data_Tuple.Tuple(new Data_Maybe.Just(new Data_Tuple.Tuple(new Data_Tuple.Tuple(new ExploreSignal.AffSignal(pingRequest, new ReqSignal(pingRequest)), Data_List_Types.Nil.value), Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(_affpinged(Data_Profunctor_Strong.strongFn))(true)))), [ Third_Widget.renderText(showaffrequest(v.value0.affsent.value0)), Third_Widget.renderText(Data_Show.show(Data_Show.showInt)(Data_List.length(v.value0.affrequest))) ]);
         };
         if (v.value0.affsent instanceof Data_Maybe.Just && v.value0.affrepl instanceof Data_Maybe.Nothing) {
@@ -155112,12 +155332,12 @@ var displayreq = function (v) {
                     var v1 = makeType(j.value0.body);
                     if (v1 instanceof Data_Either.Right && (v1.value0.status === "PROCESSING" && v1.value0.request_id instanceof Data_Maybe.Just)) {
                         return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))((function () {
-                            var $165 = Data_Lens_Setter.set(_affsent(Data_Profunctor_Strong.strongFn))(Data_Maybe.Nothing.value);
-                            var $166 = Data_Lens_Setter.over(_affrequest(Data_Profunctor_Strong.strongFn))(function (q) {
+                            var $173 = Data_Lens_Setter.set(_affsent(Data_Profunctor_Strong.strongFn))(Data_Maybe.Nothing.value);
+                            var $174 = Data_Lens_Setter.over(_affrequest(Data_Profunctor_Strong.strongFn))(function (q) {
                                 return new Data_List_Types.Cons(reqrequest(v.value0.affrequest.value0)(new ExploreSignal.Get("/api/request/" + Data_Show.show(Data_Show.showInt)(v1.value0.request_id.value0))), q);
                             });
-                            return function ($167) {
-                                return $165($166($167));
+                            return function ($175) {
+                                return $173($174($175));
                             };
                         })()))(function () {
                             return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(Data_Unit.unit);
@@ -155125,10 +155345,10 @@ var displayreq = function (v) {
                     };
                     if (v1 instanceof Data_Either.Right && v1.value0.status === "SUCCESS") {
                         return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))((function () {
-                            var $168 = Data_Lens_Setter.set(_affsent(Data_Profunctor_Strong.strongFn))(Data_Maybe.Nothing.value);
-                            var $169 = Data_Lens_Setter.set(_affrepl(Data_Profunctor_Strong.strongFn))(Data_Functor.map(Data_Maybe.functorMaybe)(Data_Tuple.Tuple.create(v.value0.affrequest.value0))(reqresult(j.value0.body)));
-                            return function ($170) {
-                                return $168($169($170));
+                            var $176 = Data_Lens_Setter.set(_affsent(Data_Profunctor_Strong.strongFn))(Data_Maybe.Nothing.value);
+                            var $177 = Data_Lens_Setter.set(_affrepl(Data_Profunctor_Strong.strongFn))(Data_Functor.map(Data_Maybe.functorMaybe)(Data_Tuple.Tuple.create(v.value0.affrequest.value0))(reqresult(j.value0.body)));
+                            return function ($178) {
+                                return $176($177($178));
                             };
                         })()))(function () {
                             return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(Data_Unit.unit);
@@ -155143,27 +155363,27 @@ var displayreq = function (v) {
                     if (x instanceof Data_Either.Right) {
                         return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(ExploreCore.logii(Data_Show.show(Data_Maybe.showMaybe(Data_Show.showString))(Data_Functor.map(Data_Maybe.functorMaybe)(Data_Argonaut_Core.stringify)(x.value0)))(Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))))(Data_Unit.unit))(function () {
                             return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))((function () {
-                                var $171 = Data_Lens_Setter.set(_affsent(Data_Profunctor_Strong.strongFn))(Data_Maybe.Nothing.value);
-                                var $172 = Data_Lens_Setter.set(_affrepl(Data_Profunctor_Strong.strongFn))(Data_Functor.map(Data_Maybe.functorMaybe)(Data_Tuple.Tuple.create(v.value0.affrequest.value0))(x.value0));
-                                return function ($173) {
-                                    return $171($172($173));
+                                var $179 = Data_Lens_Setter.set(_affsent(Data_Profunctor_Strong.strongFn))(Data_Maybe.Nothing.value);
+                                var $180 = Data_Lens_Setter.set(_affrepl(Data_Profunctor_Strong.strongFn))(Data_Functor.map(Data_Maybe.functorMaybe)(Data_Tuple.Tuple.create(v.value0.affrequest.value0))(x.value0));
+                                return function ($181) {
+                                    return $179($180($181));
                                 };
                             })()))(function () {
                                 return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(Data_Unit.unit);
                             });
                         });
                     };
-                    throw new Error("Failed pattern match at Unify.ReqPanel2 (line 316, column 21 - line 323, column 34): " + [ x.constructor.name ]);
+                    throw new Error("Failed pattern match at Unify.ReqPanel2 (line 334, column 21 - line 341, column 34): " + [ x.constructor.name ]);
                 };
                 return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Lens_Setter.set(_affsent(Data_Profunctor_Strong.strongFn))(Data_Maybe.Nothing.value)))(function () {
                     return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(Data_Unit.unit);
                 });
             }, Data_List_Types.Nil.value)), Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))((function () {
-                var $174 = Data_Lens_Setter.set(_affrequest(Data_Profunctor_Strong.strongFn))(v.value0.affrequest.value1);
-                var $175 = Data_Lens_Setter.set(_affsent(Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(v.value0.affrequest.value0));
-                var $176 = Data_Lens_Setter.set(_affrepl(Data_Profunctor_Strong.strongFn))(Data_Maybe.Nothing.value);
-                return function ($177) {
-                    return $174($175($176($177)));
+                var $182 = Data_Lens_Setter.set(_affrequest(Data_Profunctor_Strong.strongFn))(v.value0.affrequest.value1);
+                var $183 = Data_Lens_Setter.set(_affsent(Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(v.value0.affrequest.value0));
+                var $184 = Data_Lens_Setter.set(_affrepl(Data_Profunctor_Strong.strongFn))(Data_Maybe.Nothing.value);
+                return function ($185) {
+                    return $182($183($184($185)));
                 };
             })()))), [ Third_Widget.renderText(showaffrequest(v.value0.affrequest.value0)), Third_Widget.renderText("") ]);
         };
@@ -155176,33 +155396,41 @@ var displayreq = function (v) {
             })();
             return new Data_Tuple.Tuple(new Data_Maybe.Just(new Data_Tuple.Tuple(new Data_Tuple.Tuple(new ExploreSignal.AffSignal(req, new ReqSignal(req)), new Data_List_Types.Cons(function (j) {
                 if (j instanceof Data_Either.Right && j.value0.status === 200) {
+                    var answer = Control_Bind.bind(Data_Maybe.bindMaybe)(Data_Either.hush(pongReply(j.value0.body)))(pongAnswer);
+                    var first = !v.value0.affponged && Data_Maybe.isNothing(answer);
                     return Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))((function () {
-                        var $178 = Data_Lens_Setter.set(_affsent(Data_Profunctor_Strong.strongFn))(Data_Maybe.Nothing.value);
-                        var $179 = Data_Lens_Setter.set(_affpinged(Data_Profunctor_Strong.strongFn))(false);
-                        var $180 = Data_Lens_Setter.set(_affpongfailed(Data_Profunctor_Strong.strongFn))(false);
-                        var $181 = Data_Lens_Setter.set(_affrepl(Data_Profunctor_Strong.strongFn))(Control_Bind.bind(Data_Maybe.bindMaybe)(Data_Either.hush(pongReply(j.value0.body)))(pongAnswer));
-                        return function ($182) {
-                            return $178($179($180($181($182))));
+                        var $186 = Data_Lens_Setter.set(_affsent(Data_Profunctor_Strong.strongFn))(Data_Maybe.Nothing.value);
+                        var $187 = Data_Lens_Setter.set(_affpinged(Data_Profunctor_Strong.strongFn))(false);
+                        var $188 = Data_Lens_Setter.set(_affpongfailed(Data_Profunctor_Strong.strongFn))(false);
+                        var $189 = Data_Lens_Setter.set(_affponged(Data_Profunctor_Strong.strongFn))(v.value0.affponged || first);
+                        var $190 = Data_Lens_Setter.set(_affrepl(Data_Profunctor_Strong.strongFn))((function () {
+                            if (first) {
+                                return new Data_Maybe.Just(pongedAnswer);
+                            };
+                            return answer;
+                        })());
+                        return function ($191) {
+                            return $186($187($188($189($190($191)))));
                         };
                     })());
                 };
                 return Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))((function () {
-                    var $183 = Data_Lens_Setter.set(_affsent(Data_Profunctor_Strong.strongFn))(Data_Maybe.Nothing.value);
-                    var $184 = Data_Lens_Setter.set(_affpinged(Data_Profunctor_Strong.strongFn))(false);
-                    var $185 = Data_Lens_Setter.set(_affpongfailed(Data_Profunctor_Strong.strongFn))(true);
-                    return function ($186) {
-                        return $183($184($185($186)));
+                    var $192 = Data_Lens_Setter.set(_affsent(Data_Profunctor_Strong.strongFn))(Data_Maybe.Nothing.value);
+                    var $193 = Data_Lens_Setter.set(_affpinged(Data_Profunctor_Strong.strongFn))(false);
+                    var $194 = Data_Lens_Setter.set(_affpongfailed(Data_Profunctor_Strong.strongFn))(true);
+                    return function ($195) {
+                        return $192($193($194($195)));
                     };
                 })());
             }, Data_List_Types.Nil.value)), Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))((function () {
-                var $187 = Data_Lens_Setter.set(_affsent(Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(req));
-                var $188 = Data_Lens_Setter.set(_affpinged(Data_Profunctor_Strong.strongFn))(false);
-                return function ($189) {
-                    return $187($188($189));
+                var $196 = Data_Lens_Setter.set(_affsent(Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just(req));
+                var $197 = Data_Lens_Setter.set(_affpinged(Data_Profunctor_Strong.strongFn))(false);
+                return function ($198) {
+                    return $196($197($198));
                 };
             })()))), [ Third_Widget.renderText(showaffrequest(req)), Third_Widget.renderText("") ]);
         };
-        throw new Error("Failed pattern match at Unify.ReqPanel2 (line 253, column 1 - line 253, column 85): " + [ v.constructor.name, send.constructor.name ]);
+        throw new Error("Failed pattern match at Unify.ReqPanel2 (line 267, column 1 - line 267, column 85): " + [ v.constructor.name, send.constructor.name ]);
     };
 };
 var displayreqHolding = function (hold) {
@@ -155240,6 +155468,7 @@ module.exports = {
     "_affrepl": _affrepl,
     "_affpinged": _affpinged,
     "_affpongfailed": _affpongfailed,
+    "_affponged": _affponged,
     "_CoReqPanel": _CoReqPanel,
     def_ComponentReqPanel: def_ComponentReqPanel,
     showaffrequest: showaffrequest,
@@ -155255,6 +155484,7 @@ module.exports = {
     PongPreview: PongPreview,
     pongReply: pongReply,
     pongAnswer: pongAnswer,
+    pongedAnswer: pongedAnswer,
     envelopeAnswer: envelopeAnswer,
     displayreq: displayreq,
     heldBy: heldBy,
