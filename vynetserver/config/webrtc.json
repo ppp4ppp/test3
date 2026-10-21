@@ -12,7 +12,7 @@
       "VOD": false,
       "disableAudio": true,
       "debug": false,
-      "url": "rtsp://192.168.200.204:8554/test"
+      "url": "rtsp://localhost:8554/test"
     }
   },
   "client": {

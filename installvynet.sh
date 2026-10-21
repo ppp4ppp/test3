@@ -1,4 +1,4 @@
-VERSION=12
+VERSION=13
 
 echo "installing v$VERSION ....."
 
@@ -30,7 +30,12 @@ sed -i -e "s#\./bundle\.js#./bundlev$VERSION.js#" -e "s#v1\.0\.[0-9]\+#v1.0.$VER
 
 echo "installing vynetserver.service ....."
 sudo tee /etc/systemd/system/vynetserver.service > /dev/null <<'EOF'
+
+sudo mkdir -p /etc/systemd/system/vynetserver.service.d
+sudo tee /etc/systemd/system/vynetserver.service.d/network-online.conf >/dev/null <<'EOF'
 [Unit]
+Wants=network-online.target
+After=network-online.target
 Description=VyNet Server
 After=network.target
 
