@@ -1,4 +1,6 @@
-echo "installing v10 ....."
+VERSION=11
+
+echo "installing v$VERSION ....."
 
 OLD_SERVICES="steam-rtsp.service rtsp-stream.service rtspgpu.service"
 
@@ -11,15 +13,20 @@ for s in $OLD_SERVICES; do
 done
 
 mkdir -p /home/vynet/vynetserver/ && mkdir -p /home/vynet/vynetserver/bin  && mkdir -p /home/vynet/vynetserver/config  && mkdir -p /home/vynet/vynetserver/static && mkdir -p /home/vynet/vynetserver/log
-wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/releasev10/vynetserver/bin/arm/vynetserver > /home/vynet/vynetserver/vynetserver
-wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/releasev10/vynetserver/bin/arm/rtspgpu > /home/vynet/vynetserver/bin/rtspgpu
-wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/releasev10/vynetserver/config/layoutsconfig.json > /home/vynet/vynetserver/config/layoutsconfig.json
-wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/releasev10/vynetserver/config/config.json > /home/vynet/vynetserver/config/config.json
-wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/releasev10/vynetserver/config/webrtc.json > /home/vynet/vynetserver/config/webrtc.json
-wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/releasev10/vynetserver/static/bundle.js > /home/vynet/vynetserver/static/bundle.js
-wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/releasev10/vynetserver/static/target.html > /home/vynet/vynetserver/static/target.html
+wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/releasev$VERSION/vynetserver/bin/arm/vynetserver > /home/vynet/vynetserver/vynetserver
+wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/releasev$VERSION/vynetserver/bin/arm/rtspgpu > /home/vynet/vynetserver/bin/rtspgpu
+wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/releasev$VERSION/vynetserver/config/layoutsconfig.json > /home/vynet/vynetserver/config/layoutsconfig.json
+wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/releasev$VERSION/vynetserver/config/config.json > /home/vynet/vynetserver/config/config.json
+wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/releasev$VERSION/vynetserver/config/webrtc.json > /home/vynet/vynetserver/config/webrtc.json
+wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/releasev$VERSION/vynetserver/static/bundle.js > /home/vynet/vynetserver/static/bundle.js
+wget -qO- https://raw.githubusercontent.com/ppp4ppp/test3/releasev$VERSION/vynetserver/static/target.html > /home/vynet/vynetserver/static/target.html
 chmod +x /home/vynet/vynetserver/vynetserver
 chmod +x /home/vynet/vynetserver/bin/rtspgpu
+
+# rename bundle.js to bundlev$VERSION.js and set the version shown in target.html to 1.0.$VERSION
+rm -f /home/vynet/vynetserver/static/bundlev*.js
+mv /home/vynet/vynetserver/static/bundle.js /home/vynet/vynetserver/static/bundlev$VERSION.js
+sed -i -e "s#\./bundle\.js#./bundlev$VERSION.js#" -e "s#v1\.0\.[0-9]\+#v1.0.$VERSION#" /home/vynet/vynetserver/static/target.html
 
 echo "installing vynetserver.service ....."
 sudo tee /etc/systemd/system/vynetserver.service > /dev/null <<'EOF'
