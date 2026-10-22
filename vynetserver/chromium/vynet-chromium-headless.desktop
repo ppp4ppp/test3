@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Chromium headless (GPU, debug 9333)
+Comment=Headless Chromium on the Mali GPU, remote debugging on 127.0.0.1:9333, opening localhost:8085/target.html
+Exec=/home/vynet/vynetserver/chromium/headless.sh
+Icon=chromium-browser
+Terminal=false
+Categories=Development;

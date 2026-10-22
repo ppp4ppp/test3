@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Chromium full screen (debug 9334)
+Comment=Chromium full screen with no address bar (kiosk), remote debugging on 127.0.0.1:9334, opening localhost:8085/target.html
+Exec=/home/vynet/vynetserver/chromium/window.sh
+Icon=chromium-browser
+Terminal=false
+Categories=Development;
+X-GNOME-Autostart-enabled=true

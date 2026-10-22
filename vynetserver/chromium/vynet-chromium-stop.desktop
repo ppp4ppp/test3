@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Chromium debug: stop
+Comment=Stop the headless and full screen Chromium started by the debug launchers
+Exec=/home/vynet/vynetserver/chromium/stop.sh
+Icon=chromium-browser
+Terminal=false
+Categories=Development;
