@@ -147633,7 +147633,10 @@ exports.freezeRtcMoved = function (videoName) {
 };
 
 // | Hold each source named that is not held yet, cut out of the frame showing
-// now by the placement the cut in force gives it.
+// now by the placement the cut in force gives it. It is cut the way the windows
+// and cards are, split on WebGL where there is one: a 2d context can draw
+// nothing at all of a video decoded on the GPU — Chromium 114 with zero-copy on
+// the Mali leaves the picture empty — where WebGL takes the frame whole.
 function holdSources(videoName, names) {
   var video = document.getElementById(videoName);
   if (!video || video.videoWidth === 0 || !currentPlacements || names.length === 0) return;
@@ -147641,13 +147644,14 @@ function holdSources(videoName, names) {
   var scaleX = video.videoWidth / (currentPlacements.width || video.videoWidth);
   var scaleY = video.videoHeight / (currentPlacements.height || video.videoHeight);
   var pictures = stills[videoName] || (stills[videoName] = {});
+  var cut = splitFrame(video, video.videoWidth, video.videoHeight, currentPlacements, scaleX, scaleY);
 
   names.forEach(function (name) {
     var placement = currentPlacements.byName[name];
     if (!name || pictures[name] || !placement) return;
 
     var still = document.createElement('canvas');
-    drawSlice(video, still, placement, scaleX, scaleY);
+    drawPiece(cut, still, placement);
     if (still.width && still.height) pictures[name] = still;
   });
   if (Object.keys(pictures).length > 0) armHoldLimit(videoName);
