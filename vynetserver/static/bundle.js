@@ -133569,6 +133569,7 @@ var Data_List_Types = require("../Data.List.Types/index.js");
 var Data_Maybe = require("../Data.Maybe/index.js");
 var Data_Newtype = require("../Data.Newtype/index.js");
 var Data_Profunctor_Strong = require("../Data.Profunctor.Strong/index.js");
+var Data_Semigroup = require("../Data.Semigroup/index.js");
 var Data_Show = require("../Data.Show/index.js");
 var Data_Show_Generic = require("../Data.Show.Generic/index.js");
 var Data_Symbol = require("../Data.Symbol/index.js");
@@ -134509,7 +134510,7 @@ var scaledAt = function (d) {
         if (Data_Boolean.otherwise) {
             return a;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentOutputDeviceConfiguration (line 413, column 5 - line 422, column 27): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentOutputDeviceConfiguration (line 417, column 5 - line 426, column 27): " + [ v.constructor.name ]);
     };
 };
 var scaledFormatOf = function (a) {
@@ -134579,7 +134580,7 @@ var opening = function (d) {
 };
 var displayOutputDeviceConfiguration = function (s) {
     return function (send) {
-        return new Data_Tuple.Tuple(Data_Maybe.Nothing.value, [ React_DOM.div([ React_DOM_Props.className("controlshead") ])([ React_DOM.div([ React_DOM_Props.className("controlstitle") ])([ React_DOM.text("Output settings") ]), React_DOM.div([ React_DOM_Props.className("controlstarget") ])([ React_DOM.text(Data_Lens_Getter.viewOn(s)(_configuredName(Data_Lens_Internal_Forget.strongForget))) ]) ]), React_DOM.div([ React_DOM_Props.className("grouplabel") ])([ React_DOM.text("Device") ]), React_DOM.div([ React_DOM_Props.className("row namerow") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Name") ]), React_DOM.input([ React_DOM_Props.className("nameedit"), React_DOM_Props["_id"]("config_name"), React_DOM_Props.value(Data_Lens_Getter.viewOn(s)(_nameEdit(Data_Lens_Internal_Forget.strongForget))), React_DOM_Props.onChange(function (v) {
+        return new Data_Tuple.Tuple(Data_Maybe.Nothing.value, Data_Semigroup.append(Data_Semigroup.semigroupArray)([ React_DOM.div([ React_DOM_Props.className("controlshead") ])([ React_DOM.div([ React_DOM_Props.className("controlstitle") ])([ React_DOM.text("Output settings") ]), React_DOM.div([ React_DOM_Props.className("controlstarget") ])([ React_DOM.text(Data_Lens_Getter.viewOn(s)(_configuredName(Data_Lens_Internal_Forget.strongForget))) ]) ]), React_DOM.div([ React_DOM_Props.className("grouplabel") ])([ React_DOM.text("Device") ]), React_DOM.div([ React_DOM_Props.className("row namerow") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Name") ]), React_DOM.input([ React_DOM_Props.className("nameedit"), React_DOM_Props["_id"]("config_name"), React_DOM_Props.value(Data_Lens_Getter.viewOn(s)(_nameEdit(Data_Lens_Internal_Forget.strongForget))), React_DOM_Props.onChange(function (v) {
             return send(Extra.update(new ComponentOutputDeviceConfigurationNameEditSignal(v.target.value))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_nameEdit(Data_Profunctor_Strong.strongFn))(v.target.value));
             })));
@@ -134611,21 +134612,21 @@ var displayOutputDeviceConfiguration = function (s) {
                 return "Picked";
             };
             return "Pick";
-        })()) ]) ]), React_DOM.div([ React_DOM_Props.className((function () {
+        })()) ]) ]) ])(Data_Semigroup.append(Data_Semigroup.semigroupArray)((function () {
             var $317 = Data_Lens_Getter.viewOn(s)(_transceiver(Data_Lens_Internal_Forget.strongForget));
             if ($317) {
-                return "row";
+                return [ React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Read as") ]), React_DOM.div([ React_DOM_Props.className("seg is-control"), React_DOM_Props["_id"]("config_read_as") ])([ React_DOM.div([ React_DOM_Props.className(outputSeg(Data_Lens_Getter.viewOn(s)(_readAs(Data_Lens_Internal_Forget.strongForget)) === "TX")), React_DOM_Props["_id"]("config_read_as_tx"), React_DOM_Props.onClick(function (v) {
+                    return send(Extra.update(new ComponentOutputDeviceConfigurationReadAsSignal("TX"))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
+                        return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_readAs(Data_Profunctor_Strong.strongFn))("TX"));
+                    })));
+                }) ])([ React_DOM.text("TX (source)") ]), React_DOM.div([ React_DOM_Props.className(outputSeg(Data_Lens_Getter.viewOn(s)(_readAs(Data_Lens_Internal_Forget.strongForget)) === "RX")), React_DOM_Props["_id"]("config_read_as_rx"), React_DOM_Props.onClick(function (v) {
+                    return send(Extra.update(new ComponentOutputDeviceConfigurationReadAsSignal("RX"))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
+                        return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_readAs(Data_Profunctor_Strong.strongFn))("RX"));
+                    })));
+                }) ])([ React_DOM.text("RX (output)") ]) ]) ]) ];
             };
-            return "row is-hidden";
-        })()) ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Read as") ]), React_DOM.div([ React_DOM_Props.className("seg is-control"), React_DOM_Props["_id"]("config_read_as") ])([ React_DOM.div([ React_DOM_Props.className(outputSeg(Data_Lens_Getter.viewOn(s)(_readAs(Data_Lens_Internal_Forget.strongForget)) === "TX")), React_DOM_Props["_id"]("config_read_as_tx"), React_DOM_Props.onClick(function (v) {
-            return send(Extra.update(new ComponentOutputDeviceConfigurationReadAsSignal("TX"))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
-                return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_readAs(Data_Profunctor_Strong.strongFn))("TX"));
-            })));
-        }) ])([ React_DOM.text("TX (source)") ]), React_DOM.div([ React_DOM_Props.className(outputSeg(Data_Lens_Getter.viewOn(s)(_readAs(Data_Lens_Internal_Forget.strongForget)) === "RX")), React_DOM_Props["_id"]("config_read_as_rx"), React_DOM_Props.onClick(function (v) {
-            return send(Extra.update(new ComponentOutputDeviceConfigurationReadAsSignal("RX"))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
-                return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_readAs(Data_Profunctor_Strong.strongFn))("RX"));
-            })));
-        }) ])([ React_DOM.text("RX (output)") ]) ]) ]), React_DOM.div([ React_DOM_Props.className("grouplabel") ])([ React_DOM.text("Output") ]), React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Video mode") ]), React_DOM.div([ React_DOM_Props.className((function () {
+            return [  ];
+        })())([ React_DOM.div([ React_DOM_Props.className("grouplabel") ])([ React_DOM.text("Output") ]), React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Video mode") ]), React_DOM.div([ React_DOM_Props.className((function () {
             var $318 = Data_Lens_Getter.viewOn(s)(_genlockable(Data_Lens_Internal_Forget.strongForget));
             if ($318) {
                 return "seg is-control";
@@ -134681,7 +134682,7 @@ var displayOutputDeviceConfiguration = function (s) {
             return send(Extra.update(new ComponentOutputDeviceConfigurationFps60Signal(true))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_fps60(Data_Profunctor_Strong.strongFn))(true));
             })));
-        }) ])([ React_DOM.text("60") ]) ]) ]) ]), React_DOM.div([ React_DOM_Props.className("cardsource") ])([ React_DOM.text(Data_Show.show(Exhibit_VideoControl_Types.showDeviceSettings)(Data_Lens_Getter.viewOn(s)(_configured(Data_Lens_Internal_Forget.strongForget)))) ]), React_DOM.div([ React_DOM_Props.className("cardformat") ])([ React_DOM.text(Data_Show.show(Data_Tuple.showTuple(Data_Show.showInt)(Data_Tuple.showTuple(Data_Show.showInt)(Data_Show.showInt)))(Data_Lens_Getter.viewOn(s)(_knownFormat(Data_Lens_Internal_Forget.strongForget)))) ]) ]);
+        }) ])([ React_DOM.text("60") ]) ]) ]) ]), React_DOM.div([ React_DOM_Props.className("cardsource") ])([ React_DOM.text(Data_Show.show(Exhibit_VideoControl_Types.showDeviceSettings)(Data_Lens_Getter.viewOn(s)(_configured(Data_Lens_Internal_Forget.strongForget)))) ]), React_DOM.div([ React_DOM_Props.className("cardformat") ])([ React_DOM.text(Data_Show.show(Data_Tuple.showTuple(Data_Show.showInt)(Data_Tuple.showTuple(Data_Show.showInt)(Data_Show.showInt)))(Data_Lens_Getter.viewOn(s)(_knownFormat(Data_Lens_Internal_Forget.strongForget)))) ]) ])));
     };
 };
 var renderOutputDeviceConfiguration$prime = function (d) {
@@ -134893,7 +134894,7 @@ module.exports = {
     updateJsonComponentCompon: updateJsonComponentCompon
 };
 
-},{"../Control.Applicative/index.js":42,"../Control.Bind/index.js":48,"../Control.Category/index.js":49,"../Control.Comonad.Store.Class/index.js":51,"../Control.Comonad.Store.Trans/index.js":52,"../Control.Comonad.Store/index.js":53,"../Control.Monad.State.Class/index.js":71,"../Data.Argonaut.Core/index.js":83,"../Data.Argonaut.Decode.Class/index.js":84,"../Data.Argonaut.Decode.Generic/index.js":88,"../Data.Argonaut.Encode.Class/index.js":89,"../Data.Argonaut.Encode.Generic/index.js":92,"../Data.Array/index.js":103,"../Data.Boolean/index.js":107,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Eq/index.js":118,"../Data.Function/index.js":128,"../Data.Functor/index.js":142,"../Data.Generic.Rep/index.js":145,"../Data.HeytingAlgebra/index.js":148,"../Data.Identity/index.js":149,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Internal.Wander/index.js":169,"../Data.Lens.Lens/index.js":173,"../Data.Lens.Record/index.js":177,"../Data.Lens.Setter/index.js":178,"../Data.Lens.Traversal/index.js":179,"../Data.List.Types/index.js":185,"../Data.List/index.js":186,"../Data.Maybe/index.js":190,"../Data.Newtype/index.js":200,"../Data.Profunctor.Strong/index.js":216,"../Data.Show.Generic/index.js":228,"../Data.Show/index.js":230,"../Data.Symbol/index.js":244,"../Data.Tuple/index.js":251,"../Data.Unit/index.js":259,"../Exhibit.VideoControl.ComponentOutputDeviceConfiguration/index.js":300,"../Exhibit.VideoControl.Interactions/index.js":315,"../Exhibit.VideoControl.Types/index.js":316,"../Exhibit.VideoControl.VideoControlAPI/index.js":352,"../ExploreCore/index.js":356,"../ExploreSignal/index.js":357,"../Extra/index.js":358,"../React.DOM.Props/index.js":378,"../React.DOM/index.js":379,"../Safe.Coerce/index.js":389,"../ShouldUpdate/index.js":390,"../Unify.Types/index.js":402,"../Unify.UpdateJson/index.js":403}],338:[function(require,module,exports){
+},{"../Control.Applicative/index.js":42,"../Control.Bind/index.js":48,"../Control.Category/index.js":49,"../Control.Comonad.Store.Class/index.js":51,"../Control.Comonad.Store.Trans/index.js":52,"../Control.Comonad.Store/index.js":53,"../Control.Monad.State.Class/index.js":71,"../Data.Argonaut.Core/index.js":83,"../Data.Argonaut.Decode.Class/index.js":84,"../Data.Argonaut.Decode.Generic/index.js":88,"../Data.Argonaut.Encode.Class/index.js":89,"../Data.Argonaut.Encode.Generic/index.js":92,"../Data.Array/index.js":103,"../Data.Boolean/index.js":107,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Eq/index.js":118,"../Data.Function/index.js":128,"../Data.Functor/index.js":142,"../Data.Generic.Rep/index.js":145,"../Data.HeytingAlgebra/index.js":148,"../Data.Identity/index.js":149,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Internal.Wander/index.js":169,"../Data.Lens.Lens/index.js":173,"../Data.Lens.Record/index.js":177,"../Data.Lens.Setter/index.js":178,"../Data.Lens.Traversal/index.js":179,"../Data.List.Types/index.js":185,"../Data.List/index.js":186,"../Data.Maybe/index.js":190,"../Data.Newtype/index.js":200,"../Data.Profunctor.Strong/index.js":216,"../Data.Semigroup/index.js":223,"../Data.Show.Generic/index.js":228,"../Data.Show/index.js":230,"../Data.Symbol/index.js":244,"../Data.Tuple/index.js":251,"../Data.Unit/index.js":259,"../Exhibit.VideoControl.ComponentOutputDeviceConfiguration/index.js":300,"../Exhibit.VideoControl.Interactions/index.js":315,"../Exhibit.VideoControl.Types/index.js":316,"../Exhibit.VideoControl.VideoControlAPI/index.js":352,"../ExploreCore/index.js":356,"../ExploreSignal/index.js":357,"../Extra/index.js":358,"../React.DOM.Props/index.js":378,"../React.DOM/index.js":379,"../Safe.Coerce/index.js":389,"../ShouldUpdate/index.js":390,"../Unify.Types/index.js":402,"../Unify.UpdateJson/index.js":403}],338:[function(require,module,exports){
 // Generated by purs version 0.14.4
 "use strict";
 var Control_Applicative = require("../Control.Applicative/index.js");
@@ -141967,6 +141968,7 @@ var Data_Lens_Setter = require("../Data.Lens.Setter/index.js");
 var Data_Maybe = require("../Data.Maybe/index.js");
 var Data_Newtype = require("../Data.Newtype/index.js");
 var Data_Profunctor_Strong = require("../Data.Profunctor.Strong/index.js");
+var Data_Semigroup = require("../Data.Semigroup/index.js");
 var Data_Show = require("../Data.Show/index.js");
 var Data_Show_Generic = require("../Data.Show.Generic/index.js");
 var Data_Symbol = require("../Data.Symbol/index.js");
@@ -142871,7 +142873,7 @@ var opening = function (d) {
 };
 var displaySourceDeviceConfiguration = function (s) {
     return function (send) {
-        return new Data_Tuple.Tuple(Data_Maybe.Nothing.value, [ React_DOM.div([ React_DOM_Props.className("controlshead") ])([ React_DOM.div([ React_DOM_Props.className("controlstitle") ])([ React_DOM.text("Source settings") ]), React_DOM.div([ React_DOM_Props.className("controlstarget") ])([ React_DOM.text(Data_Lens_Getter.viewOn(s)(_configuredName(Data_Lens_Internal_Forget.strongForget))) ]) ]), React_DOM.div([ React_DOM_Props.className("grouplabel") ])([ React_DOM.text("Device") ]), React_DOM.div([ React_DOM_Props.className("row namerow") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Name") ]), React_DOM.input([ React_DOM_Props.className("nameedit"), React_DOM_Props["_id"]("config_name"), React_DOM_Props.value(Data_Lens_Getter.viewOn(s)(_nameEdit(Data_Lens_Internal_Forget.strongForget))), React_DOM_Props.onChange(function (v) {
+        return new Data_Tuple.Tuple(Data_Maybe.Nothing.value, Data_Semigroup.append(Data_Semigroup.semigroupArray)([ React_DOM.div([ React_DOM_Props.className("controlshead") ])([ React_DOM.div([ React_DOM_Props.className("controlstitle") ])([ React_DOM.text("Source settings") ]), React_DOM.div([ React_DOM_Props.className("controlstarget") ])([ React_DOM.text(Data_Lens_Getter.viewOn(s)(_configuredName(Data_Lens_Internal_Forget.strongForget))) ]) ]), React_DOM.div([ React_DOM_Props.className("grouplabel") ])([ React_DOM.text("Device") ]), React_DOM.div([ React_DOM_Props.className("row namerow") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Name") ]), React_DOM.input([ React_DOM_Props.className("nameedit"), React_DOM_Props["_id"]("config_name"), React_DOM_Props.value(Data_Lens_Getter.viewOn(s)(_nameEdit(Data_Lens_Internal_Forget.strongForget))), React_DOM_Props.onChange(function (v) {
             return send(Extra.update(new ComponentSourceDeviceConfigurationNameEditSignal(v.target.value))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_nameEdit(Data_Profunctor_Strong.strongFn))(v.target.value));
             })));
@@ -142887,21 +142889,21 @@ var displaySourceDeviceConfiguration = function (s) {
             return send(Extra.update(new ComponentSourceDeviceConfigurationLocatingSignal(!Data_Lens_Getter.viewOn(s)(_locating(Data_Lens_Internal_Forget.strongForget))))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.over(_locating(Data_Profunctor_Strong.strongFn))(Data_HeytingAlgebra.not(Data_HeytingAlgebra.heytingAlgebraBoolean)));
             })));
-        }) ])([ React_DOM.text(Data_Show.show(Data_Show.showBoolean)(Data_Lens_Getter.viewOn(s)(_locating(Data_Lens_Internal_Forget.strongForget)))) ]) ]), React_DOM.div([ React_DOM_Props.className((function () {
+        }) ])([ React_DOM.text(Data_Show.show(Data_Show.showBoolean)(Data_Lens_Getter.viewOn(s)(_locating(Data_Lens_Internal_Forget.strongForget)))) ]) ]) ])(Data_Semigroup.append(Data_Semigroup.semigroupArray)((function () {
             var $276 = Data_Lens_Getter.viewOn(s)(_transceiver(Data_Lens_Internal_Forget.strongForget));
             if ($276) {
-                return "row";
+                return [ React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Read as") ]), React_DOM.div([ React_DOM_Props.className("seg is-control"), React_DOM_Props["_id"]("config_read_as") ])([ React_DOM.div([ React_DOM_Props.className(sourceSeg(Data_Lens_Getter.viewOn(s)(_readAs(Data_Lens_Internal_Forget.strongForget)) === "TX")), React_DOM_Props["_id"]("config_read_as_tx"), React_DOM_Props.onClick(function (v) {
+                    return send(Extra.update(new ComponentSourceDeviceConfigurationReadAsSignal("TX"))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
+                        return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_readAs(Data_Profunctor_Strong.strongFn))("TX"));
+                    })));
+                }) ])([ React_DOM.text("TX (source)") ]), React_DOM.div([ React_DOM_Props.className(sourceSeg(Data_Lens_Getter.viewOn(s)(_readAs(Data_Lens_Internal_Forget.strongForget)) === "RX")), React_DOM_Props["_id"]("config_read_as_rx"), React_DOM_Props.onClick(function (v) {
+                    return send(Extra.update(new ComponentSourceDeviceConfigurationReadAsSignal("RX"))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
+                        return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_readAs(Data_Profunctor_Strong.strongFn))("RX"));
+                    })));
+                }) ])([ React_DOM.text("RX (output)") ]) ]) ]) ];
             };
-            return "row is-hidden";
-        })()) ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Read as") ]), React_DOM.div([ React_DOM_Props.className("seg is-control"), React_DOM_Props["_id"]("config_read_as") ])([ React_DOM.div([ React_DOM_Props.className(sourceSeg(Data_Lens_Getter.viewOn(s)(_readAs(Data_Lens_Internal_Forget.strongForget)) === "TX")), React_DOM_Props["_id"]("config_read_as_tx"), React_DOM_Props.onClick(function (v) {
-            return send(Extra.update(new ComponentSourceDeviceConfigurationReadAsSignal("TX"))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
-                return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_readAs(Data_Profunctor_Strong.strongFn))("TX"));
-            })));
-        }) ])([ React_DOM.text("TX (source)") ]), React_DOM.div([ React_DOM_Props.className(sourceSeg(Data_Lens_Getter.viewOn(s)(_readAs(Data_Lens_Internal_Forget.strongForget)) === "RX")), React_DOM_Props["_id"]("config_read_as_rx"), React_DOM_Props.onClick(function (v) {
-            return send(Extra.update(new ComponentSourceDeviceConfigurationReadAsSignal("RX"))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
-                return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_readAs(Data_Profunctor_Strong.strongFn))("RX"));
-            })));
-        }) ])([ React_DOM.text("RX (output)") ]) ]) ]), React_DOM.div([ React_DOM_Props.className("grouplabel") ])([ React_DOM.text("Streams") ]), React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Native stream divider") ]), React_DOM.div([ React_DOM_Props.className(sourceSwitch(Data_Lens_Getter.viewOn(s)(_nativeDivider(Data_Lens_Internal_Forget.strongForget)))), React_DOM_Props["_id"]("config_native_divider"), React_DOM_Props.onClick(function (v) {
+            return [  ];
+        })())([ React_DOM.div([ React_DOM_Props.className("grouplabel") ])([ React_DOM.text("Streams") ]), React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Native stream divider") ]), React_DOM.div([ React_DOM_Props.className(sourceSwitch(Data_Lens_Getter.viewOn(s)(_nativeDivider(Data_Lens_Internal_Forget.strongForget)))), React_DOM_Props["_id"]("config_native_divider"), React_DOM_Props.onClick(function (v) {
             return send(Extra.update(new ComponentSourceDeviceConfigurationNativeDividerSignal(!Data_Lens_Getter.viewOn(s)(_nativeDivider(Data_Lens_Internal_Forget.strongForget))))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.over(_nativeDivider(Data_Profunctor_Strong.strongFn))(Data_HeytingAlgebra.not(Data_HeytingAlgebra.heytingAlgebraBoolean)));
             })));
@@ -142941,7 +142943,7 @@ var displaySourceDeviceConfiguration = function (s) {
             return send(Extra.update(new ComponentSourceDeviceConfigurationHdrSignal(!Data_Lens_Getter.viewOn(s)(_hdr(Data_Lens_Internal_Forget.strongForget))))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.over(_hdr(Data_Profunctor_Strong.strongFn))(Data_HeytingAlgebra.not(Data_HeytingAlgebra.heytingAlgebraBoolean)));
             })));
-        }) ])([ React_DOM.text(Data_Show.show(Data_Show.showBoolean)(Data_Lens_Getter.viewOn(s)(_hdr(Data_Lens_Internal_Forget.strongForget)))) ]) ]), React_DOM.div([ React_DOM_Props.className("cardsource") ])([ React_DOM.text(Data_Show.show(Exhibit_VideoControl_Types.showDeviceSettings)(Data_Lens_Getter.viewOn(s)(_configured(Data_Lens_Internal_Forget.strongForget)))) ]) ]);
+        }) ])([ React_DOM.text(Data_Show.show(Data_Show.showBoolean)(Data_Lens_Getter.viewOn(s)(_hdr(Data_Lens_Internal_Forget.strongForget)))) ]) ]), React_DOM.div([ React_DOM_Props.className("cardsource") ])([ React_DOM.text(Data_Show.show(Exhibit_VideoControl_Types.showDeviceSettings)(Data_Lens_Getter.viewOn(s)(_configured(Data_Lens_Internal_Forget.strongForget)))) ]) ])));
     };
 };
 var renderSourceDeviceConfiguration$prime = function (d) {
@@ -143134,7 +143136,7 @@ module.exports = {
     updateJsonComponentCompon: updateJsonComponentCompon
 };
 
-},{"../Control.Applicative/index.js":42,"../Control.Bind/index.js":48,"../Control.Category/index.js":49,"../Control.Comonad.Store.Class/index.js":51,"../Control.Comonad.Store.Trans/index.js":52,"../Control.Comonad.Store/index.js":53,"../Control.Monad.State.Class/index.js":71,"../Data.Argonaut.Core/index.js":83,"../Data.Argonaut.Decode.Class/index.js":84,"../Data.Argonaut.Decode.Generic/index.js":88,"../Data.Argonaut.Encode.Class/index.js":89,"../Data.Argonaut.Encode.Generic/index.js":92,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Eq/index.js":118,"../Data.Function/index.js":128,"../Data.Functor/index.js":142,"../Data.Generic.Rep/index.js":145,"../Data.HeytingAlgebra/index.js":148,"../Data.Identity/index.js":149,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Lens/index.js":173,"../Data.Lens.Record/index.js":177,"../Data.Lens.Setter/index.js":178,"../Data.Maybe/index.js":190,"../Data.Newtype/index.js":200,"../Data.Profunctor.Strong/index.js":216,"../Data.Show.Generic/index.js":228,"../Data.Show/index.js":230,"../Data.Symbol/index.js":244,"../Data.Tuple/index.js":251,"../Data.Unit/index.js":259,"../Exhibit.VideoControl.ComponentSourceDeviceConfiguration/index.js":312,"../Exhibit.VideoControl.Interactions/index.js":315,"../Exhibit.VideoControl.Types/index.js":316,"../ExploreCore/index.js":356,"../ExploreSignal/index.js":357,"../Extra/index.js":358,"../React.DOM.Props/index.js":378,"../React.DOM/index.js":379,"../Safe.Coerce/index.js":389,"../ShouldUpdate/index.js":390,"../Unify.Types/index.js":402,"../Unify.UpdateJson/index.js":403}],350:[function(require,module,exports){
+},{"../Control.Applicative/index.js":42,"../Control.Bind/index.js":48,"../Control.Category/index.js":49,"../Control.Comonad.Store.Class/index.js":51,"../Control.Comonad.Store.Trans/index.js":52,"../Control.Comonad.Store/index.js":53,"../Control.Monad.State.Class/index.js":71,"../Data.Argonaut.Core/index.js":83,"../Data.Argonaut.Decode.Class/index.js":84,"../Data.Argonaut.Decode.Generic/index.js":88,"../Data.Argonaut.Encode.Class/index.js":89,"../Data.Argonaut.Encode.Generic/index.js":92,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Eq/index.js":118,"../Data.Function/index.js":128,"../Data.Functor/index.js":142,"../Data.Generic.Rep/index.js":145,"../Data.HeytingAlgebra/index.js":148,"../Data.Identity/index.js":149,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Lens/index.js":173,"../Data.Lens.Record/index.js":177,"../Data.Lens.Setter/index.js":178,"../Data.Maybe/index.js":190,"../Data.Newtype/index.js":200,"../Data.Profunctor.Strong/index.js":216,"../Data.Semigroup/index.js":223,"../Data.Show.Generic/index.js":228,"../Data.Show/index.js":230,"../Data.Symbol/index.js":244,"../Data.Tuple/index.js":251,"../Data.Unit/index.js":259,"../Exhibit.VideoControl.ComponentSourceDeviceConfiguration/index.js":312,"../Exhibit.VideoControl.Interactions/index.js":315,"../Exhibit.VideoControl.Types/index.js":316,"../ExploreCore/index.js":356,"../ExploreSignal/index.js":357,"../Extra/index.js":358,"../React.DOM.Props/index.js":378,"../React.DOM/index.js":379,"../Safe.Coerce/index.js":389,"../ShouldUpdate/index.js":390,"../Unify.Types/index.js":402,"../Unify.UpdateJson/index.js":403}],350:[function(require,module,exports){
 // Generated by purs version 0.14.4
 "use strict";
 var Control_Applicative = require("../Control.Applicative/index.js");
