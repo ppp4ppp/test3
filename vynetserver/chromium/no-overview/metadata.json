@@ -1,0 +1,6 @@
+{
+  "uuid": "vynet-no-overview@vynet",
+  "name": "No overview at start-up",
+  "description": "The session opens on its windows rather than on the Activities overview, so the full screen control page shows at once.",
+  "shell-version": ["45", "46", "47", "48"]
+}
