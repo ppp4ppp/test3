@@ -92386,33 +92386,33 @@ var answerMainPanel = function (req) {
     };
 };
 var _unrouteWarning = function (dictStrong) {
-    var $715 = Data_Lens_Lens["lens'"](function (v) {
+    var $698 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $716 = Data_Lens_Record.prop({
+    var $699 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "unrouteWarning";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($717) {
-        return $715($716($717));
+    return function ($700) {
+        return $698($699($700));
     };
 };
 var _systemPanel = function (dictStrong) {
-    var $718 = Data_Lens_Lens["lens'"](function (v) {
+    var $701 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $719 = Data_Lens_Record.prop({
+    var $702 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "systemPanel";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($720) {
-        return $718($719($720));
+    return function ($703) {
+        return $701($702($703));
     };
 };
 var catalogueLayouts = function (a) {
@@ -92426,6 +92426,13 @@ var catalogueDescriptions = function (a) {
 var missingLayout = function (a) {
     return undescribedCatalogueRow(catalogueLayouts(a));
 };
+var layCatalogue = function (j) {
+    return function (a) {
+        return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.over(_systemPanel(Data_Profunctor_Strong.strongFn))(function (c) {
+            return Exhibit_VideoControl_ComponentSystemConfiguration.layingCatalogue(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.simpleLayoutsReading(j)))(c);
+        })));
+    };
+};
 var layConfiguration = function (j) {
     return function (a) {
         return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.over(_systemPanel(Data_Profunctor_Strong.strongFn))(function (c) {
@@ -92436,40 +92443,33 @@ var layConfiguration = function (j) {
 var layDescribedLayout = function (j) {
     return function (a) {
         return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.over(_systemPanel(Data_Profunctor_Strong.strongFn))(function (c) {
-            return Exhibit_VideoControl_ComponentSystemConfiguration.layingCatalogueDescribed(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.layoutDescriptionReading(j)))(c);
-        })));
-    };
-};
-var layLayoutNames = function (j) {
-    return function (a) {
-        return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.over(_systemPanel(Data_Profunctor_Strong.strongFn))(function (c) {
-            return Exhibit_VideoControl_ComponentSystemConfiguration.layingCatalogue(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.layoutListReading(j)))(c);
+            return Exhibit_VideoControl_ComponentSystemConfiguration.layingCatalogueDescribed(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.simpleLayoutReading(j)))(c);
         })));
     };
 };
 var _sourceGrid = function (dictStrong) {
-    var $721 = Data_Lens_Lens["lens'"](function (v) {
+    var $704 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $722 = Data_Lens_Record.prop({
+    var $705 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "sourceGrid";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($723) {
-        return $721($722($723));
+    return function ($706) {
+        return $704($705($706));
     };
 };
 var gridSources = function (a) {
     return Data_Functor.map(Data_List_Types.functorList)(function (c) {
         return Data_Lens_Getter.viewOn(c)(Exhibit_VideoControl_ComponentInputSource["_source"](Data_Lens_Internal_Forget.strongForget));
     })(Data_Lens_Getter.viewOn(a)((function () {
-        var $724 = _sourceGrid(Data_Lens_Internal_Forget.strongForget);
-        var $725 = Exhibit_VideoControl_ComponentInputSources["_sources"](Data_Lens_Internal_Forget.strongForget);
-        return function ($726) {
-            return $724($725($726));
+        var $707 = _sourceGrid(Data_Lens_Internal_Forget.strongForget);
+        var $708 = Exhibit_VideoControl_ComponentInputSources["_sources"](Data_Lens_Internal_Forget.strongForget);
+        return function ($709) {
+            return $707($708($709));
         };
     })()));
 };
@@ -92482,61 +92482,61 @@ var shownSource = function (a) {
     return Exhibit_VideoControl_ComponentInputSources.selectedSource(Data_Lens_Getter.viewOn(a)(_sourceGrid(Data_Lens_Internal_Forget.strongForget)));
 };
 var _routeRefusal = function (dictStrong) {
-    var $727 = Data_Lens_Lens["lens'"](function (v) {
+    var $710 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $728 = Data_Lens_Record.prop({
+    var $711 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "routeRefusal";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($729) {
-        return $727($728($729));
+    return function ($712) {
+        return $710($711($712));
     };
 };
 var _reqPanel = function (dictStrong) {
-    var $730 = Data_Lens_Lens["lens'"](function (v) {
+    var $713 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $731 = Data_Lens_Record.prop({
+    var $714 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "reqPanel";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($732) {
-        return $730($731($732));
+    return function ($715) {
+        return $713($714($715));
     };
 };
 var previewUpdateQueued = function (a) {
     return Data_Foldable.any(Data_List_Types.foldableList)(Data_HeytingAlgebra.heytingAlgebraBoolean)(function (r) {
         return r.value0.value0 === "VerifyPreview";
     })(Data_Lens_Getter.viewOn(a)((function () {
-        var $733 = _reqPanel(Data_Lens_Internal_Forget.strongForget);
-        var $734 = Unify_ReqPanel2["_affrequest"](Data_Lens_Internal_Forget.strongForget);
-        return function ($735) {
-            return $733($734($735));
+        var $716 = _reqPanel(Data_Lens_Internal_Forget.strongForget);
+        var $717 = Unify_ReqPanel2["_affrequest"](Data_Lens_Internal_Forget.strongForget);
+        return function ($718) {
+            return $716($717($718));
         };
     })()));
 };
 var queueDraining = function (a) {
     return !Data_List["null"](Data_Lens_Getter.viewOn(a)((function () {
-        var $736 = _reqPanel(Data_Lens_Internal_Forget.strongForget);
-        var $737 = Unify_ReqPanel2["_affrequest"](Data_Lens_Internal_Forget.strongForget);
-        return function ($738) {
-            return $736($737($738));
+        var $719 = _reqPanel(Data_Lens_Internal_Forget.strongForget);
+        var $720 = Unify_ReqPanel2["_affrequest"](Data_Lens_Internal_Forget.strongForget);
+        return function ($721) {
+            return $719($720($721));
         };
     })()));
 };
 var queuedMainPanel = function (a) {
     var v = Data_Lens_Getter.viewOn(a)((function () {
-        var $739 = _reqPanel(Data_Lens_Internal_Forget.strongForget);
-        var $740 = Unify_ReqPanel2["_affrequest"](Data_Lens_Internal_Forget.strongForget);
-        return function ($741) {
-            return $739($740($741));
+        var $722 = _reqPanel(Data_Lens_Internal_Forget.strongForget);
+        var $723 = Unify_ReqPanel2["_affrequest"](Data_Lens_Internal_Forget.strongForget);
+        return function ($724) {
+            return $722($723($724));
         };
     })());
     if (v instanceof Data_List_Types.Nil) {
@@ -92585,10 +92585,10 @@ var requestOutputs = function (a) {
 var abortPlan = function (why) {
     return function (a) {
         return requestOutputs(Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(why)))(Data_Lens_Setter.set((function () {
-            var $742 = _reqPanel(Data_Profunctor_Strong.strongFn);
-            var $743 = Unify_ReqPanel2["_affrequest"](Data_Profunctor_Strong.strongFn);
-            return function ($744) {
-                return $742($743($744));
+            var $725 = _reqPanel(Data_Profunctor_Strong.strongFn);
+            var $726 = Unify_ReqPanel2["_affrequest"](Data_Profunctor_Strong.strongFn);
+            return function ($727) {
+                return $725($726($727));
             };
         })())(Data_List_Types.Nil.value)));
     };
@@ -92620,10 +92620,10 @@ var settleCatalogue = function (a) {
 var withdrawMainPanel = function (req) {
     return function (a) {
         return Unify_Types.flipuse(a)(Data_Lens_Setter.over((function () {
-            var $745 = _reqPanel(Data_Profunctor_Strong.strongFn);
-            var $746 = Unify_ReqPanel2["_affrequest"](Data_Profunctor_Strong.strongFn);
-            return function ($747) {
-                return $745($746($747));
+            var $728 = _reqPanel(Data_Profunctor_Strong.strongFn);
+            var $729 = Unify_ReqPanel2["_affrequest"](Data_Profunctor_Strong.strongFn);
+            return function ($730) {
+                return $728($729($730));
             };
         })())(function (q) {
             if (q instanceof Data_List_Types.Cons && Data_Eq.eq(ExploreSignal.eqAffRequest)(q.value0)(req)) {
@@ -92634,81 +92634,81 @@ var withdrawMainPanel = function (req) {
     };
 };
 var _previewStale = function (dictStrong) {
-    var $748 = Data_Lens_Lens["lens'"](function (v) {
+    var $731 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $749 = Data_Lens_Record.prop({
+    var $732 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewStale";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($750) {
-        return $748($749($750));
+    return function ($733) {
+        return $731($732($733));
     };
 };
 var movingRig = function (a) {
     return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_previewStale(Data_Profunctor_Strong.strongFn))(true)));
 };
 var _previewSkipped = function (dictStrong) {
-    var $751 = Data_Lens_Lens["lens'"](function (v) {
+    var $734 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $752 = Data_Lens_Record.prop({
+    var $735 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewSkipped";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($753) {
-        return $751($752($753));
+    return function ($736) {
+        return $734($735($736));
     };
 };
 var _previewPlanned = function (dictStrong) {
-    var $754 = Data_Lens_Lens["lens'"](function (v) {
+    var $737 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $755 = Data_Lens_Record.prop({
+    var $738 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewPlanned";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($756) {
-        return $754($755($756));
+    return function ($739) {
+        return $737($738($739));
     };
 };
 var _previewPending = function (dictStrong) {
-    var $757 = Data_Lens_Lens["lens'"](function (v) {
+    var $740 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $758 = Data_Lens_Record.prop({
+    var $741 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewPending";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($759) {
-        return $757($758($759));
+    return function ($742) {
+        return $740($741($742));
     };
 };
 var _previewPanel = function (dictStrong) {
-    var $760 = Data_Lens_Lens["lens'"](function (v) {
+    var $743 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $761 = Data_Lens_Record.prop({
+    var $744 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewPanel";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($762) {
-        return $760($761($762));
+    return function ($745) {
+        return $743($744($745));
     };
 };
 var clearShownWindow = function (a) {
@@ -92718,12 +92718,12 @@ var clearShownWindow = function (a) {
 };
 var clearRouteMarks = function (a) {
     return Control_Bind.bind(Control_Monad_Writer_Trans.bindWriterT(Data_Maybe_First.semigroupFirst)(Data_Identity.bindIdentity))(Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.set((function () {
-        var $763 = _sourceGrid(Data_Profunctor_Strong.strongFn);
-        var $764 = Exhibit_VideoControl_ComponentInputSources["_sources"](Data_Profunctor_Strong.strongFn);
-        var $765 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
-        var $766 = Exhibit_VideoControl_ComponentInputSource["_selected"](Data_Profunctor_Strong.strongFn);
-        return function ($767) {
-            return $763($764($765($766($767))));
+        var $746 = _sourceGrid(Data_Profunctor_Strong.strongFn);
+        var $747 = Exhibit_VideoControl_ComponentInputSources["_sources"](Data_Profunctor_Strong.strongFn);
+        var $748 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
+        var $749 = Exhibit_VideoControl_ComponentInputSource["_selected"](Data_Profunctor_Strong.strongFn);
+        return function ($750) {
+            return $746($747($748($749($750))));
         };
     })())(false))))(function (b) {
         return clearShownWindow(b);
@@ -92764,18 +92764,18 @@ var standingIn = function (d) {
     };
 };
 var _previewCut = function (dictStrong) {
-    var $768 = Data_Lens_Lens["lens'"](function (v) {
+    var $751 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $769 = Data_Lens_Record.prop({
+    var $752 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewCut";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($770) {
-        return $768($769($770));
+    return function ($753) {
+        return $751($752($753));
     };
 };
 var layPreviewUpdate = function (j) {
@@ -92787,28 +92787,28 @@ var layPreviewUpdate = function (j) {
     };
 };
 var _outputRow = function (dictStrong) {
-    var $771 = Data_Lens_Lens["lens'"](function (v) {
+    var $754 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $772 = Data_Lens_Record.prop({
+    var $755 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "outputRow";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($773) {
-        return $771($772($773));
+    return function ($756) {
+        return $754($755($756));
     };
 };
 var rowOutputs = function (a) {
     return Data_Functor.map(Data_List_Types.functorList)(function (c) {
         return Data_Lens_Getter.viewOn(c)(Exhibit_VideoControl_ComponentOutput["_output"](Data_Lens_Internal_Forget.strongForget));
     })(Data_Lens_Getter.viewOn(a)((function () {
-        var $774 = _outputRow(Data_Lens_Internal_Forget.strongForget);
-        var $775 = Exhibit_VideoControl_ComponentOutputs["_outputs"](Data_Lens_Internal_Forget.strongForget);
-        return function ($776) {
-            return $774($775($776));
+        var $757 = _outputRow(Data_Lens_Internal_Forget.strongForget);
+        var $758 = Exhibit_VideoControl_ComponentOutputs["_outputs"](Data_Lens_Internal_Forget.strongForget);
+        return function ($759) {
+            return $757($758($759));
         };
     })()));
 };
@@ -92828,9 +92828,9 @@ var layPreviewLayout = function (j) {
                     return Exhibit_VideoControl_ComponentOutputs.carryingNamedLayout(Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))(v1.value0)(c);
                 })));
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 854, column 7 - line 856, column 93): " + [ v1.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 830, column 7 - line 832, column 93): " + [ v1.constructor.name ]);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 851, column 3 - line 856, column 93): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 827, column 3 - line 832, column 93): " + [ v.constructor.name ]);
     };
 };
 var layAnsweredBoxLayout = function (j) {
@@ -92875,10 +92875,10 @@ var requestPreviewUpdate = function (force) {
 };
 var fillingPreview = function (a) {
     if (!Data_Lens_Getter.viewOn(a)(_previewPending(Data_Lens_Internal_Forget.strongForget)) || (!Data_Lens_Getter.viewOn(a)((function () {
-        var $777 = _reqPanel(Data_Lens_Internal_Forget.strongForget);
-        var $778 = Unify_ReqPanel2["_affponged"](Data_Lens_Internal_Forget.strongForget);
-        return function ($779) {
-            return $777($778($779));
+        var $760 = _reqPanel(Data_Lens_Internal_Forget.strongForget);
+        var $761 = Unify_ReqPanel2["_affponged"](Data_Lens_Internal_Forget.strongForget);
+        return function ($762) {
+            return $760($761($762));
         };
     })()) || Data_Maybe.isNothing(Exhibit_VideoControl_Interactions.previewBoxOf(rowOutputs(a))))) {
         return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
@@ -92899,10 +92899,10 @@ var refillingPreview = function (a) {
 };
 var rowPlaces = function (a) {
     return Data_Lens_Getter.viewOn(a)((function () {
-        var $780 = _outputRow(Data_Lens_Internal_Forget.strongForget);
-        var $781 = Exhibit_VideoControl_ComponentOutputs["_outputs"](Data_Lens_Internal_Forget.strongForget);
-        return function ($782) {
-            return $780($781($782));
+        var $763 = _outputRow(Data_Lens_Internal_Forget.strongForget);
+        var $764 = Exhibit_VideoControl_ComponentOutputs["_outputs"](Data_Lens_Internal_Forget.strongForget);
+        return function ($765) {
+            return $763($764($765));
         };
     })());
 };
@@ -92910,25 +92910,14 @@ var shownFormat = function (a) {
     return Control_Bind.bind(Data_Maybe.bindMaybe)(Data_Foldable.find(Data_List_Types.foldableList)(function (c) {
         return Data_Lens_Getter.viewOn(c)(Exhibit_VideoControl_ComponentOutput["_selected"](Data_Lens_Internal_Forget.strongForget));
     })(Data_Lens_Getter.viewOn(a)((function () {
-        var $783 = _outputRow(Data_Lens_Internal_Forget.strongForget);
-        var $784 = Exhibit_VideoControl_ComponentOutputs["_outputs"](Data_Lens_Internal_Forget.strongForget);
-        return function ($785) {
-            return $783($784($785));
+        var $766 = _outputRow(Data_Lens_Internal_Forget.strongForget);
+        var $767 = Exhibit_VideoControl_ComponentOutputs["_outputs"](Data_Lens_Internal_Forget.strongForget);
+        return function ($768) {
+            return $766($767($768));
         };
     })())))(function (c) {
         return Exhibit_VideoControl_ComponentOutput.knownFormatOf(c);
     });
-};
-var fastFormat = function (d) {
-    return function (a) {
-        if (Data_Maybe.isJust(Exhibit_VideoControl_Interactions.namedFormatOf(d))) {
-            return Data_Maybe.Nothing.value;
-        };
-        if (Data_Boolean.otherwise) {
-            return shownFormat(a);
-        };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 753, column 1 - line 753, column 81): " + [ d.constructor.name, a.constructor.name ]);
-    };
 };
 var shownOutput = function (a) {
     return Exhibit_VideoControl_ComponentOutputs.selectedOutput(Data_Lens_Getter.viewOn(a)(_outputRow(Data_Lens_Internal_Forget.strongForget)));
@@ -92949,9 +92938,9 @@ var layShownLayout = function (j) {
                     return Exhibit_VideoControl_ComponentOutputs.carryingLayout(v1.value0)(c);
                 })));
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 845, column 7 - line 847, column 69): " + [ v1.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 821, column 7 - line 823, column 69): " + [ v1.constructor.name ]);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 842, column 3 - line 847, column 69): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 818, column 3 - line 823, column 69): " + [ v.constructor.name ]);
     };
 };
 var layAnsweredComposition = function (j) {
@@ -92995,7 +92984,7 @@ var requestLatency = function (on) {
     return function (a) {
         var v = shownOutput(a);
         if (v instanceof Data_Maybe.Just && Data_Maybe.isJust(Exhibit_VideoControl_Interactions.setLatencyTo(on)(shownFormat(a))(v.value0))) {
-            return requestMainPanel(Exhibit_VideoControl_Interactions.genlockingTo(v.value0)(on)(fastFormat(v.value0)(a)))(a);
+            return requestMainPanel(Exhibit_VideoControl_Interactions.genlockingTo(v.value0)(on)(shownFormat(a)))(a);
         };
         return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
     };
@@ -93006,14 +92995,14 @@ var requestPreviewLayout = function (a) {
         return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
     };
     if (v instanceof Data_Maybe.Just) {
-        var $368 = Exhibit_VideoControl_Interactions.composingOf(v.value0) && Data_Maybe.isNothing(Exhibit_VideoControl_Interactions.loadedLayoutOf(v.value0));
-        if ($368) {
-            var $369 = Data_Eq.notEq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Functor.map(Data_Maybe.functorMaybe)(function (s) {
+        var $362 = Exhibit_VideoControl_Interactions.composingOf(v.value0) && Data_Maybe.isNothing(Exhibit_VideoControl_Interactions.loadedLayoutOf(v.value0));
+        if ($362) {
+            var $363 = Data_Eq.notEq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Functor.map(Data_Maybe.functorMaybe)(function (s) {
                 return Data_Lens_Getter.viewOn(s)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget));
             })(shownOutput(a)))(new Data_Maybe.Just(Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget))));
-            if ($369) {
-                var $370 = !previewUpdateQueued(a);
-                if ($370) {
+            if ($363) {
+                var $364 = !previewUpdateQueued(a);
+                if ($364) {
                     return requestMainPanel(Exhibit_VideoControl_Interactions.readMultiview(v.value0))(a);
                 };
                 return v1(true);
@@ -93067,18 +93056,18 @@ var requestViewMode = function (a) {
     return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
 };
 var _dividersPending = function (dictStrong) {
-    var $786 = Data_Lens_Lens["lens'"](function (v) {
+    var $769 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $787 = Data_Lens_Record.prop({
+    var $770 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "dividersPending";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($788) {
-        return $786($787($788));
+    return function ($771) {
+        return $769($770($771));
     };
 };
 var clearDividers = function (a) {
@@ -93099,18 +93088,18 @@ var settleStart = function (a) {
     return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
 };
 var _controlsPanel = function (dictStrong) {
-    var $789 = Data_Lens_Lens["lens'"](function (v) {
+    var $772 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $790 = Data_Lens_Record.prop({
+    var $773 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "controlsPanel";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($791) {
-        return $789($790($791));
+    return function ($774) {
+        return $772($773($774));
     };
 };
 var namingSwitched = function (u) {
@@ -93364,7 +93353,7 @@ var layComposition = function (j) {
             if (Data_Boolean.otherwise) {
                 return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_compositionReason"](Data_Lens_Internal_Forget.strongForget)))));
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 822, column 5 - line 832, column 74): " + [  ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 798, column 5 - line 808, column 74): " + [  ]);
         })();
         return guarded$prime;
     };
@@ -93444,7 +93433,7 @@ var layLatency = function (j) {
             if (Data_Boolean.otherwise) {
                 return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_latencyReason"](Data_Lens_Internal_Forget.strongForget)))));
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 762, column 5 - line 770, column 70): " + [  ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 760, column 5 - line 768, column 70): " + [  ]);
         })();
         return guarded$prime;
     };
@@ -93499,7 +93488,7 @@ var layScaling = function (j) {
             if (Data_Boolean.otherwise) {
                 return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_scalingReason"](Data_Lens_Internal_Forget.strongForget)))));
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 798, column 5 - line 806, column 70): " + [  ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 774, column 5 - line 782, column 70): " + [  ]);
         })();
         return guarded$prime;
     };
@@ -93539,48 +93528,6 @@ var requestReroute = function (a) {
     };
     return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
 };
-var scalePick = function (d) {
-    return function (a) {
-        var v = shownPick(a);
-        if (v instanceof Data_Maybe.Just) {
-            return new Data_Maybe.Just(v.value0);
-        };
-        if (v instanceof Data_Maybe.Nothing) {
-            return fastFormat(d)(a);
-        };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 790, column 3 - line 792, column 30): " + [ v.constructor.name ]);
-    };
-};
-var scalingFormat = function (d) {
-    return function (a) {
-        return Data_Maybe.fromMaybe(Exhibit_VideoControl_Interactions.defaultFormat)((function () {
-            var v = shownPick(a);
-            if (v instanceof Data_Maybe.Just) {
-                return new Data_Maybe.Just(v.value0);
-            };
-            if (v instanceof Data_Maybe.Nothing) {
-                var v1 = Exhibit_VideoControl_Interactions.namedFormatOf(d);
-                if (v1 instanceof Data_Maybe.Just) {
-                    return new Data_Maybe.Just(v1.value0);
-                };
-                if (v1 instanceof Data_Maybe.Nothing) {
-                    return shownFormat(a);
-                };
-                throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 778, column 11 - line 780, column 37): " + [ v1.constructor.name ]);
-            };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentMainPanel (line 775, column 7 - line 780, column 37): " + [ v.constructor.name ]);
-        })());
-    };
-};
-var requestScaling = function (on) {
-    return function (a) {
-        var v = shownOutput(a);
-        if (v instanceof Data_Maybe.Just && (on && Data_Maybe.isJust(Exhibit_VideoControl_Interactions.setGenlockScaling(scalingFormat(v.value0)(a))(v.value0)))) {
-            return requestMainPanel(Exhibit_VideoControl_Interactions.scalingAt(v.value0)(true)(scalePick(v.value0)(a)))(a);
-        };
-        return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
-    };
-};
 var sendRoute = function (a) {
     return Control_Bind.bind(Control_Monad_Writer_Trans.bindWriterT(Data_Maybe_First.semigroupFirst)(Data_Identity.bindIdentity))(Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(shownOutput(a)))(function (d) {
         return Control_Bind.bind(Control_Monad_Writer_Trans.bindWriterT(Data_Maybe_First.semigroupFirst)(Data_Identity.bindIdentity))(Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(shownSource(a)))(function (s) {
@@ -93598,9 +93545,9 @@ var requestRoute = function (a) {
         return sendRoute(a);
     };
     if (v.value0 instanceof Data_Maybe.Just && v.value1 instanceof Data_Maybe.Just) {
-        var $419 = Exhibit_VideoControl_Interactions.unrouteWarning(rowOutputs(a))(v.value1.value0)(v.value0.value0)(shownWindow(a));
-        if ($419 instanceof Data_Maybe.Just) {
-            return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_unrouteWarning(Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just($419.value0))));
+        var $405 = Exhibit_VideoControl_Interactions.unrouteWarning(rowOutputs(a))(v.value1.value0)(v.value0.value0)(shownWindow(a));
+        if ($405 instanceof Data_Maybe.Just) {
+            return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_unrouteWarning(Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just($405.value0))));
         };
         return v1(true);
     };
@@ -93755,11 +93702,6 @@ var marshalComponentMainPanel = function (v) {
         };
         if (v instanceof ComponentMainPanelControlsPanelSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentVideoControls.SingleControlsSignal && v.value0.value0 instanceof Exhibit_VideoControl_ComponentSingleControls.ComponentSingleControlsGenlockSignal)) {
             return Control_Bind.bind(Control_Monad_Writer_Trans.bindWriterT(Data_Maybe_First.semigroupFirst)(Data_Identity.bindIdentity))(requestLatency(v.value0.value0.value0)(a))(function (b) {
-                return settleShownOutput(b);
-            });
-        };
-        if (v instanceof ComponentMainPanelControlsPanelSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentVideoControls.SingleControlsSignal && v.value0.value0 instanceof Exhibit_VideoControl_ComponentSingleControls.ComponentSingleControlsScaledSignal)) {
-            return Control_Bind.bind(Control_Monad_Writer_Trans.bindWriterT(Data_Maybe_First.semigroupFirst)(Data_Identity.bindIdentity))(requestScaling(v.value0.value0.value0)(a))(function (b) {
                 return settleShownOutput(b);
             });
         };
@@ -93936,8 +93878,8 @@ var marshalComponentMainPanel = function (v) {
                 };
             };
             if (v instanceof ComponentMainPanelReqPanelSignal && (v.value0 instanceof Unify_ReqPanel2.ReplSignal && v.value0.value0.value0.value0.value0 === "ListLayouts")) {
-                return Control_Bind.bind(Control_Monad_Writer_Trans.bindWriterT(Data_Maybe_First.semigroupFirst)(Data_Identity.bindIdentity))(layLayoutNames(v.value0.value0.value1)(a))(function (b) {
-                    return requestLayoutDescription(b);
+                return Control_Bind.bind(Control_Monad_Writer_Trans.bindWriterT(Data_Maybe_First.semigroupFirst)(Data_Identity.bindIdentity))(layCatalogue(v.value0.value0.value1)(a))(function (b) {
+                    return refillLayouts(b);
                 });
             };
             if (v instanceof ComponentMainPanelReqPanelSignal && (v.value0 instanceof Unify_ReqPanel2.ReplSignal && v.value0.value0.value0.value0.value0 === "DescribeLayout")) {
@@ -93961,12 +93903,12 @@ var marshalComponentMainPanel = function (v) {
             return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
         };
         if (v instanceof ComponentMainPanelReqPanelSignal && v.value0 instanceof Unify_ReqPanel2.ReplSignal) {
-            var $706 = Exhibit_VideoControl_Interactions.planRung(v.value0.value0.value0);
-            if ($706) {
-                var $707 = Exhibit_VideoControl_Interactions.commandRefusal(v.value0.value0.value1);
-                if ($707 instanceof Data_Maybe.Just) {
+            var $689 = Exhibit_VideoControl_Interactions.planRung(v.value0.value0.value0);
+            if ($689) {
+                var $690 = Exhibit_VideoControl_Interactions.commandRefusal(v.value0.value0.value1);
+                if ($690 instanceof Data_Maybe.Just) {
                     return Control_Bind.bind(Control_Monad_Writer_Trans.bindWriterT(Data_Maybe_First.semigroupFirst)(Data_Identity.bindIdentity))(movingRig(a))(function (b) {
-                        return abortPlan($707.value0)(b);
+                        return abortPlan($690.value0)(b);
                     });
                 };
                 return v1(true);
@@ -93977,18 +93919,18 @@ var marshalComponentMainPanel = function (v) {
     };
 };
 var _controlPanel = function (dictStrong) {
-    var $792 = Data_Lens_Lens["lens'"](function (v) {
+    var $775 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentMainPanel(s);
         });
     })(dictStrong);
-    var $793 = Data_Lens_Record.prop({
+    var $776 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "controlPanel";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($794) {
-        return $792($793($794));
+    return function ($777) {
+        return $775($776($777));
     };
 };
 module.exports = {
@@ -94094,7 +94036,7 @@ module.exports = {
     closeLayouts: closeLayouts,
     refillLayouts: refillLayouts,
     pickedLayout: pickedLayout,
-    layLayoutNames: layLayoutNames,
+    layCatalogue: layCatalogue,
     layDescribedLayout: layDescribedLayout,
     requestViewMode: requestViewMode,
     layViewMode: layViewMode,
@@ -94119,11 +94061,7 @@ module.exports = {
     requestSetLayoutNamed: requestSetLayoutNamed,
     requestApplyLayout: requestApplyLayout,
     requestLatency: requestLatency,
-    fastFormat: fastFormat,
     layLatency: layLatency,
-    scalingFormat: scalingFormat,
-    requestScaling: requestScaling,
-    scalePick: scalePick,
     layScaling: layScaling,
     shownFormat: shownFormat,
     requestSwitchFamily: requestSwitchFamily,
@@ -98766,97 +98704,97 @@ var drawnSourceOf = function (onAir) {
         if (Data_Boolean.otherwise) {
             return "";
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentOutput (line 93, column 1 - line 93, column 53): " + [ onAir.constructor.name, d.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentOutput (line 95, column 1 - line 95, column 53): " + [ onAir.constructor.name, d.constructor.name ]);
     };
 };
 var _sourceOnAir = function (dictStrong) {
-    var $130 = Data_Lens_Lens["lens'"](function (v) {
+    var $131 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutput(s);
         });
     })(dictStrong);
-    var $131 = Data_Lens_Record.prop({
+    var $132 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "sourceOnAir";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($132) {
-        return $130($131($132));
+    return function ($133) {
+        return $131($132($133));
     };
 };
 var _selected = function (dictStrong) {
-    var $133 = Data_Lens_Lens["lens'"](function (v) {
+    var $134 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutput(s);
         });
     })(dictStrong);
-    var $134 = Data_Lens_Record.prop({
+    var $135 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "selected";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($135) {
-        return $133($134($135));
+    return function ($136) {
+        return $134($135($136));
     };
 };
 var _select = function (dictStrong) {
-    var $136 = Data_Lens_Lens["lens'"](function (v) {
+    var $137 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutput(s);
         });
     })(dictStrong);
-    var $137 = Data_Lens_Record.prop({
+    var $138 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "select";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($138) {
-        return $136($137($138));
+    return function ($139) {
+        return $137($138($139));
     };
 };
 var _outputName = function (dictStrong) {
-    var $139 = Data_Lens_Lens["lens'"](function (v) {
+    var $140 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutput(s);
         });
     })(dictStrong);
-    var $140 = Data_Lens_Record.prop({
+    var $141 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "outputName";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($141) {
-        return $139($140($141));
+    return function ($142) {
+        return $140($141($142));
     };
 };
 var _output = function (dictStrong) {
-    var $142 = Data_Lens_Lens["lens'"](function (v) {
+    var $143 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutput(s);
         });
     })(dictStrong);
-    var $143 = Data_Lens_Record.prop({
+    var $144 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "output";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($144) {
-        return $142($143($144));
+    return function ($145) {
+        return $143($144($145));
     };
 };
 var _knownFormat = function (dictStrong) {
-    var $145 = Data_Lens_Lens["lens'"](function (v) {
+    var $146 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutput(s);
         });
     })(dictStrong);
-    var $146 = Data_Lens_Record.prop({
+    var $147 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "knownFormat";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($147) {
-        return $145($146($147));
+    return function ($148) {
+        return $146($147($148));
     };
 };
 var knownFormatOf = function (a) {
@@ -98871,38 +98809,42 @@ var knownFormatOf = function (a) {
     return Data_Maybe.Nothing.value;
 };
 var _isActive = function (dictStrong) {
-    var $148 = Data_Lens_Lens["lens'"](function (v) {
+    var $149 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutput(s);
         });
     })(dictStrong);
-    var $149 = Data_Lens_Record.prop({
+    var $150 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "isActive";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($150) {
-        return $148($149($150));
+    return function ($151) {
+        return $149($150($151));
     };
 };
 var _assignedSource = function (dictStrong) {
-    var $151 = Data_Lens_Lens["lens'"](function (v) {
+    var $152 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutput(s);
         });
     })(dictStrong);
-    var $152 = Data_Lens_Record.prop({
+    var $153 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "assignedSource";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($153) {
-        return $151($152($153));
+    return function ($154) {
+        return $152($153($154));
     };
 };
 var carrying = function (d) {
     return function (a) {
         return Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_output(Data_Profunctor_Strong.strongFn))(d)))(Data_Lens_Setter.set(_outputName(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))))(Data_Lens_Setter.set(_assignedSource(Data_Profunctor_Strong.strongFn))(drawnSourceOf(Data_Lens_Getter.viewOn(a)(_sourceOnAir(Data_Lens_Internal_Forget.strongForget)))(d))))(Data_Lens_Setter.set(_isActive(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.activeOf(d))))(Data_Lens_Setter.over(_knownFormat(Data_Profunctor_Strong.strongFn))(function (f) {
+            var $124 = Exhibit_VideoControl_Interactions.genlockOf(d);
+            if ($124) {
+                return f;
+            };
             return Data_Maybe.maybe(f)(function (n) {
                 return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(n)(Exhibit_VideoControl_VideoControlAPI["_argumentsWidth"](Data_Lens_Internal_Forget.strongForget)), new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(n)(Exhibit_VideoControl_VideoControlAPI["_argumentsHeight"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(n)(Exhibit_VideoControl_VideoControlAPI["_argumentsFps"](Data_Lens_Internal_Forget.strongForget))));
             })(Exhibit_VideoControl_Interactions.namedFormatOf(d));
@@ -98928,8 +98870,8 @@ var watching = function (ts) {
 var updateJsonComponentOutput = {
     updateJson: function (j) {
         return function (a) {
-            var v = Data_Either.either(function ($154) {
-                return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($154));
+            var v = Data_Either.either(function ($155) {
+                return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($155));
             })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonDeviceSettings)(j));
             if (v instanceof Data_Either.Right) {
                 return Control_Applicative.pure(Data_Either.applicativeEither)(carrying(v.value0)(a));
@@ -98937,7 +98879,7 @@ var updateJsonComponentOutput = {
             if (v instanceof Data_Either.Left) {
                 return new Data_Either.Left("ComponentOutput: " + v.value0);
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentOutput (line 120, column 5 - line 122, column 48): " + [ v.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentOutput (line 122, column 5 - line 124, column 48): " + [ v.constructor.name ]);
         };
     }
 };
@@ -105416,7 +105358,7 @@ var pickingFor = function (d) {
             return function ($442) {
                 return $440($441($442));
             };
-        })()) === Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget))) {
+        })()) === Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget)) && Exhibit_VideoControl_Interactions.displayModeOf(Data_Lens_Getter.viewOn(a)(_output(Data_Lens_Internal_Forget.strongForget))) === Exhibit_VideoControl_Interactions.displayModeOf(d)) {
             return a;
         };
         if (Data_Boolean.otherwise) {
@@ -105427,9 +105369,9 @@ var pickingFor = function (d) {
             if (v instanceof Data_Maybe.Nothing) {
                 return Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_resolution(Data_Profunctor_Strong.strongFn))("")))(Data_Lens_Setter.set(_fps60(Data_Profunctor_Strong.strongFn))(true));
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSingleControls (line 179, column 7 - line 181, column 58): " + [ v.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSingleControls (line 182, column 7 - line 184, column 58): " + [ v.constructor.name ]);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSingleControls (line 175, column 1 - line 175, column 83): " + [ d.constructor.name, a.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSingleControls (line 178, column 1 - line 178, column 83): " + [ d.constructor.name, a.constructor.name ]);
     };
 };
 var _colorimetry = function (dictStrong) {
@@ -105481,7 +105423,7 @@ var carrying = function (d) {
     return function (a) {
         return Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(pickingFor(d)(a))(Data_Lens_Setter.set(_output(Data_Profunctor_Strong.strongFn))(d)))(Data_Lens_Setter.set(_viewMode(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.viewModeOf(d))))(Data_Lens_Setter.set(_latency(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.latencyOf(d))))(Data_Lens_Setter.set(_genlock(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.genlockOf(d))))(Data_Lens_Setter.set(_scaling(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.scalingOf(d))))(Data_Lens_Setter.set(_hdr(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.hdrOf(d))))(Data_Lens_Setter.set(_hdcp(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.hdcpOf(d))))(Data_Lens_Setter.set(_chroma(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.chromaOf(d))))(Data_Lens_Setter.set(_bitDepth(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.bitDepthOf(d))))(Data_Lens_Setter.set(_colorimetry(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.colorimetryOf(d))))(Data_Lens_Setter.set(_resolutions(Data_Profunctor_Strong.strongFn))(Data_Functor.map(Data_List_Types.functorList)(function (r) {
             return Exhibit_VideoControl_Interactions.resolutionName(r);
-        })(Exhibit_VideoControl_Interactions.commonResolutions))))(Data_Lens_Setter.set(_scaled(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.genlockScalingOf(d)));
+        })(Exhibit_VideoControl_Interactions.fastResolutions))))(Data_Lens_Setter.set(_scaled(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.genlockScalingOf(d)));
     };
 };
 var settleControls = function (a) {
@@ -105507,7 +105449,7 @@ var updateJsonComponentSingle = {
             if (v instanceof Data_Either.Left) {
                 return new Data_Either.Left("ComponentSingleControls: " + v.value0);
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSingleControls (line 200, column 5 - line 202, column 56): " + [ v.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSingleControls (line 203, column 5 - line 205, column 56): " + [ v.constructor.name ]);
         };
     }
 };
@@ -107098,11 +107040,11 @@ var catalogueDescribed = function (n) {
 var catalogueLayouts = function (a) {
     return Data_Lens_Getter.viewOn(a)(_layoutCatalogue(Data_Lens_Internal_Forget.strongForget));
 };
-var layingCatalogue = function (l) {
+var layingCatalogue = function (ls) {
     return function (a) {
-        return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_layoutCatalogue(Data_Profunctor_Strong.strongFn))(Data_Functor.map(Data_List_Types.functorList)(function (n) {
-            return new Data_Tuple.Tuple(n, catalogueDescribed(n)(a));
-        })(Data_Lens_Getter.viewOn(l)(Exhibit_VideoControl_Types["_layoutNames"](Data_Lens_Internal_Forget.strongForget)))));
+        return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_layoutCatalogue(Data_Profunctor_Strong.strongFn))(Data_Functor.map(Data_List_Types.functorList)(function (l) {
+            return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(l)(Exhibit_VideoControl_Types["_layoutName"](Data_Lens_Internal_Forget.strongForget)), new Data_Maybe.Just(l));
+        })(ls)));
     };
 };
 var layingCatalogueDescribed = function (l) {
@@ -107674,6 +107616,7 @@ module.exports = {
 var Control_Applicative = require("../Control.Applicative/index.js");
 var Control_Bind = require("../Control.Bind/index.js");
 var Data_Argonaut_Decode_Class = require("../Data.Argonaut.Decode.Class/index.js");
+var Data_Argonaut_Decode_Combinators = require("../Data.Argonaut.Decode.Combinators/index.js");
 var Data_Argonaut_Decode_Error = require("../Data.Argonaut.Decode.Error/index.js");
 var Data_Argonaut_Decode_Generic = require("../Data.Argonaut.Decode.Generic/index.js");
 var Data_Argonaut_Encode_Class = require("../Data.Argonaut.Encode.Class/index.js");
@@ -107847,7 +107790,7 @@ var genericLayoutFamily_ = {
         if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr) {
             return SideBySideFamily.value;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 908, column 1 - line 908, column 39): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 913, column 1 - line 913, column 39): " + [ x.constructor.name ]);
     },
     from: function (x) {
         if (x instanceof MultiviewFamily) {
@@ -107859,7 +107802,7 @@ var genericLayoutFamily_ = {
         if (x instanceof SideBySideFamily) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(Data_Generic_Rep.NoArguments.value));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 908, column 1 - line 908, column 39): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 913, column 1 - line 913, column 39): " + [ x.constructor.name ]);
     }
 };
 var showLayoutFamily = {
@@ -108071,8 +108014,8 @@ var viewModeStopped = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_viewModeOutcome"](Data_Lens_Internal_Forget.strongForget)) === "stopped";
 };
 var viewModeOutcomeReading = function (j) {
-    var v = Data_Either.either(function ($575) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($575));
+    var v = Data_Either.either(function ($576) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($576));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonViewModeOutcome)(j));
     if (v instanceof Data_Either.Right) {
         return Control_Applicative.pure(Data_Either.applicativeEither)(v.value0);
@@ -108080,7 +108023,7 @@ var viewModeOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("ViewModeOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1604, column 3 - line 1606, column 46): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1615, column 3 - line 1617, column 46): " + [ v.constructor.name ]);
 };
 var viewModeKept = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_viewModeOutcome"](Data_Lens_Internal_Forget.strongForget)) === "kept";
@@ -108098,8 +108041,8 @@ var updatingPreview = function (force) {
     })));
 };
 var transceiversReading = function (j) {
-    var v = Data_Either.either(function ($576) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($576));
+    var v = Data_Either.either(function ($577) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($577));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonTransceiversRea)(j));
     if (v instanceof Data_Either.Right) {
         return Control_Applicative.pure(Data_Either.applicativeEither)(v.value0);
@@ -108107,20 +108050,20 @@ var transceiversReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("TransceiversReading: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1658, column 3 - line 1660, column 50): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1669, column 3 - line 1671, column 50): " + [ v.constructor.name ]);
 };
 var transceiverOf = function (d) {
     return Data_Lens_Getter.viewOn(d)((function () {
-        var $577 = Exhibit_VideoControl_Types["_deviceIdentity"](Data_Lens_Internal_Forget.strongForget);
-        var $578 = Exhibit_VideoControl_Types["_identityIsTransmitter"](Data_Lens_Internal_Forget.strongForget);
-        return function ($579) {
-            return $577($578($579));
+        var $578 = Exhibit_VideoControl_Types["_deviceIdentity"](Data_Lens_Internal_Forget.strongForget);
+        var $579 = Exhibit_VideoControl_Types["_identityIsTransmitter"](Data_Lens_Internal_Forget.strongForget);
+        return function ($580) {
+            return $578($579($580));
         };
     })()) && Data_Lens_Getter.viewOn(d)((function () {
-        var $580 = Exhibit_VideoControl_Types["_deviceIdentity"](Data_Lens_Internal_Forget.strongForget);
-        var $581 = Exhibit_VideoControl_Types["_identityIsReceiver"](Data_Lens_Internal_Forget.strongForget);
-        return function ($582) {
-            return $580($581($582));
+        var $581 = Exhibit_VideoControl_Types["_deviceIdentity"](Data_Lens_Internal_Forget.strongForget);
+        var $582 = Exhibit_VideoControl_Types["_identityIsReceiver"](Data_Lens_Internal_Forget.strongForget);
+        return function ($583) {
+            return $581($582($583));
         };
     })());
 };
@@ -108164,12 +108107,34 @@ var sourceNameOf = function (d) {
     if (Data_Boolean.otherwise) {
         return "";
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 641, column 1 - line 641, column 41): " + [ d.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 646, column 1 - line 646, column 41): " + [ d.constructor.name ]);
 };
 var singleViewing = function (d) {
     return ExploreSignal.makeaffrequest(Exhibit_VideoControl_VideoControlAPI.hasAffRequestVideoControl)(new Exhibit_VideoControl_VideoControlAPI.ViewMode(new Exhibit_VideoControl_VideoControlAPI.ViewModeRequest({
         viewModeOutput: Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget))
     })));
+};
+var simpleLayoutsReading = function (j) {
+    var v = Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(j))(function (v1) {
+        return Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeList(Exhibit_VideoControl_Types.decodeJsonLayoutDescripti))(v1)("layouts");
+    });
+    if (v instanceof Data_Either.Right) {
+        return Control_Applicative.pure(Data_Either.applicativeEither)(v.value0);
+    };
+    if (v instanceof Data_Either.Left) {
+        return new Data_Either.Left("SimpleLayouts: " + Data_Argonaut_Decode_Error.printJsonDecodeError(v.value0));
+    };
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 946, column 3 - line 948, column 65): " + [ v.constructor.name ]);
+};
+var simpleLayoutReading = function (j) {
+    var v = Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonLayoutDescripti)(j);
+    if (v instanceof Data_Either.Right) {
+        return Control_Applicative.pure(Data_Either.applicativeEither)(v.value0);
+    };
+    if (v instanceof Data_Either.Left) {
+        return new Data_Either.Left("SimpleLayout: " + Data_Argonaut_Decode_Error.printJsonDecodeError(v.value0));
+    };
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 953, column 3 - line 955, column 64): " + [ v.constructor.name ]);
 };
 var shownSurfaces = function (l) {
     return Data_List.nub(Data_Ord.ordInt)(Data_List.mapMaybe(function (w) {
@@ -108184,8 +108149,8 @@ var showingOutputs = function (l) {
     })(Data_Lens_Getter.viewOn(l)(Exhibit_VideoControl_Types["_devices"](Data_Lens_Internal_Forget.strongForget)));
 };
 var settingsReading = function (j) {
-    var v = Data_Either.either(function ($583) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($583));
+    var v = Data_Either.either(function ($584) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($584));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonDeviceSettingsL)(j));
     if (v instanceof Data_Either.Right) {
         return Control_Applicative.pure(Data_Either.applicativeEither)(v.value0);
@@ -108193,21 +108158,21 @@ var settingsReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("DeviceSettingsList: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1738, column 3 - line 1740, column 49): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1749, column 3 - line 1751, column 49): " + [ v.constructor.name ]);
 };
 var settingStreamState = function (t) {
     return function (i) {
         return function (st) {
             return function (d) {
                 return Unify_Types.flipuse(d)(Data_Lens_Setter.over((function () {
-                    var $584 = Exhibit_VideoControl_Types["_deviceStreams"](Data_Profunctor_Strong.strongFn);
-                    var $585 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
-                    return function ($586) {
-                        return $584($585($586));
+                    var $585 = Exhibit_VideoControl_Types["_deviceStreams"](Data_Profunctor_Strong.strongFn);
+                    var $586 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
+                    return function ($587) {
+                        return $585($586($587));
                     };
                 })())(function (s) {
-                    var $192 = Data_Lens_Getter.viewOn(s)(Exhibit_VideoControl_Types["_streamType"](Data_Lens_Internal_Forget.strongForget)) === t && Data_Lens_Getter.viewOn(s)(Exhibit_VideoControl_Types["_streamIndex"](Data_Lens_Internal_Forget.strongForget)) === i;
-                    if ($192) {
+                    var $199 = Data_Lens_Getter.viewOn(s)(Exhibit_VideoControl_Types["_streamType"](Data_Lens_Internal_Forget.strongForget)) === t && Data_Lens_Getter.viewOn(s)(Exhibit_VideoControl_Types["_streamIndex"](Data_Lens_Internal_Forget.strongForget)) === i;
+                    if ($199) {
                         return Unify_Types.flipuse(s)(Data_Lens_Setter.set(Exhibit_VideoControl_Types["_streamState"](Data_Profunctor_Strong.strongFn))(st));
                     };
                     return s;
@@ -108219,11 +108184,11 @@ var settingStreamState = function (t) {
 var settingScaler = function (v) {
     return function (d) {
         return Unify_Types.flipuse(d)(Data_Lens_Setter.over((function () {
-            var $587 = Exhibit_VideoControl_Types["_deviceNodes"](Data_Profunctor_Strong.strongFn);
-            var $588 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
-            var $589 = Exhibit_VideoControl_Types["_nodeDetail"](Data_Profunctor_Strong.strongFn);
-            return function ($590) {
-                return $587($588($589($590)));
+            var $588 = Exhibit_VideoControl_Types["_deviceNodes"](Data_Profunctor_Strong.strongFn);
+            var $589 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
+            var $590 = Exhibit_VideoControl_Types["_nodeDetail"](Data_Profunctor_Strong.strongFn);
+            return function ($591) {
+                return $588($589($590($591)));
             };
         })())(function (n) {
             if (n instanceof Exhibit_VideoControl_Types.ScalerDetail) {
@@ -108240,11 +108205,11 @@ var settingRefusal = function (u) {
     if (Data_Boolean.otherwise) {
         return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_settingReason"](Data_Lens_Internal_Forget.strongForget));
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1668, column 1 - line 1668, column 43): " + [ u.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1679, column 1 - line 1679, column 43): " + [ u.constructor.name ]);
 };
 var settingOutcomeReading = function (j) {
-    var v = Data_Either.either(function ($591) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($591));
+    var v = Data_Either.either(function ($592) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($592));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonSettingOutcome)(j));
     if (v instanceof Data_Either.Right) {
         return Control_Applicative.pure(Data_Either.applicativeEither)(v.value0);
@@ -108252,16 +108217,16 @@ var settingOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("SettingOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1664, column 3 - line 1666, column 45): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1675, column 3 - line 1677, column 45): " + [ v.constructor.name ]);
 };
 var settingMode = function (m) {
     return function (d) {
         return Unify_Types.flipuse(d)(Data_Lens_Setter.over((function () {
-            var $592 = Exhibit_VideoControl_Types["_deviceNodes"](Data_Profunctor_Strong.strongFn);
-            var $593 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
-            var $594 = Exhibit_VideoControl_Types["_nodeDetail"](Data_Profunctor_Strong.strongFn);
-            return function ($595) {
-                return $592($593($594($595)));
+            var $593 = Exhibit_VideoControl_Types["_deviceNodes"](Data_Profunctor_Strong.strongFn);
+            var $594 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
+            var $595 = Exhibit_VideoControl_Types["_nodeDetail"](Data_Profunctor_Strong.strongFn);
+            return function ($596) {
+                return $593($594($595($596)));
             };
         })())(function (n) {
             if (n instanceof Exhibit_VideoControl_Types.FrameBufferDetail) {
@@ -108312,7 +108277,7 @@ var serverVersionOf = function (i) {
     if (Data_Boolean.otherwise) {
         return Data_Lens_Getter.viewOn(i)(Exhibit_VideoControl_Types["_infoVersion"](Data_Lens_Internal_Forget.strongForget)) + (" (" + (Data_Lens_Getter.viewOn(i)(Exhibit_VideoControl_Types["_infoBuild"](Data_Lens_Internal_Forget.strongForget)) + ")"));
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 216, column 1 - line 216, column 40): " + [ i.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 221, column 1 - line 221, column 40): " + [ i.constructor.name ]);
 };
 var serverNameOf = function (i) {
     return Data_Foldable.intercalate(Data_List_Types.foldableList)(Data_Monoid.monoidString)(" ")(Data_List.filter(function (w) {
@@ -108320,8 +108285,8 @@ var serverNameOf = function (i) {
     })(new Data_List_Types.Cons(Data_Lens_Getter.viewOn(i)(Exhibit_VideoControl_Types["_infoVendor"](Data_Lens_Internal_Forget.strongForget)), new Data_List_Types.Cons(Data_Lens_Getter.viewOn(i)(Exhibit_VideoControl_Types["_infoServer"](Data_Lens_Internal_Forget.strongForget)), Data_List_Types.Nil.value))));
 };
 var serverInfoReading = function (j) {
-    var v = Data_Either.either(function ($596) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($596));
+    var v = Data_Either.either(function ($597) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($597));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonServerInfo)(j));
     if (v instanceof Data_Either.Right) {
         return Control_Applicative.pure(Data_Either.applicativeEither)(v.value0);
@@ -108329,7 +108294,7 @@ var serverInfoReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("ServerInfo: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 209, column 3 - line 211, column 41): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 214, column 3 - line 216, column 41): " + [ v.constructor.name ]);
 };
 var serverAddressOf = function (i) {
     return Data_Foldable.intercalate(Data_List_Types.foldableList)(Data_Monoid.monoidString)(", ")(Data_Lens_Getter.viewOn(i)(Exhibit_VideoControl_Types["_infoInterfaces"](Data_Lens_Internal_Forget.strongForget)));
@@ -108338,8 +108303,8 @@ var scalingStopped = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_scalingOutcome"](Data_Lens_Internal_Forget.strongForget)) === "stopped";
 };
 var scalingOutcomeReading = function (j) {
-    var v = Data_Either.either(function ($597) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($597));
+    var v = Data_Either.either(function ($598) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($598));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonScalingOutcome)(j));
     if (v instanceof Data_Either.Right) {
         return Control_Applicative.pure(Data_Either.applicativeEither)(v.value0);
@@ -108347,7 +108312,7 @@ var scalingOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("ScalingOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1581, column 3 - line 1583, column 45): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1592, column 3 - line 1594, column 45): " + [ v.constructor.name ]);
 };
 var scalingKept = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_scalingOutcome"](Data_Lens_Internal_Forget.strongForget)) === "kept";
@@ -108362,7 +108327,7 @@ var scalingRefusal = function (u) {
     if (Data_Boolean.otherwise) {
         return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_scalingReason"](Data_Lens_Internal_Forget.strongForget));
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1594, column 1 - line 1594, column 43): " + [ u.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1605, column 1 - line 1605, column 43): " + [ u.constructor.name ]);
 };
 var scalingAt = function (d) {
     return function (on) {
@@ -108449,8 +108414,8 @@ var routeStopped = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_routedOutcome"](Data_Lens_Internal_Forget.strongForget)) === "stopped";
 };
 var routeOutcomeReading = function (j) {
-    var v = Data_Either.either(function ($598) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($598));
+    var v = Data_Either.either(function ($599) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($599));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonRouteOutcome)(j));
     if (v instanceof Data_Either.Right) {
         return Control_Applicative.pure(Data_Either.applicativeEither)(v.value0);
@@ -108458,7 +108423,7 @@ var routeOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("RouteOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1409, column 3 - line 1411, column 43): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1420, column 3 - line 1422, column 43): " + [ v.constructor.name ]);
 };
 var routeLanded = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_routedOutcome"](Data_Lens_Internal_Forget.strongForget)) === "routed";
@@ -108495,8 +108460,8 @@ var rerouteRescaled = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_reroutedOutcome"](Data_Lens_Internal_Forget.strongForget)) === "rescaled";
 };
 var rerouteOutcomeReading = function (j) {
-    var v = Data_Either.either(function ($599) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($599));
+    var v = Data_Either.either(function ($600) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($600));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonRerouteOutcome)(j));
     if (v instanceof Data_Either.Right) {
         return Control_Applicative.pure(Data_Either.applicativeEither)(v.value0);
@@ -108504,7 +108469,7 @@ var rerouteOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("RerouteOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1307, column 3 - line 1309, column 45): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1318, column 3 - line 1320, column 45): " + [ v.constructor.name ]);
 };
 var rerouteLanded = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_reroutedOutcome"](Data_Lens_Internal_Forget.strongForget)) === "rerouted";
@@ -108531,7 +108496,7 @@ var readingLayoutOf = function (l) {
         if (v instanceof Data_Maybe.Nothing) {
             return Data_Maybe.Nothing.value;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 809, column 3 - line 811, column 23): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 814, column 3 - line 816, column 23): " + [ v.constructor.name ]);
     };
 };
 var readTransmitters = ExploreSignal.makeaffrequest(Exhibit_VideoControl_VideoControlAPI.hasAffRequestVideoControl)(new Exhibit_VideoControl_VideoControlAPI.ReadSettings(Exhibit_VideoControl_VideoControlAPI.AllTransmitters.value, Exhibit_VideoControl_VideoControlAPI.settingsRequest));
@@ -108539,7 +108504,7 @@ var readServerInfo = ExploreSignal.makeaffrequest(Exhibit_VideoControl_VideoCont
 var readReceivers = ExploreSignal.makeaffrequest(Exhibit_VideoControl_VideoControlAPI.hasAffRequestVideoControl)(new Exhibit_VideoControl_VideoControlAPI.ReadSettings(Exhibit_VideoControl_VideoControlAPI.AllReceivers.value, Exhibit_VideoControl_VideoControlAPI.settingsRequest));
 var readPreviewBox = ExploreSignal.makeaffrequest(Exhibit_VideoControl_VideoControlAPI.hasAffRequestVideoControl)(Exhibit_VideoControl_VideoControlAPI.ReadPreviewBox.value);
 var readMultiview = function (d) {
-    return ExploreSignal.makeaffrequest(Exhibit_VideoControl_VideoControlAPI.hasAffRequestVideoControl)(new Exhibit_VideoControl_VideoControlAPI.ReadMultiview(new Exhibit_VideoControl_VideoControlAPI.DeviceIdTarget(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget))), Exhibit_VideoControl_VideoControlAPI.multiviewRequest));
+    return ExploreSignal.makeaffrequest(Exhibit_VideoControl_VideoControlAPI.hasAffRequestVideoControl)(new Exhibit_VideoControl_VideoControlAPI.ReadMultiview(new Exhibit_VideoControl_VideoControlAPI.DeviceIdTarget(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget)))));
 };
 var readDevice = function (d) {
     return ExploreSignal.makeaffrequest(Exhibit_VideoControl_VideoControlAPI.hasAffRequestVideoControl)(new Exhibit_VideoControl_VideoControlAPI.ReadSettings(new Exhibit_VideoControl_VideoControlAPI.DeviceIdTarget(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget))), Exhibit_VideoControl_VideoControlAPI.settingsRequest));
@@ -108551,11 +108516,11 @@ var reachingSurface = function (mi) {
     if (mi instanceof Data_Maybe.Nothing) {
         return new Data_Tuple.Tuple(0, Unify_Types.def(Exhibit_VideoControl_Types.defPreviewSource));
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 849, column 3 - line 851, column 29): " + [ mi.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 854, column 3 - line 856, column 29): " + [ mi.constructor.name ]);
 };
 var reachedSurfaceOf = function (s) {
-    var $233 = Data_Lens_Getter.viewOn(s)(Exhibit_VideoControl_Types["_previewSourceIsSelected"](Data_Lens_Internal_Forget.strongForget));
-    if ($233) {
+    var $240 = Data_Lens_Getter.viewOn(s)(Exhibit_VideoControl_Types["_previewSourceIsSelected"](Data_Lens_Internal_Forget.strongForget));
+    if ($240) {
         return new Data_Maybe.Just(Data_Lens_Getter.viewOn(s)(Exhibit_VideoControl_Types["_previewSourceSurface"](Data_Lens_Internal_Forget.strongForget)));
     };
     return Data_Maybe.Nothing.value;
@@ -108575,8 +108540,8 @@ var quietSources = function (l) {
     })(Data_Lens_Getter.viewOn(l)(Exhibit_VideoControl_Types["_devices"](Data_Lens_Internal_Forget.strongForget)));
 };
 var previewUpdateReading = function (j) {
-    var v = Data_Either.either(function ($600) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($600));
+    var v = Data_Either.either(function ($601) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($601));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonPreviewUpdate)(j));
     if (v instanceof Data_Either.Right) {
         return Control_Applicative.pure(Data_Either.applicativeEither)(v.value0);
@@ -108584,7 +108549,7 @@ var previewUpdateReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("PreviewUpdate: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1706, column 3 - line 1708, column 44): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1717, column 3 - line 1719, column 44): " + [ v.constructor.name ]);
 };
 var previewTileSize = new Data_Tuple.Tuple(960, 540);
 var scaledAtTile = function (s) {
@@ -108603,8 +108568,8 @@ var previewLeaving = function (u) {
 };
 var previewLayoutName = "vynetpreviewlayout";
 var previewBoxReading = function (j) {
-    var v = Data_Either.either(function ($601) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($601));
+    var v = Data_Either.either(function ($602) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($602));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonPreviewBoxReadi)(j));
     if (v instanceof Data_Either.Right) {
         return Control_Applicative.pure(Data_Either.applicativeEither)(v.value0);
@@ -108612,7 +108577,7 @@ var previewBoxReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("PreviewBoxReading: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1648, column 3 - line 1650, column 48): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1659, column 3 - line 1661, column 48): " + [ v.constructor.name ]);
 };
 var previewBoxOf = function (ds) {
     return Data_Foldable.find(Data_List_Types.foldableList)(function (d) {
@@ -108637,36 +108602,36 @@ var pickableMode = function (m) {
     })("FAST_SWITCHED")(m) || m === "GENLOCK_SCALING";
 };
 var otherViewMode = function (m) {
-    var $243 = m === "MULTIVIEW";
-    if ($243) {
+    var $250 = m === "MULTIVIEW";
+    if ($250) {
         return "FAST_SWITCHED";
     };
     return "MULTIVIEW";
 };
 var otherStreamIndex = function (i) {
-    var $244 = i === 0;
-    if ($244) {
+    var $251 = i === 0;
+    if ($251) {
         return 1;
     };
     return 0;
 };
 var otherScalerSize = function (s) {
-    var $245 = Data_Lens_Getter.viewOn(s)(Exhibit_VideoControl_Types["_scalerWidth"](Data_Lens_Internal_Forget.strongForget)) === 1280;
-    if ($245) {
+    var $252 = Data_Lens_Getter.viewOn(s)(Exhibit_VideoControl_Types["_scalerWidth"](Data_Lens_Internal_Forget.strongForget)) === 1280;
+    if ($252) {
         return new Data_Tuple.Tuple(640, 360);
     };
     return new Data_Tuple.Tuple(1280, 720);
 };
 var otherOutputFormat = function (b) {
-    var $246 = Data_Lens_Getter.viewOn(b)(Exhibit_VideoControl_Types["_frameBufferWidth"](Data_Lens_Internal_Forget.strongForget)) === 1920;
-    if ($246) {
+    var $253 = Data_Lens_Getter.viewOn(b)(Exhibit_VideoControl_Types["_frameBufferWidth"](Data_Lens_Internal_Forget.strongForget)) === 1920;
+    if ($253) {
         return new Data_Tuple.Tuple(3840, new Data_Tuple.Tuple(2160, 30));
     };
     return new Data_Tuple.Tuple(1920, new Data_Tuple.Tuple(1080, 60));
 };
 var otherLatency = function (m) {
-    var $247 = m === "GENLOCKED";
-    if ($247) {
+    var $254 = m === "GENLOCKED";
+    if ($254) {
         return "FAST_SWITCHED";
     };
     return "GENLOCKED";
@@ -108753,10 +108718,10 @@ var scalerMainInputOf = function (d) {
 };
 var locateModeOf = function (d) {
     return Data_Lens_Getter.viewOn(d)((function () {
-        var $602 = Exhibit_VideoControl_Types["_deviceConfiguration"](Data_Lens_Internal_Forget.strongForget);
-        var $603 = Exhibit_VideoControl_Types["_configLocateMode"](Data_Lens_Internal_Forget.strongForget);
-        return function ($604) {
-            return $602($603($604));
+        var $603 = Exhibit_VideoControl_Types["_deviceConfiguration"](Data_Lens_Internal_Forget.strongForget);
+        var $604 = Exhibit_VideoControl_Types["_configLocateMode"](Data_Lens_Internal_Forget.strongForget);
+        return function ($605) {
+            return $603($604($605));
         };
     })());
 };
@@ -108793,9 +108758,9 @@ var layoutWindowOf = function (ml) {
             if (v instanceof Data_Maybe.Nothing) {
                 return Unify_Types.def(Exhibit_VideoControl_Types.defLayoutWindow);
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 659, column 7 - line 661, column 23): " + [ v.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 664, column 7 - line 666, column 23): " + [ v.constructor.name ]);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 656, column 3 - line 661, column 23): " + [ ml.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 661, column 3 - line 666, column 23): " + [ ml.constructor.name ]);
     };
 };
 var previewSourceOf = function (ml) {
@@ -108813,12 +108778,12 @@ var previewSourceOf = function (ml) {
         if (v instanceof Data_Maybe.Nothing) {
             return Data_Maybe.Nothing.value;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 665, column 3 - line 667, column 23): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 670, column 3 - line 672, column 23): " + [ v.constructor.name ]);
     };
 };
 var layoutReading = function (j) {
-    var v = Data_Either.either(function ($605) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($605));
+    var v = Data_Either.either(function ($606) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($606));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonDeviceLayoutLis)(j));
     if (v instanceof Data_Either.Right) {
         return Control_Applicative.pure(Data_Either.applicativeEither)(v.value0);
@@ -108826,19 +108791,7 @@ var layoutReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("DeviceLayoutList: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 803, column 3 - line 805, column 47): " + [ v.constructor.name ]);
-};
-var layoutListReading = function (j) {
-    var v = Data_Either.either(function ($606) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($606));
-    })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonLayoutList)(j));
-    if (v instanceof Data_Either.Right) {
-        return Control_Applicative.pure(Data_Either.applicativeEither)(v.value0);
-    };
-    if (v instanceof Data_Either.Left) {
-        return new Data_Either.Left("LayoutList: " + v.value0);
-    };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 940, column 3 - line 942, column 41): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 808, column 3 - line 810, column 47): " + [ v.constructor.name ]);
 };
 var layoutFamilyOf = function (n) {
     if ((function (s) {
@@ -108858,28 +108811,16 @@ var layoutFamilyOf = function (n) {
     if (Data_Boolean.otherwise) {
         return MultiviewFamily.value;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 922, column 1 - line 922, column 41): " + [ n.constructor.name ]);
-};
-var layoutDescriptionReading = function (j) {
-    var v = Data_Either.either(function ($607) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($607));
-    })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonLayoutDescripti)(j));
-    if (v instanceof Data_Either.Right) {
-        return Control_Applicative.pure(Data_Either.applicativeEither)(v.value0);
-    };
-    if (v instanceof Data_Either.Left) {
-        return new Data_Either.Left("LayoutDescription: " + v.value0);
-    };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 946, column 3 - line 948, column 48): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 927, column 1 - line 927, column 41): " + [ n.constructor.name ]);
 };
 var layingLayout = function (l) {
     return function (d) {
         return Unify_Types.flipuse(d)(Data_Lens_Setter.over((function () {
-            var $608 = Exhibit_VideoControl_Types["_deviceNodes"](Data_Profunctor_Strong.strongFn);
-            var $609 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
-            var $610 = Exhibit_VideoControl_Types["_nodeDetail"](Data_Profunctor_Strong.strongFn);
-            return function ($611) {
-                return $608($609($610($611)));
+            var $607 = Exhibit_VideoControl_Types["_deviceNodes"](Data_Profunctor_Strong.strongFn);
+            var $608 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
+            var $609 = Exhibit_VideoControl_Types["_nodeDetail"](Data_Profunctor_Strong.strongFn);
+            return function ($610) {
+                return $607($608($609($610)));
             };
         })())(function (n) {
             if (n instanceof Exhibit_VideoControl_Types.FrameBufferDetail) {
@@ -108896,8 +108837,8 @@ var latencyStopped = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_latencyOutcome"](Data_Lens_Internal_Forget.strongForget)) === "stopped";
 };
 var latencyOutcomeReading = function (j) {
-    var v = Data_Either.either(function ($612) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($612));
+    var v = Data_Either.either(function ($611) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($611));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonLatencyOutcome)(j));
     if (v instanceof Data_Either.Right) {
         return Control_Applicative.pure(Data_Either.applicativeEither)(v.value0);
@@ -108905,7 +108846,7 @@ var latencyOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("LatencyOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1558, column 3 - line 1560, column 45): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1569, column 3 - line 1571, column 45): " + [ v.constructor.name ]);
 };
 var latencyKept = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_latencyOutcome"](Data_Lens_Internal_Forget.strongForget)) === "kept";
@@ -108917,7 +108858,7 @@ var latencyRefusal = function (u) {
     if (Data_Boolean.otherwise) {
         return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_latencyReason"](Data_Lens_Internal_Forget.strongForget));
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1571, column 1 - line 1571, column 43): " + [ u.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1582, column 1 - line 1582, column 43): " + [ u.constructor.name ]);
 };
 var keepingSelection = function (ss) {
     return function (ns) {
@@ -109023,17 +108964,17 @@ var hdrOf = function (d) {
     var v = hdmiEncoderOf(d);
     if (v instanceof Data_Maybe.Just) {
         return Data_Lens_Getter.viewOn(v.value0)((function () {
-            var $613 = Exhibit_VideoControl_Types["_encoderVideoDetails"](Data_Lens_Internal_Forget.strongForget);
-            var $614 = Exhibit_VideoControl_Types["_detailsHdr"](Data_Lens_Internal_Forget.strongForget);
-            return function ($615) {
-                return $613($614($615));
+            var $612 = Exhibit_VideoControl_Types["_encoderVideoDetails"](Data_Lens_Internal_Forget.strongForget);
+            var $613 = Exhibit_VideoControl_Types["_detailsHdr"](Data_Lens_Internal_Forget.strongForget);
+            return function ($614) {
+                return $612($613($614));
             };
         })());
     };
     if (v instanceof Data_Maybe.Nothing) {
         return "";
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 758, column 3 - line 760, column 18): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 763, column 3 - line 765, column 18): " + [ v.constructor.name ]);
 };
 var hdmiDecoderOf = function (d) {
     return Unify_Types.listToMaybe(Data_List.mapMaybe(function (n) {
@@ -109048,22 +108989,22 @@ var inputFormatOf = function (d) {
     var v = hdmiDecoderOf(d);
     if (v instanceof Data_Maybe.Just && Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_decoderSourceStable"](Data_Lens_Internal_Forget.strongForget))) {
         return Data_Show.show(Data_Show.showInt)(Data_Lens_Getter.viewOn(v.value0)((function () {
-            var $616 = Exhibit_VideoControl_Types["_decoderVideo"](Data_Lens_Internal_Forget.strongForget);
-            var $617 = Exhibit_VideoControl_Types["_videoWidth"](Data_Lens_Internal_Forget.strongForget);
-            return function ($618) {
-                return $616($617($618));
+            var $615 = Exhibit_VideoControl_Types["_decoderVideo"](Data_Lens_Internal_Forget.strongForget);
+            var $616 = Exhibit_VideoControl_Types["_videoWidth"](Data_Lens_Internal_Forget.strongForget);
+            return function ($617) {
+                return $615($616($617));
             };
         })())) + ("x" + (Data_Show.show(Data_Show.showInt)(Data_Lens_Getter.viewOn(v.value0)((function () {
-            var $619 = Exhibit_VideoControl_Types["_decoderVideo"](Data_Lens_Internal_Forget.strongForget);
-            var $620 = Exhibit_VideoControl_Types["_videoHeight"](Data_Lens_Internal_Forget.strongForget);
-            return function ($621) {
-                return $619($620($621));
+            var $618 = Exhibit_VideoControl_Types["_decoderVideo"](Data_Lens_Internal_Forget.strongForget);
+            var $619 = Exhibit_VideoControl_Types["_videoHeight"](Data_Lens_Internal_Forget.strongForget);
+            return function ($620) {
+                return $618($619($620));
             };
         })())) + ("@" + Data_Show.show(Data_Show.showInt)(Data_Lens_Getter.viewOn(v.value0)((function () {
-            var $622 = Exhibit_VideoControl_Types["_decoderVideo"](Data_Lens_Internal_Forget.strongForget);
-            var $623 = Exhibit_VideoControl_Types["_videoFramesPerSecond"](Data_Lens_Internal_Forget.strongForget);
-            return function ($624) {
-                return $622($623($624));
+            var $621 = Exhibit_VideoControl_Types["_decoderVideo"](Data_Lens_Internal_Forget.strongForget);
+            var $622 = Exhibit_VideoControl_Types["_videoFramesPerSecond"](Data_Lens_Internal_Forget.strongForget);
+            return function ($623) {
+                return $621($622($623));
             };
         })())))));
     };
@@ -109098,7 +109039,7 @@ var setHdrEdid = function (d) {
                 })));
             })(hdmiDecoderOf(d));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 558, column 1 - line 558, column 60): " + [ d.constructor.name, on.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 563, column 1 - line 563, column 60): " + [ d.constructor.name, on.constructor.name ]);
     };
 };
 var signalOf = function (d) {
@@ -109109,7 +109050,7 @@ var signalOf = function (d) {
     if (v instanceof Data_Maybe.Nothing) {
         return false;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 579, column 3 - line 581, column 21): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 584, column 3 - line 586, column 21): " + [ v.constructor.name ]);
 };
 var hdmiDecoderNode = "HDMI_DECODER";
 var hdcpSupportOf = function (d) {
@@ -109126,7 +109067,7 @@ var setHdcpSupport = function (d) {
         if (Data_Boolean.otherwise) {
             return setHdmiDecoder(hdcpSupportKey)(d)(on);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 536, column 1 - line 536, column 64): " + [ d.constructor.name, on.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 541, column 1 - line 541, column 64): " + [ d.constructor.name, on.constructor.name ]);
     };
 };
 var hdcpOf = function (d) {
@@ -109137,7 +109078,7 @@ var hdcpOf = function (d) {
     if (v instanceof Data_Maybe.Nothing) {
         return "";
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 764, column 3 - line 766, column 18): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 769, column 3 - line 771, column 18): " + [ v.constructor.name ]);
 };
 var hdcp22SupportOf = function (d) {
     return Data_Maybe.maybe(false)(function (c) {
@@ -109156,7 +109097,7 @@ var setHdcp22Support = function (d) {
         if (Data_Boolean.otherwise) {
             return setHdmiDecoder(hdcp22SupportDisableKey)(d)(!on);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 541, column 1 - line 541, column 66): " + [ d.constructor.name, on.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 546, column 1 - line 546, column 66): " + [ d.constructor.name, on.constructor.name ]);
     };
 };
 var hdSwitched = function (u) {
@@ -109169,8 +109110,8 @@ var hdResized = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_hdSwitchOutcome"](Data_Lens_Internal_Forget.strongForget)) === "resized";
 };
 var hdOutcomeReading = function (j) {
-    var v = Data_Either.either(function ($625) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($625));
+    var v = Data_Either.either(function ($624) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($624));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonHdResolutionOut)(j));
     if (v instanceof Data_Either.Right) {
         return Control_Applicative.pure(Data_Either.applicativeEither)(v.value0);
@@ -109178,7 +109119,7 @@ var hdOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("HdResolutionOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1462, column 3 - line 1464, column 50): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1473, column 3 - line 1475, column 50): " + [ v.constructor.name ]);
 };
 var hdLayoutName = function (n) {
     return (function (s) {
@@ -109206,7 +109147,7 @@ var hdCounterpartName = function (f) {
         if (Data_Boolean.otherwise) {
             return n;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1425, column 1 - line 1425, column 49): " + [ f.constructor.name, n.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1436, column 1 - line 1436, column 49): " + [ f.constructor.name, n.constructor.name ]);
     };
 };
 var genlockingTo = function (d) {
@@ -109225,8 +109166,8 @@ var genlockMode = function (m) {
 };
 var otherLatencyOf = function (b) {
     return otherLatency((function () {
-        var $297 = genlockMode(Data_Lens_Getter.viewOn(b)(Exhibit_VideoControl_Types["_frameBufferDisplayMode"](Data_Lens_Internal_Forget.strongForget)));
-        if ($297) {
+        var $298 = genlockMode(Data_Lens_Getter.viewOn(b)(Exhibit_VideoControl_Types["_frameBufferDisplayMode"](Data_Lens_Internal_Forget.strongForget)));
+        if ($298) {
             return "GENLOCKED";
         };
         return "FAST_SWITCHED";
@@ -109249,23 +109190,23 @@ var settingDivided = function (on) {
             return hdmiDecoderNode;
         })();
         return Unify_Types.flipuse(d)(Data_Lens_Setter.over((function () {
-            var $626 = Exhibit_VideoControl_Types["_deviceNodes"](Data_Profunctor_Strong.strongFn);
-            var $627 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
-            var $628 = Exhibit_VideoControl_Types["_nodeDetail"](Data_Profunctor_Strong.strongFn);
-            return function ($629) {
-                return $626($627($628($629)));
+            var $625 = Exhibit_VideoControl_Types["_deviceNodes"](Data_Profunctor_Strong.strongFn);
+            var $626 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
+            var $627 = Exhibit_VideoControl_Types["_nodeDetail"](Data_Profunctor_Strong.strongFn);
+            return function ($628) {
+                return $625($626($627($628)));
             };
         })())(function (n) {
             if (n instanceof Exhibit_VideoControl_Types.ScalerDetail) {
                 return new Exhibit_VideoControl_Types.ScalerDetail(Unify_Types.flipuse(n.value0)(Data_Lens_Setter.over((function () {
-                    var $630 = Exhibit_VideoControl_Types["_scalerInputs"](Data_Profunctor_Strong.strongFn);
-                    var $631 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
-                    return function ($632) {
-                        return $630($631($632));
+                    var $629 = Exhibit_VideoControl_Types["_scalerInputs"](Data_Profunctor_Strong.strongFn);
+                    var $630 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
+                    return function ($631) {
+                        return $629($630($631));
                     };
                 })())(function (i) {
-                    var $300 = Data_Lens_Getter.viewOn(i)(Exhibit_VideoControl_Types["_inputName"](Data_Lens_Internal_Forget.strongForget)) === "main";
-                    if ($300) {
+                    var $301 = Data_Lens_Getter.viewOn(i)(Exhibit_VideoControl_Types["_inputName"](Data_Lens_Internal_Forget.strongForget)) === "main";
+                    if ($301) {
                         return Unify_Types.flipuse(i)(Data_Lens_Setter.set(Exhibit_VideoControl_Types["_inputDrawnType"](Data_Profunctor_Strong.strongFn))(drawn));
                     };
                     return i;
@@ -109293,7 +109234,7 @@ var genlockOf = function (d) {
     if (v instanceof Data_Maybe.Nothing) {
         return false;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 744, column 3 - line 746, column 21): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 749, column 3 - line 751, column 21): " + [ v.constructor.name ]);
 };
 var genlockScalingOf = function (d) {
     var v = frameBufferOf(d);
@@ -109303,7 +109244,7 @@ var genlockScalingOf = function (d) {
     if (v instanceof Data_Maybe.Nothing) {
         return false;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 183, column 3 - line 185, column 21): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 188, column 3 - line 190, column 21): " + [ v.constructor.name ]);
 };
 var leaveGenlockScaling = function (d) {
     if (genlockScalingOf(d)) {
@@ -109315,7 +109256,7 @@ var leaveGenlockScaling = function (d) {
     if (Data_Boolean.otherwise) {
         return Data_Maybe.Nothing.value;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 199, column 1 - line 199, column 58): " + [ d.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 204, column 1 - line 204, column 58): " + [ d.constructor.name ]);
 };
 var joinOutput = function (d) {
     return function (s) {
@@ -109344,15 +109285,15 @@ var routeJoin = function (d) {
             if (mi instanceof Data_Maybe.Nothing) {
                 return joinOutput(d)(s);
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 869, column 3 - line 871, column 30): " + [ mi.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 874, column 3 - line 876, column 30): " + [ mi.constructor.name ]);
         };
     };
 };
 var latencyOf = function (d) {
     var v = frameBufferOf(d);
     if (v instanceof Data_Maybe.Just) {
-        var $312 = genlockMode(Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_frameBufferDisplayMode"](Data_Lens_Internal_Forget.strongForget)));
-        if ($312) {
+        var $313 = genlockMode(Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_frameBufferDisplayMode"](Data_Lens_Internal_Forget.strongForget)));
+        if ($313) {
             return "Sync";
         };
         return "Fast";
@@ -109360,7 +109301,7 @@ var latencyOf = function (d) {
     if (v instanceof Data_Maybe.Nothing) {
         return "";
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 735, column 3 - line 737, column 18): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 740, column 3 - line 742, column 18): " + [ v.constructor.name ]);
 };
 var loadedLayoutOf = function (d) {
     var v = frameBufferOf(d);
@@ -109370,7 +109311,7 @@ var loadedLayoutOf = function (d) {
     if (v instanceof Data_Maybe.Nothing) {
         return Data_Maybe.Nothing.value;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 797, column 3 - line 799, column 23): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 802, column 3 - line 804, column 23): " + [ v.constructor.name ]);
 };
 var routedSourcesOf = function (d) {
     return Data_List.mapMaybe(function (s) {
@@ -109386,7 +109327,7 @@ var windowSizeOf = function (d) {
         if (Data_Boolean.otherwise) {
             return Data_Maybe.Nothing.value;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1058, column 3 - line 1060, column 29): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1065, column 3 - line 1067, column 29): " + [ v.constructor.name ]);
     };
 };
 var routeRestreams = function (os) {
@@ -109405,7 +109346,7 @@ var routeRestreams = function (os) {
                             return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(c)(Exhibit_VideoControl_Types["_scalerWidth"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(c)(Exhibit_VideoControl_Types["_scalerHeight"](Data_Lens_Internal_Forget.strongForget)));
                         })(scalerOf(s)))(windowSizeOf(d)(mw.value0));
                     };
-                    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1136, column 19 - line 1138, column 111): " + [ mw.constructor.name ]);
+                    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1143, column 19 - line 1145, column 111): " + [ mw.constructor.name ]);
                 })();
                 return up && restreaming;
             };
@@ -109428,7 +109369,7 @@ var readsFormat = function (f) {
         if (v instanceof Data_Maybe.Nothing) {
             return false;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1280, column 3 - line 1282, column 21): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1291, column 3 - line 1293, column 21): " + [ v.constructor.name ]);
     };
 };
 var outputFormatOf = function (d) {
@@ -109439,7 +109380,7 @@ var outputFormatOf = function (d) {
     if (v instanceof Data_Maybe.Nothing) {
         return "";
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 708, column 3 - line 712, column 18): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 713, column 3 - line 717, column 18): " + [ v.constructor.name ]);
 };
 var scalingOf = function (d) {
     var v = frameBufferOf(d);
@@ -109450,7 +109391,7 @@ var scalingOf = function (d) {
     if (v instanceof Data_Maybe.Nothing) {
         return false;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 750, column 3 - line 754, column 21): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 755, column 3 - line 759, column 21): " + [ v.constructor.name ]);
 };
 var setOutputScaling = function (d) {
     return function (w) {
@@ -109475,7 +109416,7 @@ var setOutputScaling = function (d) {
                         }))));
                     };
                 };
-                throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 435, column 3 - line 444, column 12): " + [ v.constructor.name ]);
+                throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 440, column 3 - line 449, column 12): " + [ v.constructor.name ]);
             };
         };
     };
@@ -109514,8 +109455,22 @@ var feedingOf = function (s) {
         if (v instanceof Data_Maybe.Nothing) {
             return false;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1732, column 3 - line 1734, column 21): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1743, column 3 - line 1745, column 21): " + [ v.constructor.name ]);
     };
+};
+var fastResolutions = new Data_List_Types.Cons(new Data_Tuple.Tuple(1920, 1080), new Data_List_Types.Cons(new Data_Tuple.Tuple(3840, 2160), Data_List_Types.Nil.value));
+var readPickOf = function (d) {
+    return Control_Bind.bind(Data_Maybe.bindMaybe)(frameBufferOf(d))(function (b) {
+        return Control_Bind.bind(Data_Maybe.bindMaybe)(namedFormatOf(d))(function (n) {
+            var wh = new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(n)(Exhibit_VideoControl_VideoControlAPI["_argumentsWidth"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(n)(Exhibit_VideoControl_VideoControlAPI["_argumentsHeight"](Data_Lens_Internal_Forget.strongForget)));
+            var r = Data_Lens_Getter.viewOn(n)(Exhibit_VideoControl_VideoControlAPI["_argumentsFps"](Data_Lens_Internal_Forget.strongForget));
+            var $339 = pickableMode(Data_Lens_Getter.viewOn(b)(Exhibit_VideoControl_Types["_frameBufferDisplayMode"](Data_Lens_Internal_Forget.strongForget))) && (Data_Foldable.elem(Data_List_Types.foldableList)(Data_Tuple.eqTuple(Data_Eq.eqInt)(Data_Eq.eqInt))(wh)(fastResolutions) && (r === 30 || r === 60));
+            if ($339) {
+                return new Data_Maybe.Just(new Data_Tuple.Tuple(resolutionName(wh), r === 60));
+            };
+            return Data_Maybe.Nothing.value;
+        });
+    });
 };
 var familyName = function (f) {
     if (f instanceof MultiviewFamily) {
@@ -109527,7 +109482,7 @@ var familyName = function (f) {
     if (f instanceof SideBySideFamily) {
         return "sidebyside";
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1508, column 3 - line 1511, column 37): " + [ f.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1519, column 3 - line 1522, column 37): " + [ f.constructor.name ]);
 };
 var switchingFamily = function (d) {
     return function (f) {
@@ -109564,7 +109519,7 @@ var windowSourceOf = function (ss) {
         if (v instanceof Data_Maybe.Nothing) {
             return emptyWindowSource(w);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 678, column 3 - line 680, column 35): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 683, column 3 - line 685, column 35): " + [ v.constructor.name ]);
     };
 };
 var windowSourcesOf = function (l) {
@@ -109593,7 +109548,7 @@ var routeLeave = function (d) {
         if (Data_Boolean.otherwise) {
             return Data_Maybe.Nothing.value;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 880, column 3 - line 882, column 29): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 885, column 3 - line 887, column 29): " + [ v.constructor.name ]);
     };
 };
 var drawingSubscription = function (live) {
@@ -109605,7 +109560,7 @@ var drawingSubscription = function (live) {
         if (v instanceof Data_Maybe.Nothing) {
             return false;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 624, column 3 - line 626, column 21): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 629, column 3 - line 631, column 21): " + [ v.constructor.name ]);
     };
 };
 var drawingOutput = function (ts) {
@@ -109617,15 +109572,15 @@ var drawingOutput = function (ts) {
         if (v instanceof Data_Maybe.Nothing) {
             return false;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 630, column 3 - line 632, column 21): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 635, column 3 - line 637, column 21): " + [ v.constructor.name ]);
     };
 };
 var drawingNothingOf = function (d) {
     return Data_List["null"](routedSourcesOf(d));
 };
 var dividersOutcomeReading = function (j) {
-    var v = Data_Either.either(function ($633) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($633));
+    var v = Data_Either.either(function ($632) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($632));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonDividersOutcome)(j));
     if (v instanceof Data_Either.Right) {
         return Control_Applicative.pure(Data_Either.applicativeEither)(v.value0);
@@ -109633,7 +109588,7 @@ var dividersOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("DividersOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1540, column 3 - line 1542, column 46): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1551, column 3 - line 1553, column 46): " + [ v.constructor.name ]);
 };
 var dividersMoved = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_dividersOutcome"](Data_Lens_Internal_Forget.strongForget)) === "placed";
@@ -109692,7 +109647,7 @@ var divideScaler = function (d) {
             };
             return Data_Maybe.Nothing.value;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 364, column 1 - line 364, column 62): " + [ d.constructor.name, on.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 369, column 1 - line 369, column 62): " + [ d.constructor.name, on.constructor.name ]);
     };
 };
 var undivideScaler = function (d) {
@@ -109714,9 +109669,9 @@ var divideNativeStream = function (d) {
             if (v instanceof Data_Maybe.Nothing) {
                 return Data_Maybe.Nothing.value;
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 381, column 7 - line 388, column 27): " + [ v.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 386, column 7 - line 393, column 27): " + [ v.constructor.name ]);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 377, column 1 - line 377, column 68): " + [ d.constructor.name, on.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 382, column 1 - line 382, column 68): " + [ d.constructor.name, on.constructor.name ]);
     };
 };
 var undivideNativeStream = function (d) {
@@ -109734,6 +109689,11 @@ var undivideSource = function (d) {
         return f(d);
     })(new Data_List_Types.Cons(undivideNativeStream, new Data_List_Types.Cons(undivideScaler, Data_List_Types.Nil.value)));
 };
+var displayModeOf = function (d) {
+    return Data_Maybe.maybe("")(function (b) {
+        return Data_Lens_Getter.viewOn(b)(Exhibit_VideoControl_Types["_frameBufferDisplayMode"](Data_Lens_Internal_Forget.strongForget));
+    })(frameBufferOf(d));
+};
 var disconnecting = function (d) {
     return function (mi) {
         return ExploreSignal.makeaffrequest(Exhibit_VideoControl_VideoControlAPI.hasAffRequestVideoControl)(new Exhibit_VideoControl_VideoControlAPI.Disconnect(new Exhibit_VideoControl_VideoControlAPI.DisconnectRequest({
@@ -109746,8 +109706,8 @@ var disconnectStopped = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_disconnectOutcome"](Data_Lens_Internal_Forget.strongForget)) === "stopped";
 };
 var disconnectOutcomeReading = function (j) {
-    var v = Data_Either.either(function ($634) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($634));
+    var v = Data_Either.either(function ($633) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($633));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonDisconnectOutco)(j));
     if (v instanceof Data_Either.Right) {
         return Control_Applicative.pure(Data_Either.applicativeEither)(v.value0);
@@ -109755,7 +109715,7 @@ var disconnectOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("DisconnectOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1622, column 3 - line 1624, column 48): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1633, column 3 - line 1635, column 48): " + [ v.constructor.name ]);
 };
 var disconnectLeft = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_disconnectOutcome"](Data_Lens_Internal_Forget.strongForget)) === "left";
@@ -109783,40 +109743,40 @@ var renameDevice = function (d) {
                 setPropertyValue: ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJString)(v)
             }))));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 471, column 3 - line 479, column 12): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 476, column 3 - line 484, column 12): " + [ v.constructor.name ]);
     };
 };
 var deviceFault = function (d) {
     if (!Data_Lens_Getter.viewOn(d)((function () {
-        var $635 = Exhibit_VideoControl_Types["_deviceStatus"](Data_Lens_Internal_Forget.strongForget);
-        var $636 = Exhibit_VideoControl_Types["_statusActive"](Data_Lens_Internal_Forget.strongForget);
-        return function ($637) {
-            return $635($636($637));
+        var $634 = Exhibit_VideoControl_Types["_deviceStatus"](Data_Lens_Internal_Forget.strongForget);
+        var $635 = Exhibit_VideoControl_Types["_statusActive"](Data_Lens_Internal_Forget.strongForget);
+        return function ($636) {
+            return $634($635($636));
         };
     })())) {
         return new Data_Maybe.Just(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)) + ": inactive");
     };
     if (Data_Lens_Getter.viewOn(d)((function () {
-        var $638 = Exhibit_VideoControl_Types["_deviceStatus"](Data_Lens_Internal_Forget.strongForget);
-        var $639 = Exhibit_VideoControl_Types["_statusErrorStatus"](Data_Lens_Internal_Forget.strongForget);
-        var $640 = Exhibit_VideoControl_Types["_hasErrorCode"](Data_Lens_Internal_Forget.strongForget);
-        return function ($641) {
-            return $638($639($640($641)));
+        var $637 = Exhibit_VideoControl_Types["_deviceStatus"](Data_Lens_Internal_Forget.strongForget);
+        var $638 = Exhibit_VideoControl_Types["_statusErrorStatus"](Data_Lens_Internal_Forget.strongForget);
+        var $639 = Exhibit_VideoControl_Types["_hasErrorCode"](Data_Lens_Internal_Forget.strongForget);
+        return function ($640) {
+            return $637($638($639($640)));
         };
     })())) {
         return new Data_Maybe.Just(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)) + (": error " + Data_Show.show(Data_Show.showInt)(Data_Lens_Getter.viewOn(d)((function () {
-            var $642 = Exhibit_VideoControl_Types["_deviceStatus"](Data_Lens_Internal_Forget.strongForget);
-            var $643 = Exhibit_VideoControl_Types["_statusErrorStatus"](Data_Lens_Internal_Forget.strongForget);
-            var $644 = Exhibit_VideoControl_Types["_errorCode"](Data_Lens_Internal_Forget.strongForget);
-            return function ($645) {
-                return $642($643($644($645)));
+            var $641 = Exhibit_VideoControl_Types["_deviceStatus"](Data_Lens_Internal_Forget.strongForget);
+            var $642 = Exhibit_VideoControl_Types["_statusErrorStatus"](Data_Lens_Internal_Forget.strongForget);
+            var $643 = Exhibit_VideoControl_Types["_errorCode"](Data_Lens_Internal_Forget.strongForget);
+            return function ($644) {
+                return $641($642($643($644)));
             };
         })()))));
     };
     if (Data_Boolean.otherwise) {
         return Data_Maybe.Nothing.value;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1742, column 1 - line 1742, column 46): " + [ d.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1753, column 1 - line 1753, column 46): " + [ d.constructor.name ]);
 };
 var systemFault = function (ds) {
     return Unify_Types.listToMaybe(Data_List.mapMaybe(function (d) {
@@ -109846,8 +109806,8 @@ var compositionStopped = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_compositionOutcome"](Data_Lens_Internal_Forget.strongForget)) === "stopped";
 };
 var compositionOutcomeReading = function (j) {
-    var v = Data_Either.either(function ($646) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($646));
+    var v = Data_Either.either(function ($645) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($645));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonCompositionOutc)(j));
     if (v instanceof Data_Either.Right) {
         return Control_Applicative.pure(Data_Either.applicativeEither)(v.value0);
@@ -109855,7 +109815,7 @@ var compositionOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("CompositionOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1522, column 3 - line 1524, column 49): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1533, column 3 - line 1535, column 49): " + [ v.constructor.name ]);
 };
 var compositionLanded = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_compositionOutcome"](Data_Lens_Internal_Forget.strongForget)) === "composed";
@@ -109871,7 +109831,7 @@ var composingOf = function (d) {
     if (v instanceof Data_Maybe.Nothing) {
         return false;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 791, column 3 - line 793, column 21): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 796, column 3 - line 798, column 21): " + [ v.constructor.name ]);
 };
 var keepingLayout = function (s) {
     return function (d) {
@@ -109883,7 +109843,7 @@ var keepingLayout = function (s) {
         if (Data_Boolean.otherwise) {
             return d;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 822, column 1 - line 822, column 68): " + [ s.constructor.name, d.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 827, column 1 - line 827, column 68): " + [ s.constructor.name, d.constructor.name ]);
     };
 };
 var multiviewSourcesOf = function (d) {
@@ -109895,12 +109855,12 @@ var multiviewSourcesOf = function (d) {
         if (v instanceof Data_Maybe.Nothing) {
             return routedSourcesOf(d);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 688, column 7 - line 690, column 37): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 693, column 7 - line 695, column 37): " + [ v.constructor.name ]);
     };
     if (Data_Boolean.otherwise) {
         return Data_List_Types.Nil.value;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 685, column 1 - line 685, column 61): " + [ d.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 690, column 1 - line 690, column 61): " + [ d.constructor.name ]);
 };
 var pictureSourceOf = function (d) {
     if (composingOf(d)) {
@@ -109913,7 +109873,7 @@ var pictureSourceOf = function (d) {
             return Data_Tuple.fst(w) === 0;
         })(routedWindows(d)));
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1273, column 1 - line 1273, column 50): " + [ d.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1284, column 1 - line 1284, column 50): " + [ d.constructor.name ]);
 };
 var repickMoves = function (f) {
     return function (d) {
@@ -109924,7 +109884,7 @@ var repickMoves = function (f) {
         if (v instanceof Data_Maybe.Nothing) {
             return false;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1296, column 3 - line 1300, column 21): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1307, column 3 - line 1311, column 21): " + [ v.constructor.name ]);
     };
 };
 var setGenlockScaling = function (f) {
@@ -109952,7 +109912,7 @@ var setGenlockScaling = function (f) {
         if (v instanceof Data_Maybe.Nothing) {
             return Data_Maybe.Nothing.value;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 189, column 3 - line 194, column 23): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 194, column 3 - line 199, column 23): " + [ v.constructor.name ]);
     };
 };
 var setLatencyAt = function (known) {
@@ -109973,8 +109933,8 @@ var setLatencyAt = function (known) {
             return new Data_Maybe.Just(ExploreSignal.makeaffrequest(Exhibit_VideoControl_VideoControlAPI.hasAffRequestVideoControl)(new Exhibit_VideoControl_VideoControlAPI.SetVideo(new Exhibit_VideoControl_VideoControlAPI.DeviceIdTarget(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget))), new Exhibit_VideoControl_VideoControlAPI.SetVideoRequest({
                 setVideoDisplayMode: m,
                 setVideoVideo: (function () {
-                    var $389 = m === "GENLOCKED";
-                    if ($389) {
+                    var $391 = m === "GENLOCKED";
+                    if ($391) {
                         return Data_Maybe.Nothing.value;
                     };
                     return new Data_Maybe.Just(f);
@@ -110020,8 +109980,8 @@ var setLatencyKnown = function (known) {
             return new Data_Maybe.Just(ExploreSignal.makeaffrequest(Exhibit_VideoControl_VideoControlAPI.hasAffRequestVideoControl)(new Exhibit_VideoControl_VideoControlAPI.SetVideo(new Exhibit_VideoControl_VideoControlAPI.DeviceIdTarget(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget))), new Exhibit_VideoControl_VideoControlAPI.SetVideoRequest({
                 setVideoDisplayMode: m,
                 setVideoVideo: (function () {
-                    var $397 = m === "GENLOCKED";
-                    if ($397) {
+                    var $399 = m === "GENLOCKED";
+                    if ($399) {
                         return Data_Maybe.Nothing.value;
                     };
                     return new Data_Maybe.Just(f);
@@ -110038,7 +109998,7 @@ var singleSourceOf = function (d) {
     if (Data_Boolean.otherwise) {
         return Data_Maybe.fromMaybe(Unify_Types.def(Exhibit_VideoControl_Types.defPreviewSource))(Unify_Types.listToMaybe(routedSourcesOf(d)));
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 693, column 1 - line 693, column 50): " + [ d.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 698, column 1 - line 698, column 50): " + [ d.constructor.name ]);
 };
 var composingLayout = function (d) {
     return function (n) {
@@ -110070,7 +110030,7 @@ var composedLayoutOf = function (d) {
     if (v instanceof Data_Maybe.Nothing) {
         return "";
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 886, column 3 - line 888, column 18): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 891, column 3 - line 893, column 18): " + [ v.constructor.name ]);
 };
 var composedFamilyOf = function (d) {
     return layoutFamilyOf(composedLayoutOf(d));
@@ -110084,8 +110044,8 @@ var composeStopped = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_composedOutcome"](Data_Lens_Internal_Forget.strongForget)) === "stopped";
 };
 var composeOutcomeReading = function (j) {
-    var v = Data_Either.either(function ($647) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($647));
+    var v = Data_Either.either(function ($646) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($646));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonComposeOutcome)(j));
     if (v instanceof Data_Either.Right) {
         return Control_Applicative.pure(Data_Either.applicativeEither)(v.value0);
@@ -110093,7 +110053,7 @@ var composeOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("ComposeOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1487, column 3 - line 1489, column 45): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1498, column 3 - line 1500, column 45): " + [ v.constructor.name ]);
 };
 var composeLanded = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_composedOutcome"](Data_Lens_Internal_Forget.strongForget)) === "composed";
@@ -110108,7 +110068,7 @@ var composeFormatOf = function (b) {
     if (Data_Boolean.otherwise) {
         return defaultComposeFormat;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 242, column 1 - line 242, column 55): " + [ b.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 247, column 1 - line 247, column 55): " + [ b.constructor.name ]);
 };
 var composeSizeOf = function (b) {
     var v = composeFormatOf(b);
@@ -110122,7 +110082,7 @@ var composesHd = function (d) {
     if (v instanceof Data_Maybe.Nothing) {
         return false;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 262, column 3 - line 264, column 21): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 267, column 3 - line 269, column 21): " + [ v.constructor.name ]);
 };
 var layoutFits = function (d) {
     return function (n) {
@@ -110150,7 +110110,7 @@ var setHdResolution = function (f) {
             var v = hdFlagFormat(f);
             return setOutputScaling(d)(v.value0.argumentsWidth)(v.value0.argumentsHeight)(v.value0.argumentsFps);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 449, column 1 - line 449, column 65): " + [ f.constructor.name, d.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 454, column 1 - line 454, column 65): " + [ f.constructor.name, d.constructor.name ]);
     };
 };
 var hdSwitchMoves = function (f) {
@@ -110161,7 +110121,7 @@ var hdSwitchMoves = function (f) {
         if (Data_Boolean.otherwise) {
             return Data_Maybe.isJust(setHdResolution(f)(d));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1452, column 1 - line 1452, column 54): " + [ f.constructor.name, d.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1463, column 1 - line 1463, column 54): " + [ f.constructor.name, d.constructor.name ]);
     };
 };
 var layoutFor = function (b) {
@@ -110175,7 +110135,7 @@ var layoutFor = function (b) {
         if (v instanceof Data_Maybe.Nothing) {
             return Unify_Types.listToMaybe(ls);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 249, column 3 - line 253, column 30): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 254, column 3 - line 258, column 30): " + [ v.constructor.name ]);
     };
 };
 var switchedLayout = function (d) {
@@ -110189,7 +110149,7 @@ var switchedLayout = function (d) {
         if (v instanceof Data_Maybe.Nothing) {
             return Unify_Types.listToMaybe(ls);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 902, column 3 - line 904, column 30): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 907, column 3 - line 909, column 30): " + [ v.constructor.name ]);
     };
 };
 var familySwitchedLayout = function (f) {
@@ -110243,22 +110203,9 @@ var namedResolution = function (n) {
         return resolutionName(r) === n;
     })(commonResolutions);
 };
-var readPickOf = function (d) {
-    return Control_Bind.bind(Data_Maybe.bindMaybe)(frameBufferOf(d))(function (b) {
-        return Control_Bind.bind(Data_Maybe.bindMaybe)(namedFormatOf(d))(function (n) {
-            var wh = new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(n)(Exhibit_VideoControl_VideoControlAPI["_argumentsWidth"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(n)(Exhibit_VideoControl_VideoControlAPI["_argumentsHeight"](Data_Lens_Internal_Forget.strongForget)));
-            var r = Data_Lens_Getter.viewOn(n)(Exhibit_VideoControl_VideoControlAPI["_argumentsFps"](Data_Lens_Internal_Forget.strongForget));
-            var $428 = pickableMode(Data_Lens_Getter.viewOn(b)(Exhibit_VideoControl_Types["_frameBufferDisplayMode"](Data_Lens_Internal_Forget.strongForget))) && (Data_Foldable.elem(Data_List_Types.foldableList)(Data_Tuple.eqTuple(Data_Eq.eqInt)(Data_Eq.eqInt))(wh)(commonResolutions) && (r === 30 || r === 60));
-            if ($428) {
-                return new Data_Maybe.Just(new Data_Tuple.Tuple(resolutionName(wh), r === 60));
-            };
-            return Data_Maybe.Nothing.value;
-        });
-    });
-};
 var commandRefusal = function (j) {
-    var v = Data_Either.either(function ($648) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($648));
+    var v = Data_Either.either(function ($647) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($647));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonCommandResult)(j));
     if (v instanceof Data_Either.Right && !Data_List["null"](Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_commandErrors"](Data_Lens_Internal_Forget.strongForget)))) {
         return new Data_Maybe.Just(Data_Foldable.intercalate(Data_List_Types.foldableList)(Data_Monoid.monoidString)("; ")(Data_Functor.map(Data_List_Types.functorList)(function (e) {
@@ -110271,49 +110218,49 @@ var colorimetryOf = function (d) {
     var v = hdmiEncoderOf(d);
     if (v instanceof Data_Maybe.Just) {
         return Data_Lens_Getter.viewOn(v.value0)((function () {
-            var $649 = Exhibit_VideoControl_Types["_encoderVideoDetails"](Data_Lens_Internal_Forget.strongForget);
-            var $650 = Exhibit_VideoControl_Types["_detailsColorimetry"](Data_Lens_Internal_Forget.strongForget);
-            return function ($651) {
-                return $649($650($651));
+            var $648 = Exhibit_VideoControl_Types["_encoderVideoDetails"](Data_Lens_Internal_Forget.strongForget);
+            var $649 = Exhibit_VideoControl_Types["_detailsColorimetry"](Data_Lens_Internal_Forget.strongForget);
+            return function ($650) {
+                return $648($649($650));
             };
         })());
     };
     if (v instanceof Data_Maybe.Nothing) {
         return "";
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 782, column 3 - line 784, column 18): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 787, column 3 - line 789, column 18): " + [ v.constructor.name ]);
 };
 var chromaOf = function (d) {
     var v = hdmiEncoderOf(d);
     if (v instanceof Data_Maybe.Just) {
         return Data_Lens_Getter.viewOn(v.value0)((function () {
-            var $652 = Exhibit_VideoControl_Types["_encoderVideo"](Data_Lens_Internal_Forget.strongForget);
-            var $653 = Exhibit_VideoControl_Types["_videoColorSpace"](Data_Lens_Internal_Forget.strongForget);
-            return function ($654) {
-                return $652($653($654));
+            var $651 = Exhibit_VideoControl_Types["_encoderVideo"](Data_Lens_Internal_Forget.strongForget);
+            var $652 = Exhibit_VideoControl_Types["_videoColorSpace"](Data_Lens_Internal_Forget.strongForget);
+            return function ($653) {
+                return $651($652($653));
             };
         })());
     };
     if (v instanceof Data_Maybe.Nothing) {
         return "";
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 770, column 3 - line 772, column 18): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 775, column 3 - line 777, column 18): " + [ v.constructor.name ]);
 };
 var bitDepthOf = function (d) {
     var v = hdmiEncoderOf(d);
     if (v instanceof Data_Maybe.Just) {
         return Data_Lens_Getter.viewOn(v.value0)((function () {
-            var $655 = Exhibit_VideoControl_Types["_encoderVideo"](Data_Lens_Internal_Forget.strongForget);
-            var $656 = Exhibit_VideoControl_Types["_videoBitsPerPixel"](Data_Lens_Internal_Forget.strongForget);
-            return function ($657) {
-                return $655($656($657));
+            var $654 = Exhibit_VideoControl_Types["_encoderVideo"](Data_Lens_Internal_Forget.strongForget);
+            var $655 = Exhibit_VideoControl_Types["_videoBitsPerPixel"](Data_Lens_Internal_Forget.strongForget);
+            return function ($656) {
+                return $654($655($656));
             };
         })());
     };
     if (v instanceof Data_Maybe.Nothing) {
         return 0;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 776, column 3 - line 778, column 17): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 781, column 3 - line 783, column 17): " + [ v.constructor.name ]);
 };
 var autoStopScaledStream = function (d) {
     return function (on) {
@@ -110332,12 +110279,12 @@ var assignedSourceOf = function (d) {
         if (v1 instanceof Data_Maybe.Nothing) {
             return "";
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 610, column 7 - line 612, column 22): " + [ v1.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 615, column 7 - line 617, column 22): " + [ v1.constructor.name ]);
     };
     if (v instanceof Data_Maybe.Nothing) {
         return "";
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 608, column 3 - line 613, column 18): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 613, column 3 - line 618, column 18): " + [ v.constructor.name ]);
 };
 var apiVersionOf = function (i) {
     var v = Data_Foldable.find(Data_List_Types.foldableList)(function (m) {
@@ -110349,11 +110296,11 @@ var apiVersionOf = function (i) {
     if (v instanceof Data_Maybe.Nothing) {
         return "";
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 226, column 3 - line 228, column 18): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 231, column 3 - line 233, column 18): " + [ v.constructor.name ]);
 };
 var answeredSources = function (j) {
-    var v = Data_Either.either(function ($658) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($658));
+    var v = Data_Either.either(function ($657) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($657));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonAnsweredSources)(j));
     if (v instanceof Data_Either.Right) {
         return new Data_Maybe.Just(v.value0);
@@ -110361,11 +110308,11 @@ var answeredSources = function (j) {
     if (v instanceof Data_Either.Left) {
         return Data_Maybe.Nothing.value;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1549, column 3 - line 1551, column 22): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1560, column 3 - line 1562, column 22): " + [ v.constructor.name ]);
 };
 var answeredRig = function (j) {
-    var v = Data_Either.either(function ($659) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($659));
+    var v = Data_Either.either(function ($658) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($658));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonAnsweredRig)(j));
     if (v instanceof Data_Either.Right) {
         return new Data_Maybe.Just(v.value0);
@@ -110373,11 +110320,11 @@ var answeredRig = function (j) {
     if (v instanceof Data_Either.Left) {
         return Data_Maybe.Nothing.value;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1415, column 3 - line 1417, column 22): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1426, column 3 - line 1428, column 22): " + [ v.constructor.name ]);
 };
 var answeredPreviewLayout = function (j) {
-    var v = Data_Either.either(function ($660) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($660));
+    var v = Data_Either.either(function ($659) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($659));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonAnsweredPreview)(j));
     if (v instanceof Data_Either.Right) {
         return new Data_Maybe.Just(v.value0);
@@ -110385,11 +110332,11 @@ var answeredPreviewLayout = function (j) {
     if (v instanceof Data_Either.Left) {
         return Data_Maybe.Nothing.value;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1726, column 3 - line 1728, column 22): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1737, column 3 - line 1739, column 22): " + [ v.constructor.name ]);
 };
 var answeredOutputs = function (j) {
-    var v = Data_Either.either(function ($661) {
-        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($661));
+    var v = Data_Either.either(function ($660) {
+        return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($660));
     })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonAnsweredOutputs)(j));
     if (v instanceof Data_Either.Right) {
         return new Data_Maybe.Just(v.value0);
@@ -110397,7 +110344,7 @@ var answeredOutputs = function (j) {
     if (v instanceof Data_Either.Left) {
         return Data_Maybe.Nothing.value;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1496, column 3 - line 1498, column 22): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1507, column 3 - line 1509, column 22): " + [ v.constructor.name ]);
 };
 var activeRoutes = function (l) {
     return Data_List.concatMap(function (d) {
@@ -110419,63 +110366,63 @@ var activeOf = function (d) {
     return Data_Maybe.isJust(hdmiSubscriptionOf(d));
 };
 var _routeWindow = function (dictStrong) {
-    var $662 = Data_Lens_Lens["lens'"](function (v) {
+    var $661 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new RouteContext(s);
         });
     })(dictStrong);
-    var $663 = Data_Lens_Record.prop({
+    var $662 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "routeWindow";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($664) {
-        return $662($663($664));
+    return function ($663) {
+        return $661($662($663));
     };
 };
 var _routeSource = function (dictStrong) {
-    var $665 = Data_Lens_Lens["lens'"](function (v) {
+    var $664 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new RouteContext(s);
         });
     })(dictStrong);
-    var $666 = Data_Lens_Record.prop({
+    var $665 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "routeSource";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($667) {
-        return $665($666($667));
+    return function ($666) {
+        return $664($665($666));
     };
 };
 var _routeScaledElsewhere = function (dictStrong) {
-    var $668 = Data_Lens_Lens["lens'"](function (v) {
+    var $667 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new RouteContext(s);
         });
     })(dictStrong);
-    var $669 = Data_Lens_Record.prop({
+    var $668 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "routeScaledElsewhere";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($670) {
-        return $668($669($670));
+    return function ($669) {
+        return $667($668($669));
     };
 };
 var _routeOutput = function (dictStrong) {
-    var $671 = Data_Lens_Lens["lens'"](function (v) {
+    var $670 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new RouteContext(s);
         });
     })(dictStrong);
-    var $672 = Data_Lens_Record.prop({
+    var $671 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "routeOutput";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($673) {
-        return $671($672($673));
+    return function ($672) {
+        return $670($671($672));
     };
 };
 var decideRoute = function (c) {
@@ -110486,8 +110433,8 @@ var decideRoute = function (c) {
         return Control_Bind.bind(Data_Either.bindEither)(Data_Maybe.maybe(new Data_Either.Left(deviceQuoted(d) + " carries no frame buffer to name a mode from"))(Data_Either.Right.create)(frameBufferOf(d)))(function (b) {
             return Control_Bind.bind(Data_Either.bindEither)(Data_Maybe.maybe(new Data_Either.Left(deviceQuoted(s) + " has no native HDMI stream"))(Data_Either.Right.create)(nativeStream(s)))(function (n) {
                 var m = (function () {
-                    var $471 = composingOf(d);
-                    if ($471) {
+                    var $472 = composingOf(d);
+                    if ($472) {
                         return "FAST_SWITCHED";
                     };
                     return Data_Lens_Getter.viewOn(b)(Exhibit_VideoControl_Types["_frameBufferDisplayMode"](Data_Lens_Internal_Forget.strongForget));
@@ -110522,7 +110469,7 @@ var decideRoute = function (c) {
             });
         };
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1067, column 3 - line 1081, column 201): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1074, column 3 - line 1088, column 201): " + [ v.constructor.name ]);
 };
 var strandedEndpoints = function (os) {
     return function (c) {
@@ -110541,8 +110488,8 @@ var strandedEndpoints = function (os) {
         })(scalerOf(s)))(new Data_Maybe.Just(v.value0))) {
             return Data_List.concatMap(function (o) {
                 return Data_List.mapMaybe(function (x) {
-                    var $474 = naming(x);
-                    if ($474) {
+                    var $475 = naming(x);
+                    if ($475) {
                         return new Data_Maybe.Just(new Data_Tuple.Tuple(o, Data_Lens_Getter.viewOn(x)(Exhibit_VideoControl_Types["_subscriptionIndex"](Data_Lens_Internal_Forget.strongForget))));
                     };
                     return Data_Maybe.Nothing.value;
@@ -110562,48 +110509,48 @@ var strandedWindows = function (os) {
     };
 };
 var _chosenSurface = function (dictStrong) {
-    var $674 = Data_Lens_Lens["lens'"](function (v) {
+    var $673 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new RouteChoice(s);
         });
     })(dictStrong);
-    var $675 = Data_Lens_Record.prop({
+    var $674 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "chosenSurface";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($676) {
-        return $674($675($676));
+    return function ($675) {
+        return $673($674($675));
     };
 };
 var _chosenStreamType = function (dictStrong) {
-    var $677 = Data_Lens_Lens["lens'"](function (v) {
+    var $676 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new RouteChoice(s);
         });
     })(dictStrong);
-    var $678 = Data_Lens_Record.prop({
+    var $677 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "chosenStreamType";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($679) {
-        return $677($678($679));
+    return function ($678) {
+        return $676($677($678));
     };
 };
 var _chosenStreamIndex = function (dictStrong) {
-    var $680 = Data_Lens_Lens["lens'"](function (v) {
+    var $679 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new RouteChoice(s);
         });
     })(dictStrong);
-    var $681 = Data_Lens_Record.prop({
+    var $680 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "chosenStreamIndex";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($682) {
-        return $680($681($682));
+    return function ($681) {
+        return $679($680($681));
     };
 };
 var sharingLink = function (c) {
@@ -110614,7 +110561,7 @@ var sharingLink = function (c) {
         if (Data_Boolean.otherwise) {
             return scaledAtTile(Data_Lens_Getter.viewOn(c)(_routeSource(Data_Lens_Internal_Forget.strongForget))) && !Data_Lens_Getter.viewOn(c)(_routeScaledElsewhere(Data_Lens_Internal_Forget.strongForget));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1143, column 1 - line 1143, column 54): " + [ c.constructor.name, ch.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1150, column 1 - line 1150, column 54): " + [ c.constructor.name, ch.constructor.name ]);
     };
 };
 var exclusiveStreamRule = new RouteRule({
@@ -110628,7 +110575,7 @@ var exclusiveStreamRule = new RouteRule({
             if (v instanceof Data_Maybe.Nothing) {
                 return true;
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1152, column 7 - line 1154, column 24): " + [ v.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1159, column 7 - line 1161, column 24): " + [ v.constructor.name ]);
         };
     },
     rulePrepare: function (c) {
@@ -110660,7 +110607,7 @@ var darkenedStream = function (c) {
             return new Data_Maybe.Just(otherStreamIndex(Data_Lens_Getter.viewOn(v.value0)(_chosenStreamIndex(Data_Lens_Internal_Forget.strongForget))));
         };
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1346, column 3 - line 1350, column 72): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1357, column 3 - line 1361, column 72): " + [ v.constructor.name ]);
 };
 var darkenedEndpoints = function (os) {
     return function (c) {
@@ -110690,15 +110637,15 @@ var darkenedEndpoints = function (os) {
         if (v instanceof Data_Maybe.Just) {
             return Data_List.concatMap(function (x) {
                 return Data_List.mapMaybe(function (q) {
-                    var $495 = naming(v.value0)(q) && !joined(x)(q);
-                    if ($495) {
+                    var $496 = naming(v.value0)(q) && !joined(x)(q);
+                    if ($496) {
                         return new Data_Maybe.Just(new Data_Tuple.Tuple(x, Data_Lens_Getter.viewOn(q)(Exhibit_VideoControl_Types["_subscriptionIndex"](Data_Lens_Internal_Forget.strongForget))));
                     };
                     return Data_Maybe.Nothing.value;
                 })(hdmiSubscriptionsOf(x));
             })(os);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1358, column 3 - line 1365, column 13): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1369, column 3 - line 1376, column 13): " + [ v.constructor.name ]);
     };
 };
 var darkenedRoutes = function (os) {
@@ -110785,23 +110732,23 @@ var streamRule = new RouteRule({
             if (v instanceof Data_Maybe.Nothing) {
                 return new Data_Either.Left(deviceQuoted(s) + (" has no " + (t + (" stream " + (Data_Show.show(Data_Show.showInt)(i) + " to draw")))));
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1219, column 10 - line 1222, column 101): " + [ v.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1226, column 10 - line 1229, column 101): " + [ v.constructor.name ]);
         };
     }
 });
 var _chosenSize = function (dictStrong) {
-    var $683 = Data_Lens_Lens["lens'"](function (v) {
+    var $682 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new RouteChoice(s);
         });
     })(dictStrong);
-    var $684 = Data_Lens_Record.prop({
+    var $683 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "chosenSize";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($685) {
-        return $683($684($685));
+    return function ($684) {
+        return $682($683($684));
     };
 };
 var routeDivided = function (c) {
@@ -110822,7 +110769,7 @@ var routeDivided = function (c) {
                 return Data_Maybe.Nothing.value;
             };
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1201, column 3 - line 1205, column 29): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1208, column 3 - line 1212, column 29): " + [ v.constructor.name ]);
     };
 };
 var scaledDividerRule = new RouteRule({
@@ -110848,7 +110795,7 @@ var scaledDividerRule = new RouteRule({
                     return settingDivided(v.value0)(x);
                 }))));
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1188, column 7 - line 1193, column 52): " + [ v.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1195, column 7 - line 1200, column 52): " + [ v.constructor.name ]);
         };
     }
 });
@@ -110865,7 +110812,7 @@ var scalerRule = new RouteRule({
                     return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(s)(Exhibit_VideoControl_Types["_scalerWidth"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(s)(Exhibit_VideoControl_Types["_scalerHeight"](Data_Lens_Internal_Forget.strongForget)));
                 })(scalerOf(Data_Lens_Getter.viewOn(c)(_routeSource(Data_Lens_Internal_Forget.strongForget)))))(new Data_Maybe.Just(new Data_Tuple.Tuple(v.value0.value0, v.value0.value1)));
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1166, column 7 - line 1168, column 141): " + [ v.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1173, column 7 - line 1175, column 141): " + [ v.constructor.name ]);
         };
     },
     rulePrepare: function (c) {
@@ -110914,7 +110861,7 @@ var singleViewRule = new RouteRule({
             if (v1 instanceof Data_Maybe.Nothing) {
                 return new Data_Either.Left(deviceQuoted(Data_Lens_Getter.viewOn(c)(_routeOutput(Data_Lens_Internal_Forget.strongForget))) + " cannot be taken out of multiview");
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1116, column 7 - line 1118, column 98): " + [ v1.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1123, column 7 - line 1125, column 98): " + [ v1.constructor.name ]);
         };
     }
 });
@@ -110926,10 +110873,10 @@ var prepareRoute = function (c0) {
         })(Data_Foldable.foldl(Data_List_Types.foldableList)(function (acc) {
             return function (r) {
                 return Control_Bind.bind(Data_Either.bindEither)(acc)(function (v) {
-                    var $549 = (function (v1) {
+                    var $550 = (function (v1) {
                         return v1.value0.ruleHolds;
                     })(r)(v.value1)(ch);
-                    if ($549) {
+                    if ($550) {
                         return new Data_Either.Right(new Data_Tuple.Tuple(v.value0, v.value1));
                     };
                     return Data_Functor.map(Data_Either.functorEither)(function (v1) {
@@ -110943,49 +110890,49 @@ var prepareRoute = function (c0) {
     };
 };
 var _chosenMode = function (dictStrong) {
-    var $686 = Data_Lens_Lens["lens'"](function (v) {
+    var $685 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new RouteChoice(s);
         });
     })(dictStrong);
-    var $687 = Data_Lens_Record.prop({
+    var $686 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "chosenMode";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($688) {
-        return $686($687($688));
+    return function ($687) {
+        return $685($686($687));
     };
 };
 var _chosenFormat = function (dictStrong) {
-    var $689 = Data_Lens_Lens["lens'"](function (v) {
+    var $688 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new RouteChoice(s);
         });
     })(dictStrong);
-    var $690 = Data_Lens_Record.prop({
+    var $689 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "chosenFormat";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($691) {
-        return $689($690($691));
+    return function ($690) {
+        return $688($689($690));
     };
 };
 var joinChosen = function (c) {
     return function (ch) {
         return ExploreSignal.makeaffrequest(Exhibit_VideoControl_VideoControlAPI.hasAffRequestVideoControl)(new Exhibit_VideoControl_VideoControlAPI.JoinStream(new Exhibit_VideoControl_VideoControlAPI.DeviceIdTarget(Data_Lens_Getter.viewOn(c)((function () {
-            var $692 = _routeOutput(Data_Lens_Internal_Forget.strongForget);
-            var $693 = Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget);
-            return function ($694) {
-                return $692($693($694));
+            var $691 = _routeOutput(Data_Lens_Internal_Forget.strongForget);
+            var $692 = Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget);
+            return function ($693) {
+                return $691($692($693));
             };
         })())), new Exhibit_VideoControl_VideoControlAPI.JoinRequest({
             joinSourceDevice: Data_Lens_Getter.viewOn(c)((function () {
-                var $695 = _routeSource(Data_Lens_Internal_Forget.strongForget);
-                var $696 = Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget);
-                return function ($697) {
-                    return $695($696($697));
+                var $694 = _routeSource(Data_Lens_Internal_Forget.strongForget);
+                var $695 = Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget);
+                return function ($696) {
+                    return $694($695($696));
                 };
             })()),
             joinStreamType: Data_Lens_Getter.viewOn(ch)(_chosenStreamType(Data_Lens_Internal_Forget.strongForget)),
@@ -111024,8 +110971,8 @@ var planReroute = function (f) {
                             return Data_Lens_Getter.viewOn(x)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget)) === i;
                         })(ss))(function (s) {
                             var c = routeContextIn(os)(s)(d)(Data_Maybe.Nothing.value);
-                            var $566 = !pickableMode(Data_Lens_Getter.viewOn(b)(Exhibit_VideoControl_Types["_frameBufferDisplayMode"](Data_Lens_Internal_Forget.strongForget))) || readsFormat(f)(d);
-                            if ($566) {
+                            var $567 = !pickableMode(Data_Lens_Getter.viewOn(b)(Exhibit_VideoControl_Types["_frameBufferDisplayMode"](Data_Lens_Internal_Forget.strongForget))) || readsFormat(f)(d);
+                            if ($567) {
                                 return Data_Maybe.Nothing.value;
                             };
                             return Data_Either.either(function (v) {
@@ -111078,7 +111025,7 @@ var planHdSwitch = function (f) {
                             })(cs))));
                         });
                     };
-                    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1436, column 1 - line 1436, column 147): " + [ f.constructor.name, d.constructor.name, ss.constructor.name, os.constructor.name, ls.constructor.name ]);
+                    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1447, column 1 - line 1447, column 147): " + [ f.constructor.name, d.constructor.name, ss.constructor.name, os.constructor.name, ls.constructor.name ]);
                 };
             };
         };
@@ -111114,6 +111061,7 @@ module.exports = {
     setLatencyTo: setLatencyTo,
     setLatencyKnown: setLatencyKnown,
     commonResolutions: commonResolutions,
+    fastResolutions: fastResolutions,
     resolutionName: resolutionName,
     namedResolution: namedResolution,
     genlockScalingOf: genlockScalingOf,
@@ -111260,8 +111208,8 @@ module.exports = {
     composedFamilyOf: composedFamilyOf,
     familyLayouts: familyLayouts,
     familySwitchedLayout: familySwitchedLayout,
-    layoutListReading: layoutListReading,
-    layoutDescriptionReading: layoutDescriptionReading,
+    simpleLayoutsReading: simpleLayoutsReading,
+    simpleLayoutReading: simpleLayoutReading,
     markingSurface: markingSurface,
     RouteContext: RouteContext,
     "_routeSource": _routeSource,
@@ -111304,6 +111252,7 @@ module.exports = {
     planRouteAt: planRouteAt,
     pickableMode: pickableMode,
     pickingFormat: pickingFormat,
+    displayModeOf: displayModeOf,
     readPickOf: readPickOf,
     pictureSourceOf: pictureSourceOf,
     readsFormat: readsFormat,
@@ -111419,7 +111368,7 @@ module.exports = {
     genericRouteRule_: genericRouteRule_
 };
 
-},{"../Control.Applicative/index.js":42,"../Control.Bind/index.js":48,"../Data.Argonaut.Decode.Class/index.js":84,"../Data.Argonaut.Decode.Error/index.js":87,"../Data.Argonaut.Decode.Generic/index.js":88,"../Data.Argonaut.Encode.Class/index.js":89,"../Data.Argonaut.Encode.Generic/index.js":92,"../Data.Boolean/index.js":107,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Eq/index.js":118,"../Data.Foldable/index.js":123,"../Data.Functor/index.js":142,"../Data.Generic.Rep/index.js":145,"../Data.HeytingAlgebra/index.js":148,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Internal.Wander/index.js":169,"../Data.Lens.Lens/index.js":173,"../Data.Lens.Record/index.js":177,"../Data.Lens.Setter/index.js":178,"../Data.Lens.Traversal/index.js":179,"../Data.List.Types/index.js":185,"../Data.List/index.js":186,"../Data.Maybe/index.js":190,"../Data.Monoid/index.js":199,"../Data.Ord/index.js":210,"../Data.Profunctor.Strong/index.js":216,"../Data.Semigroup/index.js":223,"../Data.Show.Generic/index.js":228,"../Data.Show/index.js":230,"../Data.String.CodePoints/index.js":235,"../Data.String.CodeUnits/index.js":237,"../Data.Symbol/index.js":244,"../Data.Tuple/index.js":251,"../Exhibit.VideoControl.Types/index.js":316,"../Exhibit.VideoControl.VideoControlAPI/index.js":352,"../ExploreSignal/index.js":357,"../Unify.Types/index.js":402}],316:[function(require,module,exports){
+},{"../Control.Applicative/index.js":42,"../Control.Bind/index.js":48,"../Data.Argonaut.Decode.Class/index.js":84,"../Data.Argonaut.Decode.Combinators/index.js":85,"../Data.Argonaut.Decode.Error/index.js":87,"../Data.Argonaut.Decode.Generic/index.js":88,"../Data.Argonaut.Encode.Class/index.js":89,"../Data.Argonaut.Encode.Generic/index.js":92,"../Data.Boolean/index.js":107,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Eq/index.js":118,"../Data.Foldable/index.js":123,"../Data.Functor/index.js":142,"../Data.Generic.Rep/index.js":145,"../Data.HeytingAlgebra/index.js":148,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Internal.Wander/index.js":169,"../Data.Lens.Lens/index.js":173,"../Data.Lens.Record/index.js":177,"../Data.Lens.Setter/index.js":178,"../Data.Lens.Traversal/index.js":179,"../Data.List.Types/index.js":185,"../Data.List/index.js":186,"../Data.Maybe/index.js":190,"../Data.Monoid/index.js":199,"../Data.Ord/index.js":210,"../Data.Profunctor.Strong/index.js":216,"../Data.Semigroup/index.js":223,"../Data.Show.Generic/index.js":228,"../Data.Show/index.js":230,"../Data.String.CodePoints/index.js":235,"../Data.String.CodeUnits/index.js":237,"../Data.Symbol/index.js":244,"../Data.Tuple/index.js":251,"../Exhibit.VideoControl.Types/index.js":316,"../Exhibit.VideoControl.VideoControlAPI/index.js":352,"../ExploreSignal/index.js":357,"../Unify.Types/index.js":402}],316:[function(require,module,exports){
 // Generated by purs version 0.14.4
 "use strict";
 var Control_Applicative = require("../Control.Applicative/index.js");
@@ -116531,36 +116480,6 @@ var decodeJsonLayoutList = {
         });
     }
 };
-var decodeJsonLayoutDescripti = {
-    decodeJson: function (j) {
-        return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(j))(function (o) {
-            return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(o)("layout_description"))(function (w) {
-                return Control_Bind.bind(Data_Either.bindEither)(Control_Applicative.pure(Data_Either.applicativeEither)(Data_Maybe.fromMaybe(o)(w)))(function (d) {
-                    return Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Data_Functor.map(Data_Either.functorEither)(function (layoutName) {
-                        return function (layoutWidth) {
-                            return function (layoutHeight) {
-                                return function (layoutReadOnly) {
-                                    return function (layoutSurfaces) {
-                                        return function (layoutWindows) {
-                                            return new LayoutDescription({
-                                                layoutName: layoutName,
-                                                layoutWidth: layoutWidth,
-                                                layoutHeight: layoutHeight,
-                                                layoutReadOnly: layoutReadOnly,
-                                                layoutSurfaces: layoutSurfaces,
-                                                layoutWindows: layoutWindows
-                                            });
-                                        };
-                                    };
-                                };
-                            };
-                        };
-                    })(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonString)(d)("name")))(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonInt)(d)("width")))(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonInt)(d)("height")))(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonBoolean)(d)("read_only")))(Data_Argonaut_Decode_Combinators.defaultField(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeList(decodeJsonLayoutSurface))(d)("surfaces"))(Data_List_Types.Nil.value)))(Data_Argonaut_Decode_Combinators.defaultField(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeList(decodeJsonLayoutWindow))(d)("windows"))(Data_List_Types.Nil.value));
-                });
-            });
-        });
-    }
-};
 var decodeJsonLatencyOutcome = {
     decodeJson: function (j) {
         return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(j))(function (o) {
@@ -116663,95 +116582,6 @@ var decodeJsonHdResolutionOut = {
         });
     }
 };
-var decodeJsonFrameBuffer = {
-    decodeJson: function (j) {
-        return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(j))(function (o) {
-            return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(o)("configuration"))(function (c) {
-                return Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Data_Functor.map(Data_Either.functorEither)(function (frameBufferDisplayMode) {
-                    return function (frameBufferWidth) {
-                        return function (frameBufferHeight) {
-                            return function (frameBufferFramesPerSecond) {
-                                return function (frameBufferAspectRatioMode) {
-                                    return function (frameBufferMultiviewLayout) {
-                                        return new FrameBuffer({
-                                            frameBufferDisplayMode: frameBufferDisplayMode,
-                                            frameBufferWidth: frameBufferWidth,
-                                            frameBufferHeight: frameBufferHeight,
-                                            frameBufferFramesPerSecond: frameBufferFramesPerSecond,
-                                            frameBufferAspectRatioMode: frameBufferAspectRatioMode,
-                                            frameBufferMultiviewLayout: frameBufferMultiviewLayout
-                                        });
-                                    };
-                                };
-                            };
-                        };
-                    };
-                })(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonString)(c)("display_mode")))(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonInt)(c)("width")))(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonInt)(c)("height")))(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonInt)(c)("frames_per_second")))(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonString)(c)("aspect_ratio_mode")))(Data_Argonaut_Decode_Combinators["getFieldOptional'"](decodeJsonLayoutDescripti)(c)("multiview_layout"));
-            });
-        });
-    }
-};
-var decodeJsonNode = {
-    decodeJson: function (j) {
-        return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(j))(function (o) {
-            return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonString)(o)("type"))(function (t) {
-                return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonInt)(o)("index"))(function (i) {
-                    return Control_Bind.bind(Data_Either.bindEither)((function () {
-                        if (t === "HDMI_DECODER") {
-                            return Data_Functor.map(Data_Either.functorEither)(HdmiDecoderDetail.create)(Data_Argonaut_Decode_Class.decodeJson(decodeJsonHdmiDecoder)(Data_Argonaut_Core.fromObject(o)));
-                        };
-                        if (t === "SCALER") {
-                            return Data_Functor.map(Data_Either.functorEither)(ScalerDetail.create)(Data_Argonaut_Decode_Class.decodeJson(decodeJsonScaler)(Data_Argonaut_Core.fromObject(o)));
-                        };
-                        if (t === "HDMI_ENCODER") {
-                            return Data_Functor.map(Data_Either.functorEither)(HdmiEncoderDetail.create)(Data_Argonaut_Decode_Class.decodeJson(decodeJsonHdmiEncoder)(Data_Argonaut_Core.fromObject(o)));
-                        };
-                        if (t === "FRAME_BUFFER") {
-                            return Data_Functor.map(Data_Either.functorEither)(FrameBufferDetail.create)(Data_Argonaut_Decode_Class.decodeJson(decodeJsonFrameBuffer)(Data_Argonaut_Core.fromObject(o)));
-                        };
-                        if (t === "HDMI_MONITOR") {
-                            return Data_Functor.map(Data_Either.functorEither)(HdmiMonitorDetail.create)(Data_Argonaut_Decode_Class.decodeJson(decodeJsonHdmiMonitor)(Data_Argonaut_Core.fromObject(o)));
-                        };
-                        return Control_Applicative.pure(Data_Either.applicativeEither)(NoDetail.value);
-                    })())(function (d) {
-                        return Control_Applicative.pure(Data_Either.applicativeEither)(new Node({
-                            nodeType: t,
-                            nodeIndex: i,
-                            nodeDetail: d
-                        }));
-                    });
-                });
-            });
-        });
-    }
-};
-var decodeJsonNodeDetail = {
-    decodeJson: Data_Argonaut_Decode_Generic.genericDecodeJson(genericNodeDetail_)(Data_Argonaut_Decode_Generic.decodeRepSum(Data_Argonaut_Decode_Generic.decodeRepConstructorArg({
-        reflectSymbol: function () {
-            return "HdmiDecoderDetail";
-        }
-    })(decodeJsonHdmiDecoder))(Data_Argonaut_Decode_Generic.decodeRepSum(Data_Argonaut_Decode_Generic.decodeRepConstructorArg({
-        reflectSymbol: function () {
-            return "ScalerDetail";
-        }
-    })(decodeJsonScaler))(Data_Argonaut_Decode_Generic.decodeRepSum(Data_Argonaut_Decode_Generic.decodeRepConstructorArg({
-        reflectSymbol: function () {
-            return "HdmiEncoderDetail";
-        }
-    })(decodeJsonHdmiEncoder))(Data_Argonaut_Decode_Generic.decodeRepSum(Data_Argonaut_Decode_Generic.decodeRepConstructorArg({
-        reflectSymbol: function () {
-            return "FrameBufferDetail";
-        }
-    })(decodeJsonFrameBuffer))(Data_Argonaut_Decode_Generic.decodeRepSum(Data_Argonaut_Decode_Generic.decodeRepConstructorArg({
-        reflectSymbol: function () {
-            return "HdmiMonitorDetail";
-        }
-    })(decodeJsonHdmiMonitor))(Data_Argonaut_Decode_Generic.decodeRepConstructorNoArgs({
-        reflectSymbol: function () {
-            return "NoDetail";
-        }
-    })))))))
-};
 var decodeJsonErrorStatus = {
     decodeJson: function (j) {
         return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(j))(function (o) {
@@ -116808,40 +116638,6 @@ var decodeJsonDeviceStatus = {
         });
     }
 };
-var decodeJsonDeviceLayout = {
-    decodeJson: function (j) {
-        return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(j))(function (o) {
-            return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Combinators.defaultField(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonJson))(o)("nodes"))(Data_List_Types.Nil.value))(function (ns) {
-                return Control_Bind.bind(Data_Either.bindEither)(Data_Traversable.traverse(Data_List_Types.traversableList)(Data_Either.applicativeEither)(function (n) {
-                    return Control_Bind.bind(Data_Either.bindEither)(Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(n))(function (v) {
-                        return Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeJsonJson)(v)("configuration");
-                    }))(function (c) {
-                        if (c instanceof Data_Maybe.Just) {
-                            return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(c.value0))(function (v) {
-                                return Data_Argonaut_Decode_Combinators["getFieldOptional'"](decodeJsonLayoutDescripti)(v)("multiview_layout");
-                            });
-                        };
-                        if (c instanceof Data_Maybe.Nothing) {
-                            return Control_Applicative.pure(Data_Either.applicativeEither)(Data_Maybe.Nothing.value);
-                        };
-                        throw new Error("Failed pattern match at Exhibit.VideoControl.Types (line 1141, column 17 - line 1143, column 42): " + [ c.constructor.name ]);
-                    });
-                })(ns))(function (ls) {
-                    return Control_Apply.apply(Data_Either.applyEither)(Data_Functor.map(Data_Either.functorEither)(function (layoutDeviceId) {
-                        return function (layoutLoaded) {
-                            return new DeviceLayout({
-                                layoutDeviceId: layoutDeviceId,
-                                layoutLoaded: layoutLoaded
-                            });
-                        };
-                    })(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonString)(o)("device_id")))(Control_Applicative.pure(Data_Either.applicativeEither)(Unify_Types.listToMaybe(Data_List.mapMaybe(function (v) {
-                        return v;
-                    })(ls))));
-                });
-            });
-        });
-    }
-};
 var decodeJsonDeviceIdentity = {
     decodeJson: function (j) {
         return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(j))(function (o) {
@@ -116876,20 +116672,6 @@ var decodeJsonDeviceError = {
         });
     }
 };
-var decodeJsonDeviceLayoutLis = {
-    decodeJson: function (j) {
-        return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(j))(function (o) {
-            return Control_Apply.apply(Data_Either.applyEither)(Data_Functor.map(Data_Either.functorEither)(function (deviceLayouts) {
-                return function (deviceLayoutErrors) {
-                    return new DeviceLayoutList({
-                        deviceLayouts: deviceLayouts,
-                        deviceLayoutErrors: deviceLayoutErrors
-                    });
-                };
-            })(Data_Argonaut_Decode_Combinators.defaultField(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeList(decodeJsonDeviceLayout))(o)("devices"))(Data_List_Types.Nil.value)))(Data_Argonaut_Decode_Combinators.defaultField(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeList(decodeJsonDeviceError))(o)("error"))(Data_List_Types.Nil.value));
-        });
-    }
-};
 var decodeJsonDeviceConfig = {
     decodeJson: function (j) {
         return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(j))(function (o) {
@@ -116904,58 +116686,6 @@ var decodeJsonDeviceConfig = {
                     };
                 };
             })(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonString)(o)("device_name")))(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeJsonString)(o)("device_mode")))(Data_Argonaut_Decode_Combinators.defaultField(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeJsonBoolean)(o)("locate_mode"))(false));
-        });
-    }
-};
-var decodeJsonDeviceSettings = {
-    decodeJson: function (j) {
-        return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(j))(function (o) {
-            return Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Data_Functor.map(Data_Either.functorEither)(function (deviceId) {
-                return function (deviceName) {
-                    return function (deviceIdentity) {
-                        return function (deviceConfiguration) {
-                            return function (deviceStatus) {
-                                return function (deviceStreams) {
-                                    return function (deviceSubscriptions) {
-                                        return function (deviceNodes) {
-                                            return function (deviceEdid) {
-                                                return function (devicePreviewBox) {
-                                                    return new DeviceSettings({
-                                                        deviceId: deviceId,
-                                                        deviceName: deviceName,
-                                                        deviceIdentity: deviceIdentity,
-                                                        deviceConfiguration: deviceConfiguration,
-                                                        deviceStatus: deviceStatus,
-                                                        deviceStreams: deviceStreams,
-                                                        deviceSubscriptions: deviceSubscriptions,
-                                                        deviceNodes: deviceNodes,
-                                                        deviceEdid: deviceEdid,
-                                                        devicePreviewBox: devicePreviewBox
-                                                    });
-                                                };
-                                            };
-                                        };
-                                    };
-                                };
-                            };
-                        };
-                    };
-                };
-            })(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonString)(o)("device_id")))(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonString)(o)("device_name")))(Data_Argonaut_Decode_Combinators.getField(decodeJsonDeviceIdentity)(o)("identity")))(Data_Argonaut_Decode_Combinators.getField(decodeJsonDeviceConfig)(o)("configuration")))(Data_Argonaut_Decode_Combinators.getField(decodeJsonDeviceStatus)(o)("status")))(Data_Argonaut_Decode_Combinators.defaultField(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeList(decodeJsonStreamObject))(o)("streams"))(Data_List_Types.Nil.value)))(Data_Argonaut_Decode_Combinators.defaultField(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeList(decodeJsonSubscriptionObj))(o)("subscriptions"))(Data_List_Types.Nil.value)))(Data_Argonaut_Decode_Combinators.defaultField(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeList(decodeJsonNode))(o)("nodes"))(Data_List_Types.Nil.value)))(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeJsonString)(o)("edid")))(Data_Argonaut_Decode_Combinators.defaultField(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeJsonBoolean)(o)("preview_box"))(false));
-        });
-    }
-};
-var decodeJsonDeviceSettingsL = {
-    decodeJson: function (j) {
-        return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(j))(function (o) {
-            return Control_Apply.apply(Data_Either.applyEither)(Data_Functor.map(Data_Either.functorEither)(function (devices) {
-                return function (deviceErrors) {
-                    return new DeviceSettingsList({
-                        devices: devices,
-                        deviceErrors: deviceErrors
-                    });
-                };
-            })(Data_Argonaut_Decode_Combinators.defaultField(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeList(decodeJsonDeviceSettings))(o)("devices"))(Data_List_Types.Nil.value)))(Data_Argonaut_Decode_Combinators.defaultField(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeList(decodeJsonDeviceError))(o)("error"))(Data_List_Types.Nil.value));
         });
     }
 };
@@ -117060,1056 +116790,1304 @@ var decodeJsonAnsweredOutputs = {
         });
     }
 };
+var simpleWindowOf = function (windowIndex) {
+    return function (j) {
+        return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(j))(function (o) {
+            return Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Data_Functor.map(Data_Either.functorEither)(function (windowHorizontalPosition) {
+                return function (windowVerticalPosition) {
+                    return function (windowWidth) {
+                        return function (windowHeight) {
+                            return function (windowTargetSurface) {
+                                return new LayoutWindow({
+                                    windowIndex: windowIndex,
+                                    windowHorizontalPosition: windowHorizontalPosition,
+                                    windowVerticalPosition: windowVerticalPosition,
+                                    windowWidth: windowWidth,
+                                    windowHeight: windowHeight,
+                                    windowHorizontalOffset: 0,
+                                    windowVerticalOffset: 0,
+                                    windowContent: (function () {
+                                        var $937 = Data_Maybe.isJust(windowTargetSurface);
+                                        if ($937) {
+                                            return "VIDEO";
+                                        };
+                                        return "BLACK";
+                                    })(),
+                                    windowTargetSurface: windowTargetSurface
+                                });
+                            };
+                        };
+                    };
+                };
+            })(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonInt)(o)("x")))(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonInt)(o)("y")))(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonInt)(o)("width")))(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonInt)(o)("height")))(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeJsonInt)(o)("surface"));
+        });
+    };
+};
+var decodeJsonLayoutDescripti = {
+    decodeJson: function (j) {
+        return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(j))(function (o) {
+            return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonJson))(o)("windows"))(function (ws) {
+                return Control_Bind.bind(Data_Either.bindEither)(Data_Traversable.traverse(Data_List_Types.traversableList)(Data_Either.applicativeEither)(function (v) {
+                    return simpleWindowOf(v.value0)(v.value1);
+                })(Data_List.zip(Data_List.range(0)(Data_List.length(ws)))(ws)))(function (layoutWindows) {
+                    return Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Data_Functor.map(Data_Either.functorEither)(function (layoutName) {
+                        return function (layoutWidth) {
+                            return function (layoutHeight) {
+                                return new LayoutDescription({
+                                    layoutName: layoutName,
+                                    layoutWidth: layoutWidth,
+                                    layoutHeight: layoutHeight,
+                                    layoutReadOnly: false,
+                                    layoutSurfaces: Data_List_Types.Nil.value,
+                                    layoutWindows: layoutWindows
+                                });
+                            };
+                        };
+                    })(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonString)(o)("name")))(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonInt)(o)("width")))(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonInt)(o)("height"));
+                });
+            });
+        });
+    }
+};
+var decodeJsonDeviceLayout = {
+    decodeJson: function (j) {
+        return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(j))(function (o) {
+            return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Combinators.defaultField(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonJson))(o)("nodes"))(Data_List_Types.Nil.value))(function (ns) {
+                return Control_Bind.bind(Data_Either.bindEither)(Data_Traversable.traverse(Data_List_Types.traversableList)(Data_Either.applicativeEither)(function (n) {
+                    return Control_Bind.bind(Data_Either.bindEither)(Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(n))(function (v) {
+                        return Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeJsonJson)(v)("configuration");
+                    }))(function (c) {
+                        if (c instanceof Data_Maybe.Just) {
+                            return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(c.value0))(function (v) {
+                                return Data_Argonaut_Decode_Combinators["getFieldOptional'"](decodeJsonLayoutDescripti)(v)("multiview_layout");
+                            });
+                        };
+                        if (c instanceof Data_Maybe.Nothing) {
+                            return Control_Applicative.pure(Data_Either.applicativeEither)(Data_Maybe.Nothing.value);
+                        };
+                        throw new Error("Failed pattern match at Exhibit.VideoControl.Types (line 1153, column 17 - line 1155, column 42): " + [ c.constructor.name ]);
+                    });
+                })(ns))(function (ls) {
+                    return Control_Apply.apply(Data_Either.applyEither)(Data_Functor.map(Data_Either.functorEither)(function (layoutDeviceId) {
+                        return function (layoutLoaded) {
+                            return new DeviceLayout({
+                                layoutDeviceId: layoutDeviceId,
+                                layoutLoaded: layoutLoaded
+                            });
+                        };
+                    })(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonString)(o)("device_id")))(Control_Applicative.pure(Data_Either.applicativeEither)(Unify_Types.listToMaybe(Data_List.mapMaybe(function (v) {
+                        return v;
+                    })(ls))));
+                });
+            });
+        });
+    }
+};
+var decodeJsonDeviceLayoutLis = {
+    decodeJson: function (j) {
+        return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(j))(function (o) {
+            return Control_Apply.apply(Data_Either.applyEither)(Data_Functor.map(Data_Either.functorEither)(function (deviceLayouts) {
+                return function (deviceLayoutErrors) {
+                    return new DeviceLayoutList({
+                        deviceLayouts: deviceLayouts,
+                        deviceLayoutErrors: deviceLayoutErrors
+                    });
+                };
+            })(Data_Argonaut_Decode_Combinators.defaultField(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeList(decodeJsonDeviceLayout))(o)("devices"))(Data_List_Types.Nil.value)))(Data_Argonaut_Decode_Combinators.defaultField(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeList(decodeJsonDeviceError))(o)("error"))(Data_List_Types.Nil.value));
+        });
+    }
+};
+var decodeJsonFrameBuffer = {
+    decodeJson: function (j) {
+        return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(j))(function (o) {
+            return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(o)("configuration"))(function (c) {
+                return Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Data_Functor.map(Data_Either.functorEither)(function (frameBufferDisplayMode) {
+                    return function (frameBufferWidth) {
+                        return function (frameBufferHeight) {
+                            return function (frameBufferFramesPerSecond) {
+                                return function (frameBufferAspectRatioMode) {
+                                    return function (frameBufferMultiviewLayout) {
+                                        return new FrameBuffer({
+                                            frameBufferDisplayMode: frameBufferDisplayMode,
+                                            frameBufferWidth: frameBufferWidth,
+                                            frameBufferHeight: frameBufferHeight,
+                                            frameBufferFramesPerSecond: frameBufferFramesPerSecond,
+                                            frameBufferAspectRatioMode: frameBufferAspectRatioMode,
+                                            frameBufferMultiviewLayout: frameBufferMultiviewLayout
+                                        });
+                                    };
+                                };
+                            };
+                        };
+                    };
+                })(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonString)(c)("display_mode")))(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonInt)(c)("width")))(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonInt)(c)("height")))(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonInt)(c)("frames_per_second")))(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonString)(c)("aspect_ratio_mode")))(Data_Argonaut_Decode_Combinators["getFieldOptional'"](decodeJsonLayoutDescripti)(c)("multiview_layout"));
+            });
+        });
+    }
+};
+var decodeJsonNode = {
+    decodeJson: function (j) {
+        return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(j))(function (o) {
+            return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonString)(o)("type"))(function (t) {
+                return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonInt)(o)("index"))(function (i) {
+                    return Control_Bind.bind(Data_Either.bindEither)((function () {
+                        if (t === "HDMI_DECODER") {
+                            return Data_Functor.map(Data_Either.functorEither)(HdmiDecoderDetail.create)(Data_Argonaut_Decode_Class.decodeJson(decodeJsonHdmiDecoder)(Data_Argonaut_Core.fromObject(o)));
+                        };
+                        if (t === "SCALER") {
+                            return Data_Functor.map(Data_Either.functorEither)(ScalerDetail.create)(Data_Argonaut_Decode_Class.decodeJson(decodeJsonScaler)(Data_Argonaut_Core.fromObject(o)));
+                        };
+                        if (t === "HDMI_ENCODER") {
+                            return Data_Functor.map(Data_Either.functorEither)(HdmiEncoderDetail.create)(Data_Argonaut_Decode_Class.decodeJson(decodeJsonHdmiEncoder)(Data_Argonaut_Core.fromObject(o)));
+                        };
+                        if (t === "FRAME_BUFFER") {
+                            return Data_Functor.map(Data_Either.functorEither)(FrameBufferDetail.create)(Data_Argonaut_Decode_Class.decodeJson(decodeJsonFrameBuffer)(Data_Argonaut_Core.fromObject(o)));
+                        };
+                        if (t === "HDMI_MONITOR") {
+                            return Data_Functor.map(Data_Either.functorEither)(HdmiMonitorDetail.create)(Data_Argonaut_Decode_Class.decodeJson(decodeJsonHdmiMonitor)(Data_Argonaut_Core.fromObject(o)));
+                        };
+                        return Control_Applicative.pure(Data_Either.applicativeEither)(NoDetail.value);
+                    })())(function (d) {
+                        return Control_Applicative.pure(Data_Either.applicativeEither)(new Node({
+                            nodeType: t,
+                            nodeIndex: i,
+                            nodeDetail: d
+                        }));
+                    });
+                });
+            });
+        });
+    }
+};
+var decodeJsonDeviceSettings = {
+    decodeJson: function (j) {
+        return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(j))(function (o) {
+            return Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Control_Apply.apply(Data_Either.applyEither)(Data_Functor.map(Data_Either.functorEither)(function (deviceId) {
+                return function (deviceName) {
+                    return function (deviceIdentity) {
+                        return function (deviceConfiguration) {
+                            return function (deviceStatus) {
+                                return function (deviceStreams) {
+                                    return function (deviceSubscriptions) {
+                                        return function (deviceNodes) {
+                                            return function (deviceEdid) {
+                                                return function (devicePreviewBox) {
+                                                    return new DeviceSettings({
+                                                        deviceId: deviceId,
+                                                        deviceName: deviceName,
+                                                        deviceIdentity: deviceIdentity,
+                                                        deviceConfiguration: deviceConfiguration,
+                                                        deviceStatus: deviceStatus,
+                                                        deviceStreams: deviceStreams,
+                                                        deviceSubscriptions: deviceSubscriptions,
+                                                        deviceNodes: deviceNodes,
+                                                        deviceEdid: deviceEdid,
+                                                        devicePreviewBox: devicePreviewBox
+                                                    });
+                                                };
+                                            };
+                                        };
+                                    };
+                                };
+                            };
+                        };
+                    };
+                };
+            })(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonString)(o)("device_id")))(Data_Argonaut_Decode_Combinators.getField(Data_Argonaut_Decode_Class.decodeJsonString)(o)("device_name")))(Data_Argonaut_Decode_Combinators.getField(decodeJsonDeviceIdentity)(o)("identity")))(Data_Argonaut_Decode_Combinators.getField(decodeJsonDeviceConfig)(o)("configuration")))(Data_Argonaut_Decode_Combinators.getField(decodeJsonDeviceStatus)(o)("status")))(Data_Argonaut_Decode_Combinators.defaultField(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeList(decodeJsonStreamObject))(o)("streams"))(Data_List_Types.Nil.value)))(Data_Argonaut_Decode_Combinators.defaultField(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeList(decodeJsonSubscriptionObj))(o)("subscriptions"))(Data_List_Types.Nil.value)))(Data_Argonaut_Decode_Combinators.defaultField(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeList(decodeJsonNode))(o)("nodes"))(Data_List_Types.Nil.value)))(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeJsonString)(o)("edid")))(Data_Argonaut_Decode_Combinators.defaultField(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeJsonBoolean)(o)("preview_box"))(false));
+        });
+    }
+};
+var decodeJsonDeviceSettingsL = {
+    decodeJson: function (j) {
+        return Control_Bind.bind(Data_Either.bindEither)(Data_Argonaut_Decode_Class.decodeJson(Data_Argonaut_Decode_Class.decodeForeignObject(Data_Argonaut_Decode_Class.decodeJsonJson))(j))(function (o) {
+            return Control_Apply.apply(Data_Either.applyEither)(Data_Functor.map(Data_Either.functorEither)(function (devices) {
+                return function (deviceErrors) {
+                    return new DeviceSettingsList({
+                        devices: devices,
+                        deviceErrors: deviceErrors
+                    });
+                };
+            })(Data_Argonaut_Decode_Combinators.defaultField(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeList(decodeJsonDeviceSettings))(o)("devices"))(Data_List_Types.Nil.value)))(Data_Argonaut_Decode_Combinators.defaultField(Data_Argonaut_Decode_Combinators["getFieldOptional'"](Data_Argonaut_Decode_Class.decodeList(decodeJsonDeviceError))(o)("error"))(Data_List_Types.Nil.value));
+        });
+    }
+};
+var decodeJsonNodeDetail = {
+    decodeJson: Data_Argonaut_Decode_Generic.genericDecodeJson(genericNodeDetail_)(Data_Argonaut_Decode_Generic.decodeRepSum(Data_Argonaut_Decode_Generic.decodeRepConstructorArg({
+        reflectSymbol: function () {
+            return "HdmiDecoderDetail";
+        }
+    })(decodeJsonHdmiDecoder))(Data_Argonaut_Decode_Generic.decodeRepSum(Data_Argonaut_Decode_Generic.decodeRepConstructorArg({
+        reflectSymbol: function () {
+            return "ScalerDetail";
+        }
+    })(decodeJsonScaler))(Data_Argonaut_Decode_Generic.decodeRepSum(Data_Argonaut_Decode_Generic.decodeRepConstructorArg({
+        reflectSymbol: function () {
+            return "HdmiEncoderDetail";
+        }
+    })(decodeJsonHdmiEncoder))(Data_Argonaut_Decode_Generic.decodeRepSum(Data_Argonaut_Decode_Generic.decodeRepConstructorArg({
+        reflectSymbol: function () {
+            return "FrameBufferDetail";
+        }
+    })(decodeJsonFrameBuffer))(Data_Argonaut_Decode_Generic.decodeRepSum(Data_Argonaut_Decode_Generic.decodeRepConstructorArg({
+        reflectSymbol: function () {
+            return "HdmiMonitorDetail";
+        }
+    })(decodeJsonHdmiMonitor))(Data_Argonaut_Decode_Generic.decodeRepConstructorNoArgs({
+        reflectSymbol: function () {
+            return "NoDetail";
+        }
+    })))))))
+};
 var hdredid = "00ffffffffffff001a6e3220000000000d22010482462878f2f045af4e36bb260d5054a50f008180a940d1c07140010101010101010108e80030f2705a80b0588a00c48e2100001e023a801871382d40582c4500c48e2100001e000000fc0056334844522d45444944310a20000000fd001e4c1ea03c000a20202020202001cc020352b15a101f0102030405060711121314151620615e5f626365662260226c030c001000383c20004001026dd85dc401788001000000000000e90f5f6163646566686ae305c000e2007fe6060501a58a0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000064";
 var defedid = "00ffffffffffff0010a6000156524c420816010380341d780a01c1a057479827124c4c21080081400101010101010101010101010101023a801871382d40582c460040846300001e08e80030f2705a80b0588a00ba892100001e000000fc0044656661756c740a2020202020000000fd0018550e853c000a202020202020016b02034373580102030405111213141f2021220607905d5e5f6263646061230d0707830f00006d030c001000383c20406801020367d85dc401788003e40f0000c0e200cf011d00bc52d01e20b828554040846300001e023a80d072382d40102c458040846300001e023a801871382d40582c450040846300001e0000000000003e";
 var _windowWidth = function (dictStrong) {
-    var $1271 = Data_Lens_Lens["lens'"](function (v) {
+    var $1276 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LayoutWindow(s);
         });
     })(dictStrong);
-    var $1272 = Data_Lens_Record.prop({
+    var $1277 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "windowWidth";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1273) {
-        return $1271($1272($1273));
+    return function ($1278) {
+        return $1276($1277($1278));
     };
 };
 var _windowVerticalPosition = function (dictStrong) {
-    var $1274 = Data_Lens_Lens["lens'"](function (v) {
+    var $1279 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LayoutWindow(s);
         });
     })(dictStrong);
-    var $1275 = Data_Lens_Record.prop({
+    var $1280 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "windowVerticalPosition";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1276) {
-        return $1274($1275($1276));
+    return function ($1281) {
+        return $1279($1280($1281));
     };
 };
 var _windowVerticalOffset = function (dictStrong) {
-    var $1277 = Data_Lens_Lens["lens'"](function (v) {
+    var $1282 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LayoutWindow(s);
         });
     })(dictStrong);
-    var $1278 = Data_Lens_Record.prop({
+    var $1283 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "windowVerticalOffset";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1279) {
-        return $1277($1278($1279));
+    return function ($1284) {
+        return $1282($1283($1284));
     };
 };
 var _windowTargetSurface = function (dictStrong) {
-    var $1280 = Data_Lens_Lens["lens'"](function (v) {
+    var $1285 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LayoutWindow(s);
         });
     })(dictStrong);
-    var $1281 = Data_Lens_Record.prop({
+    var $1286 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "windowTargetSurface";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1282) {
-        return $1280($1281($1282));
+    return function ($1287) {
+        return $1285($1286($1287));
     };
 };
 var _windowIndex = function (dictStrong) {
-    var $1283 = Data_Lens_Lens["lens'"](function (v) {
+    var $1288 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LayoutWindow(s);
         });
     })(dictStrong);
-    var $1284 = Data_Lens_Record.prop({
+    var $1289 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "windowIndex";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1285) {
-        return $1283($1284($1285));
+    return function ($1290) {
+        return $1288($1289($1290));
     };
 };
 var _windowHorizontalPosition = function (dictStrong) {
-    var $1286 = Data_Lens_Lens["lens'"](function (v) {
+    var $1291 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LayoutWindow(s);
         });
     })(dictStrong);
-    var $1287 = Data_Lens_Record.prop({
+    var $1292 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "windowHorizontalPosition";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1288) {
-        return $1286($1287($1288));
+    return function ($1293) {
+        return $1291($1292($1293));
     };
 };
 var _windowHorizontalOffset = function (dictStrong) {
-    var $1289 = Data_Lens_Lens["lens'"](function (v) {
+    var $1294 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LayoutWindow(s);
         });
     })(dictStrong);
-    var $1290 = Data_Lens_Record.prop({
+    var $1295 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "windowHorizontalOffset";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1291) {
-        return $1289($1290($1291));
+    return function ($1296) {
+        return $1294($1295($1296));
     };
 };
 var _windowHeight = function (dictStrong) {
-    var $1292 = Data_Lens_Lens["lens'"](function (v) {
+    var $1297 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LayoutWindow(s);
         });
     })(dictStrong);
-    var $1293 = Data_Lens_Record.prop({
+    var $1298 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "windowHeight";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1294) {
-        return $1292($1293($1294));
+    return function ($1299) {
+        return $1297($1298($1299));
     };
 };
 var _windowContent = function (dictStrong) {
-    var $1295 = Data_Lens_Lens["lens'"](function (v) {
+    var $1300 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LayoutWindow(s);
         });
     })(dictStrong);
-    var $1296 = Data_Lens_Record.prop({
+    var $1301 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "windowContent";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1297) {
-        return $1295($1296($1297));
+    return function ($1302) {
+        return $1300($1301($1302));
     };
 };
 var _warnedUnrouted = function (dictStrong) {
-    var $1298 = Data_Lens_Lens["lens'"](function (v) {
+    var $1303 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new UnrouteWarning(s);
         });
     })(dictStrong);
-    var $1299 = Data_Lens_Record.prop({
+    var $1304 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "warnedUnrouted";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1300) {
-        return $1298($1299($1300));
+    return function ($1305) {
+        return $1303($1304($1305));
     };
 };
 var _warnedSource = function (dictStrong) {
-    var $1301 = Data_Lens_Lens["lens'"](function (v) {
+    var $1306 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new UnrouteWarning(s);
         });
     })(dictStrong);
-    var $1302 = Data_Lens_Record.prop({
+    var $1307 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "warnedSource";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1303) {
-        return $1301($1302($1303));
+    return function ($1308) {
+        return $1306($1307($1308));
     };
 };
 var _warnedOutput = function (dictStrong) {
-    var $1304 = Data_Lens_Lens["lens'"](function (v) {
+    var $1309 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new UnrouteWarning(s);
         });
     })(dictStrong);
-    var $1305 = Data_Lens_Record.prop({
+    var $1310 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "warnedOutput";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1306) {
-        return $1304($1305($1306));
+    return function ($1311) {
+        return $1309($1310($1311));
     };
 };
 var _viewModeReason = function (dictStrong) {
-    var $1307 = Data_Lens_Lens["lens'"](function (v) {
+    var $1312 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ViewModeOutcome(s);
         });
     })(dictStrong);
-    var $1308 = Data_Lens_Record.prop({
+    var $1313 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "viewModeReason";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1309) {
-        return $1307($1308($1309));
+    return function ($1314) {
+        return $1312($1313($1314));
     };
 };
 var _viewModeOutcome = function (dictStrong) {
-    var $1310 = Data_Lens_Lens["lens'"](function (v) {
+    var $1315 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ViewModeOutcome(s);
         });
     })(dictStrong);
-    var $1311 = Data_Lens_Record.prop({
+    var $1316 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "viewModeOutcome";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1312) {
-        return $1310($1311($1312));
+    return function ($1317) {
+        return $1315($1316($1317));
     };
 };
 var _videoWidth = function (dictStrong) {
-    var $1313 = Data_Lens_Lens["lens'"](function (v) {
+    var $1318 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new VideoFormat(s);
         });
     })(dictStrong);
-    var $1314 = Data_Lens_Record.prop({
+    var $1319 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "videoWidth";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1315) {
-        return $1313($1314($1315));
+    return function ($1320) {
+        return $1318($1319($1320));
     };
 };
 var _videoHeight = function (dictStrong) {
-    var $1316 = Data_Lens_Lens["lens'"](function (v) {
+    var $1321 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new VideoFormat(s);
         });
     })(dictStrong);
-    var $1317 = Data_Lens_Record.prop({
+    var $1322 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "videoHeight";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1318) {
-        return $1316($1317($1318));
+    return function ($1323) {
+        return $1321($1322($1323));
     };
 };
 var _videoFramesPerSecond = function (dictStrong) {
-    var $1319 = Data_Lens_Lens["lens'"](function (v) {
+    var $1324 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new VideoFormat(s);
         });
     })(dictStrong);
-    var $1320 = Data_Lens_Record.prop({
+    var $1325 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "videoFramesPerSecond";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1321) {
-        return $1319($1320($1321));
+    return function ($1326) {
+        return $1324($1325($1326));
     };
 };
 var _videoColorSpace = function (dictStrong) {
-    var $1322 = Data_Lens_Lens["lens'"](function (v) {
+    var $1327 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new VideoFormat(s);
         });
     })(dictStrong);
-    var $1323 = Data_Lens_Record.prop({
+    var $1328 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "videoColorSpace";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1324) {
-        return $1322($1323($1324));
+    return function ($1329) {
+        return $1327($1328($1329));
     };
 };
 var _videoBitsPerPixel = function (dictStrong) {
-    var $1325 = Data_Lens_Lens["lens'"](function (v) {
+    var $1330 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new VideoFormat(s);
         });
     })(dictStrong);
-    var $1326 = Data_Lens_Record.prop({
+    var $1331 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "videoBitsPerPixel";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1327) {
-        return $1325($1326($1327));
+    return function ($1332) {
+        return $1330($1331($1332));
     };
 };
 var _updateWaiting = function (dictStrong) {
-    var $1328 = Data_Lens_Lens["lens'"](function (v) {
+    var $1333 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new PreviewUpdate(s);
         });
     })(dictStrong);
-    var $1329 = Data_Lens_Record.prop({
+    var $1334 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "updateWaiting";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1330) {
-        return $1328($1329($1330));
+    return function ($1335) {
+        return $1333($1334($1335));
     };
 };
 var _updateTiles = function (dictStrong) {
-    var $1331 = Data_Lens_Lens["lens'"](function (v) {
+    var $1336 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new PreviewUpdate(s);
         });
     })(dictStrong);
-    var $1332 = Data_Lens_Record.prop({
+    var $1337 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "updateTiles";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1333) {
-        return $1331($1332($1333));
+    return function ($1338) {
+        return $1336($1337($1338));
     };
 };
 var _updateSkipped = function (dictStrong) {
-    var $1334 = Data_Lens_Lens["lens'"](function (v) {
+    var $1339 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new PreviewUpdate(s);
         });
     })(dictStrong);
-    var $1335 = Data_Lens_Record.prop({
+    var $1340 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "updateSkipped";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1336) {
-        return $1334($1335($1336));
+    return function ($1341) {
+        return $1339($1340($1341));
     };
 };
 var _updateReason = function (dictStrong) {
-    var $1337 = Data_Lens_Lens["lens'"](function (v) {
+    var $1342 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new PreviewUpdate(s);
         });
     })(dictStrong);
-    var $1338 = Data_Lens_Record.prop({
+    var $1343 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "updateReason";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1339) {
-        return $1337($1338($1339));
+    return function ($1344) {
+        return $1342($1343($1344));
     };
 };
 var _updateOutcome = function (dictStrong) {
-    var $1340 = Data_Lens_Lens["lens'"](function (v) {
+    var $1345 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new PreviewUpdate(s);
         });
     })(dictStrong);
-    var $1341 = Data_Lens_Record.prop({
+    var $1346 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "updateOutcome";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1342) {
-        return $1340($1341($1342));
+    return function ($1347) {
+        return $1345($1346($1347));
     };
 };
 var _updateLeaving = function (dictStrong) {
-    var $1343 = Data_Lens_Lens["lens'"](function (v) {
+    var $1348 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new PreviewUpdate(s);
         });
     })(dictStrong);
-    var $1344 = Data_Lens_Record.prop({
+    var $1349 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "updateLeaving";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1345) {
-        return $1343($1344($1345));
+    return function ($1350) {
+        return $1348($1349($1350));
     };
 };
 var _updateCut = function (dictStrong) {
-    var $1346 = Data_Lens_Lens["lens'"](function (v) {
+    var $1351 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new PreviewUpdate(s);
         });
     })(dictStrong);
-    var $1347 = Data_Lens_Record.prop({
+    var $1352 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "updateCut";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1348) {
-        return $1346($1347($1348));
+    return function ($1353) {
+        return $1351($1352($1353));
     };
 };
 var _transceiverOutputs = function (dictStrong) {
-    var $1349 = Data_Lens_Lens["lens'"](function (v) {
+    var $1354 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new TransceiversReading(s);
         });
     })(dictStrong);
-    var $1350 = Data_Lens_Record.prop({
+    var $1355 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "transceiverOutputs";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1351) {
-        return $1349($1350($1351));
+    return function ($1356) {
+        return $1354($1355($1356));
     };
 };
 var _surfaceWidth = function (dictStrong) {
-    var $1352 = Data_Lens_Lens["lens'"](function (v) {
+    var $1357 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LayoutSurface(s);
         });
     })(dictStrong);
-    var $1353 = Data_Lens_Record.prop({
+    var $1358 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "surfaceWidth";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1354) {
-        return $1352($1353($1354));
+    return function ($1359) {
+        return $1357($1358($1359));
     };
 };
 var _surfaceVerticalPosition = function (dictStrong) {
-    var $1355 = Data_Lens_Lens["lens'"](function (v) {
+    var $1360 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LayoutSurface(s);
         });
     })(dictStrong);
-    var $1356 = Data_Lens_Record.prop({
+    var $1361 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "surfaceVerticalPosition";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1357) {
-        return $1355($1356($1357));
+    return function ($1362) {
+        return $1360($1361($1362));
     };
 };
 var _surfaceIndex = function (dictStrong) {
-    var $1358 = Data_Lens_Lens["lens'"](function (v) {
+    var $1363 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LayoutSurface(s);
         });
     })(dictStrong);
-    var $1359 = Data_Lens_Record.prop({
+    var $1364 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "surfaceIndex";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1360) {
-        return $1358($1359($1360));
+    return function ($1365) {
+        return $1363($1364($1365));
     };
 };
 var _surfaceHorizontalPosition = function (dictStrong) {
-    var $1361 = Data_Lens_Lens["lens'"](function (v) {
+    var $1366 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LayoutSurface(s);
         });
     })(dictStrong);
-    var $1362 = Data_Lens_Record.prop({
+    var $1367 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "surfaceHorizontalPosition";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1363) {
-        return $1361($1362($1363));
+    return function ($1368) {
+        return $1366($1367($1368));
     };
 };
 var _surfaceHeight = function (dictStrong) {
-    var $1364 = Data_Lens_Lens["lens'"](function (v) {
+    var $1369 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LayoutSurface(s);
         });
     })(dictStrong);
-    var $1365 = Data_Lens_Record.prop({
+    var $1370 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "surfaceHeight";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1366) {
-        return $1364($1365($1366));
+    return function ($1371) {
+        return $1369($1370($1371));
     };
 };
 var _subscriptionType = function (dictStrong) {
-    var $1367 = Data_Lens_Lens["lens'"](function (v) {
+    var $1372 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SubscriptionObject(s);
         });
     })(dictStrong);
-    var $1368 = Data_Lens_Record.prop({
+    var $1373 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "subscriptionType";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1369) {
-        return $1367($1368($1369));
+    return function ($1374) {
+        return $1372($1373($1374));
     };
 };
 var _subscriptionState = function (dictStrong) {
-    var $1370 = Data_Lens_Lens["lens'"](function (v) {
+    var $1375 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SubscriptionObject(s);
         });
     })(dictStrong);
-    var $1371 = Data_Lens_Record.prop({
+    var $1376 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "subscriptionState";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1372) {
-        return $1370($1371($1372));
+    return function ($1377) {
+        return $1375($1376($1377));
     };
 };
 var _subscriptionSource = function (dictStrong) {
-    var $1373 = Data_Lens_Lens["lens'"](function (v) {
+    var $1378 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SubscriptionObject(s);
         });
     })(dictStrong);
-    var $1374 = Data_Lens_Record.prop({
+    var $1379 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "subscriptionSource";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1375) {
-        return $1373($1374($1375));
+    return function ($1380) {
+        return $1378($1379($1380));
     };
 };
 var _subscriptionIndex = function (dictStrong) {
-    var $1376 = Data_Lens_Lens["lens'"](function (v) {
+    var $1381 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SubscriptionObject(s);
         });
     })(dictStrong);
-    var $1377 = Data_Lens_Record.prop({
+    var $1382 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "subscriptionIndex";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1378) {
-        return $1376($1377($1378));
+    return function ($1383) {
+        return $1381($1382($1383));
     };
 };
 var _subscriptionEnable = function (dictStrong) {
-    var $1379 = Data_Lens_Lens["lens'"](function (v) {
+    var $1384 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SubscriptionObject(s);
         });
     })(dictStrong);
-    var $1380 = Data_Lens_Record.prop({
+    var $1385 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "subscriptionEnable";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1381) {
-        return $1379($1380($1381));
+    return function ($1386) {
+        return $1384($1385($1386));
     };
 };
 var _subscriptionAddress = function (dictStrong) {
-    var $1382 = Data_Lens_Lens["lens'"](function (v) {
+    var $1387 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SubscriptionObject(s);
         });
     })(dictStrong);
-    var $1383 = Data_Lens_Record.prop({
+    var $1388 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "subscriptionAddress";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1384) {
-        return $1382($1383($1384));
+    return function ($1389) {
+        return $1387($1388($1389));
     };
 };
 var _streamType = function (dictStrong) {
-    var $1385 = Data_Lens_Lens["lens'"](function (v) {
+    var $1390 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new StreamObject(s);
         });
     })(dictStrong);
-    var $1386 = Data_Lens_Record.prop({
+    var $1391 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "streamType";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1387) {
-        return $1385($1386($1387));
+    return function ($1392) {
+        return $1390($1391($1392));
     };
 };
 var _streamState = function (dictStrong) {
-    var $1388 = Data_Lens_Lens["lens'"](function (v) {
+    var $1393 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new StreamObject(s);
         });
     })(dictStrong);
-    var $1389 = Data_Lens_Record.prop({
+    var $1394 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "streamState";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1390) {
-        return $1388($1389($1390));
+    return function ($1395) {
+        return $1393($1394($1395));
     };
 };
 var _streamSource = function (dictStrong) {
-    var $1391 = Data_Lens_Lens["lens'"](function (v) {
+    var $1396 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new StreamObject(s);
         });
     })(dictStrong);
-    var $1392 = Data_Lens_Record.prop({
+    var $1397 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "streamSource";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1393) {
-        return $1391($1392($1393));
+    return function ($1398) {
+        return $1396($1397($1398));
     };
 };
 var _streamRemoveAudio = function (dictStrong) {
-    var $1394 = Data_Lens_Lens["lens'"](function (v) {
+    var $1399 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new StreamObject(s);
         });
     })(dictStrong);
-    var $1395 = Data_Lens_Record.prop({
+    var $1400 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "streamRemoveAudio";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1396) {
-        return $1394($1395($1396));
+    return function ($1401) {
+        return $1399($1400($1401));
     };
 };
 var _streamIndex = function (dictStrong) {
-    var $1397 = Data_Lens_Lens["lens'"](function (v) {
+    var $1402 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new StreamObject(s);
         });
     })(dictStrong);
-    var $1398 = Data_Lens_Record.prop({
+    var $1403 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "streamIndex";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1399) {
-        return $1397($1398($1399));
+    return function ($1404) {
+        return $1402($1403($1404));
     };
 };
 var _streamEnable = function (dictStrong) {
-    var $1400 = Data_Lens_Lens["lens'"](function (v) {
+    var $1405 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new StreamObject(s);
         });
     })(dictStrong);
-    var $1401 = Data_Lens_Record.prop({
+    var $1406 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "streamEnable";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1402) {
-        return $1400($1401($1402));
+    return function ($1407) {
+        return $1405($1406($1407));
     };
 };
 var _streamDrawnType = function (dictStrong) {
-    var $1403 = Data_Lens_Lens["lens'"](function (v) {
+    var $1408 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new StreamObject(s);
         });
     })(dictStrong);
-    var $1404 = Data_Lens_Record.prop({
+    var $1409 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "streamDrawnType";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1405) {
-        return $1403($1404($1405));
+    return function ($1410) {
+        return $1408($1409($1410));
     };
 };
 var _streamAutoStop = function (dictStrong) {
-    var $1406 = Data_Lens_Lens["lens'"](function (v) {
+    var $1411 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new StreamObject(s);
         });
     })(dictStrong);
-    var $1407 = Data_Lens_Record.prop({
+    var $1412 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "streamAutoStop";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1408) {
-        return $1406($1407($1408));
+    return function ($1413) {
+        return $1411($1412($1413));
     };
 };
 var _streamAddress = function (dictStrong) {
-    var $1409 = Data_Lens_Lens["lens'"](function (v) {
+    var $1414 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new StreamObject(s);
         });
     })(dictStrong);
-    var $1410 = Data_Lens_Record.prop({
+    var $1415 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "streamAddress";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1411) {
-        return $1409($1410($1411));
+    return function ($1416) {
+        return $1414($1415($1416));
     };
 };
 var _statusErrorStatus = function (dictStrong) {
-    var $1412 = Data_Lens_Lens["lens'"](function (v) {
+    var $1417 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceStatus(s);
         });
     })(dictStrong);
-    var $1413 = Data_Lens_Record.prop({
+    var $1418 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "statusErrorStatus";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1414) {
-        return $1412($1413($1414));
+    return function ($1419) {
+        return $1417($1418($1419));
     };
 };
 var _statusActive = function (dictStrong) {
-    var $1415 = Data_Lens_Lens["lens'"](function (v) {
+    var $1420 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceStatus(s);
         });
     })(dictStrong);
-    var $1416 = Data_Lens_Record.prop({
+    var $1421 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "statusActive";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1417) {
-        return $1415($1416($1417));
+    return function ($1422) {
+        return $1420($1421($1422));
     };
 };
 var _sourceStreamIndex = function (dictStrong) {
-    var $1418 = Data_Lens_Lens["lens'"](function (v) {
+    var $1423 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SubscriptionSource(s);
         });
     })(dictStrong);
-    var $1419 = Data_Lens_Record.prop({
+    var $1424 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "sourceStreamIndex";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1420) {
-        return $1418($1419($1420));
+    return function ($1425) {
+        return $1423($1424($1425));
     };
 };
 var _sourceDeviceName = function (dictStrong) {
-    var $1421 = Data_Lens_Lens["lens'"](function (v) {
+    var $1426 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SubscriptionSource(s);
         });
     })(dictStrong);
-    var $1422 = Data_Lens_Record.prop({
+    var $1427 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "sourceDeviceName";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1423) {
-        return $1421($1422($1423));
+    return function ($1428) {
+        return $1426($1427($1428));
     };
 };
 var _sourceDeviceId = function (dictStrong) {
-    var $1424 = Data_Lens_Lens["lens'"](function (v) {
+    var $1429 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SubscriptionSource(s);
         });
     })(dictStrong);
-    var $1425 = Data_Lens_Record.prop({
+    var $1430 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "sourceDeviceId";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1426) {
-        return $1424($1425($1426));
+    return function ($1431) {
+        return $1429($1430($1431));
     };
 };
 var _settingReason = function (dictStrong) {
-    var $1427 = Data_Lens_Lens["lens'"](function (v) {
+    var $1432 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SettingOutcome(s);
         });
     })(dictStrong);
-    var $1428 = Data_Lens_Record.prop({
+    var $1433 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "settingReason";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1429) {
-        return $1427($1428($1429));
+    return function ($1434) {
+        return $1432($1433($1434));
     };
 };
 var _settingOutcome = function (dictStrong) {
-    var $1430 = Data_Lens_Lens["lens'"](function (v) {
+    var $1435 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SettingOutcome(s);
         });
     })(dictStrong);
-    var $1431 = Data_Lens_Record.prop({
+    var $1436 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "settingOutcome";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1432) {
-        return $1430($1431($1432));
+    return function ($1437) {
+        return $1435($1436($1437));
     };
 };
 var _serverModuleVersion = function (dictStrong) {
-    var $1433 = Data_Lens_Lens["lens'"](function (v) {
+    var $1438 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ServerModule(s);
         });
     })(dictStrong);
-    var $1434 = Data_Lens_Record.prop({
+    var $1439 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "serverModuleVersion";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1435) {
-        return $1433($1434($1435));
+    return function ($1440) {
+        return $1438($1439($1440));
     };
 };
 var _serverModuleName = function (dictStrong) {
-    var $1436 = Data_Lens_Lens["lens'"](function (v) {
+    var $1441 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ServerModule(s);
         });
     })(dictStrong);
-    var $1437 = Data_Lens_Record.prop({
+    var $1442 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "serverModuleName";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1438) {
-        return $1436($1437($1438));
+    return function ($1443) {
+        return $1441($1442($1443));
     };
 };
 var _scalingReason = function (dictStrong) {
-    var $1439 = Data_Lens_Lens["lens'"](function (v) {
+    var $1444 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ScalingOutcome(s);
         });
     })(dictStrong);
-    var $1440 = Data_Lens_Record.prop({
+    var $1445 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "scalingReason";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1441) {
-        return $1439($1440($1441));
+    return function ($1446) {
+        return $1444($1445($1446));
     };
 };
 var _scalingOutcome = function (dictStrong) {
-    var $1442 = Data_Lens_Lens["lens'"](function (v) {
+    var $1447 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ScalingOutcome(s);
         });
     })(dictStrong);
-    var $1443 = Data_Lens_Record.prop({
+    var $1448 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "scalingOutcome";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1444) {
-        return $1442($1443($1444));
+    return function ($1449) {
+        return $1447($1448($1449));
     };
 };
 var _scalerWidth = function (dictStrong) {
-    var $1445 = Data_Lens_Lens["lens'"](function (v) {
+    var $1450 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new Scaler(s);
         });
     })(dictStrong);
-    var $1446 = Data_Lens_Record.prop({
+    var $1451 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "scalerWidth";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1447) {
-        return $1445($1446($1447));
+    return function ($1452) {
+        return $1450($1451($1452));
     };
 };
 var _scalerVideo = function (dictStrong) {
-    var $1448 = Data_Lens_Lens["lens'"](function (v) {
+    var $1453 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new Scaler(s);
         });
     })(dictStrong);
-    var $1449 = Data_Lens_Record.prop({
+    var $1454 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "scalerVideo";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1450) {
-        return $1448($1449($1450));
+    return function ($1455) {
+        return $1453($1454($1455));
     };
 };
 var _scalerInputs = function (dictStrong) {
-    var $1451 = Data_Lens_Lens["lens'"](function (v) {
+    var $1456 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new Scaler(s);
         });
     })(dictStrong);
-    var $1452 = Data_Lens_Record.prop({
+    var $1457 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "scalerInputs";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1453) {
-        return $1451($1452($1453));
+    return function ($1458) {
+        return $1456($1457($1458));
     };
 };
 var _scalerHeight = function (dictStrong) {
-    var $1454 = Data_Lens_Lens["lens'"](function (v) {
+    var $1459 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new Scaler(s);
         });
     })(dictStrong);
-    var $1455 = Data_Lens_Record.prop({
+    var $1460 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "scalerHeight";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1456) {
-        return $1454($1455($1456));
+    return function ($1461) {
+        return $1459($1460($1461));
     };
 };
 var _routedReason = function (dictStrong) {
-    var $1457 = Data_Lens_Lens["lens'"](function (v) {
+    var $1462 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new RouteOutcome(s);
         });
     })(dictStrong);
-    var $1458 = Data_Lens_Record.prop({
+    var $1463 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "routedReason";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1459) {
-        return $1457($1458($1459));
+    return function ($1464) {
+        return $1462($1463($1464));
     };
 };
 var _routedOutcome = function (dictStrong) {
-    var $1460 = Data_Lens_Lens["lens'"](function (v) {
+    var $1465 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new RouteOutcome(s);
         });
     })(dictStrong);
-    var $1461 = Data_Lens_Record.prop({
+    var $1466 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "routedOutcome";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1462) {
-        return $1460($1461($1462));
+    return function ($1467) {
+        return $1465($1466($1467));
     };
 };
 var _reroutedReason = function (dictStrong) {
-    var $1463 = Data_Lens_Lens["lens'"](function (v) {
+    var $1468 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new RerouteOutcome(s);
         });
     })(dictStrong);
-    var $1464 = Data_Lens_Record.prop({
+    var $1469 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "reroutedReason";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1465) {
-        return $1463($1464($1465));
+    return function ($1470) {
+        return $1468($1469($1470));
     };
 };
 var _reroutedOutcome = function (dictStrong) {
-    var $1466 = Data_Lens_Lens["lens'"](function (v) {
+    var $1471 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new RerouteOutcome(s);
         });
     })(dictStrong);
-    var $1467 = Data_Lens_Record.prop({
+    var $1472 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "reroutedOutcome";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1468) {
-        return $1466($1467($1468));
+    return function ($1473) {
+        return $1471($1472($1473));
     };
 };
 var _previewedId = function (dictStrong) {
-    var $1469 = Data_Lens_Lens["lens'"](function (v) {
+    var $1474 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new PreviewBoxReading(s);
         });
     })(dictStrong);
-    var $1470 = Data_Lens_Record.prop({
+    var $1475 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewedId";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1471) {
-        return $1469($1470($1471));
+    return function ($1476) {
+        return $1474($1475($1476));
     };
 };
 var _previewSourceWindow = function (dictStrong) {
-    var $1472 = Data_Lens_Lens["lens'"](function (v) {
+    var $1477 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new PreviewSource(s);
         });
     })(dictStrong);
-    var $1473 = Data_Lens_Record.prop({
+    var $1478 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewSourceWindow";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1474) {
-        return $1472($1473($1474));
+    return function ($1479) {
+        return $1477($1478($1479));
     };
 };
 var _previewSourceSurface = function (dictStrong) {
-    var $1475 = Data_Lens_Lens["lens'"](function (v) {
+    var $1480 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new PreviewSource(s);
         });
     })(dictStrong);
-    var $1476 = Data_Lens_Record.prop({
+    var $1481 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewSourceSurface";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1477) {
-        return $1475($1476($1477));
+    return function ($1482) {
+        return $1480($1481($1482));
     };
 };
 var _previewSourceName = function (dictStrong) {
-    var $1478 = Data_Lens_Lens["lens'"](function (v) {
+    var $1483 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new PreviewSource(s);
         });
     })(dictStrong);
-    var $1479 = Data_Lens_Record.prop({
+    var $1484 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewSourceName";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1480) {
-        return $1478($1479($1480));
+    return function ($1485) {
+        return $1483($1484($1485));
     };
 };
 var previewCutReading = function (l) {
@@ -118213,1458 +118191,1458 @@ var decodeJsonPreviewUpdate = {
     }
 };
 var _previewSourceIsSelected = function (dictStrong) {
-    var $1481 = Data_Lens_Lens["lens'"](function (v) {
+    var $1486 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new PreviewSource(s);
         });
     })(dictStrong);
-    var $1482 = Data_Lens_Record.prop({
+    var $1487 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewSourceIsSelected";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1483) {
-        return $1481($1482($1483));
+    return function ($1488) {
+        return $1486($1487($1488));
     };
 };
 var _previewSourceAddress = function (dictStrong) {
-    var $1484 = Data_Lens_Lens["lens'"](function (v) {
+    var $1489 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new PreviewSource(s);
         });
     })(dictStrong);
-    var $1485 = Data_Lens_Record.prop({
+    var $1490 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewSourceAddress";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1486) {
-        return $1484($1485($1486));
+    return function ($1491) {
+        return $1489($1490($1491));
     };
 };
 var _previewSetId = function (dictStrong) {
-    var $1487 = Data_Lens_Lens["lens'"](function (v) {
+    var $1492 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new PreviewBoxReading(s);
         });
     })(dictStrong);
-    var $1488 = Data_Lens_Record.prop({
+    var $1493 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewSetId";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1489) {
-        return $1487($1488($1489));
+    return function ($1494) {
+        return $1492($1493($1494));
     };
 };
 var _nodeType = function (dictStrong) {
-    var $1490 = Data_Lens_Lens["lens'"](function (v) {
+    var $1495 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new Node(s);
         });
     })(dictStrong);
-    var $1491 = Data_Lens_Record.prop({
+    var $1496 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "nodeType";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1492) {
-        return $1490($1491($1492));
+    return function ($1497) {
+        return $1495($1496($1497));
     };
 };
 var _nodeIndex = function (dictStrong) {
-    var $1493 = Data_Lens_Lens["lens'"](function (v) {
+    var $1498 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new Node(s);
         });
     })(dictStrong);
-    var $1494 = Data_Lens_Record.prop({
+    var $1499 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "nodeIndex";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1495) {
-        return $1493($1494($1495));
+    return function ($1500) {
+        return $1498($1499($1500));
     };
 };
 var _nodeDetail = function (dictStrong) {
-    var $1496 = Data_Lens_Lens["lens'"](function (v) {
+    var $1501 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new Node(s);
         });
     })(dictStrong);
-    var $1497 = Data_Lens_Record.prop({
+    var $1502 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "nodeDetail";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1498) {
-        return $1496($1497($1498));
+    return function ($1503) {
+        return $1501($1502($1503));
     };
 };
 var _monitorConnected = function (dictStrong) {
-    var $1499 = Data_Lens_Lens["lens'"](function (v) {
+    var $1504 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new HdmiMonitor(s);
         });
     })(dictStrong);
-    var $1500 = Data_Lens_Record.prop({
+    var $1505 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "monitorConnected";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1501) {
-        return $1499($1500($1501));
+    return function ($1506) {
+        return $1504($1505($1506));
     };
 };
 var _layoutWindows = function (dictStrong) {
-    var $1502 = Data_Lens_Lens["lens'"](function (v) {
+    var $1507 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LayoutDescription(s);
         });
     })(dictStrong);
-    var $1503 = Data_Lens_Record.prop({
+    var $1508 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "layoutWindows";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1504) {
-        return $1502($1503($1504));
+    return function ($1509) {
+        return $1507($1508($1509));
     };
 };
 var _layoutWidth = function (dictStrong) {
-    var $1505 = Data_Lens_Lens["lens'"](function (v) {
+    var $1510 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LayoutDescription(s);
         });
     })(dictStrong);
-    var $1506 = Data_Lens_Record.prop({
+    var $1511 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "layoutWidth";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1507) {
-        return $1505($1506($1507));
+    return function ($1512) {
+        return $1510($1511($1512));
     };
 };
 var _layoutSurfaces = function (dictStrong) {
-    var $1508 = Data_Lens_Lens["lens'"](function (v) {
+    var $1513 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LayoutDescription(s);
         });
     })(dictStrong);
-    var $1509 = Data_Lens_Record.prop({
+    var $1514 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "layoutSurfaces";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1510) {
-        return $1508($1509($1510));
+    return function ($1515) {
+        return $1513($1514($1515));
     };
 };
 var _layoutReadOnly = function (dictStrong) {
-    var $1511 = Data_Lens_Lens["lens'"](function (v) {
+    var $1516 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LayoutDescription(s);
         });
     })(dictStrong);
-    var $1512 = Data_Lens_Record.prop({
+    var $1517 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "layoutReadOnly";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1513) {
-        return $1511($1512($1513));
+    return function ($1518) {
+        return $1516($1517($1518));
     };
 };
 var _layoutNames = function (dictStrong) {
-    var $1514 = Data_Lens_Lens["lens'"](function (v) {
+    var $1519 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LayoutList(s);
         });
     })(dictStrong);
-    var $1515 = Data_Lens_Record.prop({
+    var $1520 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "layoutNames";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1516) {
-        return $1514($1515($1516));
+    return function ($1521) {
+        return $1519($1520($1521));
     };
 };
 var _layoutName = function (dictStrong) {
-    var $1517 = Data_Lens_Lens["lens'"](function (v) {
+    var $1522 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LayoutDescription(s);
         });
     })(dictStrong);
-    var $1518 = Data_Lens_Record.prop({
+    var $1523 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "layoutName";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1519) {
-        return $1517($1518($1519));
+    return function ($1524) {
+        return $1522($1523($1524));
     };
 };
 var _layoutLoaded = function (dictStrong) {
-    var $1520 = Data_Lens_Lens["lens'"](function (v) {
+    var $1525 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceLayout(s);
         });
     })(dictStrong);
-    var $1521 = Data_Lens_Record.prop({
+    var $1526 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "layoutLoaded";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1522) {
-        return $1520($1521($1522));
+    return function ($1527) {
+        return $1525($1526($1527));
     };
 };
 var _layoutHeight = function (dictStrong) {
-    var $1523 = Data_Lens_Lens["lens'"](function (v) {
+    var $1528 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LayoutDescription(s);
         });
     })(dictStrong);
-    var $1524 = Data_Lens_Record.prop({
+    var $1529 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "layoutHeight";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1525) {
-        return $1523($1524($1525));
+    return function ($1530) {
+        return $1528($1529($1530));
     };
 };
 var _layoutDeviceId = function (dictStrong) {
-    var $1526 = Data_Lens_Lens["lens'"](function (v) {
+    var $1531 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceLayout(s);
         });
     })(dictStrong);
-    var $1527 = Data_Lens_Record.prop({
+    var $1532 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "layoutDeviceId";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1528) {
-        return $1526($1527($1528));
+    return function ($1533) {
+        return $1531($1532($1533));
     };
 };
 var _latencyReason = function (dictStrong) {
-    var $1529 = Data_Lens_Lens["lens'"](function (v) {
+    var $1534 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LatencyOutcome(s);
         });
     })(dictStrong);
-    var $1530 = Data_Lens_Record.prop({
+    var $1535 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "latencyReason";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1531) {
-        return $1529($1530($1531));
+    return function ($1536) {
+        return $1534($1535($1536));
     };
 };
 var _latencyOutcome = function (dictStrong) {
-    var $1532 = Data_Lens_Lens["lens'"](function (v) {
+    var $1537 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new LatencyOutcome(s);
         });
     })(dictStrong);
-    var $1533 = Data_Lens_Record.prop({
+    var $1538 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "latencyOutcome";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1534) {
-        return $1532($1533($1534));
+    return function ($1539) {
+        return $1537($1538($1539));
     };
 };
 var _inputSource = function (dictStrong) {
-    var $1535 = Data_Lens_Lens["lens'"](function (v) {
+    var $1540 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new NodeInput(s);
         });
     })(dictStrong);
-    var $1536 = Data_Lens_Record.prop({
+    var $1541 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "inputSource";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1537) {
-        return $1535($1536($1537));
+    return function ($1542) {
+        return $1540($1541($1542));
     };
 };
 var _inputName = function (dictStrong) {
-    var $1538 = Data_Lens_Lens["lens'"](function (v) {
+    var $1543 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new NodeInput(s);
         });
     })(dictStrong);
-    var $1539 = Data_Lens_Record.prop({
+    var $1544 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "inputName";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1540) {
-        return $1538($1539($1540));
+    return function ($1545) {
+        return $1543($1544($1545));
     };
 };
 var _inputIndex = function (dictStrong) {
-    var $1541 = Data_Lens_Lens["lens'"](function (v) {
+    var $1546 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new NodeInput(s);
         });
     })(dictStrong);
-    var $1542 = Data_Lens_Record.prop({
+    var $1547 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "inputIndex";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1543) {
-        return $1541($1542($1543));
+    return function ($1548) {
+        return $1546($1547($1548));
     };
 };
 var _inputDrawnType = function (dictStrong) {
-    var $1544 = Data_Lens_Lens["lens'"](function (v) {
+    var $1549 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new NodeInput(s);
         });
     })(dictStrong);
-    var $1545 = Data_Lens_Record.prop({
+    var $1550 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "inputDrawnType";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1546) {
-        return $1544($1545($1546));
+    return function ($1551) {
+        return $1549($1550($1551));
     };
 };
 var _infoVersion = function (dictStrong) {
-    var $1547 = Data_Lens_Lens["lens'"](function (v) {
+    var $1552 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ServerInfo(s);
         });
     })(dictStrong);
-    var $1548 = Data_Lens_Record.prop({
+    var $1553 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "infoVersion";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1549) {
-        return $1547($1548($1549));
+    return function ($1554) {
+        return $1552($1553($1554));
     };
 };
 var _infoVendor = function (dictStrong) {
-    var $1550 = Data_Lens_Lens["lens'"](function (v) {
+    var $1555 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ServerInfo(s);
         });
     })(dictStrong);
-    var $1551 = Data_Lens_Record.prop({
+    var $1556 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "infoVendor";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1552) {
-        return $1550($1551($1552));
+    return function ($1557) {
+        return $1555($1556($1557));
     };
 };
 var _infoServer = function (dictStrong) {
-    var $1553 = Data_Lens_Lens["lens'"](function (v) {
+    var $1558 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ServerInfo(s);
         });
     })(dictStrong);
-    var $1554 = Data_Lens_Record.prop({
+    var $1559 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "infoServer";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1555) {
-        return $1553($1554($1555));
+    return function ($1560) {
+        return $1558($1559($1560));
     };
 };
 var _infoModules = function (dictStrong) {
-    var $1556 = Data_Lens_Lens["lens'"](function (v) {
+    var $1561 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ServerInfo(s);
         });
     })(dictStrong);
-    var $1557 = Data_Lens_Record.prop({
+    var $1562 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "infoModules";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1558) {
-        return $1556($1557($1558));
+    return function ($1563) {
+        return $1561($1562($1563));
     };
 };
 var _infoInterfaces = function (dictStrong) {
-    var $1559 = Data_Lens_Lens["lens'"](function (v) {
+    var $1564 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ServerInfo(s);
         });
     })(dictStrong);
-    var $1560 = Data_Lens_Record.prop({
+    var $1565 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "infoInterfaces";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1561) {
-        return $1559($1560($1561));
+    return function ($1566) {
+        return $1564($1565($1566));
     };
 };
 var _infoBuild = function (dictStrong) {
-    var $1562 = Data_Lens_Lens["lens'"](function (v) {
+    var $1567 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ServerInfo(s);
         });
     })(dictStrong);
-    var $1563 = Data_Lens_Record.prop({
+    var $1568 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "infoBuild";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1564) {
-        return $1562($1563($1564));
+    return function ($1569) {
+        return $1567($1568($1569));
     };
 };
 var _identityIsTransmitter = function (dictStrong) {
-    var $1565 = Data_Lens_Lens["lens'"](function (v) {
+    var $1570 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceIdentity(s);
         });
     })(dictStrong);
-    var $1566 = Data_Lens_Record.prop({
+    var $1571 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "identityIsTransmitter";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1567) {
-        return $1565($1566($1567));
+    return function ($1572) {
+        return $1570($1571($1572));
     };
 };
 var _identityIsReceiver = function (dictStrong) {
-    var $1568 = Data_Lens_Lens["lens'"](function (v) {
+    var $1573 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceIdentity(s);
         });
     })(dictStrong);
-    var $1569 = Data_Lens_Record.prop({
+    var $1574 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "identityIsReceiver";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1570) {
-        return $1568($1569($1570));
+    return function ($1575) {
+        return $1573($1574($1575));
     };
 };
 var _hdSwitchReason = function (dictStrong) {
-    var $1571 = Data_Lens_Lens["lens'"](function (v) {
+    var $1576 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new HdResolutionOutcome(s);
         });
     })(dictStrong);
-    var $1572 = Data_Lens_Record.prop({
+    var $1577 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "hdSwitchReason";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1573) {
-        return $1571($1572($1573));
+    return function ($1578) {
+        return $1576($1577($1578));
     };
 };
 var _hdSwitchOutcome = function (dictStrong) {
-    var $1574 = Data_Lens_Lens["lens'"](function (v) {
+    var $1579 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new HdResolutionOutcome(s);
         });
     })(dictStrong);
-    var $1575 = Data_Lens_Record.prop({
+    var $1580 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "hdSwitchOutcome";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1576) {
-        return $1574($1575($1576));
+    return function ($1581) {
+        return $1579($1580($1581));
     };
 };
 var _hasErrorCode = function (dictStrong) {
-    var $1577 = Data_Lens_Lens["lens'"](function (v) {
+    var $1582 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ErrorStatus(s);
         });
     })(dictStrong);
-    var $1578 = Data_Lens_Record.prop({
+    var $1583 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "hasErrorCode";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1579) {
-        return $1577($1578($1579));
+    return function ($1584) {
+        return $1582($1583($1584));
     };
 };
 var _frameBufferWidth = function (dictStrong) {
-    var $1580 = Data_Lens_Lens["lens'"](function (v) {
+    var $1585 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new FrameBuffer(s);
         });
     })(dictStrong);
-    var $1581 = Data_Lens_Record.prop({
+    var $1586 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "frameBufferWidth";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1582) {
-        return $1580($1581($1582));
+    return function ($1587) {
+        return $1585($1586($1587));
     };
 };
 var _frameBufferMultiviewLayout = function (dictStrong) {
-    var $1583 = Data_Lens_Lens["lens'"](function (v) {
+    var $1588 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new FrameBuffer(s);
         });
     })(dictStrong);
-    var $1584 = Data_Lens_Record.prop({
+    var $1589 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "frameBufferMultiviewLayout";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1585) {
-        return $1583($1584($1585));
+    return function ($1590) {
+        return $1588($1589($1590));
     };
 };
 var _frameBufferHeight = function (dictStrong) {
-    var $1586 = Data_Lens_Lens["lens'"](function (v) {
+    var $1591 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new FrameBuffer(s);
         });
     })(dictStrong);
-    var $1587 = Data_Lens_Record.prop({
+    var $1592 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "frameBufferHeight";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1588) {
-        return $1586($1587($1588));
+    return function ($1593) {
+        return $1591($1592($1593));
     };
 };
 var _frameBufferFramesPerSecond = function (dictStrong) {
-    var $1589 = Data_Lens_Lens["lens'"](function (v) {
+    var $1594 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new FrameBuffer(s);
         });
     })(dictStrong);
-    var $1590 = Data_Lens_Record.prop({
+    var $1595 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "frameBufferFramesPerSecond";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1591) {
-        return $1589($1590($1591));
+    return function ($1596) {
+        return $1594($1595($1596));
     };
 };
 var _frameBufferDisplayMode = function (dictStrong) {
-    var $1592 = Data_Lens_Lens["lens'"](function (v) {
+    var $1597 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new FrameBuffer(s);
         });
     })(dictStrong);
-    var $1593 = Data_Lens_Record.prop({
+    var $1598 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "frameBufferDisplayMode";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1594) {
-        return $1592($1593($1594));
+    return function ($1599) {
+        return $1597($1598($1599));
     };
 };
 var _frameBufferAspectRatioMode = function (dictStrong) {
-    var $1595 = Data_Lens_Lens["lens'"](function (v) {
+    var $1600 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new FrameBuffer(s);
         });
     })(dictStrong);
-    var $1596 = Data_Lens_Record.prop({
+    var $1601 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "frameBufferAspectRatioMode";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1597) {
-        return $1595($1596($1597));
+    return function ($1602) {
+        return $1600($1601($1602));
     };
 };
 var _errorReason = function (dictStrong) {
-    var $1598 = Data_Lens_Lens["lens'"](function (v) {
+    var $1603 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceError(s);
         });
     })(dictStrong);
-    var $1599 = Data_Lens_Record.prop({
+    var $1604 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "errorReason";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1600) {
-        return $1598($1599($1600));
+    return function ($1605) {
+        return $1603($1604($1605));
     };
 };
 var _errorMessage = function (dictStrong) {
-    var $1601 = Data_Lens_Lens["lens'"](function (v) {
+    var $1606 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceError(s);
         });
     })(dictStrong);
-    var $1602 = Data_Lens_Record.prop({
+    var $1607 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "errorMessage";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1603) {
-        return $1601($1602($1603));
+    return function ($1608) {
+        return $1606($1607($1608));
     };
 };
 var _errorDeviceName = function (dictStrong) {
-    var $1604 = Data_Lens_Lens["lens'"](function (v) {
+    var $1609 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceError(s);
         });
     })(dictStrong);
-    var $1605 = Data_Lens_Record.prop({
+    var $1610 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "errorDeviceName";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1606) {
-        return $1604($1605($1606));
+    return function ($1611) {
+        return $1609($1610($1611));
     };
 };
 var _errorDeviceId = function (dictStrong) {
-    var $1607 = Data_Lens_Lens["lens'"](function (v) {
+    var $1612 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceError(s);
         });
     })(dictStrong);
-    var $1608 = Data_Lens_Record.prop({
+    var $1613 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "errorDeviceId";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1609) {
-        return $1607($1608($1609));
+    return function ($1614) {
+        return $1612($1613($1614));
     };
 };
 var _errorCode = function (dictStrong) {
-    var $1610 = Data_Lens_Lens["lens'"](function (v) {
+    var $1615 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ErrorStatus(s);
         });
     })(dictStrong);
-    var $1611 = Data_Lens_Record.prop({
+    var $1616 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "errorCode";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1612) {
-        return $1610($1611($1612));
+    return function ($1617) {
+        return $1615($1616($1617));
     };
 };
 var _encoderVideoDetails = function (dictStrong) {
-    var $1613 = Data_Lens_Lens["lens'"](function (v) {
+    var $1618 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new HdmiEncoder(s);
         });
     })(dictStrong);
-    var $1614 = Data_Lens_Record.prop({
+    var $1619 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "encoderVideoDetails";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1615) {
-        return $1613($1614($1615));
+    return function ($1620) {
+        return $1618($1619($1620));
     };
 };
 var _encoderVideo = function (dictStrong) {
-    var $1616 = Data_Lens_Lens["lens'"](function (v) {
+    var $1621 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new HdmiEncoder(s);
         });
     })(dictStrong);
-    var $1617 = Data_Lens_Record.prop({
+    var $1622 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "encoderVideo";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1618) {
-        return $1616($1617($1618));
+    return function ($1623) {
+        return $1621($1622($1623));
     };
 };
 var _encoderSourceStable = function (dictStrong) {
-    var $1619 = Data_Lens_Lens["lens'"](function (v) {
+    var $1624 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new HdmiEncoder(s);
         });
     })(dictStrong);
-    var $1620 = Data_Lens_Record.prop({
+    var $1625 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "encoderSourceStable";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1621) {
-        return $1619($1620($1621));
+    return function ($1626) {
+        return $1624($1625($1626));
     };
 };
 var _encoderInputs = function (dictStrong) {
-    var $1622 = Data_Lens_Lens["lens'"](function (v) {
+    var $1627 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new HdmiEncoder(s);
         });
     })(dictStrong);
-    var $1623 = Data_Lens_Record.prop({
+    var $1628 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "encoderInputs";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1624) {
-        return $1622($1623($1624));
+    return function ($1629) {
+        return $1627($1628($1629));
     };
 };
 var _encoderHdcpVersion = function (dictStrong) {
-    var $1625 = Data_Lens_Lens["lens'"](function (v) {
+    var $1630 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new HdmiEncoder(s);
         });
     })(dictStrong);
-    var $1626 = Data_Lens_Record.prop({
+    var $1631 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "encoderHdcpVersion";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1627) {
-        return $1625($1626($1627));
+    return function ($1632) {
+        return $1630($1631($1632));
     };
 };
 var _encoderHdcpProtected = function (dictStrong) {
-    var $1628 = Data_Lens_Lens["lens'"](function (v) {
+    var $1633 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new HdmiEncoder(s);
         });
     })(dictStrong);
-    var $1629 = Data_Lens_Record.prop({
+    var $1634 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "encoderHdcpProtected";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1630) {
-        return $1628($1629($1630));
+    return function ($1635) {
+        return $1633($1634($1635));
     };
 };
 var _dividersReason = function (dictStrong) {
-    var $1631 = Data_Lens_Lens["lens'"](function (v) {
+    var $1636 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DividersOutcome(s);
         });
     })(dictStrong);
-    var $1632 = Data_Lens_Record.prop({
+    var $1637 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "dividersReason";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1633) {
-        return $1631($1632($1633));
+    return function ($1638) {
+        return $1636($1637($1638));
     };
 };
 var _dividersOutcome = function (dictStrong) {
-    var $1634 = Data_Lens_Lens["lens'"](function (v) {
+    var $1639 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DividersOutcome(s);
         });
     })(dictStrong);
-    var $1635 = Data_Lens_Record.prop({
+    var $1640 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "dividersOutcome";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1636) {
-        return $1634($1635($1636));
+    return function ($1641) {
+        return $1639($1640($1641));
     };
 };
 var _disconnectReason = function (dictStrong) {
-    var $1637 = Data_Lens_Lens["lens'"](function (v) {
+    var $1642 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DisconnectOutcome(s);
         });
     })(dictStrong);
-    var $1638 = Data_Lens_Record.prop({
+    var $1643 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "disconnectReason";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1639) {
-        return $1637($1638($1639));
+    return function ($1644) {
+        return $1642($1643($1644));
     };
 };
 var _disconnectOutcome = function (dictStrong) {
-    var $1640 = Data_Lens_Lens["lens'"](function (v) {
+    var $1645 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DisconnectOutcome(s);
         });
     })(dictStrong);
-    var $1641 = Data_Lens_Record.prop({
+    var $1646 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "disconnectOutcome";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1642) {
-        return $1640($1641($1642));
+    return function ($1647) {
+        return $1645($1646($1647));
     };
 };
 var _devices = function (dictStrong) {
-    var $1643 = Data_Lens_Lens["lens'"](function (v) {
+    var $1648 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceSettingsList(s);
         });
     })(dictStrong);
-    var $1644 = Data_Lens_Record.prop({
+    var $1649 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "devices";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1645) {
-        return $1643($1644($1645));
+    return function ($1650) {
+        return $1648($1649($1650));
     };
 };
 var _deviceSubscriptions = function (dictStrong) {
-    var $1646 = Data_Lens_Lens["lens'"](function (v) {
+    var $1651 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceSettings(s);
         });
     })(dictStrong);
-    var $1647 = Data_Lens_Record.prop({
+    var $1652 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "deviceSubscriptions";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1648) {
-        return $1646($1647($1648));
+    return function ($1653) {
+        return $1651($1652($1653));
     };
 };
 var _deviceStreams = function (dictStrong) {
-    var $1649 = Data_Lens_Lens["lens'"](function (v) {
+    var $1654 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceSettings(s);
         });
     })(dictStrong);
-    var $1650 = Data_Lens_Record.prop({
+    var $1655 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "deviceStreams";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1651) {
-        return $1649($1650($1651));
+    return function ($1656) {
+        return $1654($1655($1656));
     };
 };
 var _deviceStatus = function (dictStrong) {
-    var $1652 = Data_Lens_Lens["lens'"](function (v) {
+    var $1657 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceSettings(s);
         });
     })(dictStrong);
-    var $1653 = Data_Lens_Record.prop({
+    var $1658 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "deviceStatus";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1654) {
-        return $1652($1653($1654));
+    return function ($1659) {
+        return $1657($1658($1659));
     };
 };
 var _devicePreviewBox = function (dictStrong) {
-    var $1655 = Data_Lens_Lens["lens'"](function (v) {
+    var $1660 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceSettings(s);
         });
     })(dictStrong);
-    var $1656 = Data_Lens_Record.prop({
+    var $1661 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "devicePreviewBox";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1657) {
-        return $1655($1656($1657));
+    return function ($1662) {
+        return $1660($1661($1662));
     };
 };
 var _deviceNodes = function (dictStrong) {
-    var $1658 = Data_Lens_Lens["lens'"](function (v) {
+    var $1663 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceSettings(s);
         });
     })(dictStrong);
-    var $1659 = Data_Lens_Record.prop({
+    var $1664 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "deviceNodes";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1660) {
-        return $1658($1659($1660));
+    return function ($1665) {
+        return $1663($1664($1665));
     };
 };
 var _deviceName = function (dictStrong) {
-    var $1661 = Data_Lens_Lens["lens'"](function (v) {
+    var $1666 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceSettings(s);
         });
     })(dictStrong);
-    var $1662 = Data_Lens_Record.prop({
+    var $1667 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "deviceName";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1663) {
-        return $1661($1662($1663));
+    return function ($1668) {
+        return $1666($1667($1668));
     };
 };
 var _deviceLayouts = function (dictStrong) {
-    var $1664 = Data_Lens_Lens["lens'"](function (v) {
+    var $1669 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceLayoutList(s);
         });
     })(dictStrong);
-    var $1665 = Data_Lens_Record.prop({
+    var $1670 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "deviceLayouts";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1666) {
-        return $1664($1665($1666));
+    return function ($1671) {
+        return $1669($1670($1671));
     };
 };
 var _deviceLayoutErrors = function (dictStrong) {
-    var $1667 = Data_Lens_Lens["lens'"](function (v) {
+    var $1672 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceLayoutList(s);
         });
     })(dictStrong);
-    var $1668 = Data_Lens_Record.prop({
+    var $1673 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "deviceLayoutErrors";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1669) {
-        return $1667($1668($1669));
+    return function ($1674) {
+        return $1672($1673($1674));
     };
 };
 var _deviceIdentity = function (dictStrong) {
-    var $1670 = Data_Lens_Lens["lens'"](function (v) {
+    var $1675 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceSettings(s);
         });
     })(dictStrong);
-    var $1671 = Data_Lens_Record.prop({
+    var $1676 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "deviceIdentity";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1672) {
-        return $1670($1671($1672));
+    return function ($1677) {
+        return $1675($1676($1677));
     };
 };
 var _deviceId = function (dictStrong) {
-    var $1673 = Data_Lens_Lens["lens'"](function (v) {
+    var $1678 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceSettings(s);
         });
     })(dictStrong);
-    var $1674 = Data_Lens_Record.prop({
+    var $1679 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "deviceId";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1675) {
-        return $1673($1674($1675));
+    return function ($1680) {
+        return $1678($1679($1680));
     };
 };
 var _deviceErrors = function (dictStrong) {
-    var $1676 = Data_Lens_Lens["lens'"](function (v) {
+    var $1681 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceSettingsList(s);
         });
     })(dictStrong);
-    var $1677 = Data_Lens_Record.prop({
+    var $1682 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "deviceErrors";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1678) {
-        return $1676($1677($1678));
+    return function ($1683) {
+        return $1681($1682($1683));
     };
 };
 var _deviceEdid = function (dictStrong) {
-    var $1679 = Data_Lens_Lens["lens'"](function (v) {
+    var $1684 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceSettings(s);
         });
     })(dictStrong);
-    var $1680 = Data_Lens_Record.prop({
+    var $1685 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "deviceEdid";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1681) {
-        return $1679($1680($1681));
+    return function ($1686) {
+        return $1684($1685($1686));
     };
 };
 var _deviceConfiguration = function (dictStrong) {
-    var $1682 = Data_Lens_Lens["lens'"](function (v) {
+    var $1687 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceSettings(s);
         });
     })(dictStrong);
-    var $1683 = Data_Lens_Record.prop({
+    var $1688 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "deviceConfiguration";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1684) {
-        return $1682($1683($1684));
+    return function ($1689) {
+        return $1687($1688($1689));
     };
 };
 var _detailsHdr = function (dictStrong) {
-    var $1685 = Data_Lens_Lens["lens'"](function (v) {
+    var $1690 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new VideoFormatDetails(s);
         });
     })(dictStrong);
-    var $1686 = Data_Lens_Record.prop({
+    var $1691 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "detailsHdr";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1687) {
-        return $1685($1686($1687));
+    return function ($1692) {
+        return $1690($1691($1692));
     };
 };
 var _detailsFrameRate = function (dictStrong) {
-    var $1688 = Data_Lens_Lens["lens'"](function (v) {
+    var $1693 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new VideoFormatDetails(s);
         });
     })(dictStrong);
-    var $1689 = Data_Lens_Record.prop({
+    var $1694 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "detailsFrameRate";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1690) {
-        return $1688($1689($1690));
+    return function ($1695) {
+        return $1693($1694($1695));
     };
 };
 var _detailsColorimetry = function (dictStrong) {
-    var $1691 = Data_Lens_Lens["lens'"](function (v) {
+    var $1696 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new VideoFormatDetails(s);
         });
     })(dictStrong);
-    var $1692 = Data_Lens_Record.prop({
+    var $1697 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "detailsColorimetry";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1693) {
-        return $1691($1692($1693));
+    return function ($1698) {
+        return $1696($1697($1698));
     };
 };
 var _decoderVideoDetails = function (dictStrong) {
-    var $1694 = Data_Lens_Lens["lens'"](function (v) {
+    var $1699 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new HdmiDecoder(s);
         });
     })(dictStrong);
-    var $1695 = Data_Lens_Record.prop({
+    var $1700 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "decoderVideoDetails";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1696) {
-        return $1694($1695($1696));
+    return function ($1701) {
+        return $1699($1700($1701));
     };
 };
 var _decoderVideo = function (dictStrong) {
-    var $1697 = Data_Lens_Lens["lens'"](function (v) {
+    var $1702 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new HdmiDecoder(s);
         });
     })(dictStrong);
-    var $1698 = Data_Lens_Record.prop({
+    var $1703 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "decoderVideo";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1699) {
-        return $1697($1698($1699));
+    return function ($1704) {
+        return $1702($1703($1704));
     };
 };
 var _decoderSourceStable = function (dictStrong) {
-    var $1700 = Data_Lens_Lens["lens'"](function (v) {
+    var $1705 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new HdmiDecoder(s);
         });
     })(dictStrong);
-    var $1701 = Data_Lens_Record.prop({
+    var $1706 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "decoderSourceStable";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1702) {
-        return $1700($1701($1702));
+    return function ($1707) {
+        return $1705($1706($1707));
     };
 };
 var _decoderHdcpVersion = function (dictStrong) {
-    var $1703 = Data_Lens_Lens["lens'"](function (v) {
+    var $1708 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new HdmiDecoder(s);
         });
     })(dictStrong);
-    var $1704 = Data_Lens_Record.prop({
+    var $1709 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "decoderHdcpVersion";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1705) {
-        return $1703($1704($1705));
+    return function ($1710) {
+        return $1708($1709($1710));
     };
 };
 var _decoderHdcpSupportEnable = function (dictStrong) {
-    var $1706 = Data_Lens_Lens["lens'"](function (v) {
+    var $1711 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new HdmiDecoder(s);
         });
     })(dictStrong);
-    var $1707 = Data_Lens_Record.prop({
+    var $1712 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "decoderHdcpSupportEnable";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1708) {
-        return $1706($1707($1708));
+    return function ($1713) {
+        return $1711($1712($1713));
     };
 };
 var _decoderHdcpProtected = function (dictStrong) {
-    var $1709 = Data_Lens_Lens["lens'"](function (v) {
+    var $1714 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new HdmiDecoder(s);
         });
     })(dictStrong);
-    var $1710 = Data_Lens_Record.prop({
+    var $1715 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "decoderHdcpProtected";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1711) {
-        return $1709($1710($1711));
+    return function ($1716) {
+        return $1714($1715($1716));
     };
 };
 var _decoderHdcp22SupportDisable = function (dictStrong) {
-    var $1712 = Data_Lens_Lens["lens'"](function (v) {
+    var $1717 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new HdmiDecoder(s);
         });
     })(dictStrong);
-    var $1713 = Data_Lens_Record.prop({
+    var $1718 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "decoderHdcp22SupportDisable";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1714) {
-        return $1712($1713($1714));
+    return function ($1719) {
+        return $1717($1718($1719));
     };
 };
 var _cutWindows = function (dictStrong) {
-    var $1715 = Data_Lens_Lens["lens'"](function (v) {
+    var $1720 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new PreviewCut(s);
         });
     })(dictStrong);
-    var $1716 = Data_Lens_Record.prop({
+    var $1721 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "cutWindows";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1717) {
-        return $1715($1716($1717));
+    return function ($1722) {
+        return $1720($1721($1722));
     };
 };
 var _cutWidth = function (dictStrong) {
-    var $1718 = Data_Lens_Lens["lens'"](function (v) {
+    var $1723 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new PreviewCut(s);
         });
     })(dictStrong);
-    var $1719 = Data_Lens_Record.prop({
+    var $1724 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "cutWidth";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1720) {
-        return $1718($1719($1720));
+    return function ($1725) {
+        return $1723($1724($1725));
     };
 };
 var _cutHeight = function (dictStrong) {
-    var $1721 = Data_Lens_Lens["lens'"](function (v) {
+    var $1726 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new PreviewCut(s);
         });
     })(dictStrong);
-    var $1722 = Data_Lens_Record.prop({
+    var $1727 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "cutHeight";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1723) {
-        return $1721($1722($1723));
+    return function ($1728) {
+        return $1726($1727($1728));
     };
 };
 var _configLocateMode = function (dictStrong) {
-    var $1724 = Data_Lens_Lens["lens'"](function (v) {
+    var $1729 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceConfig(s);
         });
     })(dictStrong);
-    var $1725 = Data_Lens_Record.prop({
+    var $1730 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "configLocateMode";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1726) {
-        return $1724($1725($1726));
+    return function ($1731) {
+        return $1729($1730($1731));
     };
 };
 var _configDeviceName = function (dictStrong) {
-    var $1727 = Data_Lens_Lens["lens'"](function (v) {
+    var $1732 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceConfig(s);
         });
     })(dictStrong);
-    var $1728 = Data_Lens_Record.prop({
+    var $1733 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "configDeviceName";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1729) {
-        return $1727($1728($1729));
+    return function ($1734) {
+        return $1732($1733($1734));
     };
 };
 var _configDeviceMode = function (dictStrong) {
-    var $1730 = Data_Lens_Lens["lens'"](function (v) {
+    var $1735 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new DeviceConfig(s);
         });
     })(dictStrong);
-    var $1731 = Data_Lens_Record.prop({
+    var $1736 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "configDeviceMode";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1732) {
-        return $1730($1731($1732));
+    return function ($1737) {
+        return $1735($1736($1737));
     };
 };
 var _compositionReason = function (dictStrong) {
-    var $1733 = Data_Lens_Lens["lens'"](function (v) {
+    var $1738 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new CompositionOutcome(s);
         });
     })(dictStrong);
-    var $1734 = Data_Lens_Record.prop({
+    var $1739 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "compositionReason";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1735) {
-        return $1733($1734($1735));
+    return function ($1740) {
+        return $1738($1739($1740));
     };
 };
 var _compositionOutcome = function (dictStrong) {
-    var $1736 = Data_Lens_Lens["lens'"](function (v) {
+    var $1741 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new CompositionOutcome(s);
         });
     })(dictStrong);
-    var $1737 = Data_Lens_Record.prop({
+    var $1742 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "compositionOutcome";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1738) {
-        return $1736($1737($1738));
+    return function ($1743) {
+        return $1741($1742($1743));
     };
 };
 var _compositionLayout = function (dictStrong) {
-    var $1739 = Data_Lens_Lens["lens'"](function (v) {
+    var $1744 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new CompositionOutcome(s);
         });
     })(dictStrong);
-    var $1740 = Data_Lens_Record.prop({
+    var $1745 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "compositionLayout";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1741) {
-        return $1739($1740($1741));
+    return function ($1746) {
+        return $1744($1745($1746));
     };
 };
 var _composedReason = function (dictStrong) {
-    var $1742 = Data_Lens_Lens["lens'"](function (v) {
+    var $1747 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComposeOutcome(s);
         });
     })(dictStrong);
-    var $1743 = Data_Lens_Record.prop({
+    var $1748 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "composedReason";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1744) {
-        return $1742($1743($1744));
+    return function ($1749) {
+        return $1747($1748($1749));
     };
 };
 var _composedOutcome = function (dictStrong) {
-    var $1745 = Data_Lens_Lens["lens'"](function (v) {
+    var $1750 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComposeOutcome(s);
         });
     })(dictStrong);
-    var $1746 = Data_Lens_Record.prop({
+    var $1751 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "composedOutcome";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1747) {
-        return $1745($1746($1747));
+    return function ($1752) {
+        return $1750($1751($1752));
     };
 };
 var _commandErrors = function (dictStrong) {
-    var $1748 = Data_Lens_Lens["lens'"](function (v) {
+    var $1753 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new CommandResult(s);
         });
     })(dictStrong);
-    var $1749 = Data_Lens_Record.prop({
+    var $1754 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "commandErrors";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1750) {
-        return $1748($1749($1750));
+    return function ($1755) {
+        return $1753($1754($1755));
     };
 };
 var _commandDevices = function (dictStrong) {
-    var $1751 = Data_Lens_Lens["lens'"](function (v) {
+    var $1756 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new CommandResult(s);
         });
     })(dictStrong);
-    var $1752 = Data_Lens_Record.prop({
+    var $1757 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "commandDevices";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1753) {
-        return $1751($1752($1753));
+    return function ($1758) {
+        return $1756($1757($1758));
     };
 };
 var _answeredTransmitters = function (dictStrong) {
-    var $1754 = Data_Lens_Lens["lens'"](function (v) {
+    var $1759 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new AnsweredRig(s);
         });
     })(dictStrong);
-    var $1755 = Data_Lens_Record.prop({
+    var $1760 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "answeredTransmitters";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1756) {
-        return $1754($1755($1756));
+    return function ($1761) {
+        return $1759($1760($1761));
     };
 };
 var _answeredSourcesTransmitters = function (dictStrong) {
-    var $1757 = Data_Lens_Lens["lens'"](function (v) {
+    var $1762 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v, function (s) {
             return s;
         });
     })(dictStrong);
-    var $1758 = Data_Lens_Record.prop({
+    var $1763 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "answeredSourcesTransmitters";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1759) {
-        return $1757($1758($1759));
+    return function ($1764) {
+        return $1762($1763($1764));
     };
 };
 var _answeredReceivers = function (dictStrong) {
-    var $1760 = Data_Lens_Lens["lens'"](function (v) {
+    var $1765 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new AnsweredRig(s);
         });
     })(dictStrong);
-    var $1761 = Data_Lens_Record.prop({
+    var $1766 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "answeredReceivers";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1762) {
-        return $1760($1761($1762));
+    return function ($1767) {
+        return $1765($1766($1767));
     };
 };
 var _answeredOutputsReceivers = function (dictStrong) {
-    var $1763 = Data_Lens_Lens["lens'"](function (v) {
+    var $1768 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new AnsweredOutputs(s);
         });
     })(dictStrong);
-    var $1764 = Data_Lens_Record.prop({
+    var $1769 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "answeredOutputsReceivers";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1765) {
-        return $1763($1764($1765));
+    return function ($1770) {
+        return $1768($1769($1770));
     };
 };
 var _answeredComposition = function (dictStrong) {
-    var $1766 = Data_Lens_Lens["lens'"](function (v) {
+    var $1771 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new AnsweredOutputs(s);
         });
     })(dictStrong);
-    var $1767 = Data_Lens_Record.prop({
+    var $1772 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "answeredComposition";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1768) {
-        return $1766($1767($1768));
+    return function ($1773) {
+        return $1771($1772($1773));
     };
 };
 var _answeredBoxLayout = function (dictStrong) {
-    var $1769 = Data_Lens_Lens["lens'"](function (v) {
+    var $1774 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v, function (s) {
             return s;
         });
     })(dictStrong);
-    var $1770 = Data_Lens_Record.prop({
+    var $1775 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "answeredBoxLayout";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1771) {
-        return $1769($1770($1771));
+    return function ($1776) {
+        return $1774($1775($1776));
     };
 };
 module.exports = {
@@ -119801,6 +119779,7 @@ module.exports = {
     "_layoutReadOnly": _layoutReadOnly,
     "_layoutSurfaces": _layoutSurfaces,
     "_layoutWindows": _layoutWindows,
+    simpleWindowOf: simpleWindowOf,
     LayoutList: LayoutList,
     "_layoutNames": _layoutNames,
     DeviceLayout: DeviceLayout,
@@ -124463,15 +124442,15 @@ var probeMainPanel = function (req) {
 };
 var holdingPreview = function (j) {
     var v = function (v1) {
-        var $368 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.previewUpdateReading(j));
+        var $366 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.previewUpdateReading(j));
         return function (r_1) {
-            return ExploreCore.runCo(Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit))(Exhibit_VideoControl_VideoRtcAPI.unfreezingSourcesBut(Data_Lens_Getter.viewOn($368)(Exhibit_VideoControl_Types["_updateWaiting"](Data_Lens_Internal_Forget.strongForget)))(r_1));
+            return ExploreCore.runCo(Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit))(Exhibit_VideoControl_VideoRtcAPI.unfreezingSourcesBut(Data_Lens_Getter.viewOn($366)(Exhibit_VideoControl_Types["_updateWaiting"](Data_Lens_Internal_Forget.strongForget)))(r_1));
         };
     };
-    var $370 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.previewUpdateReading(j));
-    var $371 = Exhibit_VideoControl_Interactions.previewRemaking($370);
-    if ($371) {
-        var v1 = Data_Lens_Getter.viewOn($370)(Exhibit_VideoControl_Types["_updateCut"](Data_Lens_Internal_Forget.strongForget));
+    var $368 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.previewUpdateReading(j));
+    var $369 = Exhibit_VideoControl_Interactions.previewRemaking($368);
+    if ($369) {
+        var v1 = Data_Lens_Getter.viewOn($368)(Exhibit_VideoControl_Types["_updateCut"](Data_Lens_Internal_Forget.strongForget));
         if (v1 instanceof Data_Maybe.Nothing) {
             return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
         };
@@ -124568,185 +124547,185 @@ var answerMainPanel = function (req) {
     };
 };
 var _unrouteWarning = function (dictStrong) {
-    var $1000 = Data_Lens_Lens["lens'"](function (v) {
+    var $981 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new MainPanelFields(s);
         });
     })(dictStrong);
-    var $1001 = Data_Lens_Record.prop({
+    var $982 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "unrouteWarning";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1002) {
-        return $1000($1001($1002));
+    return function ($983) {
+        return $981($982($983));
     };
 };
 var _systemPanel = (function () {
-    var $1003 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1004 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1005 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1006 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1007 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1008 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2));
-    var $1009 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentSystemConfiguration.comonadComponentSystemCon)(Exhibit_VideoControl_UI_ComponentSystemConfiguration.shouldUpdateComponentSyst);
-    return function ($1010) {
-        return $1003($1004($1005($1006($1007($1008($1009($1010)))))));
+    var $984 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $985 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $986 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $987 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $988 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $989 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2));
+    var $990 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentSystemConfiguration.comonadComponentSystemCon)(Exhibit_VideoControl_UI_ComponentSystemConfiguration.shouldUpdateComponentSyst);
+    return function ($991) {
+        return $984($985($986($987($988($989($990($991)))))));
     };
 })();
 var _sourceGrid = (function () {
-    var $1011 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)))))));
-    var $1012 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentInputSources.comonadComponentInputSour)(Exhibit_VideoControl_UI_ComponentInputSources.shouldUpdateComponentInpu);
-    return function ($1013) {
-        return $1011($1012($1013));
+    var $992 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)))))));
+    var $993 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentInputSources.comonadComponentInputSour)(Exhibit_VideoControl_UI_ComponentInputSources.shouldUpdateComponentInpu);
+    return function ($994) {
+        return $992($993($994));
     };
 })();
 var _routeRefusal = function (dictStrong) {
-    var $1014 = Data_Lens_Lens["lens'"](function (v) {
+    var $995 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new MainPanelFields(s);
         });
     })(dictStrong);
-    var $1015 = Data_Lens_Record.prop({
+    var $996 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "routeRefusal";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1016) {
-        return $1014($1015($1016));
+    return function ($997) {
+        return $995($996($997));
     };
 };
 var _reqPanel = (function () {
-    var $1017 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1018 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1019 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1020 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1021 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1022 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1023 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1024 = Widget_Unify_UnifyCompItem["_compitem"](Unify_ReqPanel2.comonadComponentReqPanel)(Unify_ReqPanel2.shouldUpdateComponentReqP);
-    return function ($1025) {
-        return $1017($1018($1019($1020($1021($1022($1023($1024($1025))))))));
+    var $998 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $999 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1000 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1001 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1002 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1003 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1004 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1005 = Widget_Unify_UnifyCompItem["_compitem"](Unify_ReqPanel2.comonadComponentReqPanel)(Unify_ReqPanel2.shouldUpdateComponentReqP);
+    return function ($1006) {
+        return $998($999($1000($1001($1002($1003($1004($1005($1006))))))));
     };
 })();
 var _previewStale = function (dictStrong) {
-    var $1026 = Data_Lens_Lens["lens'"](function (v) {
+    var $1007 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new MainPanelFields(s);
         });
     })(dictStrong);
-    var $1027 = Data_Lens_Record.prop({
+    var $1008 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewStale";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1028) {
-        return $1026($1027($1028));
+    return function ($1009) {
+        return $1007($1008($1009));
     };
 };
 var _previewSkipped = function (dictStrong) {
-    var $1029 = Data_Lens_Lens["lens'"](function (v) {
+    var $1010 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new MainPanelFields(s);
         });
     })(dictStrong);
-    var $1030 = Data_Lens_Record.prop({
+    var $1011 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewSkipped";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1031) {
-        return $1029($1030($1031));
+    return function ($1012) {
+        return $1010($1011($1012));
     };
 };
 var _previewPlanned = function (dictStrong) {
-    var $1032 = Data_Lens_Lens["lens'"](function (v) {
+    var $1013 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new MainPanelFields(s);
         });
     })(dictStrong);
-    var $1033 = Data_Lens_Record.prop({
+    var $1014 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewPlanned";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1034) {
-        return $1032($1033($1034));
+    return function ($1015) {
+        return $1013($1014($1015));
     };
 };
 var _previewPending = function (dictStrong) {
-    var $1035 = Data_Lens_Lens["lens'"](function (v) {
+    var $1016 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new MainPanelFields(s);
         });
     })(dictStrong);
-    var $1036 = Data_Lens_Record.prop({
+    var $1017 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewPending";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1037) {
-        return $1035($1036($1037));
+    return function ($1018) {
+        return $1016($1017($1018));
     };
 };
 var _previewPanel = (function () {
-    var $1038 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1039 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1040 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)))));
-    var $1041 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentPreview.comonadComponentPreview)(Exhibit_VideoControl_UI_ComponentPreview.shouldUpdateComponentPrev);
-    return function ($1042) {
-        return $1038($1039($1040($1041($1042))));
+    var $1019 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1020 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1021 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)))));
+    var $1022 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentPreview.comonadComponentPreview)(Exhibit_VideoControl_UI_ComponentPreview.shouldUpdateComponentPrev);
+    return function ($1023) {
+        return $1019($1020($1021($1022($1023))));
     };
 })();
 var _previewCut = function (dictStrong) {
-    var $1043 = Data_Lens_Lens["lens'"](function (v) {
+    var $1024 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new MainPanelFields(s);
         });
     })(dictStrong);
-    var $1044 = Data_Lens_Record.prop({
+    var $1025 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewCut";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1045) {
-        return $1043($1044($1045));
+    return function ($1026) {
+        return $1024($1025($1026));
     };
 };
 var _outputRow = (function () {
-    var $1046 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1047 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2))))));
-    var $1048 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentOutputs.comonadComponentOutputs)(Exhibit_VideoControl_UI_ComponentOutputs.shouldUpdateComponentOutp);
-    return function ($1049) {
-        return $1046($1047($1048($1049)));
+    var $1027 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1028 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2))))));
+    var $1029 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentOutputs.comonadComponentOutputs)(Exhibit_VideoControl_UI_ComponentOutputs.shouldUpdateComponentOutp);
+    return function ($1030) {
+        return $1027($1028($1029($1030)));
     };
 })();
 var _fields = (function () {
-    var $1050 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1051 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1052 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1053 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1054 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1055 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1056 = ExploreCore.liftRight(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1057 = Widget_Unify_UnifyCompItem["_compitem"](comonadComponentMainPanel1)(shouldUpdateComponentMain);
-    return function ($1058) {
-        return $1050($1051($1052($1053($1054($1055($1056($1057($1058))))))));
+    var $1031 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1032 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1033 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1034 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1035 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1036 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1037 = ExploreCore.liftRight(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1038 = Widget_Unify_UnifyCompItem["_compitem"](comonadComponentMainPanel1)(shouldUpdateComponentMain);
+    return function ($1039) {
+        return $1031($1032($1033($1034($1035($1036($1037($1038($1039))))))));
     };
 })();
 var _dividersPending = function (dictStrong) {
-    var $1059 = Data_Lens_Lens["lens'"](function (v) {
+    var $1040 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new MainPanelFields(s);
         });
     })(dictStrong);
-    var $1060 = Data_Lens_Record.prop({
+    var $1041 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "dividersPending";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($1061) {
-        return $1059($1060($1061));
+    return function ($1042) {
+        return $1040($1041($1042));
     };
 };
 var displayMainPanelFields = function (s) {
@@ -124772,24 +124751,24 @@ var datarenderMainPanel$prime = function (panel) {
 };
 var datarenderMainPanel = datarenderMainPanel$prime(Unify_ReqPanel2.renderReqPanel);
 var _controlsPanel = (function () {
-    var $1062 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1063 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1064 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1065 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2))));
-    var $1066 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentVideoControls.comonadComponentVideoCont)(Exhibit_VideoControl_UI_ComponentVideoControls.shouldUpdateComponentVide);
-    return function ($1067) {
-        return $1062($1063($1064($1065($1066($1067)))));
+    var $1043 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1044 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1045 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1046 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2))));
+    var $1047 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentVideoControls.comonadComponentVideoCont)(Exhibit_VideoControl_UI_ComponentVideoControls.shouldUpdateComponentVide);
+    return function ($1048) {
+        return $1043($1044($1045($1046($1047($1048)))));
     };
 })();
 var _controlPanel = (function () {
-    var $1068 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1069 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1070 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1071 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $1072 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)));
-    var $1073 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentControlPanel.comonadComponentControlPa)(Exhibit_VideoControl_UI_ComponentControlPanel.shouldUpdateComponentCont);
-    return function ($1074) {
-        return $1068($1069($1070($1071($1072($1073($1074))))));
+    var $1049 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1050 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1051 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1052 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $1053 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2)));
+    var $1054 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentControlPanel.comonadComponentControlPa)(Exhibit_VideoControl_UI_ComponentControlPanel.shouldUpdateComponentCont);
+    return function ($1055) {
+        return $1049($1050($1051($1052($1053($1054($1055))))));
     };
 })();
 var _CoMainPanelFields = function (v) {
@@ -124834,6 +124813,11 @@ var engagedDividers = Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPa
         return Exhibit_VideoControl_Interactions.placeSourceDividers(d);
     })(r_1));
 });
+var layCatalogue = function (j) {
+    return _CoMainPanel(_systemPanel(Exhibit_VideoControl_UI_ComponentSystemConfiguration["_CoSystemConfiguration"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (c) {
+        return Exhibit_VideoControl_UI_ComponentSystemConfiguration.layingCatalogue(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.simpleLayoutsReading(j)))(c);
+    }))));
+};
 var layConfiguration = function (j) {
     return _CoMainPanel(_systemPanel(Exhibit_VideoControl_UI_ComponentSystemConfiguration["_CoSystemConfiguration"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (c) {
         return Exhibit_VideoControl_UI_ComponentSystemConfiguration.carrying(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.serverInfoReading(j)))(c);
@@ -124841,12 +124825,7 @@ var layConfiguration = function (j) {
 };
 var layDescribedLayout = function (j) {
     return _CoMainPanel(_systemPanel(Exhibit_VideoControl_UI_ComponentSystemConfiguration["_CoSystemConfiguration"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (c) {
-        return Exhibit_VideoControl_UI_ComponentSystemConfiguration.layingCatalogueDescribed(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.layoutDescriptionReading(j)))(c);
-    }))));
-};
-var layLayoutNames = function (j) {
-    return _CoMainPanel(_systemPanel(Exhibit_VideoControl_UI_ComponentSystemConfiguration["_CoSystemConfiguration"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (c) {
-        return Exhibit_VideoControl_UI_ComponentSystemConfiguration.layingCatalogue(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.layoutListReading(j)))(c);
+        return Exhibit_VideoControl_UI_ComponentSystemConfiguration.layingCatalogueDescribed(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.simpleLayoutReading(j)))(c);
     }))));
 };
 var layPreviewUpdate = function (j) {
@@ -124987,9 +124966,9 @@ var layPreviewLayout = function (j) {
             if (v1 instanceof Data_Maybe.Just) {
                 return _CoMainPanel(_outputRow(Exhibit_VideoControl_UI_ComponentOutputs.carryingNamedLayout(Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))(v1.value0)));
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1386, column 22 - line 1390, column 80): " + [ v1.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1327, column 22 - line 1331, column 80): " + [ v1.constructor.name ]);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1384, column 8 - line 1390, column 80): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1325, column 8 - line 1331, column 80): " + [ v.constructor.name ]);
     });
 };
 var layAnsweredBoxLayout = function (j) {
@@ -125026,8 +125005,8 @@ var renderRtc = Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(
 });
 var requestPreviewUpdate = function (force) {
     return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(rowOutputs)(function (r_1) {
-        var $429 = Data_Maybe.isNothing(Exhibit_VideoControl_Interactions.previewBoxOf(r_1));
-        if ($429) {
+        var $427 = Data_Maybe.isNothing(Exhibit_VideoControl_Interactions.previewBoxOf(r_1));
+        if ($427) {
             return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
         };
         return requestMainPanel(Exhibit_VideoControl_Interactions.updatingPreview(force));
@@ -125038,8 +125017,8 @@ var fillingPreview = Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPan
 })(_CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))))))(function (r_1) {
     return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(rowOutputs)(function (r_2) {
         return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(pongAnswered)(function (r_3) {
-            var $430 = !r_1 || (!r_3 || Data_Maybe.isNothing(Exhibit_VideoControl_Interactions.previewBoxOf(r_2)));
-            if ($430) {
+            var $428 = !r_1 || (!r_3 || Data_Maybe.isNothing(Exhibit_VideoControl_Interactions.previewBoxOf(r_2)));
+            if ($428) {
                 return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
             };
             return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(_CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
@@ -125062,8 +125041,8 @@ var refillingPreview = Control_Bind.bind(ExploreCore.bindCo(extendComponentMainP
             return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(Data_Functor.map(ExploreCore.functorCo(functorComponentMainPanel1))(function (s) {
                 return Data_Lens_Getter.viewOn(s)(_previewPending(Data_Lens_Internal_Forget.strongForget));
             })(_CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))))))(function (r_4) {
-                var $431 = !r_1 || (r_2 || (Data_List["null"](r_3) || r_4));
-                if ($431) {
+                var $429 = !r_1 || (r_2 || (Data_List["null"](r_3) || r_4));
+                if ($429) {
                     return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
                 };
                 return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(_CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
@@ -125089,15 +125068,6 @@ var shownFormat = Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel)
         return Exhibit_VideoControl_UI_ComponentOutput.knownFormatOf(c);
     }));
 });
-var fastFormat = function (d) {
-    if (Data_Maybe.isJust(Exhibit_VideoControl_Interactions.namedFormatOf(d))) {
-        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Maybe.Nothing.value);
-    };
-    if (Data_Boolean.otherwise) {
-        return shownFormat;
-    };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1216, column 1 - line 1218, column 64): " + [ d.constructor.name ]);
-};
 var shownOutput = _CoMainPanel(_outputRow(Exhibit_VideoControl_UI_ComponentOutputs.selectedOutput));
 var layShownLayout = function (j) {
     return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(shownOutput)(function (r_1) {
@@ -125112,9 +125082,9 @@ var layShownLayout = function (j) {
             if (v instanceof Data_Maybe.Just) {
                 return _CoMainPanel(_outputRow(Exhibit_VideoControl_UI_ComponentOutputs.carryingLayout(v.value0)));
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1375, column 22 - line 1378, column 84): " + [ v.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1316, column 22 - line 1319, column 84): " + [ v.constructor.name ]);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1373, column 8 - line 1378, column 84): " + [ r_1.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1314, column 8 - line 1319, column 84): " + [ r_1.constructor.name ]);
     });
 };
 var layAnsweredComposition = function (j) {
@@ -125162,9 +125132,7 @@ var requestLatency = function (on) {
     return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(shownOutput)(function (r_1) {
         return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(shownFormat)(function (r_2) {
             if (r_1 instanceof Data_Maybe.Just && Data_Maybe.isJust(Exhibit_VideoControl_Interactions.setLatencyTo(on)(r_2)(r_1.value0))) {
-                return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(fastFormat(r_1.value0))(function (r_3) {
-                    return requestMainPanel(Exhibit_VideoControl_Interactions.genlockingTo(r_1.value0)(on)(r_3));
-                });
+                return requestMainPanel(Exhibit_VideoControl_Interactions.genlockingTo(r_1.value0)(on)(r_2));
             };
             return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
         });
@@ -125178,14 +125146,14 @@ var requestPreviewLayout = Control_Bind.bind(ExploreCore.bindCo(extendComponentM
                 return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
             };
             if (v instanceof Data_Maybe.Just) {
-                var $449 = Exhibit_VideoControl_Interactions.composingOf(v.value0) && Data_Maybe.isNothing(Exhibit_VideoControl_Interactions.loadedLayoutOf(v.value0));
-                if ($449) {
-                    var $450 = Data_Eq.notEq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Functor.map(Data_Maybe.functorMaybe)(function (s) {
+                var $446 = Exhibit_VideoControl_Interactions.composingOf(v.value0) && Data_Maybe.isNothing(Exhibit_VideoControl_Interactions.loadedLayoutOf(v.value0));
+                if ($446) {
+                    var $447 = Data_Eq.notEq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Functor.map(Data_Maybe.functorMaybe)(function (s) {
                         return Data_Lens_Getter.viewOn(s)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget));
                     })(r_2))(new Data_Maybe.Just(Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget))));
-                    if ($450) {
-                        var $451 = !r_3;
-                        if ($451) {
+                    if ($447) {
+                        var $448 = !r_3;
+                        if ($448) {
                             return requestMainPanel(Exhibit_VideoControl_Interactions.readMultiview(v.value0));
                         };
                         return v1(true);
@@ -125277,72 +125245,6 @@ var requestReroute = Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPan
         return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
     });
 });
-var scalePick = function (d) {
-    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(shownPick)(function (r_1) {
-        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(fastFormat(d))(function (r_2) {
-            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))((function () {
-                if (r_1 instanceof Data_Maybe.Just) {
-                    return new Data_Maybe.Just(r_1.value0);
-                };
-                if (r_1 instanceof Data_Maybe.Nothing) {
-                    return r_2;
-                };
-                throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1288, column 11 - line 1290, column 29): " + [ r_1.constructor.name ]);
-            })());
-        });
-    });
-};
-var requestScaling = function (on) {
-    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(shownOutput)(function (r_1) {
-        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(shownPick)(function (r_2) {
-            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(shownFormat)(function (r_3) {
-                if (r_1 instanceof Data_Maybe.Just && (on && Data_Maybe.isJust(Exhibit_VideoControl_Interactions.setGenlockScaling(Data_Maybe.fromMaybe(Exhibit_VideoControl_Interactions.defaultFormat)((function () {
-                    if (r_2 instanceof Data_Maybe.Just) {
-                        return new Data_Maybe.Just(r_2.value0);
-                    };
-                    if (r_2 instanceof Data_Maybe.Nothing) {
-                        var v = Exhibit_VideoControl_Interactions.namedFormatOf(r_1.value0);
-                        if (v instanceof Data_Maybe.Just) {
-                            return new Data_Maybe.Just(v.value0);
-                        };
-                        if (v instanceof Data_Maybe.Nothing) {
-                            return r_3;
-                        };
-                        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1270, column 47 - line 1272, column 65): " + [ v.constructor.name ]);
-                    };
-                    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1268, column 32 - line 1272, column 65): " + [ r_2.constructor.name ]);
-                })()))(r_1.value0)))) {
-                    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(scalePick(r_1.value0))(function (r_4) {
-                        return requestMainPanel(Exhibit_VideoControl_Interactions.scalingAt(r_1.value0)(true)(r_4));
-                    });
-                };
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
-            });
-        });
-    });
-};
-var scalingFormat = function (d) {
-    return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(shownPick)(function (r_1) {
-        return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(shownFormat)(function (r_2) {
-            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Maybe.fromMaybe(Exhibit_VideoControl_Interactions.defaultFormat)((function () {
-                if (r_1 instanceof Data_Maybe.Just) {
-                    return new Data_Maybe.Just(r_1.value0);
-                };
-                if (r_1 instanceof Data_Maybe.Nothing) {
-                    var v = Exhibit_VideoControl_Interactions.namedFormatOf(d);
-                    if (v instanceof Data_Maybe.Just) {
-                        return new Data_Maybe.Just(v.value0);
-                    };
-                    if (v instanceof Data_Maybe.Nothing) {
-                        return r_2;
-                    };
-                    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1253, column 29 - line 1255, column 47): " + [ v.constructor.name ]);
-                };
-                throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentMainPanel (line 1251, column 14 - line 1255, column 47): " + [ r_1.constructor.name ]);
-            })()));
-        });
-    });
-};
 var shownSource = _CoMainPanel(_sourceGrid(Exhibit_VideoControl_UI_ComponentInputSources.selectedSource));
 var shownWindow = _CoMainPanel(_previewPanel(Exhibit_VideoControl_UI_ComponentPreview.markedWindow));
 var sendRoute = Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(shownOutput)(function (d) {
@@ -125352,15 +125254,15 @@ var sendRoute = Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(
             return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(shownWindow)(function (r_3) {
                 return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(shownPick)(function (r_4) {
                     var w = (function () {
-                        var $483 = Exhibit_VideoControl_Interactions.composingOf(v.value0.value0);
-                        if ($483) {
+                        var $468 = Exhibit_VideoControl_Interactions.composingOf(v.value0.value0);
+                        if ($468) {
                             return r_3;
                         };
                         return Data_Maybe.Nothing.value;
                     })();
                     var o = (function () {
-                        var $484 = Data_Maybe.isJust(w) || Data_Maybe.isNothing(r_3) && !Exhibit_VideoControl_Interactions.composingOf(v.value0.value0);
-                        if ($484) {
+                        var $469 = Data_Maybe.isJust(w) || Data_Maybe.isNothing(r_3) && !Exhibit_VideoControl_Interactions.composingOf(v.value0.value0);
+                        if ($469) {
                             return Data_Lens_Getter.viewOn(v.value0.value0)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget));
                         };
                         return "";
@@ -125388,10 +125290,10 @@ var requestRoute = Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel
                     return sendRoute;
                 };
                 if (v.value0 instanceof Data_Maybe.Just && v.value1 instanceof Data_Maybe.Just) {
-                    var $490 = Exhibit_VideoControl_Interactions.unrouteWarning(os)(v.value1.value0)(v.value0.value0)(r_3);
-                    if ($490 instanceof Data_Maybe.Just) {
+                    var $475 = Exhibit_VideoControl_Interactions.unrouteWarning(os)(v.value1.value0)(v.value0.value0)(r_3);
+                    if ($475 instanceof Data_Maybe.Just) {
                         return _CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
-                            return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_unrouteWarning(Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just($490.value0)));
+                            return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_unrouteWarning(Data_Profunctor_Strong.strongFn))(new Data_Maybe.Just($475.value0)));
                         }))));
                     };
                     return v1(true);
@@ -125444,8 +125346,8 @@ var drawLayouts = Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel)
     return _CoMainPanel(_previewPanel(Exhibit_VideoControl_UI_ComponentPreview.drawLayouts(r_1)));
 });
 var openLayouts = Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(_CoMainPanel(_controlsPanel(Exhibit_VideoControl_UI_ComponentVideoControls.picksLayout)))(function (r_1) {
-    var $500 = !r_1;
-    if ($500) {
+    var $485 = !r_1;
+    if ($485) {
         return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
     };
     return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(drawLayouts)(function () {
@@ -125569,25 +125471,25 @@ var layAnsweredRig = function (j) {
 var layRoute = function (j) {
     var v = function (v1) {
         var v2 = function (v3) {
-            var $514 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.routeOutcomeReading(j));
+            var $499 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.routeOutcomeReading(j));
             return _CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
-                return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn($514)(Exhibit_VideoControl_Types["_routedReason"](Data_Lens_Internal_Forget.strongForget))));
+                return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn($499)(Exhibit_VideoControl_Types["_routedReason"](Data_Lens_Internal_Forget.strongForget))));
             }))));
         };
-        var $516 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.routeOutcomeReading(j));
-        var $517 = Exhibit_VideoControl_Interactions.routeStopped($516);
-        if ($517) {
+        var $501 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.routeOutcomeReading(j));
+        var $502 = Exhibit_VideoControl_Interactions.routeStopped($501);
+        if ($502) {
             return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(movingRig)(function () {
                 return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(clearRouteMarks)(function () {
-                    return abortPlan(Data_Lens_Getter.viewOn($516)(Exhibit_VideoControl_Types["_routedReason"](Data_Lens_Internal_Forget.strongForget)));
+                    return abortPlan(Data_Lens_Getter.viewOn($501)(Exhibit_VideoControl_Types["_routedReason"](Data_Lens_Internal_Forget.strongForget)));
                 });
             });
         };
         return v2(true);
     };
-    var $519 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.routeOutcomeReading(j));
-    var $520 = Exhibit_VideoControl_Interactions.routeLanded($519);
-    if ($520) {
+    var $504 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.routeOutcomeReading(j));
+    var $505 = Exhibit_VideoControl_Interactions.routeLanded($504);
+    if ($505) {
         return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(_CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
             return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(""));
         })))))(function () {
@@ -125602,12 +125504,12 @@ var layRoute = function (j) {
 };
 var layDividers = function (j) {
     var v = function (v1) {
-        var $522 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.dividersOutcomeReading(j));
+        var $507 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.dividersOutcomeReading(j));
         return requestOutputs;
     };
-    var $524 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.dividersOutcomeReading(j));
-    var $525 = Exhibit_VideoControl_Interactions.dividersMoved($524);
-    if ($525) {
+    var $509 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.dividersOutcomeReading(j));
+    var $510 = Exhibit_VideoControl_Interactions.dividersMoved($509);
+    if ($510) {
         var v1 = Exhibit_VideoControl_Interactions.answeredSources(j);
         if (v1 instanceof Data_Maybe.Nothing) {
             return requestSources;
@@ -125653,30 +125555,30 @@ var layCompose = function (j) {
     var v = function (v1) {
         var v2 = function (v3) {
             var v4 = function (v5) {
-                var $533 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.composeOutcomeReading(j));
+                var $518 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.composeOutcomeReading(j));
                 return _CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
-                    return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn($533)(Exhibit_VideoControl_Types["_composedReason"](Data_Lens_Internal_Forget.strongForget))));
+                    return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn($518)(Exhibit_VideoControl_Types["_composedReason"](Data_Lens_Internal_Forget.strongForget))));
                 }))));
             };
-            var $535 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.composeOutcomeReading(j));
-            var $536 = Exhibit_VideoControl_Interactions.composeKept($535);
-            if ($536) {
+            var $520 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.composeOutcomeReading(j));
+            var $521 = Exhibit_VideoControl_Interactions.composeKept($520);
+            if ($521) {
                 return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
             };
             return v4(true);
         };
-        var $538 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.composeOutcomeReading(j));
-        var $539 = Exhibit_VideoControl_Interactions.composeStopped($538);
-        if ($539) {
+        var $523 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.composeOutcomeReading(j));
+        var $524 = Exhibit_VideoControl_Interactions.composeStopped($523);
+        if ($524) {
             return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(movingRig)(function () {
-                return abortPlan(Data_Lens_Getter.viewOn($538)(Exhibit_VideoControl_Types["_composedReason"](Data_Lens_Internal_Forget.strongForget)));
+                return abortPlan(Data_Lens_Getter.viewOn($523)(Exhibit_VideoControl_Types["_composedReason"](Data_Lens_Internal_Forget.strongForget)));
             });
         };
         return v2(true);
     };
-    var $541 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.composeOutcomeReading(j));
-    var $542 = Exhibit_VideoControl_Interactions.composeLanded($541);
-    if ($542) {
+    var $526 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.composeOutcomeReading(j));
+    var $527 = Exhibit_VideoControl_Interactions.composeLanded($526);
+    if ($527) {
         return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(_CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
             return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(""));
         })))))(function () {
@@ -125691,36 +125593,36 @@ var layComposition = function (j) {
     var v = function (v1) {
         var v2 = function (v3) {
             var v4 = function (v5) {
-                var $544 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.compositionOutcomeReading(j));
+                var $529 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.compositionOutcomeReading(j));
                 return _CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
-                    return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn($544)(Exhibit_VideoControl_Types["_compositionReason"](Data_Lens_Internal_Forget.strongForget))));
+                    return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn($529)(Exhibit_VideoControl_Types["_compositionReason"](Data_Lens_Internal_Forget.strongForget))));
                 }))));
             };
-            var $546 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.compositionOutcomeReading(j));
-            var $547 = Exhibit_VideoControl_Interactions.compositionKept($546);
-            if ($547) {
+            var $531 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.compositionOutcomeReading(j));
+            var $532 = Exhibit_VideoControl_Interactions.compositionKept($531);
+            if ($532) {
                 return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
             };
             return v4(true);
         };
-        var $549 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.compositionOutcomeReading(j));
-        var $550 = Exhibit_VideoControl_Interactions.compositionStopped($549);
-        if ($550) {
-            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(namingSwitched($549))(function () {
+        var $534 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.compositionOutcomeReading(j));
+        var $535 = Exhibit_VideoControl_Interactions.compositionStopped($534);
+        if ($535) {
+            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(namingSwitched($534))(function () {
                 return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(movingRig)(function () {
-                    return abortPlan(Data_Lens_Getter.viewOn($549)(Exhibit_VideoControl_Types["_compositionReason"](Data_Lens_Internal_Forget.strongForget)));
+                    return abortPlan(Data_Lens_Getter.viewOn($534)(Exhibit_VideoControl_Types["_compositionReason"](Data_Lens_Internal_Forget.strongForget)));
                 });
             });
         };
         return v2(true);
     };
-    var $552 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.compositionOutcomeReading(j));
-    var $553 = Exhibit_VideoControl_Interactions.compositionLanded($552);
-    if ($553) {
+    var $537 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.compositionOutcomeReading(j));
+    var $538 = Exhibit_VideoControl_Interactions.compositionLanded($537);
+    if ($538) {
         return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(_CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
             return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(""));
         })))))(function () {
-            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(namingSwitched($552))(function () {
+            return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(namingSwitched($537))(function () {
                 return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(movingRig)(function () {
                     return layAnsweredOutputs(j);
                 });
@@ -125733,30 +125635,30 @@ var layDisconnect = function (j) {
     var v = function (v1) {
         var v2 = function (v3) {
             var v4 = function (v5) {
-                var $555 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.disconnectOutcomeReading(j));
+                var $540 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.disconnectOutcomeReading(j));
                 return _CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
-                    return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn($555)(Exhibit_VideoControl_Types["_disconnectReason"](Data_Lens_Internal_Forget.strongForget))));
+                    return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn($540)(Exhibit_VideoControl_Types["_disconnectReason"](Data_Lens_Internal_Forget.strongForget))));
                 }))));
             };
-            var $557 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.disconnectOutcomeReading(j));
-            var $558 = Exhibit_VideoControl_Interactions.disconnectKept($557);
-            if ($558) {
+            var $542 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.disconnectOutcomeReading(j));
+            var $543 = Exhibit_VideoControl_Interactions.disconnectKept($542);
+            if ($543) {
                 return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
             };
             return v4(true);
         };
-        var $560 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.disconnectOutcomeReading(j));
-        var $561 = Exhibit_VideoControl_Interactions.disconnectStopped($560);
-        if ($561) {
+        var $545 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.disconnectOutcomeReading(j));
+        var $546 = Exhibit_VideoControl_Interactions.disconnectStopped($545);
+        if ($546) {
             return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(movingRig)(function () {
-                return abortPlan(Data_Lens_Getter.viewOn($560)(Exhibit_VideoControl_Types["_disconnectReason"](Data_Lens_Internal_Forget.strongForget)));
+                return abortPlan(Data_Lens_Getter.viewOn($545)(Exhibit_VideoControl_Types["_disconnectReason"](Data_Lens_Internal_Forget.strongForget)));
             });
         };
         return v2(true);
     };
-    var $563 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.disconnectOutcomeReading(j));
-    var $564 = Exhibit_VideoControl_Interactions.disconnectLeft($563);
-    if ($564) {
+    var $548 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.disconnectOutcomeReading(j));
+    var $549 = Exhibit_VideoControl_Interactions.disconnectLeft($548);
+    if ($549) {
         return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(movingRig)(function () {
             return layAnsweredOutputsElse(refreshOutputs)(j);
         });
@@ -125768,30 +125670,30 @@ var layHdResolution = function (j) {
         var v2 = function (v3) {
             var v4 = function (v5) {
                 var v6 = function (v7) {
-                    var $566 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.hdOutcomeReading(j));
+                    var $551 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.hdOutcomeReading(j));
                     return _CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
-                        return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn($566)(Exhibit_VideoControl_Types["_hdSwitchReason"](Data_Lens_Internal_Forget.strongForget))));
+                        return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn($551)(Exhibit_VideoControl_Types["_hdSwitchReason"](Data_Lens_Internal_Forget.strongForget))));
                     }))));
                 };
-                var $568 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.hdOutcomeReading(j));
-                var $569 = Exhibit_VideoControl_Interactions.hdKept($568);
-                if ($569) {
+                var $553 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.hdOutcomeReading(j));
+                var $554 = Exhibit_VideoControl_Interactions.hdKept($553);
+                if ($554) {
                     return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
                 };
                 return v6(true);
             };
-            var $571 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.hdOutcomeReading(j));
-            var $572 = Exhibit_VideoControl_Interactions.hdStopped($571);
-            if ($572) {
+            var $556 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.hdOutcomeReading(j));
+            var $557 = Exhibit_VideoControl_Interactions.hdStopped($556);
+            if ($557) {
                 return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(movingRig)(function () {
-                    return abortPlan(Data_Lens_Getter.viewOn($571)(Exhibit_VideoControl_Types["_hdSwitchReason"](Data_Lens_Internal_Forget.strongForget)));
+                    return abortPlan(Data_Lens_Getter.viewOn($556)(Exhibit_VideoControl_Types["_hdSwitchReason"](Data_Lens_Internal_Forget.strongForget)));
                 });
             };
             return v4(true);
         };
-        var $574 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.hdOutcomeReading(j));
-        var $575 = Exhibit_VideoControl_Interactions.hdResized($574);
-        if ($575) {
+        var $559 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.hdOutcomeReading(j));
+        var $560 = Exhibit_VideoControl_Interactions.hdResized($559);
+        if ($560) {
             return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(_CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
                 return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(""));
             })))))(function () {
@@ -125802,9 +125704,9 @@ var layHdResolution = function (j) {
         };
         return v2(true);
     };
-    var $577 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.hdOutcomeReading(j));
-    var $578 = Exhibit_VideoControl_Interactions.hdSwitched($577);
-    if ($578) {
+    var $562 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.hdOutcomeReading(j));
+    var $563 = Exhibit_VideoControl_Interactions.hdSwitched($562);
+    if ($563) {
         return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(_CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
             return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(""));
         })))))(function () {
@@ -125819,30 +125721,30 @@ var layLatency = function (j) {
     var v = function (v1) {
         var v2 = function (v3) {
             var v4 = function (v5) {
-                var $580 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.latencyOutcomeReading(j));
+                var $565 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.latencyOutcomeReading(j));
                 return _CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
-                    return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn($580)(Exhibit_VideoControl_Types["_latencyReason"](Data_Lens_Internal_Forget.strongForget))));
+                    return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn($565)(Exhibit_VideoControl_Types["_latencyReason"](Data_Lens_Internal_Forget.strongForget))));
                 }))));
             };
-            var $582 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.latencyOutcomeReading(j));
-            var $583 = Exhibit_VideoControl_Interactions.latencyKept($582);
-            if ($583) {
+            var $567 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.latencyOutcomeReading(j));
+            var $568 = Exhibit_VideoControl_Interactions.latencyKept($567);
+            if ($568) {
                 return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
             };
             return v4(true);
         };
-        var $585 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.latencyOutcomeReading(j));
-        var $586 = Exhibit_VideoControl_Interactions.latencyStopped($585);
-        if ($586) {
+        var $570 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.latencyOutcomeReading(j));
+        var $571 = Exhibit_VideoControl_Interactions.latencyStopped($570);
+        if ($571) {
             return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(movingRig)(function () {
-                return abortPlan(Data_Lens_Getter.viewOn($585)(Exhibit_VideoControl_Types["_latencyReason"](Data_Lens_Internal_Forget.strongForget)));
+                return abortPlan(Data_Lens_Getter.viewOn($570)(Exhibit_VideoControl_Types["_latencyReason"](Data_Lens_Internal_Forget.strongForget)));
             });
         };
         return v2(true);
     };
-    var $588 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.latencyOutcomeReading(j));
-    var $589 = Exhibit_VideoControl_Interactions.latencySwitched($588);
-    if ($589) {
+    var $573 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.latencyOutcomeReading(j));
+    var $574 = Exhibit_VideoControl_Interactions.latencySwitched($573);
+    if ($574) {
         return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(movingRig)(function () {
             return layAnsweredOutputsElse(refreshOutputs)(j);
         });
@@ -125854,30 +125756,30 @@ var layReroute = function (j) {
         var v2 = function (v3) {
             var v4 = function (v5) {
                 var v6 = function (v7) {
-                    var $591 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.rerouteOutcomeReading(j));
+                    var $576 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.rerouteOutcomeReading(j));
                     return _CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
-                        return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn($591)(Exhibit_VideoControl_Types["_reroutedReason"](Data_Lens_Internal_Forget.strongForget))));
+                        return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn($576)(Exhibit_VideoControl_Types["_reroutedReason"](Data_Lens_Internal_Forget.strongForget))));
                     }))));
                 };
-                var $593 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.rerouteOutcomeReading(j));
-                var $594 = Exhibit_VideoControl_Interactions.rerouteKept($593);
-                if ($594) {
+                var $578 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.rerouteOutcomeReading(j));
+                var $579 = Exhibit_VideoControl_Interactions.rerouteKept($578);
+                if ($579) {
                     return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
                 };
                 return v6(true);
             };
-            var $596 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.rerouteOutcomeReading(j));
-            var $597 = Exhibit_VideoControl_Interactions.rerouteStopped($596);
-            if ($597) {
+            var $581 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.rerouteOutcomeReading(j));
+            var $582 = Exhibit_VideoControl_Interactions.rerouteStopped($581);
+            if ($582) {
                 return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(movingRig)(function () {
-                    return abortPlan(Data_Lens_Getter.viewOn($596)(Exhibit_VideoControl_Types["_reroutedReason"](Data_Lens_Internal_Forget.strongForget)));
+                    return abortPlan(Data_Lens_Getter.viewOn($581)(Exhibit_VideoControl_Types["_reroutedReason"](Data_Lens_Internal_Forget.strongForget)));
                 });
             };
             return v4(true);
         };
-        var $599 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.rerouteOutcomeReading(j));
-        var $600 = Exhibit_VideoControl_Interactions.rerouteRescaled($599);
-        if ($600) {
+        var $584 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.rerouteOutcomeReading(j));
+        var $585 = Exhibit_VideoControl_Interactions.rerouteRescaled($584);
+        if ($585) {
             return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(_CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
                 return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(""));
             })))))(function () {
@@ -125888,9 +125790,9 @@ var layReroute = function (j) {
         };
         return v2(true);
     };
-    var $602 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.rerouteOutcomeReading(j));
-    var $603 = Exhibit_VideoControl_Interactions.rerouteLanded($602);
-    if ($603) {
+    var $587 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.rerouteOutcomeReading(j));
+    var $588 = Exhibit_VideoControl_Interactions.rerouteLanded($587);
+    if ($588) {
         return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(_CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
             return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(""));
         })))))(function () {
@@ -125905,30 +125807,30 @@ var layScaling = function (j) {
     var v = function (v1) {
         var v2 = function (v3) {
             var v4 = function (v5) {
-                var $605 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.scalingOutcomeReading(j));
+                var $590 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.scalingOutcomeReading(j));
                 return _CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
-                    return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn($605)(Exhibit_VideoControl_Types["_scalingReason"](Data_Lens_Internal_Forget.strongForget))));
+                    return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn($590)(Exhibit_VideoControl_Types["_scalingReason"](Data_Lens_Internal_Forget.strongForget))));
                 }))));
             };
-            var $607 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.scalingOutcomeReading(j));
-            var $608 = Exhibit_VideoControl_Interactions.scalingKept($607);
-            if ($608) {
+            var $592 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.scalingOutcomeReading(j));
+            var $593 = Exhibit_VideoControl_Interactions.scalingKept($592);
+            if ($593) {
                 return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
             };
             return v4(true);
         };
-        var $610 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.scalingOutcomeReading(j));
-        var $611 = Exhibit_VideoControl_Interactions.scalingStopped($610);
-        if ($611) {
+        var $595 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.scalingOutcomeReading(j));
+        var $596 = Exhibit_VideoControl_Interactions.scalingStopped($595);
+        if ($596) {
             return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(movingRig)(function () {
-                return abortPlan(Data_Lens_Getter.viewOn($610)(Exhibit_VideoControl_Types["_scalingReason"](Data_Lens_Internal_Forget.strongForget)));
+                return abortPlan(Data_Lens_Getter.viewOn($595)(Exhibit_VideoControl_Types["_scalingReason"](Data_Lens_Internal_Forget.strongForget)));
             });
         };
         return v2(true);
     };
-    var $613 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.scalingOutcomeReading(j));
-    var $614 = Exhibit_VideoControl_Interactions.scalingDone($613);
-    if ($614) {
+    var $598 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.scalingOutcomeReading(j));
+    var $599 = Exhibit_VideoControl_Interactions.scalingDone($598);
+    if ($599) {
         return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(movingRig)(function () {
             return layAnsweredOutputsElse(refreshOutputs)(j);
         });
@@ -125939,30 +125841,30 @@ var layViewMode = function (j) {
     var v = function (v1) {
         var v2 = function (v3) {
             var v4 = function (v5) {
-                var $616 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.viewModeOutcomeReading(j));
+                var $601 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.viewModeOutcomeReading(j));
                 return _CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (s) {
-                    return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn($616)(Exhibit_VideoControl_Types["_viewModeReason"](Data_Lens_Internal_Forget.strongForget))));
+                    return Unify_Types.flipuse(s)(Data_Lens_Setter.set(_routeRefusal(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn($601)(Exhibit_VideoControl_Types["_viewModeReason"](Data_Lens_Internal_Forget.strongForget))));
                 }))));
             };
-            var $618 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.viewModeOutcomeReading(j));
-            var $619 = Exhibit_VideoControl_Interactions.viewModeKept($618);
-            if ($619) {
+            var $603 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.viewModeOutcomeReading(j));
+            var $604 = Exhibit_VideoControl_Interactions.viewModeKept($603);
+            if ($604) {
                 return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentMainPanel))(Data_Unit.unit);
             };
             return v4(true);
         };
-        var $621 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.viewModeOutcomeReading(j));
-        var $622 = Exhibit_VideoControl_Interactions.viewModeStopped($621);
-        if ($622) {
+        var $606 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.viewModeOutcomeReading(j));
+        var $607 = Exhibit_VideoControl_Interactions.viewModeStopped($606);
+        if ($607) {
             return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(movingRig)(function () {
-                return abortPlan(Data_Lens_Getter.viewOn($621)(Exhibit_VideoControl_Types["_viewModeReason"](Data_Lens_Internal_Forget.strongForget)));
+                return abortPlan(Data_Lens_Getter.viewOn($606)(Exhibit_VideoControl_Types["_viewModeReason"](Data_Lens_Internal_Forget.strongForget)));
             });
         };
         return v2(true);
     };
-    var $624 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.viewModeOutcomeReading(j));
-    var $625 = Exhibit_VideoControl_Interactions.viewModeSwitched($624);
-    if ($625) {
+    var $609 = Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.viewModeOutcomeReading(j));
+    var $610 = Exhibit_VideoControl_Interactions.viewModeSwitched($609);
+    if ($610) {
         return Control_Bind.bind(ExploreCore.bindCo(extendComponentMainPanel))(movingRig)(function () {
             return layAnsweredOutputsElse(refreshOutputs)(j);
         });
@@ -126038,11 +125940,6 @@ var marshalMainPanel = function (v) {
         };
         if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentMainPanelControlsPanelSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentVideoControls.SingleControlsSignal && v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentSingleControls.ComponentSingleControlsGenlockSignal))) {
             return Extra["_coe"](ExploreCore.bindCo(extendComponentMainPanel))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainPanel))(requestLatency(v.value0.value0.value0.value0))(function () {
-                return settleShownOutput;
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentMainPanelControlsPanelSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentVideoControls.SingleControlsSignal && v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentSingleControls.ComponentSingleControlsScaledSignal))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentMainPanel))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainPanel))(requestScaling(v.value0.value0.value0.value0))(function () {
                 return settleShownOutput;
             }))(v1);
         };
@@ -126262,8 +126159,8 @@ var marshalMainPanel = function (v) {
             };
             if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentMainPanelReqPanelSignal && (v.value0.value0 instanceof Unify_ReqPanel2.ReplSignal && v.value0.value0.value0.value0.value0.value0 === "UpdatePreview"))) {
                 return Extra["_coe"](ExploreCore.bindCo(extendComponentMainPanel))((function () {
-                    var $911 = Exhibit_VideoControl_Interactions.previewLeaving(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.previewUpdateReading(v.value0.value0.value0.value1)));
-                    if ($911) {
+                    var $892 = Exhibit_VideoControl_Interactions.previewLeaving(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.previewUpdateReading(v.value0.value0.value0.value1)));
+                    if ($892) {
                         return freezeLeaving(v.value0.value0.value0.value1);
                     };
                     return Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainPanel))(layPreviewUpdate(v.value0.value0.value0.value1))(function () {
@@ -126278,8 +126175,8 @@ var marshalMainPanel = function (v) {
                 })())(v1);
             };
             if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentMainPanelReqPanelSignal && (v.value0.value0 instanceof Unify_ReqPanel2.ReplSignal && v.value0.value0.value0.value0.value0.value0 === "ListLayouts"))) {
-                return Extra["_coe"](ExploreCore.bindCo(extendComponentMainPanel))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainPanel))(layLayoutNames(v.value0.value0.value0.value1))(function () {
-                    return requestLayoutDescription;
+                return Extra["_coe"](ExploreCore.bindCo(extendComponentMainPanel))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainPanel))(layCatalogue(v.value0.value0.value0.value1))(function () {
+                    return refillLayouts;
                 }))(v1);
             };
             if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentMainPanelReqPanelSignal && (v.value0.value0 instanceof Unify_ReqPanel2.ReplSignal && v.value0.value0.value0.value0.value0.value0 === "DescribeLayout"))) {
@@ -126305,12 +126202,12 @@ var marshalMainPanel = function (v) {
             return v1;
         };
         if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentMainPanelReqPanelSignal && v.value0.value0 instanceof Unify_ReqPanel2.ReplSignal)) {
-            var $957 = Exhibit_VideoControl_Interactions.planRung(v.value0.value0.value0.value0);
-            if ($957) {
-                var $958 = Exhibit_VideoControl_Interactions.commandRefusal(v.value0.value0.value0.value1);
-                if ($958 instanceof Data_Maybe.Just) {
+            var $938 = Exhibit_VideoControl_Interactions.planRung(v.value0.value0.value0.value0);
+            if ($938) {
+                var $939 = Exhibit_VideoControl_Interactions.commandRefusal(v.value0.value0.value0.value1);
+                if ($939 instanceof Data_Maybe.Just) {
                     return Extra["_coe"](ExploreCore.bindCo(extendComponentMainPanel))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentMainPanel))(movingRig)(function () {
-                        return abortPlan($958.value0);
+                        return abortPlan($939.value0);
                     }))(v1);
                 };
                 return v2(true);
@@ -126371,12 +126268,12 @@ var raiseMainPanel = function (s) {
         if (s instanceof ComponentMainPanelPreviewSkippedSignal) {
             return _CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.set((function () {
-                    var $1075 = _previewSkipped(Data_Profunctor_Strong.strongFn);
-                    var $1076 = Data_Lens_Traversal.element(Data_Lens_Internal_Wander.wanderFunction)(s.value0.value0)(function (dictWander) {
+                    var $1056 = _previewSkipped(Data_Profunctor_Strong.strongFn);
+                    var $1057 = Data_Lens_Traversal.element(Data_Lens_Internal_Wander.wanderFunction)(s.value0.value0)(function (dictWander) {
                         return Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(dictWander);
                     });
-                    return function ($1077) {
-                        return $1075($1076($1077));
+                    return function ($1058) {
+                        return $1056($1057($1058));
                     };
                 })())(s.value0.value1));
             }))));
@@ -126389,12 +126286,12 @@ var raiseMainPanel = function (s) {
         if (s instanceof ComponentMainPanelPreviewPlannedSignal) {
             return _CoMainPanel(_fields(_CoMainPanelFields(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.set((function () {
-                    var $1078 = _previewPlanned(Data_Profunctor_Strong.strongFn);
-                    var $1079 = Data_Lens_Traversal.element(Data_Lens_Internal_Wander.wanderFunction)(s.value0.value0)(function (dictWander) {
+                    var $1059 = _previewPlanned(Data_Profunctor_Strong.strongFn);
+                    var $1060 = Data_Lens_Traversal.element(Data_Lens_Internal_Wander.wanderFunction)(s.value0.value0)(function (dictWander) {
                         return Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(dictWander);
                     });
-                    return function ($1080) {
-                        return $1078($1079($1080));
+                    return function ($1061) {
+                        return $1059($1060($1061));
                     };
                 })())(s.value0.value1));
             }))));
@@ -126570,7 +126467,7 @@ module.exports = {
     closeLayouts: closeLayouts,
     refillLayouts: refillLayouts,
     pickedLayout: pickedLayout,
-    layLayoutNames: layLayoutNames,
+    layCatalogue: layCatalogue,
     layDescribedLayout: layDescribedLayout,
     requestViewMode: requestViewMode,
     layViewMode: layViewMode,
@@ -126595,11 +126492,7 @@ module.exports = {
     requestSetLayoutNamed: requestSetLayoutNamed,
     requestApplyLayout: requestApplyLayout,
     requestLatency: requestLatency,
-    fastFormat: fastFormat,
     layLatency: layLatency,
-    scalingFormat: scalingFormat,
-    requestScaling: requestScaling,
-    scalePick: scalePick,
     layScaling: layScaling,
     shownFormat: shownFormat,
     requestSwitchFamily: requestSwitchFamily,
@@ -133156,98 +133049,98 @@ var drawnSourceOf = function (onAir) {
         if (Data_Boolean.otherwise) {
             return "";
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentOutput (line 260, column 1 - line 260, column 53): " + [ onAir.constructor.name, d.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentOutput (line 261, column 1 - line 261, column 53): " + [ onAir.constructor.name, d.constructor.name ]);
     };
 };
 var def_ComponentOutput = Unify_Types.def(defOutput);
 var _sourceOnAir = function (dictStrong) {
-    var $168 = Data_Lens_Lens["lens'"](function (v) {
+    var $169 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new Output(s);
         });
     })(dictStrong);
-    var $169 = Data_Lens_Record.prop({
+    var $170 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "sourceOnAir";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($170) {
-        return $168($169($170));
+    return function ($171) {
+        return $169($170($171));
     };
 };
 var _selected = function (dictStrong) {
-    var $171 = Data_Lens_Lens["lens'"](function (v) {
+    var $172 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new Output(s);
         });
     })(dictStrong);
-    var $172 = Data_Lens_Record.prop({
+    var $173 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "selected";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($173) {
-        return $171($172($173));
+    return function ($174) {
+        return $172($173($174));
     };
 };
 var _select = function (dictStrong) {
-    var $174 = Data_Lens_Lens["lens'"](function (v) {
+    var $175 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new Output(s);
         });
     })(dictStrong);
-    var $175 = Data_Lens_Record.prop({
+    var $176 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "select";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($176) {
-        return $174($175($176));
+    return function ($177) {
+        return $175($176($177));
     };
 };
 var _outputName = function (dictStrong) {
-    var $177 = Data_Lens_Lens["lens'"](function (v) {
+    var $178 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new Output(s);
         });
     })(dictStrong);
-    var $178 = Data_Lens_Record.prop({
+    var $179 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "outputName";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($179) {
-        return $177($178($179));
+    return function ($180) {
+        return $178($179($180));
     };
 };
 var _output = function (dictStrong) {
-    var $180 = Data_Lens_Lens["lens'"](function (v) {
+    var $181 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new Output(s);
         });
     })(dictStrong);
-    var $181 = Data_Lens_Record.prop({
+    var $182 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "output";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($182) {
-        return $180($181($182));
+    return function ($183) {
+        return $181($182($183));
     };
 };
 var _knownFormat = function (dictStrong) {
-    var $183 = Data_Lens_Lens["lens'"](function (v) {
+    var $184 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new Output(s);
         });
     })(dictStrong);
-    var $184 = Data_Lens_Record.prop({
+    var $185 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "knownFormat";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($185) {
-        return $183($184($185));
+    return function ($186) {
+        return $184($185($186));
     };
 };
 var knownFormatOf = function (a) {
@@ -133262,38 +133155,42 @@ var knownFormatOf = function (a) {
     return Data_Maybe.Nothing.value;
 };
 var _isActive = function (dictStrong) {
-    var $186 = Data_Lens_Lens["lens'"](function (v) {
+    var $187 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new Output(s);
         });
     })(dictStrong);
-    var $187 = Data_Lens_Record.prop({
+    var $188 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "isActive";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($188) {
-        return $186($187($188));
+    return function ($189) {
+        return $187($188($189));
     };
 };
 var _assignedSource = function (dictStrong) {
-    var $189 = Data_Lens_Lens["lens'"](function (v) {
+    var $190 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new Output(s);
         });
     })(dictStrong);
-    var $190 = Data_Lens_Record.prop({
+    var $191 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "assignedSource";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($191) {
-        return $189($190($191));
+    return function ($192) {
+        return $190($191($192));
     };
 };
 var carrying = function (d) {
     return function (a) {
         return Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_output(Data_Profunctor_Strong.strongFn))(d)))(Data_Lens_Setter.set(_outputName(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))))(Data_Lens_Setter.set(_assignedSource(Data_Profunctor_Strong.strongFn))(drawnSourceOf(Data_Lens_Getter.viewOn(a)(_sourceOnAir(Data_Lens_Internal_Forget.strongForget)))(d))))(Data_Lens_Setter.set(_isActive(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.activeOf(d))))(Data_Lens_Setter.over(_knownFormat(Data_Profunctor_Strong.strongFn))(function (f) {
+            var $142 = Exhibit_VideoControl_Interactions.genlockOf(d);
+            if ($142) {
+                return f;
+            };
             return Data_Maybe.maybe(f)(function (n) {
                 return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(n)(Exhibit_VideoControl_VideoControlAPI["_argumentsWidth"](Data_Lens_Internal_Forget.strongForget)), new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(n)(Exhibit_VideoControl_VideoControlAPI["_argumentsHeight"](Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(n)(Exhibit_VideoControl_VideoControlAPI["_argumentsFps"](Data_Lens_Internal_Forget.strongForget))));
             })(Exhibit_VideoControl_Interactions.namedFormatOf(d));
@@ -133308,8 +133205,8 @@ var watching = function (ts) {
 var updateJsonOutput = {
     updateJson: function (j) {
         return function (a) {
-            var v = Data_Either.either(function ($192) {
-                return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($192));
+            var v = Data_Either.either(function ($193) {
+                return Data_Either.Left.create(Data_Argonaut_Decode_Error.printJsonDecodeError($193));
             })(Data_Either.Right.create)(Data_Argonaut_Decode_Class.decodeJson(Exhibit_VideoControl_Types.decodeJsonDeviceSettings)(j));
             if (v instanceof Data_Either.Right) {
                 return Control_Applicative.pure(Data_Either.applicativeEither)(carrying(v.value0)(a));
@@ -133328,12 +133225,12 @@ var displayOutput = function (s) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_outputName(Data_Profunctor_Strong.strongFn))(v.target.value));
             })));
         }) ]), React_DOM.div([ React_DOM_Props.className((function () {
-            var $145 = Data_Lens_Getter.viewOn(s)(_selected(Data_Lens_Internal_Forget.strongForget));
-            if ($145) {
+            var $146 = Data_Lens_Getter.viewOn(s)(_selected(Data_Lens_Internal_Forget.strongForget));
+            if ($146) {
                 return "dot blue";
             };
-            var $146 = Data_Lens_Getter.viewOn(s)(_isActive(Data_Lens_Internal_Forget.strongForget));
-            if ($146) {
+            var $147 = Data_Lens_Getter.viewOn(s)(_isActive(Data_Lens_Internal_Forget.strongForget));
+            if ($147) {
                 return "dot green";
             };
             return "dot grey";
@@ -133342,8 +133239,8 @@ var displayOutput = function (s) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_isActive(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(s)(_isActive(Data_Lens_Internal_Forget.strongForget))));
             })));
         }) ])([ React_DOM.text(Data_Show.show(Data_Show.showBoolean)(Data_Lens_Getter.viewOn(s)(_isActive(Data_Lens_Internal_Forget.strongForget)))) ]) ]), (function () {
-            var $147 = Data_Lens_Getter.viewOn(s)(_isActive(Data_Lens_Internal_Forget.strongForget));
-            if ($147) {
+            var $148 = Data_Lens_Getter.viewOn(s)(_isActive(Data_Lens_Internal_Forget.strongForget));
+            if ($148) {
                 return React_DOM.div([ React_DOM_Props.className("thumb") ])([ React_DOM.canvas([ React_DOM_Props.className("feed") ])([  ]), React_DOM.div([ React_DOM_Props.className("cap"), React_DOM_Props.onClick(function (v) {
                     return send(Extra.update(new ComponentOutputAssignedSourceSignal(Data_Lens_Getter.viewOn(s)(_assignedSource(Data_Lens_Internal_Forget.strongForget))))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                         return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_assignedSource(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(s)(_assignedSource(Data_Lens_Internal_Forget.strongForget))));
@@ -133360,8 +133257,8 @@ var displayOutput = function (s) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_knownFormat(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(s)(_knownFormat(Data_Lens_Internal_Forget.strongForget))));
             })));
         }) ])([ React_DOM.text(Data_Show.show(Data_Tuple.showTuple(Data_Show.showInt)(Data_Tuple.showTuple(Data_Show.showInt)(Data_Show.showInt)))(Data_Lens_Getter.viewOn(s)(_knownFormat(Data_Lens_Internal_Forget.strongForget)))) ]), React_DOM.div([ React_DOM_Props.className((function () {
-            var $148 = Data_Lens_Getter.viewOn(s)(_selected(Data_Lens_Internal_Forget.strongForget));
-            if ($148) {
+            var $149 = Data_Lens_Getter.viewOn(s)(_selected(Data_Lens_Internal_Forget.strongForget));
+            if ($149) {
                 return "mark is-selected";
             };
             return "mark";
@@ -133374,14 +133271,14 @@ var displayOutput = function (s) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_select(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(s)(_select(Data_Lens_Internal_Forget.strongForget))));
             })));
         }) ])([ React_DOM.text(Data_Show.show(Data_Unit.showUnit)(Data_Lens_Getter.viewOn(s)(_select(Data_Lens_Internal_Forget.strongForget)))) ]), React_DOM.div([ React_DOM_Props.className((function () {
-            var $149 = Data_Lens_Getter.viewOn(s)((function () {
-                var $193 = _output(Data_Lens_Internal_Forget.strongForget);
-                var $194 = Exhibit_VideoControl_Types["_devicePreviewBox"](Data_Lens_Internal_Forget.strongForget);
-                return function ($195) {
-                    return $193($194($195));
+            var $150 = Data_Lens_Getter.viewOn(s)((function () {
+                var $194 = _output(Data_Lens_Internal_Forget.strongForget);
+                var $195 = Exhibit_VideoControl_Types["_devicePreviewBox"](Data_Lens_Internal_Forget.strongForget);
+                return function ($196) {
+                    return $194($195($196));
                 };
             })());
-            if ($149) {
+            if ($150) {
                 return "cardsource is-previewbox";
             };
             return "cardsource";
@@ -134615,7 +134512,7 @@ var displayOutputDeviceConfiguration = function (s) {
         })()) ]) ]) ])(Data_Semigroup.append(Data_Semigroup.semigroupArray)((function () {
             var $317 = Data_Lens_Getter.viewOn(s)(_transceiver(Data_Lens_Internal_Forget.strongForget));
             if ($317) {
-                return [ React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Read as") ]), React_DOM.div([ React_DOM_Props.className("seg is-control"), React_DOM_Props["_id"]("config_read_as") ])([ React_DOM.div([ React_DOM_Props.className(outputSeg(Data_Lens_Getter.viewOn(s)(_readAs(Data_Lens_Internal_Forget.strongForget)) === "TX")), React_DOM_Props["_id"]("config_read_as_tx"), React_DOM_Props.onClick(function (v) {
+                return [ React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Device Mode") ]), React_DOM.div([ React_DOM_Props.className("seg is-control"), React_DOM_Props["_id"]("config_read_as") ])([ React_DOM.div([ React_DOM_Props.className(outputSeg(Data_Lens_Getter.viewOn(s)(_readAs(Data_Lens_Internal_Forget.strongForget)) === "TX")), React_DOM_Props["_id"]("config_read_as_tx"), React_DOM_Props.onClick(function (v) {
                     return send(Extra.update(new ComponentOutputDeviceConfigurationReadAsSignal("TX"))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                         return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_readAs(Data_Profunctor_Strong.strongFn))("TX"));
                     })));
@@ -140051,7 +139948,6 @@ var Data_Argonaut_Decode_Error = require("../Data.Argonaut.Decode.Error/index.js
 var Data_Argonaut_Decode_Generic = require("../Data.Argonaut.Decode.Generic/index.js");
 var Data_Argonaut_Encode_Class = require("../Data.Argonaut.Encode.Class/index.js");
 var Data_Argonaut_Encode_Generic = require("../Data.Argonaut.Encode.Generic/index.js");
-var Data_Array = require("../Data.Array/index.js");
 var Data_Boolean = require("../Data.Boolean/index.js");
 var Data_Either = require("../Data.Either/index.js");
 var Data_Eq = require("../Data.Eq/index.js");
@@ -140059,7 +139955,6 @@ var Data_Eq_Generic = require("../Data.Eq.Generic/index.js");
 var Data_Function = require("../Data.Function/index.js");
 var Data_Functor = require("../Data.Functor/index.js");
 var Data_Generic_Rep = require("../Data.Generic.Rep/index.js");
-var Data_HeytingAlgebra = require("../Data.HeytingAlgebra/index.js");
 var Data_Identity = require("../Data.Identity/index.js");
 var Data_Lens_Getter = require("../Data.Lens.Getter/index.js");
 var Data_Lens_Internal_Forget = require("../Data.Lens.Internal.Forget/index.js");
@@ -140072,7 +139967,6 @@ var Data_List_Types = require("../Data.List.Types/index.js");
 var Data_Maybe = require("../Data.Maybe/index.js");
 var Data_Newtype = require("../Data.Newtype/index.js");
 var Data_Profunctor_Strong = require("../Data.Profunctor.Strong/index.js");
-var Data_Semigroup = require("../Data.Semigroup/index.js");
 var Data_Show = require("../Data.Show/index.js");
 var Data_Show_Generic = require("../Data.Show.Generic/index.js");
 var Data_String_CodeUnits = require("../Data.String.CodeUnits/index.js");
@@ -140471,7 +140365,7 @@ var genericComponentSingleCon1 = {
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr))))))))))))))))))) {
             return new ComponentSingleControlsAffect(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSingleControls (line 38, column 1 - line 38, column 56): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSingleControls (line 37, column 1 - line 37, column 56): " + [ x.constructor.name ]);
     },
     from: function (x) {
         if (x instanceof ComponentSingleControlsSwitchToTabMultiviewSignal) {
@@ -140537,7 +140431,7 @@ var genericComponentSingleCon1 = {
         if (x instanceof ComponentSingleControlsAffect) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0))))))))))))))))))));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSingleControls (line 38, column 1 - line 38, column 56): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSingleControls (line 37, column 1 - line 37, column 56): " + [ x.constructor.name ]);
     }
 };
 var functorComponentSingleCon = {
@@ -141187,7 +141081,7 @@ var pickingFor = function (d) {
             return function ($512) {
                 return $510($511($512));
             };
-        })()) === Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget))) {
+        })()) === Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget)) && Exhibit_VideoControl_Interactions.displayModeOf(Data_Lens_Getter.viewOn(a)(_output(Data_Lens_Internal_Forget.strongForget))) === Exhibit_VideoControl_Interactions.displayModeOf(d)) {
             return a;
         };
         if (Data_Boolean.otherwise) {
@@ -141198,9 +141092,9 @@ var pickingFor = function (d) {
             if (v instanceof Data_Maybe.Nothing) {
                 return Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_resolution(Data_Profunctor_Strong.strongFn))("")))(Data_Lens_Setter.set(_fps60(Data_Profunctor_Strong.strongFn))(true));
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSingleControls (line 414, column 5 - line 416, column 58): " + [ v.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSingleControls (line 401, column 5 - line 403, column 58): " + [ v.constructor.name ]);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSingleControls (line 409, column 1 - line 410, column 62): " + [ d.constructor.name, a.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSingleControls (line 396, column 1 - line 397, column 62): " + [ d.constructor.name, a.constructor.name ]);
     };
 };
 var _colorimetry = function (dictStrong) {
@@ -141252,7 +141146,7 @@ var carrying = function (d) {
     return function (a) {
         return Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(pickingFor(d)(a))(Data_Lens_Setter.set(_output(Data_Profunctor_Strong.strongFn))(d)))(Data_Lens_Setter.set(_viewMode(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.viewModeOf(d))))(Data_Lens_Setter.set(_latency(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.latencyOf(d))))(Data_Lens_Setter.set(_genlock(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.genlockOf(d))))(Data_Lens_Setter.set(_scaling(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.scalingOf(d))))(Data_Lens_Setter.set(_hdr(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.hdrOf(d))))(Data_Lens_Setter.set(_hdcp(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.hdcpOf(d))))(Data_Lens_Setter.set(_chroma(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.chromaOf(d))))(Data_Lens_Setter.set(_bitDepth(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.bitDepthOf(d))))(Data_Lens_Setter.set(_colorimetry(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.colorimetryOf(d))))(Data_Lens_Setter.set(_resolutions(Data_Profunctor_Strong.strongFn))(Data_Functor.map(Data_List_Types.functorList)(function (r) {
             return Exhibit_VideoControl_Interactions.resolutionName(r);
-        })(Exhibit_VideoControl_Interactions.commonResolutions))))(Data_Lens_Setter.set(_scaled(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.genlockScalingOf(d)));
+        })(Exhibit_VideoControl_Interactions.fastResolutions))))(Data_Lens_Setter.set(_scaled(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.genlockScalingOf(d)));
     };
 };
 var updateJsonSingleControls = {
@@ -141267,7 +141161,7 @@ var updateJsonSingleControls = {
             if (v instanceof Data_Either.Left) {
                 return new Data_Either.Left("SingleControls: " + v.value0);
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSingleControls (line 373, column 13 - line 375, column 57): " + [ v.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSingleControls (line 360, column 13 - line 362, column 57): " + [ v.constructor.name ]);
         };
     }
 };
@@ -141316,11 +141210,7 @@ var displaySingleControls = function (s) {
             return send(Extra.update(new ComponentSingleControlsGenlockSignal(true))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                 return Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_genlock(Data_Profunctor_Strong.strongFn))(true)))(Data_Lens_Setter.set(_scaled(Data_Profunctor_Strong.strongFn))(false));
             })));
-        }) ])([ React_DOM.text(latencyHalf(Data_Lens_Getter.viewOn(s)(_latency(Data_Lens_Internal_Forget.strongForget)))("SYNC")) ]), React_DOM.div([ React_DOM_Props.className(latencyLit(Data_Lens_Getter.viewOn(s)(_scaled(Data_Lens_Internal_Forget.strongForget)))), React_DOM_Props["_id"]("single_latency_scaled"), React_DOM_Props.onClick(function (v) {
-            return send(Extra.update(new ComponentSingleControlsScaledSignal(true))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
-                return Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_genlock(Data_Profunctor_Strong.strongFn))(true)))(Data_Lens_Setter.set(_scaled(Data_Profunctor_Strong.strongFn))(true));
-            })));
-        }) ])([ React_DOM.text(latencyHalf(Data_Lens_Getter.viewOn(s)(_latency(Data_Lens_Internal_Forget.strongForget)))("SCALED")) ]) ]) ]), React_DOM.div([ React_DOM_Props.className((function () {
+        }) ])([ React_DOM.text(latencyHalf(Data_Lens_Getter.viewOn(s)(_latency(Data_Lens_Internal_Forget.strongForget)))("SYNC")) ]) ]) ]), React_DOM.div([ React_DOM_Props.className((function () {
             var $423 = Data_Lens_Getter.viewOn(s)(_genlock(Data_Lens_Internal_Forget.strongForget)) && !Data_Lens_Getter.viewOn(s)(_scaled(Data_Lens_Internal_Forget.strongForget));
             if ($423) {
                 return "scaling";
@@ -141344,15 +141234,29 @@ var displaySingleControls = function (s) {
                 return "scaling is-hidden";
             };
             return "scaling";
-        })()) ])([ React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Resolution") ]), React_DOM.select([ React_DOM_Props.className("dropdown"), React_DOM_Props["_id"]("single_resolution"), React_DOM_Props.value(Data_Lens_Getter.viewOn(s)(_resolution(Data_Lens_Internal_Forget.strongForget))), React_DOM_Props.onChange(function (v) {
-            return send(Extra.update(new ComponentSingleControlsResolutionSignal(v.target.value))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
-                return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_resolution(Data_Profunctor_Strong.strongFn))(v.target.value));
-            })));
-        }) ])(Data_Semigroup.append(Data_Semigroup.semigroupArray)([ React_DOM.option([ React_DOM_Props.value("") ])([ React_DOM.text("As read") ]) ])(Data_Array.fromFoldable(Data_List_Types.foldableList)(Data_Functor.map(Data_List_Types.functorList)(function (r) {
-            return React_DOM.option([ React_DOM_Props.value(r) ])([ React_DOM.text(r) ]);
-        })(Data_Lens_Getter.viewOn(s)(_resolutions(Data_Lens_Internal_Forget.strongForget)))))) ]), React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Frame rate") ]), React_DOM.div([ React_DOM_Props.className("seg is-control"), React_DOM_Props["_id"]("single_fps") ])([ React_DOM.div([ React_DOM_Props.className((function () {
-            var $427 = Data_Lens_Getter.viewOn(s)(_fps60(Data_Lens_Internal_Forget.strongForget));
+        })()) ])([ React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Resolution") ]), React_DOM.div([ React_DOM_Props.className("seg is-control"), React_DOM_Props["_id"]("single_resolution") ])([ React_DOM.div([ React_DOM_Props.className((function () {
+            var $427 = Data_Lens_Getter.viewOn(s)(_resolution(Data_Lens_Internal_Forget.strongForget)) === "1920x1080";
             if ($427) {
+                return "segon";
+            };
+            return "segoff";
+        })()), React_DOM_Props["_id"]("single_resolution_hd"), React_DOM_Props.onClick(function (v) {
+            return send(Extra.update(new ComponentSingleControlsResolutionSignal("1920x1080"))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
+                return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_resolution(Data_Profunctor_Strong.strongFn))("1920x1080"));
+            })));
+        }) ])([ React_DOM.text("HD") ]), React_DOM.div([ React_DOM_Props.className((function () {
+            var $428 = Data_Lens_Getter.viewOn(s)(_resolution(Data_Lens_Internal_Forget.strongForget)) === "3840x2160";
+            if ($428) {
+                return "segon";
+            };
+            return "segoff";
+        })()), React_DOM_Props["_id"]("single_resolution_4k"), React_DOM_Props.onClick(function (v) {
+            return send(Extra.update(new ComponentSingleControlsResolutionSignal("3840x2160"))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
+                return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_resolution(Data_Profunctor_Strong.strongFn))("3840x2160"));
+            })));
+        }) ])([ React_DOM.text("4K") ]) ]) ]), React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Frame rate") ]), React_DOM.div([ React_DOM_Props.className("seg is-control"), React_DOM_Props["_id"]("single_fps") ])([ React_DOM.div([ React_DOM_Props.className((function () {
+            var $429 = Data_Lens_Getter.viewOn(s)(_fps60(Data_Lens_Internal_Forget.strongForget));
+            if ($429) {
                 return "segoff";
             };
             return "segon";
@@ -141361,8 +141265,8 @@ var displaySingleControls = function (s) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_fps60(Data_Profunctor_Strong.strongFn))(false));
             })));
         }) ])([ React_DOM.text("30") ]), React_DOM.div([ React_DOM_Props.className((function () {
-            var $428 = Data_Lens_Getter.viewOn(s)(_fps60(Data_Lens_Internal_Forget.strongForget));
-            if ($428) {
+            var $430 = Data_Lens_Getter.viewOn(s)(_fps60(Data_Lens_Internal_Forget.strongForget));
+            if ($430) {
                 return "segon";
             };
             return "segoff";
@@ -141370,27 +141274,7 @@ var displaySingleControls = function (s) {
             return send(Extra.update(new ComponentSingleControlsFps60Signal(true))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_fps60(Data_Profunctor_Strong.strongFn))(true));
             })));
-        }) ])([ React_DOM.text("60") ]) ]) ]) ]), React_DOM.div([ React_DOM_Props.className("grouplabel") ])([ React_DOM.text("Recording") ]), React_DOM.div([ React_DOM_Props.className((function () {
-            var $429 = Data_Lens_Getter.viewOn(s)(_recording(Data_Lens_Internal_Forget.strongForget));
-            if ($429) {
-                return "rec is-rec";
-            };
-            return "rec";
-        })()), React_DOM_Props["_id"]("recording"), React_DOM_Props.onClick(function (v) {
-            return send(Extra.update(new ComponentSingleControlsRecordingSignal(!Data_Lens_Getter.viewOn(s)(_recording(Data_Lens_Internal_Forget.strongForget))))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
-                return Unify_Types.flipuse(a)(Data_Lens_Setter.over(_recording(Data_Profunctor_Strong.strongFn))(Data_HeytingAlgebra.not(Data_HeytingAlgebra.heytingAlgebraBoolean)));
-            })));
-        }) ])([ React_DOM.div([ React_DOM_Props.className("recdot") ])([  ]), React_DOM.div([ React_DOM_Props.className("reclabel") ])([ React_DOM.text((function () {
-            var $430 = Data_Lens_Getter.viewOn(s)(_recording(Data_Lens_Internal_Forget.strongForget));
-            if ($430) {
-                return "Stop recording";
-            };
-            return "Start recording";
-        })()) ]) ]), React_DOM.div([ React_DOM_Props.className("meterrow") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Storage") ]), React_DOM.input([ React_DOM_Props.className("meterval"), React_DOM_Props["_id"]("storage"), React_DOM_Props.value(Data_Lens_Getter.viewOn(s)(_storage(Data_Lens_Internal_Forget.strongForget))), React_DOM_Props.onChange(function (v) {
-            return send(Extra.update(new ComponentSingleControlsStorageSignal(v.target.value))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
-                return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_storage(Data_Profunctor_Strong.strongFn))(v.target.value));
-            })));
-        }) ]) ]), React_DOM.div([ React_DOM_Props.className("hdcp") ])([ React_DOM.div([ React_DOM_Props.className("hdcpversion") ])([ React_DOM.text("HDCP " + Data_Lens_Getter.viewOn(s)(_hdcp(Data_Lens_Internal_Forget.strongForget))) ]), React_DOM.div([ React_DOM_Props.className("hdcpchroma") ])([ React_DOM.text(Data_Lens_Getter.viewOn(s)(_chroma(Data_Lens_Internal_Forget.strongForget))) ]), React_DOM.div([ React_DOM_Props.className("hdcpdepth") ])([ React_DOM.text(Data_Show.show(Data_Show.showInt)(Data_Lens_Getter.viewOn(s)(_bitDepth(Data_Lens_Internal_Forget.strongForget))) + "-bit") ]), React_DOM.div([ React_DOM_Props.className("hdcpcolorimetry") ])([ React_DOM.text(Data_Lens_Getter.viewOn(s)(_colorimetry(Data_Lens_Internal_Forget.strongForget))) ]) ]), React_DOM.div([ React_DOM_Props.className("cardsource") ])([ React_DOM.text(Data_Show.show(Exhibit_VideoControl_Types.showDeviceSettings)(Data_Lens_Getter.viewOn(s)(_output(Data_Lens_Internal_Forget.strongForget)))) ]) ]) ]);
+        }) ])([ React_DOM.text("60") ]) ]) ]) ]), React_DOM.div([ React_DOM_Props.className("hdcp") ])([ React_DOM.div([ React_DOM_Props.className("hdcpversion") ])([ React_DOM.text("HDCP " + Data_Lens_Getter.viewOn(s)(_hdcp(Data_Lens_Internal_Forget.strongForget))) ]), React_DOM.div([ React_DOM_Props.className("hdcpchroma") ])([ React_DOM.text(Data_Lens_Getter.viewOn(s)(_chroma(Data_Lens_Internal_Forget.strongForget))) ]), React_DOM.div([ React_DOM_Props.className("hdcpdepth") ])([ React_DOM.text(Data_Show.show(Data_Show.showInt)(Data_Lens_Getter.viewOn(s)(_bitDepth(Data_Lens_Internal_Forget.strongForget))) + "-bit") ]), React_DOM.div([ React_DOM_Props.className("hdcpcolorimetry") ])([ React_DOM.text(Data_Lens_Getter.viewOn(s)(_colorimetry(Data_Lens_Internal_Forget.strongForget))) ]) ]), React_DOM.div([ React_DOM_Props.className("cardsource") ])([ React_DOM.text(Data_Show.show(Exhibit_VideoControl_Types.showDeviceSettings)(Data_Lens_Getter.viewOn(s)(_output(Data_Lens_Internal_Forget.strongForget)))) ]) ]) ]);
     };
 };
 var renderSingleControls$prime = function (d) {
@@ -141639,7 +141523,7 @@ module.exports = {
     updateJsonComponentCompon: updateJsonComponentCompon
 };
 
-},{"../Control.Applicative/index.js":42,"../Control.Bind/index.js":48,"../Control.Category/index.js":49,"../Control.Comonad.Store.Class/index.js":51,"../Control.Comonad.Store.Trans/index.js":52,"../Control.Comonad.Store/index.js":53,"../Control.Monad.State.Class/index.js":71,"../Data.Argonaut.Core/index.js":83,"../Data.Argonaut.Decode.Class/index.js":84,"../Data.Argonaut.Decode.Error/index.js":87,"../Data.Argonaut.Decode.Generic/index.js":88,"../Data.Argonaut.Encode.Class/index.js":89,"../Data.Argonaut.Encode.Generic/index.js":92,"../Data.Array/index.js":103,"../Data.Boolean/index.js":107,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Eq/index.js":118,"../Data.Function/index.js":128,"../Data.Functor/index.js":142,"../Data.Generic.Rep/index.js":145,"../Data.HeytingAlgebra/index.js":148,"../Data.Identity/index.js":149,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Internal.Wander/index.js":169,"../Data.Lens.Lens/index.js":173,"../Data.Lens.Record/index.js":177,"../Data.Lens.Setter/index.js":178,"../Data.Lens.Traversal/index.js":179,"../Data.List.Types/index.js":185,"../Data.Maybe/index.js":190,"../Data.Newtype/index.js":200,"../Data.Profunctor.Strong/index.js":216,"../Data.Semigroup/index.js":223,"../Data.Show.Generic/index.js":228,"../Data.Show/index.js":230,"../Data.String.CodeUnits/index.js":237,"../Data.Symbol/index.js":244,"../Data.Tuple/index.js":251,"../Data.Unit/index.js":259,"../Exhibit.VideoControl.ComponentSingleControls/index.js":310,"../Exhibit.VideoControl.Interactions/index.js":315,"../Exhibit.VideoControl.Types/index.js":316,"../Exhibit.VideoControl.VideoControlAPI/index.js":352,"../ExploreCore/index.js":356,"../ExploreSignal/index.js":357,"../Extra/index.js":358,"../React.DOM.Props/index.js":378,"../React.DOM/index.js":379,"../Safe.Coerce/index.js":389,"../ShouldUpdate/index.js":390,"../Unify.Types/index.js":402,"../Unify.UpdateJson/index.js":403}],348:[function(require,module,exports){
+},{"../Control.Applicative/index.js":42,"../Control.Bind/index.js":48,"../Control.Category/index.js":49,"../Control.Comonad.Store.Class/index.js":51,"../Control.Comonad.Store.Trans/index.js":52,"../Control.Comonad.Store/index.js":53,"../Control.Monad.State.Class/index.js":71,"../Data.Argonaut.Core/index.js":83,"../Data.Argonaut.Decode.Class/index.js":84,"../Data.Argonaut.Decode.Error/index.js":87,"../Data.Argonaut.Decode.Generic/index.js":88,"../Data.Argonaut.Encode.Class/index.js":89,"../Data.Argonaut.Encode.Generic/index.js":92,"../Data.Boolean/index.js":107,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Eq/index.js":118,"../Data.Function/index.js":128,"../Data.Functor/index.js":142,"../Data.Generic.Rep/index.js":145,"../Data.Identity/index.js":149,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Internal.Wander/index.js":169,"../Data.Lens.Lens/index.js":173,"../Data.Lens.Record/index.js":177,"../Data.Lens.Setter/index.js":178,"../Data.Lens.Traversal/index.js":179,"../Data.List.Types/index.js":185,"../Data.Maybe/index.js":190,"../Data.Newtype/index.js":200,"../Data.Profunctor.Strong/index.js":216,"../Data.Show.Generic/index.js":228,"../Data.Show/index.js":230,"../Data.String.CodeUnits/index.js":237,"../Data.Symbol/index.js":244,"../Data.Tuple/index.js":251,"../Data.Unit/index.js":259,"../Exhibit.VideoControl.ComponentSingleControls/index.js":310,"../Exhibit.VideoControl.Interactions/index.js":315,"../Exhibit.VideoControl.Types/index.js":316,"../Exhibit.VideoControl.VideoControlAPI/index.js":352,"../ExploreCore/index.js":356,"../ExploreSignal/index.js":357,"../Extra/index.js":358,"../React.DOM.Props/index.js":378,"../React.DOM/index.js":379,"../Safe.Coerce/index.js":389,"../ShouldUpdate/index.js":390,"../Unify.Types/index.js":402,"../Unify.UpdateJson/index.js":403}],348:[function(require,module,exports){
 // Generated by purs version 0.14.4
 "use strict";
 var Control_Applicative = require("../Control.Applicative/index.js");
@@ -142892,7 +142776,7 @@ var displaySourceDeviceConfiguration = function (s) {
         }) ])([ React_DOM.text(Data_Show.show(Data_Show.showBoolean)(Data_Lens_Getter.viewOn(s)(_locating(Data_Lens_Internal_Forget.strongForget)))) ]) ]) ])(Data_Semigroup.append(Data_Semigroup.semigroupArray)((function () {
             var $276 = Data_Lens_Getter.viewOn(s)(_transceiver(Data_Lens_Internal_Forget.strongForget));
             if ($276) {
-                return [ React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Read as") ]), React_DOM.div([ React_DOM_Props.className("seg is-control"), React_DOM_Props["_id"]("config_read_as") ])([ React_DOM.div([ React_DOM_Props.className(sourceSeg(Data_Lens_Getter.viewOn(s)(_readAs(Data_Lens_Internal_Forget.strongForget)) === "TX")), React_DOM_Props["_id"]("config_read_as_tx"), React_DOM_Props.onClick(function (v) {
+                return [ React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Device Mode") ]), React_DOM.div([ React_DOM_Props.className("seg is-control"), React_DOM_Props["_id"]("config_read_as") ])([ React_DOM.div([ React_DOM_Props.className(sourceSeg(Data_Lens_Getter.viewOn(s)(_readAs(Data_Lens_Internal_Forget.strongForget)) === "TX")), React_DOM_Props["_id"]("config_read_as_tx"), React_DOM_Props.onClick(function (v) {
                     return send(Extra.update(new ComponentSourceDeviceConfigurationReadAsSignal("TX"))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                         return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_readAs(Data_Profunctor_Strong.strongFn))("TX"));
                     })));
@@ -143530,7 +143414,7 @@ var layingRow = function (l) {
         if (Data_Boolean.otherwise) {
             return r;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSystemConfiguration (line 270, column 1 - line 273, column 55): " + [ l.constructor.name, r.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSystemConfiguration (line 269, column 1 - line 272, column 55): " + [ l.constructor.name, r.constructor.name ]);
     };
 };
 var def_ComponentSystemConfiguration = Unify_Types.def(defSystemConfiguration);
@@ -143620,17 +143504,17 @@ var catalogueDescribed = function (n) {
         if (v instanceof Data_Maybe.Nothing) {
             return Data_Maybe.Nothing.value;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSystemConfiguration (line 259, column 5 - line 261, column 27): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSystemConfiguration (line 258, column 5 - line 260, column 27): " + [ v.constructor.name ]);
     };
 };
 var catalogueLayouts = function (a) {
     return Data_Lens_Getter.viewOn(a)(_layoutCatalogue(Data_Lens_Internal_Forget.strongForget));
 };
-var layingCatalogue = function (l) {
+var layingCatalogue = function (ls) {
     return function (a) {
-        return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_layoutCatalogue(Data_Profunctor_Strong.strongFn))(Data_Functor.map(Data_List_Types.functorList)(function (n) {
-            return new Data_Tuple.Tuple(n, catalogueDescribed(n)(a));
-        })(Data_Lens_Getter.viewOn(l)(Exhibit_VideoControl_Types["_layoutNames"](Data_Lens_Internal_Forget.strongForget)))));
+        return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_layoutCatalogue(Data_Profunctor_Strong.strongFn))(Data_Functor.map(Data_List_Types.functorList)(function (l) {
+            return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(l)(Exhibit_VideoControl_Types["_layoutName"](Data_Lens_Internal_Forget.strongForget)), new Data_Maybe.Just(l));
+        })(ls)));
     };
 };
 var layingCatalogueDescribed = function (l) {
@@ -144722,14 +144606,11 @@ var ReadSettings = (function () {
     return ReadSettings;
 })();
 var ReadMultiview = (function () {
-    function ReadMultiview(value0, value1) {
+    function ReadMultiview(value0) {
         this.value0 = value0;
-        this.value1 = value1;
     };
     ReadMultiview.create = function (value0) {
-        return function (value1) {
-            return new ReadMultiview(value0, value1);
-        };
+        return new ReadMultiview(value0);
     };
     return ReadMultiview;
 })();
@@ -145062,7 +144943,7 @@ var genericVideoControlAPI_ = {
             return new ReadSettings(x.value0.value0, x.value0.value1);
         };
         if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inl) {
-            return new ReadMultiview(x.value0.value0.value0, x.value0.value0.value1);
+            return new ReadMultiview(x.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inl)) {
             return new StartStream(x.value0.value0.value0.value0, x.value0.value0.value0.value1);
@@ -145145,14 +145026,14 @@ var genericVideoControlAPI_ = {
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr))))))))))))))))))))))))))) {
             return new SetTransceiver(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.VideoControlAPI (line 660, column 1 - line 660, column 42): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.VideoControlAPI (line 657, column 1 - line 657, column 42): " + [ x.constructor.name ]);
     },
     from: function (x) {
         if (x instanceof ReadSettings) {
             return new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0, x.value1));
         };
         if (x instanceof ReadMultiview) {
-            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0, x.value1)));
+            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0));
         };
         if (x instanceof StartStream) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(new Data_Generic_Rep.Product(x.value0, x.value1))));
@@ -145235,7 +145116,7 @@ var genericVideoControlAPI_ = {
         if (x instanceof SetTransceiver) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0))))))))))))))))))))))))))));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.VideoControlAPI (line 660, column 1 - line 660, column 42): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.VideoControlAPI (line 657, column 1 - line 657, column 42): " + [ x.constructor.name ]);
     }
 };
 var genericUpdatePreviewReque = {
@@ -145814,7 +145695,7 @@ var showVideoControlAPI = {
         reflectSymbol: function () {
             return "ReadSettings";
         }
-    }))(Data_Show_Generic.genericShowSum(Data_Show_Generic.genericShowConstructor(Data_Show_Generic.genericShowArgsProduct(Data_Show_Generic.genericShowArgsArgument(showDeviceTarget))(Data_Show_Generic.genericShowArgsArgument(showGetRequest)))({
+    }))(Data_Show_Generic.genericShowSum(Data_Show_Generic.genericShowConstructor(Data_Show_Generic.genericShowArgsArgument(showDeviceTarget))({
         reflectSymbol: function () {
             return "ReadMultiview";
         }
@@ -146243,7 +146124,7 @@ var eqComposeRequest = {
     })(Data_Eq.eqString)))))
 };
 var eqVideoControlAPI = {
-    eq: Data_Eq_Generic.genericEq(genericVideoControlAPI_)(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(eqDeviceTarget))(Data_Eq_Generic.genericEqArgument(eqGetRequest))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(eqDeviceTarget))(Data_Eq_Generic.genericEqArgument(eqGetRequest))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(eqDeviceTarget))(Data_Eq_Generic.genericEqArgument(eqStartRequest))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(eqDeviceTarget))(Data_Eq_Generic.genericEqArgument(eqStopRequest))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(eqDeviceTarget))(Data_Eq_Generic.genericEqArgument(eqJoinRequest))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(eqDeviceTarget))(Data_Eq_Generic.genericEqArgument(eqLeaveRequest))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(eqDeviceTarget))(Data_Eq_Generic.genericEqArgument(eqSetVideoRequest))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqNoArguments))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqNoArguments))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(eqDeviceTarget))(Data_Eq_Generic.genericEqArgument(eqSetMultiviewRequest))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(eqDeviceTarget))(Data_Eq_Generic.genericEqArgument(eqSetScalerRequest))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(eqDeviceTarget))(Data_Eq_Generic.genericEqArgument(eqSetPropertyRequest))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(eqDeviceTarget))(Data_Eq_Generic.genericEqArgument(eqSetEdidRequest))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqUpdatePreviewRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqRouteRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqRerouteRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqHdResolutionRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqComposeRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqCompositionRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqNoArguments))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqLatencyRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqScalingRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqViewModeRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqDisconnectRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqSettingRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqNoArguments))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqPreviewBoxRequest)))(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqTransceiverRequest)))))))))))))))))))))))))))))))
+    eq: Data_Eq_Generic.genericEq(genericVideoControlAPI_)(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(eqDeviceTarget))(Data_Eq_Generic.genericEqArgument(eqGetRequest))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqDeviceTarget)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(eqDeviceTarget))(Data_Eq_Generic.genericEqArgument(eqStartRequest))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(eqDeviceTarget))(Data_Eq_Generic.genericEqArgument(eqStopRequest))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(eqDeviceTarget))(Data_Eq_Generic.genericEqArgument(eqJoinRequest))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(eqDeviceTarget))(Data_Eq_Generic.genericEqArgument(eqLeaveRequest))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(eqDeviceTarget))(Data_Eq_Generic.genericEqArgument(eqSetVideoRequest))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqNoArguments))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqNoArguments))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(eqDeviceTarget))(Data_Eq_Generic.genericEqArgument(eqSetMultiviewRequest))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(eqDeviceTarget))(Data_Eq_Generic.genericEqArgument(eqSetScalerRequest))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(eqDeviceTarget))(Data_Eq_Generic.genericEqArgument(eqSetPropertyRequest))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqProduct(Data_Eq_Generic.genericEqArgument(eqDeviceTarget))(Data_Eq_Generic.genericEqArgument(eqSetEdidRequest))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqUpdatePreviewRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqRouteRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqRerouteRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqHdResolutionRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqComposeRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqCompositionRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqNoArguments))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqLatencyRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqScalingRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqViewModeRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqDisconnectRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqSettingRequest)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqNoArguments))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqPreviewBoxRequest)))(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(eqTransceiverRequest)))))))))))))))))))))))))))))))
 };
 var encodeJsonViewModeRequest = {
     encodeJson: function (v) {
@@ -146328,8 +146209,8 @@ var encodeJsonMultiviewSubscr = {
 var encodeJsonSetMultiviewReq = {
     encodeJson: function (v) {
         return Data_Argonaut_Encode_Combinators.extend(Data_Argonaut_Encode_Class.encodeJsonJson)(Data_Argonaut_Encode_Combinators.assoc(Data_Argonaut_Encode_Class.encodeJsonJString)("op")("set:multiview"))(Data_Argonaut_Encode_Combinators.extend(Data_Argonaut_Encode_Class.encodeJsonJson)(Data_Argonaut_Encode_Combinators.assoc(Data_Argonaut_Encode_Class.encodeJsonJString)("layout")(v.value0.setMultiviewLayout))(Data_Argonaut_Encode_Combinators.extendOptional(Data_Argonaut_Encode_Class.encodeJsonJson)(Data_Argonaut_Encode_Combinators.assocOptional(encodeJsonVideoFormatArgu)("video")(v.value0.setMultiviewVideo))(Data_Argonaut_Encode_Combinators.extendOptional(Data_Argonaut_Encode_Class.encodeJsonJson)(Data_Argonaut_Encode_Combinators.assocOptional(Data_Argonaut_Encode_Class.encodeJsonList(encodeJsonMultiviewSubscr))("subscriptions")((function () {
-            var $876 = Data_List["null"](v.value0.setMultiviewSubscriptions);
-            if ($876) {
+            var $872 = Data_List["null"](v.value0.setMultiviewSubscriptions);
+            if ($872) {
                 return Data_Maybe.Nothing.value;
             };
             return new Data_Maybe.Just(v.value0.setMultiviewSubscriptions);
@@ -146404,7 +146285,7 @@ var encodeJsonVideoControlAPI = {
         reflectSymbol: function () {
             return "ReadMultiview";
         }
-    })(Data_Argonaut_Encode_Generic.encodeRepArgsProduct(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(encodeJsonDeviceTarget))(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(encodeJsonGetRequest))))(Data_Argonaut_Encode_Generic.encodeRepSum(Data_Argonaut_Encode_Generic.encodeRepConstructor({
+    })(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(encodeJsonDeviceTarget)))(Data_Argonaut_Encode_Generic.encodeRepSum(Data_Argonaut_Encode_Generic.encodeRepConstructor({
         reflectSymbol: function () {
             return "StartStream";
         }
@@ -146949,11 +146830,11 @@ var decodeJsonVideoControlAPI = {
         reflectSymbol: function () {
             return "ReadSettings";
         }
-    })(Data_Argonaut_Decode_Generic.decodeRepArgsProduct(Data_Argonaut_Decode_Generic.decodeRepArgsArgument(decodeJsonDeviceTarget))(Data_Argonaut_Decode_Generic.decodeRepArgsArgument(decodeJsonGetRequest))))(Data_Argonaut_Decode_Generic.decodeRepSum(Data_Argonaut_Decode_Generic.decodeRepConstructor({
+    })(Data_Argonaut_Decode_Generic.decodeRepArgsProduct(Data_Argonaut_Decode_Generic.decodeRepArgsArgument(decodeJsonDeviceTarget))(Data_Argonaut_Decode_Generic.decodeRepArgsArgument(decodeJsonGetRequest))))(Data_Argonaut_Decode_Generic.decodeRepSum(Data_Argonaut_Decode_Generic.decodeRepConstructorArg({
         reflectSymbol: function () {
             return "ReadMultiview";
         }
-    })(Data_Argonaut_Decode_Generic.decodeRepArgsProduct(Data_Argonaut_Decode_Generic.decodeRepArgsArgument(decodeJsonDeviceTarget))(Data_Argonaut_Decode_Generic.decodeRepArgsArgument(decodeJsonGetRequest))))(Data_Argonaut_Decode_Generic.decodeRepSum(Data_Argonaut_Decode_Generic.decodeRepConstructor({
+    })(decodeJsonDeviceTarget))(Data_Argonaut_Decode_Generic.decodeRepSum(Data_Argonaut_Decode_Generic.decodeRepConstructor({
         reflectSymbol: function () {
             return "StartStream";
         }
@@ -147087,7 +146968,7 @@ var hasAffRequestVideoControl = {
             return new ExploreSignal.AffRequest(new ExploreSignal.AffRequestTag("ReadSettings"), new ExploreSignal.PostJson("/api/device/" + targetPath(v.value0), ExploreSignal.toJSON(encodeJsonGetRequest)(v.value1)));
         };
         if (v instanceof ReadMultiview) {
-            return new ExploreSignal.AffRequest(new ExploreSignal.AffRequestTag("ReadMultiview"), new ExploreSignal.PostJson("/api/device/" + targetPath(v.value0), ExploreSignal.toJSON(encodeJsonGetRequest)(v.value1)));
+            return new ExploreSignal.AffRequest(new ExploreSignal.AffRequestTag("ReadMultiview"), new ExploreSignal.Get("/api/simplelayout/output/" + targetPath(v.value0)));
         };
         if (v instanceof StartStream) {
             return new ExploreSignal.AffRequest(new ExploreSignal.AffRequestTag("StartStream"), new ExploreSignal.PostJson("/api/device/" + targetPath(v.value0), ExploreSignal.toJSON(encodeJsonStartRequest)(v.value1)));
@@ -147108,10 +146989,10 @@ var hasAffRequestVideoControl = {
             return new ExploreSignal.AffRequest(new ExploreSignal.AffRequestTag("ReadServerInfo"), new ExploreSignal.Get("/api"));
         };
         if (v instanceof ListLayouts) {
-            return new ExploreSignal.AffRequest(new ExploreSignal.AffRequestTag("ListLayouts"), new ExploreSignal.Get("/api/multiview/layout"));
+            return new ExploreSignal.AffRequest(new ExploreSignal.AffRequestTag("ListLayouts"), new ExploreSignal.Get("/api/simplelayout"));
         };
         if (v instanceof DescribeLayout) {
-            return new ExploreSignal.AffRequest(new ExploreSignal.AffRequestTag("DescribeLayout"), new ExploreSignal.Get("/api/multiview/layout/" + v.value0));
+            return new ExploreSignal.AffRequest(new ExploreSignal.AffRequestTag("DescribeLayout"), new ExploreSignal.Get("/api/simplelayout/" + v.value0));
         };
         if (v instanceof SetMultiview) {
             return new ExploreSignal.AffRequest(new ExploreSignal.AffRequestTag("SetMultiview"), new ExploreSignal.PostJson("/api/device/" + targetPath(v.value0), ExploreSignal.toJSON(encodeJsonSetMultiviewReq)(v.value1)));
@@ -147170,58 +147051,55 @@ var hasAffRequestVideoControl = {
         if (v instanceof SetTransceiver) {
             return new ExploreSignal.AffRequest(new ExploreSignal.AffRequestTag("ReadTransceiverAs"), new ExploreSignal.PostJson("/api/transceivers", ExploreSignal.toJSON(encodeJsonTransceiverRequ)(v.value0)));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.VideoControlAPI (line 671, column 1 - line 701, column 127): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.VideoControlAPI (line 668, column 1 - line 700, column 127): " + [ v.constructor.name ]);
     }
 };
 var settingsRequest = new GetRequest({
     subset: "settings"
 });
-var multiviewRequest = new GetRequest({
-    subset: "multiview"
-});
 var _argumentsWidth = function (dictStrong) {
-    var $943 = Data_Lens_Lens["lens'"](function (v) {
+    var $938 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new VideoFormatArguments(s);
         });
     })(dictStrong);
-    var $944 = Data_Lens_Record.prop({
+    var $939 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "argumentsWidth";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($945) {
-        return $943($944($945));
+    return function ($940) {
+        return $938($939($940));
     };
 };
 var _argumentsHeight = function (dictStrong) {
-    var $946 = Data_Lens_Lens["lens'"](function (v) {
+    var $941 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new VideoFormatArguments(s);
         });
     })(dictStrong);
-    var $947 = Data_Lens_Record.prop({
+    var $942 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "argumentsHeight";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($948) {
-        return $946($947($948));
+    return function ($943) {
+        return $941($942($943));
     };
 };
 var _argumentsFps = function (dictStrong) {
-    var $949 = Data_Lens_Lens["lens'"](function (v) {
+    var $944 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new VideoFormatArguments(s);
         });
     })(dictStrong);
-    var $950 = Data_Lens_Record.prop({
+    var $945 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "argumentsFps";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($951) {
-        return $949($950($951));
+    return function ($946) {
+        return $944($945($946));
     };
 };
 module.exports = {
@@ -147232,7 +147110,6 @@ module.exports = {
     targetPath: targetPath,
     GetRequest: GetRequest,
     settingsRequest: settingsRequest,
-    multiviewRequest: multiviewRequest,
     StartRequest: StartRequest,
     StopRequest: StopRequest,
     VideoFormatArguments: VideoFormatArguments,
