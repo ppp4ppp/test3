@@ -89321,6 +89321,7 @@ var Control_Monad_Writer_Trans = require("../Control.Monad.Writer.Trans/index.js
 var Data_Argonaut_Core = require("../Data.Argonaut.Core/index.js");
 var Data_Argonaut_Decode_Generic = require("../Data.Argonaut.Decode.Generic/index.js");
 var Data_Argonaut_Encode_Generic = require("../Data.Argonaut.Encode.Generic/index.js");
+var Data_Boolean = require("../Data.Boolean/index.js");
 var Data_Either = require("../Data.Either/index.js");
 var Data_Eq_Generic = require("../Data.Eq.Generic/index.js");
 var Data_Generic_Rep = require("../Data.Generic.Rep/index.js");
@@ -89328,6 +89329,7 @@ var Data_Identity = require("../Data.Identity/index.js");
 var Data_Lens_Getter = require("../Data.Lens.Getter/index.js");
 var Data_Lens_Internal_Forget = require("../Data.Lens.Internal.Forget/index.js");
 var Data_Lens_Setter = require("../Data.Lens.Setter/index.js");
+var Data_List_Types = require("../Data.List.Types/index.js");
 var Data_Maybe = require("../Data.Maybe/index.js");
 var Data_Maybe_First = require("../Data.Maybe.First/index.js");
 var Data_Profunctor_Strong = require("../Data.Profunctor.Strong/index.js");
@@ -89415,7 +89417,7 @@ var genericComponentDeviceCon = {
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr)) {
             return new ComponentDeviceConfigurationAffect(x.value0.value0.value0);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 42, column 1 - line 42, column 61): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 41, column 1 - line 41, column 61): " + [ x.constructor.name ]);
     },
     from: function (x) {
         if (x instanceof NoDeviceConfigurationSignal) {
@@ -89430,7 +89432,7 @@ var genericComponentDeviceCon = {
         if (x instanceof ComponentDeviceConfigurationAffect) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0)));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 42, column 1 - line 42, column 61): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 41, column 1 - line 41, column 61): " + [ x.constructor.name ]);
     }
 };
 var genericComponentDeviceCon1 = {
@@ -89444,7 +89446,7 @@ var genericComponentDeviceCon1 = {
         if (x instanceof Data_Generic_Rep.Inr && x.value0 instanceof Data_Generic_Rep.Inr) {
             return new OutputConfiguration(x.value0.value0);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 19, column 1 - line 19, column 55): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 18, column 1 - line 18, column 55): " + [ x.constructor.name ]);
     },
     from: function (x) {
         if (x instanceof NoDeviceConfiguration) {
@@ -89456,7 +89458,7 @@ var genericComponentDeviceCon1 = {
         if (x instanceof OutputConfiguration) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 19, column 1 - line 19, column 55): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 18, column 1 - line 18, column 55): " + [ x.constructor.name ]);
     }
 };
 var showComponentDeviceConfig1 = {
@@ -89513,12 +89515,6 @@ var decodeJsonComponentDevice = {
         }
     })(Exhibit_VideoControl_ComponentOutputDeviceConfiguration.decodeJsonComponentOutput))))
 };
-var scaledFormatOf = function (v) {
-    if (v instanceof OutputConfiguration) {
-        return Exhibit_VideoControl_ComponentOutputDeviceConfiguration.scaledFormatOf(v.value0);
-    };
-    return Data_Maybe.Nothing.value;
-};
 var refusing = function (v) {
     return function (v1) {
         if (v1 instanceof NoDeviceConfiguration) {
@@ -89530,7 +89526,7 @@ var refusing = function (v) {
         if (v1 instanceof OutputConfiguration) {
             return new OutputConfiguration(Unify_Types.flipuse(v1.value0)(Data_Lens_Setter.set(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_refusal"](Data_Profunctor_Strong.strongFn))(v)));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 81, column 1 - line 81, column 83): " + [ v.constructor.name, v1.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 87, column 1 - line 87, column 83): " + [ v.constructor.name, v1.constructor.name ]);
     };
 };
 var refusalOf = function (v) {
@@ -89543,14 +89539,37 @@ var refusalOf = function (v) {
     if (v instanceof OutputConfiguration) {
         return Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_refusal"](Data_Lens_Internal_Forget.strongForget));
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 91, column 1 - line 91, column 52): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 107, column 1 - line 107, column 52): " + [ v.constructor.name ]);
 };
-var pickedPreview = function (v) {
-    return function (v1) {
-        if (v1 instanceof OutputConfiguration) {
-            return new OutputConfiguration(Unify_Types.flipuse(v1.value0)(Data_Lens_Setter.set(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_previewPicked"](Data_Profunctor_Strong.strongFn))(v)));
+var refused = function (why) {
+    return function (a) {
+        if (why === "") {
+            return a;
         };
-        return v1;
+        if (Data_Boolean.otherwise) {
+            return refusing((function () {
+                var $62 = refusalOf(a) === "";
+                if ($62) {
+                    return why;
+                };
+                return refusalOf(a) + ("; " + why);
+            })())(a);
+        };
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 94, column 1 - line 94, column 82): " + [ why.constructor.name, a.constructor.name ]);
+    };
+};
+var rebasing = function (v) {
+    return function (v1) {
+        if (v1 instanceof NoDeviceConfiguration) {
+            return NoDeviceConfiguration.value;
+        };
+        if (v1 instanceof SourceConfiguration) {
+            return new SourceConfiguration(Exhibit_VideoControl_ComponentSourceDeviceConfiguration.rebasing(v)(v1.value0));
+        };
+        if (v1 instanceof OutputConfiguration) {
+            return new OutputConfiguration(Exhibit_VideoControl_ComponentOutputDeviceConfiguration.rebasing(v)(v1.value0));
+        };
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 65, column 1 - line 65, column 91): " + [ v.constructor.name, v1.constructor.name ]);
     };
 };
 var openingSource = function (d) {
@@ -89559,28 +89578,24 @@ var openingSource = function (d) {
 var openingOutput = function (d) {
     return new OutputConfiguration(Exhibit_VideoControl_ComponentOutputDeviceConfiguration.opening(d));
 };
-var nameTyped = function (v) {
-    if (v instanceof NoDeviceConfiguration) {
-        return "";
-    };
-    if (v instanceof SourceConfiguration) {
-        return Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_ComponentSourceDeviceConfiguration["_nameEdit"](Data_Lens_Internal_Forget.strongForget));
-    };
-    if (v instanceof OutputConfiguration) {
-        return Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_nameEdit"](Data_Lens_Internal_Forget.strongForget));
-    };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 76, column 1 - line 76, column 52): " + [ v.constructor.name ]);
-};
 var marshalComponentDeviceConfiguration = function (v) {
     return function (a) {
         return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
     };
 };
-var knownFormatOf = function (v) {
-    if (v instanceof OutputConfiguration) {
-        return Exhibit_VideoControl_ComponentOutputDeviceConfiguration.knownFormatOf(v.value0);
+var heldPreview = function (v) {
+    return function (v1) {
+        if (v1 instanceof OutputConfiguration) {
+            return new OutputConfiguration(Unify_Types.flipuse(Unify_Types.flipuse(v1.value0)(Data_Lens_Setter.over(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_previewPicked"](Data_Profunctor_Strong.strongFn))(function (p) {
+                var $69 = p === Data_Lens_Getter.viewOn(v1.value0)(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_previewHeld"](Data_Lens_Internal_Forget.strongForget));
+                if ($69) {
+                    return v;
+                };
+                return p;
+            })))(Data_Lens_Setter.set(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_previewHeld"](Data_Profunctor_Strong.strongFn))(v)));
+        };
+        return v1;
     };
-    return Data_Maybe.Nothing.value;
 };
 var configuredDevice = function (v) {
     if (v instanceof NoDeviceConfiguration) {
@@ -89592,7 +89607,7 @@ var configuredDevice = function (v) {
     if (v instanceof OutputConfiguration) {
         return new Data_Maybe.Just(Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_configured"](Data_Lens_Internal_Forget.strongForget)));
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 65, column 1 - line 65, column 73): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 76, column 1 - line 76, column 73): " + [ v.constructor.name ]);
 };
 var carrying = function (v) {
     return function (v1) {
@@ -89605,7 +89620,7 @@ var carrying = function (v) {
         if (v1 instanceof OutputConfiguration) {
             return new OutputConfiguration(Exhibit_VideoControl_ComponentOutputDeviceConfiguration.carrying(v)(v1.value0));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 60, column 1 - line 60, column 91): " + [ v.constructor.name, v1.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 59, column 1 - line 59, column 91): " + [ v.constructor.name, v1.constructor.name ]);
     };
 };
 var settled = function (a) {
@@ -89616,7 +89631,19 @@ var settled = function (a) {
     if (v instanceof Data_Maybe.Just) {
         return carrying(v.value0)(a);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 72, column 3 - line 74, column 27): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 83, column 3 - line 85, column 27): " + [ v.constructor.name ]);
+};
+var asked = function (v) {
+    if (v instanceof NoDeviceConfiguration) {
+        return Data_List_Types.Nil.value;
+    };
+    if (v instanceof SourceConfiguration) {
+        return Exhibit_VideoControl_ComponentSourceDeviceConfiguration.asked(v.value0);
+    };
+    if (v instanceof OutputConfiguration) {
+        return Exhibit_VideoControl_ComponentOutputDeviceConfiguration.asked(v.value0);
+    };
+    throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentDeviceConfiguration (line 71, column 1 - line 71, column 57): " + [ v.constructor.name ]);
 };
 module.exports = {
     NoDeviceConfiguration: NoDeviceConfiguration,
@@ -89629,14 +89656,14 @@ module.exports = {
     openingSource: openingSource,
     openingOutput: openingOutput,
     carrying: carrying,
+    rebasing: rebasing,
+    asked: asked,
     configuredDevice: configuredDevice,
     settled: settled,
-    nameTyped: nameTyped,
     refusing: refusing,
-    pickedPreview: pickedPreview,
+    refused: refused,
+    heldPreview: heldPreview,
     refusalOf: refusalOf,
-    knownFormatOf: knownFormatOf,
-    scaledFormatOf: scaledFormatOf,
     marshalComponentDeviceConfiguration: marshalComponentDeviceConfiguration,
     genericComponentDeviceCon1: genericComponentDeviceCon1,
     showComponentDeviceConfig1: showComponentDeviceConfig1,
@@ -89649,7 +89676,7 @@ module.exports = {
     eqComponentDeviceConfigur: eqComponentDeviceConfigur
 };
 
-},{"../Control.Applicative/index.js":42,"../Control.Monad.Writer.Trans/index.js":76,"../Data.Argonaut.Core/index.js":83,"../Data.Argonaut.Decode.Generic/index.js":88,"../Data.Argonaut.Encode.Generic/index.js":92,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Generic.Rep/index.js":145,"../Data.Identity/index.js":149,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Setter/index.js":178,"../Data.Maybe.First/index.js":188,"../Data.Maybe/index.js":190,"../Data.Profunctor.Strong/index.js":216,"../Data.Show.Generic/index.js":228,"../Data.Tuple/index.js":251,"../Exhibit.VideoControl.ComponentOutputDeviceConfiguration/index.js":300,"../Exhibit.VideoControl.ComponentSourceDeviceConfiguration/index.js":312,"../ExploreSignal/index.js":357,"../Unify.Types/index.js":402}],283:[function(require,module,exports){
+},{"../Control.Applicative/index.js":42,"../Control.Monad.Writer.Trans/index.js":76,"../Data.Argonaut.Core/index.js":83,"../Data.Argonaut.Decode.Generic/index.js":88,"../Data.Argonaut.Encode.Generic/index.js":92,"../Data.Boolean/index.js":107,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Generic.Rep/index.js":145,"../Data.Identity/index.js":149,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Setter/index.js":178,"../Data.List.Types/index.js":185,"../Data.Maybe.First/index.js":188,"../Data.Maybe/index.js":190,"../Data.Profunctor.Strong/index.js":216,"../Data.Show.Generic/index.js":228,"../Data.Tuple/index.js":251,"../Exhibit.VideoControl.ComponentOutputDeviceConfiguration/index.js":300,"../Exhibit.VideoControl.ComponentSourceDeviceConfiguration/index.js":312,"../ExploreSignal/index.js":357,"../Unify.Types/index.js":402}],283:[function(require,module,exports){
 // Generated by purs version 0.14.4
 "use strict";
 var Control_Applicative = require("../Control.Applicative/index.js");
@@ -89921,6 +89948,23 @@ var selectNamed = function (i) {
         }));
     };
 };
+var selectNone = function (a) {
+    return Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set((function () {
+        var $64 = _sourceEntries(Data_Profunctor_Strong.strongFn);
+        var $65 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
+        var $66 = Exhibit_VideoControl_ComponentSettingsDevice["_selected"](Data_Profunctor_Strong.strongFn);
+        return function ($67) {
+            return $64($65($66($67)));
+        };
+    })())(false)))(Data_Lens_Setter.set((function () {
+        var $68 = _outputEntries(Data_Profunctor_Strong.strongFn);
+        var $69 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
+        var $70 = Exhibit_VideoControl_ComponentSettingsDevice["_selected"](Data_Profunctor_Strong.strongFn);
+        return function ($71) {
+            return $68($69($70($71)));
+        };
+    })())(false));
+};
 var selectOutput = function (i) {
     return function (a) {
         if (i < 0 || i >= Data_List.length(Data_Lens_Getter.viewOn(a)(_outputEntries(Data_Lens_Internal_Forget.strongForget)))) {
@@ -89932,11 +89976,11 @@ var selectOutput = function (i) {
                     return Unify_Types.flipuse(c)(Data_Lens_Setter.set(Exhibit_VideoControl_ComponentSettingsDevice["_selected"](Data_Profunctor_Strong.strongFn))(n === i));
                 };
             }))))(Data_Lens_Setter.set((function () {
-                var $64 = _sourceEntries(Data_Profunctor_Strong.strongFn);
-                var $65 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
-                var $66 = Exhibit_VideoControl_ComponentSettingsDevice["_selected"](Data_Profunctor_Strong.strongFn);
-                return function ($67) {
-                    return $64($65($66($67)));
+                var $72 = _sourceEntries(Data_Profunctor_Strong.strongFn);
+                var $73 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
+                var $74 = Exhibit_VideoControl_ComponentSettingsDevice["_selected"](Data_Profunctor_Strong.strongFn);
+                return function ($75) {
+                    return $72($73($74($75)));
                 };
             })())(false)));
         };
@@ -89954,11 +89998,11 @@ var selectSource = function (i) {
                     return Unify_Types.flipuse(c)(Data_Lens_Setter.set(Exhibit_VideoControl_ComponentSettingsDevice["_selected"](Data_Profunctor_Strong.strongFn))(n === i));
                 };
             }))))(Data_Lens_Setter.set((function () {
-                var $68 = _outputEntries(Data_Profunctor_Strong.strongFn);
-                var $69 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
-                var $70 = Exhibit_VideoControl_ComponentSettingsDevice["_selected"](Data_Profunctor_Strong.strongFn);
-                return function ($71) {
-                    return $68($69($70($71)));
+                var $76 = _outputEntries(Data_Profunctor_Strong.strongFn);
+                var $77 = Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(Data_Lens_Internal_Wander.wanderFunction);
+                var $78 = Exhibit_VideoControl_ComponentSettingsDevice["_selected"](Data_Profunctor_Strong.strongFn);
+                return function ($79) {
+                    return $76($77($78($79)));
                 };
             })())(false)));
         };
@@ -89996,6 +90040,7 @@ module.exports = {
     selectSource: selectSource,
     selectOutput: selectOutput,
     selectNamed: selectNamed,
+    selectNone: selectNone,
     selectedEntry: selectedEntry,
     entryNamed: entryNamed,
     marshalComponentDeviceList: marshalComponentDeviceList,
@@ -97877,6 +97922,15 @@ var ComponentNavBarSelectSignal = (function () {
     };
     return ComponentNavBarSelectSignal;
 })();
+var ComponentNavBarAboutSignal = (function () {
+    function ComponentNavBarAboutSignal(value0) {
+        this.value0 = value0;
+    };
+    ComponentNavBarAboutSignal.create = function (value0) {
+        return new ComponentNavBarAboutSignal(value0);
+    };
+    return ComponentNavBarAboutSignal;
+})();
 var ComponentNavBarAffect = (function () {
     function ComponentNavBarAffect(value0) {
         this.value0 = value0;
@@ -97911,6 +97965,10 @@ var genericComponentNavBar_ = {
 var showComponentNavBar = {
     show: Data_Show_Generic.genericShow(genericComponentNavBar_)(Data_Show_Generic.genericShowConstructor(Data_Show_Generic.genericShowArgsArgument(Data_Show.showRecord()(Data_Show.showRecordFieldsCons({
         reflectSymbol: function () {
+            return "about";
+        }
+    })(Data_Show.showRecordFieldsCons({
+        reflectSymbol: function () {
             return "activePage";
         }
     })(Data_Show.showRecordFieldsCons({
@@ -97921,7 +97979,7 @@ var showComponentNavBar = {
         reflectSymbol: function () {
             return "select";
         }
-    })(Data_Show.showRecordFieldsNil)(Data_Show.showString))(Data_List_Types.showList(Data_Show.showString)))(Data_Show.showString))))({
+    })(Data_Show.showRecordFieldsNil)(Data_Show.showString))(Data_List_Types.showList(Data_Show.showString)))(Data_Show.showString))(Data_Show.showBoolean))))({
         reflectSymbol: function () {
             return "ComponentNavBar";
         }
@@ -97938,10 +97996,13 @@ var genericComponentNavBarSig = {
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inl)) {
             return new ComponentNavBarSelectSignal(x.value0.value0.value0);
         };
-        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr)) {
-            return new ComponentNavBarAffect(x.value0.value0.value0);
+        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inl))) {
+            return new ComponentNavBarAboutSignal(x.value0.value0.value0.value0);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentNavBar (line 42, column 1 - line 42, column 48): " + [ x.constructor.name ]);
+        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr))) {
+            return new ComponentNavBarAffect(x.value0.value0.value0.value0);
+        };
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentNavBar (line 48, column 1 - line 48, column 48): " + [ x.constructor.name ]);
     },
     from: function (x) {
         if (x instanceof ComponentNavBarPagesSignal) {
@@ -97953,17 +98014,20 @@ var genericComponentNavBarSig = {
         if (x instanceof ComponentNavBarSelectSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)));
         };
-        if (x instanceof ComponentNavBarAffect) {
-            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0)));
+        if (x instanceof ComponentNavBarAboutSignal) {
+            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentNavBar (line 42, column 1 - line 42, column 48): " + [ x.constructor.name ]);
+        if (x instanceof ComponentNavBarAffect) {
+            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0))));
+        };
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentNavBar (line 48, column 1 - line 48, column 48): " + [ x.constructor.name ]);
     }
 };
 var eqComponentNavBarSignal = {
-    eq: Data_Eq_Generic.genericEq(genericComponentNavBarSig)(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Tuple.eqTuple(Data_Eq.eqInt)(Data_Eq.eqString))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Either.eqEither(ExploreSignal.eqAffRequest)(Data_Tuple.eqTuple(ExploreSignal.eqAffRequest)(Data_Argonaut_Core.eqJson))))))))
+    eq: Data_Eq_Generic.genericEq(genericComponentNavBarSig)(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Tuple.eqTuple(Data_Eq.eqInt)(Data_Eq.eqString))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Either.eqEither(ExploreSignal.eqAffRequest)(Data_Tuple.eqTuple(ExploreSignal.eqAffRequest)(Data_Argonaut_Core.eqJson)))))))))
 };
 var eqComponentNavBar = {
-    eq: Data_Eq_Generic.genericEq(genericComponentNavBar_)(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqRec()(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowNil)()({
+    eq: Data_Eq_Generic.genericEq(genericComponentNavBar_)(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqRec()(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowNil)()({
         reflectSymbol: function () {
             return "select";
         }
@@ -97975,14 +98039,18 @@ var eqComponentNavBar = {
         reflectSymbol: function () {
             return "activePage";
         }
-    })(Data_Eq.eqString)))))
+    })(Data_Eq.eqString))()({
+        reflectSymbol: function () {
+            return "about";
+        }
+    })(Data_Eq.eqBoolean)))))
 };
 var encodeJsonComponentNavBar = {
     encodeJson: Data_Functor.map(Data_Functor.functorFn)(Unify_Types.removeObjectByName("tag"))(Data_Argonaut_Encode_Generic.genericEncodeJson(genericComponentNavBar_)(Data_Argonaut_Encode_Generic.encodeRepConstructor({
         reflectSymbol: function () {
             return "ComponentNavBar";
         }
-    })(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(Data_Argonaut_Encode_Class.encodeRecord(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonList(Data_Argonaut_Encode_Class.encodeJsonJString))(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonNil)({
+    })(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(Data_Argonaut_Encode_Class.encodeRecord(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonList(Data_Argonaut_Encode_Class.encodeJsonJString))(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonNil)({
         reflectSymbol: function () {
             return "select";
         }
@@ -97994,10 +98062,18 @@ var encodeJsonComponentNavBar = {
         reflectSymbol: function () {
             return "activePage";
         }
+    })())({
+        reflectSymbol: function () {
+            return "about";
+        }
     })())()))))
 };
 var defComponentNavBar = {
     def: Unify_Types.genericDef(genericComponentNavBar_)(Unify_Types.genericDefConstructor(Unify_Types.genericDefArgument(Unify_Types.defRecord()(Unify_Types.defRowListCons({
+        reflectSymbol: function () {
+            return "about";
+        }
+    })(Unify_Types.defBoolean)(Unify_Types.defRowListCons({
         reflectSymbol: function () {
             return "activePage";
         }
@@ -98009,14 +98085,14 @@ var defComponentNavBar = {
         reflectSymbol: function () {
             return "select";
         }
-    })(Unify_Types.defString)(Unify_Types.defRowListNilRow)()())()())()()))))
+    })(Unify_Types.defString)(Unify_Types.defRowListNilRow)()())()())()())()()))))
 };
 var decodeJsonComponentNavBar = {
     decodeJson: Data_Argonaut_Decode_Generic.genericDecodeJson(genericComponentNavBar_)(Data_Argonaut_Decode_Generic.decodeRepConstructorArg({
         reflectSymbol: function () {
             return "ComponentNavBar";
         }
-    })(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
+    })(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
         reflectSymbol: function () {
             return "select";
         }
@@ -98027,6 +98103,10 @@ var decodeJsonComponentNavBar = {
     })()())({
         reflectSymbol: function () {
             return "activePage";
+        }
+    })()())({
+        reflectSymbol: function () {
+            return "about";
         }
     })()())()))
 };
@@ -98035,48 +98115,48 @@ var matrixPage = "Matrix routing";
 var mainPage = "Main panel";
 var navPages = new Data_List_Types.Cons(mainPage, new Data_List_Types.Cons(matrixPage, new Data_List_Types.Cons(settingsPage, Data_List_Types.Nil.value)));
 var _select = function (dictStrong) {
-    var $53 = Data_Lens_Lens["lens'"](function (v) {
+    var $64 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentNavBar(s);
         });
     })(dictStrong);
-    var $54 = Data_Lens_Record.prop({
+    var $65 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "select";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($55) {
-        return $53($54($55));
+    return function ($66) {
+        return $64($65($66));
     };
 };
 var _pages = function (dictStrong) {
-    var $56 = Data_Lens_Lens["lens'"](function (v) {
+    var $67 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentNavBar(s);
         });
     })(dictStrong);
-    var $57 = Data_Lens_Record.prop({
+    var $68 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "pages";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($58) {
-        return $56($57($58));
+    return function ($69) {
+        return $67($68($69));
     };
 };
 var _activePage = function (dictStrong) {
-    var $59 = Data_Lens_Lens["lens'"](function (v) {
+    var $70 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentNavBar(s);
         });
     })(dictStrong);
-    var $60 = Data_Lens_Record.prop({
+    var $71 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "activePage";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($61) {
-        return $59($60($61));
+    return function ($72) {
+        return $70($71($72));
     };
 };
 var selectPage = function (n) {
@@ -98087,7 +98167,7 @@ var selectPage = function (n) {
         if (Data_Boolean.otherwise) {
             return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentNavBar (line 66, column 1 - line 66, column 96): " + [ n.constructor.name, a.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentNavBar (line 72, column 1 - line 72, column 96): " + [ n.constructor.name, a.constructor.name ]);
     };
 };
 var marshalComponentNavBar = function (v) {
@@ -98098,14 +98178,31 @@ var marshalComponentNavBar = function (v) {
         return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
     };
 };
+var _about = function (dictStrong) {
+    var $73 = Data_Lens_Lens["lens'"](function (v) {
+        return new Data_Tuple.Tuple(v.value0, function (s) {
+            return new ComponentNavBar(s);
+        });
+    })(dictStrong);
+    var $74 = Data_Lens_Record.prop({
+        reflectSymbol: function () {
+            return "about";
+        }
+    })()()(Data_Symbol.SProxy.value)(dictStrong);
+    return function ($75) {
+        return $73($74($75));
+    };
+};
 module.exports = {
     ComponentNavBar: ComponentNavBar,
     "_pages": _pages,
     "_activePage": _activePage,
     "_select": _select,
+    "_about": _about,
     ComponentNavBarPagesSignal: ComponentNavBarPagesSignal,
     ComponentNavBarActivePageSignal: ComponentNavBarActivePageSignal,
     ComponentNavBarSelectSignal: ComponentNavBarSelectSignal,
+    ComponentNavBarAboutSignal: ComponentNavBarAboutSignal,
     ComponentNavBarAffect: ComponentNavBarAffect,
     mainPage: mainPage,
     matrixPage: matrixPage,
@@ -98924,6 +99021,7 @@ module.exports = {
 // Generated by purs version 0.14.4
 "use strict";
 var Control_Applicative = require("../Control.Applicative/index.js");
+var Control_Bind = require("../Control.Bind/index.js");
 var Control_Monad_Writer_Trans = require("../Control.Monad.Writer.Trans/index.js");
 var Data_Argonaut_Core = require("../Data.Argonaut.Core/index.js");
 var Data_Argonaut_Decode_Class = require("../Data.Argonaut.Decode.Class/index.js");
@@ -98993,14 +99091,23 @@ var ComponentOutputDeviceConfigurationNameEditSignal = (function () {
     };
     return ComponentOutputDeviceConfigurationNameEditSignal;
 })();
-var ComponentOutputDeviceConfigurationApplyNameSignal = (function () {
-    function ComponentOutputDeviceConfigurationApplyNameSignal(value0) {
+var ComponentOutputDeviceConfigurationApplySignal = (function () {
+    function ComponentOutputDeviceConfigurationApplySignal(value0) {
         this.value0 = value0;
     };
-    ComponentOutputDeviceConfigurationApplyNameSignal.create = function (value0) {
-        return new ComponentOutputDeviceConfigurationApplyNameSignal(value0);
+    ComponentOutputDeviceConfigurationApplySignal.create = function (value0) {
+        return new ComponentOutputDeviceConfigurationApplySignal(value0);
     };
-    return ComponentOutputDeviceConfigurationApplyNameSignal;
+    return ComponentOutputDeviceConfigurationApplySignal;
+})();
+var ComponentOutputDeviceConfigurationCancelSignal = (function () {
+    function ComponentOutputDeviceConfigurationCancelSignal(value0) {
+        this.value0 = value0;
+    };
+    ComponentOutputDeviceConfigurationCancelSignal.create = function (value0) {
+        return new ComponentOutputDeviceConfigurationCancelSignal(value0);
+    };
+    return ComponentOutputDeviceConfigurationCancelSignal;
 })();
 var ComponentOutputDeviceConfigurationRefusalSignal = (function () {
     function ComponentOutputDeviceConfigurationRefusalSignal(value0) {
@@ -99074,6 +99181,15 @@ var ComponentOutputDeviceConfigurationFps60Signal = (function () {
     };
     return ComponentOutputDeviceConfigurationFps60Signal;
 })();
+var ComponentOutputDeviceConfigurationPreviewHeldSignal = (function () {
+    function ComponentOutputDeviceConfigurationPreviewHeldSignal(value0) {
+        this.value0 = value0;
+    };
+    ComponentOutputDeviceConfigurationPreviewHeldSignal.create = function (value0) {
+        return new ComponentOutputDeviceConfigurationPreviewHeldSignal(value0);
+    };
+    return ComponentOutputDeviceConfigurationPreviewHeldSignal;
+})();
 var ComponentOutputDeviceConfigurationPreviewPickedSignal = (function () {
     function ComponentOutputDeviceConfigurationPreviewPickedSignal(value0) {
         this.value0 = value0;
@@ -99139,45 +99255,51 @@ var genericComponentOutputDev = {
             return new ComponentOutputDeviceConfigurationNameEditSignal(x.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))) {
-            return new ComponentOutputDeviceConfigurationApplyNameSignal(x.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationApplySignal(x.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))) {
-            return new ComponentOutputDeviceConfigurationRefusalSignal(x.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationCancelSignal(x.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))) {
-            return new ComponentOutputDeviceConfigurationGenlockSignal(x.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationRefusalSignal(x.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))) {
-            return new ComponentOutputDeviceConfigurationGenlockableSignal(x.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationGenlockSignal(x.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))))) {
-            return new ComponentOutputDeviceConfigurationKnownFormatSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationGenlockableSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))))) {
-            return new ComponentOutputDeviceConfigurationScaledSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationKnownFormatSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))))))) {
-            return new ComponentOutputDeviceConfigurationResolutionsSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationScaledSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))))))) {
-            return new ComponentOutputDeviceConfigurationResolutionSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationResolutionsSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))))))))) {
-            return new ComponentOutputDeviceConfigurationFps60Signal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationResolutionSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))))))))) {
-            return new ComponentOutputDeviceConfigurationPreviewPickedSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationFps60Signal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))))))))))) {
-            return new ComponentOutputDeviceConfigurationTransceiverSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationPreviewHeldSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))))))))))) {
-            return new ComponentOutputDeviceConfigurationReadAsSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationPreviewPickedSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
-        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr))))))))))))))) {
-            return new ComponentOutputDeviceConfigurationAffect(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))))))))))))) {
+            return new ComponentOutputDeviceConfigurationTransceiverSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentOutputDeviceConfiguration (line 120, column 1 - line 120, column 67): " + [ x.constructor.name ]);
+        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))))))))))))) {
+            return new ComponentOutputDeviceConfigurationReadAsSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+        };
+        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr))))))))))))))))) {
+            return new ComponentOutputDeviceConfigurationAffect(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+        };
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentOutputDeviceConfiguration (line 132, column 1 - line 132, column 67): " + [ x.constructor.name ]);
     },
     from: function (x) {
         if (x instanceof ComponentOutputDeviceConfigurationConfiguredSignal) {
@@ -99192,46 +99314,52 @@ var genericComponentOutputDev = {
         if (x instanceof ComponentOutputDeviceConfigurationNameEditSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationApplyNameSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationApplySignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationRefusalSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationCancelSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationGenlockSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationRefusalSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationGenlockableSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationGenlockSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationKnownFormatSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationGenlockableSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationScaledSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationKnownFormatSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationResolutionsSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationScaledSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationResolutionSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationResolutionsSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationFps60Signal) {
+        if (x instanceof ComponentOutputDeviceConfigurationResolutionSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))))))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationPreviewPickedSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationFps60Signal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))))))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationTransceiverSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationPreviewHeldSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))))))))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationReadAsSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationPreviewPickedSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))))))))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationAffect) {
-            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0))))))))))))))));
+        if (x instanceof ComponentOutputDeviceConfigurationTransceiverSignal) {
+            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))))))))))))));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentOutputDeviceConfiguration (line 120, column 1 - line 120, column 67): " + [ x.constructor.name ]);
+        if (x instanceof ComponentOutputDeviceConfigurationReadAsSignal) {
+            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))))))))))))));
+        };
+        if (x instanceof ComponentOutputDeviceConfigurationAffect) {
+            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0))))))))))))))))));
+        };
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentOutputDeviceConfiguration (line 132, column 1 - line 132, column 67): " + [ x.constructor.name ]);
     }
 };
 var genericComponentOutputDev1 = {
@@ -99245,7 +99373,11 @@ var genericComponentOutputDev1 = {
 var showComponentOutputDevice1 = {
     show: Data_Show_Generic.genericShow(genericComponentOutputDev1)(Data_Show_Generic.genericShowConstructor(Data_Show_Generic.genericShowArgsArgument(Data_Show.showRecord()(Data_Show.showRecordFieldsCons({
         reflectSymbol: function () {
-            return "applyName";
+            return "apply";
+        }
+    })(Data_Show.showRecordFieldsCons({
+        reflectSymbol: function () {
+            return "cancel";
         }
     })(Data_Show.showRecordFieldsCons({
         reflectSymbol: function () {
@@ -99281,6 +99413,10 @@ var showComponentOutputDevice1 = {
         }
     })(Data_Show.showRecordFieldsCons({
         reflectSymbol: function () {
+            return "previewHeld";
+        }
+    })(Data_Show.showRecordFieldsCons({
+        reflectSymbol: function () {
             return "previewPicked";
         }
     })(Data_Show.showRecordFieldsCons({
@@ -99307,17 +99443,17 @@ var showComponentOutputDevice1 = {
         reflectSymbol: function () {
             return "transceiver";
         }
-    })(Data_Show.showRecordFieldsNil)(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_List_Types.showList(Data_Show.showString)))(Data_Show.showString))(Data_Show.showString))(Data_Show.showString))(Data_Show.showBoolean))(Data_Show.showString))(Data_Show.showBoolean))(Data_Tuple.showTuple(Data_Show.showInt)(Data_Tuple.showTuple(Data_Show.showInt)(Data_Show.showInt))))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showString))(Exhibit_VideoControl_Types.showDeviceSettings))(Data_Unit.showUnit))))({
+    })(Data_Show.showRecordFieldsNil)(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_List_Types.showList(Data_Show.showString)))(Data_Show.showString))(Data_Show.showString))(Data_Show.showString))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showString))(Data_Show.showBoolean))(Data_Tuple.showTuple(Data_Show.showInt)(Data_Tuple.showTuple(Data_Show.showInt)(Data_Show.showInt))))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showString))(Exhibit_VideoControl_Types.showDeviceSettings))(Data_Unit.showUnit))(Data_Unit.showUnit))))({
         reflectSymbol: function () {
             return "ComponentOutputDeviceConfiguration";
         }
     }))
 };
 var eqComponentOutputDeviceCo = {
-    eq: Data_Eq_Generic.genericEq(genericComponentOutputDev)(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Exhibit_VideoControl_Types.eqDeviceSettings)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqUnit)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Tuple.eqTuple(Data_Eq.eqInt)(Data_Tuple.eqTuple(Data_Eq.eqInt)(Data_Eq.eqInt)))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Tuple.eqTuple(Data_Eq.eqInt)(Data_Eq.eqString))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Either.eqEither(ExploreSignal.eqAffRequest)(Data_Tuple.eqTuple(ExploreSignal.eqAffRequest)(Data_Argonaut_Core.eqJson)))))))))))))))))))))
+    eq: Data_Eq_Generic.genericEq(genericComponentOutputDev)(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Exhibit_VideoControl_Types.eqDeviceSettings)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqUnit)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqUnit)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Tuple.eqTuple(Data_Eq.eqInt)(Data_Tuple.eqTuple(Data_Eq.eqInt)(Data_Eq.eqInt)))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Tuple.eqTuple(Data_Eq.eqInt)(Data_Eq.eqString))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Either.eqEither(ExploreSignal.eqAffRequest)(Data_Tuple.eqTuple(ExploreSignal.eqAffRequest)(Data_Argonaut_Core.eqJson)))))))))))))))))))))))
 };
 var eqComponentOutputDeviceCo1 = {
-    eq: Data_Eq_Generic.genericEq(genericComponentOutputDev1)(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqRec()(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowNil)()({
+    eq: Data_Eq_Generic.genericEq(genericComponentOutputDev1)(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqRec()(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowNil)()({
         reflectSymbol: function () {
             return "transceiver";
         }
@@ -99344,6 +99480,10 @@ var eqComponentOutputDeviceCo1 = {
     })(Data_Eq.eqString))()({
         reflectSymbol: function () {
             return "previewPicked";
+        }
+    })(Data_Eq.eqBoolean))()({
+        reflectSymbol: function () {
+            return "previewHeld";
         }
     })(Data_Eq.eqBoolean))()({
         reflectSymbol: function () {
@@ -99379,7 +99519,11 @@ var eqComponentOutputDeviceCo1 = {
         }
     })(Exhibit_VideoControl_Types.eqDeviceSettings))()({
         reflectSymbol: function () {
-            return "applyName";
+            return "cancel";
+        }
+    })(Data_Eq.eqUnit))()({
+        reflectSymbol: function () {
+            return "apply";
         }
     })(Data_Eq.eqUnit)))))
 };
@@ -99388,7 +99532,7 @@ var encodeJsonComponentOutput = {
         reflectSymbol: function () {
             return "ComponentOutputDeviceConfiguration";
         }
-    })(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(Data_Argonaut_Encode_Class.encodeRecord(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonUnit)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Exhibit_VideoControl_Types.encodeJsonDeviceSettings)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonTuple(Data_Argonaut_Encode_Class.encodeJsonInt)(Data_Argonaut_Encode_Class.encodeJsonTuple(Data_Argonaut_Encode_Class.encodeJsonInt)(Data_Argonaut_Encode_Class.encodeJsonInt)))(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonList(Data_Argonaut_Encode_Class.encodeJsonJString))(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonNil)({
+    })(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(Data_Argonaut_Encode_Class.encodeRecord(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonUnit)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonUnit)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Exhibit_VideoControl_Types.encodeJsonDeviceSettings)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonTuple(Data_Argonaut_Encode_Class.encodeJsonInt)(Data_Argonaut_Encode_Class.encodeJsonTuple(Data_Argonaut_Encode_Class.encodeJsonInt)(Data_Argonaut_Encode_Class.encodeJsonInt)))(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonList(Data_Argonaut_Encode_Class.encodeJsonJString))(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonNil)({
         reflectSymbol: function () {
             return "transceiver";
         }
@@ -99415,6 +99559,10 @@ var encodeJsonComponentOutput = {
     })())({
         reflectSymbol: function () {
             return "previewPicked";
+        }
+    })())({
+        reflectSymbol: function () {
+            return "previewHeld";
         }
     })())({
         reflectSymbol: function () {
@@ -99450,14 +99598,22 @@ var encodeJsonComponentOutput = {
         }
     })())({
         reflectSymbol: function () {
-            return "applyName";
+            return "cancel";
+        }
+    })())({
+        reflectSymbol: function () {
+            return "apply";
         }
     })())()))))
 };
 var defComponentOutputDeviceC = {
     def: Unify_Types.genericDef(genericComponentOutputDev1)(Unify_Types.genericDefConstructor(Unify_Types.genericDefArgument(Unify_Types.defRecord()(Unify_Types.defRowListCons({
         reflectSymbol: function () {
-            return "applyName";
+            return "apply";
+        }
+    })(Unify_Types.defUnit)(Unify_Types.defRowListCons({
+        reflectSymbol: function () {
+            return "cancel";
         }
     })(Unify_Types.defUnit)(Unify_Types.defRowListCons({
         reflectSymbol: function () {
@@ -99493,6 +99649,10 @@ var defComponentOutputDeviceC = {
         }
     })(Unify_Types.defString)(Unify_Types.defRowListCons({
         reflectSymbol: function () {
+            return "previewHeld";
+        }
+    })(Unify_Types.defBoolean)(Unify_Types.defRowListCons({
+        reflectSymbol: function () {
             return "previewPicked";
         }
     })(Unify_Types.defBoolean)(Unify_Types.defRowListCons({
@@ -99519,14 +99679,14 @@ var defComponentOutputDeviceC = {
         reflectSymbol: function () {
             return "transceiver";
         }
-    })(Unify_Types.defBoolean)(Unify_Types.defRowListNilRow)()())()())()())()())()())()())()())()())()())()())()())()())()())()())()())()()))))
+    })(Unify_Types.defBoolean)(Unify_Types.defRowListNilRow)()())()())()())()())()())()())()())()())()())()())()())()())()())()())()())()())()())()()))))
 };
 var decodeJsonComponentOutput = {
     decodeJson: Data_Argonaut_Decode_Generic.genericDecodeJson(genericComponentOutputDev1)(Data_Argonaut_Decode_Generic.decodeRepConstructorArg({
         reflectSymbol: function () {
             return "ComponentOutputDeviceConfiguration";
         }
-    })(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonNull))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Exhibit_VideoControl_Types.decodeJsonDeviceSettings))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonTuple(Data_Argonaut_Decode_Class.decodeJsonInt)(Data_Argonaut_Decode_Class.decodeJsonTuple(Data_Argonaut_Decode_Class.decodeJsonInt)(Data_Argonaut_Decode_Class.decodeJsonInt))))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
+    })(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonNull))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonNull))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Exhibit_VideoControl_Types.decodeJsonDeviceSettings))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonTuple(Data_Argonaut_Decode_Class.decodeJsonInt)(Data_Argonaut_Decode_Class.decodeJsonTuple(Data_Argonaut_Decode_Class.decodeJsonInt)(Data_Argonaut_Decode_Class.decodeJsonInt))))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
         reflectSymbol: function () {
             return "transceiver";
         }
@@ -99553,6 +99713,10 @@ var decodeJsonComponentOutput = {
     })()())({
         reflectSymbol: function () {
             return "previewPicked";
+        }
+    })()())({
+        reflectSymbol: function () {
+            return "previewHeld";
         }
     })()())({
         reflectSymbol: function () {
@@ -99588,7 +99752,11 @@ var decodeJsonComponentOutput = {
         }
     })()())({
         reflectSymbol: function () {
-            return "applyName";
+            return "cancel";
+        }
+    })()())({
+        reflectSymbol: function () {
+            return "apply";
         }
     })()())()))
 };
@@ -99598,153 +99766,168 @@ var marshalComponentOutputDeviceConfiguration = function (v) {
     };
 };
 var _transceiver = function (dictStrong) {
-    var $285 = Data_Lens_Lens["lens'"](function (v) {
+    var $372 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $286 = Data_Lens_Record.prop({
+    var $373 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "transceiver";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($287) {
-        return $285($286($287));
+    return function ($374) {
+        return $372($373($374));
     };
 };
 var _scaled = function (dictStrong) {
-    var $288 = Data_Lens_Lens["lens'"](function (v) {
+    var $375 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $289 = Data_Lens_Record.prop({
+    var $376 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "scaled";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($290) {
-        return $288($289($290));
+    return function ($377) {
+        return $375($376($377));
     };
 };
 var _resolutions = function (dictStrong) {
-    var $291 = Data_Lens_Lens["lens'"](function (v) {
+    var $378 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $292 = Data_Lens_Record.prop({
+    var $379 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "resolutions";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($293) {
-        return $291($292($293));
+    return function ($380) {
+        return $378($379($380));
     };
 };
 var _resolution = function (dictStrong) {
-    var $294 = Data_Lens_Lens["lens'"](function (v) {
+    var $381 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $295 = Data_Lens_Record.prop({
+    var $382 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "resolution";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($296) {
-        return $294($295($296));
+    return function ($383) {
+        return $381($382($383));
     };
 };
 var _refusal = function (dictStrong) {
-    var $297 = Data_Lens_Lens["lens'"](function (v) {
+    var $384 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $298 = Data_Lens_Record.prop({
+    var $385 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "refusal";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($299) {
-        return $297($298($299));
+    return function ($386) {
+        return $384($385($386));
     };
 };
 var _readAs = function (dictStrong) {
-    var $300 = Data_Lens_Lens["lens'"](function (v) {
+    var $387 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $301 = Data_Lens_Record.prop({
+    var $388 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "readAs";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($302) {
-        return $300($301($302));
+    return function ($389) {
+        return $387($388($389));
     };
 };
 var _previewPicked = function (dictStrong) {
-    var $303 = Data_Lens_Lens["lens'"](function (v) {
+    var $390 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $304 = Data_Lens_Record.prop({
+    var $391 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewPicked";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($305) {
-        return $303($304($305));
+    return function ($392) {
+        return $390($391($392));
     };
 };
-var _nameEdit = function (dictStrong) {
-    var $306 = Data_Lens_Lens["lens'"](function (v) {
+var _previewHeld = function (dictStrong) {
+    var $393 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $307 = Data_Lens_Record.prop({
+    var $394 = Data_Lens_Record.prop({
+        reflectSymbol: function () {
+            return "previewHeld";
+        }
+    })()()(Data_Symbol.SProxy.value)(dictStrong);
+    return function ($395) {
+        return $393($394($395));
+    };
+};
+var _nameEdit = function (dictStrong) {
+    var $396 = Data_Lens_Lens["lens'"](function (v) {
+        return new Data_Tuple.Tuple(v.value0, function (s) {
+            return new ComponentOutputDeviceConfiguration(s);
+        });
+    })(dictStrong);
+    var $397 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "nameEdit";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($308) {
-        return $306($307($308));
+    return function ($398) {
+        return $396($397($398));
     };
 };
 var _locating = function (dictStrong) {
-    var $309 = Data_Lens_Lens["lens'"](function (v) {
+    var $399 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $310 = Data_Lens_Record.prop({
+    var $400 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "locating";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($311) {
-        return $309($310($311));
+    return function ($401) {
+        return $399($400($401));
     };
 };
 var _knownFormat = function (dictStrong) {
-    var $312 = Data_Lens_Lens["lens'"](function (v) {
+    var $402 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $313 = Data_Lens_Record.prop({
+    var $403 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "knownFormat";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($314) {
-        return $312($313($314));
+    return function ($404) {
+        return $402($403($404));
     };
 };
 var knownFormatOf = function (a) {
@@ -99759,49 +99942,67 @@ var knownFormatOf = function (a) {
     return Data_Maybe.Nothing.value;
 };
 var _genlockable = function (dictStrong) {
-    var $315 = Data_Lens_Lens["lens'"](function (v) {
+    var $405 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $316 = Data_Lens_Record.prop({
+    var $406 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "genlockable";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($317) {
-        return $315($316($317));
+    return function ($407) {
+        return $405($406($407));
     };
 };
 var _genlock = function (dictStrong) {
-    var $318 = Data_Lens_Lens["lens'"](function (v) {
+    var $408 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $319 = Data_Lens_Record.prop({
+    var $409 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "genlock";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($320) {
-        return $318($319($320));
+    return function ($410) {
+        return $408($409($410));
     };
 };
+var _videoMode = function (dictStrong) {
+    return Data_Lens_Lens.lens(function (a) {
+        return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(a)(_genlock(Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(a)(_scaled(Data_Lens_Internal_Forget.strongForget)));
+    })(function (a) {
+        return function (v) {
+            return Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_genlock(Data_Profunctor_Strong.strongFn))(v.value0)))(Data_Lens_Setter.set(_scaled(Data_Profunctor_Strong.strongFn))(v.value1));
+        };
+    })(dictStrong);
+};
 var _fps60 = function (dictStrong) {
-    var $321 = Data_Lens_Lens["lens'"](function (v) {
+    var $411 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $322 = Data_Lens_Record.prop({
+    var $412 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "fps60";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($323) {
-        return $321($322($323));
+    return function ($413) {
+        return $411($412($413));
     };
+};
+var _scaledPick = function (dictStrong) {
+    return Data_Lens_Lens.lens(function (a) {
+        return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(a)(_resolution(Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(a)(_fps60(Data_Lens_Internal_Forget.strongForget)));
+    })(function (a) {
+        return function (v) {
+            return Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_resolution(Data_Profunctor_Strong.strongFn))(v.value0)))(Data_Lens_Setter.set(_fps60(Data_Profunctor_Strong.strongFn))(v.value1));
+        };
+    })(dictStrong);
 };
 var scaledAt = function (d) {
     return function (a) {
@@ -99817,7 +100018,7 @@ var scaledAt = function (d) {
         if (Data_Boolean.otherwise) {
             return a;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentOutputDeviceConfiguration (line 151, column 3 - line 156, column 23): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentOutputDeviceConfiguration (line 167, column 3 - line 172, column 23): " + [ v.constructor.name ]);
     };
 };
 var scaledFormatOf = function (a) {
@@ -99826,8 +100027,8 @@ var scaledFormatOf = function (a) {
             argumentsWidth: v.value0,
             argumentsHeight: v.value1,
             argumentsFps: (function () {
-                var $275 = Data_Lens_Getter.viewOn(a)(_fps60(Data_Lens_Internal_Forget.strongForget));
-                if ($275) {
+                var $352 = Data_Lens_Getter.viewOn(a)(_fps60(Data_Lens_Internal_Forget.strongForget));
+                if ($352) {
                     return 60;
                 };
                 return 30;
@@ -99836,40 +100037,40 @@ var scaledFormatOf = function (a) {
     })(Exhibit_VideoControl_Interactions.namedResolution(Data_Lens_Getter.viewOn(a)(_resolution(Data_Lens_Internal_Forget.strongForget))));
 };
 var _configuredName = function (dictStrong) {
-    var $324 = Data_Lens_Lens["lens'"](function (v) {
+    var $414 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $325 = Data_Lens_Record.prop({
+    var $415 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "configuredName";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($326) {
-        return $324($325($326));
+    return function ($416) {
+        return $414($415($416));
     };
 };
 var _configured = function (dictStrong) {
-    var $327 = Data_Lens_Lens["lens'"](function (v) {
+    var $417 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $328 = Data_Lens_Record.prop({
+    var $418 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "configured";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($329) {
-        return $327($328($329));
+    return function ($419) {
+        return $417($418($419));
     };
 };
 var carrying = function (d) {
     return function (a) {
-        return Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_configured(Data_Profunctor_Strong.strongFn))(d)))(Data_Lens_Setter.set(_configuredName(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))))(Data_Lens_Setter.set(_locating(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.locateModeOf(d))))(Data_Lens_Setter.set(_genlock(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.genlockOf(d))))(Data_Lens_Setter.set(_genlockable(Data_Profunctor_Strong.strongFn))(Data_Maybe.isJust(Exhibit_VideoControl_Interactions.frameBufferOf(d)) && !Exhibit_VideoControl_Interactions.composingOf(d))))(Data_Lens_Setter.over(_knownFormat(Data_Profunctor_Strong.strongFn))(function (f) {
-            var $282 = Exhibit_VideoControl_Interactions.genlockOf(d);
-            if ($282) {
+        return Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_configured(Data_Profunctor_Strong.strongFn))(d)))(Data_Lens_Setter.set(_configuredName(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))))(Data_Lens_Setter.set(_nameEdit(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))))(Data_Lens_Setter.set(_previewPicked(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(a)(_previewHeld(Data_Lens_Internal_Forget.strongForget)))))(Data_Lens_Setter.set(_locating(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.locateModeOf(d))))(Data_Lens_Setter.set(_genlock(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.genlockOf(d))))(Data_Lens_Setter.set(_genlockable(Data_Profunctor_Strong.strongFn))(Data_Maybe.isJust(Exhibit_VideoControl_Interactions.frameBufferOf(d)) && !Exhibit_VideoControl_Interactions.composingOf(d))))(Data_Lens_Setter.over(_knownFormat(Data_Profunctor_Strong.strongFn))(function (f) {
+            var $359 = Exhibit_VideoControl_Interactions.genlockOf(d);
+            if ($359) {
                 return f;
             };
             return Data_Maybe.maybe(f)(function (n) {
@@ -99883,21 +100084,158 @@ var carrying = function (d) {
     };
 };
 var opening = function (d) {
-    return carrying(d)(Unify_Types.flipuse(Unify_Types.def(defComponentOutputDeviceC))(Data_Lens_Setter.set(_nameEdit(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))));
+    return carrying(d)(Unify_Types.def(defComponentOutputDeviceC));
 };
-var _applyName = function (dictStrong) {
-    var $330 = Data_Lens_Lens["lens'"](function (v) {
+var pending = function (a) {
+    return Data_Eq.notEq(eqComponentOutputDeviceCo1)(carrying(Data_Lens_Getter.viewOn(a)(_configured(Data_Lens_Internal_Forget.strongForget)))(a))(a);
+};
+var rebasing = function (d) {
+    return function (a) {
+        var was = carrying(Data_Lens_Getter.viewOn(a)(_configured(Data_Lens_Internal_Forget.strongForget)))(a);
+        var kept = function (dictEq) {
+            return function (l) {
+                return function (c) {
+                    var $360 = Data_Eq.eq(dictEq)(Data_Lens_Getter.viewOn(a)(l(Data_Lens_Internal_Forget.strongForget)))(Data_Lens_Getter.viewOn(was)(l(Data_Lens_Internal_Forget.strongForget)));
+                    if ($360) {
+                        return c;
+                    };
+                    return Unify_Types.flipuse(c)(Data_Lens_Setter.set(l(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(a)(l(Data_Lens_Internal_Forget.strongForget))));
+                };
+            };
+        };
+        return Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(carrying(d)(a))(kept(Data_Eq.eqString)(function (dictStrong) {
+            return _nameEdit(dictStrong);
+        })))(kept(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _locating(dictStrong);
+        })))(kept(Data_Tuple.eqTuple(Data_Eq.eqBoolean)(Data_Eq.eqBoolean))(function (dictStrong) {
+            return _videoMode(dictStrong);
+        })))(kept(Data_Tuple.eqTuple(Data_Eq.eqString)(Data_Eq.eqBoolean))(function (dictStrong) {
+            return _scaledPick(dictStrong);
+        })))(kept(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _previewPicked(dictStrong);
+        })))(kept(Data_Eq.eqString)(function (dictStrong) {
+            return _readAs(dictStrong);
+        }));
+    };
+};
+var videoModeAsked = function (a) {
+    var moving = function (d) {
+        return function (known) {
+            if (!Data_Lens_Getter.viewOn(a)(_genlock(Data_Lens_Internal_Forget.strongForget))) {
+                var $363 = Exhibit_VideoControl_Interactions.genlockOf(d);
+                if ($363) {
+                    return Data_Functor.map(Data_Maybe.functorMaybe)(function (v) {
+                        return Exhibit_VideoControl_Interactions.genlockingTo(d)(false)(known);
+                    })(Exhibit_VideoControl_Interactions.setLatencyKnown(known)(d));
+                };
+                return Data_Maybe.Nothing.value;
+            };
+            if (Data_Lens_Getter.viewOn(a)(_scaled(Data_Lens_Internal_Forget.strongForget))) {
+                return Control_Bind.bind(Data_Maybe.bindMaybe)(scaledFormatOf(a))(function (f) {
+                    return Data_Functor.map(Data_Maybe.functorMaybe)(function (v) {
+                        return Exhibit_VideoControl_Interactions.scalingAt(d)(true)(new Data_Maybe.Just(f));
+                    })(Exhibit_VideoControl_Interactions.setGenlockScaling(f)(d));
+                });
+            };
+            if (Exhibit_VideoControl_Interactions.genlockScalingOf(d)) {
+                return Data_Functor.map(Data_Maybe.functorMaybe)(function (v) {
+                    return Exhibit_VideoControl_Interactions.scalingAt(d)(false)(Data_Maybe.Nothing.value);
+                })(Exhibit_VideoControl_Interactions.leaveGenlockScaling(d));
+            };
+            if (Exhibit_VideoControl_Interactions.genlockOf(d)) {
+                return Data_Maybe.Nothing.value;
+            };
+            if (Data_Boolean.otherwise) {
+                return Data_Functor.map(Data_Maybe.functorMaybe)(function (v) {
+                    return Exhibit_VideoControl_Interactions.genlockingTo(d)(true)(known);
+                })(Exhibit_VideoControl_Interactions.setLatencyKnown(known)(d));
+            };
+            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentOutputDeviceConfiguration (line 230, column 5 - line 236, column 85): " + [ d.constructor.name, known.constructor.name ]);
+        };
+    };
+    return moving(Data_Lens_Getter.viewOn(a)(_configured(Data_Lens_Internal_Forget.strongForget)))(knownFormatOf(a));
+};
+var asked = function (a) {
+    var d = Data_Lens_Getter.viewOn(a)(_configured(Data_Lens_Internal_Forget.strongForget));
+    var was = carrying(d)(a);
+    var changed = function (dictEq) {
+        return function (l) {
+            return Data_Eq.notEq(dictEq)(Data_Lens_Getter.viewOn(a)(l(Data_Lens_Internal_Forget.strongForget)))(Data_Lens_Getter.viewOn(was)(l(Data_Lens_Internal_Forget.strongForget)));
+        };
+    };
+    var asking = function (dictEq) {
+        return function (l) {
+            return function (q) {
+                var $364 = changed(dictEq)(function (dictStrong) {
+                    return l(dictStrong);
+                });
+                if ($364) {
+                    return q;
+                };
+                return Data_Maybe.Nothing.value;
+            };
+        };
+    };
+    return Data_List.catMaybes(new Data_List_Types.Cons(asking(Data_Eq.eqString)(function (dictStrong) {
+        return _nameEdit(dictStrong);
+    })(Exhibit_VideoControl_Interactions.settingAsked("name")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Lens_Getter.viewOn(a)(_nameEdit(Data_Lens_Internal_Forget.strongForget))))(d)(Exhibit_VideoControl_Interactions.renameDevice(d)(Data_Lens_Getter.viewOn(a)(_nameEdit(Data_Lens_Internal_Forget.strongForget))))), new Data_List_Types.Cons(asking(Data_Eq.eqBoolean)(function (dictStrong) {
+        return _locating(dictStrong);
+    })(Exhibit_VideoControl_Interactions.settingAsked("locate")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Lens_Getter.viewOn(a)(_locating(Data_Lens_Internal_Forget.strongForget))))(d)(new Data_Maybe.Just(Exhibit_VideoControl_Interactions.locateDevice(d)(Data_Lens_Getter.viewOn(a)(_locating(Data_Lens_Internal_Forget.strongForget)))))), new Data_List_Types.Cons((function () {
+        var $365 = changed(Data_Tuple.eqTuple(Data_Eq.eqBoolean)(Data_Eq.eqBoolean))(function (dictStrong) {
+            return _videoMode(dictStrong);
+        }) || changed(Data_Tuple.eqTuple(Data_Eq.eqString)(Data_Eq.eqBoolean))(function (dictStrong) {
+            return _scaledPick(dictStrong);
+        });
+        if ($365) {
+            return videoModeAsked(a);
+        };
+        return Data_Maybe.Nothing.value;
+    })(), new Data_List_Types.Cons(asking(Data_Eq.eqBoolean)(function (dictStrong) {
+        return _previewPicked(dictStrong);
+    })(new Data_Maybe.Just(Exhibit_VideoControl_Interactions.pickingPreviewBox((function () {
+        var $366 = Data_Lens_Getter.viewOn(a)(_previewPicked(Data_Lens_Internal_Forget.strongForget));
+        if ($366) {
+            return new Data_Maybe.Just(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget)));
+        };
+        return Data_Maybe.Nothing.value;
+    })()))), new Data_List_Types.Cons(asking(Data_Eq.eqString)(function (dictStrong) {
+        return _readAs(dictStrong);
+    })((function () {
+        var $367 = Exhibit_VideoControl_Interactions.transceiverOf(d);
+        if ($367) {
+            return new Data_Maybe.Just(Exhibit_VideoControl_Interactions.readingTransceiverAs(d)(Data_Lens_Getter.viewOn(a)(_readAs(Data_Lens_Internal_Forget.strongForget))));
+        };
+        return Data_Maybe.Nothing.value;
+    })()), Data_List_Types.Nil.value))))));
+};
+var _cancel = function (dictStrong) {
+    var $420 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentOutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $331 = Data_Lens_Record.prop({
+    var $421 = Data_Lens_Record.prop({
         reflectSymbol: function () {
-            return "applyName";
+            return "cancel";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($332) {
-        return $330($331($332));
+    return function ($422) {
+        return $420($421($422));
+    };
+};
+var _apply = function (dictStrong) {
+    var $423 = Data_Lens_Lens["lens'"](function (v) {
+        return new Data_Tuple.Tuple(v.value0, function (s) {
+            return new ComponentOutputDeviceConfiguration(s);
+        });
+    })(dictStrong);
+    var $424 = Data_Lens_Record.prop({
+        reflectSymbol: function () {
+            return "apply";
+        }
+    })()()(Data_Symbol.SProxy.value)(dictStrong);
+    return function ($425) {
+        return $423($424($425));
     };
 };
 module.exports = {
@@ -99906,7 +100244,8 @@ module.exports = {
     "_configuredName": _configuredName,
     "_locating": _locating,
     "_nameEdit": _nameEdit,
-    "_applyName": _applyName,
+    "_apply": _apply,
+    "_cancel": _cancel,
     "_refusal": _refusal,
     "_genlock": _genlock,
     "_genlockable": _genlockable,
@@ -99915,6 +100254,7 @@ module.exports = {
     "_resolutions": _resolutions,
     "_resolution": _resolution,
     "_fps60": _fps60,
+    "_previewHeld": _previewHeld,
     "_previewPicked": _previewPicked,
     "_transceiver": _transceiver,
     "_readAs": _readAs,
@@ -99922,7 +100262,8 @@ module.exports = {
     ComponentOutputDeviceConfigurationConfiguredNameSignal: ComponentOutputDeviceConfigurationConfiguredNameSignal,
     ComponentOutputDeviceConfigurationLocatingSignal: ComponentOutputDeviceConfigurationLocatingSignal,
     ComponentOutputDeviceConfigurationNameEditSignal: ComponentOutputDeviceConfigurationNameEditSignal,
-    ComponentOutputDeviceConfigurationApplyNameSignal: ComponentOutputDeviceConfigurationApplyNameSignal,
+    ComponentOutputDeviceConfigurationApplySignal: ComponentOutputDeviceConfigurationApplySignal,
+    ComponentOutputDeviceConfigurationCancelSignal: ComponentOutputDeviceConfigurationCancelSignal,
     ComponentOutputDeviceConfigurationRefusalSignal: ComponentOutputDeviceConfigurationRefusalSignal,
     ComponentOutputDeviceConfigurationGenlockSignal: ComponentOutputDeviceConfigurationGenlockSignal,
     ComponentOutputDeviceConfigurationGenlockableSignal: ComponentOutputDeviceConfigurationGenlockableSignal,
@@ -99931,6 +100272,7 @@ module.exports = {
     ComponentOutputDeviceConfigurationResolutionsSignal: ComponentOutputDeviceConfigurationResolutionsSignal,
     ComponentOutputDeviceConfigurationResolutionSignal: ComponentOutputDeviceConfigurationResolutionSignal,
     ComponentOutputDeviceConfigurationFps60Signal: ComponentOutputDeviceConfigurationFps60Signal,
+    ComponentOutputDeviceConfigurationPreviewHeldSignal: ComponentOutputDeviceConfigurationPreviewHeldSignal,
     ComponentOutputDeviceConfigurationPreviewPickedSignal: ComponentOutputDeviceConfigurationPreviewPickedSignal,
     ComponentOutputDeviceConfigurationTransceiverSignal: ComponentOutputDeviceConfigurationTransceiverSignal,
     ComponentOutputDeviceConfigurationReadAsSignal: ComponentOutputDeviceConfigurationReadAsSignal,
@@ -99939,6 +100281,12 @@ module.exports = {
     scaledAt: scaledAt,
     scaledFormatOf: scaledFormatOf,
     opening: opening,
+    "_videoMode": _videoMode,
+    "_scaledPick": _scaledPick,
+    rebasing: rebasing,
+    pending: pending,
+    asked: asked,
+    videoModeAsked: videoModeAsked,
     knownFormatOf: knownFormatOf,
     marshalComponentOutputDeviceConfiguration: marshalComponentOutputDeviceConfiguration,
     genericComponentOutputDev1: genericComponentOutputDev1,
@@ -99952,7 +100300,7 @@ module.exports = {
     defComponentOutputDeviceC: defComponentOutputDeviceC
 };
 
-},{"../Control.Applicative/index.js":42,"../Control.Monad.Writer.Trans/index.js":76,"../Data.Argonaut.Core/index.js":83,"../Data.Argonaut.Decode.Class/index.js":84,"../Data.Argonaut.Decode.Generic/index.js":88,"../Data.Argonaut.Encode.Class/index.js":89,"../Data.Argonaut.Encode.Generic/index.js":92,"../Data.Boolean/index.js":107,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Eq/index.js":118,"../Data.Functor/index.js":142,"../Data.Generic.Rep/index.js":145,"../Data.Identity/index.js":149,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Lens/index.js":173,"../Data.Lens.Record/index.js":177,"../Data.Lens.Setter/index.js":178,"../Data.List.Types/index.js":185,"../Data.List/index.js":186,"../Data.Maybe.First/index.js":188,"../Data.Maybe/index.js":190,"../Data.Profunctor.Strong/index.js":216,"../Data.Show.Generic/index.js":228,"../Data.Show/index.js":230,"../Data.Symbol/index.js":244,"../Data.Tuple/index.js":251,"../Data.Unit/index.js":259,"../Exhibit.VideoControl.Interactions/index.js":315,"../Exhibit.VideoControl.Types/index.js":316,"../Exhibit.VideoControl.VideoControlAPI/index.js":352,"../ExploreSignal/index.js":357,"../Unify.Types/index.js":402}],301:[function(require,module,exports){
+},{"../Control.Applicative/index.js":42,"../Control.Bind/index.js":48,"../Control.Monad.Writer.Trans/index.js":76,"../Data.Argonaut.Core/index.js":83,"../Data.Argonaut.Decode.Class/index.js":84,"../Data.Argonaut.Decode.Generic/index.js":88,"../Data.Argonaut.Encode.Class/index.js":89,"../Data.Argonaut.Encode.Generic/index.js":92,"../Data.Boolean/index.js":107,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Eq/index.js":118,"../Data.Functor/index.js":142,"../Data.Generic.Rep/index.js":145,"../Data.Identity/index.js":149,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Lens/index.js":173,"../Data.Lens.Record/index.js":177,"../Data.Lens.Setter/index.js":178,"../Data.List.Types/index.js":185,"../Data.List/index.js":186,"../Data.Maybe.First/index.js":188,"../Data.Maybe/index.js":190,"../Data.Profunctor.Strong/index.js":216,"../Data.Show.Generic/index.js":228,"../Data.Show/index.js":230,"../Data.Symbol/index.js":244,"../Data.Tuple/index.js":251,"../Data.Unit/index.js":259,"../Exhibit.VideoControl.Interactions/index.js":315,"../Exhibit.VideoControl.Types/index.js":316,"../Exhibit.VideoControl.VideoControlAPI/index.js":352,"../ExploreSignal/index.js":357,"../Unify.Types/index.js":402}],301:[function(require,module,exports){
 // Generated by purs version 0.14.4
 "use strict";
 var Control_Applicative = require("../Control.Applicative/index.js");
@@ -102426,26 +102774,26 @@ var answerSettings = function (req) {
     };
 };
 var _reqPanel = function (dictStrong) {
-    var $240 = Data_Lens_Lens["lens'"](function (v) {
+    var $182 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentSettings(s);
         });
     })(dictStrong);
-    var $241 = Data_Lens_Record.prop({
+    var $183 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "reqPanel";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($242) {
-        return $240($241($242));
+    return function ($184) {
+        return $182($183($184));
     };
 };
 var queuedSettings = function (a) {
     var v = Data_Lens_Getter.viewOn(a)((function () {
-        var $243 = _reqPanel(Data_Lens_Internal_Forget.strongForget);
-        var $244 = Unify_ReqPanel2["_affrequest"](Data_Lens_Internal_Forget.strongForget);
-        return function ($245) {
-            return $243($244($245));
+        var $185 = _reqPanel(Data_Lens_Internal_Forget.strongForget);
+        var $186 = Unify_ReqPanel2["_affrequest"](Data_Lens_Internal_Forget.strongForget);
+        return function ($187) {
+            return $185($186($187));
         };
     })());
     if (v instanceof Data_List_Types.Nil) {
@@ -102478,10 +102826,10 @@ var requestSettings = function (req) {
 var withdrawSettings = function (req) {
     return function (a) {
         return Unify_Types.flipuse(a)(Data_Lens_Setter.over((function () {
-            var $246 = _reqPanel(Data_Profunctor_Strong.strongFn);
-            var $247 = Unify_ReqPanel2["_affrequest"](Data_Profunctor_Strong.strongFn);
-            return function ($248) {
-                return $246($247($248));
+            var $188 = _reqPanel(Data_Profunctor_Strong.strongFn);
+            var $189 = Unify_ReqPanel2["_affrequest"](Data_Profunctor_Strong.strongFn);
+            return function ($190) {
+                return $188($189($190));
             };
         })())(function (q) {
             if (q instanceof Data_List_Types.Cons && Data_Eq.eq(ExploreSignal.eqAffRequest)(q.value0)(req)) {
@@ -102492,18 +102840,18 @@ var withdrawSettings = function (req) {
     };
 };
 var _deviceList = function (dictStrong) {
-    var $249 = Data_Lens_Lens["lens'"](function (v) {
+    var $191 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentSettings(s);
         });
     })(dictStrong);
-    var $250 = Data_Lens_Record.prop({
+    var $192 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "deviceList";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($251) {
-        return $249($250($251));
+    return function ($193) {
+        return $191($192($193));
     };
 };
 var layReceivers = function (j) {
@@ -102521,19 +102869,22 @@ var layTransmitters = function (j) {
     };
 };
 var _configuration = function (dictStrong) {
-    var $252 = Data_Lens_Lens["lens'"](function (v) {
+    var $194 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentSettings(s);
         });
     })(dictStrong);
-    var $253 = Data_Lens_Record.prop({
+    var $195 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "configuration";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($254) {
-        return $252($253($254));
+    return function ($196) {
+        return $194($195($196));
     };
+};
+var cancelConfiguration = function (a) {
+    return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_configuration(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_ComponentDeviceConfiguration.NoDeviceConfiguration.value)))(Data_Lens_Setter.over(_deviceList(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_ComponentDeviceList.selectNone)));
 };
 var configureSelected = function (f) {
     return function (a) {
@@ -102567,7 +102918,7 @@ var configureSource = function (a) {
 var noteLatency = function (j) {
     return function (a) {
         return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.over(_configuration(Data_Profunctor_Strong.strongFn))(function (c) {
-            return Exhibit_VideoControl_ComponentDeviceConfiguration.refusing(Exhibit_VideoControl_Interactions.latencyRefusal(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.latencyOutcomeReading(j))))(c);
+            return Exhibit_VideoControl_ComponentDeviceConfiguration.refused(Exhibit_VideoControl_Interactions.latencyRefusal(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.latencyOutcomeReading(j))))(c);
         })));
     };
 };
@@ -102576,7 +102927,7 @@ var notePreviewBox = function (j) {
         var v = new Data_Tuple.Tuple(Exhibit_VideoControl_Interactions.previewBoxReading(j), Exhibit_VideoControl_ComponentDeviceConfiguration.configuredDevice(Data_Lens_Getter.viewOn(a)(_configuration(Data_Lens_Internal_Forget.strongForget))));
         if (v.value0 instanceof Data_Either.Right && v.value1 instanceof Data_Maybe.Just) {
             return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.over(_configuration(Data_Profunctor_Strong.strongFn))(function (c) {
-                return Exhibit_VideoControl_ComponentDeviceConfiguration.pickedPreview(Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Lens_Getter.viewOn(v.value0.value0)(Exhibit_VideoControl_Types["_previewSetId"](Data_Lens_Internal_Forget.strongForget)))(new Data_Maybe.Just(Data_Lens_Getter.viewOn(v.value1.value0)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget)))))(c);
+                return Exhibit_VideoControl_ComponentDeviceConfiguration.heldPreview(Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Lens_Getter.viewOn(v.value0.value0)(Exhibit_VideoControl_Types["_previewSetId"](Data_Lens_Internal_Forget.strongForget)))(new Data_Maybe.Just(Data_Lens_Getter.viewOn(v.value1.value0)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget)))))(c);
             })));
         };
         return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
@@ -102599,21 +102950,21 @@ var noteReadAs = function (j) {
 var noteRefusal = function (j) {
     return function (a) {
         return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.over(_configuration(Data_Profunctor_Strong.strongFn))(function (c) {
-            return Exhibit_VideoControl_ComponentDeviceConfiguration.refusing(Data_Maybe.fromMaybe("")(Exhibit_VideoControl_Interactions.commandRefusal(j)))(c);
+            return Exhibit_VideoControl_ComponentDeviceConfiguration.refused(Data_Maybe.fromMaybe("")(Exhibit_VideoControl_Interactions.commandRefusal(j)))(c);
         })));
     };
 };
 var noteScaling = function (j) {
     return function (a) {
         return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.over(_configuration(Data_Profunctor_Strong.strongFn))(function (c) {
-            return Exhibit_VideoControl_ComponentDeviceConfiguration.refusing(Exhibit_VideoControl_Interactions.scalingRefusal(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.scalingOutcomeReading(j))))(c);
+            return Exhibit_VideoControl_ComponentDeviceConfiguration.refused(Exhibit_VideoControl_Interactions.scalingRefusal(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.scalingOutcomeReading(j))))(c);
         })));
     };
 };
 var noteSetting = function (j) {
     return function (a) {
         return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.over(_configuration(Data_Profunctor_Strong.strongFn))(function (c) {
-            return Exhibit_VideoControl_ComponentDeviceConfiguration.refusing(Exhibit_VideoControl_Interactions.settingRefusal(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.settingOutcomeReading(j))))(c);
+            return Exhibit_VideoControl_ComponentDeviceConfiguration.refused(Exhibit_VideoControl_Interactions.settingRefusal(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.settingOutcomeReading(j))))(c);
         })));
     };
 };
@@ -102628,187 +102979,39 @@ var requestConfigured = function (a) {
     if (v instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.OutputConfiguration) {
         return requestSettings(Exhibit_VideoControl_Interactions.readReceivers)(a);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSettings (line 258, column 3 - line 261, column 61): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSettings (line 206, column 3 - line 209, column 61): " + [ v.constructor.name ]);
 };
-var requestPreviewPick = function (on) {
+var requestApply = function (a) {
+    var v = Exhibit_VideoControl_ComponentDeviceConfiguration.asked(Data_Lens_Getter.viewOn(a)(_configuration(Data_Lens_Internal_Forget.strongForget)));
+    if (v instanceof Data_List_Types.Nil) {
+        return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.over(_configuration(Data_Profunctor_Strong.strongFn))(function (c) {
+            return Exhibit_VideoControl_ComponentDeviceConfiguration.settled(c);
+        })));
+    };
+    return Control_Bind.bind(Control_Monad_Writer_Trans.bindWriterT(Data_Maybe_First.semigroupFirst)(Data_Identity.bindIdentity))(requestPlan(v)(Unify_Types.flipuse(a)(Data_Lens_Setter.over(_configuration(Data_Profunctor_Strong.strongFn))(function (c) {
+        return Exhibit_VideoControl_ComponentDeviceConfiguration.refusing("")(c);
+    }))))(function (b) {
+        return requestConfigured(b);
+    });
+};
+var settlingWith = function (f) {
     return function (a) {
-        var v = Exhibit_VideoControl_ComponentDeviceConfiguration.configuredDevice(Data_Lens_Getter.viewOn(a)(_configuration(Data_Lens_Internal_Forget.strongForget)));
+        var v = Control_Bind.bind(Data_Maybe.bindMaybe)(Exhibit_VideoControl_ComponentDeviceConfiguration.configuredDevice(Data_Lens_Getter.viewOn(a)(_configuration(Data_Lens_Internal_Forget.strongForget))))(function (d) {
+            return Exhibit_VideoControl_ComponentDeviceList.entryNamed(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget)))(Data_Lens_Getter.viewOn(a)(_deviceList(Data_Lens_Internal_Forget.strongForget)));
+        });
         if (v instanceof Data_Maybe.Nothing) {
             return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
         };
         if (v instanceof Data_Maybe.Just) {
-            return requestSettings(Exhibit_VideoControl_Interactions.pickingPreviewBox((function () {
-                if (on) {
-                    return new Data_Maybe.Just(Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget)));
-                };
-                return Data_Maybe.Nothing.value;
-            })()))(a);
+            return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.over(_configuration(Data_Profunctor_Strong.strongFn))(function (c) {
+                return f(v.value0)(c);
+            })))(Data_Lens_Setter.over(_deviceList(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_ComponentDeviceList.selectNamed(Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget))))));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSettings (line 131, column 3 - line 133, column 100): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSettings (line 132, column 3 - line 135, column 80): " + [ v.constructor.name ]);
     };
 };
-var requestReadAs = function (r) {
-    return function (a) {
-        var v = Exhibit_VideoControl_ComponentDeviceConfiguration.configuredDevice(Data_Lens_Getter.viewOn(a)(_configuration(Data_Lens_Internal_Forget.strongForget)));
-        if (v instanceof Data_Maybe.Just && Exhibit_VideoControl_Interactions.transceiverOf(v.value0)) {
-            return requestSettings(Exhibit_VideoControl_Interactions.readingTransceiverAs(v.value0)(r))(a);
-        };
-        return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
-    };
-};
-var requestRename = function (a) {
-    var typed = Exhibit_VideoControl_ComponentDeviceConfiguration.nameTyped(Data_Lens_Getter.viewOn(a)(_configuration(Data_Lens_Internal_Forget.strongForget)));
-    var v = Control_Bind.bind(Data_Maybe.bindMaybe)(Exhibit_VideoControl_ComponentDeviceConfiguration.configuredDevice(Data_Lens_Getter.viewOn(a)(_configuration(Data_Lens_Internal_Forget.strongForget))))(function (d) {
-        return Exhibit_VideoControl_Interactions.settingAsked("name")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJString)(typed))(d)(Exhibit_VideoControl_Interactions.renameDevice(d)(typed));
-    });
-    if (v instanceof Data_Maybe.Nothing) {
-        return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
-    };
-    if (v instanceof Data_Maybe.Just) {
-        return requestSettings(v.value0)(Unify_Types.flipuse(a)(Data_Lens_Setter.over(_configuration(Data_Profunctor_Strong.strongFn))(function (c) {
-            return Exhibit_VideoControl_ComponentDeviceConfiguration.refusing("")(c);
-        })));
-    };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSettings (line 163, column 3 - line 165, column 91): " + [ v.constructor.name ]);
-};
-var requestSwitch = function (f) {
-    return function (a) {
-        var v = Control_Bind.bind(Data_Maybe.bindMaybe)(Exhibit_VideoControl_ComponentDeviceConfiguration.configuredDevice(Data_Lens_Getter.viewOn(a)(_configuration(Data_Lens_Internal_Forget.strongForget))))(function (d) {
-            return f(d);
-        });
-        if (v instanceof Data_Maybe.Nothing) {
-            return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(a)(Data_Lens_Setter.over(_configuration(Data_Profunctor_Strong.strongFn))(function (c) {
-                return Exhibit_VideoControl_ComponentDeviceConfiguration.settled(c);
-            })));
-        };
-        if (v instanceof Data_Maybe.Just) {
-            return requestSettings(v.value0)(Unify_Types.flipuse(a)(Data_Lens_Setter.over(_configuration(Data_Profunctor_Strong.strongFn))(function (c) {
-                return Exhibit_VideoControl_ComponentDeviceConfiguration.refusing("")(c);
-            })));
-        };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSettings (line 220, column 3 - line 222, column 91): " + [ v.constructor.name ]);
-    };
-};
-var requestAutoStop = function (on) {
-    return function (a) {
-        return requestSwitch(function (d) {
-            return Exhibit_VideoControl_Interactions.settingAsked("auto_stop")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(on))(d)(Exhibit_VideoControl_Interactions.autoStopScaledStream(d)(on));
-        })(a);
-    };
-};
-var requestGenlock = function (on) {
-    return function (a) {
-        var known = Exhibit_VideoControl_ComponentDeviceConfiguration.knownFormatOf(Data_Lens_Getter.viewOn(a)(_configuration(Data_Lens_Internal_Forget.strongForget)));
-        return requestSwitch(function (d) {
-            var $94 = on === Exhibit_VideoControl_Interactions.genlockOf(d);
-            if ($94) {
-                return Data_Maybe.Nothing.value;
-            };
-            return Data_Functor.map(Data_Maybe.functorMaybe)(function (v) {
-                return Exhibit_VideoControl_Interactions.genlockingTo(d)(on)(known);
-            })(Exhibit_VideoControl_Interactions.setLatencyKnown(known)(d));
-        })(a);
-    };
-};
-var requestHdcp = function (on) {
-    return function (a) {
-        return requestSwitch(function (d) {
-            return Exhibit_VideoControl_Interactions.settingAsked("hdcp")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(on))(d)(Exhibit_VideoControl_Interactions.setHdcpSupport(d)(on));
-        })(a);
-    };
-};
-var requestHdcp22 = function (on) {
-    return function (a) {
-        return requestSwitch(function (d) {
-            return Exhibit_VideoControl_Interactions.settingAsked("hdcp22")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(on))(d)(Exhibit_VideoControl_Interactions.setHdcp22Support(d)(on));
-        })(a);
-    };
-};
-var requestHdr = function (on) {
-    return function (a) {
-        return requestSwitch(function (d) {
-            return Exhibit_VideoControl_Interactions.settingAsked("hdr")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(on))(d)(Exhibit_VideoControl_Interactions.setHdrEdid(d)(on));
-        })(a);
-    };
-};
-var requestLocate = function (on) {
-    return function (a) {
-        return requestSwitch(function (d) {
-            return Exhibit_VideoControl_Interactions.settingAsked("locate")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(on))(d)((function () {
-                var $95 = on === Exhibit_VideoControl_Interactions.locateModeOf(d);
-                if ($95) {
-                    return Data_Maybe.Nothing.value;
-                };
-                return new Data_Maybe.Just(Exhibit_VideoControl_Interactions.locateDevice(d)(on));
-            })());
-        })(a);
-    };
-};
-var requestNativeDivider = function (on) {
-    return function (a) {
-        return requestSwitch(function (d) {
-            return Exhibit_VideoControl_Interactions.settingAsked("native_divider")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(on))(d)(Exhibit_VideoControl_Interactions.divideNativeStream(d)(on));
-        })(a);
-    };
-};
-var requestScaledDivider = function (on) {
-    return function (a) {
-        return requestSwitch(function (d) {
-            return Exhibit_VideoControl_Interactions.settingAsked("scaled_divider")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(on))(d)(Exhibit_VideoControl_Interactions.divideScaler(d)(on));
-        })(a);
-    };
-};
-var scaledPicked = function (d) {
-    return function (a) {
-        return Control_Bind.bind(Data_Maybe.bindMaybe)(Exhibit_VideoControl_ComponentDeviceConfiguration.scaledFormatOf(Data_Lens_Getter.viewOn(a)(_configuration(Data_Lens_Internal_Forget.strongForget))))(function (f) {
-            return Data_Functor.map(Data_Maybe.functorMaybe)(function (v) {
-                return Exhibit_VideoControl_Interactions.scalingAt(d)(true)(new Data_Maybe.Just(f));
-            })(Exhibit_VideoControl_Interactions.setGenlockScaling(f)(d));
-        });
-    };
-};
-var requestScaledAt = function (a) {
-    return requestSwitch(function (d) {
-        var $96 = Exhibit_VideoControl_Interactions.genlockScalingOf(d);
-        if ($96) {
-            return scaledPicked(d)(a);
-        };
-        return Data_Maybe.Nothing.value;
-    })(a);
-};
-var requestScaledFormat = function (a) {
-    return requestSwitch(function (d) {
-        return scaledPicked(d)(a);
-    })(a);
-};
-var requestScaled = function (on) {
-    return function (a) {
-        if (on) {
-            return requestScaledFormat(a);
-        };
-        if (Data_Boolean.otherwise) {
-            return requestSwitch(function (d) {
-                return Data_Functor.map(Data_Maybe.functorMaybe)(function (v) {
-                    return Exhibit_VideoControl_Interactions.scalingAt(d)(false)(Data_Maybe.Nothing.value);
-                })(Exhibit_VideoControl_Interactions.leaveGenlockScaling(d));
-            })(a);
-        };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSettings (line 200, column 1 - line 200, column 106): " + [ on.constructor.name, a.constructor.name ]);
-    };
-};
-var settleConfiguration = function (a) {
-    var v = Control_Bind.bind(Data_Maybe.bindMaybe)(Exhibit_VideoControl_ComponentDeviceConfiguration.configuredDevice(Data_Lens_Getter.viewOn(a)(_configuration(Data_Lens_Internal_Forget.strongForget))))(function (d) {
-        return Exhibit_VideoControl_ComponentDeviceList.entryNamed(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget)))(Data_Lens_Getter.viewOn(a)(_deviceList(Data_Lens_Internal_Forget.strongForget)));
-    });
-    if (v instanceof Data_Maybe.Nothing) {
-        return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(a);
-    };
-    if (v instanceof Data_Maybe.Just) {
-        return Control_Applicative.pure(Control_Monad_Writer_Trans.applicativeWriterT(Data_Maybe_First.monoidFirst)(Data_Identity.applicativeIdentity))(Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.over(_configuration(Data_Profunctor_Strong.strongFn))(function (c) {
-            return Exhibit_VideoControl_ComponentDeviceConfiguration.carrying(v.value0)(c);
-        })))(Data_Lens_Setter.over(_deviceList(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_ComponentDeviceList.selectNamed(Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget))))));
-    };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSettings (line 122, column 3 - line 125, column 80): " + [ v.constructor.name ]);
+var rebaseConfiguration = function (a) {
+    return settlingWith(Exhibit_VideoControl_ComponentDeviceConfiguration.rebasing)(a);
 };
 var layAnsweredConfigured = function (j) {
     return function (a) {
@@ -102823,10 +103026,10 @@ var layAnsweredConfigured = function (j) {
             };
             if (v1 instanceof Data_Maybe.Just) {
                 return Control_Bind.bind(Control_Monad_Writer_Trans.bindWriterT(Data_Maybe_First.semigroupFirst)(Data_Identity.bindIdentity))(layTransmitters(Data_Lens_Getter.viewOn(v1.value0)(Exhibit_VideoControl_Types["_answeredSourcesTransmitters"](Data_Lens_Internal_Forget.strongForget)))(a))(function (b) {
-                    return settleConfiguration(b);
+                    return rebaseConfiguration(b);
                 });
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSettings (line 244, column 7 - line 248, column 32): " + [ v1.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSettings (line 192, column 7 - line 196, column 32): " + [ v1.constructor.name ]);
         };
         if (v instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.OutputConfiguration) {
             var v1 = Exhibit_VideoControl_Interactions.answeredOutputs(j);
@@ -102835,13 +103038,16 @@ var layAnsweredConfigured = function (j) {
             };
             if (v1 instanceof Data_Maybe.Just) {
                 return Control_Bind.bind(Control_Monad_Writer_Trans.bindWriterT(Data_Maybe_First.semigroupFirst)(Data_Identity.bindIdentity))(layReceivers(Data_Lens_Getter.viewOn(v1.value0)(Exhibit_VideoControl_Types["_answeredOutputsReceivers"](Data_Lens_Internal_Forget.strongForget)))(a))(function (b) {
-                    return settleConfiguration(b);
+                    return rebaseConfiguration(b);
                 });
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSettings (line 250, column 7 - line 254, column 32): " + [ v1.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSettings (line 198, column 7 - line 202, column 32): " + [ v1.constructor.name ]);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSettings (line 241, column 3 - line 254, column 32): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSettings (line 189, column 3 - line 202, column 32): " + [ v.constructor.name ]);
     };
+};
+var settleConfiguration = function (a) {
+    return settlingWith(Exhibit_VideoControl_ComponentDeviceConfiguration.carrying)(a);
 };
 var marshalComponentSettings = function (v) {
     return function (a) {
@@ -102851,56 +103057,17 @@ var marshalComponentSettings = function (v) {
         if (v instanceof ComponentSettingsDeviceListSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceList.ComponentDeviceListOutputEntriesSignal && v.value0.value0.value1 instanceof Exhibit_VideoControl_ComponentSettingsDevice.ComponentSettingsDeviceSelectSignal)) {
             return configureOutput(a);
         };
-        if (v instanceof ComponentSettingsConfigurationSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.OutputConfigurationSignal && v.value0.value0 instanceof Exhibit_VideoControl_ComponentOutputDeviceConfiguration.ComponentOutputDeviceConfigurationPreviewPickedSignal)) {
-            return requestPreviewPick(v.value0.value0.value0)(a);
+        if (v instanceof ComponentSettingsConfigurationSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.SourceConfigurationSignal && v.value0.value0 instanceof Exhibit_VideoControl_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationApplySignal)) {
+            return requestApply(a);
         };
-        if (v instanceof ComponentSettingsConfigurationSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.SourceConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationReadAsSignal && v.value0.value0.value0 === "RX"))) {
-            return requestReadAs("RX")(a);
+        if (v instanceof ComponentSettingsConfigurationSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.OutputConfigurationSignal && v.value0.value0 instanceof Exhibit_VideoControl_ComponentOutputDeviceConfiguration.ComponentOutputDeviceConfigurationApplySignal)) {
+            return requestApply(a);
         };
-        if (v instanceof ComponentSettingsConfigurationSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.OutputConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_ComponentOutputDeviceConfiguration.ComponentOutputDeviceConfigurationReadAsSignal && v.value0.value0.value0 === "TX"))) {
-            return requestReadAs("TX")(a);
+        if (v instanceof ComponentSettingsConfigurationSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.SourceConfigurationSignal && v.value0.value0 instanceof Exhibit_VideoControl_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationCancelSignal)) {
+            return cancelConfiguration(a);
         };
-        if (v instanceof ComponentSettingsConfigurationSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.SourceConfigurationSignal && v.value0.value0 instanceof Exhibit_VideoControl_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationApplyNameSignal)) {
-            return requestRename(a);
-        };
-        if (v instanceof ComponentSettingsConfigurationSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.SourceConfigurationSignal && v.value0.value0 instanceof Exhibit_VideoControl_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationLocatingSignal)) {
-            return requestLocate(v.value0.value0.value0)(a);
-        };
-        if (v instanceof ComponentSettingsConfigurationSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.OutputConfigurationSignal && v.value0.value0 instanceof Exhibit_VideoControl_ComponentOutputDeviceConfiguration.ComponentOutputDeviceConfigurationApplyNameSignal)) {
-            return requestRename(a);
-        };
-        if (v instanceof ComponentSettingsConfigurationSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.OutputConfigurationSignal && v.value0.value0 instanceof Exhibit_VideoControl_ComponentOutputDeviceConfiguration.ComponentOutputDeviceConfigurationLocatingSignal)) {
-            return requestLocate(v.value0.value0.value0)(a);
-        };
-        if (v instanceof ComponentSettingsConfigurationSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.SourceConfigurationSignal && v.value0.value0 instanceof Exhibit_VideoControl_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationNativeDividerSignal)) {
-            return requestNativeDivider(v.value0.value0.value0)(a);
-        };
-        if (v instanceof ComponentSettingsConfigurationSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.SourceConfigurationSignal && v.value0.value0 instanceof Exhibit_VideoControl_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationScaledDividerSignal)) {
-            return requestScaledDivider(v.value0.value0.value0)(a);
-        };
-        if (v instanceof ComponentSettingsConfigurationSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.OutputConfigurationSignal && v.value0.value0 instanceof Exhibit_VideoControl_ComponentOutputDeviceConfiguration.ComponentOutputDeviceConfigurationGenlockSignal)) {
-            return requestGenlock(v.value0.value0.value0)(a);
-        };
-        if (v instanceof ComponentSettingsConfigurationSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.SourceConfigurationSignal && v.value0.value0 instanceof Exhibit_VideoControl_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationAutoStopSignal)) {
-            return requestAutoStop(v.value0.value0.value0)(a);
-        };
-        if (v instanceof ComponentSettingsConfigurationSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.OutputConfigurationSignal && v.value0.value0 instanceof Exhibit_VideoControl_ComponentOutputDeviceConfiguration.ComponentOutputDeviceConfigurationScaledSignal)) {
-            return requestScaled(v.value0.value0.value0)(a);
-        };
-        if (v instanceof ComponentSettingsConfigurationSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.OutputConfigurationSignal && v.value0.value0 instanceof Exhibit_VideoControl_ComponentOutputDeviceConfiguration.ComponentOutputDeviceConfigurationResolutionSignal)) {
-            return requestScaledAt(a);
-        };
-        if (v instanceof ComponentSettingsConfigurationSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.OutputConfigurationSignal && v.value0.value0 instanceof Exhibit_VideoControl_ComponentOutputDeviceConfiguration.ComponentOutputDeviceConfigurationFps60Signal)) {
-            return requestScaledAt(a);
-        };
-        if (v instanceof ComponentSettingsConfigurationSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.SourceConfigurationSignal && v.value0.value0 instanceof Exhibit_VideoControl_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationHdcpSignal)) {
-            return requestHdcp(v.value0.value0.value0)(a);
-        };
-        if (v instanceof ComponentSettingsConfigurationSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.SourceConfigurationSignal && v.value0.value0 instanceof Exhibit_VideoControl_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationHdcp22Signal)) {
-            return requestHdcp22(v.value0.value0.value0)(a);
-        };
-        if (v instanceof ComponentSettingsConfigurationSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.SourceConfigurationSignal && v.value0.value0 instanceof Exhibit_VideoControl_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationHdrSignal)) {
-            return requestHdr(v.value0.value0.value0)(a);
+        if (v instanceof ComponentSettingsConfigurationSignal && (v.value0 instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.OutputConfigurationSignal && v.value0.value0 instanceof Exhibit_VideoControl_ComponentOutputDeviceConfiguration.ComponentOutputDeviceConfigurationCancelSignal)) {
+            return cancelConfiguration(a);
         };
         if (v instanceof ComponentSettingsReqPanelSignal && (v.value0 instanceof Unify_ReqPanel2.ReplSignal && v.value0.value0.value0.value0.value0 === "Init")) {
             return initialiseSettings(a);
@@ -102981,24 +103148,12 @@ module.exports = {
     layTransmitters: layTransmitters,
     layReceivers: layReceivers,
     settleConfiguration: settleConfiguration,
-    requestPreviewPick: requestPreviewPick,
+    rebaseConfiguration: rebaseConfiguration,
+    settlingWith: settlingWith,
     notePreviewBox: notePreviewBox,
-    requestReadAs: requestReadAs,
     noteReadAs: noteReadAs,
-    requestRename: requestRename,
-    requestLocate: requestLocate,
-    requestNativeDivider: requestNativeDivider,
-    requestScaledDivider: requestScaledDivider,
-    requestAutoStop: requestAutoStop,
-    requestHdcp: requestHdcp,
-    requestHdcp22: requestHdcp22,
-    requestHdr: requestHdr,
-    requestGenlock: requestGenlock,
-    requestScaled: requestScaled,
-    requestScaledAt: requestScaledAt,
-    requestScaledFormat: requestScaledFormat,
-    scaledPicked: scaledPicked,
-    requestSwitch: requestSwitch,
+    requestApply: requestApply,
+    cancelConfiguration: cancelConfiguration,
     noteRefusal: noteRefusal,
     noteSetting: noteSetting,
     noteLatency: noteLatency,
@@ -105710,6 +105865,7 @@ var Data_Argonaut_Decode_Class = require("../Data.Argonaut.Decode.Class/index.js
 var Data_Argonaut_Decode_Generic = require("../Data.Argonaut.Decode.Generic/index.js");
 var Data_Argonaut_Encode_Class = require("../Data.Argonaut.Encode.Class/index.js");
 var Data_Argonaut_Encode_Generic = require("../Data.Argonaut.Encode.Generic/index.js");
+var Data_Boolean = require("../Data.Boolean/index.js");
 var Data_Either = require("../Data.Either/index.js");
 var Data_Eq = require("../Data.Eq/index.js");
 var Data_Eq_Generic = require("../Data.Eq.Generic/index.js");
@@ -105721,6 +105877,9 @@ var Data_Lens_Internal_Forget = require("../Data.Lens.Internal.Forget/index.js")
 var Data_Lens_Lens = require("../Data.Lens.Lens/index.js");
 var Data_Lens_Record = require("../Data.Lens.Record/index.js");
 var Data_Lens_Setter = require("../Data.Lens.Setter/index.js");
+var Data_List = require("../Data.List/index.js");
+var Data_List_Types = require("../Data.List.Types/index.js");
+var Data_Maybe = require("../Data.Maybe/index.js");
 var Data_Maybe_First = require("../Data.Maybe.First/index.js");
 var Data_Profunctor_Strong = require("../Data.Profunctor.Strong/index.js");
 var Data_Show = require("../Data.Show/index.js");
@@ -105768,14 +105927,23 @@ var ComponentSourceDeviceConfigurationNameEditSignal = (function () {
     };
     return ComponentSourceDeviceConfigurationNameEditSignal;
 })();
-var ComponentSourceDeviceConfigurationApplyNameSignal = (function () {
-    function ComponentSourceDeviceConfigurationApplyNameSignal(value0) {
+var ComponentSourceDeviceConfigurationApplySignal = (function () {
+    function ComponentSourceDeviceConfigurationApplySignal(value0) {
         this.value0 = value0;
     };
-    ComponentSourceDeviceConfigurationApplyNameSignal.create = function (value0) {
-        return new ComponentSourceDeviceConfigurationApplyNameSignal(value0);
+    ComponentSourceDeviceConfigurationApplySignal.create = function (value0) {
+        return new ComponentSourceDeviceConfigurationApplySignal(value0);
     };
-    return ComponentSourceDeviceConfigurationApplyNameSignal;
+    return ComponentSourceDeviceConfigurationApplySignal;
+})();
+var ComponentSourceDeviceConfigurationCancelSignal = (function () {
+    function ComponentSourceDeviceConfigurationCancelSignal(value0) {
+        this.value0 = value0;
+    };
+    ComponentSourceDeviceConfigurationCancelSignal.create = function (value0) {
+        return new ComponentSourceDeviceConfigurationCancelSignal(value0);
+    };
+    return ComponentSourceDeviceConfigurationCancelSignal;
 })();
 var ComponentSourceDeviceConfigurationRefusalSignal = (function () {
     function ComponentSourceDeviceConfigurationRefusalSignal(value0) {
@@ -105905,42 +106073,45 @@ var genericComponentSourceDev = {
             return new ComponentSourceDeviceConfigurationNameEditSignal(x.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))) {
-            return new ComponentSourceDeviceConfigurationApplyNameSignal(x.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationApplySignal(x.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))) {
-            return new ComponentSourceDeviceConfigurationRefusalSignal(x.value0.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationCancelSignal(x.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))) {
-            return new ComponentSourceDeviceConfigurationNativeDividerSignal(x.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationRefusalSignal(x.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))) {
-            return new ComponentSourceDeviceConfigurationScaledDividerSignal(x.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationNativeDividerSignal(x.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))))) {
-            return new ComponentSourceDeviceConfigurationAutoStopSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationScaledDividerSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))))) {
-            return new ComponentSourceDeviceConfigurationHdcpSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationAutoStopSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))))))) {
-            return new ComponentSourceDeviceConfigurationHdcp22Signal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationHdcpSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))))))) {
-            return new ComponentSourceDeviceConfigurationHdcp22ableSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationHdcp22Signal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))))))))) {
-            return new ComponentSourceDeviceConfigurationHdrSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationHdcp22ableSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))))))))) {
-            return new ComponentSourceDeviceConfigurationTransceiverSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationHdrSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))))))))))) {
-            return new ComponentSourceDeviceConfigurationReadAsSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationTransceiverSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
-        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr)))))))))))))) {
-            return new ComponentSourceDeviceConfigurationAffect(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))))))))))) {
+            return new ComponentSourceDeviceConfigurationReadAsSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSourceDeviceConfiguration (line 110, column 1 - line 110, column 67): " + [ x.constructor.name ]);
+        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr))))))))))))))) {
+            return new ComponentSourceDeviceConfigurationAffect(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+        };
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSourceDeviceConfiguration (line 117, column 1 - line 117, column 67): " + [ x.constructor.name ]);
     },
     from: function (x) {
         if (x instanceof ComponentSourceDeviceConfigurationConfiguredSignal) {
@@ -105955,43 +106126,46 @@ var genericComponentSourceDev = {
         if (x instanceof ComponentSourceDeviceConfigurationNameEditSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationApplyNameSignal) {
+        if (x instanceof ComponentSourceDeviceConfigurationApplySignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationRefusalSignal) {
+        if (x instanceof ComponentSourceDeviceConfigurationCancelSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationNativeDividerSignal) {
+        if (x instanceof ComponentSourceDeviceConfigurationRefusalSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationScaledDividerSignal) {
+        if (x instanceof ComponentSourceDeviceConfigurationNativeDividerSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationAutoStopSignal) {
+        if (x instanceof ComponentSourceDeviceConfigurationScaledDividerSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationHdcpSignal) {
+        if (x instanceof ComponentSourceDeviceConfigurationAutoStopSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationHdcp22Signal) {
+        if (x instanceof ComponentSourceDeviceConfigurationHdcpSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))))))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationHdcp22ableSignal) {
+        if (x instanceof ComponentSourceDeviceConfigurationHdcp22Signal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))))))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationHdrSignal) {
+        if (x instanceof ComponentSourceDeviceConfigurationHdcp22ableSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))))))))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationTransceiverSignal) {
+        if (x instanceof ComponentSourceDeviceConfigurationHdrSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))))))))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationReadAsSignal) {
+        if (x instanceof ComponentSourceDeviceConfigurationTransceiverSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))))))))))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationAffect) {
-            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0)))))))))))))));
+        if (x instanceof ComponentSourceDeviceConfigurationReadAsSignal) {
+            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))))))))))));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSourceDeviceConfiguration (line 110, column 1 - line 110, column 67): " + [ x.constructor.name ]);
+        if (x instanceof ComponentSourceDeviceConfigurationAffect) {
+            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0))))))))))))))));
+        };
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSourceDeviceConfiguration (line 117, column 1 - line 117, column 67): " + [ x.constructor.name ]);
     }
 };
 var genericComponentSourceDev1 = {
@@ -106005,11 +106179,15 @@ var genericComponentSourceDev1 = {
 var showComponentSourceDevice1 = {
     show: Data_Show_Generic.genericShow(genericComponentSourceDev1)(Data_Show_Generic.genericShowConstructor(Data_Show_Generic.genericShowArgsArgument(Data_Show.showRecord()(Data_Show.showRecordFieldsCons({
         reflectSymbol: function () {
-            return "applyName";
+            return "apply";
         }
     })(Data_Show.showRecordFieldsCons({
         reflectSymbol: function () {
             return "autoStop";
+        }
+    })(Data_Show.showRecordFieldsCons({
+        reflectSymbol: function () {
+            return "cancel";
         }
     })(Data_Show.showRecordFieldsCons({
         reflectSymbol: function () {
@@ -106063,17 +106241,17 @@ var showComponentSourceDevice1 = {
         reflectSymbol: function () {
             return "transceiver";
         }
-    })(Data_Show.showRecordFieldsNil)(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showString))(Data_Show.showString))(Data_Show.showBoolean))(Data_Show.showString))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showString))(Exhibit_VideoControl_Types.showDeviceSettings))(Data_Show.showBoolean))(Data_Unit.showUnit))))({
+    })(Data_Show.showRecordFieldsNil)(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showString))(Data_Show.showString))(Data_Show.showBoolean))(Data_Show.showString))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showString))(Exhibit_VideoControl_Types.showDeviceSettings))(Data_Unit.showUnit))(Data_Show.showBoolean))(Data_Unit.showUnit))))({
         reflectSymbol: function () {
             return "ComponentSourceDeviceConfiguration";
         }
     }))
 };
 var eqComponentSourceDeviceCo = {
-    eq: Data_Eq_Generic.genericEq(genericComponentSourceDev)(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Exhibit_VideoControl_Types.eqDeviceSettings)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqUnit)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Either.eqEither(ExploreSignal.eqAffRequest)(Data_Tuple.eqTuple(ExploreSignal.eqAffRequest)(Data_Argonaut_Core.eqJson))))))))))))))))))))
+    eq: Data_Eq_Generic.genericEq(genericComponentSourceDev)(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Exhibit_VideoControl_Types.eqDeviceSettings)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqUnit)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqUnit)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Either.eqEither(ExploreSignal.eqAffRequest)(Data_Tuple.eqTuple(ExploreSignal.eqAffRequest)(Data_Argonaut_Core.eqJson)))))))))))))))))))))
 };
 var eqComponentSourceDeviceCo1 = {
-    eq: Data_Eq_Generic.genericEq(genericComponentSourceDev1)(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqRec()(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowNil)()({
+    eq: Data_Eq_Generic.genericEq(genericComponentSourceDev1)(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqRec()(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowNil)()({
         reflectSymbol: function () {
             return "transceiver";
         }
@@ -106127,11 +106305,15 @@ var eqComponentSourceDeviceCo1 = {
         }
     })(Exhibit_VideoControl_Types.eqDeviceSettings))()({
         reflectSymbol: function () {
+            return "cancel";
+        }
+    })(Data_Eq.eqUnit))()({
+        reflectSymbol: function () {
             return "autoStop";
         }
     })(Data_Eq.eqBoolean))()({
         reflectSymbol: function () {
-            return "applyName";
+            return "apply";
         }
     })(Data_Eq.eqUnit)))))
 };
@@ -106140,7 +106322,7 @@ var encodeJsonComponentSource = {
         reflectSymbol: function () {
             return "ComponentSourceDeviceConfiguration";
         }
-    })(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(Data_Argonaut_Encode_Class.encodeRecord(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonUnit)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Exhibit_VideoControl_Types.encodeJsonDeviceSettings)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonNil)({
+    })(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(Data_Argonaut_Encode_Class.encodeRecord(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonUnit)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonUnit)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Exhibit_VideoControl_Types.encodeJsonDeviceSettings)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonNil)({
         reflectSymbol: function () {
             return "transceiver";
         }
@@ -106194,24 +106376,32 @@ var encodeJsonComponentSource = {
         }
     })())({
         reflectSymbol: function () {
+            return "cancel";
+        }
+    })())({
+        reflectSymbol: function () {
             return "autoStop";
         }
     })())({
         reflectSymbol: function () {
-            return "applyName";
+            return "apply";
         }
     })())()))))
 };
 var defComponentSourceDeviceC = {
     def: Unify_Types.genericDef(genericComponentSourceDev1)(Unify_Types.genericDefConstructor(Unify_Types.genericDefArgument(Unify_Types.defRecord()(Unify_Types.defRowListCons({
         reflectSymbol: function () {
-            return "applyName";
+            return "apply";
         }
     })(Unify_Types.defUnit)(Unify_Types.defRowListCons({
         reflectSymbol: function () {
             return "autoStop";
         }
     })(Unify_Types.defBoolean)(Unify_Types.defRowListCons({
+        reflectSymbol: function () {
+            return "cancel";
+        }
+    })(Unify_Types.defUnit)(Unify_Types.defRowListCons({
         reflectSymbol: function () {
             return "configured";
         }
@@ -106263,14 +106453,14 @@ var defComponentSourceDeviceC = {
         reflectSymbol: function () {
             return "transceiver";
         }
-    })(Unify_Types.defBoolean)(Unify_Types.defRowListNilRow)()())()())()())()())()())()())()())()())()())()())()())()())()())()())()()))))
+    })(Unify_Types.defBoolean)(Unify_Types.defRowListNilRow)()())()())()())()())()())()())()())()())()())()())()())()())()())()())()())()()))))
 };
 var decodeJsonComponentSource = {
     decodeJson: Data_Argonaut_Decode_Generic.genericDecodeJson(genericComponentSourceDev1)(Data_Argonaut_Decode_Generic.decodeRepConstructorArg({
         reflectSymbol: function () {
             return "ComponentSourceDeviceConfiguration";
         }
-    })(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonNull))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Exhibit_VideoControl_Types.decodeJsonDeviceSettings))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
+    })(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonNull))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonNull))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Exhibit_VideoControl_Types.decodeJsonDeviceSettings))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
         reflectSymbol: function () {
             return "transceiver";
         }
@@ -106324,13 +106514,30 @@ var decodeJsonComponentSource = {
         }
     })()())({
         reflectSymbol: function () {
+            return "cancel";
+        }
+    })()())({
+        reflectSymbol: function () {
             return "autoStop";
         }
     })()())({
         reflectSymbol: function () {
-            return "applyName";
+            return "apply";
         }
     })()())()))
+};
+var movingHdcp22 = function (d) {
+    return function (on) {
+        if (on === Data_Maybe.maybe(false)(function (c) {
+            return !Data_Lens_Getter.viewOn(c)(Exhibit_VideoControl_Types["_decoderHdcp22SupportDisable"](Data_Lens_Internal_Forget.strongForget));
+        })(Exhibit_VideoControl_Interactions.hdmiDecoderOf(d))) {
+            return Data_Maybe.Nothing.value;
+        };
+        if (Data_Boolean.otherwise) {
+            return Exhibit_VideoControl_Interactions.setHdmiDecoder(Exhibit_VideoControl_Interactions.hdcp22SupportDisableKey)(d)(!on);
+        };
+        throw new Error("Failed pattern match at Exhibit.VideoControl.ComponentSourceDeviceConfiguration (line 194, column 1 - line 194, column 62): " + [ d.constructor.name, on.constructor.name ]);
+    };
 };
 var marshalComponentSourceDeviceConfiguration = function (v) {
     return function (a) {
@@ -106338,236 +106545,344 @@ var marshalComponentSourceDeviceConfiguration = function (v) {
     };
 };
 var _transceiver = function (dictStrong) {
-    var $246 = Data_Lens_Lens["lens'"](function (v) {
+    var $298 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentSourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $247 = Data_Lens_Record.prop({
+    var $299 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "transceiver";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($248) {
-        return $246($247($248));
+    return function ($300) {
+        return $298($299($300));
     };
 };
 var _scaledDivider = function (dictStrong) {
-    var $249 = Data_Lens_Lens["lens'"](function (v) {
+    var $301 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentSourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $250 = Data_Lens_Record.prop({
+    var $302 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "scaledDivider";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($251) {
-        return $249($250($251));
+    return function ($303) {
+        return $301($302($303));
     };
 };
 var _refusal = function (dictStrong) {
-    var $252 = Data_Lens_Lens["lens'"](function (v) {
+    var $304 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentSourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $253 = Data_Lens_Record.prop({
+    var $305 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "refusal";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($254) {
-        return $252($253($254));
+    return function ($306) {
+        return $304($305($306));
     };
 };
 var _readAs = function (dictStrong) {
-    var $255 = Data_Lens_Lens["lens'"](function (v) {
+    var $307 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentSourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $256 = Data_Lens_Record.prop({
+    var $308 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "readAs";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($257) {
-        return $255($256($257));
+    return function ($309) {
+        return $307($308($309));
     };
 };
 var _nativeDivider = function (dictStrong) {
-    var $258 = Data_Lens_Lens["lens'"](function (v) {
+    var $310 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentSourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $259 = Data_Lens_Record.prop({
+    var $311 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "nativeDivider";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($260) {
-        return $258($259($260));
+    return function ($312) {
+        return $310($311($312));
     };
 };
 var _nameEdit = function (dictStrong) {
-    var $261 = Data_Lens_Lens["lens'"](function (v) {
+    var $313 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentSourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $262 = Data_Lens_Record.prop({
+    var $314 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "nameEdit";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($263) {
-        return $261($262($263));
+    return function ($315) {
+        return $313($314($315));
     };
 };
 var _locating = function (dictStrong) {
-    var $264 = Data_Lens_Lens["lens'"](function (v) {
+    var $316 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentSourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $265 = Data_Lens_Record.prop({
+    var $317 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "locating";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($266) {
-        return $264($265($266));
+    return function ($318) {
+        return $316($317($318));
     };
 };
 var _hdr = function (dictStrong) {
-    var $267 = Data_Lens_Lens["lens'"](function (v) {
+    var $319 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentSourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $268 = Data_Lens_Record.prop({
+    var $320 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "hdr";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($269) {
-        return $267($268($269));
+    return function ($321) {
+        return $319($320($321));
     };
 };
 var _hdcp22able = function (dictStrong) {
-    var $270 = Data_Lens_Lens["lens'"](function (v) {
+    var $322 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentSourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $271 = Data_Lens_Record.prop({
+    var $323 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "hdcp22able";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($272) {
-        return $270($271($272));
+    return function ($324) {
+        return $322($323($324));
     };
 };
 var _hdcp22 = function (dictStrong) {
-    var $273 = Data_Lens_Lens["lens'"](function (v) {
+    var $325 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentSourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $274 = Data_Lens_Record.prop({
+    var $326 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "hdcp22";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($275) {
-        return $273($274($275));
+    return function ($327) {
+        return $325($326($327));
     };
 };
 var _hdcp = function (dictStrong) {
-    var $276 = Data_Lens_Lens["lens'"](function (v) {
+    var $328 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentSourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $277 = Data_Lens_Record.prop({
+    var $329 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "hdcp";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($278) {
-        return $276($277($278));
+    return function ($330) {
+        return $328($329($330));
     };
 };
 var _configuredName = function (dictStrong) {
-    var $279 = Data_Lens_Lens["lens'"](function (v) {
+    var $331 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentSourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $280 = Data_Lens_Record.prop({
+    var $332 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "configuredName";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($281) {
-        return $279($280($281));
+    return function ($333) {
+        return $331($332($333));
     };
 };
 var _configured = function (dictStrong) {
-    var $282 = Data_Lens_Lens["lens'"](function (v) {
+    var $334 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentSourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $283 = Data_Lens_Record.prop({
+    var $335 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "configured";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($284) {
-        return $282($283($284));
+    return function ($336) {
+        return $334($335($336));
     };
 };
-var _autoStop = function (dictStrong) {
-    var $285 = Data_Lens_Lens["lens'"](function (v) {
+var _cancel = function (dictStrong) {
+    var $337 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentSourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $286 = Data_Lens_Record.prop({
+    var $338 = Data_Lens_Record.prop({
+        reflectSymbol: function () {
+            return "cancel";
+        }
+    })()()(Data_Symbol.SProxy.value)(dictStrong);
+    return function ($339) {
+        return $337($338($339));
+    };
+};
+var _autoStop = function (dictStrong) {
+    var $340 = Data_Lens_Lens["lens'"](function (v) {
+        return new Data_Tuple.Tuple(v.value0, function (s) {
+            return new ComponentSourceDeviceConfiguration(s);
+        });
+    })(dictStrong);
+    var $341 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "autoStop";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($287) {
-        return $285($286($287));
+    return function ($342) {
+        return $340($341($342));
     };
 };
 var carrying = function (d) {
     return function (a) {
-        return Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_configured(Data_Profunctor_Strong.strongFn))(d)))(Data_Lens_Setter.set(_configuredName(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))))(Data_Lens_Setter.set(_locating(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.locateModeOf(d))))(Data_Lens_Setter.set(_nativeDivider(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.dividedNativeStream(d))))(Data_Lens_Setter.set(_scaledDivider(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.dividedScaler(d))))(Data_Lens_Setter.set(_autoStop(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.scaledAutoStopOf(d))))(Data_Lens_Setter.set(_hdcp(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.hdcpSupportOf(d))))(Data_Lens_Setter.set(_hdcp22(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.hdcp22SupportOf(d))))(Data_Lens_Setter.set(_hdcp22able(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.hdcpSupportOf(d))))(Data_Lens_Setter.set(_hdr(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.hdrEdidOf(d))))(Data_Lens_Setter.set(_transceiver(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.transceiverOf(d))))(Data_Lens_Setter.set(_readAs(Data_Profunctor_Strong.strongFn))("TX"));
+        return Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_configured(Data_Profunctor_Strong.strongFn))(d)))(Data_Lens_Setter.set(_configuredName(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))))(Data_Lens_Setter.set(_nameEdit(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))))(Data_Lens_Setter.set(_locating(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.locateModeOf(d))))(Data_Lens_Setter.set(_nativeDivider(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.dividedNativeStream(d))))(Data_Lens_Setter.set(_scaledDivider(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.dividedScaler(d))))(Data_Lens_Setter.set(_autoStop(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.scaledAutoStopOf(d))))(Data_Lens_Setter.set(_hdcp(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.hdcpSupportOf(d))))(Data_Lens_Setter.set(_hdcp22(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.hdcp22SupportOf(d))))(Data_Lens_Setter.set(_hdcp22able(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.hdcpSupportOf(d))))(Data_Lens_Setter.set(_hdr(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.hdrEdidOf(d))))(Data_Lens_Setter.set(_transceiver(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.transceiverOf(d))))(Data_Lens_Setter.set(_readAs(Data_Profunctor_Strong.strongFn))("TX"));
     };
 };
-var opening = function (d) {
-    return carrying(d)(Unify_Types.flipuse(Unify_Types.def(defComponentSourceDeviceC))(Data_Lens_Setter.set(_nameEdit(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))));
+var asked = function (a) {
+    var d = Data_Lens_Getter.viewOn(a)(_configured(Data_Lens_Internal_Forget.strongForget));
+    var was = carrying(d)(a);
+    var changed = function (dictEq) {
+        return function (l) {
+            return Data_Eq.notEq(dictEq)(Data_Lens_Getter.viewOn(a)(l(Data_Lens_Internal_Forget.strongForget)))(Data_Lens_Getter.viewOn(was)(l(Data_Lens_Internal_Forget.strongForget)));
+        };
+    };
+    var asking = function (dictEq) {
+        return function (l) {
+            return function (q) {
+                var $292 = changed(dictEq)(function (dictStrong) {
+                    return l(dictStrong);
+                });
+                if ($292) {
+                    return q;
+                };
+                return Data_Maybe.Nothing.value;
+            };
+        };
+    };
+    return Data_List.catMaybes(new Data_List_Types.Cons(asking(Data_Eq.eqString)(function (dictStrong) {
+        return _nameEdit(dictStrong);
+    })(Exhibit_VideoControl_Interactions.settingAsked("name")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Lens_Getter.viewOn(a)(_nameEdit(Data_Lens_Internal_Forget.strongForget))))(d)(Exhibit_VideoControl_Interactions.renameDevice(d)(Data_Lens_Getter.viewOn(a)(_nameEdit(Data_Lens_Internal_Forget.strongForget))))), new Data_List_Types.Cons(asking(Data_Eq.eqBoolean)(function (dictStrong) {
+        return _locating(dictStrong);
+    })(Exhibit_VideoControl_Interactions.settingAsked("locate")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Lens_Getter.viewOn(a)(_locating(Data_Lens_Internal_Forget.strongForget))))(d)(new Data_Maybe.Just(Exhibit_VideoControl_Interactions.locateDevice(d)(Data_Lens_Getter.viewOn(a)(_locating(Data_Lens_Internal_Forget.strongForget)))))), new Data_List_Types.Cons(asking(Data_Eq.eqBoolean)(function (dictStrong) {
+        return _nativeDivider(dictStrong);
+    })(Exhibit_VideoControl_Interactions.settingAsked("native_divider")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Lens_Getter.viewOn(a)(_nativeDivider(Data_Lens_Internal_Forget.strongForget))))(d)(Exhibit_VideoControl_Interactions.divideNativeStream(d)(Data_Lens_Getter.viewOn(a)(_nativeDivider(Data_Lens_Internal_Forget.strongForget))))), new Data_List_Types.Cons(asking(Data_Eq.eqBoolean)(function (dictStrong) {
+        return _scaledDivider(dictStrong);
+    })(Exhibit_VideoControl_Interactions.settingAsked("scaled_divider")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Lens_Getter.viewOn(a)(_scaledDivider(Data_Lens_Internal_Forget.strongForget))))(d)(Exhibit_VideoControl_Interactions.divideScaler(d)(Data_Lens_Getter.viewOn(a)(_scaledDivider(Data_Lens_Internal_Forget.strongForget))))), new Data_List_Types.Cons(asking(Data_Eq.eqBoolean)(function (dictStrong) {
+        return _autoStop(dictStrong);
+    })(Exhibit_VideoControl_Interactions.settingAsked("auto_stop")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Lens_Getter.viewOn(a)(_autoStop(Data_Lens_Internal_Forget.strongForget))))(d)(Exhibit_VideoControl_Interactions.autoStopScaledStream(d)(Data_Lens_Getter.viewOn(a)(_autoStop(Data_Lens_Internal_Forget.strongForget))))), new Data_List_Types.Cons(asking(Data_Eq.eqBoolean)(function (dictStrong) {
+        return _hdcp(dictStrong);
+    })(Exhibit_VideoControl_Interactions.settingAsked("hdcp")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Lens_Getter.viewOn(a)(_hdcp(Data_Lens_Internal_Forget.strongForget))))(d)(Exhibit_VideoControl_Interactions.setHdcpSupport(d)(Data_Lens_Getter.viewOn(a)(_hdcp(Data_Lens_Internal_Forget.strongForget))))), new Data_List_Types.Cons((function () {
+        var $293 = Data_Lens_Getter.viewOn(a)(_hdcp(Data_Lens_Internal_Forget.strongForget)) && (changed(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _hdcp(dictStrong);
+        }) || changed(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _hdcp22(dictStrong);
+        }));
+        if ($293) {
+            return Exhibit_VideoControl_Interactions.settingAsked("hdcp22")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Lens_Getter.viewOn(a)(_hdcp22(Data_Lens_Internal_Forget.strongForget))))(d)(movingHdcp22(d)(Data_Lens_Getter.viewOn(a)(_hdcp22(Data_Lens_Internal_Forget.strongForget))));
+        };
+        return Data_Maybe.Nothing.value;
+    })(), new Data_List_Types.Cons(asking(Data_Eq.eqBoolean)(function (dictStrong) {
+        return _hdr(dictStrong);
+    })(Exhibit_VideoControl_Interactions.settingAsked("hdr")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Lens_Getter.viewOn(a)(_hdr(Data_Lens_Internal_Forget.strongForget))))(d)(Exhibit_VideoControl_Interactions.setHdrEdid(d)(Data_Lens_Getter.viewOn(a)(_hdr(Data_Lens_Internal_Forget.strongForget))))), new Data_List_Types.Cons(asking(Data_Eq.eqString)(function (dictStrong) {
+        return _readAs(dictStrong);
+    })((function () {
+        var $294 = Exhibit_VideoControl_Interactions.transceiverOf(d);
+        if ($294) {
+            return new Data_Maybe.Just(Exhibit_VideoControl_Interactions.readingTransceiverAs(d)(Data_Lens_Getter.viewOn(a)(_readAs(Data_Lens_Internal_Forget.strongForget))));
+        };
+        return Data_Maybe.Nothing.value;
+    })()), Data_List_Types.Nil.value))))))))));
 };
-var _applyName = function (dictStrong) {
-    var $288 = Data_Lens_Lens["lens'"](function (v) {
+var opening = function (d) {
+    return carrying(d)(Unify_Types.def(defComponentSourceDeviceC));
+};
+var pending = function (a) {
+    return Data_Eq.notEq(eqComponentSourceDeviceCo1)(carrying(Data_Lens_Getter.viewOn(a)(_configured(Data_Lens_Internal_Forget.strongForget)))(a))(a);
+};
+var rebasing = function (d) {
+    return function (a) {
+        var was = carrying(Data_Lens_Getter.viewOn(a)(_configured(Data_Lens_Internal_Forget.strongForget)))(a);
+        var kept = function (dictEq) {
+            return function (l) {
+                return function (c) {
+                    var $295 = Data_Eq.eq(dictEq)(Data_Lens_Getter.viewOn(a)(l(Data_Lens_Internal_Forget.strongForget)))(Data_Lens_Getter.viewOn(was)(l(Data_Lens_Internal_Forget.strongForget)));
+                    if ($295) {
+                        return c;
+                    };
+                    return Unify_Types.flipuse(c)(Data_Lens_Setter.set(l(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(a)(l(Data_Lens_Internal_Forget.strongForget))));
+                };
+            };
+        };
+        return Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(carrying(d)(a))(kept(Data_Eq.eqString)(function (dictStrong) {
+            return _nameEdit(dictStrong);
+        })))(kept(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _locating(dictStrong);
+        })))(kept(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _nativeDivider(dictStrong);
+        })))(kept(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _scaledDivider(dictStrong);
+        })))(kept(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _autoStop(dictStrong);
+        })))(kept(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _hdcp(dictStrong);
+        })))(kept(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _hdcp22(dictStrong);
+        })))(kept(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _hdr(dictStrong);
+        })))(kept(Data_Eq.eqString)(function (dictStrong) {
+            return _readAs(dictStrong);
+        }));
+    };
+};
+var _apply = function (dictStrong) {
+    var $343 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new ComponentSourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $289 = Data_Lens_Record.prop({
+    var $344 = Data_Lens_Record.prop({
         reflectSymbol: function () {
-            return "applyName";
+            return "apply";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($290) {
-        return $288($289($290));
+    return function ($345) {
+        return $343($344($345));
     };
 };
 module.exports = {
@@ -106576,7 +106891,8 @@ module.exports = {
     "_configuredName": _configuredName,
     "_locating": _locating,
     "_nameEdit": _nameEdit,
-    "_applyName": _applyName,
+    "_apply": _apply,
+    "_cancel": _cancel,
     "_refusal": _refusal,
     "_nativeDivider": _nativeDivider,
     "_scaledDivider": _scaledDivider,
@@ -106591,7 +106907,8 @@ module.exports = {
     ComponentSourceDeviceConfigurationConfiguredNameSignal: ComponentSourceDeviceConfigurationConfiguredNameSignal,
     ComponentSourceDeviceConfigurationLocatingSignal: ComponentSourceDeviceConfigurationLocatingSignal,
     ComponentSourceDeviceConfigurationNameEditSignal: ComponentSourceDeviceConfigurationNameEditSignal,
-    ComponentSourceDeviceConfigurationApplyNameSignal: ComponentSourceDeviceConfigurationApplyNameSignal,
+    ComponentSourceDeviceConfigurationApplySignal: ComponentSourceDeviceConfigurationApplySignal,
+    ComponentSourceDeviceConfigurationCancelSignal: ComponentSourceDeviceConfigurationCancelSignal,
     ComponentSourceDeviceConfigurationRefusalSignal: ComponentSourceDeviceConfigurationRefusalSignal,
     ComponentSourceDeviceConfigurationNativeDividerSignal: ComponentSourceDeviceConfigurationNativeDividerSignal,
     ComponentSourceDeviceConfigurationScaledDividerSignal: ComponentSourceDeviceConfigurationScaledDividerSignal,
@@ -106605,6 +106922,10 @@ module.exports = {
     ComponentSourceDeviceConfigurationAffect: ComponentSourceDeviceConfigurationAffect,
     carrying: carrying,
     opening: opening,
+    rebasing: rebasing,
+    pending: pending,
+    asked: asked,
+    movingHdcp22: movingHdcp22,
     marshalComponentSourceDeviceConfiguration: marshalComponentSourceDeviceConfiguration,
     genericComponentSourceDev1: genericComponentSourceDev1,
     showComponentSourceDevice1: showComponentSourceDevice1,
@@ -106617,7 +106938,7 @@ module.exports = {
     defComponentSourceDeviceC: defComponentSourceDeviceC
 };
 
-},{"../Control.Applicative/index.js":42,"../Control.Monad.Writer.Trans/index.js":76,"../Data.Argonaut.Core/index.js":83,"../Data.Argonaut.Decode.Class/index.js":84,"../Data.Argonaut.Decode.Generic/index.js":88,"../Data.Argonaut.Encode.Class/index.js":89,"../Data.Argonaut.Encode.Generic/index.js":92,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Eq/index.js":118,"../Data.Functor/index.js":142,"../Data.Generic.Rep/index.js":145,"../Data.Identity/index.js":149,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Lens/index.js":173,"../Data.Lens.Record/index.js":177,"../Data.Lens.Setter/index.js":178,"../Data.Maybe.First/index.js":188,"../Data.Profunctor.Strong/index.js":216,"../Data.Show.Generic/index.js":228,"../Data.Show/index.js":230,"../Data.Symbol/index.js":244,"../Data.Tuple/index.js":251,"../Data.Unit/index.js":259,"../Exhibit.VideoControl.Interactions/index.js":315,"../Exhibit.VideoControl.Types/index.js":316,"../ExploreSignal/index.js":357,"../Unify.Types/index.js":402}],313:[function(require,module,exports){
+},{"../Control.Applicative/index.js":42,"../Control.Monad.Writer.Trans/index.js":76,"../Data.Argonaut.Core/index.js":83,"../Data.Argonaut.Decode.Class/index.js":84,"../Data.Argonaut.Decode.Generic/index.js":88,"../Data.Argonaut.Encode.Class/index.js":89,"../Data.Argonaut.Encode.Generic/index.js":92,"../Data.Boolean/index.js":107,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Eq/index.js":118,"../Data.Functor/index.js":142,"../Data.Generic.Rep/index.js":145,"../Data.Identity/index.js":149,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Lens/index.js":173,"../Data.Lens.Record/index.js":177,"../Data.Lens.Setter/index.js":178,"../Data.List.Types/index.js":185,"../Data.List/index.js":186,"../Data.Maybe.First/index.js":188,"../Data.Maybe/index.js":190,"../Data.Profunctor.Strong/index.js":216,"../Data.Show.Generic/index.js":228,"../Data.Show/index.js":230,"../Data.Symbol/index.js":244,"../Data.Tuple/index.js":251,"../Data.Unit/index.js":259,"../Exhibit.VideoControl.Interactions/index.js":315,"../Exhibit.VideoControl.Types/index.js":316,"../ExploreSignal/index.js":357,"../Unify.Types/index.js":402}],313:[function(require,module,exports){
 // Generated by purs version 0.14.4
 "use strict";
 var Control_Applicative = require("../Control.Applicative/index.js");
@@ -120709,10 +121030,8 @@ var Data_Lens_Getter = require("../Data.Lens.Getter/index.js");
 var Data_Lens_Internal_Forget = require("../Data.Lens.Internal.Forget/index.js");
 var Data_Lens_Lens = require("../Data.Lens.Lens/index.js");
 var Data_Lens_Record = require("../Data.Lens.Record/index.js");
-var Data_Lens_Setter = require("../Data.Lens.Setter/index.js");
 var Data_Maybe = require("../Data.Maybe/index.js");
 var Data_Newtype = require("../Data.Newtype/index.js");
-var Data_Profunctor_Strong = require("../Data.Profunctor.Strong/index.js");
 var Data_Show = require("../Data.Show/index.js");
 var Data_Show_Generic = require("../Data.Show.Generic/index.js");
 var Data_Symbol = require("../Data.Symbol/index.js");
@@ -120722,8 +121041,6 @@ var Exhibit_VideoControl_ComponentControlPanel = require("../Exhibit.VideoContro
 var ExploreCore = require("../ExploreCore/index.js");
 var ExploreSignal = require("../ExploreSignal/index.js");
 var Extra = require("../Extra/index.js");
-var React_DOM = require("../React.DOM/index.js");
-var React_DOM_Props = require("../React.DOM.Props/index.js");
 var Safe_Coerce = require("../Safe.Coerce/index.js");
 var ShouldUpdate = require("../ShouldUpdate/index.js");
 var Unify_Types = require("../Unify.Types/index.js");
@@ -120930,54 +121247,46 @@ var marshalControlPanel = function (v) {
         return v1;
     };
 };
-var def_ComponentControlPanel = Unify_Types.def(defControlPanel);
-var _listSources = function (dictStrong) {
-    var $58 = Data_Lens_Lens["lens'"](function (v) {
-        return new Data_Tuple.Tuple(v.value0, function (s) {
-            return new ControlPanel(s);
-        });
-    })(dictStrong);
-    var $59 = Data_Lens_Record.prop({
-        reflectSymbol: function () {
-            return "listSources";
-        }
-    })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($60) {
-        return $58($59($60));
-    };
-};
-var _listOutputs = function (dictStrong) {
-    var $61 = Data_Lens_Lens["lens'"](function (v) {
-        return new Data_Tuple.Tuple(v.value0, function (s) {
-            return new ControlPanel(s);
-        });
-    })(dictStrong);
-    var $62 = Data_Lens_Record.prop({
-        reflectSymbol: function () {
-            return "listOutputs";
-        }
-    })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($63) {
-        return $61($62($63));
-    };
-};
-var displayControlPanel = function (s) {
-    return function (send) {
-        return new Data_Tuple.Tuple(Data_Maybe.Nothing.value, [ React_DOM.label([  ])([ React_DOM.text(" --- listSources --- ") ]), React_DOM.div([ React_DOM_Props.className("listsources"), React_DOM_Props.onClick(function (v) {
-            return send(Extra.update(new ComponentControlPanelListSourcesSignal(Data_Lens_Getter.viewOn(s)(_listSources(Data_Lens_Internal_Forget.strongForget))))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
-                return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_listSources(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(s)(_listSources(Data_Lens_Internal_Forget.strongForget))));
-            })));
-        }) ])([ React_DOM.text("list sources") ]), React_DOM.label([  ])([ React_DOM.text(" --- listOutputs --- ") ]), React_DOM.div([ React_DOM_Props.className("listoutputs"), React_DOM_Props.onClick(function (v) {
-            return send(Extra.update(new ComponentControlPanelListOutputsSignal(Data_Lens_Getter.viewOn(s)(_listOutputs(Data_Lens_Internal_Forget.strongForget))))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
-                return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_listOutputs(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(s)(_listOutputs(Data_Lens_Internal_Forget.strongForget))));
-            })));
-        }) ])([ React_DOM.text("list outputs") ]) ]);
+var displayControlPanel = function (v) {
+    return function (v1) {
+        return new Data_Tuple.Tuple(Data_Maybe.Nothing.value, [  ]);
     };
 };
 var renderControlPanel$prime = function (d) {
     return Safe_Coerce.coerce()(Control_Comonad_Store.store(displayControlPanel)(d));
 };
+var def_ComponentControlPanel = Unify_Types.def(defControlPanel);
 var renderControlPanel = renderControlPanel$prime(def_ComponentControlPanel);
+var _listSources = function (dictStrong) {
+    var $60 = Data_Lens_Lens["lens'"](function (v) {
+        return new Data_Tuple.Tuple(v.value0, function (s) {
+            return new ControlPanel(s);
+        });
+    })(dictStrong);
+    var $61 = Data_Lens_Record.prop({
+        reflectSymbol: function () {
+            return "listSources";
+        }
+    })()()(Data_Symbol.SProxy.value)(dictStrong);
+    return function ($62) {
+        return $60($61($62));
+    };
+};
+var _listOutputs = function (dictStrong) {
+    var $63 = Data_Lens_Lens["lens'"](function (v) {
+        return new Data_Tuple.Tuple(v.value0, function (s) {
+            return new ControlPanel(s);
+        });
+    })(dictStrong);
+    var $64 = Data_Lens_Record.prop({
+        reflectSymbol: function () {
+            return "listOutputs";
+        }
+    })()()(Data_Symbol.SProxy.value)(dictStrong);
+    return function ($65) {
+        return $63($64($65));
+    };
+};
 var _CoControlPanel = function (v) {
     return function (w) {
         return v(Data_Newtype.unwrap()(w));
@@ -121033,7 +121342,7 @@ module.exports = {
     updateJsonComponentCompon: updateJsonComponentCompon
 };
 
-},{"../Control.Applicative/index.js":42,"../Control.Bind/index.js":48,"../Control.Category/index.js":49,"../Control.Comonad.Store.Class/index.js":51,"../Control.Comonad.Store.Trans/index.js":52,"../Control.Comonad.Store/index.js":53,"../Control.Monad.State.Class/index.js":71,"../Data.Argonaut.Core/index.js":83,"../Data.Argonaut.Decode.Class/index.js":84,"../Data.Argonaut.Decode.Generic/index.js":88,"../Data.Argonaut.Encode.Class/index.js":89,"../Data.Argonaut.Encode.Generic/index.js":92,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Eq/index.js":118,"../Data.Function/index.js":128,"../Data.Functor/index.js":142,"../Data.Generic.Rep/index.js":145,"../Data.Identity/index.js":149,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Lens/index.js":173,"../Data.Lens.Record/index.js":177,"../Data.Lens.Setter/index.js":178,"../Data.Maybe/index.js":190,"../Data.Newtype/index.js":200,"../Data.Profunctor.Strong/index.js":216,"../Data.Show.Generic/index.js":228,"../Data.Show/index.js":230,"../Data.Symbol/index.js":244,"../Data.Tuple/index.js":251,"../Data.Unit/index.js":259,"../Exhibit.VideoControl.ComponentControlPanel/index.js":281,"../ExploreCore/index.js":356,"../ExploreSignal/index.js":357,"../Extra/index.js":358,"../React.DOM.Props/index.js":378,"../React.DOM/index.js":379,"../Safe.Coerce/index.js":389,"../ShouldUpdate/index.js":390,"../Unify.Types/index.js":402,"../Unify.UpdateJson/index.js":403}],319:[function(require,module,exports){
+},{"../Control.Applicative/index.js":42,"../Control.Bind/index.js":48,"../Control.Category/index.js":49,"../Control.Comonad.Store.Class/index.js":51,"../Control.Comonad.Store.Trans/index.js":52,"../Control.Comonad.Store/index.js":53,"../Control.Monad.State.Class/index.js":71,"../Data.Argonaut.Core/index.js":83,"../Data.Argonaut.Decode.Class/index.js":84,"../Data.Argonaut.Decode.Generic/index.js":88,"../Data.Argonaut.Encode.Class/index.js":89,"../Data.Argonaut.Encode.Generic/index.js":92,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Eq/index.js":118,"../Data.Function/index.js":128,"../Data.Functor/index.js":142,"../Data.Generic.Rep/index.js":145,"../Data.Identity/index.js":149,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Lens/index.js":173,"../Data.Lens.Record/index.js":177,"../Data.Maybe/index.js":190,"../Data.Newtype/index.js":200,"../Data.Show.Generic/index.js":228,"../Data.Show/index.js":230,"../Data.Symbol/index.js":244,"../Data.Tuple/index.js":251,"../Data.Unit/index.js":259,"../Exhibit.VideoControl.ComponentControlPanel/index.js":281,"../ExploreCore/index.js":356,"../ExploreSignal/index.js":357,"../Extra/index.js":358,"../Safe.Coerce/index.js":389,"../ShouldUpdate/index.js":390,"../Unify.Types/index.js":402,"../Unify.UpdateJson/index.js":403}],319:[function(require,module,exports){
 // Generated by purs version 0.14.4
 "use strict";
 var Control_Applicative = require("../Control.Applicative/index.js");
@@ -121043,6 +121352,7 @@ var Control_Comonad_Store_Class = require("../Control.Comonad.Store.Class/index.
 var Control_Comonad_Store_Trans = require("../Control.Comonad.Store.Trans/index.js");
 var Control_Monad_State_Class = require("../Control.Monad.State.Class/index.js");
 var Data_Argonaut_Core = require("../Data.Argonaut.Core/index.js");
+var Data_Boolean = require("../Data.Boolean/index.js");
 var Data_Either = require("../Data.Either/index.js");
 var Data_Eq = require("../Data.Eq/index.js");
 var Data_Eq_Generic = require("../Data.Eq.Generic/index.js");
@@ -121053,6 +121363,7 @@ var Data_Identity = require("../Data.Identity/index.js");
 var Data_Lens_Getter = require("../Data.Lens.Getter/index.js");
 var Data_Lens_Internal_Forget = require("../Data.Lens.Internal.Forget/index.js");
 var Data_Lens_Setter = require("../Data.Lens.Setter/index.js");
+var Data_List_Types = require("../Data.List.Types/index.js");
 var Data_Maybe = require("../Data.Maybe/index.js");
 var Data_Newtype = require("../Data.Newtype/index.js");
 var Data_Profunctor_Strong = require("../Data.Profunctor.Strong/index.js");
@@ -121147,7 +121458,7 @@ var genericComponentDeviceCon1 = {
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr)) {
             return new ComponentDeviceConfigurationAffect(x.value0.value0.value0);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentDeviceConfiguration (line 21, column 1 - line 21, column 61): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentDeviceConfiguration (line 20, column 1 - line 20, column 61): " + [ x.constructor.name ]);
     },
     from: function (x) {
         if (x instanceof NoDeviceConfigurationSignal) {
@@ -121162,7 +121473,7 @@ var genericComponentDeviceCon1 = {
         if (x instanceof ComponentDeviceConfigurationAffect) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0)));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentDeviceConfiguration (line 21, column 1 - line 21, column 61): " + [ x.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentDeviceConfiguration (line 20, column 1 - line 20, column 61): " + [ x.constructor.name ]);
     }
 };
 var functorComponentDeviceCon = {
@@ -121204,44 +121515,44 @@ var renderDeviceConfiguration = Extra.ns(extendComponentDeviceConf)(comonadCompo
     return marshalDeviceConfiguration(v.value0.value0)(v);
 });
 var _prismSourceDeviceConfiguration = (function () {
-    var $75 = Widget_Unify_UnifyCompItem["_compitem"](ExploreCore.comonadSum(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(ExploreCore.comonadSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.comonadComponentSourceDev)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.comonadComponentOutputDev)))(ShouldUpdate.shouldUpdateSum(ShouldUpdate.shouldUpdateStore(Data_Eq.eqUnit))(ShouldUpdate.shouldUpdateSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.shouldUpdateComponentSour)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.shouldUpdateComponentOutp)));
-    var $76 = ExploreCore.prismRightS(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity));
-    var $77 = ExploreCore.prismLeftS(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.comonadComponentOutputDev);
-    return function ($78) {
-        return $75($76($77($78)));
+    var $74 = Widget_Unify_UnifyCompItem["_compitem"](ExploreCore.comonadSum(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(ExploreCore.comonadSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.comonadComponentSourceDev)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.comonadComponentOutputDev)))(ShouldUpdate.shouldUpdateSum(ShouldUpdate.shouldUpdateStore(Data_Eq.eqUnit))(ShouldUpdate.shouldUpdateSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.shouldUpdateComponentSour)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.shouldUpdateComponentOutp)));
+    var $75 = ExploreCore.prismRightS(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity));
+    var $76 = ExploreCore.prismLeftS(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.comonadComponentOutputDev);
+    return function ($77) {
+        return $74($75($76($77)));
     };
 })();
 var _prismOutputDeviceConfiguration = (function () {
-    var $79 = Widget_Unify_UnifyCompItem["_compitem"](ExploreCore.comonadSum(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(ExploreCore.comonadSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.comonadComponentSourceDev)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.comonadComponentOutputDev)))(ShouldUpdate.shouldUpdateSum(ShouldUpdate.shouldUpdateStore(Data_Eq.eqUnit))(ShouldUpdate.shouldUpdateSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.shouldUpdateComponentSour)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.shouldUpdateComponentOutp)));
-    var $80 = ExploreCore.prismRightS(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity));
-    var $81 = ExploreCore.prismRightS(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.comonadComponentSourceDev);
-    return function ($82) {
-        return $79($80($81($82)));
+    var $78 = Widget_Unify_UnifyCompItem["_compitem"](ExploreCore.comonadSum(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(ExploreCore.comonadSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.comonadComponentSourceDev)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.comonadComponentOutputDev)))(ShouldUpdate.shouldUpdateSum(ShouldUpdate.shouldUpdateStore(Data_Eq.eqUnit))(ShouldUpdate.shouldUpdateSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.shouldUpdateComponentSour)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.shouldUpdateComponentOutp)));
+    var $79 = ExploreCore.prismRightS(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity));
+    var $80 = ExploreCore.prismRightS(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.comonadComponentSourceDev);
+    return function ($81) {
+        return $78($79($80($81)));
     };
 })();
 var _prismNoDeviceConfiguration = (function () {
-    var $83 = Widget_Unify_UnifyCompItem["_compitem"](ExploreCore.comonadSum(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(ExploreCore.comonadSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.comonadComponentSourceDev)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.comonadComponentOutputDev)))(ShouldUpdate.shouldUpdateSum(ShouldUpdate.shouldUpdateStore(Data_Eq.eqUnit))(ShouldUpdate.shouldUpdateSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.shouldUpdateComponentSour)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.shouldUpdateComponentOutp)));
-    var $84 = ExploreCore.prismLeftS(ExploreCore.comonadSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.comonadComponentSourceDev)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.comonadComponentOutputDev));
-    return function ($85) {
-        return $83($84($85));
+    var $82 = Widget_Unify_UnifyCompItem["_compitem"](ExploreCore.comonadSum(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(ExploreCore.comonadSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.comonadComponentSourceDev)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.comonadComponentOutputDev)))(ShouldUpdate.shouldUpdateSum(ShouldUpdate.shouldUpdateStore(Data_Eq.eqUnit))(ShouldUpdate.shouldUpdateSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.shouldUpdateComponentSour)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.shouldUpdateComponentOutp)));
+    var $83 = ExploreCore.prismLeftS(ExploreCore.comonadSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.comonadComponentSourceDev)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.comonadComponentOutputDev));
+    return function ($84) {
+        return $82($83($84));
     };
 })();
 var _moveSourceDeviceConfiguration = (function () {
-    var $86 = Widget_Unify_UnifyCompItem["_compitem"](ExploreCore.comonadSum(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(ExploreCore.comonadSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.comonadComponentSourceDev)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.comonadComponentOutputDev)))(ShouldUpdate.shouldUpdateSum(ShouldUpdate.shouldUpdateStore(Data_Eq.eqUnit))(ShouldUpdate.shouldUpdateSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.shouldUpdateComponentSour)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.shouldUpdateComponentOutp)));
-    return function ($87) {
-        return $86(ExploreCore.liftRightS(ExploreCore.liftLeftS($87)));
+    var $85 = Widget_Unify_UnifyCompItem["_compitem"](ExploreCore.comonadSum(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(ExploreCore.comonadSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.comonadComponentSourceDev)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.comonadComponentOutputDev)))(ShouldUpdate.shouldUpdateSum(ShouldUpdate.shouldUpdateStore(Data_Eq.eqUnit))(ShouldUpdate.shouldUpdateSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.shouldUpdateComponentSour)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.shouldUpdateComponentOutp)));
+    return function ($86) {
+        return $85(ExploreCore.liftRightS(ExploreCore.liftLeftS($86)));
     };
 })();
 var _moveOutputDeviceConfiguration = (function () {
-    var $88 = Widget_Unify_UnifyCompItem["_compitem"](ExploreCore.comonadSum(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(ExploreCore.comonadSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.comonadComponentSourceDev)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.comonadComponentOutputDev)))(ShouldUpdate.shouldUpdateSum(ShouldUpdate.shouldUpdateStore(Data_Eq.eqUnit))(ShouldUpdate.shouldUpdateSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.shouldUpdateComponentSour)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.shouldUpdateComponentOutp)));
-    return function ($89) {
-        return $88(ExploreCore.liftRightS(ExploreCore.liftRightS($89)));
+    var $87 = Widget_Unify_UnifyCompItem["_compitem"](ExploreCore.comonadSum(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(ExploreCore.comonadSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.comonadComponentSourceDev)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.comonadComponentOutputDev)))(ShouldUpdate.shouldUpdateSum(ShouldUpdate.shouldUpdateStore(Data_Eq.eqUnit))(ShouldUpdate.shouldUpdateSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.shouldUpdateComponentSour)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.shouldUpdateComponentOutp)));
+    return function ($88) {
+        return $87(ExploreCore.liftRightS(ExploreCore.liftRightS($88)));
     };
 })();
 var _moveNoDeviceConfiguration = (function () {
-    var $90 = Widget_Unify_UnifyCompItem["_compitem"](ExploreCore.comonadSum(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(ExploreCore.comonadSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.comonadComponentSourceDev)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.comonadComponentOutputDev)))(ShouldUpdate.shouldUpdateSum(ShouldUpdate.shouldUpdateStore(Data_Eq.eqUnit))(ShouldUpdate.shouldUpdateSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.shouldUpdateComponentSour)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.shouldUpdateComponentOutp)));
-    return function ($91) {
-        return $90(ExploreCore.liftLeftS($91));
+    var $89 = Widget_Unify_UnifyCompItem["_compitem"](ExploreCore.comonadSum(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity))(ExploreCore.comonadSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.comonadComponentSourceDev)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.comonadComponentOutputDev)))(ShouldUpdate.shouldUpdateSum(ShouldUpdate.shouldUpdateStore(Data_Eq.eqUnit))(ShouldUpdate.shouldUpdateSum(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.shouldUpdateComponentSour)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.shouldUpdateComponentOutp)));
+    return function ($90) {
+        return $89(ExploreCore.liftLeftS($90));
     };
 })();
 var _CoNoDeviceConfiguration = Widget_Unify_UnifyExplore.id;
@@ -121250,6 +121561,20 @@ var _CoDeviceConfiguration = function (v) {
         return v(Data_Newtype.unwrap()(w));
     };
 };
+var asked = Control_Bind.bind(ExploreCore.bindCo(extendComponentDeviceConf))(_CoDeviceConfiguration(_prismSourceDeviceConfiguration(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration["_CoSourceDeviceConfiguration"](Control_Bind.bind(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (c) {
+    return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(new Data_Maybe.Just(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.asked(c)));
+})))))(function (r_1) {
+    return Control_Bind.bind(ExploreCore.bindCo(extendComponentDeviceConf))(_CoDeviceConfiguration(_prismOutputDeviceConfiguration(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration["_CoOutputDeviceConfiguration"](Control_Bind.bind(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (c) {
+        return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(new Data_Maybe.Just(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.asked(c)));
+    })))))(function (r_2) {
+        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentDeviceCon))((function () {
+            if (r_1 instanceof Data_Maybe.Just) {
+                return r_1.value0;
+            };
+            return Data_Maybe.fromMaybe(Data_List_Types.Nil.value)(r_2);
+        })());
+    });
+});
 var carrying = function (d) {
     return Control_Bind.bind(ExploreCore.bindCo(extendComponentDeviceConf))(_CoDeviceConfiguration(_prismSourceDeviceConfiguration(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration["_CoSourceDeviceConfiguration"](Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (c) {
         return Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.carrying(d)(c);
@@ -121296,40 +121621,17 @@ var settled = Control_Bind.bind(ExploreCore.bindCo(extendComponentDeviceConf))(c
     if (r_1 instanceof Data_Maybe.Just) {
         return carrying(r_1.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentDeviceConfiguration (line 175, column 8 - line 177, column 32): " + [ r_1.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentDeviceConfiguration (line 214, column 8 - line 216, column 32): " + [ r_1.constructor.name ]);
 });
-var knownFormatOf = Control_Bind.bind(ExploreCore.bindCo(extendComponentDeviceConf))(_CoDeviceConfiguration(_prismOutputDeviceConfiguration(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration["_CoOutputDeviceConfiguration"](Control_Bind.bind(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (c) {
-    return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(new Data_Maybe.Just(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.knownFormatOf(c)));
-})))))(function (r_1) {
-    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentDeviceCon))(Data_Maybe.fromMaybe(Data_Maybe.Nothing.value)(r_1));
-});
-var nameTyped = Control_Bind.bind(ExploreCore.bindCo(extendComponentDeviceConf))(_CoDeviceConfiguration(_prismNoDeviceConfiguration(_CoNoDeviceConfiguration(Control_Bind.bind(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function () {
-    return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(new Data_Maybe.Just(""));
-})))))(function (r_1) {
-    return Control_Bind.bind(ExploreCore.bindCo(extendComponentDeviceConf))(_CoDeviceConfiguration(_prismSourceDeviceConfiguration(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration["_CoSourceDeviceConfiguration"](Control_Bind.bind(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (c) {
-        return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(new Data_Maybe.Just(Data_Lens_Getter.viewOn(c)(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration["_nameEdit"](Data_Lens_Internal_Forget.strongForget))));
-    })))))(function (r_2) {
-        return Control_Bind.bind(ExploreCore.bindCo(extendComponentDeviceConf))(_CoDeviceConfiguration(_prismOutputDeviceConfiguration(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration["_CoOutputDeviceConfiguration"](Control_Bind.bind(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (c) {
-            return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(new Data_Maybe.Just(Data_Lens_Getter.viewOn(c)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration["_nameEdit"](Data_Lens_Internal_Forget.strongForget))));
-        })))))(function (r_3) {
-            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentDeviceCon))((function () {
-                if (r_1 instanceof Data_Maybe.Just) {
-                    return r_1.value0;
-                };
-                if (r_2 instanceof Data_Maybe.Just) {
-                    return r_2.value0;
-                };
-                if (r_3 instanceof Data_Maybe.Just) {
-                    return r_3.value0;
-                };
-                return Partial_Unsafe.unsafeCrashWith("undefined");
-            })());
-        });
-    });
-});
-var pickedPreview = function (on) {
+var heldPreview = function (on) {
     return Control_Bind.bind(ExploreCore.bindCo(extendComponentDeviceConf))(_CoDeviceConfiguration(_prismOutputDeviceConfiguration(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration["_CoOutputDeviceConfiguration"](Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (c) {
-        return Unify_Types.flipuse(c)(Data_Lens_Setter.set(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration["_previewPicked"](Data_Profunctor_Strong.strongFn))(on));
+        return Unify_Types.flipuse(Unify_Types.flipuse(c)(Data_Lens_Setter.over(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration["_previewPicked"](Data_Profunctor_Strong.strongFn))(function (p) {
+            var $59 = p === Data_Lens_Getter.viewOn(c)(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration["_previewHeld"](Data_Lens_Internal_Forget.strongForget));
+            if ($59) {
+                return on;
+            };
+            return p;
+        })))(Data_Lens_Setter.set(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration["_previewHeld"](Data_Profunctor_Strong.strongFn))(on));
     }))(function () {
         return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(new Data_Maybe.Just(Data_Unit.unit));
     })))))(function () {
@@ -121358,6 +121660,21 @@ var raiseDeviceConfiguration = function (s) {
         return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentDeviceCon))(Data_Unit.unit);
     })())(function () {
         return Data_Tuple.snd(marshalDeviceConfiguration(new ExploreSignal.UpdateLeaf(s))(new Data_Tuple.Tuple(Data_Unit.unit, Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentDeviceCon))(Data_Unit.unit))));
+    });
+};
+var rebasing = function (d) {
+    return Control_Bind.bind(ExploreCore.bindCo(extendComponentDeviceConf))(_CoDeviceConfiguration(_prismSourceDeviceConfiguration(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration["_CoSourceDeviceConfiguration"](Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (c) {
+        return Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.rebasing(d)(c);
+    }))(function () {
+        return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(new Data_Maybe.Just(Data_Unit.unit));
+    })))))(function () {
+        return Control_Bind.bind(ExploreCore.bindCo(extendComponentDeviceConf))(_CoDeviceConfiguration(_prismOutputDeviceConfiguration(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration["_CoOutputDeviceConfiguration"](Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (c) {
+            return Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.rebasing(d)(c);
+        }))(function () {
+            return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(new Data_Maybe.Just(Data_Unit.unit));
+        })))))(function () {
+            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentDeviceCon))(Data_Unit.unit);
+        });
     });
 };
 var refusalOf = Control_Bind.bind(ExploreCore.bindCo(extendComponentDeviceConf))(_CoDeviceConfiguration(_prismNoDeviceConfiguration(_CoNoDeviceConfiguration(Control_Bind.bind(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function () {
@@ -121399,11 +121716,23 @@ var refusing = function (why) {
         });
     });
 };
-var scaledFormatOf = Control_Bind.bind(ExploreCore.bindCo(extendComponentDeviceConf))(_CoDeviceConfiguration(_prismOutputDeviceConfiguration(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration["_CoOutputDeviceConfiguration"](Control_Bind.bind(ExploreCore.bindCo(Control_Comonad_Store_Trans.extendStoreT(Data_Identity.extendIdentity)))(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity))))(function (c) {
-    return Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(new Data_Maybe.Just(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.scaledFormatOf(c)));
-})))))(function (r_1) {
-    return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentDeviceCon))(Data_Maybe.fromMaybe(Data_Maybe.Nothing.value)(r_1));
-});
+var refused = function (why) {
+    if (why === "") {
+        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentDeviceCon))(Data_Unit.unit);
+    };
+    if (Data_Boolean.otherwise) {
+        return Control_Bind.bind(ExploreCore.bindCo(extendComponentDeviceConf))(refusalOf)(function (r_1) {
+            return refusing((function () {
+                var $70 = r_1 === "";
+                if ($70) {
+                    return why;
+                };
+                return r_1 + ("; " + why);
+            })());
+        });
+    };
+    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentDeviceConfiguration (line 239, column 1 - line 239, column 58): " + [ why.constructor.name ]);
+};
 var writeDeviceConfiguration = function (v) {
     if (v instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.NoDeviceConfiguration) {
         return _CoDeviceConfiguration(_moveNoDeviceConfiguration(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Data_Unit.unit)));
@@ -121414,7 +121743,7 @@ var writeDeviceConfiguration = function (v) {
     if (v instanceof Exhibit_VideoControl_ComponentDeviceConfiguration.OutputConfiguration) {
         return _CoDeviceConfiguration(_moveOutputDeviceConfiguration(Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.writeOutputDeviceConfiguration(v.value0)));
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentDeviceConfiguration (line 96, column 5 - line 109, column 54): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentDeviceConfiguration (line 95, column 5 - line 108, column 54): " + [ v.constructor.name ]);
 };
 module.exports = {
     NoDeviceConfigurationSignal: NoDeviceConfigurationSignal,
@@ -121435,14 +121764,14 @@ module.exports = {
     openingSource: openingSource,
     openingOutput: openingOutput,
     carrying: carrying,
+    rebasing: rebasing,
+    asked: asked,
     configuredDevice: configuredDevice,
     settled: settled,
-    nameTyped: nameTyped,
     refusing: refusing,
-    pickedPreview: pickedPreview,
+    refused: refused,
+    heldPreview: heldPreview,
     refusalOf: refusalOf,
-    knownFormatOf: knownFormatOf,
-    scaledFormatOf: scaledFormatOf,
     marshalDeviceConfiguration: marshalDeviceConfiguration,
     raiseDeviceConfiguration: raiseDeviceConfiguration,
     datarenderDeviceConfiguration: datarenderDeviceConfiguration,
@@ -121458,7 +121787,7 @@ module.exports = {
     comonadComponentDeviceCon: comonadComponentDeviceCon
 };
 
-},{"../Control.Applicative/index.js":42,"../Control.Bind/index.js":48,"../Control.Comonad.Store.Class/index.js":51,"../Control.Comonad.Store.Trans/index.js":52,"../Control.Comonad.Store/index.js":53,"../Control.Monad.State.Class/index.js":71,"../Data.Argonaut.Core/index.js":83,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Eq/index.js":118,"../Data.Function/index.js":128,"../Data.Functor/index.js":142,"../Data.Generic.Rep/index.js":145,"../Data.Identity/index.js":149,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Setter/index.js":178,"../Data.Maybe/index.js":190,"../Data.Newtype/index.js":200,"../Data.Profunctor.Strong/index.js":216,"../Data.Tuple/index.js":251,"../Data.Unit/index.js":259,"../Exhibit.VideoControl.ComponentDeviceConfiguration/index.js":282,"../Exhibit.VideoControl.UI.ComponentOutputDeviceConfiguration/index.js":337,"../Exhibit.VideoControl.UI.ComponentSourceDeviceConfiguration/index.js":349,"../ExploreCore/index.js":356,"../ExploreSignal/index.js":357,"../Extra/index.js":358,"../Partial.Unsafe/index.js":374,"../Safe.Coerce/index.js":389,"../ShouldUpdate/index.js":390,"../Unify.Types/index.js":402,"../Widget.Unify.UnifyComp/index.js":544,"../Widget.Unify.UnifyCompItem/index.js":545,"../Widget.Unify.UnifyExplore/index.js":547}],320:[function(require,module,exports){
+},{"../Control.Applicative/index.js":42,"../Control.Bind/index.js":48,"../Control.Comonad.Store.Class/index.js":51,"../Control.Comonad.Store.Trans/index.js":52,"../Control.Comonad.Store/index.js":53,"../Control.Monad.State.Class/index.js":71,"../Data.Argonaut.Core/index.js":83,"../Data.Boolean/index.js":107,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Eq/index.js":118,"../Data.Function/index.js":128,"../Data.Functor/index.js":142,"../Data.Generic.Rep/index.js":145,"../Data.Identity/index.js":149,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Setter/index.js":178,"../Data.List.Types/index.js":185,"../Data.Maybe/index.js":190,"../Data.Newtype/index.js":200,"../Data.Profunctor.Strong/index.js":216,"../Data.Tuple/index.js":251,"../Data.Unit/index.js":259,"../Exhibit.VideoControl.ComponentDeviceConfiguration/index.js":282,"../Exhibit.VideoControl.UI.ComponentOutputDeviceConfiguration/index.js":337,"../Exhibit.VideoControl.UI.ComponentSourceDeviceConfiguration/index.js":349,"../ExploreCore/index.js":356,"../ExploreSignal/index.js":357,"../Extra/index.js":358,"../Partial.Unsafe/index.js":374,"../Safe.Coerce/index.js":389,"../ShouldUpdate/index.js":390,"../Unify.Types/index.js":402,"../Widget.Unify.UnifyComp/index.js":544,"../Widget.Unify.UnifyCompItem/index.js":545,"../Widget.Unify.UnifyExplore/index.js":547}],320:[function(require,module,exports){
 // Generated by purs version 0.14.4
 "use strict";
 var Control_Applicative = require("../Control.Applicative/index.js");
@@ -121697,6 +122026,15 @@ var selectNamed = function (i) {
         });
     });
 };
+var selectNone = Control_Bind.bind(ExploreCore.bindCo(extendComponentDeviceList))(_CoDeviceList(_eachSourceEntries(Exhibit_VideoControl_UI_ComponentSettingsDevice["_CoSettingsDevice"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (c) {
+    return Unify_Types.flipuse(c)(Data_Lens_Setter.set(Exhibit_VideoControl_UI_ComponentSettingsDevice["_selected"](Data_Profunctor_Strong.strongFn))(false));
+})))))(function () {
+    return Control_Bind.bind(ExploreCore.bindCo(extendComponentDeviceList))(_CoDeviceList(_eachOutputEntries(Exhibit_VideoControl_UI_ComponentSettingsDevice["_CoSettingsDevice"](Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (c) {
+        return Unify_Types.flipuse(c)(Data_Lens_Setter.set(Exhibit_VideoControl_UI_ComponentSettingsDevice["_selected"](Data_Profunctor_Strong.strongFn))(false));
+    })))))(function () {
+        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentDeviceLis))(Data_Unit.unit);
+    });
+});
 var selectOutput = function (i) {
     return Control_Bind.bind(ExploreCore.bindCo(extendComponentDeviceList))(_CoDeviceList(_eachOutputEntries(Exhibit_VideoControl_UI_ComponentSettingsDevice["_CoSettingsDevice"](Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))))(function (r_1) {
         var $46 = i < 0 || i >= Data_List.length(r_1);
@@ -121803,6 +122141,7 @@ module.exports = {
     selectSource: selectSource,
     selectOutput: selectOutput,
     selectNamed: selectNamed,
+    selectNone: selectNone,
     selectedEntry: selectedEntry,
     entryNamed: entryNamed,
     marshalDeviceList: marshalDeviceList,
@@ -122987,17 +123326,13 @@ var updateJsonInputSource = {
             if (v instanceof Data_Either.Left) {
                 return new Data_Either.Left("InputSource: " + v.value0);
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentInputSource (line 213, column 13 - line 215, column 54): " + [ v.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentInputSource (line 205, column 13 - line 207, column 54): " + [ v.constructor.name ]);
         };
     }
 };
 var displayInputSource = function (s) {
     return function (send) {
-        return new Data_Tuple.Tuple(Data_Maybe.Nothing.value, [ React_DOM.div([ React_DOM_Props.className("cardhead") ])([ React_DOM.input([ React_DOM_Props.className("cardname"), React_DOM_Props.value(Data_Lens_Getter.viewOn(s)(_sourceName(Data_Lens_Internal_Forget.strongForget))), React_DOM_Props.onChange(function (v) {
-            return send(Extra.update(new ComponentInputSourceSourceNameSignal(v.target.value))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
-                return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_sourceName(Data_Profunctor_Strong.strongFn))(v.target.value));
-            })));
-        }) ]), React_DOM.div([ React_DOM_Props.className((function () {
+        return new Data_Tuple.Tuple(Data_Maybe.Nothing.value, [ React_DOM.div([ React_DOM_Props.className("cardhead") ])([ React_DOM.div([ React_DOM_Props.className("cardname") ])([ React_DOM.text(Data_Lens_Getter.viewOn(s)(_sourceName(Data_Lens_Internal_Forget.strongForget))) ]), React_DOM.div([ React_DOM_Props.className((function () {
             var $122 = Data_Lens_Getter.viewOn(s)(_selected(Data_Lens_Internal_Forget.strongForget));
             if ($122) {
                 return "dot blue";
@@ -131888,6 +132223,15 @@ var ComponentNavBarSelectSignal = (function () {
     };
     return ComponentNavBarSelectSignal;
 })();
+var ComponentNavBarAboutSignal = (function () {
+    function ComponentNavBarAboutSignal(value0) {
+        this.value0 = value0;
+    };
+    ComponentNavBarAboutSignal.create = function (value0) {
+        return new ComponentNavBarAboutSignal(value0);
+    };
+    return ComponentNavBarAboutSignal;
+})();
 var ComponentNavBarAffect = (function () {
     function ComponentNavBarAffect(value0) {
         this.value0 = value0;
@@ -131928,6 +132272,10 @@ var genericNavBar_ = {
 var showNavBar = {
     show: Data_Show_Generic.genericShow(genericNavBar_)(Data_Show_Generic.genericShowConstructor(Data_Show_Generic.genericShowArgsArgument(Data_Show.showRecord()(Data_Show.showRecordFieldsCons({
         reflectSymbol: function () {
+            return "about";
+        }
+    })(Data_Show.showRecordFieldsCons({
+        reflectSymbol: function () {
             return "activePage";
         }
     })(Data_Show.showRecordFieldsCons({
@@ -131938,7 +132286,7 @@ var showNavBar = {
         reflectSymbol: function () {
             return "select";
         }
-    })(Data_Show.showRecordFieldsNil)(Data_Show.showString))(Data_List_Types.showList(Data_Show.showString)))(Data_Show.showString))))({
+    })(Data_Show.showRecordFieldsNil)(Data_Show.showString))(Data_List_Types.showList(Data_Show.showString)))(Data_Show.showString))(Data_Show.showBoolean))))({
         reflectSymbol: function () {
             return "NavBar";
         }
@@ -131963,10 +132311,13 @@ var genericComponentNavBarSig = {
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inl)) {
             return new ComponentNavBarSelectSignal(x.value0.value0.value0);
         };
-        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0 instanceof Data_Generic_Rep.Inr)) {
-            return new ComponentNavBarAffect(x.value0.value0.value0);
+        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inl))) {
+            return new ComponentNavBarAboutSignal(x.value0.value0.value0.value0);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentNavBar (line 14, column 1 - line 14, column 48): " + [ x.constructor.name ]);
+        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0 instanceof Data_Generic_Rep.Inr))) {
+            return new ComponentNavBarAffect(x.value0.value0.value0.value0);
+        };
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentNavBar (line 16, column 1 - line 16, column 48): " + [ x.constructor.name ]);
     },
     from: function (x) {
         if (x instanceof ComponentNavBarPagesSignal) {
@@ -131978,10 +132329,13 @@ var genericComponentNavBarSig = {
         if (x instanceof ComponentNavBarSelectSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)));
         };
-        if (x instanceof ComponentNavBarAffect) {
-            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0)));
+        if (x instanceof ComponentNavBarAboutSignal) {
+            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentNavBar (line 14, column 1 - line 14, column 48): " + [ x.constructor.name ]);
+        if (x instanceof ComponentNavBarAffect) {
+            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0))));
+        };
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentNavBar (line 16, column 1 - line 16, column 48): " + [ x.constructor.name ]);
     }
 };
 var functorComponentNavBar = {
@@ -131998,7 +132352,7 @@ var extendComponentNavBar = {
     }
 };
 var eqNavBar = {
-    eq: Data_Eq_Generic.genericEq(genericNavBar_)(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqRec()(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowNil)()({
+    eq: Data_Eq_Generic.genericEq(genericNavBar_)(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqRec()(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowNil)()({
         reflectSymbol: function () {
             return "select";
         }
@@ -132010,7 +132364,11 @@ var eqNavBar = {
         reflectSymbol: function () {
             return "activePage";
         }
-    })(Data_Eq.eqString)))))
+    })(Data_Eq.eqString))()({
+        reflectSymbol: function () {
+            return "about";
+        }
+    })(Data_Eq.eqBoolean)))))
 };
 var shouldUpdateComponentNavB = {
     shouldupdate: function (a) {
@@ -132020,14 +132378,14 @@ var shouldUpdateComponentNavB = {
     }
 };
 var eqComponentNavBarSignal = {
-    eq: Data_Eq_Generic.genericEq(genericComponentNavBarSig)(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Tuple.eqTuple(Data_Eq.eqInt)(Data_Eq.eqString))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Either.eqEither(ExploreSignal.eqAffRequest)(Data_Tuple.eqTuple(ExploreSignal.eqAffRequest)(Data_Argonaut_Core.eqJson))))))))
+    eq: Data_Eq_Generic.genericEq(genericComponentNavBarSig)(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Tuple.eqTuple(Data_Eq.eqInt)(Data_Eq.eqString))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Either.eqEither(ExploreSignal.eqAffRequest)(Data_Tuple.eqTuple(ExploreSignal.eqAffRequest)(Data_Argonaut_Core.eqJson)))))))))
 };
 var encodeJsonNavBar = {
     encodeJson: Data_Functor.map(Data_Functor.functorFn)(Unify_Types.removeObjectByName("tag"))(Data_Argonaut_Encode_Generic.genericEncodeJson(genericNavBar_)(Data_Argonaut_Encode_Generic.encodeRepConstructor({
         reflectSymbol: function () {
             return "NavBar";
         }
-    })(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(Data_Argonaut_Encode_Class.encodeRecord(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonList(Data_Argonaut_Encode_Class.encodeJsonJString))(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonNil)({
+    })(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(Data_Argonaut_Encode_Class.encodeRecord(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonList(Data_Argonaut_Encode_Class.encodeJsonJString))(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonNil)({
         reflectSymbol: function () {
             return "select";
         }
@@ -132039,10 +132397,18 @@ var encodeJsonNavBar = {
         reflectSymbol: function () {
             return "activePage";
         }
+    })())({
+        reflectSymbol: function () {
+            return "about";
+        }
     })())()))))
 };
 var defNavBar = {
     def: Unify_Types.genericDef(genericNavBar_)(Unify_Types.genericDefConstructor(Unify_Types.genericDefArgument(Unify_Types.defRecord()(Unify_Types.defRowListCons({
+        reflectSymbol: function () {
+            return "about";
+        }
+    })(Unify_Types.defBoolean)(Unify_Types.defRowListCons({
         reflectSymbol: function () {
             return "activePage";
         }
@@ -132054,14 +132420,14 @@ var defNavBar = {
         reflectSymbol: function () {
             return "select";
         }
-    })(Unify_Types.defString)(Unify_Types.defRowListNilRow)()())()())()()))))
+    })(Unify_Types.defString)(Unify_Types.defRowListNilRow)()())()())()())()()))))
 };
 var decodeJsonNavBar = {
     decodeJson: Data_Argonaut_Decode_Generic.genericDecodeJson(genericNavBar_)(Data_Argonaut_Decode_Generic.decodeRepConstructorArg({
         reflectSymbol: function () {
             return "NavBar";
         }
-    })(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
+    })(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
         reflectSymbol: function () {
             return "select";
         }
@@ -132072,6 +132438,10 @@ var decodeJsonNavBar = {
     })()())({
         reflectSymbol: function () {
             return "activePage";
+        }
+    })()())({
+        reflectSymbol: function () {
+            return "about";
         }
     })()())()))
 };
@@ -132085,62 +132455,93 @@ var settingsPage = "Settings";
 var matrixPage = "Matrix routing";
 var mainPage = "Main panel";
 var navPages = new Data_List_Types.Cons(mainPage, new Data_List_Types.Cons(matrixPage, new Data_List_Types.Cons(settingsPage, Data_List_Types.Nil.value)));
+var guiVersion = "v1.0.22";
+var displayAbout = function (on) {
+    return function (close) {
+        return React_DOM.div([ React_DOM_Props.className((function () {
+            if (on) {
+                return "about is-on";
+            };
+            return "about";
+        })()) ])([ React_DOM.div([ React_DOM_Props.className("aboutshade"), React_DOM_Props.onClick(function (v) {
+            return close;
+        }) ])([  ]), React_DOM.div([ React_DOM_Props.className("aboutdialog"), React_DOM_Props.role("dialog") ])([ React_DOM.div([ React_DOM_Props.className("abouteyebrow") ])([ React_DOM.text("About") ]), React_DOM.div([ React_DOM_Props.className("abouttitle") ])([ React_DOM.text("FSN Control Manager") ]), React_DOM.div([ React_DOM_Props.className("aboutrow") ])([ React_DOM.div([ React_DOM_Props.className("aboutlabel") ])([ React_DOM.text("GUI version") ]), React_DOM.div([ React_DOM_Props.className("aboutversion"), React_DOM_Props["_id"]("gui_version") ])([ React_DOM.text(guiVersion) ]) ]), React_DOM.div([ React_DOM_Props.className("aboutactions") ])([ React_DOM.button([ React_DOM_Props.className("aboutclose"), React_DOM_Props["_id"]("about_close"), React_DOM_Props.onClick(function (v) {
+            return close;
+        }) ])([ React_DOM.text("Close") ]) ]) ]) ]);
+    };
+};
 var def_ComponentNavBar = new NavBar({
     pages: navPages,
     activePage: mainPage,
-    select: ""
+    select: "",
+    about: false
 });
 var _select = function (dictStrong) {
-    var $90 = Data_Lens_Lens["lens'"](function (v) {
+    var $106 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new NavBar(s);
         });
     })(dictStrong);
-    var $91 = Data_Lens_Record.prop({
+    var $107 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "select";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($92) {
-        return $90($91($92));
+    return function ($108) {
+        return $106($107($108));
     };
 };
 var _pages = function (dictStrong) {
-    var $93 = Data_Lens_Lens["lens'"](function (v) {
+    var $109 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new NavBar(s);
         });
     })(dictStrong);
-    var $94 = Data_Lens_Record.prop({
+    var $110 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "pages";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($95) {
-        return $93($94($95));
+    return function ($111) {
+        return $109($110($111));
     };
 };
 var _activePage = function (dictStrong) {
-    var $96 = Data_Lens_Lens["lens'"](function (v) {
+    var $112 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new NavBar(s);
         });
     })(dictStrong);
-    var $97 = Data_Lens_Record.prop({
+    var $113 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "activePage";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($98) {
-        return $96($97($98));
+    return function ($114) {
+        return $112($113($114));
+    };
+};
+var _about = function (dictStrong) {
+    var $115 = Data_Lens_Lens["lens'"](function (v) {
+        return new Data_Tuple.Tuple(v.value0, function (s) {
+            return new NavBar(s);
+        });
+    })(dictStrong);
+    var $116 = Data_Lens_Record.prop({
+        reflectSymbol: function () {
+            return "about";
+        }
+    })()()(Data_Symbol.SProxy.value)(dictStrong);
+    return function ($117) {
+        return $115($116($117));
     };
 };
 var displayNavBar = function (s) {
     return function (send) {
         return new Data_Tuple.Tuple(Data_Maybe.Nothing.value, [ React_DOM.div([ React_DOM_Props.className("seats") ])(Data_Array.fromFoldable(Data_List_Types.foldableList)(Data_Functor.map(Data_List_Types.functorList)(function (p) {
             return React_DOM.div([ React_DOM_Props.className((function () {
-                var $71 = Data_Tuple.snd(p) === Data_Lens_Getter.viewOn(s)(_activePage(Data_Lens_Internal_Forget.strongForget));
-                if ($71) {
+                var $86 = Data_Tuple.snd(p) === Data_Lens_Getter.viewOn(s)(_activePage(Data_Lens_Internal_Forget.strongForget));
+                if ($86) {
                     return "seat is-active";
                 };
                 return "seat";
@@ -132149,9 +132550,15 @@ var displayNavBar = function (s) {
                     return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_select(Data_Profunctor_Strong.strongFn))(Data_Tuple.snd(p)));
                 })));
             }) ])([ React_DOM.text(Data_Tuple.snd(p)) ]);
-        })(Data_List.zip(new Data_List_Types.Cons("nav_main", new Data_List_Types.Cons("nav_matrix", new Data_List_Types.Cons("nav_settings", Data_List_Types.Nil.value))))(Data_Lens_Getter.viewOn(s)(_pages(Data_Lens_Internal_Forget.strongForget)))))), React_DOM.a([ React_DOM_Props.className("seat"), React_DOM_Props["_id"]("nav_refresh"), React_DOM_Props.href("") ])([  ]), React_DOM.div([ React_DOM_Props.className((function () {
-            var $72 = Data_Lens_Getter.viewOn(s)(_activePage(Data_Lens_Internal_Forget.strongForget)) === settingsPage;
-            if ($72) {
+        })(Data_List.zip(new Data_List_Types.Cons("nav_main", new Data_List_Types.Cons("nav_matrix", new Data_List_Types.Cons("nav_settings", Data_List_Types.Nil.value))))(Data_Lens_Getter.viewOn(s)(_pages(Data_Lens_Internal_Forget.strongForget)))))), React_DOM.a([ React_DOM_Props.className("seat"), React_DOM_Props["_id"]("nav_refresh"), React_DOM_Props.href("") ])([  ]), React_DOM.div([ React_DOM_Props.className("seat"), React_DOM_Props["_id"]("nav_info"), React_DOM_Props.onClick(function (v) {
+            return send(Extra.update(new ComponentNavBarAboutSignal(true))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
+                return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_about(Data_Profunctor_Strong.strongFn))(true));
+            })));
+        }) ])([  ]), displayAbout(Data_Lens_Getter.viewOn(s)(_about(Data_Lens_Internal_Forget.strongForget)))(send(Extra.update(new ComponentNavBarAboutSignal(false))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
+            return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_about(Data_Profunctor_Strong.strongFn))(false));
+        })))), React_DOM.div([ React_DOM_Props.className((function () {
+            var $87 = Data_Lens_Getter.viewOn(s)(_activePage(Data_Lens_Internal_Forget.strongForget)) === settingsPage;
+            if ($87) {
                 return "pageclose";
             };
             return "pageclose is-hidden";
@@ -132180,8 +132587,8 @@ var _CoNavBar = function (v) {
 };
 var selectPage = function (n) {
     return Control_Bind.bind(ExploreCore.bindCo(extendComponentNavBar))(_CoNavBar(Control_Monad_State_Class.get(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))))(function (a) {
-        var $74 = Data_Foldable.elem(Data_List_Types.foldableList)(Data_Eq.eqString)(n)(Data_Lens_Getter.viewOn(a)(_pages(Data_Lens_Internal_Forget.strongForget)));
-        if ($74) {
+        var $89 = Data_Foldable.elem(Data_List_Types.foldableList)(Data_Eq.eqString)(n)(Data_Lens_Getter.viewOn(a)(_pages(Data_Lens_Internal_Forget.strongForget)));
+        if ($89) {
             return _CoNavBar(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_activePage(Data_Profunctor_Strong.strongFn))(n))));
         };
         return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentNavBar))(Data_Unit.unit);
@@ -132202,12 +132609,12 @@ var raiseNavBar = function (s) {
         if (v instanceof ComponentNavBarPagesSignal) {
             return _CoNavBar(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.set((function () {
-                    var $99 = _pages(Data_Profunctor_Strong.strongFn);
-                    var $100 = Data_Lens_Traversal.element(Data_Lens_Internal_Wander.wanderFunction)(v.value0.value0)(function (dictWander) {
+                    var $118 = _pages(Data_Profunctor_Strong.strongFn);
+                    var $119 = Data_Lens_Traversal.element(Data_Lens_Internal_Wander.wanderFunction)(v.value0.value0)(function (dictWander) {
                         return Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(dictWander);
                     });
-                    return function ($101) {
-                        return $99($100($101));
+                    return function ($120) {
+                        return $118($119($120));
                     };
                 })())(v.value0.value1));
             }));
@@ -132220,6 +132627,11 @@ var raiseNavBar = function (s) {
         if (v instanceof ComponentNavBarSelectSignal) {
             return _CoNavBar(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_select(Data_Profunctor_Strong.strongFn))(v.value0));
+            }));
+        };
+        if (v instanceof ComponentNavBarAboutSignal) {
+            return _CoNavBar(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
+                return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_about(Data_Profunctor_Strong.strongFn))(v.value0));
             }));
         };
         return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentNavBar))(Data_Unit.unit);
@@ -132235,7 +132647,8 @@ var writeNavBar = function (v) {
     return _CoNavBar(Control_Monad_State_Class.put(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(new NavBar({
         pages: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentNavBar["_pages"](Data_Lens_Internal_Forget.strongForget)),
         activePage: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentNavBar["_activePage"](Data_Lens_Internal_Forget.strongForget)),
-        select: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentNavBar["_select"](Data_Lens_Internal_Forget.strongForget))
+        select: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentNavBar["_select"](Data_Lens_Internal_Forget.strongForget)),
+        about: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentNavBar["_about"](Data_Lens_Internal_Forget.strongForget))
     })));
 };
 var updateJsonComponentCompon = {
@@ -132251,19 +132664,23 @@ module.exports = {
     ComponentNavBarPagesSignal: ComponentNavBarPagesSignal,
     ComponentNavBarActivePageSignal: ComponentNavBarActivePageSignal,
     ComponentNavBarSelectSignal: ComponentNavBarSelectSignal,
+    ComponentNavBarAboutSignal: ComponentNavBarAboutSignal,
     ComponentNavBarAffect: ComponentNavBarAffect,
     NavBar: NavBar,
     "_pages": _pages,
     "_activePage": _activePage,
     "_select": _select,
+    "_about": _about,
     "_CoNavBar": _CoNavBar,
     raiseNavBar: raiseNavBar,
     displayNavBar: displayNavBar,
+    displayAbout: displayAbout,
     "renderNavBar'": renderNavBar$prime,
     renderNavBar: renderNavBar,
     ComponentNavBar: ComponentNavBar,
     def_ComponentNavBar: def_ComponentNavBar,
     writeNavBar: writeNavBar,
+    guiVersion: guiVersion,
     mainPage: mainPage,
     matrixPage: matrixPage,
     settingsPage: settingsPage,
@@ -133049,7 +133466,7 @@ var drawnSourceOf = function (onAir) {
         if (Data_Boolean.otherwise) {
             return "";
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentOutput (line 261, column 1 - line 261, column 53): " + [ onAir.constructor.name, d.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentOutput (line 254, column 1 - line 254, column 53): " + [ onAir.constructor.name, d.constructor.name ]);
     };
 };
 var def_ComponentOutput = Unify_Types.def(defOutput);
@@ -133214,17 +133631,13 @@ var updateJsonOutput = {
             if (v instanceof Data_Either.Left) {
                 return new Data_Either.Left("Output: " + v.value0);
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentOutput (line 227, column 13 - line 229, column 49): " + [ v.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentOutput (line 220, column 13 - line 222, column 49): " + [ v.constructor.name ]);
         };
     }
 };
 var displayOutput = function (s) {
     return function (send) {
-        return new Data_Tuple.Tuple(Data_Maybe.Nothing.value, [ React_DOM.div([ React_DOM_Props.className("cardhead") ])([ React_DOM.input([ React_DOM_Props.className("cardname"), React_DOM_Props.value(Data_Lens_Getter.viewOn(s)(_outputName(Data_Lens_Internal_Forget.strongForget))), React_DOM_Props.onChange(function (v) {
-            return send(Extra.update(new ComponentOutputOutputNameSignal(v.target.value))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
-                return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_outputName(Data_Profunctor_Strong.strongFn))(v.target.value));
-            })));
-        }) ]), React_DOM.div([ React_DOM_Props.className((function () {
+        return new Data_Tuple.Tuple(Data_Maybe.Nothing.value, [ React_DOM.div([ React_DOM_Props.className("cardhead") ])([ React_DOM.div([ React_DOM_Props.className("cardname") ])([ React_DOM.text(Data_Lens_Getter.viewOn(s)(_outputName(Data_Lens_Internal_Forget.strongForget))) ]), React_DOM.div([ React_DOM_Props.className((function () {
             var $146 = Data_Lens_Getter.viewOn(s)(_selected(Data_Lens_Internal_Forget.strongForget));
             if ($146) {
                 return "dot blue";
@@ -133530,14 +133943,23 @@ var ComponentOutputDeviceConfigurationNameEditSignal = (function () {
     };
     return ComponentOutputDeviceConfigurationNameEditSignal;
 })();
-var ComponentOutputDeviceConfigurationApplyNameSignal = (function () {
-    function ComponentOutputDeviceConfigurationApplyNameSignal(value0) {
+var ComponentOutputDeviceConfigurationApplySignal = (function () {
+    function ComponentOutputDeviceConfigurationApplySignal(value0) {
         this.value0 = value0;
     };
-    ComponentOutputDeviceConfigurationApplyNameSignal.create = function (value0) {
-        return new ComponentOutputDeviceConfigurationApplyNameSignal(value0);
+    ComponentOutputDeviceConfigurationApplySignal.create = function (value0) {
+        return new ComponentOutputDeviceConfigurationApplySignal(value0);
     };
-    return ComponentOutputDeviceConfigurationApplyNameSignal;
+    return ComponentOutputDeviceConfigurationApplySignal;
+})();
+var ComponentOutputDeviceConfigurationCancelSignal = (function () {
+    function ComponentOutputDeviceConfigurationCancelSignal(value0) {
+        this.value0 = value0;
+    };
+    ComponentOutputDeviceConfigurationCancelSignal.create = function (value0) {
+        return new ComponentOutputDeviceConfigurationCancelSignal(value0);
+    };
+    return ComponentOutputDeviceConfigurationCancelSignal;
 })();
 var ComponentOutputDeviceConfigurationRefusalSignal = (function () {
     function ComponentOutputDeviceConfigurationRefusalSignal(value0) {
@@ -133611,6 +134033,15 @@ var ComponentOutputDeviceConfigurationFps60Signal = (function () {
     };
     return ComponentOutputDeviceConfigurationFps60Signal;
 })();
+var ComponentOutputDeviceConfigurationPreviewHeldSignal = (function () {
+    function ComponentOutputDeviceConfigurationPreviewHeldSignal(value0) {
+        this.value0 = value0;
+    };
+    ComponentOutputDeviceConfigurationPreviewHeldSignal.create = function (value0) {
+        return new ComponentOutputDeviceConfigurationPreviewHeldSignal(value0);
+    };
+    return ComponentOutputDeviceConfigurationPreviewHeldSignal;
+})();
 var ComponentOutputDeviceConfigurationPreviewPickedSignal = (function () {
     function ComponentOutputDeviceConfigurationPreviewPickedSignal(value0) {
         this.value0 = value0;
@@ -133678,7 +134109,11 @@ var genericOutputDeviceConfig = {
 var showOutputDeviceConfigura = {
     show: Data_Show_Generic.genericShow(genericOutputDeviceConfig)(Data_Show_Generic.genericShowConstructor(Data_Show_Generic.genericShowArgsArgument(Data_Show.showRecord()(Data_Show.showRecordFieldsCons({
         reflectSymbol: function () {
-            return "applyName";
+            return "apply";
+        }
+    })(Data_Show.showRecordFieldsCons({
+        reflectSymbol: function () {
+            return "cancel";
         }
     })(Data_Show.showRecordFieldsCons({
         reflectSymbol: function () {
@@ -133714,6 +134149,10 @@ var showOutputDeviceConfigura = {
         }
     })(Data_Show.showRecordFieldsCons({
         reflectSymbol: function () {
+            return "previewHeld";
+        }
+    })(Data_Show.showRecordFieldsCons({
+        reflectSymbol: function () {
             return "previewPicked";
         }
     })(Data_Show.showRecordFieldsCons({
@@ -133740,7 +134179,7 @@ var showOutputDeviceConfigura = {
         reflectSymbol: function () {
             return "transceiver";
         }
-    })(Data_Show.showRecordFieldsNil)(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_List_Types.showList(Data_Show.showString)))(Data_Show.showString))(Data_Show.showString))(Data_Show.showString))(Data_Show.showBoolean))(Data_Show.showString))(Data_Show.showBoolean))(Data_Tuple.showTuple(Data_Show.showInt)(Data_Tuple.showTuple(Data_Show.showInt)(Data_Show.showInt))))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showString))(Exhibit_VideoControl_Types.showDeviceSettings))(Data_Unit.showUnit))))({
+    })(Data_Show.showRecordFieldsNil)(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_List_Types.showList(Data_Show.showString)))(Data_Show.showString))(Data_Show.showString))(Data_Show.showString))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showString))(Data_Show.showBoolean))(Data_Tuple.showTuple(Data_Show.showInt)(Data_Tuple.showTuple(Data_Show.showInt)(Data_Show.showInt))))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showString))(Exhibit_VideoControl_Types.showDeviceSettings))(Data_Unit.showUnit))(Data_Unit.showUnit))))({
         reflectSymbol: function () {
             return "OutputDeviceConfiguration";
         }
@@ -133769,45 +134208,51 @@ var genericComponentOutputDev1 = {
             return new ComponentOutputDeviceConfigurationNameEditSignal(x.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))) {
-            return new ComponentOutputDeviceConfigurationApplyNameSignal(x.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationApplySignal(x.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))) {
-            return new ComponentOutputDeviceConfigurationRefusalSignal(x.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationCancelSignal(x.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))) {
-            return new ComponentOutputDeviceConfigurationGenlockSignal(x.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationRefusalSignal(x.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))) {
-            return new ComponentOutputDeviceConfigurationGenlockableSignal(x.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationGenlockSignal(x.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))))) {
-            return new ComponentOutputDeviceConfigurationKnownFormatSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationGenlockableSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))))) {
-            return new ComponentOutputDeviceConfigurationScaledSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationKnownFormatSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))))))) {
-            return new ComponentOutputDeviceConfigurationResolutionsSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationScaledSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))))))) {
-            return new ComponentOutputDeviceConfigurationResolutionSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationResolutionsSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))))))))) {
-            return new ComponentOutputDeviceConfigurationFps60Signal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationResolutionSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))))))))) {
-            return new ComponentOutputDeviceConfigurationPreviewPickedSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationFps60Signal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))))))))))) {
-            return new ComponentOutputDeviceConfigurationTransceiverSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationPreviewHeldSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))))))))))) {
-            return new ComponentOutputDeviceConfigurationReadAsSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentOutputDeviceConfigurationPreviewPickedSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
-        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr))))))))))))))) {
-            return new ComponentOutputDeviceConfigurationAffect(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))))))))))))) {
+            return new ComponentOutputDeviceConfigurationTransceiverSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentOutputDeviceConfiguration (line 34, column 1 - line 34, column 67): " + [ x.constructor.name ]);
+        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))))))))))))) {
+            return new ComponentOutputDeviceConfigurationReadAsSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+        };
+        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr))))))))))))))))) {
+            return new ComponentOutputDeviceConfigurationAffect(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+        };
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentOutputDeviceConfiguration (line 36, column 1 - line 36, column 67): " + [ x.constructor.name ]);
     },
     from: function (x) {
         if (x instanceof ComponentOutputDeviceConfigurationConfiguredSignal) {
@@ -133822,46 +134267,52 @@ var genericComponentOutputDev1 = {
         if (x instanceof ComponentOutputDeviceConfigurationNameEditSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationApplyNameSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationApplySignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationRefusalSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationCancelSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationGenlockSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationRefusalSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationGenlockableSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationGenlockSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationKnownFormatSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationGenlockableSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationScaledSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationKnownFormatSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationResolutionsSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationScaledSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationResolutionSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationResolutionsSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationFps60Signal) {
+        if (x instanceof ComponentOutputDeviceConfigurationResolutionSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))))))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationPreviewPickedSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationFps60Signal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))))))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationTransceiverSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationPreviewHeldSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))))))))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationReadAsSignal) {
+        if (x instanceof ComponentOutputDeviceConfigurationPreviewPickedSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))))))))))));
         };
-        if (x instanceof ComponentOutputDeviceConfigurationAffect) {
-            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0))))))))))))))));
+        if (x instanceof ComponentOutputDeviceConfigurationTransceiverSignal) {
+            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))))))))))))));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentOutputDeviceConfiguration (line 34, column 1 - line 34, column 67): " + [ x.constructor.name ]);
+        if (x instanceof ComponentOutputDeviceConfigurationReadAsSignal) {
+            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))))))))))))));
+        };
+        if (x instanceof ComponentOutputDeviceConfigurationAffect) {
+            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0))))))))))))))))));
+        };
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentOutputDeviceConfiguration (line 36, column 1 - line 36, column 67): " + [ x.constructor.name ]);
     }
 };
 var functorComponentOutputDev = {
@@ -133878,7 +134329,7 @@ var extendComponentOutputDevi = {
     }
 };
 var eqOutputDeviceConfigurati = {
-    eq: Data_Eq_Generic.genericEq(genericOutputDeviceConfig)(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqRec()(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowNil)()({
+    eq: Data_Eq_Generic.genericEq(genericOutputDeviceConfig)(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqRec()(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowNil)()({
         reflectSymbol: function () {
             return "transceiver";
         }
@@ -133905,6 +134356,10 @@ var eqOutputDeviceConfigurati = {
     })(Data_Eq.eqString))()({
         reflectSymbol: function () {
             return "previewPicked";
+        }
+    })(Data_Eq.eqBoolean))()({
+        reflectSymbol: function () {
+            return "previewHeld";
         }
     })(Data_Eq.eqBoolean))()({
         reflectSymbol: function () {
@@ -133940,7 +134395,11 @@ var eqOutputDeviceConfigurati = {
         }
     })(Exhibit_VideoControl_Types.eqDeviceSettings))()({
         reflectSymbol: function () {
-            return "applyName";
+            return "cancel";
+        }
+    })(Data_Eq.eqUnit))()({
+        reflectSymbol: function () {
+            return "apply";
         }
     })(Data_Eq.eqUnit)))))
 };
@@ -133952,14 +134411,14 @@ var shouldUpdateComponentOutp = {
     }
 };
 var eqComponentOutputDeviceCo = {
-    eq: Data_Eq_Generic.genericEq(genericComponentOutputDev1)(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Exhibit_VideoControl_Types.eqDeviceSettings)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqUnit)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Tuple.eqTuple(Data_Eq.eqInt)(Data_Tuple.eqTuple(Data_Eq.eqInt)(Data_Eq.eqInt)))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Tuple.eqTuple(Data_Eq.eqInt)(Data_Eq.eqString))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Either.eqEither(ExploreSignal.eqAffRequest)(Data_Tuple.eqTuple(ExploreSignal.eqAffRequest)(Data_Argonaut_Core.eqJson)))))))))))))))))))))
+    eq: Data_Eq_Generic.genericEq(genericComponentOutputDev1)(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Exhibit_VideoControl_Types.eqDeviceSettings)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqUnit)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqUnit)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Tuple.eqTuple(Data_Eq.eqInt)(Data_Tuple.eqTuple(Data_Eq.eqInt)(Data_Eq.eqInt)))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Tuple.eqTuple(Data_Eq.eqInt)(Data_Eq.eqString))))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Either.eqEither(ExploreSignal.eqAffRequest)(Data_Tuple.eqTuple(ExploreSignal.eqAffRequest)(Data_Argonaut_Core.eqJson)))))))))))))))))))))))
 };
 var encodeJsonOutputDeviceCon = {
     encodeJson: Data_Functor.map(Data_Functor.functorFn)(Unify_Types.removeObjectByName("tag"))(Data_Argonaut_Encode_Generic.genericEncodeJson(genericOutputDeviceConfig)(Data_Argonaut_Encode_Generic.encodeRepConstructor({
         reflectSymbol: function () {
             return "OutputDeviceConfiguration";
         }
-    })(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(Data_Argonaut_Encode_Class.encodeRecord(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonUnit)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Exhibit_VideoControl_Types.encodeJsonDeviceSettings)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonTuple(Data_Argonaut_Encode_Class.encodeJsonInt)(Data_Argonaut_Encode_Class.encodeJsonTuple(Data_Argonaut_Encode_Class.encodeJsonInt)(Data_Argonaut_Encode_Class.encodeJsonInt)))(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonList(Data_Argonaut_Encode_Class.encodeJsonJString))(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonNil)({
+    })(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(Data_Argonaut_Encode_Class.encodeRecord(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonUnit)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonUnit)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Exhibit_VideoControl_Types.encodeJsonDeviceSettings)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonTuple(Data_Argonaut_Encode_Class.encodeJsonInt)(Data_Argonaut_Encode_Class.encodeJsonTuple(Data_Argonaut_Encode_Class.encodeJsonInt)(Data_Argonaut_Encode_Class.encodeJsonInt)))(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonList(Data_Argonaut_Encode_Class.encodeJsonJString))(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonNil)({
         reflectSymbol: function () {
             return "transceiver";
         }
@@ -133986,6 +134445,10 @@ var encodeJsonOutputDeviceCon = {
     })())({
         reflectSymbol: function () {
             return "previewPicked";
+        }
+    })())({
+        reflectSymbol: function () {
+            return "previewHeld";
         }
     })())({
         reflectSymbol: function () {
@@ -134021,14 +134484,22 @@ var encodeJsonOutputDeviceCon = {
         }
     })())({
         reflectSymbol: function () {
-            return "applyName";
+            return "cancel";
+        }
+    })())({
+        reflectSymbol: function () {
+            return "apply";
         }
     })())()))))
 };
 var defOutputDeviceConfigurat = {
     def: Unify_Types.genericDef(genericOutputDeviceConfig)(Unify_Types.genericDefConstructor(Unify_Types.genericDefArgument(Unify_Types.defRecord()(Unify_Types.defRowListCons({
         reflectSymbol: function () {
-            return "applyName";
+            return "apply";
+        }
+    })(Unify_Types.defUnit)(Unify_Types.defRowListCons({
+        reflectSymbol: function () {
+            return "cancel";
         }
     })(Unify_Types.defUnit)(Unify_Types.defRowListCons({
         reflectSymbol: function () {
@@ -134064,6 +134535,10 @@ var defOutputDeviceConfigurat = {
         }
     })(Unify_Types.defString)(Unify_Types.defRowListCons({
         reflectSymbol: function () {
+            return "previewHeld";
+        }
+    })(Unify_Types.defBoolean)(Unify_Types.defRowListCons({
+        reflectSymbol: function () {
             return "previewPicked";
         }
     })(Unify_Types.defBoolean)(Unify_Types.defRowListCons({
@@ -134090,14 +134565,14 @@ var defOutputDeviceConfigurat = {
         reflectSymbol: function () {
             return "transceiver";
         }
-    })(Unify_Types.defBoolean)(Unify_Types.defRowListNilRow)()())()())()())()())()())()())()())()())()())()())()())()())()())()())()())()()))))
+    })(Unify_Types.defBoolean)(Unify_Types.defRowListNilRow)()())()())()())()())()())()())()())()())()())()())()())()())()())()())()())()())()())()()))))
 };
 var decodeJsonOutputDeviceCon = {
     decodeJson: Data_Argonaut_Decode_Generic.genericDecodeJson(genericOutputDeviceConfig)(Data_Argonaut_Decode_Generic.decodeRepConstructorArg({
         reflectSymbol: function () {
             return "OutputDeviceConfiguration";
         }
-    })(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonNull))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Exhibit_VideoControl_Types.decodeJsonDeviceSettings))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonTuple(Data_Argonaut_Decode_Class.decodeJsonInt)(Data_Argonaut_Decode_Class.decodeJsonTuple(Data_Argonaut_Decode_Class.decodeJsonInt)(Data_Argonaut_Decode_Class.decodeJsonInt))))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
+    })(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonNull))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonNull))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Exhibit_VideoControl_Types.decodeJsonDeviceSettings))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonTuple(Data_Argonaut_Decode_Class.decodeJsonInt)(Data_Argonaut_Decode_Class.decodeJsonTuple(Data_Argonaut_Decode_Class.decodeJsonInt)(Data_Argonaut_Decode_Class.decodeJsonInt))))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeList(Data_Argonaut_Decode_Class.decodeJsonString)))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
         reflectSymbol: function () {
             return "transceiver";
         }
@@ -134124,6 +134599,10 @@ var decodeJsonOutputDeviceCon = {
     })()())({
         reflectSymbol: function () {
             return "previewPicked";
+        }
+    })()())({
+        reflectSymbol: function () {
+            return "previewHeld";
         }
     })()())({
         reflectSymbol: function () {
@@ -134159,7 +134638,11 @@ var decodeJsonOutputDeviceCon = {
         }
     })()())({
         reflectSymbol: function () {
-            return "applyName";
+            return "cancel";
+        }
+    })()())({
+        reflectSymbol: function () {
+            return "apply";
         }
     })()())()))
 };
@@ -134188,153 +134671,168 @@ var marshalOutputDeviceConfiguration = function (v) {
 };
 var def_ComponentOutputDeviceConfiguration = Unify_Types.def(defOutputDeviceConfigurat);
 var _transceiver = function (dictStrong) {
-    var $344 = Data_Lens_Lens["lens'"](function (v) {
+    var $433 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new OutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $345 = Data_Lens_Record.prop({
+    var $434 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "transceiver";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($346) {
-        return $344($345($346));
+    return function ($435) {
+        return $433($434($435));
     };
 };
 var _scaled = function (dictStrong) {
-    var $347 = Data_Lens_Lens["lens'"](function (v) {
+    var $436 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new OutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $348 = Data_Lens_Record.prop({
+    var $437 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "scaled";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($349) {
-        return $347($348($349));
+    return function ($438) {
+        return $436($437($438));
     };
 };
 var _resolutions = function (dictStrong) {
-    var $350 = Data_Lens_Lens["lens'"](function (v) {
+    var $439 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new OutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $351 = Data_Lens_Record.prop({
+    var $440 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "resolutions";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($352) {
-        return $350($351($352));
+    return function ($441) {
+        return $439($440($441));
     };
 };
 var _resolution = function (dictStrong) {
-    var $353 = Data_Lens_Lens["lens'"](function (v) {
+    var $442 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new OutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $354 = Data_Lens_Record.prop({
+    var $443 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "resolution";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($355) {
-        return $353($354($355));
+    return function ($444) {
+        return $442($443($444));
     };
 };
 var _refusal = function (dictStrong) {
-    var $356 = Data_Lens_Lens["lens'"](function (v) {
+    var $445 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new OutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $357 = Data_Lens_Record.prop({
+    var $446 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "refusal";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($358) {
-        return $356($357($358));
+    return function ($447) {
+        return $445($446($447));
     };
 };
 var _readAs = function (dictStrong) {
-    var $359 = Data_Lens_Lens["lens'"](function (v) {
+    var $448 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new OutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $360 = Data_Lens_Record.prop({
+    var $449 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "readAs";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($361) {
-        return $359($360($361));
+    return function ($450) {
+        return $448($449($450));
     };
 };
 var _previewPicked = function (dictStrong) {
-    var $362 = Data_Lens_Lens["lens'"](function (v) {
+    var $451 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new OutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $363 = Data_Lens_Record.prop({
+    var $452 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "previewPicked";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($364) {
-        return $362($363($364));
+    return function ($453) {
+        return $451($452($453));
     };
 };
-var _nameEdit = function (dictStrong) {
-    var $365 = Data_Lens_Lens["lens'"](function (v) {
+var _previewHeld = function (dictStrong) {
+    var $454 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new OutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $366 = Data_Lens_Record.prop({
+    var $455 = Data_Lens_Record.prop({
+        reflectSymbol: function () {
+            return "previewHeld";
+        }
+    })()()(Data_Symbol.SProxy.value)(dictStrong);
+    return function ($456) {
+        return $454($455($456));
+    };
+};
+var _nameEdit = function (dictStrong) {
+    var $457 = Data_Lens_Lens["lens'"](function (v) {
+        return new Data_Tuple.Tuple(v.value0, function (s) {
+            return new OutputDeviceConfiguration(s);
+        });
+    })(dictStrong);
+    var $458 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "nameEdit";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($367) {
-        return $365($366($367));
+    return function ($459) {
+        return $457($458($459));
     };
 };
 var _locating = function (dictStrong) {
-    var $368 = Data_Lens_Lens["lens'"](function (v) {
+    var $460 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new OutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $369 = Data_Lens_Record.prop({
+    var $461 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "locating";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($370) {
-        return $368($369($370));
+    return function ($462) {
+        return $460($461($462));
     };
 };
 var _knownFormat = function (dictStrong) {
-    var $371 = Data_Lens_Lens["lens'"](function (v) {
+    var $463 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new OutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $372 = Data_Lens_Record.prop({
+    var $464 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "knownFormat";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($373) {
-        return $371($372($373));
+    return function ($465) {
+        return $463($464($465));
     };
 };
 var knownFormatOf = function (a) {
@@ -134349,49 +134847,67 @@ var knownFormatOf = function (a) {
     return Data_Maybe.Nothing.value;
 };
 var _genlockable = function (dictStrong) {
-    var $374 = Data_Lens_Lens["lens'"](function (v) {
+    var $466 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new OutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $375 = Data_Lens_Record.prop({
+    var $467 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "genlockable";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($376) {
-        return $374($375($376));
+    return function ($468) {
+        return $466($467($468));
     };
 };
 var _genlock = function (dictStrong) {
-    var $377 = Data_Lens_Lens["lens'"](function (v) {
+    var $469 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new OutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $378 = Data_Lens_Record.prop({
+    var $470 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "genlock";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($379) {
-        return $377($378($379));
+    return function ($471) {
+        return $469($470($471));
     };
 };
+var _videoMode = function (dictStrong) {
+    return Data_Lens_Lens.lens(function (a) {
+        return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(a)(_genlock(Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(a)(_scaled(Data_Lens_Internal_Forget.strongForget)));
+    })(function (a) {
+        return function (v) {
+            return Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_genlock(Data_Profunctor_Strong.strongFn))(v.value0)))(Data_Lens_Setter.set(_scaled(Data_Profunctor_Strong.strongFn))(v.value1));
+        };
+    })(dictStrong);
+};
 var _fps60 = function (dictStrong) {
-    var $380 = Data_Lens_Lens["lens'"](function (v) {
+    var $472 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new OutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $381 = Data_Lens_Record.prop({
+    var $473 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "fps60";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($382) {
-        return $380($381($382));
+    return function ($474) {
+        return $472($473($474));
     };
+};
+var _scaledPick = function (dictStrong) {
+    return Data_Lens_Lens.lens(function (a) {
+        return new Data_Tuple.Tuple(Data_Lens_Getter.viewOn(a)(_resolution(Data_Lens_Internal_Forget.strongForget)), Data_Lens_Getter.viewOn(a)(_fps60(Data_Lens_Internal_Forget.strongForget)));
+    })(function (a) {
+        return function (v) {
+            return Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_resolution(Data_Profunctor_Strong.strongFn))(v.value0)))(Data_Lens_Setter.set(_fps60(Data_Profunctor_Strong.strongFn))(v.value1));
+        };
+    })(dictStrong);
 };
 var scaledAt = function (d) {
     return function (a) {
@@ -134407,7 +134923,7 @@ var scaledAt = function (d) {
         if (Data_Boolean.otherwise) {
             return a;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentOutputDeviceConfiguration (line 417, column 5 - line 426, column 27): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentOutputDeviceConfiguration (line 438, column 5 - line 447, column 27): " + [ v.constructor.name ]);
     };
 };
 var scaledFormatOf = function (a) {
@@ -134416,8 +134932,8 @@ var scaledFormatOf = function (a) {
             argumentsWidth: v.value0,
             argumentsHeight: v.value1,
             argumentsFps: (function () {
-                var $307 = Data_Lens_Getter.viewOn(a)(_fps60(Data_Lens_Internal_Forget.strongForget));
-                if ($307) {
+                var $385 = Data_Lens_Getter.viewOn(a)(_fps60(Data_Lens_Internal_Forget.strongForget));
+                if ($385) {
                     return 60;
                 };
                 return 30;
@@ -134426,40 +134942,40 @@ var scaledFormatOf = function (a) {
     })(Exhibit_VideoControl_Interactions.namedResolution(Data_Lens_Getter.viewOn(a)(_resolution(Data_Lens_Internal_Forget.strongForget))));
 };
 var _configuredName = function (dictStrong) {
-    var $383 = Data_Lens_Lens["lens'"](function (v) {
+    var $475 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new OutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $384 = Data_Lens_Record.prop({
+    var $476 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "configuredName";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($385) {
-        return $383($384($385));
+    return function ($477) {
+        return $475($476($477));
     };
 };
 var _configured = function (dictStrong) {
-    var $386 = Data_Lens_Lens["lens'"](function (v) {
+    var $478 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new OutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $387 = Data_Lens_Record.prop({
+    var $479 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "configured";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($388) {
-        return $386($387($388));
+    return function ($480) {
+        return $478($479($480));
     };
 };
 var carrying = function (d) {
     return function (a) {
-        return Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_configured(Data_Profunctor_Strong.strongFn))(d)))(Data_Lens_Setter.set(_configuredName(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))))(Data_Lens_Setter.set(_locating(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.locateModeOf(d))))(Data_Lens_Setter.set(_genlock(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.genlockOf(d))))(Data_Lens_Setter.set(_genlockable(Data_Profunctor_Strong.strongFn))(Data_Maybe.isJust(Exhibit_VideoControl_Interactions.frameBufferOf(d)) && !Exhibit_VideoControl_Interactions.composingOf(d))))(Data_Lens_Setter.over(_knownFormat(Data_Profunctor_Strong.strongFn))(function (f) {
-            var $314 = Exhibit_VideoControl_Interactions.genlockOf(d);
-            if ($314) {
+        return Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_configured(Data_Profunctor_Strong.strongFn))(d)))(Data_Lens_Setter.set(_configuredName(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))))(Data_Lens_Setter.set(_nameEdit(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))))(Data_Lens_Setter.set(_previewPicked(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(a)(_previewHeld(Data_Lens_Internal_Forget.strongForget)))))(Data_Lens_Setter.set(_locating(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.locateModeOf(d))))(Data_Lens_Setter.set(_genlock(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.genlockOf(d))))(Data_Lens_Setter.set(_genlockable(Data_Profunctor_Strong.strongFn))(Data_Maybe.isJust(Exhibit_VideoControl_Interactions.frameBufferOf(d)) && !Exhibit_VideoControl_Interactions.composingOf(d))))(Data_Lens_Setter.over(_knownFormat(Data_Profunctor_Strong.strongFn))(function (f) {
+            var $392 = Exhibit_VideoControl_Interactions.genlockOf(d);
+            if ($392) {
                 return f;
             };
             return Data_Maybe.maybe(f)(function (n) {
@@ -134473,7 +134989,10 @@ var carrying = function (d) {
     };
 };
 var opening = function (d) {
-    return carrying(d)(Unify_Types.flipuse(Unify_Types.def(defOutputDeviceConfigurat))(Data_Lens_Setter.set(_nameEdit(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))));
+    return carrying(d)(Unify_Types.def(defOutputDeviceConfigurat));
+};
+var pending = function (a) {
+    return Data_Eq.notEq(eqOutputDeviceConfigurati)(carrying(Data_Lens_Getter.viewOn(a)(_configured(Data_Lens_Internal_Forget.strongForget)))(a))(a);
 };
 var displayOutputDeviceConfiguration = function (s) {
     return function (send) {
@@ -134481,21 +135000,19 @@ var displayOutputDeviceConfiguration = function (s) {
             return send(Extra.update(new ComponentOutputDeviceConfigurationNameEditSignal(v.target.value))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_nameEdit(Data_Profunctor_Strong.strongFn))(v.target.value));
             })));
-        }) ]), React_DOM.div([ React_DOM_Props.className("apply"), React_DOM_Props["_id"]("apply_name"), React_DOM_Props.onClick(function (v) {
-            return send(Extra.update(new ComponentOutputDeviceConfigurationApplyNameSignal(Data_Unit.unit))(Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(Data_Unit.unit)));
-        }) ])([ React_DOM.text("Apply") ]) ]), React_DOM.div([ React_DOM_Props.className("refusal") ])([ React_DOM.text(Data_Lens_Getter.viewOn(s)(_refusal(Data_Lens_Internal_Forget.strongForget))) ]), React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Device ID") ]), React_DOM.div([ React_DOM_Props.className("rowvalue") ])([ React_DOM.text(Data_Lens_Getter.viewOn(s)((function () {
-            var $389 = _configured(Data_Lens_Internal_Forget.strongForget);
-            var $390 = Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget);
-            return function ($391) {
-                return $389($390($391));
+        }) ]) ]), React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Device ID") ]), React_DOM.div([ React_DOM_Props.className("rowvalue") ])([ React_DOM.text(Data_Lens_Getter.viewOn(s)((function () {
+            var $481 = _configured(Data_Lens_Internal_Forget.strongForget);
+            var $482 = Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget);
+            return function ($483) {
+                return $481($482($483));
             };
         })())) ]) ]), React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Locate (flash LEDs)") ]), React_DOM.div([ React_DOM_Props.className(outputSwitch(Data_Lens_Getter.viewOn(s)(_locating(Data_Lens_Internal_Forget.strongForget)))), React_DOM_Props["_id"]("config_locate"), React_DOM_Props.onClick(function (v) {
             return send(Extra.update(new ComponentOutputDeviceConfigurationLocatingSignal(!Data_Lens_Getter.viewOn(s)(_locating(Data_Lens_Internal_Forget.strongForget))))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.over(_locating(Data_Profunctor_Strong.strongFn))(Data_HeytingAlgebra.not(Data_HeytingAlgebra.heytingAlgebraBoolean)));
             })));
         }) ])([ React_DOM.text(Data_Show.show(Data_Show.showBoolean)(Data_Lens_Getter.viewOn(s)(_locating(Data_Lens_Internal_Forget.strongForget)))) ]) ]), React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Preview box") ]), React_DOM.div([ React_DOM_Props.className((function () {
-            var $315 = Data_Lens_Getter.viewOn(s)(_previewPicked(Data_Lens_Internal_Forget.strongForget));
-            if ($315) {
+            var $393 = Data_Lens_Getter.viewOn(s)(_previewPicked(Data_Lens_Internal_Forget.strongForget));
+            if ($393) {
                 return "previewpick is-on";
             };
             return "previewpick";
@@ -134504,14 +135021,14 @@ var displayOutputDeviceConfiguration = function (s) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.over(_previewPicked(Data_Profunctor_Strong.strongFn))(Data_HeytingAlgebra.not(Data_HeytingAlgebra.heytingAlgebraBoolean)));
             })));
         }) ])([ React_DOM.text((function () {
-            var $316 = Data_Lens_Getter.viewOn(s)(_previewPicked(Data_Lens_Internal_Forget.strongForget));
-            if ($316) {
+            var $394 = Data_Lens_Getter.viewOn(s)(_previewPicked(Data_Lens_Internal_Forget.strongForget));
+            if ($394) {
                 return "Picked";
             };
             return "Pick";
         })()) ]) ]) ])(Data_Semigroup.append(Data_Semigroup.semigroupArray)((function () {
-            var $317 = Data_Lens_Getter.viewOn(s)(_transceiver(Data_Lens_Internal_Forget.strongForget));
-            if ($317) {
+            var $395 = Data_Lens_Getter.viewOn(s)(_transceiver(Data_Lens_Internal_Forget.strongForget));
+            if ($395) {
                 return [ React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Device Mode") ]), React_DOM.div([ React_DOM_Props.className("seg is-control"), React_DOM_Props["_id"]("config_read_as") ])([ React_DOM.div([ React_DOM_Props.className(outputSeg(Data_Lens_Getter.viewOn(s)(_readAs(Data_Lens_Internal_Forget.strongForget)) === "TX")), React_DOM_Props["_id"]("config_read_as_tx"), React_DOM_Props.onClick(function (v) {
                     return send(Extra.update(new ComponentOutputDeviceConfigurationReadAsSignal("TX"))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                         return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_readAs(Data_Profunctor_Strong.strongFn))("TX"));
@@ -134524,8 +135041,8 @@ var displayOutputDeviceConfiguration = function (s) {
             };
             return [  ];
         })())([ React_DOM.div([ React_DOM_Props.className("grouplabel") ])([ React_DOM.text("Output") ]), React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Video mode") ]), React_DOM.div([ React_DOM_Props.className((function () {
-            var $318 = Data_Lens_Getter.viewOn(s)(_genlockable(Data_Lens_Internal_Forget.strongForget));
-            if ($318) {
+            var $396 = Data_Lens_Getter.viewOn(s)(_genlockable(Data_Lens_Internal_Forget.strongForget));
+            if ($396) {
                 return "seg is-control";
             };
             return "seg is-locked";
@@ -134534,22 +135051,16 @@ var displayOutputDeviceConfiguration = function (s) {
                 return Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_genlock(Data_Profunctor_Strong.strongFn))(false)))(Data_Lens_Setter.set(_scaled(Data_Profunctor_Strong.strongFn))(false));
             })));
         }) ])([ React_DOM.text("FAST") ]), React_DOM.div([ React_DOM_Props.className(outputSeg(Data_Lens_Getter.viewOn(s)(_genlock(Data_Lens_Internal_Forget.strongForget)) && !Data_Lens_Getter.viewOn(s)(_scaled(Data_Lens_Internal_Forget.strongForget)))), React_DOM_Props["_id"]("config_latency_sync"), React_DOM_Props.onClick(function (v) {
-            var $319 = Data_Lens_Getter.viewOn(s)(_scaled(Data_Lens_Internal_Forget.strongForget));
-            if ($319) {
-                return send(Extra.update(new ComponentOutputDeviceConfigurationScaledSignal(false))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
-                    return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_scaled(Data_Profunctor_Strong.strongFn))(false));
-                })));
-            };
             return send(Extra.update(new ComponentOutputDeviceConfigurationGenlockSignal(true))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
-                return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_genlock(Data_Profunctor_Strong.strongFn))(true));
+                return Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_genlock(Data_Profunctor_Strong.strongFn))(true)))(Data_Lens_Setter.set(_scaled(Data_Profunctor_Strong.strongFn))(false));
             })));
         }) ])([ React_DOM.text("SYNC") ]), React_DOM.div([ React_DOM_Props.className(outputSeg(Data_Lens_Getter.viewOn(s)(_scaled(Data_Lens_Internal_Forget.strongForget)))), React_DOM_Props["_id"]("config_latency_scaled"), React_DOM_Props.onClick(function (v) {
             return send(Extra.update(new ComponentOutputDeviceConfigurationScaledSignal(true))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                 return Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_genlock(Data_Profunctor_Strong.strongFn))(true)))(Data_Lens_Setter.set(_scaled(Data_Profunctor_Strong.strongFn))(true));
             })));
         }) ])([ React_DOM.text("SCALED") ]) ]) ]), React_DOM.div([ React_DOM_Props.className((function () {
-            var $320 = Data_Lens_Getter.viewOn(s)(_genlock(Data_Lens_Internal_Forget.strongForget)) && !Data_Lens_Getter.viewOn(s)(_scaled(Data_Lens_Internal_Forget.strongForget));
-            if ($320) {
+            var $397 = Data_Lens_Getter.viewOn(s)(_genlock(Data_Lens_Internal_Forget.strongForget)) && !Data_Lens_Getter.viewOn(s)(_scaled(Data_Lens_Internal_Forget.strongForget));
+            if ($397) {
                 return "scaling is-hidden";
             };
             return "scaling";
@@ -134560,8 +135071,8 @@ var displayOutputDeviceConfiguration = function (s) {
         }) ])(Data_Array.fromFoldable(Data_List_Types.foldableList)(Data_Functor.map(Data_List_Types.functorList)(function (r) {
             return React_DOM.option([ React_DOM_Props.value(r) ])([ React_DOM.text(r) ]);
         })(Data_Lens_Getter.viewOn(s)(_resolutions(Data_Lens_Internal_Forget.strongForget))))) ]), React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Scaled frame rate") ]), React_DOM.div([ React_DOM_Props.className("seg is-control"), React_DOM_Props["_id"]("config_fps") ])([ React_DOM.div([ React_DOM_Props.className((function () {
-            var $321 = Data_Lens_Getter.viewOn(s)(_fps60(Data_Lens_Internal_Forget.strongForget));
-            if ($321) {
+            var $398 = Data_Lens_Getter.viewOn(s)(_fps60(Data_Lens_Internal_Forget.strongForget));
+            if ($398) {
                 return "segoff";
             };
             return "segon";
@@ -134570,8 +135081,8 @@ var displayOutputDeviceConfiguration = function (s) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_fps60(Data_Profunctor_Strong.strongFn))(false));
             })));
         }) ])([ React_DOM.text("30") ]), React_DOM.div([ React_DOM_Props.className((function () {
-            var $322 = Data_Lens_Getter.viewOn(s)(_fps60(Data_Lens_Internal_Forget.strongForget));
-            if ($322) {
+            var $399 = Data_Lens_Getter.viewOn(s)(_fps60(Data_Lens_Internal_Forget.strongForget));
+            if ($399) {
                 return "segon";
             };
             return "segoff";
@@ -134579,26 +135090,170 @@ var displayOutputDeviceConfiguration = function (s) {
             return send(Extra.update(new ComponentOutputDeviceConfigurationFps60Signal(true))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_fps60(Data_Profunctor_Strong.strongFn))(true));
             })));
-        }) ])([ React_DOM.text("60") ]) ]) ]) ]), React_DOM.div([ React_DOM_Props.className("cardsource") ])([ React_DOM.text(Data_Show.show(Exhibit_VideoControl_Types.showDeviceSettings)(Data_Lens_Getter.viewOn(s)(_configured(Data_Lens_Internal_Forget.strongForget)))) ]), React_DOM.div([ React_DOM_Props.className("cardformat") ])([ React_DOM.text(Data_Show.show(Data_Tuple.showTuple(Data_Show.showInt)(Data_Tuple.showTuple(Data_Show.showInt)(Data_Show.showInt)))(Data_Lens_Getter.viewOn(s)(_knownFormat(Data_Lens_Internal_Forget.strongForget)))) ]) ])));
+        }) ])([ React_DOM.text("60") ]) ]) ]) ]), React_DOM.div([ React_DOM_Props.className("refusal") ])([ React_DOM.text(Data_Lens_Getter.viewOn(s)(_refusal(Data_Lens_Internal_Forget.strongForget))) ]), React_DOM.div([ React_DOM_Props.className("actions") ])([ React_DOM.div([ React_DOM_Props.className((function () {
+            var $400 = pending(s);
+            if ($400) {
+                return "apply";
+            };
+            return "apply is-idle";
+        })()), React_DOM_Props["_id"]("config_apply"), React_DOM_Props.onClick(function (v) {
+            return send(Extra.update(new ComponentOutputDeviceConfigurationApplySignal(Data_Unit.unit))(Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(Data_Unit.unit)));
+        }) ])([ React_DOM.text("Apply") ]), React_DOM.div([ React_DOM_Props.className("cancel"), React_DOM_Props["_id"]("config_cancel"), React_DOM_Props.onClick(function (v) {
+            return send(Extra.update(new ComponentOutputDeviceConfigurationCancelSignal(Data_Unit.unit))(Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(Data_Unit.unit)));
+        }) ])([ React_DOM.text("Cancel") ]) ]), React_DOM.div([ React_DOM_Props.className("cardsource") ])([ React_DOM.text(Data_Show.show(Exhibit_VideoControl_Types.showDeviceSettings)(Data_Lens_Getter.viewOn(s)(_configured(Data_Lens_Internal_Forget.strongForget)))) ]), React_DOM.div([ React_DOM_Props.className("cardformat") ])([ React_DOM.text(Data_Show.show(Data_Tuple.showTuple(Data_Show.showInt)(Data_Tuple.showTuple(Data_Show.showInt)(Data_Show.showInt)))(Data_Lens_Getter.viewOn(s)(_knownFormat(Data_Lens_Internal_Forget.strongForget)))) ]) ])));
     };
 };
 var renderOutputDeviceConfiguration$prime = function (d) {
     return Safe_Coerce.coerce()(Control_Comonad_Store.store(displayOutputDeviceConfiguration)(d));
 };
 var renderOutputDeviceConfiguration = renderOutputDeviceConfiguration$prime(def_ComponentOutputDeviceConfiguration);
-var _applyName = function (dictStrong) {
-    var $392 = Data_Lens_Lens["lens'"](function (v) {
+var rebasing = function (d) {
+    return function (a) {
+        var was = carrying(Data_Lens_Getter.viewOn(a)(_configured(Data_Lens_Internal_Forget.strongForget)))(a);
+        var kept = function (dictEq) {
+            return function (l) {
+                return function (c) {
+                    var $401 = Data_Eq.eq(dictEq)(Data_Lens_Getter.viewOn(a)(l(Data_Lens_Internal_Forget.strongForget)))(Data_Lens_Getter.viewOn(was)(l(Data_Lens_Internal_Forget.strongForget)));
+                    if ($401) {
+                        return c;
+                    };
+                    return Unify_Types.flipuse(c)(Data_Lens_Setter.set(l(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(a)(l(Data_Lens_Internal_Forget.strongForget))));
+                };
+            };
+        };
+        return Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(carrying(d)(a))(kept(Data_Eq.eqString)(function (dictStrong) {
+            return _nameEdit(dictStrong);
+        })))(kept(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _locating(dictStrong);
+        })))(kept(Data_Tuple.eqTuple(Data_Eq.eqBoolean)(Data_Eq.eqBoolean))(function (dictStrong) {
+            return _videoMode(dictStrong);
+        })))(kept(Data_Tuple.eqTuple(Data_Eq.eqString)(Data_Eq.eqBoolean))(function (dictStrong) {
+            return _scaledPick(dictStrong);
+        })))(kept(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _previewPicked(dictStrong);
+        })))(kept(Data_Eq.eqString)(function (dictStrong) {
+            return _readAs(dictStrong);
+        }));
+    };
+};
+var videoModeAsked = function (a) {
+    var moving = function (d) {
+        return function (known) {
+            if (!Data_Lens_Getter.viewOn(a)(_genlock(Data_Lens_Internal_Forget.strongForget))) {
+                var $404 = Exhibit_VideoControl_Interactions.genlockOf(d);
+                if ($404) {
+                    return Data_Functor.map(Data_Maybe.functorMaybe)(function (v) {
+                        return Exhibit_VideoControl_Interactions.genlockingTo(d)(false)(known);
+                    })(Exhibit_VideoControl_Interactions.setLatencyKnown(known)(d));
+                };
+                return Data_Maybe.Nothing.value;
+            };
+            if (Data_Lens_Getter.viewOn(a)(_scaled(Data_Lens_Internal_Forget.strongForget))) {
+                return Control_Bind.bind(Data_Maybe.bindMaybe)(scaledFormatOf(a))(function (f) {
+                    return Data_Functor.map(Data_Maybe.functorMaybe)(function (v) {
+                        return Exhibit_VideoControl_Interactions.scalingAt(d)(true)(new Data_Maybe.Just(f));
+                    })(Exhibit_VideoControl_Interactions.setGenlockScaling(f)(d));
+                });
+            };
+            if (Exhibit_VideoControl_Interactions.genlockScalingOf(d)) {
+                return Data_Functor.map(Data_Maybe.functorMaybe)(function (v) {
+                    return Exhibit_VideoControl_Interactions.scalingAt(d)(false)(Data_Maybe.Nothing.value);
+                })(Exhibit_VideoControl_Interactions.leaveGenlockScaling(d));
+            };
+            if (Exhibit_VideoControl_Interactions.genlockOf(d)) {
+                return Data_Maybe.Nothing.value;
+            };
+            if (Data_Boolean.otherwise) {
+                return Data_Functor.map(Data_Maybe.functorMaybe)(function (v) {
+                    return Exhibit_VideoControl_Interactions.genlockingTo(d)(true)(known);
+                })(Exhibit_VideoControl_Interactions.setLatencyKnown(known)(d));
+            };
+            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentOutputDeviceConfiguration (line 515, column 5 - line 521, column 85): " + [ d.constructor.name, known.constructor.name ]);
+        };
+    };
+    return moving(Data_Lens_Getter.viewOn(a)(_configured(Data_Lens_Internal_Forget.strongForget)))(knownFormatOf(a));
+};
+var asked = function (a) {
+    var d = Data_Lens_Getter.viewOn(a)(_configured(Data_Lens_Internal_Forget.strongForget));
+    var was = carrying(d)(a);
+    var changed = function (dictEq) {
+        return function (l) {
+            return Data_Eq.notEq(dictEq)(Data_Lens_Getter.viewOn(a)(l(Data_Lens_Internal_Forget.strongForget)))(Data_Lens_Getter.viewOn(was)(l(Data_Lens_Internal_Forget.strongForget)));
+        };
+    };
+    var asking = function (dictEq) {
+        return function (l) {
+            return function (q) {
+                var $405 = changed(dictEq)(function (dictStrong) {
+                    return l(dictStrong);
+                });
+                if ($405) {
+                    return q;
+                };
+                return Data_Maybe.Nothing.value;
+            };
+        };
+    };
+    return Data_List.catMaybes(new Data_List_Types.Cons(asking(Data_Eq.eqString)(function (dictStrong) {
+        return _nameEdit(dictStrong);
+    })(Exhibit_VideoControl_Interactions.settingAsked("name")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Lens_Getter.viewOn(a)(_nameEdit(Data_Lens_Internal_Forget.strongForget))))(d)(Exhibit_VideoControl_Interactions.renameDevice(d)(Data_Lens_Getter.viewOn(a)(_nameEdit(Data_Lens_Internal_Forget.strongForget))))), new Data_List_Types.Cons(asking(Data_Eq.eqBoolean)(function (dictStrong) {
+        return _locating(dictStrong);
+    })(Exhibit_VideoControl_Interactions.settingAsked("locate")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Lens_Getter.viewOn(a)(_locating(Data_Lens_Internal_Forget.strongForget))))(d)(new Data_Maybe.Just(Exhibit_VideoControl_Interactions.locateDevice(d)(Data_Lens_Getter.viewOn(a)(_locating(Data_Lens_Internal_Forget.strongForget)))))), new Data_List_Types.Cons((function () {
+        var $406 = changed(Data_Tuple.eqTuple(Data_Eq.eqBoolean)(Data_Eq.eqBoolean))(function (dictStrong) {
+            return _videoMode(dictStrong);
+        }) || changed(Data_Tuple.eqTuple(Data_Eq.eqString)(Data_Eq.eqBoolean))(function (dictStrong) {
+            return _scaledPick(dictStrong);
+        });
+        if ($406) {
+            return videoModeAsked(a);
+        };
+        return Data_Maybe.Nothing.value;
+    })(), new Data_List_Types.Cons(asking(Data_Eq.eqBoolean)(function (dictStrong) {
+        return _previewPicked(dictStrong);
+    })(new Data_Maybe.Just(Exhibit_VideoControl_Interactions.pickingPreviewBox((function () {
+        var $407 = Data_Lens_Getter.viewOn(a)(_previewPicked(Data_Lens_Internal_Forget.strongForget));
+        if ($407) {
+            return new Data_Maybe.Just(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget)));
+        };
+        return Data_Maybe.Nothing.value;
+    })()))), new Data_List_Types.Cons(asking(Data_Eq.eqString)(function (dictStrong) {
+        return _readAs(dictStrong);
+    })((function () {
+        var $408 = Exhibit_VideoControl_Interactions.transceiverOf(d);
+        if ($408) {
+            return new Data_Maybe.Just(Exhibit_VideoControl_Interactions.readingTransceiverAs(d)(Data_Lens_Getter.viewOn(a)(_readAs(Data_Lens_Internal_Forget.strongForget))));
+        };
+        return Data_Maybe.Nothing.value;
+    })()), Data_List_Types.Nil.value))))));
+};
+var _cancel = function (dictStrong) {
+    var $484 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new OutputDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $393 = Data_Lens_Record.prop({
+    var $485 = Data_Lens_Record.prop({
         reflectSymbol: function () {
-            return "applyName";
+            return "cancel";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($394) {
-        return $392($393($394));
+    return function ($486) {
+        return $484($485($486));
+    };
+};
+var _apply = function (dictStrong) {
+    var $487 = Data_Lens_Lens["lens'"](function (v) {
+        return new Data_Tuple.Tuple(v.value0, function (s) {
+            return new OutputDeviceConfiguration(s);
+        });
+    })(dictStrong);
+    var $488 = Data_Lens_Record.prop({
+        reflectSymbol: function () {
+            return "apply";
+        }
+    })()()(Data_Symbol.SProxy.value)(dictStrong);
+    return function ($489) {
+        return $487($488($489));
     };
 };
 var _CoOutputDeviceConfiguration = function (v) {
@@ -134655,12 +135310,12 @@ var raiseOutputDeviceConfiguration = function (v) {
     if (v instanceof ComponentOutputDeviceConfigurationResolutionsSignal) {
         return _CoOutputDeviceConfiguration(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
             return Unify_Types.flipuse(a)(Data_Lens_Setter.set((function () {
-                var $395 = _resolutions(Data_Profunctor_Strong.strongFn);
-                var $396 = Data_Lens_Traversal.element(Data_Lens_Internal_Wander.wanderFunction)(v.value0.value0)(function (dictWander) {
+                var $490 = _resolutions(Data_Profunctor_Strong.strongFn);
+                var $491 = Data_Lens_Traversal.element(Data_Lens_Internal_Wander.wanderFunction)(v.value0.value0)(function (dictWander) {
                     return Data_Lens_Traversal.traversed(Data_List_Types.traversableList)(dictWander);
                 });
-                return function ($397) {
-                    return $395($396($397));
+                return function ($492) {
+                    return $490($491($492));
                 };
             })())(v.value0.value1));
         }));
@@ -134673,6 +135328,11 @@ var raiseOutputDeviceConfiguration = function (v) {
     if (v instanceof ComponentOutputDeviceConfigurationFps60Signal) {
         return _CoOutputDeviceConfiguration(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
             return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_fps60(Data_Profunctor_Strong.strongFn))(v.value0));
+        }));
+    };
+    if (v instanceof ComponentOutputDeviceConfigurationPreviewHeldSignal) {
+        return _CoOutputDeviceConfiguration(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
+            return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_previewHeld(Data_Profunctor_Strong.strongFn))(v.value0));
         }));
     };
     if (v instanceof ComponentOutputDeviceConfigurationPreviewPickedSignal) {
@@ -134698,7 +135358,8 @@ var writeOutputDeviceConfiguration = function (v) {
         configuredName: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_configuredName"](Data_Lens_Internal_Forget.strongForget)),
         locating: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_locating"](Data_Lens_Internal_Forget.strongForget)),
         nameEdit: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_nameEdit"](Data_Lens_Internal_Forget.strongForget)),
-        applyName: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_applyName"](Data_Lens_Internal_Forget.strongForget)),
+        apply: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_apply"](Data_Lens_Internal_Forget.strongForget)),
+        cancel: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_cancel"](Data_Lens_Internal_Forget.strongForget)),
         refusal: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_refusal"](Data_Lens_Internal_Forget.strongForget)),
         genlock: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_genlock"](Data_Lens_Internal_Forget.strongForget)),
         genlockable: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_genlockable"](Data_Lens_Internal_Forget.strongForget)),
@@ -134707,6 +135368,7 @@ var writeOutputDeviceConfiguration = function (v) {
         resolutions: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_resolutions"](Data_Lens_Internal_Forget.strongForget)),
         resolution: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_resolution"](Data_Lens_Internal_Forget.strongForget)),
         fps60: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_fps60"](Data_Lens_Internal_Forget.strongForget)),
+        previewHeld: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_previewHeld"](Data_Lens_Internal_Forget.strongForget)),
         previewPicked: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_previewPicked"](Data_Lens_Internal_Forget.strongForget)),
         transceiver: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_transceiver"](Data_Lens_Internal_Forget.strongForget)),
         readAs: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentOutputDeviceConfiguration["_readAs"](Data_Lens_Internal_Forget.strongForget))
@@ -134726,7 +135388,8 @@ module.exports = {
     ComponentOutputDeviceConfigurationConfiguredNameSignal: ComponentOutputDeviceConfigurationConfiguredNameSignal,
     ComponentOutputDeviceConfigurationLocatingSignal: ComponentOutputDeviceConfigurationLocatingSignal,
     ComponentOutputDeviceConfigurationNameEditSignal: ComponentOutputDeviceConfigurationNameEditSignal,
-    ComponentOutputDeviceConfigurationApplyNameSignal: ComponentOutputDeviceConfigurationApplyNameSignal,
+    ComponentOutputDeviceConfigurationApplySignal: ComponentOutputDeviceConfigurationApplySignal,
+    ComponentOutputDeviceConfigurationCancelSignal: ComponentOutputDeviceConfigurationCancelSignal,
     ComponentOutputDeviceConfigurationRefusalSignal: ComponentOutputDeviceConfigurationRefusalSignal,
     ComponentOutputDeviceConfigurationGenlockSignal: ComponentOutputDeviceConfigurationGenlockSignal,
     ComponentOutputDeviceConfigurationGenlockableSignal: ComponentOutputDeviceConfigurationGenlockableSignal,
@@ -134735,6 +135398,7 @@ module.exports = {
     ComponentOutputDeviceConfigurationResolutionsSignal: ComponentOutputDeviceConfigurationResolutionsSignal,
     ComponentOutputDeviceConfigurationResolutionSignal: ComponentOutputDeviceConfigurationResolutionSignal,
     ComponentOutputDeviceConfigurationFps60Signal: ComponentOutputDeviceConfigurationFps60Signal,
+    ComponentOutputDeviceConfigurationPreviewHeldSignal: ComponentOutputDeviceConfigurationPreviewHeldSignal,
     ComponentOutputDeviceConfigurationPreviewPickedSignal: ComponentOutputDeviceConfigurationPreviewPickedSignal,
     ComponentOutputDeviceConfigurationTransceiverSignal: ComponentOutputDeviceConfigurationTransceiverSignal,
     ComponentOutputDeviceConfigurationReadAsSignal: ComponentOutputDeviceConfigurationReadAsSignal,
@@ -134744,7 +135408,8 @@ module.exports = {
     "_configuredName": _configuredName,
     "_locating": _locating,
     "_nameEdit": _nameEdit,
-    "_applyName": _applyName,
+    "_apply": _apply,
+    "_cancel": _cancel,
     "_refusal": _refusal,
     "_genlock": _genlock,
     "_genlockable": _genlockable,
@@ -134753,6 +135418,7 @@ module.exports = {
     "_resolutions": _resolutions,
     "_resolution": _resolution,
     "_fps60": _fps60,
+    "_previewHeld": _previewHeld,
     "_previewPicked": _previewPicked,
     "_transceiver": _transceiver,
     "_readAs": _readAs,
@@ -134770,6 +135436,12 @@ module.exports = {
     scaledAt: scaledAt,
     scaledFormatOf: scaledFormatOf,
     opening: opening,
+    "_videoMode": _videoMode,
+    "_scaledPick": _scaledPick,
+    rebasing: rebasing,
+    pending: pending,
+    asked: asked,
+    videoModeAsked: videoModeAsked,
     knownFormatOf: knownFormatOf,
     marshalOutputDeviceConfiguration: marshalOutputDeviceConfiguration,
     genericComponentOutputDev1: genericComponentOutputDev1,
@@ -137307,7 +137979,6 @@ var Control_Comonad_Store_Class = require("../Control.Comonad.Store.Class/index.
 var Control_Comonad_Store_Trans = require("../Control.Comonad.Store.Trans/index.js");
 var Control_Monad_State_Class = require("../Control.Monad.State.Class/index.js");
 var Data_Argonaut_Core = require("../Data.Argonaut.Core/index.js");
-var Data_Argonaut_Encode_Class = require("../Data.Argonaut.Encode.Class/index.js");
 var Data_Boolean = require("../Data.Boolean/index.js");
 var Data_Either = require("../Data.Either/index.js");
 var Data_Eq = require("../Data.Eq/index.js");
@@ -137328,6 +137999,7 @@ var Data_Semigroup = require("../Data.Semigroup/index.js");
 var Data_Traversable = require("../Data.Traversable/index.js");
 var Data_Tuple = require("../Data.Tuple/index.js");
 var Data_Unit = require("../Data.Unit/index.js");
+var Exhibit_VideoControl_ComponentDeviceConfiguration = require("../Exhibit.VideoControl.ComponentDeviceConfiguration/index.js");
 var Exhibit_VideoControl_ComponentSettings = require("../Exhibit.VideoControl.ComponentSettings/index.js");
 var Exhibit_VideoControl_Interactions = require("../Exhibit.VideoControl.Interactions/index.js");
 var Exhibit_VideoControl_Types = require("../Exhibit.VideoControl.Types/index.js");
@@ -137482,26 +138154,26 @@ var answerSettings = function (req) {
     };
 };
 var _reqPanel = (function () {
-    var $281 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $282 = ExploreCore.liftRight(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $283 = Widget_Unify_UnifyCompItem["_compitem"](Unify_ReqPanel2.comonadComponentReqPanel)(Unify_ReqPanel2.shouldUpdateComponentReqP);
-    return function ($284) {
-        return $281($282($283($284)));
+    var $210 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $211 = ExploreCore.liftRight(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $212 = Widget_Unify_UnifyCompItem["_compitem"](Unify_ReqPanel2.comonadComponentReqPanel)(Unify_ReqPanel2.shouldUpdateComponentReqP);
+    return function ($213) {
+        return $210($211($212($213)));
     };
 })();
 var _deviceList = (function () {
-    var $285 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2));
-    var $286 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentDeviceList.comonadComponentDeviceLis)(Exhibit_VideoControl_UI_ComponentDeviceList.shouldUpdateComponentDevi);
-    return function ($287) {
-        return $285($286($287));
+    var $214 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Data_Functor_Day.comonadDay(Widget_Unify_UnifyCompItem.comonadStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2));
+    var $215 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentDeviceList.comonadComponentDeviceLis)(Exhibit_VideoControl_UI_ComponentDeviceList.shouldUpdateComponentDevi);
+    return function ($216) {
+        return $214($215($216));
     };
 })();
 var _configuration = (function () {
-    var $288 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $289 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
-    var $290 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentDeviceConfiguration.comonadComponentDeviceCon)(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.shouldUpdateComponentDevi);
-    return function ($291) {
-        return $288($289($290($291)));
+    var $217 = ExploreCore.liftRight(Data_Functor_Day.functorDay)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $218 = ExploreCore.liftLeft(Widget_Unify_UnifyCompItem.functorStoreComponent2)(Widget_Unify_UnifyCompItem.comonadStoreComponent2);
+    var $219 = Widget_Unify_UnifyCompItem["_compitem"](Exhibit_VideoControl_UI_ComponentDeviceConfiguration.comonadComponentDeviceCon)(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.shouldUpdateComponentDevi);
+    return function ($220) {
+        return $217($218($219($220)));
     };
 })();
 var _CoSettings = function (v) {
@@ -137509,6 +138181,9 @@ var _CoSettings = function (v) {
         return v(Data_Newtype.unwrap()(w));
     };
 };
+var cancelConfiguration = Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.writeDeviceConfiguration(Exhibit_VideoControl_ComponentDeviceConfiguration.NoDeviceConfiguration.value))))(function () {
+    return _CoSettings(_deviceList(Exhibit_VideoControl_UI_ComponentDeviceList.selectNone));
+});
 var configureSelected = function (f) {
     return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_deviceList(Exhibit_VideoControl_UI_ComponentDeviceList.selectedEntry)))(function (r_1) {
         return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.configuredDevice)))(function (r_2) {
@@ -137537,25 +138212,25 @@ var layTransmitters = function (j) {
     return _CoSettings(_deviceList(Exhibit_VideoControl_UI_ComponentDeviceList.laySources(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.settingsReading(j)))));
 };
 var noteLatency = function (j) {
-    return _CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.refusing(Exhibit_VideoControl_Interactions.latencyRefusal(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.latencyOutcomeReading(j))))));
+    return _CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.refused(Exhibit_VideoControl_Interactions.latencyRefusal(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.latencyOutcomeReading(j))))));
 };
 var notePreviewBox = function (j) {
     return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.configuredDevice)))(function (r_1) {
         var v = new Data_Tuple.Tuple(Exhibit_VideoControl_Interactions.previewBoxReading(j), r_1);
         if (v.value0 instanceof Data_Either.Right && v.value1 instanceof Data_Maybe.Just) {
-            return _CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.pickedPreview(Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Lens_Getter.viewOn(v.value0.value0)(Exhibit_VideoControl_Types["_previewSetId"](Data_Lens_Internal_Forget.strongForget)))(new Data_Maybe.Just(Data_Lens_Getter.viewOn(v.value1.value0)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget)))))));
+            return _CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.heldPreview(Data_Eq.eq(Data_Maybe.eqMaybe(Data_Eq.eqString))(Data_Lens_Getter.viewOn(v.value0.value0)(Exhibit_VideoControl_Types["_previewSetId"](Data_Lens_Internal_Forget.strongForget)))(new Data_Maybe.Just(Data_Lens_Getter.viewOn(v.value1.value0)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget)))))));
         };
         return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Data_Unit.unit);
     });
 };
 var noteRefusal = function (j) {
-    return _CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.refusing(Data_Maybe.fromMaybe("")(Exhibit_VideoControl_Interactions.commandRefusal(j)))));
+    return _CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.refused(Data_Maybe.fromMaybe("")(Exhibit_VideoControl_Interactions.commandRefusal(j)))));
 };
 var noteScaling = function (j) {
-    return _CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.refusing(Exhibit_VideoControl_Interactions.scalingRefusal(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.scalingOutcomeReading(j))))));
+    return _CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.refused(Exhibit_VideoControl_Interactions.scalingRefusal(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.scalingOutcomeReading(j))))));
 };
 var noteSetting = function (j) {
-    return _CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.refusing(Exhibit_VideoControl_Interactions.settingRefusal(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.settingOutcomeReading(j))))));
+    return _CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.refused(Exhibit_VideoControl_Interactions.settingRefusal(Data_Either.either(Partial_Unsafe.unsafeCrashWith)(Control_Category.identity(Control_Category.categoryFn))(Exhibit_VideoControl_Interactions.settingOutcomeReading(j))))));
 };
 var queuedSettings = Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(Data_Functor.map(ExploreCore.functorCo(functorComponentSettings))(function (s) {
     return Data_Lens_Getter.viewOn(s)(Unify_ReqPanel2["_affrequest"](Data_Lens_Internal_Forget.strongForget));
@@ -137617,179 +138292,38 @@ var requestConfigured = Control_Bind.bind(ExploreCore.bindCo(extendComponentSett
         return requestSettings(Exhibit_VideoControl_Interactions.readReceivers);
     });
 });
-var requestPreviewPick = function (on) {
-    return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.configuredDevice)))(function (r_1) {
-        if (r_1 instanceof Data_Maybe.Nothing) {
-            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Data_Unit.unit);
-        };
-        if (r_1 instanceof Data_Maybe.Just) {
-            return requestSettings(Exhibit_VideoControl_Interactions.pickingPreviewBox((function () {
-                if (on) {
-                    return new Data_Maybe.Just(Data_Lens_Getter.viewOn(r_1.value0)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget)));
-                };
-                return Data_Maybe.Nothing.value;
-            })()));
-        };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSettings (line 192, column 8 - line 196, column 75): " + [ r_1.constructor.name ]);
-    });
-};
-var requestReadAs = function (r) {
-    return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.configuredDevice)))(function (r_1) {
-        if (r_1 instanceof Data_Maybe.Just && Exhibit_VideoControl_Interactions.transceiverOf(r_1.value0)) {
-            return requestSettings(Exhibit_VideoControl_Interactions.readingTransceiverAs(r_1.value0)(r));
-        };
-        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Data_Unit.unit);
-    });
-};
-var requestRename = Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.nameTyped)))(function (typed) {
-    return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.configuredDevice)))(function (r_2) {
-        var v = Control_Bind.bind(Data_Maybe.bindMaybe)(r_2)(function (d) {
-            return Exhibit_VideoControl_Interactions.settingAsked("name")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJString)(typed))(d)(Exhibit_VideoControl_Interactions.renameDevice(d)(typed));
-        });
-        if (v instanceof Data_Maybe.Nothing) {
-            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Data_Unit.unit);
-        };
-        if (v instanceof Data_Maybe.Just) {
-            return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.refusing(""))))(function () {
-                return requestSettings(v.value0);
-            });
-        };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSettings (line 246, column 8 - line 255, column 42): " + [ v.constructor.name ]);
-    });
-});
-var requestSwitch = function (f) {
-    return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.configuredDevice)))(function (r_1) {
-        var v = Control_Bind.bind(Data_Maybe.bindMaybe)(r_1)(function (d) {
-            return f(d);
-        });
-        if (v instanceof Data_Maybe.Nothing) {
-            return _CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.settled));
-        };
-        if (v instanceof Data_Maybe.Just) {
-            return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.refusing(""))))(function () {
-                return requestSettings(v.value0);
-            });
-        };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSettings (line 371, column 8 - line 377, column 42): " + [ v.constructor.name ]);
-    });
-};
-var requestAutoStop = function (on) {
-    return requestSwitch(function (d) {
-        return Exhibit_VideoControl_Interactions.settingAsked("auto_stop")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(on))(d)(Exhibit_VideoControl_Interactions.autoStopScaledStream(d)(on));
-    });
-};
-var requestGenlock = function (on) {
-    return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.knownFormatOf)))(function (known) {
-        return requestSwitch(function (d) {
-            var $86 = on === Exhibit_VideoControl_Interactions.genlockOf(d);
-            if ($86) {
-                return Data_Maybe.Nothing.value;
-            };
-            return Data_Functor.map(Data_Maybe.functorMaybe)(function (v) {
-                return Exhibit_VideoControl_Interactions.genlockingTo(d)(on)(known);
-            })(Exhibit_VideoControl_Interactions.setLatencyKnown(known)(d));
-        });
-    });
-};
-var requestHdcp = function (on) {
-    return requestSwitch(function (d) {
-        return Exhibit_VideoControl_Interactions.settingAsked("hdcp")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(on))(d)(Exhibit_VideoControl_Interactions.setHdcpSupport(d)(on));
-    });
-};
-var requestHdcp22 = function (on) {
-    return requestSwitch(function (d) {
-        return Exhibit_VideoControl_Interactions.settingAsked("hdcp22")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(on))(d)(Exhibit_VideoControl_Interactions.setHdcp22Support(d)(on));
-    });
-};
-var requestHdr = function (on) {
-    return requestSwitch(function (d) {
-        return Exhibit_VideoControl_Interactions.settingAsked("hdr")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(on))(d)(Exhibit_VideoControl_Interactions.setHdrEdid(d)(on));
-    });
-};
-var requestLocate = function (on) {
-    return requestSwitch(function (d) {
-        return Exhibit_VideoControl_Interactions.settingAsked("locate")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(on))(d)((function () {
-            var $87 = on === Exhibit_VideoControl_Interactions.locateModeOf(d);
-            if ($87) {
-                return Data_Maybe.Nothing.value;
-            };
-            return new Data_Maybe.Just(Exhibit_VideoControl_Interactions.locateDevice(d)(on));
-        })());
-    });
-};
-var requestNativeDivider = function (on) {
-    return requestSwitch(function (d) {
-        return Exhibit_VideoControl_Interactions.settingAsked("native_divider")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(on))(d)(Exhibit_VideoControl_Interactions.divideNativeStream(d)(on));
-    });
-};
-var requestScaledAt = Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.scaledFormatOf)))(function (r_1) {
-    return requestSwitch(function (d) {
-        var $88 = Exhibit_VideoControl_Interactions.genlockScalingOf(d);
-        if ($88) {
-            return Control_Bind.bind(Data_Maybe.bindMaybe)(r_1)(function (f) {
-                return Data_Functor.map(Data_Maybe.functorMaybe)(function (v) {
-                    return Exhibit_VideoControl_Interactions.scalingAt(d)(true)(new Data_Maybe.Just(f));
-                })(Exhibit_VideoControl_Interactions.setGenlockScaling(f)(d));
-            });
-        };
-        return Data_Maybe.Nothing.value;
-    });
-});
-var requestScaledDivider = function (on) {
-    return requestSwitch(function (d) {
-        return Exhibit_VideoControl_Interactions.settingAsked("scaled_divider")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(on))(d)(Exhibit_VideoControl_Interactions.divideScaler(d)(on));
-    });
-};
-var requestScaledFormat = Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.scaledFormatOf)))(function (r_1) {
-    return requestSwitch(function (d) {
-        return Control_Bind.bind(Data_Maybe.bindMaybe)(r_1)(function (f) {
-            return Data_Functor.map(Data_Maybe.functorMaybe)(function (v) {
-                return Exhibit_VideoControl_Interactions.scalingAt(d)(true)(new Data_Maybe.Just(f));
-            })(Exhibit_VideoControl_Interactions.setGenlockScaling(f)(d));
-        });
-    });
-});
-var requestScaled = function (on) {
-    if (on) {
-        return requestScaledFormat;
+var requestApply = Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.asked)))(function (r_1) {
+    if (r_1 instanceof Data_List_Types.Nil) {
+        return _CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.settled));
     };
-    if (Data_Boolean.otherwise) {
-        return requestSwitch(function (d) {
-            return Data_Functor.map(Data_Maybe.functorMaybe)(function (v) {
-                return Exhibit_VideoControl_Interactions.scalingAt(d)(false)(Data_Maybe.Nothing.value);
-            })(Exhibit_VideoControl_Interactions.leaveGenlockScaling(d));
+    return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.refusing(""))))(function () {
+        return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(requestPlan(r_1))(function () {
+            return requestConfigured;
         });
-    };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSettings (line 317, column 1 - line 317, column 54): " + [ on.constructor.name ]);
-};
-var scaledPicked = function (d) {
-    return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.scaledFormatOf)))(function (r_1) {
-        return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Control_Bind.bind(Data_Maybe.bindMaybe)(r_1)(function (f) {
-            return Data_Functor.map(Data_Maybe.functorMaybe)(function (v) {
-                return Exhibit_VideoControl_Interactions.scalingAt(d)(true)(new Data_Maybe.Just(f));
-            })(Exhibit_VideoControl_Interactions.setGenlockScaling(f)(d));
-        }));
-    });
-};
-var settleConfiguration = Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.configuredDevice)))(function (r_1) {
-    return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(Data_Functor.map(ExploreCore.functorCo(functorComponentSettings))(function (v) {
-        return Control_Bind.bind(Data_Maybe.bindMaybe)(v)(Control_Category.identity(Control_Category.categoryFn));
-    })(Data_Traversable.traverse(Data_Traversable.traversableMaybe)(ExploreCore.applicativeCo(comonadComponentSettings))(function (d) {
-        return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_deviceList(Exhibit_VideoControl_UI_ComponentDeviceList.entryNamed(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget))))))(function (r_2) {
-            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(r_2);
-        });
-    })(r_1)))(function (r_3) {
-        if (r_3 instanceof Data_Maybe.Nothing) {
-            return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Data_Unit.unit);
-        };
-        if (r_3 instanceof Data_Maybe.Just) {
-            return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.carrying(r_3.value0))))(function () {
-                return _CoSettings(_deviceList(Exhibit_VideoControl_UI_ComponentDeviceList.selectNamed(Data_Lens_Getter.viewOn(r_3.value0)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget)))));
-            });
-        };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSettings (line 179, column 8 - line 185, column 68): " + [ r_3.constructor.name ]);
     });
 });
+var settlingWith = function (f) {
+    return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.configuredDevice)))(function (r_1) {
+        return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(Data_Functor.map(ExploreCore.functorCo(functorComponentSettings))(function (v) {
+            return Control_Bind.bind(Data_Maybe.bindMaybe)(v)(Control_Category.identity(Control_Category.categoryFn));
+        })(Data_Traversable.traverse(Data_Traversable.traversableMaybe)(ExploreCore.applicativeCo(comonadComponentSettings))(function (d) {
+            return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_deviceList(Exhibit_VideoControl_UI_ComponentDeviceList.entryNamed(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget))))))(function (r_2) {
+                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(r_2);
+            });
+        })(r_1)))(function (r_3) {
+            if (r_3 instanceof Data_Maybe.Nothing) {
+                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Data_Unit.unit);
+            };
+            if (r_3 instanceof Data_Maybe.Just) {
+                return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(f(r_3.value0))))(function () {
+                    return _CoSettings(_deviceList(Exhibit_VideoControl_UI_ComponentDeviceList.selectNamed(Data_Lens_Getter.viewOn(r_3.value0)(Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget)))));
+                });
+            };
+            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSettings (line 193, column 8 - line 198, column 68): " + [ r_3.constructor.name ]);
+        });
+    });
+};
+var rebaseConfiguration = settlingWith(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.rebasing);
 var layAnsweredConfigured = function (j) {
     return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration["_CoDeviceConfiguration"](Exhibit_VideoControl_UI_ComponentDeviceConfiguration["_prismNoDeviceConfiguration"](Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(new Data_Maybe.Just(Data_Unit.unit)))))))(function (r_1) {
         return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(_CoSettings(_configuration(Exhibit_VideoControl_UI_ComponentDeviceConfiguration["_CoDeviceConfiguration"](Exhibit_VideoControl_UI_ComponentDeviceConfiguration["_prismSourceDeviceConfiguration"](Control_Applicative.pure(ExploreCore.applicativeCo(Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.comonadComponentSourceDev))(new Data_Maybe.Just(Data_Unit.unit)))))))(function (r_2) {
@@ -137803,10 +138337,10 @@ var layAnsweredConfigured = function (j) {
                 };
                 if (v instanceof Data_Maybe.Just) {
                     return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(layTransmitters(Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_answeredSourcesTransmitters"](Data_Lens_Internal_Forget.strongForget))))(function () {
-                        return settleConfiguration;
+                        return rebaseConfiguration;
                     });
                 };
-                throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSettings (line 414, column 31 - line 419, column 67): " + [ v.constructor.name ]);
+                throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSettings (line 291, column 31 - line 296, column 67): " + [ v.constructor.name ]);
             };
             var v = Exhibit_VideoControl_Interactions.answeredOutputs(j);
             if (v instanceof Data_Maybe.Nothing) {
@@ -137814,13 +138348,14 @@ var layAnsweredConfigured = function (j) {
             };
             if (v instanceof Data_Maybe.Just) {
                 return Control_Bind.bind(ExploreCore.bindCo(extendComponentSettings))(layReceivers(Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_answeredOutputsReceivers"](Data_Lens_Internal_Forget.strongForget))))(function () {
-                    return settleConfiguration;
+                    return rebaseConfiguration;
                 });
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSettings (line 420, column 26 - line 424, column 62): " + [ v.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSettings (line 297, column 26 - line 301, column 62): " + [ v.constructor.name ]);
         });
     });
 };
+var settleConfiguration = settlingWith(Exhibit_VideoControl_UI_ComponentDeviceConfiguration.carrying);
 var marshalSettings = function (v) {
     return function (v1) {
         if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsDeviceListSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceList.ComponentDeviceListSourceEntriesSignal && v.value0.value0.value0.value1 instanceof Exhibit_VideoControl_UI_ComponentSettingsDevice.ComponentSettingsDeviceSelectSignal))) {
@@ -137833,89 +138368,24 @@ var marshalSettings = function (v) {
                 return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(v.value0.value0.value0.value1.value0);
             }))(v1);
         };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceConfiguration.OutputConfigurationSignal && v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.ComponentOutputDeviceConfigurationPreviewPickedSignal))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentSettings))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentSettings))(requestPreviewPick(v.value0.value0.value0.value0))(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Data_Unit.unit);
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceConfiguration.SourceConfigurationSignal && (v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationReadAsSignal && v.value0.value0.value0.value0 === "RX")))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentSettings))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentSettings))(requestReadAs("RX"))(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Data_Unit.unit);
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceConfiguration.OutputConfigurationSignal && (v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.ComponentOutputDeviceConfigurationReadAsSignal && v.value0.value0.value0.value0 === "TX")))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentSettings))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentSettings))(requestReadAs("TX"))(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Data_Unit.unit);
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceConfiguration.SourceConfigurationSignal && v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationApplyNameSignal))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentSettings))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentSettings))(requestRename)(function () {
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceConfiguration.SourceConfigurationSignal && v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationApplySignal))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentSettings))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentSettings))(requestApply)(function () {
                 return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(v.value0.value0.value0.value0);
             }))(v1);
         };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceConfiguration.SourceConfigurationSignal && v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationLocatingSignal))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentSettings))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentSettings))(requestLocate(v.value0.value0.value0.value0))(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Data_Unit.unit);
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceConfiguration.OutputConfigurationSignal && v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.ComponentOutputDeviceConfigurationApplyNameSignal))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentSettings))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentSettings))(requestRename)(function () {
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceConfiguration.OutputConfigurationSignal && v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.ComponentOutputDeviceConfigurationApplySignal))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentSettings))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentSettings))(requestApply)(function () {
                 return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(v.value0.value0.value0.value0);
             }))(v1);
         };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceConfiguration.OutputConfigurationSignal && v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.ComponentOutputDeviceConfigurationLocatingSignal))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentSettings))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentSettings))(requestLocate(v.value0.value0.value0.value0))(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Data_Unit.unit);
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceConfiguration.SourceConfigurationSignal && v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationCancelSignal))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentSettings))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentSettings))(cancelConfiguration)(function () {
+                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(v.value0.value0.value0.value0);
             }))(v1);
         };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceConfiguration.SourceConfigurationSignal && v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationNativeDividerSignal))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentSettings))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentSettings))(requestNativeDivider(v.value0.value0.value0.value0))(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Data_Unit.unit);
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceConfiguration.SourceConfigurationSignal && v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationScaledDividerSignal))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentSettings))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentSettings))(requestScaledDivider(v.value0.value0.value0.value0))(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Data_Unit.unit);
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceConfiguration.OutputConfigurationSignal && v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.ComponentOutputDeviceConfigurationGenlockSignal))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentSettings))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentSettings))(requestGenlock(v.value0.value0.value0.value0))(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Data_Unit.unit);
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceConfiguration.SourceConfigurationSignal && v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationAutoStopSignal))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentSettings))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentSettings))(requestAutoStop(v.value0.value0.value0.value0))(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Data_Unit.unit);
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceConfiguration.OutputConfigurationSignal && v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.ComponentOutputDeviceConfigurationScaledSignal))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentSettings))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentSettings))(requestScaled(v.value0.value0.value0.value0))(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Data_Unit.unit);
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceConfiguration.OutputConfigurationSignal && v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.ComponentOutputDeviceConfigurationResolutionSignal))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentSettings))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentSettings))(requestScaledAt)(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Data_Unit.unit);
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceConfiguration.OutputConfigurationSignal && v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.ComponentOutputDeviceConfigurationFps60Signal))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentSettings))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentSettings))(requestScaledAt)(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Data_Unit.unit);
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceConfiguration.SourceConfigurationSignal && v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationHdcpSignal))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentSettings))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentSettings))(requestHdcp(v.value0.value0.value0.value0))(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Data_Unit.unit);
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceConfiguration.SourceConfigurationSignal && v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationHdcp22Signal))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentSettings))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentSettings))(requestHdcp22(v.value0.value0.value0.value0))(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Data_Unit.unit);
-            }))(v1);
-        };
-        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceConfiguration.SourceConfigurationSignal && v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentSourceDeviceConfiguration.ComponentSourceDeviceConfigurationHdrSignal))) {
-            return Extra["_coe"](ExploreCore.bindCo(extendComponentSettings))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentSettings))(requestHdr(v.value0.value0.value0.value0))(function () {
-                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(Data_Unit.unit);
+        if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsConfigurationSignal && (v.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentDeviceConfiguration.OutputConfigurationSignal && v.value0.value0.value0 instanceof Exhibit_VideoControl_UI_ComponentOutputDeviceConfiguration.ComponentOutputDeviceConfigurationCancelSignal))) {
+            return Extra["_coe"](ExploreCore.bindCo(extendComponentSettings))(Control_Bind.discard(Control_Bind.discardUnit)(ExploreCore.bindCo(extendComponentSettings))(cancelConfiguration)(function () {
+                return Control_Applicative.pure(ExploreCore.applicativeCo(comonadComponentSettings))(v.value0.value0.value0.value0);
             }))(v1);
         };
         if (v instanceof ExploreSignal.UpdateLeaf && (v.value0 instanceof ComponentSettingsReqPanelSignal && (v.value0.value0 instanceof Unify_ReqPanel2.ReplSignal && v.value0.value0.value0.value0.value0.value0 === "Init"))) {
@@ -138058,24 +138528,12 @@ module.exports = {
     layTransmitters: layTransmitters,
     layReceivers: layReceivers,
     settleConfiguration: settleConfiguration,
-    requestPreviewPick: requestPreviewPick,
+    rebaseConfiguration: rebaseConfiguration,
+    settlingWith: settlingWith,
     notePreviewBox: notePreviewBox,
-    requestReadAs: requestReadAs,
     noteReadAs: noteReadAs,
-    requestRename: requestRename,
-    requestLocate: requestLocate,
-    requestNativeDivider: requestNativeDivider,
-    requestScaledDivider: requestScaledDivider,
-    requestAutoStop: requestAutoStop,
-    requestHdcp: requestHdcp,
-    requestHdcp22: requestHdcp22,
-    requestHdr: requestHdr,
-    requestGenlock: requestGenlock,
-    requestScaled: requestScaled,
-    requestScaledAt: requestScaledAt,
-    requestScaledFormat: requestScaledFormat,
-    scaledPicked: scaledPicked,
-    requestSwitch: requestSwitch,
+    requestApply: requestApply,
+    cancelConfiguration: cancelConfiguration,
     noteRefusal: noteRefusal,
     noteSetting: noteSetting,
     noteLatency: noteLatency,
@@ -138101,7 +138559,7 @@ module.exports = {
     updateJsonComponentCompon: updateJsonComponentCompon
 };
 
-},{"../Control.Applicative/index.js":42,"../Control.Bind/index.js":48,"../Control.Category/index.js":49,"../Control.Comonad.Store.Class/index.js":51,"../Control.Comonad.Store.Trans/index.js":52,"../Control.Monad.State.Class/index.js":71,"../Data.Argonaut.Core/index.js":83,"../Data.Argonaut.Encode.Class/index.js":89,"../Data.Boolean/index.js":107,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Eq/index.js":118,"../Data.Foldable/index.js":123,"../Data.Functor.Day/index.js":135,"../Data.Functor/index.js":142,"../Data.Generic.Rep/index.js":145,"../Data.Identity/index.js":149,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Setter/index.js":178,"../Data.List.Types/index.js":185,"../Data.Maybe/index.js":190,"../Data.Newtype/index.js":200,"../Data.Profunctor.Strong/index.js":216,"../Data.Semigroup/index.js":223,"../Data.Traversable/index.js":249,"../Data.Tuple/index.js":251,"../Data.Unit/index.js":259,"../Exhibit.VideoControl.ComponentSettings/index.js":306,"../Exhibit.VideoControl.Interactions/index.js":315,"../Exhibit.VideoControl.Types/index.js":316,"../Exhibit.VideoControl.UI.ComponentDeviceConfiguration/index.js":319,"../Exhibit.VideoControl.UI.ComponentDeviceList/index.js":320,"../Exhibit.VideoControl.UI.ComponentOutputDeviceConfiguration/index.js":337,"../Exhibit.VideoControl.UI.ComponentSettingsDevice/index.js":344,"../Exhibit.VideoControl.UI.ComponentSourceDeviceConfiguration/index.js":349,"../ExploreCore/index.js":356,"../ExploreSignal/index.js":357,"../Extra/index.js":358,"../Partial.Unsafe/index.js":374,"../Safe.Coerce/index.js":389,"../ShouldUpdate/index.js":390,"../Unify.ReqPanel2/index.js":400,"../Unify.Types/index.js":402,"../Widget.Unify.UnifyComp/index.js":544,"../Widget.Unify.UnifyCompItem/index.js":545}],344:[function(require,module,exports){
+},{"../Control.Applicative/index.js":42,"../Control.Bind/index.js":48,"../Control.Category/index.js":49,"../Control.Comonad.Store.Class/index.js":51,"../Control.Comonad.Store.Trans/index.js":52,"../Control.Monad.State.Class/index.js":71,"../Data.Argonaut.Core/index.js":83,"../Data.Boolean/index.js":107,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Eq/index.js":118,"../Data.Foldable/index.js":123,"../Data.Functor.Day/index.js":135,"../Data.Functor/index.js":142,"../Data.Generic.Rep/index.js":145,"../Data.Identity/index.js":149,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Setter/index.js":178,"../Data.List.Types/index.js":185,"../Data.Maybe/index.js":190,"../Data.Newtype/index.js":200,"../Data.Profunctor.Strong/index.js":216,"../Data.Semigroup/index.js":223,"../Data.Traversable/index.js":249,"../Data.Tuple/index.js":251,"../Data.Unit/index.js":259,"../Exhibit.VideoControl.ComponentDeviceConfiguration/index.js":282,"../Exhibit.VideoControl.ComponentSettings/index.js":306,"../Exhibit.VideoControl.Interactions/index.js":315,"../Exhibit.VideoControl.Types/index.js":316,"../Exhibit.VideoControl.UI.ComponentDeviceConfiguration/index.js":319,"../Exhibit.VideoControl.UI.ComponentDeviceList/index.js":320,"../Exhibit.VideoControl.UI.ComponentOutputDeviceConfiguration/index.js":337,"../Exhibit.VideoControl.UI.ComponentSettingsDevice/index.js":344,"../Exhibit.VideoControl.UI.ComponentSourceDeviceConfiguration/index.js":349,"../ExploreCore/index.js":356,"../ExploreSignal/index.js":357,"../Extra/index.js":358,"../Partial.Unsafe/index.js":374,"../Safe.Coerce/index.js":389,"../ShouldUpdate/index.js":390,"../Unify.ReqPanel2/index.js":400,"../Unify.Types/index.js":402,"../Widget.Unify.UnifyComp/index.js":544,"../Widget.Unify.UnifyCompItem/index.js":545}],344:[function(require,module,exports){
 // Generated by purs version 0.14.4
 "use strict";
 var Control_Applicative = require("../Control.Applicative/index.js");
@@ -141836,6 +142294,7 @@ var Data_Argonaut_Decode_Class = require("../Data.Argonaut.Decode.Class/index.js
 var Data_Argonaut_Decode_Generic = require("../Data.Argonaut.Decode.Generic/index.js");
 var Data_Argonaut_Encode_Class = require("../Data.Argonaut.Encode.Class/index.js");
 var Data_Argonaut_Encode_Generic = require("../Data.Argonaut.Encode.Generic/index.js");
+var Data_Boolean = require("../Data.Boolean/index.js");
 var Data_Either = require("../Data.Either/index.js");
 var Data_Eq = require("../Data.Eq/index.js");
 var Data_Eq_Generic = require("../Data.Eq.Generic/index.js");
@@ -141849,6 +142308,8 @@ var Data_Lens_Internal_Forget = require("../Data.Lens.Internal.Forget/index.js")
 var Data_Lens_Lens = require("../Data.Lens.Lens/index.js");
 var Data_Lens_Record = require("../Data.Lens.Record/index.js");
 var Data_Lens_Setter = require("../Data.Lens.Setter/index.js");
+var Data_List = require("../Data.List/index.js");
+var Data_List_Types = require("../Data.List.Types/index.js");
 var Data_Maybe = require("../Data.Maybe/index.js");
 var Data_Newtype = require("../Data.Newtype/index.js");
 var Data_Profunctor_Strong = require("../Data.Profunctor.Strong/index.js");
@@ -141915,14 +142376,23 @@ var ComponentSourceDeviceConfigurationNameEditSignal = (function () {
     };
     return ComponentSourceDeviceConfigurationNameEditSignal;
 })();
-var ComponentSourceDeviceConfigurationApplyNameSignal = (function () {
-    function ComponentSourceDeviceConfigurationApplyNameSignal(value0) {
+var ComponentSourceDeviceConfigurationApplySignal = (function () {
+    function ComponentSourceDeviceConfigurationApplySignal(value0) {
         this.value0 = value0;
     };
-    ComponentSourceDeviceConfigurationApplyNameSignal.create = function (value0) {
-        return new ComponentSourceDeviceConfigurationApplyNameSignal(value0);
+    ComponentSourceDeviceConfigurationApplySignal.create = function (value0) {
+        return new ComponentSourceDeviceConfigurationApplySignal(value0);
     };
-    return ComponentSourceDeviceConfigurationApplyNameSignal;
+    return ComponentSourceDeviceConfigurationApplySignal;
+})();
+var ComponentSourceDeviceConfigurationCancelSignal = (function () {
+    function ComponentSourceDeviceConfigurationCancelSignal(value0) {
+        this.value0 = value0;
+    };
+    ComponentSourceDeviceConfigurationCancelSignal.create = function (value0) {
+        return new ComponentSourceDeviceConfigurationCancelSignal(value0);
+    };
+    return ComponentSourceDeviceConfigurationCancelSignal;
 })();
 var ComponentSourceDeviceConfigurationRefusalSignal = (function () {
     function ComponentSourceDeviceConfigurationRefusalSignal(value0) {
@@ -142054,11 +142524,15 @@ var genericSourceDeviceConfig = {
 var showSourceDeviceConfigura = {
     show: Data_Show_Generic.genericShow(genericSourceDeviceConfig)(Data_Show_Generic.genericShowConstructor(Data_Show_Generic.genericShowArgsArgument(Data_Show.showRecord()(Data_Show.showRecordFieldsCons({
         reflectSymbol: function () {
-            return "applyName";
+            return "apply";
         }
     })(Data_Show.showRecordFieldsCons({
         reflectSymbol: function () {
             return "autoStop";
+        }
+    })(Data_Show.showRecordFieldsCons({
+        reflectSymbol: function () {
+            return "cancel";
         }
     })(Data_Show.showRecordFieldsCons({
         reflectSymbol: function () {
@@ -142112,7 +142586,7 @@ var showSourceDeviceConfigura = {
         reflectSymbol: function () {
             return "transceiver";
         }
-    })(Data_Show.showRecordFieldsNil)(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showString))(Data_Show.showString))(Data_Show.showBoolean))(Data_Show.showString))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showString))(Exhibit_VideoControl_Types.showDeviceSettings))(Data_Show.showBoolean))(Data_Unit.showUnit))))({
+    })(Data_Show.showRecordFieldsNil)(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showString))(Data_Show.showString))(Data_Show.showBoolean))(Data_Show.showString))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showBoolean))(Data_Show.showString))(Exhibit_VideoControl_Types.showDeviceSettings))(Data_Unit.showUnit))(Data_Show.showBoolean))(Data_Unit.showUnit))))({
         reflectSymbol: function () {
             return "SourceDeviceConfiguration";
         }
@@ -142141,42 +142615,45 @@ var genericComponentSourceDev1 = {
             return new ComponentSourceDeviceConfigurationNameEditSignal(x.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))) {
-            return new ComponentSourceDeviceConfigurationApplyNameSignal(x.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationApplySignal(x.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))) {
-            return new ComponentSourceDeviceConfigurationRefusalSignal(x.value0.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationCancelSignal(x.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))) {
-            return new ComponentSourceDeviceConfigurationNativeDividerSignal(x.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationRefusalSignal(x.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))) {
-            return new ComponentSourceDeviceConfigurationScaledDividerSignal(x.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationNativeDividerSignal(x.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))))) {
-            return new ComponentSourceDeviceConfigurationAutoStopSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationScaledDividerSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))))) {
-            return new ComponentSourceDeviceConfigurationHdcpSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationAutoStopSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))))))) {
-            return new ComponentSourceDeviceConfigurationHdcp22Signal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationHdcpSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))))))) {
-            return new ComponentSourceDeviceConfigurationHdcp22ableSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationHdcp22Signal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))))))))) {
-            return new ComponentSourceDeviceConfigurationHdrSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationHdcp22ableSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))))))))) {
-            return new ComponentSourceDeviceConfigurationTransceiverSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationHdrSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
         if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl)))))))))))))) {
-            return new ComponentSourceDeviceConfigurationReadAsSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+            return new ComponentSourceDeviceConfigurationTransceiverSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
-        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr)))))))))))))) {
-            return new ComponentSourceDeviceConfigurationAffect(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inl))))))))))))))) {
+            return new ComponentSourceDeviceConfigurationReadAsSignal(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSourceDeviceConfiguration (line 28, column 1 - line 28, column 67): " + [ x.constructor.name ]);
+        if (x instanceof Data_Generic_Rep.Inr && (x.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && (x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr && x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0 instanceof Data_Generic_Rep.Inr))))))))))))))) {
+            return new ComponentSourceDeviceConfigurationAffect(x.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0.value0);
+        };
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSourceDeviceConfiguration (line 29, column 1 - line 29, column 67): " + [ x.constructor.name ]);
     },
     from: function (x) {
         if (x instanceof ComponentSourceDeviceConfigurationConfiguredSignal) {
@@ -142191,43 +142668,46 @@ var genericComponentSourceDev1 = {
         if (x instanceof ComponentSourceDeviceConfigurationNameEditSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationApplyNameSignal) {
+        if (x instanceof ComponentSourceDeviceConfigurationApplySignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationRefusalSignal) {
+        if (x instanceof ComponentSourceDeviceConfigurationCancelSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationNativeDividerSignal) {
+        if (x instanceof ComponentSourceDeviceConfigurationRefusalSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationScaledDividerSignal) {
+        if (x instanceof ComponentSourceDeviceConfigurationNativeDividerSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationAutoStopSignal) {
+        if (x instanceof ComponentSourceDeviceConfigurationScaledDividerSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationHdcpSignal) {
+        if (x instanceof ComponentSourceDeviceConfigurationAutoStopSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationHdcp22Signal) {
+        if (x instanceof ComponentSourceDeviceConfigurationHdcpSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))))))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationHdcp22ableSignal) {
+        if (x instanceof ComponentSourceDeviceConfigurationHdcp22Signal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))))))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationHdrSignal) {
+        if (x instanceof ComponentSourceDeviceConfigurationHdcp22ableSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))))))))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationTransceiverSignal) {
+        if (x instanceof ComponentSourceDeviceConfigurationHdrSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))))))))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationReadAsSignal) {
+        if (x instanceof ComponentSourceDeviceConfigurationTransceiverSignal) {
             return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0)))))))))))))));
         };
-        if (x instanceof ComponentSourceDeviceConfigurationAffect) {
-            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0)))))))))))))));
+        if (x instanceof ComponentSourceDeviceConfigurationReadAsSignal) {
+            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inl(x.value0))))))))))))))));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSourceDeviceConfiguration (line 28, column 1 - line 28, column 67): " + [ x.constructor.name ]);
+        if (x instanceof ComponentSourceDeviceConfigurationAffect) {
+            return new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(new Data_Generic_Rep.Inr(x.value0))))))))))))))));
+        };
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSourceDeviceConfiguration (line 29, column 1 - line 29, column 67): " + [ x.constructor.name ]);
     }
 };
 var functorComponentSourceDev = {
@@ -142244,7 +142724,7 @@ var extendComponentSourceDevi = {
     }
 };
 var eqSourceDeviceConfigurati = {
-    eq: Data_Eq_Generic.genericEq(genericSourceDeviceConfig)(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqRec()(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowNil)()({
+    eq: Data_Eq_Generic.genericEq(genericSourceDeviceConfig)(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqRec()(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowCons(Data_Eq.eqRowNil)()({
         reflectSymbol: function () {
             return "transceiver";
         }
@@ -142298,11 +142778,15 @@ var eqSourceDeviceConfigurati = {
         }
     })(Exhibit_VideoControl_Types.eqDeviceSettings))()({
         reflectSymbol: function () {
+            return "cancel";
+        }
+    })(Data_Eq.eqUnit))()({
+        reflectSymbol: function () {
             return "autoStop";
         }
     })(Data_Eq.eqBoolean))()({
         reflectSymbol: function () {
-            return "applyName";
+            return "apply";
         }
     })(Data_Eq.eqUnit)))))
 };
@@ -142314,14 +142798,14 @@ var shouldUpdateComponentSour = {
     }
 };
 var eqComponentSourceDeviceCo = {
-    eq: Data_Eq_Generic.genericEq(genericComponentSourceDev1)(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Exhibit_VideoControl_Types.eqDeviceSettings)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqUnit)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Either.eqEither(ExploreSignal.eqAffRequest)(Data_Tuple.eqTuple(ExploreSignal.eqAffRequest)(Data_Argonaut_Core.eqJson))))))))))))))))))))
+    eq: Data_Eq_Generic.genericEq(genericComponentSourceDev1)(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Exhibit_VideoControl_Types.eqDeviceSettings)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqUnit)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqUnit)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqBoolean)))(Data_Eq_Generic.genericEqSum(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Eq.eqString)))(Data_Eq_Generic.genericEqConstructor(Data_Eq_Generic.genericEqArgument(Data_Either.eqEither(ExploreSignal.eqAffRequest)(Data_Tuple.eqTuple(ExploreSignal.eqAffRequest)(Data_Argonaut_Core.eqJson)))))))))))))))))))))
 };
 var encodeJsonSourceDeviceCon = {
     encodeJson: Data_Functor.map(Data_Functor.functorFn)(Unify_Types.removeObjectByName("tag"))(Data_Argonaut_Encode_Generic.genericEncodeJson(genericSourceDeviceConfig)(Data_Argonaut_Encode_Generic.encodeRepConstructor({
         reflectSymbol: function () {
             return "SourceDeviceConfiguration";
         }
-    })(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(Data_Argonaut_Encode_Class.encodeRecord(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonUnit)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Exhibit_VideoControl_Types.encodeJsonDeviceSettings)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonNil)({
+    })(Data_Argonaut_Encode_Generic.encodeRepArgsArgument(Data_Argonaut_Encode_Class.encodeRecord(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonUnit)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonUnit)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Exhibit_VideoControl_Types.encodeJsonDeviceSettings)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonCons(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Argonaut_Encode_Class.gEncodeJsonNil)({
         reflectSymbol: function () {
             return "transceiver";
         }
@@ -142375,24 +142859,32 @@ var encodeJsonSourceDeviceCon = {
         }
     })())({
         reflectSymbol: function () {
+            return "cancel";
+        }
+    })())({
+        reflectSymbol: function () {
             return "autoStop";
         }
     })())({
         reflectSymbol: function () {
-            return "applyName";
+            return "apply";
         }
     })())()))))
 };
 var defSourceDeviceConfigurat = {
     def: Unify_Types.genericDef(genericSourceDeviceConfig)(Unify_Types.genericDefConstructor(Unify_Types.genericDefArgument(Unify_Types.defRecord()(Unify_Types.defRowListCons({
         reflectSymbol: function () {
-            return "applyName";
+            return "apply";
         }
     })(Unify_Types.defUnit)(Unify_Types.defRowListCons({
         reflectSymbol: function () {
             return "autoStop";
         }
     })(Unify_Types.defBoolean)(Unify_Types.defRowListCons({
+        reflectSymbol: function () {
+            return "cancel";
+        }
+    })(Unify_Types.defUnit)(Unify_Types.defRowListCons({
         reflectSymbol: function () {
             return "configured";
         }
@@ -142444,14 +142936,14 @@ var defSourceDeviceConfigurat = {
         reflectSymbol: function () {
             return "transceiver";
         }
-    })(Unify_Types.defBoolean)(Unify_Types.defRowListNilRow)()())()())()())()())()())()())()())()())()())()())()())()())()())()())()()))))
+    })(Unify_Types.defBoolean)(Unify_Types.defRowListNilRow)()())()())()())()())()())()())()())()())()())()())()())()())()())()())()())()()))))
 };
 var decodeJsonSourceDeviceCon = {
     decodeJson: Data_Argonaut_Decode_Generic.genericDecodeJson(genericSourceDeviceConfig)(Data_Argonaut_Decode_Generic.decodeRepConstructorArg({
         reflectSymbol: function () {
             return "SourceDeviceConfiguration";
         }
-    })(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonNull))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Exhibit_VideoControl_Types.decodeJsonDeviceSettings))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
+    })(Data_Argonaut_Decode_Class.decodeRecord(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonNull))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonNull))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Exhibit_VideoControl_Types.decodeJsonDeviceSettings))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonString))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonCons(Data_Argonaut_Decode_Class.decodeFieldId(Data_Argonaut_Decode_Class.decodeJsonBoolean))(Data_Argonaut_Decode_Class.gDecodeJsonNil)({
         reflectSymbol: function () {
             return "transceiver";
         }
@@ -142505,11 +142997,15 @@ var decodeJsonSourceDeviceCon = {
         }
     })()())({
         reflectSymbol: function () {
+            return "cancel";
+        }
+    })()())({
+        reflectSymbol: function () {
             return "autoStop";
         }
     })()())({
         reflectSymbol: function () {
-            return "applyName";
+            return "apply";
         }
     })()())()))
 };
@@ -142531,6 +143027,19 @@ var sourceSeg = function (b) {
     };
     return "segoff";
 };
+var movingHdcp22 = function (d) {
+    return function (on) {
+        if (on === Data_Maybe.maybe(false)(function (c) {
+            return !Data_Lens_Getter.viewOn(c)(Exhibit_VideoControl_Types["_decoderHdcp22SupportDisable"](Data_Lens_Internal_Forget.strongForget));
+        })(Exhibit_VideoControl_Interactions.hdmiDecoderOf(d))) {
+            return Data_Maybe.Nothing.value;
+        };
+        if (Data_Boolean.otherwise) {
+            return Exhibit_VideoControl_Interactions.setHdmiDecoder(Exhibit_VideoControl_Interactions.hdcp22SupportDisableKey)(d)(!on);
+        };
+        throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentSourceDeviceConfiguration (line 445, column 1 - line 445, column 62): " + [ d.constructor.name, on.constructor.name ]);
+    };
+};
 var marshalSourceDeviceConfiguration = function (v) {
     return function (v1) {
         return v1;
@@ -142538,222 +143047,295 @@ var marshalSourceDeviceConfiguration = function (v) {
 };
 var def_ComponentSourceDeviceConfiguration = Unify_Types.def(defSourceDeviceConfigurat);
 var _transceiver = function (dictStrong) {
-    var $297 = Data_Lens_Lens["lens'"](function (v) {
+    var $349 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $298 = Data_Lens_Record.prop({
+    var $350 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "transceiver";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($299) {
-        return $297($298($299));
+    return function ($351) {
+        return $349($350($351));
     };
 };
 var _scaledDivider = function (dictStrong) {
-    var $300 = Data_Lens_Lens["lens'"](function (v) {
+    var $352 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $301 = Data_Lens_Record.prop({
+    var $353 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "scaledDivider";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($302) {
-        return $300($301($302));
+    return function ($354) {
+        return $352($353($354));
     };
 };
 var _refusal = function (dictStrong) {
-    var $303 = Data_Lens_Lens["lens'"](function (v) {
+    var $355 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $304 = Data_Lens_Record.prop({
+    var $356 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "refusal";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($305) {
-        return $303($304($305));
+    return function ($357) {
+        return $355($356($357));
     };
 };
 var _readAs = function (dictStrong) {
-    var $306 = Data_Lens_Lens["lens'"](function (v) {
+    var $358 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $307 = Data_Lens_Record.prop({
+    var $359 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "readAs";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($308) {
-        return $306($307($308));
+    return function ($360) {
+        return $358($359($360));
     };
 };
 var _nativeDivider = function (dictStrong) {
-    var $309 = Data_Lens_Lens["lens'"](function (v) {
+    var $361 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $310 = Data_Lens_Record.prop({
+    var $362 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "nativeDivider";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($311) {
-        return $309($310($311));
+    return function ($363) {
+        return $361($362($363));
     };
 };
 var _nameEdit = function (dictStrong) {
-    var $312 = Data_Lens_Lens["lens'"](function (v) {
+    var $364 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $313 = Data_Lens_Record.prop({
+    var $365 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "nameEdit";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($314) {
-        return $312($313($314));
+    return function ($366) {
+        return $364($365($366));
     };
 };
 var _locating = function (dictStrong) {
-    var $315 = Data_Lens_Lens["lens'"](function (v) {
+    var $367 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $316 = Data_Lens_Record.prop({
+    var $368 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "locating";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($317) {
-        return $315($316($317));
+    return function ($369) {
+        return $367($368($369));
     };
 };
 var _hdr = function (dictStrong) {
-    var $318 = Data_Lens_Lens["lens'"](function (v) {
+    var $370 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $319 = Data_Lens_Record.prop({
+    var $371 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "hdr";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($320) {
-        return $318($319($320));
+    return function ($372) {
+        return $370($371($372));
     };
 };
 var _hdcp22able = function (dictStrong) {
-    var $321 = Data_Lens_Lens["lens'"](function (v) {
+    var $373 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $322 = Data_Lens_Record.prop({
+    var $374 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "hdcp22able";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($323) {
-        return $321($322($323));
+    return function ($375) {
+        return $373($374($375));
     };
 };
 var _hdcp22 = function (dictStrong) {
-    var $324 = Data_Lens_Lens["lens'"](function (v) {
+    var $376 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $325 = Data_Lens_Record.prop({
+    var $377 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "hdcp22";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($326) {
-        return $324($325($326));
+    return function ($378) {
+        return $376($377($378));
     };
 };
 var _hdcp = function (dictStrong) {
-    var $327 = Data_Lens_Lens["lens'"](function (v) {
+    var $379 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $328 = Data_Lens_Record.prop({
+    var $380 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "hdcp";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($329) {
-        return $327($328($329));
+    return function ($381) {
+        return $379($380($381));
     };
 };
 var _configuredName = function (dictStrong) {
-    var $330 = Data_Lens_Lens["lens'"](function (v) {
+    var $382 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $331 = Data_Lens_Record.prop({
+    var $383 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "configuredName";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($332) {
-        return $330($331($332));
+    return function ($384) {
+        return $382($383($384));
     };
 };
 var _configured = function (dictStrong) {
-    var $333 = Data_Lens_Lens["lens'"](function (v) {
+    var $385 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $334 = Data_Lens_Record.prop({
+    var $386 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "configured";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($335) {
-        return $333($334($335));
+    return function ($387) {
+        return $385($386($387));
     };
 };
-var _autoStop = function (dictStrong) {
-    var $336 = Data_Lens_Lens["lens'"](function (v) {
+var _cancel = function (dictStrong) {
+    var $388 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $337 = Data_Lens_Record.prop({
+    var $389 = Data_Lens_Record.prop({
+        reflectSymbol: function () {
+            return "cancel";
+        }
+    })()()(Data_Symbol.SProxy.value)(dictStrong);
+    return function ($390) {
+        return $388($389($390));
+    };
+};
+var _autoStop = function (dictStrong) {
+    var $391 = Data_Lens_Lens["lens'"](function (v) {
+        return new Data_Tuple.Tuple(v.value0, function (s) {
+            return new SourceDeviceConfiguration(s);
+        });
+    })(dictStrong);
+    var $392 = Data_Lens_Record.prop({
         reflectSymbol: function () {
             return "autoStop";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($338) {
-        return $336($337($338));
+    return function ($393) {
+        return $391($392($393));
     };
 };
 var carrying = function (d) {
     return function (a) {
-        return Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_configured(Data_Profunctor_Strong.strongFn))(d)))(Data_Lens_Setter.set(_configuredName(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))))(Data_Lens_Setter.set(_locating(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.locateModeOf(d))))(Data_Lens_Setter.set(_nativeDivider(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.dividedNativeStream(d))))(Data_Lens_Setter.set(_scaledDivider(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.dividedScaler(d))))(Data_Lens_Setter.set(_autoStop(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.scaledAutoStopOf(d))))(Data_Lens_Setter.set(_hdcp(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.hdcpSupportOf(d))))(Data_Lens_Setter.set(_hdcp22(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.hdcp22SupportOf(d))))(Data_Lens_Setter.set(_hdcp22able(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.hdcpSupportOf(d))))(Data_Lens_Setter.set(_hdr(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.hdrEdidOf(d))))(Data_Lens_Setter.set(_transceiver(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.transceiverOf(d))))(Data_Lens_Setter.set(_readAs(Data_Profunctor_Strong.strongFn))("TX"));
+        return Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_configured(Data_Profunctor_Strong.strongFn))(d)))(Data_Lens_Setter.set(_configuredName(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))))(Data_Lens_Setter.set(_nameEdit(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))))(Data_Lens_Setter.set(_locating(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.locateModeOf(d))))(Data_Lens_Setter.set(_nativeDivider(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.dividedNativeStream(d))))(Data_Lens_Setter.set(_scaledDivider(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.dividedScaler(d))))(Data_Lens_Setter.set(_autoStop(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.scaledAutoStopOf(d))))(Data_Lens_Setter.set(_hdcp(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.hdcpSupportOf(d))))(Data_Lens_Setter.set(_hdcp22(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.hdcp22SupportOf(d))))(Data_Lens_Setter.set(_hdcp22able(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.hdcpSupportOf(d))))(Data_Lens_Setter.set(_hdr(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.hdrEdidOf(d))))(Data_Lens_Setter.set(_transceiver(Data_Profunctor_Strong.strongFn))(Exhibit_VideoControl_Interactions.transceiverOf(d))))(Data_Lens_Setter.set(_readAs(Data_Profunctor_Strong.strongFn))("TX"));
     };
 };
+var asked = function (a) {
+    var d = Data_Lens_Getter.viewOn(a)(_configured(Data_Lens_Internal_Forget.strongForget));
+    var was = carrying(d)(a);
+    var changed = function (dictEq) {
+        return function (l) {
+            return Data_Eq.notEq(dictEq)(Data_Lens_Getter.viewOn(a)(l(Data_Lens_Internal_Forget.strongForget)))(Data_Lens_Getter.viewOn(was)(l(Data_Lens_Internal_Forget.strongForget)));
+        };
+    };
+    var asking = function (dictEq) {
+        return function (l) {
+            return function (q) {
+                var $325 = changed(dictEq)(function (dictStrong) {
+                    return l(dictStrong);
+                });
+                if ($325) {
+                    return q;
+                };
+                return Data_Maybe.Nothing.value;
+            };
+        };
+    };
+    return Data_List.catMaybes(new Data_List_Types.Cons(asking(Data_Eq.eqString)(function (dictStrong) {
+        return _nameEdit(dictStrong);
+    })(Exhibit_VideoControl_Interactions.settingAsked("name")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJString)(Data_Lens_Getter.viewOn(a)(_nameEdit(Data_Lens_Internal_Forget.strongForget))))(d)(Exhibit_VideoControl_Interactions.renameDevice(d)(Data_Lens_Getter.viewOn(a)(_nameEdit(Data_Lens_Internal_Forget.strongForget))))), new Data_List_Types.Cons(asking(Data_Eq.eqBoolean)(function (dictStrong) {
+        return _locating(dictStrong);
+    })(Exhibit_VideoControl_Interactions.settingAsked("locate")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Lens_Getter.viewOn(a)(_locating(Data_Lens_Internal_Forget.strongForget))))(d)(new Data_Maybe.Just(Exhibit_VideoControl_Interactions.locateDevice(d)(Data_Lens_Getter.viewOn(a)(_locating(Data_Lens_Internal_Forget.strongForget)))))), new Data_List_Types.Cons(asking(Data_Eq.eqBoolean)(function (dictStrong) {
+        return _nativeDivider(dictStrong);
+    })(Exhibit_VideoControl_Interactions.settingAsked("native_divider")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Lens_Getter.viewOn(a)(_nativeDivider(Data_Lens_Internal_Forget.strongForget))))(d)(Exhibit_VideoControl_Interactions.divideNativeStream(d)(Data_Lens_Getter.viewOn(a)(_nativeDivider(Data_Lens_Internal_Forget.strongForget))))), new Data_List_Types.Cons(asking(Data_Eq.eqBoolean)(function (dictStrong) {
+        return _scaledDivider(dictStrong);
+    })(Exhibit_VideoControl_Interactions.settingAsked("scaled_divider")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Lens_Getter.viewOn(a)(_scaledDivider(Data_Lens_Internal_Forget.strongForget))))(d)(Exhibit_VideoControl_Interactions.divideScaler(d)(Data_Lens_Getter.viewOn(a)(_scaledDivider(Data_Lens_Internal_Forget.strongForget))))), new Data_List_Types.Cons(asking(Data_Eq.eqBoolean)(function (dictStrong) {
+        return _autoStop(dictStrong);
+    })(Exhibit_VideoControl_Interactions.settingAsked("auto_stop")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Lens_Getter.viewOn(a)(_autoStop(Data_Lens_Internal_Forget.strongForget))))(d)(Exhibit_VideoControl_Interactions.autoStopScaledStream(d)(Data_Lens_Getter.viewOn(a)(_autoStop(Data_Lens_Internal_Forget.strongForget))))), new Data_List_Types.Cons(asking(Data_Eq.eqBoolean)(function (dictStrong) {
+        return _hdcp(dictStrong);
+    })(Exhibit_VideoControl_Interactions.settingAsked("hdcp")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Lens_Getter.viewOn(a)(_hdcp(Data_Lens_Internal_Forget.strongForget))))(d)(Exhibit_VideoControl_Interactions.setHdcpSupport(d)(Data_Lens_Getter.viewOn(a)(_hdcp(Data_Lens_Internal_Forget.strongForget))))), new Data_List_Types.Cons((function () {
+        var $326 = Data_Lens_Getter.viewOn(a)(_hdcp(Data_Lens_Internal_Forget.strongForget)) && (changed(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _hdcp(dictStrong);
+        }) || changed(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _hdcp22(dictStrong);
+        }));
+        if ($326) {
+            return Exhibit_VideoControl_Interactions.settingAsked("hdcp22")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Lens_Getter.viewOn(a)(_hdcp22(Data_Lens_Internal_Forget.strongForget))))(d)(movingHdcp22(d)(Data_Lens_Getter.viewOn(a)(_hdcp22(Data_Lens_Internal_Forget.strongForget))));
+        };
+        return Data_Maybe.Nothing.value;
+    })(), new Data_List_Types.Cons(asking(Data_Eq.eqBoolean)(function (dictStrong) {
+        return _hdr(dictStrong);
+    })(Exhibit_VideoControl_Interactions.settingAsked("hdr")(ExploreSignal.toJSON(Data_Argonaut_Encode_Class.encodeJsonJBoolean)(Data_Lens_Getter.viewOn(a)(_hdr(Data_Lens_Internal_Forget.strongForget))))(d)(Exhibit_VideoControl_Interactions.setHdrEdid(d)(Data_Lens_Getter.viewOn(a)(_hdr(Data_Lens_Internal_Forget.strongForget))))), new Data_List_Types.Cons(asking(Data_Eq.eqString)(function (dictStrong) {
+        return _readAs(dictStrong);
+    })((function () {
+        var $327 = Exhibit_VideoControl_Interactions.transceiverOf(d);
+        if ($327) {
+            return new Data_Maybe.Just(Exhibit_VideoControl_Interactions.readingTransceiverAs(d)(Data_Lens_Getter.viewOn(a)(_readAs(Data_Lens_Internal_Forget.strongForget))));
+        };
+        return Data_Maybe.Nothing.value;
+    })()), Data_List_Types.Nil.value))))))))));
+};
 var opening = function (d) {
-    return carrying(d)(Unify_Types.flipuse(Unify_Types.def(defSourceDeviceConfigurat))(Data_Lens_Setter.set(_nameEdit(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceName"](Data_Lens_Internal_Forget.strongForget)))));
+    return carrying(d)(Unify_Types.def(defSourceDeviceConfigurat));
+};
+var pending = function (a) {
+    return Data_Eq.notEq(eqSourceDeviceConfigurati)(carrying(Data_Lens_Getter.viewOn(a)(_configured(Data_Lens_Internal_Forget.strongForget)))(a))(a);
 };
 var displaySourceDeviceConfiguration = function (s) {
     return function (send) {
@@ -142761,21 +143343,19 @@ var displaySourceDeviceConfiguration = function (s) {
             return send(Extra.update(new ComponentSourceDeviceConfigurationNameEditSignal(v.target.value))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_nameEdit(Data_Profunctor_Strong.strongFn))(v.target.value));
             })));
-        }) ]), React_DOM.div([ React_DOM_Props.className("apply"), React_DOM_Props["_id"]("apply_name"), React_DOM_Props.onClick(function (v) {
-            return send(Extra.update(new ComponentSourceDeviceConfigurationApplyNameSignal(Data_Unit.unit))(Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(Data_Unit.unit)));
-        }) ])([ React_DOM.text("Apply") ]) ]), React_DOM.div([ React_DOM_Props.className("refusal") ])([ React_DOM.text(Data_Lens_Getter.viewOn(s)(_refusal(Data_Lens_Internal_Forget.strongForget))) ]), React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Device ID") ]), React_DOM.div([ React_DOM_Props.className("rowvalue") ])([ React_DOM.text(Data_Lens_Getter.viewOn(s)((function () {
-            var $339 = _configured(Data_Lens_Internal_Forget.strongForget);
-            var $340 = Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget);
-            return function ($341) {
-                return $339($340($341));
+        }) ]) ]), React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Device ID") ]), React_DOM.div([ React_DOM_Props.className("rowvalue") ])([ React_DOM.text(Data_Lens_Getter.viewOn(s)((function () {
+            var $394 = _configured(Data_Lens_Internal_Forget.strongForget);
+            var $395 = Exhibit_VideoControl_Types["_deviceId"](Data_Lens_Internal_Forget.strongForget);
+            return function ($396) {
+                return $394($395($396));
             };
         })())) ]) ]), React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Locate (flash LEDs)") ]), React_DOM.div([ React_DOM_Props.className(sourceSwitch(Data_Lens_Getter.viewOn(s)(_locating(Data_Lens_Internal_Forget.strongForget)))), React_DOM_Props["_id"]("config_locate"), React_DOM_Props.onClick(function (v) {
             return send(Extra.update(new ComponentSourceDeviceConfigurationLocatingSignal(!Data_Lens_Getter.viewOn(s)(_locating(Data_Lens_Internal_Forget.strongForget))))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.over(_locating(Data_Profunctor_Strong.strongFn))(Data_HeytingAlgebra.not(Data_HeytingAlgebra.heytingAlgebraBoolean)));
             })));
         }) ])([ React_DOM.text(Data_Show.show(Data_Show.showBoolean)(Data_Lens_Getter.viewOn(s)(_locating(Data_Lens_Internal_Forget.strongForget)))) ]) ]) ])(Data_Semigroup.append(Data_Semigroup.semigroupArray)((function () {
-            var $276 = Data_Lens_Getter.viewOn(s)(_transceiver(Data_Lens_Internal_Forget.strongForget));
-            if ($276) {
+            var $328 = Data_Lens_Getter.viewOn(s)(_transceiver(Data_Lens_Internal_Forget.strongForget));
+            if ($328) {
                 return [ React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Device Mode") ]), React_DOM.div([ React_DOM_Props.className("seg is-control"), React_DOM_Props["_id"]("config_read_as") ])([ React_DOM.div([ React_DOM_Props.className(sourceSeg(Data_Lens_Getter.viewOn(s)(_readAs(Data_Lens_Internal_Forget.strongForget)) === "TX")), React_DOM_Props["_id"]("config_read_as_tx"), React_DOM_Props.onClick(function (v) {
                     return send(Extra.update(new ComponentSourceDeviceConfigurationReadAsSignal("TX"))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                         return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_readAs(Data_Profunctor_Strong.strongFn))("TX"));
@@ -142801,52 +143381,85 @@ var displaySourceDeviceConfiguration = function (s) {
             })));
         }) ])([ React_DOM.text(Data_Show.show(Data_Show.showBoolean)(Data_Lens_Getter.viewOn(s)(_autoStop(Data_Lens_Internal_Forget.strongForget)))) ]) ]), React_DOM.div([ React_DOM_Props.className("grouplabel") ])([ React_DOM.text("HDMI input") ]), React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("HDCP") ]), React_DOM.div([ React_DOM_Props.className("seg is-control"), React_DOM_Props["_id"]("config_hdcp") ])([ React_DOM.div([ React_DOM_Props.className(sourceSeg(!Data_Lens_Getter.viewOn(s)(_hdcp(Data_Lens_Internal_Forget.strongForget)))), React_DOM_Props["_id"]("config_hdcp_off"), React_DOM_Props.onClick(function (v) {
             return send(Extra.update(new ComponentSourceDeviceConfigurationHdcpSignal(false))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
-                return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_hdcp(Data_Profunctor_Strong.strongFn))(false));
+                return Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_hdcp(Data_Profunctor_Strong.strongFn))(false)))(Data_Lens_Setter.set(_hdcp22(Data_Profunctor_Strong.strongFn))(false));
             })));
         }) ])([ React_DOM.text("OFF") ]), React_DOM.div([ React_DOM_Props.className(sourceSeg(Data_Lens_Getter.viewOn(s)(_hdcp(Data_Lens_Internal_Forget.strongForget)) && !Data_Lens_Getter.viewOn(s)(_hdcp22(Data_Lens_Internal_Forget.strongForget)))), React_DOM_Props["_id"]("config_hdcp_on"), React_DOM_Props.onClick(function (v) {
-            var $277 = Data_Lens_Getter.viewOn(s)(_hdcp(Data_Lens_Internal_Forget.strongForget));
-            if ($277) {
-                return send(Extra.update(new ComponentSourceDeviceConfigurationHdcp22Signal(false))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
-                    return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_hdcp22(Data_Profunctor_Strong.strongFn))(false));
-                })));
-            };
-            return send(Extra.update(new ComponentSourceDeviceConfigurationHdcpSignal(true))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
-                return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_hdcp(Data_Profunctor_Strong.strongFn))(true));
+            return send(Extra.update(new ComponentSourceDeviceConfigurationHdcp22Signal(false))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
+                return Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_hdcp(Data_Profunctor_Strong.strongFn))(true)))(Data_Lens_Setter.set(_hdcp22(Data_Profunctor_Strong.strongFn))(false));
             })));
         }) ])([ React_DOM.text("ON") ]), React_DOM.div([ React_DOM_Props.className(sourceSeg(Data_Lens_Getter.viewOn(s)(_hdcp(Data_Lens_Internal_Forget.strongForget)) && Data_Lens_Getter.viewOn(s)(_hdcp22(Data_Lens_Internal_Forget.strongForget)))), React_DOM_Props["_id"]("config_hdcp_v22"), React_DOM_Props.onClick(function (v) {
-            var $278 = Data_Lens_Getter.viewOn(s)(_hdcp(Data_Lens_Internal_Forget.strongForget));
-            if ($278) {
-                return send(Extra.update(new ComponentSourceDeviceConfigurationHdcp22Signal(true))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
-                    return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_hdcp22(Data_Profunctor_Strong.strongFn))(true));
-                })));
-            };
-            return send(Extra.update(new ComponentSourceDeviceConfigurationHdcpSignal(true))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
-                return Unify_Types.flipuse(a)(Data_Lens_Setter.set(_hdcp(Data_Profunctor_Strong.strongFn))(true));
+            return send(Extra.update(new ComponentSourceDeviceConfigurationHdcp22Signal(true))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
+                return Unify_Types.flipuse(Unify_Types.flipuse(a)(Data_Lens_Setter.set(_hdcp(Data_Profunctor_Strong.strongFn))(true)))(Data_Lens_Setter.set(_hdcp22(Data_Profunctor_Strong.strongFn))(true));
             })));
         }) ])([ React_DOM.text("ON (v2.2)") ]) ]) ]), React_DOM.div([ React_DOM_Props.className("row") ])([ React_DOM.div([ React_DOM_Props.className("rowlabel") ])([ React_DOM.text("Enable HDR") ]), React_DOM.div([ React_DOM_Props.className(sourceSwitch(Data_Lens_Getter.viewOn(s)(_hdr(Data_Lens_Internal_Forget.strongForget)))), React_DOM_Props["_id"]("config_hdr"), React_DOM_Props.onClick(function (v) {
             return send(Extra.update(new ComponentSourceDeviceConfigurationHdrSignal(!Data_Lens_Getter.viewOn(s)(_hdr(Data_Lens_Internal_Forget.strongForget))))(Control_Monad_State_Class.modify_(ExploreCore.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
                 return Unify_Types.flipuse(a)(Data_Lens_Setter.over(_hdr(Data_Profunctor_Strong.strongFn))(Data_HeytingAlgebra.not(Data_HeytingAlgebra.heytingAlgebraBoolean)));
             })));
-        }) ])([ React_DOM.text(Data_Show.show(Data_Show.showBoolean)(Data_Lens_Getter.viewOn(s)(_hdr(Data_Lens_Internal_Forget.strongForget)))) ]) ]), React_DOM.div([ React_DOM_Props.className("cardsource") ])([ React_DOM.text(Data_Show.show(Exhibit_VideoControl_Types.showDeviceSettings)(Data_Lens_Getter.viewOn(s)(_configured(Data_Lens_Internal_Forget.strongForget)))) ]) ])));
+        }) ])([ React_DOM.text(Data_Show.show(Data_Show.showBoolean)(Data_Lens_Getter.viewOn(s)(_hdr(Data_Lens_Internal_Forget.strongForget)))) ]) ]), React_DOM.div([ React_DOM_Props.className("refusal") ])([ React_DOM.text(Data_Lens_Getter.viewOn(s)(_refusal(Data_Lens_Internal_Forget.strongForget))) ]), React_DOM.div([ React_DOM_Props.className("actions") ])([ React_DOM.div([ React_DOM_Props.className((function () {
+            var $329 = pending(s);
+            if ($329) {
+                return "apply";
+            };
+            return "apply is-idle";
+        })()), React_DOM_Props["_id"]("config_apply"), React_DOM_Props.onClick(function (v) {
+            return send(Extra.update(new ComponentSourceDeviceConfigurationApplySignal(Data_Unit.unit))(Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(Data_Unit.unit)));
+        }) ])([ React_DOM.text("Apply") ]), React_DOM.div([ React_DOM_Props.className("cancel"), React_DOM_Props["_id"]("config_cancel"), React_DOM_Props.onClick(function (v) {
+            return send(Extra.update(new ComponentSourceDeviceConfigurationCancelSignal(Data_Unit.unit))(Control_Applicative.pure(ExploreCore.applicativeCo(Control_Comonad_Store_Trans.comonadStoreT(Data_Identity.comonadIdentity)))(Data_Unit.unit)));
+        }) ])([ React_DOM.text("Cancel") ]) ]), React_DOM.div([ React_DOM_Props.className("cardsource") ])([ React_DOM.text(Data_Show.show(Exhibit_VideoControl_Types.showDeviceSettings)(Data_Lens_Getter.viewOn(s)(_configured(Data_Lens_Internal_Forget.strongForget)))) ]) ])));
     };
 };
 var renderSourceDeviceConfiguration$prime = function (d) {
     return Safe_Coerce.coerce()(Control_Comonad_Store.store(displaySourceDeviceConfiguration)(d));
 };
 var renderSourceDeviceConfiguration = renderSourceDeviceConfiguration$prime(def_ComponentSourceDeviceConfiguration);
-var _applyName = function (dictStrong) {
-    var $342 = Data_Lens_Lens["lens'"](function (v) {
+var rebasing = function (d) {
+    return function (a) {
+        var was = carrying(Data_Lens_Getter.viewOn(a)(_configured(Data_Lens_Internal_Forget.strongForget)))(a);
+        var kept = function (dictEq) {
+            return function (l) {
+                return function (c) {
+                    var $330 = Data_Eq.eq(dictEq)(Data_Lens_Getter.viewOn(a)(l(Data_Lens_Internal_Forget.strongForget)))(Data_Lens_Getter.viewOn(was)(l(Data_Lens_Internal_Forget.strongForget)));
+                    if ($330) {
+                        return c;
+                    };
+                    return Unify_Types.flipuse(c)(Data_Lens_Setter.set(l(Data_Profunctor_Strong.strongFn))(Data_Lens_Getter.viewOn(a)(l(Data_Lens_Internal_Forget.strongForget))));
+                };
+            };
+        };
+        return Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(Unify_Types.flipuse(carrying(d)(a))(kept(Data_Eq.eqString)(function (dictStrong) {
+            return _nameEdit(dictStrong);
+        })))(kept(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _locating(dictStrong);
+        })))(kept(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _nativeDivider(dictStrong);
+        })))(kept(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _scaledDivider(dictStrong);
+        })))(kept(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _autoStop(dictStrong);
+        })))(kept(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _hdcp(dictStrong);
+        })))(kept(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _hdcp22(dictStrong);
+        })))(kept(Data_Eq.eqBoolean)(function (dictStrong) {
+            return _hdr(dictStrong);
+        })))(kept(Data_Eq.eqString)(function (dictStrong) {
+            return _readAs(dictStrong);
+        }));
+    };
+};
+var _apply = function (dictStrong) {
+    var $397 = Data_Lens_Lens["lens'"](function (v) {
         return new Data_Tuple.Tuple(v.value0, function (s) {
             return new SourceDeviceConfiguration(s);
         });
     })(dictStrong);
-    var $343 = Data_Lens_Record.prop({
+    var $398 = Data_Lens_Record.prop({
         reflectSymbol: function () {
-            return "applyName";
+            return "apply";
         }
     })()()(Data_Symbol.SProxy.value)(dictStrong);
-    return function ($344) {
-        return $342($343($344));
+    return function ($399) {
+        return $397($398($399));
     };
 };
 var _CoSourceDeviceConfiguration = function (v) {
@@ -142933,7 +143546,8 @@ var writeSourceDeviceConfiguration = function (v) {
         configuredName: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentSourceDeviceConfiguration["_configuredName"](Data_Lens_Internal_Forget.strongForget)),
         locating: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentSourceDeviceConfiguration["_locating"](Data_Lens_Internal_Forget.strongForget)),
         nameEdit: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentSourceDeviceConfiguration["_nameEdit"](Data_Lens_Internal_Forget.strongForget)),
-        applyName: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentSourceDeviceConfiguration["_applyName"](Data_Lens_Internal_Forget.strongForget)),
+        apply: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentSourceDeviceConfiguration["_apply"](Data_Lens_Internal_Forget.strongForget)),
+        cancel: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentSourceDeviceConfiguration["_cancel"](Data_Lens_Internal_Forget.strongForget)),
         refusal: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentSourceDeviceConfiguration["_refusal"](Data_Lens_Internal_Forget.strongForget)),
         nativeDivider: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentSourceDeviceConfiguration["_nativeDivider"](Data_Lens_Internal_Forget.strongForget)),
         scaledDivider: Data_Lens_Getter.viewOn(v)(Exhibit_VideoControl_ComponentSourceDeviceConfiguration["_scaledDivider"](Data_Lens_Internal_Forget.strongForget)),
@@ -142960,7 +143574,8 @@ module.exports = {
     ComponentSourceDeviceConfigurationConfiguredNameSignal: ComponentSourceDeviceConfigurationConfiguredNameSignal,
     ComponentSourceDeviceConfigurationLocatingSignal: ComponentSourceDeviceConfigurationLocatingSignal,
     ComponentSourceDeviceConfigurationNameEditSignal: ComponentSourceDeviceConfigurationNameEditSignal,
-    ComponentSourceDeviceConfigurationApplyNameSignal: ComponentSourceDeviceConfigurationApplyNameSignal,
+    ComponentSourceDeviceConfigurationApplySignal: ComponentSourceDeviceConfigurationApplySignal,
+    ComponentSourceDeviceConfigurationCancelSignal: ComponentSourceDeviceConfigurationCancelSignal,
     ComponentSourceDeviceConfigurationRefusalSignal: ComponentSourceDeviceConfigurationRefusalSignal,
     ComponentSourceDeviceConfigurationNativeDividerSignal: ComponentSourceDeviceConfigurationNativeDividerSignal,
     ComponentSourceDeviceConfigurationScaledDividerSignal: ComponentSourceDeviceConfigurationScaledDividerSignal,
@@ -142977,7 +143592,8 @@ module.exports = {
     "_configuredName": _configuredName,
     "_locating": _locating,
     "_nameEdit": _nameEdit,
-    "_applyName": _applyName,
+    "_apply": _apply,
+    "_cancel": _cancel,
     "_refusal": _refusal,
     "_nativeDivider": _nativeDivider,
     "_scaledDivider": _scaledDivider,
@@ -143000,6 +143616,10 @@ module.exports = {
     writeSourceDeviceConfiguration: writeSourceDeviceConfiguration,
     carrying: carrying,
     opening: opening,
+    rebasing: rebasing,
+    pending: pending,
+    asked: asked,
+    movingHdcp22: movingHdcp22,
     marshalSourceDeviceConfiguration: marshalSourceDeviceConfiguration,
     genericComponentSourceDev1: genericComponentSourceDev1,
     showComponentSourceDevice: showComponentSourceDevice,
@@ -143020,7 +143640,7 @@ module.exports = {
     updateJsonComponentCompon: updateJsonComponentCompon
 };
 
-},{"../Control.Applicative/index.js":42,"../Control.Bind/index.js":48,"../Control.Category/index.js":49,"../Control.Comonad.Store.Class/index.js":51,"../Control.Comonad.Store.Trans/index.js":52,"../Control.Comonad.Store/index.js":53,"../Control.Monad.State.Class/index.js":71,"../Data.Argonaut.Core/index.js":83,"../Data.Argonaut.Decode.Class/index.js":84,"../Data.Argonaut.Decode.Generic/index.js":88,"../Data.Argonaut.Encode.Class/index.js":89,"../Data.Argonaut.Encode.Generic/index.js":92,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Eq/index.js":118,"../Data.Function/index.js":128,"../Data.Functor/index.js":142,"../Data.Generic.Rep/index.js":145,"../Data.HeytingAlgebra/index.js":148,"../Data.Identity/index.js":149,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Lens/index.js":173,"../Data.Lens.Record/index.js":177,"../Data.Lens.Setter/index.js":178,"../Data.Maybe/index.js":190,"../Data.Newtype/index.js":200,"../Data.Profunctor.Strong/index.js":216,"../Data.Semigroup/index.js":223,"../Data.Show.Generic/index.js":228,"../Data.Show/index.js":230,"../Data.Symbol/index.js":244,"../Data.Tuple/index.js":251,"../Data.Unit/index.js":259,"../Exhibit.VideoControl.ComponentSourceDeviceConfiguration/index.js":312,"../Exhibit.VideoControl.Interactions/index.js":315,"../Exhibit.VideoControl.Types/index.js":316,"../ExploreCore/index.js":356,"../ExploreSignal/index.js":357,"../Extra/index.js":358,"../React.DOM.Props/index.js":378,"../React.DOM/index.js":379,"../Safe.Coerce/index.js":389,"../ShouldUpdate/index.js":390,"../Unify.Types/index.js":402,"../Unify.UpdateJson/index.js":403}],350:[function(require,module,exports){
+},{"../Control.Applicative/index.js":42,"../Control.Bind/index.js":48,"../Control.Category/index.js":49,"../Control.Comonad.Store.Class/index.js":51,"../Control.Comonad.Store.Trans/index.js":52,"../Control.Comonad.Store/index.js":53,"../Control.Monad.State.Class/index.js":71,"../Data.Argonaut.Core/index.js":83,"../Data.Argonaut.Decode.Class/index.js":84,"../Data.Argonaut.Decode.Generic/index.js":88,"../Data.Argonaut.Encode.Class/index.js":89,"../Data.Argonaut.Encode.Generic/index.js":92,"../Data.Boolean/index.js":107,"../Data.Either/index.js":113,"../Data.Eq.Generic/index.js":116,"../Data.Eq/index.js":118,"../Data.Function/index.js":128,"../Data.Functor/index.js":142,"../Data.Generic.Rep/index.js":145,"../Data.HeytingAlgebra/index.js":148,"../Data.Identity/index.js":149,"../Data.Lens.Getter/index.js":156,"../Data.Lens.Internal.Forget/index.js":161,"../Data.Lens.Lens/index.js":173,"../Data.Lens.Record/index.js":177,"../Data.Lens.Setter/index.js":178,"../Data.List.Types/index.js":185,"../Data.List/index.js":186,"../Data.Maybe/index.js":190,"../Data.Newtype/index.js":200,"../Data.Profunctor.Strong/index.js":216,"../Data.Semigroup/index.js":223,"../Data.Show.Generic/index.js":228,"../Data.Show/index.js":230,"../Data.Symbol/index.js":244,"../Data.Tuple/index.js":251,"../Data.Unit/index.js":259,"../Exhibit.VideoControl.ComponentSourceDeviceConfiguration/index.js":312,"../Exhibit.VideoControl.Interactions/index.js":315,"../Exhibit.VideoControl.Types/index.js":316,"../ExploreCore/index.js":356,"../ExploreSignal/index.js":357,"../Extra/index.js":358,"../React.DOM.Props/index.js":378,"../React.DOM/index.js":379,"../Safe.Coerce/index.js":389,"../ShouldUpdate/index.js":390,"../Unify.Types/index.js":402,"../Unify.UpdateJson/index.js":403}],350:[function(require,module,exports){
 // Generated by purs version 0.14.4
 "use strict";
 var Control_Applicative = require("../Control.Applicative/index.js");
@@ -147554,7 +148174,7 @@ function composedOutput() {
 
 // | The card an element belongs to: the one that heads itself, which is the shape
 // the skin gives both a source card and an output card —
-// .cardhead (input.cardname .dot) . .thumb (.feed .cap).
+// .cardhead (.cardname .dot) . .thumb (.feed .cap).
 function cardOf(element) {
   for (var node = element.parentElement; node; node = node.parentElement) {
     if (node.querySelector(':scope > .cardhead')) return node;
@@ -147582,14 +148202,14 @@ function feedTargets(videoName) {
       : card.querySelector('.cardhead > .cardname');
     if (!named) continue;
 
-    var name = named.value === undefined ? named.textContent : named.value;
+    var name = named.textContent;
     var head = output && card.querySelector('.cardhead > .cardname');
-    var whole = head ? standInOf(videoName, head.value, -1) : undefined;
+    var whole = head ? standInOf(videoName, head.textContent, -1) : undefined;
     if (whole !== undefined) name = whole;
 
     targets.push({
       canvas: feeds[i], name: name, output: !!output, standing: whole !== undefined,
-      card: card, routing: head ? standInOf(videoName, head.value) : undefined
+      card: card, routing: head ? standInOf(videoName, head.textContent) : undefined
     });
   }
   return targets;

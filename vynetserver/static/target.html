@@ -10,7 +10,7 @@
 
    The markup names what it draws, so the rules read classes rather than field
    positions:
-     source card : .cardhead (input.cardname .dot) .thumb (.feed .cap) .cardformat
+     source card : .cardhead (.cardname .dot) .thumb (.feed .cap) .cardformat
                    .mark .hit
      output card : the same card, .thumb one size larger
      parameters  : .screenmeta - the caption written across the preview
@@ -100,9 +100,11 @@ body{
   border-bottom:1px solid var(--line);
   z-index:20;
 }
-/* the status, in two halves: the build it is running, and how it is doing */
+/* the status, in two halves: the build it is running, and how it is doing.
+   The build is the GUI version, the one the about dialog reads (guiVersion in
+   ComponentNavBar.purs): the two move together.                             */
 #main::after{
-  content:"\00A0\00B7\00A0v1.0.6\00A0\00B7\00A0";
+  content:"\00A0\00B7\00A0v1.0.22\00A0\00B7\00A0";
   position:fixed;
   top:0;right:calc(22px + 118px);
   height:var(--bar);
@@ -311,21 +313,24 @@ body{
   justify-content:space-between;
   margin-bottom:10px;
 }
+/* the name is read, not typed into: it takes the row's free width beside the
+   dot, cut short where it is longer                                          */
 .cntui .cardname{
+  flex:1 1 0;
   min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
   font-size:15px;
   font-weight:600;
   letter-spacing:0;
 }
 .cntui .listx2:has(.dot.grey) .cardname{color:var(--txt-faint);font-weight:500;}
 
-/* The name is the field it is typed into (`editable` in Transform.hs gives
-   the card's name leaf an <input>), and the storage of the single panel is
-   another: an input carries a browser's own frame, ground and text, so each
-   is stripped back to the text it replaces and takes the row's free width —
-   the dot and the meter's label keep their places. It marks itself only while
-   it has the caret.                                                          */
-.cntui input.cardname,
+/* The storage of the single panel is the field it is typed into: an input
+   carries a browser's own frame, ground and text, so it is stripped back to
+   the text it replaces and takes the row's free width — the meter's label
+   keeps its place. It marks itself only while it has the caret.             */
 .cntui input.meterval{
   flex:1 1 0;
   width:100%;                          /* an input's own intrinsic width would
@@ -341,7 +346,6 @@ body{
   line-height:inherit;
   color:inherit;
 }
-.cntui input.cardname:focus,
 .cntui input.meterval:focus{
   outline:0;
   background:#0d1d24;
@@ -1487,7 +1491,7 @@ body{
 /* ---------- actions: the icon rail ----------------------------------------- */
 /* The navigation bar is the rail down the left edge: one 46px seat per page
    (main panel, matrix routing, settings), the page the frame is on lit, and
-   the system info drawn after them. The rail is taken out of the grid, so
+   the reload and the about seats after them. The rail is taken out of the grid, so
    #main's padding-left is what keeps the columns clear of it.                */
 
 .cntui > .navbar{
@@ -1510,9 +1514,7 @@ body{
   align-items:center;
   gap:14px;
 }
-.cntui > .navbar .seat,
-.cntui > .navbar::after,
-.panel > .control > div{
+.cntui > .navbar .seat{
   width:46px;height:46px;
   box-sizing:border-box;
   display:grid;
@@ -1525,8 +1527,7 @@ body{
   cursor:pointer;
   transition:background .15s,color .15s;
 }
-.cntui > .navbar .seat:hover,
-.panel > .control > div:hover{background:#161f25;color:var(--txt);}
+.cntui > .navbar .seat:hover{background:#161f25;color:var(--txt);}
 /* the page the frame is on */
 .cntui > .navbar .seat.is-active{
   background-color:var(--blue);
@@ -1588,38 +1589,101 @@ body{
 }
 .cntui > .navbar > .pageclose:hover{background:#161f25;border-color:var(--txt-faint);color:var(--txt);}
 .cntui > .navbar > .pageclose.is-hidden{display:none;}
-/* the system info, drawn */
-.cntui > .navbar::after{
+/* about: no page, opens the about dialog (.about), under the reload */
+.cntui > .navbar #nav_info::before{
   content:"i";
   font:italic 19px/1 Georgia,serif;
-  cursor:default;
 }
 
-/* the main panel's two list controls (list sources, list outputs) sit at the
-   foot of the rail, small and dim: they re-read the lists, not navigate */
-.panel > .control{
+/* ---------- the about dialog ----------------------------------------------- */
+/* The 'i' seat opens it (.about.is-on): laid over the whole page, the page
+   dimmed under it, and the GUI version in the middle (.aboutdialog:
+   .abouteyebrow .abouttitle .aboutrow (.aboutlabel .aboutversion)
+   .aboutactions). Close, or a press beside the dialog (.aboutshade), shuts
+   it. The rail is a fixed layer under the bar, so it is lifted over the bar
+   while the dialog it draws is open.                                        */
+.cntui > .navbar:has(> .about.is-on){z-index:400;}
+.cntui .about{
   position:fixed;
-  left:0;bottom:0;
-  width:var(--rail);
-  box-sizing:border-box;
+  inset:0;
   display:flex;
-  flex-direction:column;
   align-items:center;
-  gap:10px;
-  padding:0 0 18px;
-  z-index:20;
+  justify-content:center;
+  padding:16px;
+  animation:unroutefade .18s ease;
 }
-.panel > .control > label{display:none;}
-.panel > .control > div{
-  width:32px;height:32px;
-  border-radius:6px;
+.cntui .about:not(.is-on){display:none;}
+.cntui .aboutshade{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.58);
+  -webkit-backdrop-filter:blur(3px) saturate(.6);
+          backdrop-filter:blur(3px) saturate(.6);
 }
-.panel > .control > div::before{
-  font:600 10px/1 var(--mono);
+.cntui .aboutdialog{
+  position:relative;
+  width:min(420px,100%);
+  box-sizing:border-box;
+  padding:24px 26px 22px;
+  background:var(--panel-2);
+  border:1px solid var(--line);
+  border-top:2px solid var(--blue);
+  border-radius:10px;
+  box-shadow:0 24px 60px rgba(0,0,0,.6);
+  animation:unroutein .24s cubic-bezier(.2,.8,.2,1);
+}
+.cntui .abouteyebrow{
+  margin-bottom:10px;
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--blue);
+}
+.cntui .abouttitle{
+  margin-bottom:18px;
+  font-size:19px;
+  font-weight:600;
+  line-height:1.35;
+  color:var(--txt);
+}
+.cntui .aboutrow{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:22px;
+  padding:11px 14px;
+  background:var(--card);
+  border:1px solid var(--line-soft);
+  border-radius:8px;
+  font-size:13.5px;
+}
+.cntui .aboutlabel{color:var(--txt-dim);}
+.cntui .aboutversion{
+  font-family:var(--mono);
   letter-spacing:.06em;
+  color:var(--txt);
 }
-.panel > .control > .listsources::before{content:"SRC";}
-.panel > .control > .listoutputs::before{content:"OUT";}
+.cntui .aboutactions{display:flex;justify-content:flex-end;}
+.cntui .aboutactions > button{
+  padding:11px 18px;
+  border:1px solid var(--blue);
+  border-radius:6px;
+  background:var(--blue);
+  font:600 12px/1 var(--mono);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#fff;
+  cursor:pointer;
+  transition:background .15s ease,border-color .15s ease;
+}
+.cntui .aboutactions > button:hover{background:#4a91ff;border-color:#4a91ff;}
+.cntui .aboutactions > button:focus-visible{outline:2px solid #9cc6ff;outline-offset:2px;}
+
+/* the main panel's control slot draws nothing (the lists are read without a
+   press), so it takes no place                                              */
+.panel > .control{display:none;}
 
 /* the req strip and the route refusal are the panel's own readouts and have
    no place in the skin; of the fields, the unroute warning alone is drawn,
@@ -1993,7 +2057,7 @@ body{
   white-space:nowrap;
 }
 
-/* the name: typed into, then applied */
+/* the name: typed into, applied with the rest of the panel */
 .config .namerow{gap:12px;}
 .config input.nameedit{
   flex:1 1 auto;
@@ -2009,10 +2073,23 @@ body{
   outline:0;
 }
 .config input.nameedit:focus{border-color:var(--blue);box-shadow:none;}
-.config .apply{
+/* Apply and Cancel, at the foot of the panel: nothing the panel picks is
+   asked for until Apply, lit while the panel holds a pick the device does not
+   (.is-idle otherwise); Cancel closes the panel asking for nothing          */
+.config .actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+  margin-top:6px;
+  padding-top:16px;
+  border-top:1px solid var(--line);
+}
+.config .apply,
+.config .cancel{
   flex:0 0 auto;
-  padding:6px 14px;
-  border-radius:5px;
+  padding:9px 18px;
+  border:1px solid var(--blue);
+  border-radius:6px;
   background:var(--blue);
   color:#fff;
   font-family:var(--mono);
@@ -2020,10 +2097,18 @@ body{
   letter-spacing:.1em;
   text-transform:uppercase;
   cursor:pointer;
-  transition:background .15s;
+  transition:background .15s,border-color .15s,color .15s,opacity .15s;
 }
-.config .apply:hover{background:var(--blue-dim);}
-/* what the service refused, under the name; nothing refused, nothing drawn */
+.config .apply:hover{background:var(--blue-dim);border-color:var(--blue-dim);}
+.config .apply.is-idle{opacity:.45;}
+.config .cancel{
+  border-color:var(--line);
+  background:transparent;
+  color:var(--txt-dim);
+}
+.config .cancel:hover{border-color:#2a3a42;color:var(--txt);}
+/* what the answers to the last Apply refused, over the buttons; nothing
+   refused, nothing drawn */
 .config .refusal{
   padding:8px 12px;
   border-radius:6px;
