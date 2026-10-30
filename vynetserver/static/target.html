@@ -101,21 +101,9 @@ body{
   z-index:20;
 }
 /* the status, in two halves: the build it is running, and how it is doing.
-   The build is the GUI version, the one the about dialog reads (guiVersion in
-   ComponentNavBar.purs): the two move together.                             */
-#main::after{
-  content:"\00A0\00B7\00A0v1.0.22\00A0\00B7\00A0";
-  position:fixed;
-  top:0;right:calc(22px + 118px);
-  height:var(--bar);
-  display:flex;
-  align-items:center;
-  font-family:var(--mono);
-  font-size:14.5px;
-  letter-spacing:.06em;
-  color:var(--txt-dim);
-  z-index:21;
-}
+   The build is the GUI version as vynetserver answers it (/api/version),
+   written by the rail (.navbar > .guiversion, under the rail's own rules);
+   nothing drawn until it is answered.                                       */
 .cntui::after{
   content:"\25CF\00A0SYSTEM OK";
   position:fixed;
@@ -1492,11 +1480,14 @@ body{
 /* The navigation bar is the rail down the left edge: one 46px seat per page
    (main panel, matrix routing, settings), the page the frame is on lit, and
    the reload and the about seats after them. The rail is taken out of the grid, so
-   #main's padding-left is what keeps the columns clear of it.                */
+   #main's padding-left is what keeps the columns clear of it. It is a fixed
+   layer over the bar, so that the GUI version it writes into the bar's status
+   (.guiversion) shows; it starts under the bar's bottom rule, so it hides
+   none of the bar.                                                           */
 
 .cntui > .navbar{
   position:fixed;
-  top:var(--bar);left:0;bottom:0;
+  top:calc(var(--bar) + 1px);left:0;bottom:0;
   width:var(--rail);
   box-sizing:border-box;
   display:flex;
@@ -1506,8 +1497,24 @@ body{
   padding:22px 0;
   background:var(--panel);
   border-right:1px solid var(--line);
-  z-index:19;
+  z-index:21;
 }
+/* the GUI version, in the bar's status left of SYSTEM OK, between dots; none
+   answered yet, nothing drawn                                                */
+.cntui > .navbar > .guiversion{
+  position:fixed;
+  top:0;right:calc(22px + 118px);
+  height:var(--bar);
+  display:flex;
+  align-items:center;
+  font-family:var(--mono);
+  font-size:14.5px;
+  letter-spacing:.06em;
+  color:var(--txt-dim);
+}
+.cntui > .navbar > .guiversion::before,
+.cntui > .navbar > .guiversion::after{content:"\00A0\00B7\00A0";}
+.cntui > .navbar > .guiversion:empty{display:none;}
 .cntui > .navbar > .seats{
   display:flex;
   flex-direction:column;
@@ -1597,11 +1604,12 @@ body{
 
 /* ---------- the about dialog ----------------------------------------------- */
 /* The 'i' seat opens it (.about.is-on): laid over the whole page, the page
-   dimmed under it, and the GUI version in the middle (.aboutdialog:
-   .abouteyebrow .abouttitle .aboutrow (.aboutlabel .aboutversion)
-   .aboutactions). Close, or a press beside the dialog (.aboutshade), shuts
-   it. The rail is a fixed layer under the bar, so it is lifted over the bar
-   while the dialog it draws is open.                                        */
+   dimmed under it, and the GUI version and its build date in the middle
+   (.aboutdialog: .abouteyebrow .abouttitle .aboutrow (.aboutlabel
+   .aboutversion), one row each, .aboutactions), as vynetserver answers them
+   (/api/version). Close, or a press beside the dialog (.aboutshade), shuts
+   it. The rail is a fixed layer under the brand mark and the page's own
+   layers, so it is lifted over them while the dialog it draws is open.      */
 .cntui > .navbar:has(> .about.is-on){z-index:400;}
 .cntui .about{
   position:fixed;
@@ -1652,7 +1660,7 @@ body{
   align-items:center;
   justify-content:space-between;
   gap:12px;
-  margin-bottom:22px;
+  margin-bottom:8px;
   padding:11px 14px;
   background:var(--card);
   border:1px solid var(--line-soft);
@@ -1665,7 +1673,7 @@ body{
   letter-spacing:.06em;
   color:var(--txt);
 }
-.cntui .aboutactions{display:flex;justify-content:flex-end;}
+.cntui .aboutactions{display:flex;justify-content:flex-end;margin-top:22px;}
 .cntui .aboutactions > button{
   padding:11px 18px;
   border:1px solid var(--blue);
@@ -2181,6 +2189,11 @@ body{
 /* a switch or pick the output cannot be moved by reads as a reading */
 .cntui .switch.is-locked,
 .cntui .seg.is-locked{opacity:.4;cursor:not-allowed;}
+/* the source's stream rows, for advanced users: laid out as the panel's own
+   rows, gray while they are locked (.is-locked) - a double-click opens them,
+   and selects no text on the way                                            */
+.config .advanced{display:contents;}
+.config .advanced.is-locked > .row{opacity:.4;cursor:default;user-select:none;}
 
 /* ---------- accessibility + responsive ------------------------------------- */
 
