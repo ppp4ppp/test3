@@ -1,0 +1,122 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Preview split</title>
+<style>
+  body { font-family: sans-serif; background: #222; color: #eee; margin: 16px; }
+  video { width: 480px; display: block; margin-bottom: 12px; }
+  #tiles { display: flex; flex-wrap: wrap; gap: 12px; }
+  figure { margin: 0; }
+  canvas { width: 320px; display: block; background: #000; }
+</style>
+</head>
+<body>
+<p id="status">starting…</p>
+<video id="video" autoplay muted playsinline></video>
+<div id="tiles"></div>
+
+<script>
+// The preview stream: the WebRTC server on port 8000 of this host, stream "reowhite".
+const RTC = 'http://' + location.hostname + ':8000';
+const STREAM = 'reowhite';
+
+const video = document.getElementById('video');
+const tiles = document.getElementById('tiles');
+const status = document.getElementById('status');
+
+let layout = null;   // the layout the preview box composes: { name, width, height, windows }
+let cuts = [];       // one per window: { name, x, y, width, height } in layout pixels
+const canvases = {}; // source name -> its canvas
+
+// GET a vynetserver path and return the envelope's result.
+async function api(path) {
+  const body = await (await fetch(path)).json();
+  if (body.status !== 'SUCCESS') throw new Error(path + ': ' + JSON.stringify(body.error));
+  return body.result;
+}
+
+// 1. The layout and the routing: which source each window of the preview box draws.
+async function readPreview() {
+  const outputs = await api('/api/device/outputs');
+  const box = outputs.devices.find(d => d.preview_box);
+  if (!box) throw new Error('no preview box');
+
+  const composed = await api('/api/simplelayout/output/' + box.device_id);
+  const l = composed.devices[0] && composed.devices[0].layout;
+  if (!l) throw new Error('the preview box composes nothing');
+
+  // A window draws its surface, and the box's subscription with that index
+  // carries the source drawn on it.
+  cuts = l.windows.filter(w => w.surface !== null).map(w => {
+    const sub = (box.subscriptions || []).find(s => s.index === w.surface);
+    const name = sub && sub.source ? sub.source.device_name : 'surface ' + w.surface;
+    return { name: name, x: w.x, y: w.y, width: w.width, height: w.height };
+  });
+  layout = l;
+
+  // Drop the canvases of sources no longer in the preview.
+  for (const name in canvases) {
+    if (!cuts.some(c => c.name === name)) {
+      canvases[name].parentElement.remove();
+      delete canvases[name];
+    }
+  }
+  status.textContent = l.name + ' ' + l.width + '×' + l.height + ': ' + cuts.map(c => c.name).join(', ');
+}
+
+// 2. The WebRTC stream into the video element, signaled as the client does.
+async function startVideo() {
+  const tracks = await (await fetch(RTC + '/stream/codec/' + STREAM)).json();
+  const pc = new RTCPeerConnection();
+  const stream = new MediaStream();
+  pc.ontrack = e => { stream.addTrack(e.track); video.srcObject = stream; };
+  tracks.forEach(t => pc.addTransceiver(t.Type, { direction: 'recvonly' }));
+
+  await pc.setLocalDescription(await pc.createOffer());
+  const res = await fetch(RTC + '/stream/receiver/' + STREAM, {
+    method: 'POST',
+    body: new URLSearchParams({ suuid: STREAM, data: btoa(pc.localDescription.sdp) })
+  });
+  await pc.setRemoteDescription({ type: 'answer', sdp: atob(await res.text()) });
+}
+
+// The canvas named for a source, made the first time.
+function canvasFor(name) {
+  if (!canvases[name]) {
+    const figure = document.createElement('figure');
+    const caption = document.createElement('figcaption');
+    const canvas = document.createElement('canvas');
+    caption.textContent = name;
+    canvas.dataset.name = name;
+    figure.append(caption, canvas);
+    tiles.append(figure);
+    canvases[name] = canvas;
+  }
+  return canvases[name];
+}
+
+// 3. Every frame, cut each window out of the video into its source's canvas.
+function draw() {
+  if (layout && video.videoWidth) {
+    const kx = video.videoWidth / layout.width;
+    const ky = video.videoHeight / layout.height;
+    for (const c of cuts) {
+      const canvas = canvasFor(c.name);
+      const w = Math.round(c.width * kx);
+      const h = Math.round(c.height * ky);
+      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+      canvas.getContext('2d').drawImage(video, c.x * kx, c.y * ky, w, h, 0, 0, w, h);
+    }
+  }
+  requestAnimationFrame(draw);
+}
+
+function fail(e) { status.textContent = String(e); console.error(e); }
+
+readPreview().catch(fail);
+setInterval(() => readPreview().catch(fail), 5000); // the preview changes with routes and turns
+startVideo().catch(fail);
+requestAnimationFrame(draw);
+</script>
+</body>
+</html>
