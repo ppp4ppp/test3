@@ -1942,8 +1942,10 @@ body{
    req strip (.request) hidden by the rule above.                            */
 .panel:has(> .devices){
   grid-template-columns:var(--sources) minmax(0,1fr);
-  grid-template-rows:minmax(0,1fr);
-  grid-template-areas:"devices config";
+  /* the lists as tall as they run, scrolling where the column is shorter,
+     General right under them, and what is left of the column after         */
+  grid-template-rows:minmax(0,max-content) auto minmax(0,1fr);
+  grid-template-areas:"devices config" "general config" ". config";
 }
 .panel > .devices{
   grid-area:devices;
@@ -2021,6 +2023,64 @@ body{
   color:var(--green);
 }
 .devices .previewtag.is-hidden{display:none;}
+/* General, down the left under the outputs (.general: .generalrow with
+   .generaltext and the .softreset button, then .generalline, what the last
+   reset did). Soft reset unroutes every output but the preview box and has
+   the preview made again; amber, as it moves every output at once, and dim
+   (.is-busy) while it waits for its answer.                                 */
+.panel > .general{
+  grid-area:general;
+  padding:0 22px 24px 24px;
+  box-sizing:border-box;
+}
+.panel > .general::before{
+  content:"General";
+  display:block;
+  margin-bottom:12px;
+  font-family:var(--mono);
+  font-size:12.5px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--txt-faint);
+}
+.general .generalrow{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:13px 16px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:8px;
+}
+.general .generaltext{flex:1 1 auto;min-width:0;}
+.general .generallabel{font-size:15px;font-weight:500;color:var(--txt);}
+.general .generalhint{margin-top:3px;font-size:12.5px;color:var(--txt-faint);}
+.general .softreset{
+  flex:0 0 auto;
+  padding:9px 18px;
+  border:1px solid var(--amber);
+  border-radius:6px;
+  background:transparent;
+  color:var(--amber);
+  font-family:var(--mono);
+  font-size:12.5px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  white-space:nowrap;
+  cursor:pointer;
+  transition:background .15s,opacity .15s;
+}
+.general .softreset:hover{background:rgba(255,181,71,.12);}
+.general .softreset.is-busy{opacity:.45;cursor:default;}
+.general .softreset.is-busy:hover{background:transparent;}
+.general .generalline{
+  margin-top:8px;
+  font-family:var(--mono);
+  font-size:12px;
+  line-height:1.5;
+  color:var(--txt-dim);
+}
+.general .generalline.is-hidden{display:none;}
 /* a device flashing its LEDs blinks its dot */
 .cntui .dot.is-locating{animation:locate 1s steps(2,jump-none) infinite;}
 @keyframes locate{to{opacity:.25;}}
