@@ -106316,7 +106316,7 @@ var viewModeOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("ViewModeOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1644, column 3 - line 1646, column 46): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1643, column 3 - line 1645, column 46): " + [ v.constructor.name ]);
 };
 var viewModeKept = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_viewModeOutcome"](Data_Lens_Internal_Forget.strongForget)) === "kept";
@@ -106355,7 +106355,7 @@ var transceiversReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("TransceiversReading: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1719, column 3 - line 1721, column 50): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1718, column 3 - line 1720, column 50): " + [ v.constructor.name ]);
 };
 var transceiverOf = function (dictDevice) {
     return function (d) {
@@ -106390,7 +106390,7 @@ var softResetOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("SoftResetOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1668, column 3 - line 1670, column 47): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1667, column 3 - line 1669, column 47): " + [ v.constructor.name ]);
 };
 var softResetLine = function (j) {
     var v = softResetOutcomeReading(j);
@@ -106408,7 +106408,7 @@ var softResetLine = function (j) {
     if (v instanceof Data_Either.Left) {
         return "Not done: the answer could not be read";
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1674, column 19 - line 1679, column 53): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1673, column 19 - line 1678, column 53): " + [ v.constructor.name ]);
 };
 var singleViewing = function (d) {
     return Explore_Signal.makeaffrequest(Exhibit_VideoControl_VideoControlAPI.hasAffRequestVideoControl)(new Exhibit_VideoControl_VideoControlAPI.ViewMode(new Exhibit_VideoControl_VideoControlAPI.ViewModeRequest({
@@ -106460,7 +106460,7 @@ var settingsReading = function (dictDecodeJson) {
         if (v instanceof Data_Either.Left) {
             return new Data_Either.Left("SettingsList: " + v.value0);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1801, column 3 - line 1803, column 43): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1800, column 3 - line 1802, column 43): " + [ v.constructor.name ]);
     };
 };
 var settingStreamState = function (t) {
@@ -106499,7 +106499,7 @@ var settingRefusal = function (u) {
     if (Data_Boolean.otherwise) {
         return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_settingReason"](Data_Lens_Internal_Forget.strongForget));
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1729, column 1 - line 1729, column 43): " + [ u.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1728, column 1 - line 1728, column 43): " + [ u.constructor.name ]);
 };
 var settingOutcomeReading = function (j) {
     var v = Data_Either.either(function ($624) {
@@ -106511,7 +106511,7 @@ var settingOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("SettingOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1725, column 3 - line 1727, column 45): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1724, column 3 - line 1726, column 45): " + [ v.constructor.name ]);
 };
 var settingMode = function (m) {
     return function (d) {
@@ -106605,7 +106605,7 @@ var scalingOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("ScalingOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1621, column 3 - line 1623, column 45): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1620, column 3 - line 1622, column 45): " + [ v.constructor.name ]);
 };
 var scalingKept = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_scalingOutcome"](Data_Lens_Internal_Forget.strongForget)) === "kept";
@@ -106620,7 +106620,7 @@ var scalingRefusal = function (u) {
     if (Data_Boolean.otherwise) {
         return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_scalingReason"](Data_Lens_Internal_Forget.strongForget));
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1634, column 1 - line 1634, column 43): " + [ u.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1633, column 1 - line 1633, column 43): " + [ u.constructor.name ]);
 };
 var scalingBlocked = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_scalingOutcome"](Data_Lens_Internal_Forget.strongForget)) === "blocked";
@@ -106716,7 +106716,7 @@ var routeOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("RouteOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1436, column 3 - line 1438, column 43): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1435, column 3 - line 1437, column 43): " + [ v.constructor.name ]);
 };
 var routeLanded = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_routedOutcome"](Data_Lens_Internal_Forget.strongForget)) === "routed";
@@ -106838,7 +106838,7 @@ var previewUpdateReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("PreviewUpdate: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1767, column 3 - line 1769, column 44): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1766, column 3 - line 1768, column 44): " + [ v.constructor.name ]);
 };
 var previewTileSize = new Data_Tuple.Tuple(960, 540);
 var scaledAtTile = function (s) {
@@ -106866,7 +106866,7 @@ var previewBoxReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("PreviewBoxReading: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1709, column 3 - line 1711, column 48): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1708, column 3 - line 1710, column 48): " + [ v.constructor.name ]);
 };
 var previewBoxOf = function (ds) {
     return Data_Foldable.find(Data_List_Types.foldableList)(function (d) {
@@ -107102,7 +107102,7 @@ var latencyOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("LatencyOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1590, column 3 - line 1592, column 45): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1589, column 3 - line 1591, column 45): " + [ v.constructor.name ]);
 };
 var latencyKept = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_latencyOutcome"](Data_Lens_Internal_Forget.strongForget)) === "kept";
@@ -107114,7 +107114,7 @@ var latencyRefusal = function (u) {
     if (Data_Boolean.otherwise) {
         return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_latencyReason"](Data_Lens_Internal_Forget.strongForget));
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1611, column 1 - line 1611, column 43): " + [ u.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1610, column 1 - line 1610, column 43): " + [ u.constructor.name ]);
 };
 var latencyBlocked = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_latencyOutcome"](Data_Lens_Internal_Forget.strongForget)) === "blocked";
@@ -107389,7 +107389,7 @@ var hdOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("HdResolutionOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1494, column 3 - line 1496, column 50): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1493, column 3 - line 1495, column 50): " + [ v.constructor.name ]);
 };
 var hdLayoutName = function (n) {
     return (function (s) {
@@ -107417,7 +107417,7 @@ var hdCounterpartName = function (f) {
         if (Data_Boolean.otherwise) {
             return n;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1457, column 1 - line 1457, column 49): " + [ f.constructor.name, n.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1456, column 1 - line 1456, column 49): " + [ f.constructor.name, n.constructor.name ]);
     };
 };
 var genlockingTo = function (d) {
@@ -107462,7 +107462,7 @@ var feedingOf = function (s) {
         if (v instanceof Data_Maybe.Nothing) {
             return false;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1793, column 3 - line 1795, column 21): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1792, column 3 - line 1794, column 21): " + [ v.constructor.name ]);
     };
 };
 var fastResolutions = new Data_List_Types.Cons(new Data_Tuple.Tuple(1920, 1080), new Data_List_Types.Cons(new Data_Tuple.Tuple(3840, 2160), Data_List_Types.Nil.value));
@@ -107476,7 +107476,7 @@ var familyName = function (f) {
     if (f instanceof SideBySideFamily) {
         return "sidebyside";
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1540, column 3 - line 1543, column 37): " + [ f.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1539, column 3 - line 1542, column 37): " + [ f.constructor.name ]);
 };
 var switchingFamily = function (d) {
     return function (f) {
@@ -107608,7 +107608,7 @@ var dividersOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("DividersOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1572, column 3 - line 1574, column 46): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1571, column 3 - line 1573, column 46): " + [ v.constructor.name ]);
 };
 var dividersMoved = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_dividersOutcome"](Data_Lens_Internal_Forget.strongForget)) === "placed";
@@ -107879,7 +107879,7 @@ var disconnectOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("DisconnectOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1683, column 3 - line 1685, column 48): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1682, column 3 - line 1684, column 48): " + [ v.constructor.name ]);
 };
 var disconnectLeft = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_disconnectOutcome"](Data_Lens_Internal_Forget.strongForget)) === "left";
@@ -107923,7 +107923,7 @@ var deviceFault = function (dictDevice) {
             if (Data_Boolean.otherwise) {
                 return Data_Maybe.Nothing.value;
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1805, column 1 - line 1805, column 55): " + [ d.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1804, column 1 - line 1804, column 55): " + [ d.constructor.name ]);
         };
         var $401 = Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceErrorCode"](dictDevice)(Data_Lens_Internal_Forget.strongForget));
         if ($401 instanceof Data_Maybe.Just) {
@@ -107971,7 +107971,7 @@ var compositionOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("CompositionOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1554, column 3 - line 1556, column 49): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1553, column 3 - line 1555, column 49): " + [ v.constructor.name ]);
 };
 var compositionLanded = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_compositionOutcome"](Data_Lens_Internal_Forget.strongForget)) === "composed";
@@ -108209,7 +108209,7 @@ var composeOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("ComposeOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1519, column 3 - line 1521, column 45): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1518, column 3 - line 1520, column 45): " + [ v.constructor.name ]);
 };
 var composeLanded = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_composedOutcome"](Data_Lens_Internal_Forget.strongForget)) === "composed";
@@ -108277,7 +108277,7 @@ var hdSwitchMoves = function (f) {
         if (Data_Boolean.otherwise) {
             return Data_Maybe.isJust(setHdResolution(f)(d));
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1484, column 1 - line 1484, column 54): " + [ f.constructor.name, d.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1483, column 1 - line 1483, column 54): " + [ f.constructor.name, d.constructor.name ]);
     };
 };
 var layoutFor = function (b) {
@@ -108609,7 +108609,7 @@ var answeredSources = function (j) {
     if (v instanceof Data_Either.Left) {
         return Data_Maybe.Nothing.value;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1581, column 3 - line 1583, column 22): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1580, column 3 - line 1582, column 22): " + [ v.constructor.name ]);
 };
 var answeredRig = function (j) {
     var v = Data_Either.either(function ($661) {
@@ -108621,7 +108621,7 @@ var answeredRig = function (j) {
     if (v instanceof Data_Either.Left) {
         return Data_Maybe.Nothing.value;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1442, column 3 - line 1444, column 22): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1441, column 3 - line 1443, column 22): " + [ v.constructor.name ]);
 };
 var answeredPreviewLayout = function (j) {
     var v = Data_Either.either(function ($662) {
@@ -108633,7 +108633,7 @@ var answeredPreviewLayout = function (j) {
     if (v instanceof Data_Either.Left) {
         return Data_Maybe.Nothing.value;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1787, column 3 - line 1789, column 22): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1786, column 3 - line 1788, column 22): " + [ v.constructor.name ]);
 };
 var answeredOutputs = function (j) {
     var v = Data_Either.either(function ($663) {
@@ -108645,7 +108645,7 @@ var answeredOutputs = function (j) {
     if (v instanceof Data_Either.Left) {
         return Data_Maybe.Nothing.value;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1528, column 3 - line 1530, column 22): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1527, column 3 - line 1529, column 22): " + [ v.constructor.name ]);
 };
 var activeRoutes = function (l) {
     return Data_List.concatMap(function (d) {
@@ -108819,9 +108819,9 @@ var unrouteWarning = function (os) {
                 var strandedWhy = (function () {
                     var v = new Data_Tuple.Tuple(scaledAt, Data_Functor.map(Data_Maybe.functorMaybe)(fittingScaledSize(s))(Control_Bind.bind(Data_Maybe.bindMaybe)(mw)(windowSizeOf(d))));
                     if (v.value0 instanceof Data_Maybe.Just && v.value1 instanceof Data_Maybe.Just) {
-                        return "draws it in a " + (resolutionName(v.value0.value0) + (" window, and this window is " + (resolutionName(v.value1.value0) + ": a source is scaled to one window size at a time")));
+                        return "shows it in a " + (resolutionName(v.value0.value0) + (" window, this window is " + resolutionName(v.value1.value0)));
                     };
-                    return "draws it in a window of another size: a source is scaled to one window size at a time";
+                    return "shows it in a window of another size";
                 })();
                 var elsewhere = function (v) {
                     return !Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_devicePreviewBox"](Data_Lens_Internal_Forget.strongForget)) && Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_deviceId"](Exhibit_VideoControl_Types.deviceOutputSettings)(Data_Lens_Internal_Forget.strongForget)) !== Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceId"](Exhibit_VideoControl_Types.deviceOutputSettings)(Data_Lens_Internal_Forget.strongForget));
@@ -109320,7 +109320,7 @@ var planHdSwitch = function (f) {
                             })(cs))));
                         });
                     };
-                    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1468, column 1 - line 1468, column 147): " + [ f.constructor.name, d.constructor.name, ss.constructor.name, os.constructor.name, ls.constructor.name ]);
+                    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1467, column 1 - line 1467, column 147): " + [ f.constructor.name, d.constructor.name, ss.constructor.name, os.constructor.name, ls.constructor.name ]);
                 };
             };
         };
@@ -122338,7 +122338,7 @@ var displayUnrouteWarning = function (mw) {
                 return React_DOM.div([ React_DOM_Props.className("unroutewarning") ])([  ]);
             };
             if (mw instanceof Data_Maybe.Just) {
-                return React_DOM.div([ React_DOM_Props.className("unroutewarning is-on") ])([ React_DOM.div([ React_DOM_Props.className("unroutedialog"), React_DOM_Props.role("alertdialog") ])([ React_DOM.div([ React_DOM_Props.className("unrouteeyebrow") ])([ React_DOM.text("Route warning") ]), React_DOM.div([ React_DOM_Props.className("unroutetitle") ])([ React_DOM.text("Routing " + (Data_Lens_Getter.viewOn(mw.value0)(Exhibit_VideoControl_Types["_warnedSource"](Data_Lens_Internal_Forget.strongForget)) + (" to " + (Data_Lens_Getter.viewOn(mw.value0)(Exhibit_VideoControl_Types["_warnedOutput"](Data_Lens_Internal_Forget.strongForget)) + (" will unroute it from " + namesLine(Data_Functor.map(Data_List_Types.functorList)(Data_Tuple.fst)(Data_Lens_Getter.viewOn(mw.value0)(Exhibit_VideoControl_Types["_warnedUnrouted"](Data_Lens_Internal_Forget.strongForget))))))))) ]), React_DOM.ul([ React_DOM_Props.className("unrouted") ])(Data_Array.fromFoldable(Data_List_Types.foldableList)(Data_Functor.map(Data_List_Types.functorList)(function (v) {
+                return React_DOM.div([ React_DOM_Props.className("unroutewarning is-on") ])([ React_DOM.div([ React_DOM_Props.className("unroutedialog"), React_DOM_Props.role("alertdialog") ])([ React_DOM.div([ React_DOM_Props.className("unrouteeyebrow") ])([ React_DOM.text("Warning") ]), React_DOM.div([ React_DOM_Props.className("unroutetitle") ])([ React_DOM.text("Window size does not match: " + (Data_Lens_Getter.viewOn(mw.value0)(Exhibit_VideoControl_Types["_warnedSource"](Data_Lens_Internal_Forget.strongForget)) + (" will be unrouted from " + namesLine(Data_Functor.map(Data_List_Types.functorList)(Data_Tuple.fst)(Data_Lens_Getter.viewOn(mw.value0)(Exhibit_VideoControl_Types["_warnedUnrouted"](Data_Lens_Internal_Forget.strongForget))))))) ]), React_DOM.ul([ React_DOM_Props.className("unrouted") ])(Data_Array.fromFoldable(Data_List_Types.foldableList)(Data_Functor.map(Data_List_Types.functorList)(function (v) {
                     return React_DOM.li([  ])([ React_DOM.span([ React_DOM_Props.className("unroutedoutput") ])([ React_DOM.text(v.value0) ]), React_DOM.text(" " + (v.value1 + ".")) ]);
                 })(Data_Lens_Getter.viewOn(mw.value0)(Exhibit_VideoControl_Types["_warnedUnrouted"](Data_Lens_Internal_Forget.strongForget))))), React_DOM.div([ React_DOM_Props.className("unrouteactions") ])([ React_DOM.button([ React_DOM_Props.className("unroutecancel"), React_DOM_Props.onClick(function (v) {
                     return cancel;
@@ -135944,7 +135944,7 @@ var displayRouteNotice = function (message) {
                     return confirm;
                 }) ])([ React_DOM.text("Route anyway") ]) ]) ]) ]);
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentRouteNotice (line 11, column 1 - line 11, column 75): " + [ message.constructor.name, cancel.constructor.name, confirm.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentRouteNotice (line 12, column 1 - line 12, column 75): " + [ message.constructor.name, cancel.constructor.name, confirm.constructor.name ]);
         };
     };
 };
@@ -135959,7 +135959,7 @@ var displayMessage = function (eyebrow) {
                     return close;
                 }) ])([ React_DOM.text("OK") ]) ]) ]) ]);
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentRouteNotice (line 25, column 1 - line 25, column 66): " + [ eyebrow.constructor.name, message.constructor.name, close.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.UI.ComponentRouteNotice (line 26, column 1 - line 26, column 66): " + [ eyebrow.constructor.name, message.constructor.name, close.constructor.name ]);
         };
     };
 };
