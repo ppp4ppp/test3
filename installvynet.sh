@@ -1,4 +1,4 @@
-VERSION=35
+VERSION=36
 
 echo "installing v$VERSION ....."
 
