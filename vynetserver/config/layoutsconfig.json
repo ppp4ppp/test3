@@ -1252,7 +1252,7 @@
             "horizontal_offset": 0,
             "vertical_offset": 0,
             "content": "VIDEO",
-            "target_surface": 0
+            "target_surface": 2
           },
           {
             "index": 1,
@@ -1274,7 +1274,7 @@
             "horizontal_offset": 0,
             "vertical_offset": 0,
             "content": "VIDEO",
-            "target_surface": 2
+            "target_surface": 0
           }
         ]
       },
