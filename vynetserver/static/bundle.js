@@ -106355,7 +106355,7 @@ var transceiversReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("TransceiversReading: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1718, column 3 - line 1720, column 50): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1719, column 3 - line 1721, column 50): " + [ v.constructor.name ]);
 };
 var transceiverOf = function (dictDevice) {
     return function (d) {
@@ -106390,7 +106390,7 @@ var softResetOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("SoftResetOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1667, column 3 - line 1669, column 47): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1668, column 3 - line 1670, column 47): " + [ v.constructor.name ]);
 };
 var softResetLine = function (j) {
     var v = softResetOutcomeReading(j);
@@ -106399,7 +106399,7 @@ var softResetLine = function (j) {
             return "Done: " + (Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_softResetReason"](Data_Lens_Internal_Forget.strongForget)) + ". The preview is made again.");
         };
         if (Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_softResetOutcome"](Data_Lens_Internal_Forget.strongForget)) === "kept") {
-            return "Nothing to unroute: " + (Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_softResetReason"](Data_Lens_Internal_Forget.strongForget)) + ". The preview is made again.");
+            return "Nothing to reset: " + (Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_softResetReason"](Data_Lens_Internal_Forget.strongForget)) + ". The preview is made again.");
         };
         if (Data_Boolean.otherwise) {
             return "Not done: " + Data_Lens_Getter.viewOn(v.value0)(Exhibit_VideoControl_Types["_softResetReason"](Data_Lens_Internal_Forget.strongForget));
@@ -106408,7 +106408,7 @@ var softResetLine = function (j) {
     if (v instanceof Data_Either.Left) {
         return "Not done: the answer could not be read";
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1673, column 19 - line 1678, column 53): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1674, column 19 - line 1679, column 53): " + [ v.constructor.name ]);
 };
 var singleViewing = function (d) {
     return Explore_Signal.makeaffrequest(Exhibit_VideoControl_VideoControlAPI.hasAffRequestVideoControl)(new Exhibit_VideoControl_VideoControlAPI.ViewMode(new Exhibit_VideoControl_VideoControlAPI.ViewModeRequest({
@@ -106460,7 +106460,7 @@ var settingsReading = function (dictDecodeJson) {
         if (v instanceof Data_Either.Left) {
             return new Data_Either.Left("SettingsList: " + v.value0);
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1800, column 3 - line 1802, column 43): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1801, column 3 - line 1803, column 43): " + [ v.constructor.name ]);
     };
 };
 var settingStreamState = function (t) {
@@ -106499,7 +106499,7 @@ var settingRefusal = function (u) {
     if (Data_Boolean.otherwise) {
         return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_settingReason"](Data_Lens_Internal_Forget.strongForget));
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1728, column 1 - line 1728, column 43): " + [ u.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1729, column 1 - line 1729, column 43): " + [ u.constructor.name ]);
 };
 var settingOutcomeReading = function (j) {
     var v = Data_Either.either(function ($624) {
@@ -106511,7 +106511,7 @@ var settingOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("SettingOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1724, column 3 - line 1726, column 45): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1725, column 3 - line 1727, column 45): " + [ v.constructor.name ]);
 };
 var settingMode = function (m) {
     return function (d) {
@@ -106838,7 +106838,7 @@ var previewUpdateReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("PreviewUpdate: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1766, column 3 - line 1768, column 44): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1767, column 3 - line 1769, column 44): " + [ v.constructor.name ]);
 };
 var previewTileSize = new Data_Tuple.Tuple(960, 540);
 var scaledAtTile = function (s) {
@@ -106866,7 +106866,7 @@ var previewBoxReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("PreviewBoxReading: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1708, column 3 - line 1710, column 48): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1709, column 3 - line 1711, column 48): " + [ v.constructor.name ]);
 };
 var previewBoxOf = function (ds) {
     return Data_Foldable.find(Data_List_Types.foldableList)(function (d) {
@@ -107462,7 +107462,7 @@ var feedingOf = function (s) {
         if (v instanceof Data_Maybe.Nothing) {
             return false;
         };
-        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1792, column 3 - line 1794, column 21): " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1793, column 3 - line 1795, column 21): " + [ v.constructor.name ]);
     };
 };
 var fastResolutions = new Data_List_Types.Cons(new Data_Tuple.Tuple(1920, 1080), new Data_List_Types.Cons(new Data_Tuple.Tuple(3840, 2160), Data_List_Types.Nil.value));
@@ -107879,7 +107879,7 @@ var disconnectOutcomeReading = function (j) {
     if (v instanceof Data_Either.Left) {
         return new Data_Either.Left("DisconnectOutcome: " + v.value0);
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1682, column 3 - line 1684, column 48): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1683, column 3 - line 1685, column 48): " + [ v.constructor.name ]);
 };
 var disconnectLeft = function (u) {
     return Data_Lens_Getter.viewOn(u)(Exhibit_VideoControl_Types["_disconnectOutcome"](Data_Lens_Internal_Forget.strongForget)) === "left";
@@ -107923,7 +107923,7 @@ var deviceFault = function (dictDevice) {
             if (Data_Boolean.otherwise) {
                 return Data_Maybe.Nothing.value;
             };
-            throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1804, column 1 - line 1804, column 55): " + [ d.constructor.name ]);
+            throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1805, column 1 - line 1805, column 55): " + [ d.constructor.name ]);
         };
         var $401 = Data_Lens_Getter.viewOn(d)(Exhibit_VideoControl_Types["_deviceErrorCode"](dictDevice)(Data_Lens_Internal_Forget.strongForget));
         if ($401 instanceof Data_Maybe.Just) {
@@ -108633,7 +108633,7 @@ var answeredPreviewLayout = function (j) {
     if (v instanceof Data_Either.Left) {
         return Data_Maybe.Nothing.value;
     };
-    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1786, column 3 - line 1788, column 22): " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Exhibit.VideoControl.Interactions (line 1787, column 3 - line 1789, column 22): " + [ v.constructor.name ]);
 };
 var answeredOutputs = function (j) {
     var v = Data_Either.either(function ($663) {
@@ -120186,7 +120186,7 @@ var _resetLine = function (dictStrong) {
 };
 var displayGeneral = function (s) {
     return function (send) {
-        return new Data_Tuple.Tuple(Data_Maybe.Nothing.value, [ React_DOM.div([ React_DOM_Props.className("generalrow") ])([ React_DOM.div([ React_DOM_Props.className("generaltext") ])([ React_DOM.div([ React_DOM_Props.className("generallabel") ])([ React_DOM.text("Soft reset") ]), React_DOM.div([ React_DOM_Props.className("generalhint") ])([ React_DOM.text("Unroute every output, then make the preview again") ]) ]), React_DOM.div([ React_DOM_Props.className((function () {
+        return new Data_Tuple.Tuple(Data_Maybe.Nothing.value, [ React_DOM.div([ React_DOM_Props.className("generalrow") ])([ React_DOM.div([ React_DOM_Props.className("generaltext") ])([ React_DOM.div([ React_DOM_Props.className("generallabel") ])([ React_DOM.text("Reset") ]), React_DOM.div([ React_DOM_Props.className("generalhint") ])([ React_DOM.text("Unroute every output and set it to Single, Fast, 4K60, then make the preview again") ]) ]), React_DOM.div([ React_DOM_Props.className((function () {
             var $54 = Data_Lens_Getter.viewOn(s)(_resetting(Data_Lens_Internal_Forget.strongForget));
             if ($54) {
                 return "softreset is-busy";
@@ -120194,14 +120194,14 @@ var displayGeneral = function (s) {
             return "softreset";
         })()), React_DOM_Props["_id"]("general_soft_reset"), React_DOM_Props.onClick(function (v) {
             return Control_Applicative.unless(Effect.applicativeEffect)(Data_Lens_Getter.viewOn(s)(_resetting(Data_Lens_Internal_Forget.strongForget)))(send(Explore_Component.update(new ComponentGeneralSoftResetSignal(Data_Unit.unit))(Control_Monad_State_Class.modify_(Explore_Core.monadStateCo(Control_Comonad_Store_Class.comonadStoreStoreT(Data_Identity.comonadIdentity)))(function (a) {
-                return Data_Lens_Setter.set(_resetLine(Data_Profunctor_Strong.strongFn))("Unrouting every output\u2026")(Data_Lens_Setter.set(_resetting(Data_Profunctor_Strong.strongFn))(true)(a));
+                return Data_Lens_Setter.set(_resetLine(Data_Profunctor_Strong.strongFn))("Resetting every output\u2026")(Data_Lens_Setter.set(_resetting(Data_Profunctor_Strong.strongFn))(true)(a));
             }))));
         }) ])([ React_DOM.text((function () {
             var $55 = Data_Lens_Getter.viewOn(s)(_resetting(Data_Lens_Internal_Forget.strongForget));
             if ($55) {
                 return "Resetting\u2026";
             };
-            return "Soft reset";
+            return "Reset";
         })()) ]) ]), React_DOM.div([ React_DOM_Props.className((function () {
             var $56 = Data_Lens_Getter.viewOn(s)(_resetLine(Data_Lens_Internal_Forget.strongForget)) === "";
             if ($56) {
